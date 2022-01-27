@@ -12,7 +12,7 @@ import HomePage from "./pages/HomePage";
 const App: FC = () => {
   return (
     <Router>
-      <div className="flex max-w-full mx-auto">
+      <div className="flex max-w-full mx-auto dark:bg-gray-900">
         <main className="flex-1 flex h-screen">
           <section className="flex-1 flex flex-col">
             <NavTopBar className="shrink-0 hidden md:flex" />

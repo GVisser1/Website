@@ -2,6 +2,8 @@ import { FC } from "react";
 import { useNavigate, useLocation } from "react-router";
 import classNames from "classnames";
 import { Icon, IconType } from "./Icon";
+import SettingsModal from "./SettingsModal";
+import { useTranslation } from "react-i18next";
 
 interface NavTopBarProps {
   className?: string;
@@ -10,6 +12,7 @@ interface NavTopBarProps {
 const NavTopBar: FC<NavTopBarProps> = ({ className }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
   const selected = location.pathname.split("/")[1];
 
   return (
@@ -24,15 +27,15 @@ const NavTopBar: FC<NavTopBarProps> = ({ className }) => {
       pageOptions={[
         {
           id: "projects",
-          label: "PROJECTS",
+          label: t("PROJECTS"),
         },
         {
           id: "skills",
-          label: "SKILLS",
+          label: t("SKILLS"),
         },
         {
           id: "contact",
-          label: "CONTACT",
+          label: t("CONTACT"),
         },
       ]}
       settingsOptions={[
@@ -69,7 +72,7 @@ export const TopBar: React.FC<TopBarProps> = ({
   settingsOptions,
 }) => {
   const classes = classNames(
-    "w-full h-16 mx-auto px-5 py-12 border-b-2 border-gray-100",
+    "w-full h-16 mx-auto px-5 py-12 border-b-2 border-gray-100 dark:border-gray-700",
     className
   );
 
@@ -106,9 +109,6 @@ export const TopBar: React.FC<TopBarProps> = ({
                 key={option.id}
                 active={option.id === selected}
                 option={option}
-                onSelect={() => {
-                  onSelect && onSelect(option.id);
-                }}
               />
             ))}
           </div>
@@ -122,7 +122,7 @@ interface TopBarItemProps {
   active: boolean;
   option: TopBarOption;
   className?: string;
-  onSelect: () => void;
+  onSelect?: () => void;
 }
 
 const TopBarItem: React.FC<TopBarItemProps> = ({
@@ -136,8 +136,9 @@ const TopBarItem: React.FC<TopBarItemProps> = ({
       "flex justify-center cursor-pointer": true,
       "transition-all ease-in-out duration-300 transform": true,
       "space-x-3": option.label && option.icon,
-      "text-gray-700 hover:text-gray-400": !active,
-      "text-blue-600": active,
+      "text-gray-700 hover:text-gray-400 dark:text-white dark:hover:text-blue-400":
+        !active,
+      "text-blue-600 dark:text-yellow-600": active,
     },
     className
   );
@@ -147,12 +148,21 @@ const TopBarItem: React.FC<TopBarItemProps> = ({
 
   return (
     <div className={"px-4 py-3"}>
-      <div onClick={onSelect} className={classes}>
-        {option.icon && (
-          <Icon name={option.icon} type="outline" className={iconClasses} />
-        )}
-        <p>{option.label}</p>
-      </div>
+      {option.id === "settings" && (
+        <SettingsModal
+          className={classes}
+          icon={option.icon}
+          label={option.label}
+        />
+      )}
+      {option.id !== "settings" && (
+        <div onClick={onSelect} className={classes}>
+          {option.icon && (
+            <Icon name={option.icon} type="outline" className={iconClasses} />
+          )}
+          <p>{option.label}</p>
+        </div>
+      )}
     </div>
   );
 };

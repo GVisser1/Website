@@ -2,6 +2,7 @@ import { FC } from "react";
 import { useNavigate, useLocation } from "react-router";
 import classNames from "classnames";
 import { Icon, IconType } from "./Icon";
+import SettingsModal from "./SettingsModal";
 
 interface NavTabBarProps {
   className?: string;
@@ -20,18 +21,22 @@ const NavTabBar: FC<NavTabBarProps> = ({ className }) => {
       options={[
         {
           id: "home",
+          label: "Home",
           icon: IconType.HOME,
         },
         {
           id: "projects",
+          label: "Projects",
           icon: IconType.FOLDER,
         },
         {
           id: "contact",
+          label: "Contact",
           icon: IconType.INFORMATION_CIRCLE,
         },
         {
           id: "settings",
+          label: "Settings",
           icon: IconType.COG,
         },
       ]}
@@ -42,6 +47,7 @@ const NavTabBar: FC<NavTabBarProps> = ({ className }) => {
 interface TabBarOption {
   id: string;
   icon: IconType;
+  label: string;
 }
 
 export interface TabBarProps {
@@ -58,7 +64,7 @@ export const TabBar: React.FC<TabBarProps> = ({
   onSelect,
 }) => {
   const classes = classNames(
-    "flex justify-between items-start border-t-2 border-gray-100",
+    "flex justify-between items-start border-t-2 border-gray-100 dark:border-gray-700 dark:bg-slate-800",
     className
   );
 
@@ -68,7 +74,7 @@ export const TabBar: React.FC<TabBarProps> = ({
         true,
       "p-2.5 flex-1 text-xxs text-center whitespace-nowrap": true,
       "transition-all ease-in-out duration-300 transform": true,
-      "text-gray-700": !active,
+      "text-gray-700 dark:text-white": !active,
       "text-blue-600 font-semibold": active,
     });
 
@@ -82,7 +88,15 @@ export const TabBar: React.FC<TabBarProps> = ({
           className={getOptionClasses(option.id === selected)}
           key={option.id}
         >
-          <Icon name={option.icon} type="outline" />
+          {option.id === "settings" && (
+            <SettingsModal
+              icon={option.icon}
+              className="w-full flex justify-center"
+            />
+          )}
+          {option.id !== "settings" && (
+            <Icon name={option.icon} type="outline" />
+          )}
         </div>
       ))}
     </nav>

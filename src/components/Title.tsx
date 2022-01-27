@@ -33,7 +33,7 @@ export const Title: React.FC<TitleProps> = ({
       "text-black": color === "black",
       "text-white": color === "white",
       "text-gray-100": color === "light",
-      "text-gray-700": color === "dark",
+      "text-gray-700 dark:text-white": color === "dark",
       "text-gray-300": color === "light",
       "text-blue-600": color === "selected",
       "hover:text-blue-200": href,
