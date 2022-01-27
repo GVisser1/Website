@@ -1,0 +1,84 @@
+import React from "react";
+import classNames from "classnames";
+import { Icon, IconType } from "./Icon";
+
+export interface TextProps {
+  className?: string;
+  size?:
+    | "xs"
+    | "sm"
+    | "base"
+    | "md"
+    | "lg"
+    | "xl"
+    | "2xl"
+    | "3xl"
+    | "4xl"
+    | "5xl"
+    | "6xl";
+  weight?: "light" | "normal" | "medium" | "semibold" | "bold";
+  color?: "black" | "dark" | "white" | "light" | "danger";
+  italic?: boolean;
+  href?: string;
+  spaceBetween?: "sm" | "base" | "lg";
+  icon?: IconType;
+  iconType?: "outline" | "solid";
+  iconPosition?: "left" | "right";
+}
+
+export const Text: React.FC<TextProps> = ({
+  size = "sm",
+  weight,
+  color = "dark",
+  italic = false,
+  href,
+  spaceBetween = "base",
+  icon,
+  iconType = "outline",
+  iconPosition = "left",
+  className,
+  ...props
+}) => {
+  const Tag = href ? "a" : "div";
+  const classes = classNames(
+    {
+      "flex items-center": true,
+      [`text-${size}`]: size,
+      [`font-${weight}`]: weight,
+      "text-black": color === "black",
+      "text-gray-700": color === "dark",
+      "text-white": color === "white",
+      "text-red-400": color === "danger",
+      "text-gray-300": color === "light",
+      "space-x-1": spaceBetween === "sm",
+      "space-x-2": spaceBetween === "base",
+      "space-x-4": spaceBetween === "lg",
+      italic: italic,
+    },
+    className
+  );
+
+  const linkClasses = classNames({
+    "text-blue-600 hover:text-blue-100 hover:underline cursor-pointer": href,
+  });
+
+  return (
+    <div className={classes}>
+      {icon ? (
+        <>
+          {iconPosition === "left" && <Icon name={icon} type={iconType} />}
+          <Tag className={linkClasses} href={href}>
+            {props.children}
+          </Tag>
+          {iconPosition === "right" && <Icon name={icon} type={iconType} />}
+        </>
+      ) : (
+        <Tag className={linkClasses} href={href}>
+          {props.children}
+        </Tag>
+      )}
+    </div>
+  );
+};
+
+export default Text;
