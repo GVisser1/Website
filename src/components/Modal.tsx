@@ -3,6 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Title } from "./Title";
 import { Button } from "./Button";
 import { IconType } from "./Icon";
+import { t } from "i18next";
 
 interface ModalProps {
   title: string;
@@ -73,7 +74,7 @@ const Modal: React.FC<ModalProps> = ({
                 <Button
                   block
                   onClick={closeModal}
-                  label="Close"
+                  label={t("CLOSE")}
                   className="pt-8"
                 />
               </div>

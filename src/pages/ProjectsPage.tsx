@@ -16,7 +16,7 @@ const ProjectsPage: FC = () => {
             id="Projects"
             className="max-w-5xl mx-auto px-5 py-10 md:px-8"
           >
-            <Title as="h2">{"School Projects"}</Title>
+            <Title as="h2">{t("SCHOOL_PROJECTS")}</Title>
             <div className="flex flex-wrap py-3">
               {useProjectData("SCHOOL")?.map((project) => (
                 <div
@@ -33,7 +33,7 @@ const ProjectsPage: FC = () => {
                   <Modal
                     btnClassName="py-4"
                     title={project.title ?? ""}
-                    btnLabel="Read More..."
+                    btnLabel={`${t("READ_MORE")}...`}
                   >
                     <div className="space-y-4">
                       {project.content?.map((item) => (
@@ -51,7 +51,7 @@ const ProjectsPage: FC = () => {
                     </div>
                     {project.href && (
                       <Text className="py-2">
-                        {"Check out the source code yourself:"}
+                        {t("CHECK_SOURCE_CODE")}
                         <Text href={project.href}>{project.href}</Text>
                       </Text>
                     )}
@@ -60,7 +60,7 @@ const ProjectsPage: FC = () => {
               ))}
             </div>
             <Title className="pt-8" as="h2">
-              {"Personal Projects"}
+              {t("PERSONAL_PROJECTS")}
             </Title>
             <div className="flex flex-wrap py-3">
               {useProjectData("PERSONAL")?.map((project) => (
@@ -81,7 +81,7 @@ const ProjectsPage: FC = () => {
                   <Modal
                     btnClassName="py-4"
                     title={project.title ?? ""}
-                    btnLabel="Read More..."
+                    btnLabel={`${t("READ_MORE")}...`}
                   >
                     <div className="space-y-4">
                       {project.content?.map((item) => (
@@ -99,7 +99,7 @@ const ProjectsPage: FC = () => {
                     </div>
                     {project.href && (
                       <Text className="py-2">
-                        {"Check out the source code yourself:"}
+                        {t("CHECK_SOURCE_CODE")}
                         <Text href={project.href}>{project.href}</Text>
                       </Text>
                     )}
