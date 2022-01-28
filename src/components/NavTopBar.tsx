@@ -17,7 +17,7 @@ const NavTopBar: FC<NavTopBarProps> = ({ className }) => {
 
   return (
     <TopBar
-      className={classNames("flex", className)}
+      className={classNames("flex dark:bg-slate-800", className)}
       onSelect={(id) => navigate(`/${id}`)}
       selected={selected}
       mainOption={{

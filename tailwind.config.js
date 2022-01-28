@@ -9,7 +9,7 @@ module.exports = {
         "screen-3xl": "1792px",
       },
       backgroundImage: {
-        main: "url('Assets/Images/GlennMain.jpg')",
+        main: "url('assets/images/GlennMain.jpg')",
       },
     },
   },

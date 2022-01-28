@@ -9,6 +9,7 @@ import NavTabBar from "./components/NavTabBar";
 import NavTopBar from "./components/NavTopBar";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
+import ProjectsPage from "./pages/ProjectsPage";
 
 const App: FC = () => {
   return (
@@ -20,6 +21,7 @@ const App: FC = () => {
             <NavTabBar className="md:hidden" />
             <Routes>
               <Route path="/home" element={<HomePage />} />
+              <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
