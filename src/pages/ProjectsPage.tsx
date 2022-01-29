@@ -23,7 +23,10 @@ const ProjectsPage: FC = () => {
                   key={project.id}
                   className="flex flex-col w-full md:w-80 object-fit p-2"
                 >
-                  <img src={project.logo} className="w-full h-54" />
+                  <img
+                    src={project.logo}
+                    className="border-2 border-gray-100 dark:border-gray-700"
+                  />
                   <Title as="h3" size="xl" className="pt-2">
                     {project.title ?? ""}
                   </Title>
@@ -44,7 +47,7 @@ const ProjectsPage: FC = () => {
                           <Text>{item.description}</Text>
                           <img
                             src={item.src}
-                            className="border-2 border-gray-700"
+                            className="border-2 border-gray-100 dark:border-gray-700"
                           />
                         </div>
                       ))}
@@ -70,7 +73,7 @@ const ProjectsPage: FC = () => {
                 >
                   <img
                     src={project.logo}
-                    className="border-2 border-gray-700"
+                    className="border-2 border-gray-100 dark:border-gray-700"
                   />
                   <Title as="h3" size="xl" className="pt-2">
                     {project.title ?? ""}
@@ -92,7 +95,7 @@ const ProjectsPage: FC = () => {
                           <Text>{item.description}</Text>
                           <img
                             src={item.src}
-                            className="border-2 border-gray-700"
+                            className="border-2 border-gray-100 dark:border-gray-700"
                           />
                         </div>
                       ))}
