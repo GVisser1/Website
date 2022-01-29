@@ -26,10 +26,10 @@ const HomePage: FC = () => {
             >
               {t("HOME_GREETING")}
             </Title>
-            <div className="pt-96">
+            <div className="pt-96 w-64 md:w-72">
               <Text
                 color="all-white"
-                className="w-80 rounded-lg bg-black/30 p-2 md:text-base"
+                className="rounded-lg bg-black/30 p-2 md:text-base"
               >
                 {t("HOME_BIO")}
               </Text>

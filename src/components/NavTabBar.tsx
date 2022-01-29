@@ -70,7 +70,7 @@ export const TabBar: React.FC<TabBarProps> = ({
 
   const getOptionClasses = (active: boolean) =>
     classNames({
-      "flex flex-col items-center outline-none focus:outline-none appearance-none cursor-pointer":
+      "flex flex-col items-center outline-none focus:outline-none appearance-none cursor-pointer border-b-2 border-gray-100 dark:border-gray-700":
         true,
       "p-2.5 flex-1 text-xxs text-center whitespace-nowrap": true,
       "transition-all ease-in-out duration-300 transform": true,
