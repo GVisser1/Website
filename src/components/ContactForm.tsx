@@ -5,7 +5,6 @@ import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import Input from "./Input";
 import classNames from "classnames";
-
 interface ContactFormProps {
   className?: string;
 }
@@ -43,7 +42,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
       }}
     >
       {(formik) => (
-        <div className={classes}>
+        <form name="contact" method="post" className={classes}>
+          <input type="hidden" name="form-name" value="contact" />
           <Input
             className="py-2"
             name="from_name"
@@ -96,10 +96,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
           <Button
             className="pt-6"
             block
+            submit
             label={t("SEND")}
             onClick={formik.submitForm}
           />
-        </div>
+        </form>
       )}
     </Formik>
   );

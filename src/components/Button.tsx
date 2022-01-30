@@ -12,6 +12,7 @@ export interface ButtonProps {
   icon?: IconType;
   iconType?: "solid" | "outline";
   block?: boolean;
+  submit?: boolean;
   selected?: boolean;
 }
 
@@ -22,6 +23,7 @@ export const Button: React.FC<ButtonProps> = ({
   type = "default",
   icon,
   iconType = "solid",
+  submit,
   selected = false,
   className,
   ...props
@@ -43,7 +45,7 @@ export const Button: React.FC<ButtonProps> = ({
     "text-black dark:text-white": type === "clear",
     "text-white": type === "destructive",
     // Backgrounds
-    "bg-blue-100 hover:bg-blue-200": type === "default",
+    "bg-blue-200 hover:bg-blue-300": type === "default",
     "hover:bg-gray-200 dark:hover:bg-gray-500": type === "clear",
     "bg-red-500 hover:bg-red-600": type === "destructive",
     // Focus rings
@@ -56,6 +58,7 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <div className={classes} {...props}>
       <button
+        type={submit ? "submit" : "button"}
         onClick={(event) => onClick && onClick(event)}
         className={innerClasses}
       >
