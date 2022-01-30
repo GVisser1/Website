@@ -136,7 +136,7 @@ const TopBarItem: React.FC<TopBarItemProps> = ({
       "flex justify-center cursor-pointer": true,
       "transition-all ease-in-out duration-300 transform": true,
       "space-x-3": option.label && option.icon,
-      "text-gray-700 hover:text-gray-400 dark:text-white dark:hover:text-blue-400":
+      "text-gray-700 hover:text-gray-400 dark:text-white dark:hover:text-yellow-200":
         !active,
       "text-blue-600 dark:text-yellow-600": active,
     },

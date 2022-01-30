@@ -16,7 +16,7 @@ const HomePage: FC = () => {
         <div className="overflow-y-auto">
           <section
             id="Intro"
-            className="max-w-screen-3xl mx-auto px-5 md:px-8 py-10 space-y-2 flex flex-col justify-center items-center text-center bg-main bg-top bg-cover"
+            className="max-w-screen-3xl mx-auto px-5 md:px-8 py-10 space-y-2 flex flex-col justify-center items-center text-center bg-[url('assets/images/GlennMain.jpg')] bg-top bg-cover"
           >
             <Title
               as="h1"

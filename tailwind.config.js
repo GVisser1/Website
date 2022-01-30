@@ -8,9 +8,6 @@ module.exports = {
       maxWidth: {
         "screen-3xl": "1792px",
       },
-      backgroundImage: {
-        main: "url('assets/images/GlennMain.jpg')",
-      },
     },
   },
   plugins: [
