@@ -59,6 +59,11 @@ const SettingsModal: React.FC<ModalProps> = ({ className, icon, label }) => {
     return () => darkThemeMq.removeEventListener("change", mqListener);
   }, [useSystemTheme]);
 
+  const isDutch =
+    i18n.language === "nl" ||
+    i18n.language === "nl-NL" ||
+    i18n.language === "nl-BE";
+
   return (
     <>
       <div onClick={openModal} className={className}>
@@ -112,7 +117,7 @@ const SettingsModal: React.FC<ModalProps> = ({ className, icon, label }) => {
                     onClick={async () => {
                       await i18n.changeLanguage("en");
                     }}
-                    selected={i18n.language != "nl"}
+                    selected={!isDutch}
                     label={t("ENGLISH")}
                   />
                   <Button
@@ -120,7 +125,7 @@ const SettingsModal: React.FC<ModalProps> = ({ className, icon, label }) => {
                     onClick={async () => {
                       await i18n.changeLanguage("nl");
                     }}
-                    selected={i18n.language === "nl"}
+                    selected={isDutch}
                     label={t("DUTCH")}
                   />
                 </div>
