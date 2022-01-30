@@ -19,7 +19,7 @@ const ContactPage: FC = () => {
           >
             <div className="w-full flex flex-col items-center pt-4 pb-16 md:pb-0 md:pt-20">
               <img
-                src="Assets/Images/GlennProfile.jpeg"
+                src="images/personal/GlennProfile.jpeg"
                 className="w-56 h-56 sm:w-72 sm:h-72 object-fit rounded-full shadow-2xl"
               />
               <Title className="py-4" as="h2" size="xl">

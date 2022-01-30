@@ -13,29 +13,29 @@ const SocialIcons: FC<SocialIconsProps> = ({ className }) => {
         {
           id: "LinkedIn",
           href: "https://linkedin.com/in/g-visser",
-          src: "assets/social_icons/Linkedin.svg",
+          src: "images/social/Linkedin.svg",
         },
         {
           id: "GitHub",
           href: "https://github.com/GVisser1",
-          src: "assets/social_icons/GitHub.svg",
+          src: "images/social/GitHub.svg",
           bgColor: "bg-black",
         },
         {
           id: "Instagram",
           href: "https://instagram.com/instaglenn_",
-          src: "assets/social_icons/Instagram.svg",
+          src: "images/social/Instagram.svg",
         },
         {
           id: "Spotify",
           href: "https://open.spotify.com/user/iglenn2345",
-          src: "assets/social_icons/Spotify.svg",
+          src: "images/social/Spotify.svg",
           bgColor: "bg-black",
         },
         {
           id: "Lastfm",
           href: "https://last.fm/user/instaglenn",
-          src: "assets/social_icons/Lastfm.svg",
+          src: "images/social/Lastfm.svg",
         },
         {
           id: "Letterboxd",

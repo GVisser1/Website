@@ -151,37 +151,37 @@ const movieList: ListOption[] = [
 const languageList: ListOption[] = [
   {
     id: "HTML",
-    src: "assets/skills_icons/HTML.svg",
+    src: "images/skills/HTML.svg",
     subTitle: "HTML",
   },
   {
     id: "C#",
-    src: "assets/skills_icons/CSharp.svg",
+    src: "images/skills/CSharp.svg",
     subTitle: "C#",
   },
   {
     id: "TypeScript",
-    src: "assets/skills_icons/Typescript.svg",
+    src: "images/skills/Typescript.svg",
     subTitle: "TypeScript",
   },
   {
     id: "CSS",
-    src: "assets/skills_icons/CSS.svg",
+    src: "images/skills/CSS.svg",
     subTitle: "CSS",
   },
   {
     id: "Python",
-    src: "assets/skills_icons/Python.svg",
+    src: "images/skills/Python.svg",
     subTitle: "Python",
   },
   {
     id: "JavaScript",
-    src: "assets/skills_icons/Javascript.svg",
+    src: "images/skills/Javascript.svg",
     subTitle: "JavaScript",
   },
   {
     id: "SQL",
-    src: "assets/skills_icons/SQL.svg",
+    src: "images/skills/SQL.svg",
     subTitle: "SQL",
   },
 ];
@@ -189,17 +189,17 @@ const languageList: ListOption[] = [
 const miscList: ListOption[] = [
   {
     id: "Git",
-    src: "assets/skills_icons/Git.svg",
+    src: "images/skills/Git.svg",
     subTitle: "Git",
   },
   {
     id: "React",
-    src: "assets/skills_icons/React.svg",
+    src: "images/skills/React.svg",
     subTitle: "React",
   },
   {
     id: "Unity",
-    src: "assets/skills_icons/Unity.svg",
+    src: "images/skills/Unity.svg",
     subTitle: "Unity",
   },
   {
@@ -209,22 +209,22 @@ const miscList: ListOption[] = [
   },
   {
     id: "TailwindCSS",
-    src: "assets/skills_icons/TailwindCSS.svg",
+    src: "images/skills/TailwindCSS.svg",
     subTitle: "TailwindCSS",
   },
   {
     id: "Cypress",
-    src: "assets/skills_icons/Cypress.svg",
+    src: "images/skills/Cypress.svg",
     subTitle: "Cypress",
   },
   {
     id: "MongoDB",
-    src: "assets/skills_icons/MongoDB.svg",
+    src: "images/skills/MongoDB.svg",
     subTitle: "MongoDB",
   },
   {
     id: "Capacitor",
-    src: "assets/skills_icons/CapacitorJS.svg",
+    src: "images/skills/CapacitorJS.svg",
     subTitle: "Capacitor",
   },
 ];

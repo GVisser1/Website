@@ -16,7 +16,7 @@ const HomePage: FC = () => {
         <div className="overflow-y-auto">
           <section
             id="Intro"
-            className="max-w-screen-3xl mx-auto px-5 md:px-8 py-10 space-y-2 flex flex-col justify-center items-center text-center bg-[url('assets/images/GlennMain.jpg')] bg-top bg-cover"
+            className="max-w-screen-3xl mx-auto px-5 md:px-8 py-10 space-y-2 flex flex-col justify-center items-center text-center bg-[url('/images/personal/GlennMain.jpg')] bg-top bg-cover"
           >
             <Title
               as="h1"
@@ -65,7 +65,7 @@ const HomePage: FC = () => {
               {t("WORK_EXPERIENCE")}
             </Title>
             <img
-              src="assets/images/MoreApp.png"
+              src="images/experience/MoreApp.png"
               className="px-2 w-22 h-12 dark:brightness-150"
             />
             <div className="py-2 pb-8 pl-2 space-y-1">
@@ -83,7 +83,7 @@ const HomePage: FC = () => {
               <Title icon={IconType.LIBRARY} className="py-5">
                 {t("EDUCATION")}
               </Title>
-              <img src="assets/images/HR.png" className="px-2 w-22 h-16" />
+              <img src="images/experience/HR.png" className="px-2 w-22 h-16" />
               <div className="py-2 pb-8 pl-2 space-y-1">
                 <Text size="lg">{`Sept. 2019 - ${t("PRESENT")}`}</Text>
                 <Text>{t("COMPUTER_SCIENCE")}</Text>
@@ -92,7 +92,10 @@ const HomePage: FC = () => {
                   {t("VISIT_WEBSITE")}
                 </Text>
               </div>
-              <img src="assets/images/Lentiz.png" className="px-2 w-40 h-12" />
+              <img
+                src="images/experience/Lentiz.png"
+                className="px-2 w-40 h-12"
+              />
               <div className="py-2 pl-2 space-y-1">
                 <Text size="lg">{`Sept. 2012 - ${t("JULY")} 2019`}</Text>
                 <Text icon={IconType.ACADEMIC_CAP} iconPosition="right">
