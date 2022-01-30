@@ -66,7 +66,7 @@ const SettingsModal: React.FC<ModalProps> = ({ className, icon, label }) => {
 
   return (
     <>
-      <div onClick={openModal} className={className}>
+      <div id="settings" onClick={openModal} className={className}>
         {icon && <Icon name={icon} type="outline" className="shrink-0" />}
         <p>{label}</p>
       </div>

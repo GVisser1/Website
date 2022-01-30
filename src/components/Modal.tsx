@@ -65,7 +65,7 @@ const Modal: React.FC<ModalProps> = ({
             >
               <div className="inline-block w-full max-w-xl p-6 my-8 text-left align-middle transition-all transform bg-white dark:bg-gray-600 shadow-xl rounded-2xl border-2 border-gray-700">
                 <div className="flex justify-between items-center">
-                  <Title as="h3" size="4xl">
+                  <Title as="h3" size="2xl">
                     {title}
                   </Title>
                   <Button icon={IconType.X} type="clear" onClick={closeModal} />

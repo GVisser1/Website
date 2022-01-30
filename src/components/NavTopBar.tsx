@@ -156,7 +156,7 @@ const TopBarItem: React.FC<TopBarItemProps> = ({
         />
       )}
       {option.id !== "settings" && (
-        <div onClick={onSelect} className={classes}>
+        <div id={option.id} onClick={onSelect} className={classes}>
           {option.icon && (
             <Icon name={option.icon} type="outline" className={iconClasses} />
           )}
