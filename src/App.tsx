@@ -15,10 +15,10 @@ import ProjectsPage from "./pages/ProjectsPage";
 const App: FC = () => {
   return (
     <Router>
-      <div className="flex max-w-full mx-auto dark:bg-gray-900">
-        <main className="flex-1 flex h-screen">
-          <section className="flex-1 flex flex-col">
-            <NavTopBar className="shrink-0 hidden md:flex" />
+      <div className="mx-auto flex max-w-full dark:bg-gray-900">
+        <main className="flex h-screen flex-1">
+          <section className="flex flex-1 flex-col">
+            <NavTopBar className="hidden shrink-0 md:flex" />
             <NavTabBar className="md:hidden" />
             <Routes>
               <Route path="/home" element={<HomePage />} />

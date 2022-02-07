@@ -15,12 +15,12 @@ const ContactPage: FC = () => {
         <div className="overflow-y-auto">
           <section
             id="Contact"
-            className="max-w-5xl mx-auto px-5 md:px-8 py-10 flex-none md:flex md:justify-evenly"
+            className="mx-auto max-w-5xl flex-none px-5 py-10 md:flex md:justify-evenly md:px-8"
           >
-            <div className="w-full flex flex-col items-center pt-4 pb-16 md:pb-0 md:pt-20">
+            <div className="flex w-full flex-col items-center pt-4 pb-16 md:pb-0 md:pt-20">
               <img
                 src="images/personal/GlennProfile.jpeg"
-                className="w-56 h-56 sm:w-72 sm:h-72 object-fit rounded-full shadow-2xl"
+                className="object-fit h-56 w-56 rounded-full shadow-2xl sm:h-72 sm:w-72"
               />
               <Title className="py-4" as="h2" size="xl">
                 {t("CONTACT_ME")}

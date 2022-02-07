@@ -1,11 +1,9 @@
 import { Formik } from "formik";
-import { useRef } from "react";
 import { Button } from "./Button";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import Input from "./Input";
 import classNames from "classnames";
-import { NetlifyForm, Honeypot } from "react-netlify-forms";
 interface ContactFormProps {
   className?: string;
 }

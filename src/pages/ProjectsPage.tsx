@@ -14,14 +14,14 @@ const ProjectsPage: FC = () => {
         <div className="overflow-y-auto">
           <section
             id="Projects"
-            className="max-w-5xl mx-auto px-5 py-10 md:px-8"
+            className="mx-auto max-w-5xl px-5 py-10 md:px-8"
           >
             <Title as="h2">{t("SCHOOL_PROJECTS")}</Title>
             <div className="flex flex-wrap py-3">
               {useProjectData("SCHOOL")?.map((project) => (
                 <div
                   key={project.id}
-                  className="flex flex-col w-full md:w-80 object-fit p-2"
+                  className="object-fit flex w-full flex-col p-2 md:w-80"
                 >
                   <img
                     src={project.logo}
@@ -42,7 +42,7 @@ const ProjectsPage: FC = () => {
                       {project.content?.map((item) => (
                         <div
                           key={item.id}
-                          className="flex flex-col py-3 space-y-4"
+                          className="flex flex-col space-y-4 py-3"
                         >
                           <Text>{item.description}</Text>
                           <img
@@ -69,7 +69,7 @@ const ProjectsPage: FC = () => {
               {useProjectData("PERSONAL")?.map((project) => (
                 <div
                   key={project.id}
-                  className="flex flex-col w-full md:w-80 p-2"
+                  className="flex w-full flex-col p-2 md:w-80"
                 >
                   <img
                     src={project.logo}
@@ -90,7 +90,7 @@ const ProjectsPage: FC = () => {
                       {project.content?.map((item) => (
                         <div
                           key={item.id}
-                          className="flex flex-col py-3 space-y-4"
+                          className="flex flex-col space-y-4 py-3"
                         >
                           <Text>{item.description}</Text>
                           <img

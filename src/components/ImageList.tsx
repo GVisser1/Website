@@ -60,7 +60,7 @@ export const Lists: React.FC<ListsProps> = ({ listType, options }) => {
               {option.title ?? ""}
             </Text>
           </div>
-          <div className="pb-3 max-w-fit">
+          <div className="max-w-fit pb-3">
             <Text className="px-1 line-clamp-1">{option.subTitle ?? ""}</Text>
           </div>
         </div>

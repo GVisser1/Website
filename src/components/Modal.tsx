@@ -42,7 +42,7 @@ const Modal: React.FC<ModalProps> = ({
           className="fixed inset-0 z-10 overflow-y-auto"
           onClose={closeModal}
         >
-          <div className="flex items-center justify-center min-h-screen py-4 px-4">
+          <div className="flex min-h-screen items-center justify-center py-4 px-4">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -63,8 +63,8 @@ const Modal: React.FC<ModalProps> = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-xl p-6 my-8 text-left align-middle transition-all transform bg-white dark:bg-gray-600 shadow-xl rounded-2xl border-2 border-gray-700">
-                <div className="flex justify-between items-center">
+              <div className="my-8 inline-block w-full max-w-xl transform rounded-2xl border-2 border-gray-700 bg-white p-6 text-left align-middle shadow-xl transition-all dark:bg-gray-600">
+                <div className="flex items-center justify-between">
                   <Title as="h3" size="2xl">
                     {title}
                   </Title>

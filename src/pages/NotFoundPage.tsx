@@ -13,7 +13,7 @@ const NotFoundPage: FC = () => {
   return (
     <section className="relative flex h-full">
       <Page>
-        <div className="overflow-y-auto flex flex-col items-center justify-center py-72 space-y-10">
+        <div className="flex flex-col items-center justify-center space-y-10 overflow-y-auto py-72">
           <Text size="xl">{"404"}</Text>
           <Title size="3xl">{t("PAGE_NOT_FOUND")}</Title>
           <Button

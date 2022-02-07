@@ -5,7 +5,7 @@ import Text from "./Text";
 const PersonalInfo: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <div className="flex justify-center space-x-3 bg-black/30 p-2 rounded-lg">
+    <div className="flex justify-center space-x-3 rounded-lg bg-black/30 p-2">
       <Text icon={IconType.CAKE} color="all-white" spaceBetween="sm">
         {"21"}
       </Text>

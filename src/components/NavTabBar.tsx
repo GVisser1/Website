@@ -91,7 +91,7 @@ export const TabBar: React.FC<TabBarProps> = ({
           {option.id === "settings" && (
             <SettingsModal
               icon={option.icon}
-              className="w-full flex justify-center"
+              className="flex w-full justify-center"
             />
           )}
           {option.id !== "settings" && (

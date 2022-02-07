@@ -8,6 +8,9 @@ module.exports = {
       maxWidth: {
         "screen-3xl": "1792px",
       },
+      animation: {
+        "spin-slow": "spin 5s linear infinite",
+      },
     },
   },
   plugins: [

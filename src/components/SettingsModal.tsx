@@ -67,7 +67,13 @@ const SettingsModal: React.FC<ModalProps> = ({ className, icon, label }) => {
   return (
     <>
       <div id="settings" onClick={openModal} className={className}>
-        {icon && <Icon name={icon} type="outline" className="shrink-0" />}
+        {icon && (
+          <Icon
+            name={icon}
+            type="outline"
+            className="shrink-0 hover:animate-spin-slow"
+          />
+        )}
         <p>{label}</p>
       </div>
 
@@ -99,8 +105,8 @@ const SettingsModal: React.FC<ModalProps> = ({ className, icon, label }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 text-left align-middle transition-all transform bg-white dark:bg-gray-600 shadow-xl rounded-2xl border-2 border-gray-700">
-                <div className="flex justify-between items-center">
+              <div className="my-8 inline-block w-full max-w-md transform rounded-2xl border-2 border-gray-700 bg-white p-6 text-left align-middle shadow-xl transition-all dark:bg-gray-600">
+                <div className="flex items-center justify-between">
                   <Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
@@ -111,7 +117,7 @@ const SettingsModal: React.FC<ModalProps> = ({ className, icon, label }) => {
                 </div>
                 <Text size="sm">{t("SETTINGS_DESCRIPTION")}</Text>
                 <Title className="pt-4">{t("LANGUAGES")}</Title>
-                <div className="flex justify-evenly space-x-2 mt-4">
+                <div className="mt-4 flex justify-evenly space-x-2">
                   <Button
                     block
                     onClick={async () => {

@@ -30,10 +30,6 @@ const NavTopBar: FC<NavTopBarProps> = ({ className }) => {
           label: t("PROJECTS"),
         },
         {
-          id: "skills",
-          label: t("SKILLS"),
-        },
-        {
           id: "contact",
           label: t("CONTACT"),
         },
@@ -78,8 +74,8 @@ export const TopBar: React.FC<TopBarProps> = ({
 
   return (
     <nav className={classes}>
-      <div className="max-w-7xl w-full flex items-center mx-auto">
-        <div className="flex items-center w-full">
+      <div className="mx-auto flex w-full max-w-7xl items-center">
+        <div className="flex w-full items-center">
           <TopBarItem
             key={mainOption.id}
             active={mainOption.id === selected}

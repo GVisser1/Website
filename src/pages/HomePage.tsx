@@ -16,7 +16,7 @@ const HomePage: FC = () => {
         <div className="overflow-y-auto">
           <section
             id="Intro"
-            className="max-w-screen-3xl mx-auto px-5 md:px-8 py-10 space-y-2 flex flex-col justify-center items-center text-center bg-[url('/images/personal/GlennMain.jpg')] bg-top bg-cover"
+            className="mx-auto flex max-w-screen-3xl flex-col items-center justify-center space-y-2 bg-[url('/images/personal/GlennMain.jpg')] bg-cover bg-top px-5 py-10 text-center md:px-8"
           >
             <Title
               as="h1"
@@ -26,7 +26,7 @@ const HomePage: FC = () => {
             >
               {t("HOME_GREETING")}
             </Title>
-            <div className="pt-96 w-64 md:w-72">
+            <div className="w-64 pt-96 md:w-72">
               <Text
                 color="all-white"
                 className="rounded-lg bg-black/30 p-2 md:text-base"
@@ -37,11 +37,11 @@ const HomePage: FC = () => {
             <PersonalInfo />
             <SocialIcons />
           </section>
-          <section id="About" className="max-w-5xl mx-auto px-5 py-10 md:px-8">
+          <section id="About" className="mx-auto max-w-5xl px-5 py-10 md:px-8">
             <Title icon={IconType.USER_CIRCLE} className="py-5">
               {t("ABOUT")}
             </Title>
-            <div className="pb-8 pl-2 space-y-4">
+            <div className="space-y-4 pb-8 pl-2">
               <Text size="md">{t("ABOUT_CONTENT_1")}</Text>
               <Text size="md">{t("ABOUT_CONTENT_2")}</Text>
               <Text size="md">{t("ABOUT_CONTENT_3")}</Text>
@@ -49,9 +49,9 @@ const HomePage: FC = () => {
           </section>
           <section
             id="Music"
-            className="bg-gray-100 dark:bg-gray-900 dark:border-y-2 dark:border-gray-700"
+            className="bg-gray-100 dark:border-y-2 dark:border-gray-700 dark:bg-gray-900"
           >
-            <div className="max-w-5xl mx-auto px-5 py-10 md:px-8">
+            <div className="mx-auto max-w-5xl px-5 py-10 md:px-8">
               <div className="py-2 pl-2">
                 <Title icon={IconType.MUSIC_NOTE} className="pb-2">
                   {t("FAVORITE_ALBUMS")}
@@ -60,15 +60,15 @@ const HomePage: FC = () => {
               </div>
             </div>
           </section>
-          <section id="Work" className="max-w-5xl mx-auto px-5 py-10 md:px-8">
+          <section id="Work" className="mx-auto max-w-5xl px-5 py-10 md:px-8">
             <Title icon={IconType.BRIEFCASE} className="py-5">
               {t("WORK_EXPERIENCE")}
             </Title>
             <img
               src="images/experience/MoreApp.png"
-              className="px-2 w-22 h-12 dark:brightness-150"
+              className="w-22 h-12 px-2 dark:brightness-150"
             />
-            <div className="py-2 pb-8 pl-2 space-y-1">
+            <div className="space-y-1 py-2 pb-8 pl-2">
               <Text size="lg">{`Sept. 2021 - ${t("PRESENT")}`}</Text>
               <Text>{t("DEVELOPMENT_INTERN")}</Text>
               <Text>{"MoreApp, Rotterdam"}</Text>
@@ -77,14 +77,14 @@ const HomePage: FC = () => {
           </section>
           <section
             id="Education"
-            className="bg-gray-100 dark:bg-gray-900 dark:border-y-2 dark:border-gray-700"
+            className="bg-gray-100 dark:border-y-2 dark:border-gray-700 dark:bg-gray-900"
           >
-            <div className="max-w-5xl mx-auto px-5 py-10 md:px-8">
+            <div className="mx-auto max-w-5xl px-5 py-10 md:px-8">
               <Title icon={IconType.LIBRARY} className="py-5">
                 {t("EDUCATION")}
               </Title>
-              <img src="images/experience/HR.png" className="px-2 w-22 h-16" />
-              <div className="py-2 pb-8 pl-2 space-y-1">
+              <img src="images/experience/HR.png" className="w-22 h-16 px-2" />
+              <div className="space-y-1 py-2 pb-8 pl-2">
                 <Text size="lg">{`Sept. 2019 - ${t("PRESENT")}`}</Text>
                 <Text>{t("COMPUTER_SCIENCE")}</Text>
                 <Text>{`${t("HOGESCHOOL_ROTTERDAM")}, Rotterdam`}</Text>
@@ -94,9 +94,9 @@ const HomePage: FC = () => {
               </div>
               <img
                 src="images/experience/Lentiz.png"
-                className="px-2 w-40 h-12"
+                className="h-12 w-40 px-2"
               />
-              <div className="py-2 pl-2 space-y-1">
+              <div className="space-y-1 py-2 pl-2">
                 <Text size="lg">{`Sept. 2012 - ${t("JULY")} 2019`}</Text>
                 <Text icon={IconType.ACADEMIC_CAP} iconPosition="right">
                   {`${t("VWO")} - ${t("GRADUATED")}`}
@@ -108,8 +108,8 @@ const HomePage: FC = () => {
               </div>
             </div>
           </section>
-          <section id="Skills" className="max-w-5xl mx-auto px-5 py-10 md:px-8">
-            <div className="py-2 pl-2 space-y-2">
+          <section id="Skills" className="mx-auto max-w-5xl px-5 py-10 md:px-8">
+            <div className="space-y-2 py-2 pl-2">
               <Title icon={IconType.SPARKLES} className="py-5">
                 {t("SKILLS")}
               </Title>
@@ -125,9 +125,9 @@ const HomePage: FC = () => {
           </section>
           <section
             id="Movies"
-            className="bg-gray-100 dark:bg-gray-900 dark:border-y-2 dark:border-gray-700"
+            className="bg-gray-100 dark:border-y-2 dark:border-gray-700 dark:bg-gray-900"
           >
-            <div className="max-w-5xl mx-auto px-5 py-10 md:px-8">
+            <div className="mx-auto max-w-5xl px-5 py-10 md:px-8">
               <div className="py-2 pl-2">
                 <Title icon={IconType.FILM} className="pb-2">
                   {t("FAVORITE_MOVIES")}
@@ -136,7 +136,7 @@ const HomePage: FC = () => {
               </div>
             </div>
           </section>
-          <section id="Games" className="max-w-5xl mx-auto px-5 py-10 md:px-8">
+          <section id="Games" className="mx-auto max-w-5xl px-5 py-10 md:px-8">
             <div className="py-2 pl-2">
               <Title icon={IconType.PUZZLE} className="pb-2">
                 {t("FAVORITE_GAMES")}
