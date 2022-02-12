@@ -44,6 +44,7 @@
   "dependencies": {
     "@cypress/react": "^5.12.1",
     "@cypress/vite-dev-server": "^2.2.2",
+    "@emailjs/browser": "^3.4.0",
     "@headlessui/react": "^1.4.3",
     "@heroicons/react": "1.0.5",
     "@tailwindcss/line-clamp": "0.3.0",
@@ -59,7 +60,6 @@
     "react-router-dom": "6.2.1",
     "tailwindcss": "3.0.12",
     "tailwindcss-safe-area": "0.2.2",
-    "vite-plugin-environment": "1.1.0",
     "yup": "^0.32.11"
   }
 }

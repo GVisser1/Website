@@ -1,15 +1,25 @@
-import { Formik } from "formik";
-import { Button } from "./Button";
+import emailjs from "@emailjs/browser";
+import { useRef, useState } from "react";
 import * as yup from "yup";
 import { useTranslation } from "react-i18next";
-import Input from "./Input";
 import classNames from "classnames";
+import { Formik } from "formik";
+import Input from "./Input";
+import { Button } from "./Button";
+import {
+  EMAILJS_SERVICE_ID,
+  EMAILJS_TEMPLATE_ID,
+  EMAILJS_USER_ID,
+} from "../constants";
+
 interface ContactFormProps {
   className?: string;
 }
 
 const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
+  const form = useRef<HTMLFormElement>(null);
   const { t } = useTranslation();
+  const [isLoading, setIsloading] = useState(false);
 
   const validationSchema = () =>
     yup.object({
@@ -25,8 +35,25 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
   };
 
   const sendEmail = () => {
-    // TODO:
-    alert("succes");
+    if (!form.current) {
+      return;
+    }
+    emailjs
+      .sendForm(
+        EMAILJS_SERVICE_ID!,
+        EMAILJS_TEMPLATE_ID!,
+        form.current,
+        EMAILJS_USER_ID
+      )
+      .then(
+        (result) => {
+          alert(result.text);
+        },
+        (error) => {
+          alert(error.text);
+        }
+      )
+      .finally(() => setIsloading(false));
   };
 
   const classes = classNames("w-full", className);
@@ -36,13 +63,13 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={(values, actions) => {
+        setIsloading(true);
         sendEmail();
         actions.resetForm();
       }}
     >
       {(formik) => (
-        <form name="contact" method="post" className={classes}>
-          <input type="hidden" name="form-name" value="contact" />
+        <form className={classes} ref={form}>
           <Input
             className="py-2"
             name="from_name"
@@ -53,9 +80,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
                 ? t("REQUIRED_MESSAGE")
                 : ""
             }
-            onChange={(e) => {
-              formik.handleChange(e);
-            }}
+            disabled={isLoading}
+            onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             required
           />
@@ -64,14 +90,13 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
             name="from_email"
             value={formik.values?.from_email}
             label={t("EMAIL")}
+            disabled={isLoading}
             errorMessage={
               formik.touched.from_email && formik.errors.from_email
                 ? t("REQUIRED_MESSAGE")
                 : ""
             }
-            onChange={(e) => {
-              formik.handleChange(e);
-            }}
+            onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             required
           />
@@ -81,22 +106,21 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
             name="message"
             value={formik.values?.message}
             label={t("MESSAGE")}
+            disabled={isLoading}
             errorMessage={
               formik.touched.message && formik.errors.message
                 ? t("REQUIRED_MESSAGE")
                 : ""
             }
-            onChange={(e) => {
-              formik.handleChange(e);
-            }}
+            onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             required
           />
           <Button
             className="pt-6"
             block
-            submit
             label={t("SEND")}
+            disabled={isLoading}
             onClick={formik.submitForm}
           />
         </form>

@@ -5,8 +5,6 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import NavTabBar from "./components/NavTabBar";
-import NavTopBar from "./components/NavTopBar";
 import ContactPage from "./pages/ContactPage";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -18,8 +16,6 @@ const App: FC = () => {
       <div className="mx-auto flex max-w-full dark:bg-gray-900">
         <main className="flex h-screen flex-1">
           <section className="flex flex-1 flex-col">
-            <NavTopBar className="hidden shrink-0 md:flex" />
-            <NavTabBar className="md:hidden" />
             <Routes>
               <Route path="/home" element={<HomePage />} />
               <Route path="/projects" element={<ProjectsPage />} />

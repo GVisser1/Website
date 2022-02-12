@@ -12,6 +12,7 @@ interface InputProps {
   value?: string;
   required?: boolean;
   errorMessage?: string;
+  disabled?: boolean;
   onChange?: (e: ChangeEvent<any>) => void;
   onBlur?: (e: FocusEvent<any>) => void;
 }
@@ -24,6 +25,7 @@ const Input: React.FC<InputProps> = ({
   value = "",
   required = false,
   errorMessage = "",
+  disabled = false,
   onChange = () => {},
   onBlur = () => {},
 }) => {
@@ -32,6 +34,7 @@ const Input: React.FC<InputProps> = ({
     "w-full p-3.5 border-2 text-gray-700 placeholder-gray-400 text-sm focus:outline-none rounded-md":
       true,
     "h-28 max-h-48": type === "textarea",
+    "bg-gray-100": disabled,
   });
   return (
     <div className={className}>
@@ -50,6 +53,7 @@ const Input: React.FC<InputProps> = ({
           onChange={onChange}
           onBlur={onBlur}
           className={inputClasses}
+          disabled={disabled}
         />
       </div>
       {errorMessage && <Text color="danger">{errorMessage}</Text>}
