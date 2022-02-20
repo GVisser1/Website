@@ -8,9 +8,11 @@ export enum IconType {
   ACADEMIC_CAP,
   BRIEFCASE,
   CAKE,
+  CHECK_CIRCLE,
   CHEVRON_LEFT,
   CHEVRON_RIGHT,
   COG,
+  DESKTOP_COMPUTER,
   EXTERNAL_LINK,
   FILM,
   FOLDER,
@@ -19,10 +21,13 @@ export enum IconType {
   INFORMATION_CIRCLE,
   LIBRARY,
   MAIL,
+  MENU,
+  MOON,
   MUSIC_NOTE,
   PUZZLE,
   STAR,
   SPARKLES,
+  SUN,
   USER,
   USER_CIRCLE,
   X,
@@ -42,7 +47,10 @@ const Icons: Record<IconType, { solid: any; outline: any }> = {
     outline: outline.BriefcaseIcon,
   },
   [IconType.CAKE]: { solid: solid.CakeIcon, outline: outline.CakeIcon },
-  [IconType.COG]: { solid: solid.CogIcon, outline: outline.CogIcon },
+  [IconType.CHECK_CIRCLE]: {
+    solid: solid.CheckCircleIcon,
+    outline: outline.CheckCircleIcon,
+  },
   [IconType.CHEVRON_LEFT]: {
     solid: solid.ChevronLeftIcon,
     outline: outline.ChevronLeftIcon,
@@ -50,6 +58,11 @@ const Icons: Record<IconType, { solid: any; outline: any }> = {
   [IconType.CHEVRON_RIGHT]: {
     solid: solid.ChevronRightIcon,
     outline: outline.ChevronRightIcon,
+  },
+  [IconType.COG]: { solid: solid.CogIcon, outline: outline.CogIcon },
+  [IconType.DESKTOP_COMPUTER]: {
+    solid: solid.DesktopComputerIcon,
+    outline: outline.DesktopComputerIcon,
   },
   [IconType.EXTERNAL_LINK]: {
     solid: solid.ExternalLinkIcon,
@@ -68,6 +81,8 @@ const Icons: Record<IconType, { solid: any; outline: any }> = {
     outline: outline.LibraryIcon,
   },
   [IconType.MAIL]: { solid: solid.MailIcon, outline: outline.MailIcon },
+  [IconType.MENU]: { solid: solid.MenuIcon, outline: outline.MenuIcon },
+  [IconType.MOON]: { solid: solid.MoonIcon, outline: outline.MoonIcon },
   [IconType.MUSIC_NOTE]: {
     solid: solid.MusicNoteIcon,
     outline: outline.MusicNoteIcon,
@@ -78,6 +93,7 @@ const Icons: Record<IconType, { solid: any; outline: any }> = {
     outline: outline.SparklesIcon,
   },
   [IconType.STAR]: { solid: solid.StarIcon, outline: outline.StarIcon },
+  [IconType.SUN]: { solid: solid.SunIcon, outline: outline.SunIcon },
   [IconType.USER]: { solid: solid.UserIcon, outline: outline.UserIcon },
   [IconType.USER_CIRCLE]: {
     solid: solid.UserCircleIcon,

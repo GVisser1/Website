@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       maxWidth: {
-        "screen-3xl": "1792px",
+        "8xl": "88rem",
       },
       animation: {
         "spin-slow": "spin 5s linear infinite",

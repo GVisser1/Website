@@ -26,13 +26,20 @@ export interface ListsProps {
   options: ListOption[];
 }
 
-export const Lists: React.FC<ListsProps> = ({ listType, options }) => {
-  const listClasses = classNames({
-    "flex lg:flex-none overflow-x-auto py-3": true,
-    "space-x-2":
-      listType === "MUSIC" || listType === "GAMES" || listType === "MOVIES",
-    "space-x-16": listType === "LANGUAGES" || listType === "MISC",
-  });
+export const Lists: React.FC<ListsProps> = ({
+  listType,
+  options,
+  className,
+}) => {
+  const listClasses = classNames(
+    {
+      "flex lg:flex-none overflow-x-auto py-3": true,
+      "space-x-2":
+        listType === "MUSIC" || listType === "GAMES" || listType === "MOVIES",
+      "space-x-16": listType === "LANGUAGES" || listType === "MISC",
+    },
+    className
+  );
 
   const itemClasses = classNames({
     "object-fit flex-none py-2 md:py-0": true,
@@ -56,12 +63,12 @@ export const Lists: React.FC<ListsProps> = ({ listType, options }) => {
         <div className={itemClasses} key={option.id}>
           <img className={imageClasses} src={option.src} />
           <div className="pt-1">
-            <Text size="base" href={option.href} className="px-1 line-clamp-1">
+            <Text size="base" href={option.href} className="line-clamp-1 px-1">
               {option.title ?? ""}
             </Text>
           </div>
           <div className="max-w-fit pb-3">
-            <Text className="px-1 line-clamp-1">{option.subTitle ?? ""}</Text>
+            <Text className="line-clamp-1 px-1">{option.subTitle ?? ""}</Text>
           </div>
         </div>
       ))}

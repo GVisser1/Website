@@ -11,22 +11,18 @@ const NotFoundPage: FC = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   return (
-    <section className="relative flex h-full">
-      <Page>
-        <div className="flex flex-col items-center justify-center space-y-10 overflow-y-auto py-72">
-          <Text size="xl">{"404"}</Text>
-          <Title size="3xl">{t("PAGE_NOT_FOUND")}</Title>
-          <Button
-            type="destructive"
-            onClick={() => {
-              navigate("/home");
-            }}
-            icon={IconType.HOME}
-            label={t("Home")}
-          />
-        </div>
-      </Page>
-    </section>
+    <Page>
+      <div className="flex flex-col items-center justify-center space-y-10 py-72">
+        <Text size="xl">{"404"}</Text>
+        <Title size="3xl">{t("PAGE_NOT_FOUND")}</Title>
+        <Button
+          type="destructive"
+          onClick={() => navigate("/home")}
+          icon={IconType.HOME}
+          label={t("Home")}
+        />
+      </div>
+    </Page>
   );
 };
 

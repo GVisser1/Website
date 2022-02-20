@@ -19,7 +19,7 @@ interface ContactFormProps {
 const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
   const form = useRef<HTMLFormElement>(null);
   const { t } = useTranslation();
-  const [isLoading, setIsloading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const validationSchema = () =>
     yup.object({
@@ -34,11 +34,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
     message: "",
   };
 
-  const sendEmail = () => {
+  const sendEmail = async () => {
     if (!form.current) {
       return;
     }
-    emailjs
+    await emailjs
       .sendForm(
         EMAILJS_SERVICE_ID!,
         EMAILJS_TEMPLATE_ID!,
@@ -48,12 +48,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
       .then(
         (result) => {
           alert(result.text);
+          setIsLoading(false);
         },
         (error) => {
           alert(error.text);
         }
-      )
-      .finally(() => setIsloading(false));
+      );
   };
 
   const classes = classNames("w-full", className);
@@ -62,8 +62,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={(values, actions) => {
-        setIsloading(true);
+      onSubmit={async (values, actions) => {
+        // setIsLoading(true);
         sendEmail();
         actions.resetForm();
       }}

@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["vite/client", "cypress", "@testing-library/cypress", "node"]
+    "types": ["vite/client", "cypress", "node"]
   },
   "include": ["src"]
 }

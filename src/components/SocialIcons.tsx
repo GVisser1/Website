@@ -61,9 +61,7 @@ export interface IconsProps {
 
 export const Icons: React.FC<IconsProps> = ({ className, options }) => {
   return (
-    <div
-      className={classNames("flex justify-center space-x-3 py-6", className)}
-    >
+    <div className={classNames("flex justify-center space-x-3", className)}>
       {options.map((option) => (
         <a className="rounded-full" href={option.href} key={option.id}>
           <img

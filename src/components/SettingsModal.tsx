@@ -1,4 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
+import classNames from "classnames";
 import { Fragment, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "./Button";
@@ -66,16 +67,17 @@ const SettingsModal: React.FC<ModalProps> = ({ className, icon, label }) => {
 
   return (
     <>
-      <div id="settings" onClick={openModal} className={className}>
-        {icon && (
-          <Icon
-            name={icon}
-            type="outline"
-            className="shrink-0 hover:animate-spin-slow"
-          />
+      <button
+        id="settings"
+        onClick={openModal}
+        className={classNames(
+          "inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white",
+          className
         )}
+      >
+        {icon && <Icon name={icon} type="outline" className="shrink-0" />}
         <p>{label}</p>
-      </div>
+      </button>
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog

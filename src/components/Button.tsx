@@ -43,15 +43,12 @@ export const Button: React.FC<ButtonProps> = ({
       true,
     "w-full": block,
     // Text
-    "text-gray-400": disabled,
-    "text-black": type === "default" && !disabled,
-    "text-black dark:text-white": type === "clear" && !disabled,
-    "text-white": type === "destructive" && !disabled,
-    // Backgrounds
-    "bg-gray-100": disabled,
-    "bg-blue-100 hover:bg-blue-200": type === "default" && !disabled,
-    "hover:bg-gray-200 dark:hover:bg-gray-500": type === "clear" && !disabled,
-    "bg-red-500 hover:bg-red-600": type === "destructive" && !disabled,
+    "text-gray-400 bg-gray-100": disabled,
+    "text-black bg-blue-100 hover:bg-blue-200": type === "default" && !disabled,
+    "text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-500":
+      type === "clear" && !disabled,
+    "text-white bg-red-500 hover:bg-red-600":
+      type === "destructive" && !disabled,
     // Focus rings
     "active:ring": !selected && !disabled,
     "ring-blue-400": type === "default" && !selected && !disabled,

@@ -1,7 +1,6 @@
 import { FC } from "react";
 import classNames from "classnames";
-import NavTopBar from "./NavTopBar";
-import NavTabBar from "./NavTabBar";
+import NavBar from "./NavBar";
 
 interface PageProps {
   className?: string;
@@ -9,14 +8,13 @@ interface PageProps {
 
 const Page: FC<PageProps> = ({ children, className }) => {
   const classes = classNames(
-    "absolute inset-0 h-full flex flex-col lg:flex-1",
+    "absolute inset-0 h-full flex flex-col lg:flex-1 dark:bg-gray-900",
     className
   );
   return (
     <div className={classes}>
-      <NavTopBar className="hidden shrink-0 md:flex" />
-      {children}
-      <NavTabBar className="md:hidden" />
+      <NavBar />
+      <div className="dark:bg-gray-900">{children}</div>
     </div>
   );
 };

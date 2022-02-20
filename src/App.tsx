@@ -13,19 +13,15 @@ import ProjectsPage from "./pages/ProjectsPage";
 const App: FC = () => {
   return (
     <Router>
-      <div className="mx-auto flex max-w-full dark:bg-gray-900">
-        <main className="flex h-screen flex-1">
-          <section className="flex flex-1 flex-col">
-            <Routes>
-              <Route path="/home" element={<HomePage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/" element={<Navigate to="/home" />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </section>
-        </main>
-      </div>
+      <main className="mx-auto flex h-screen max-w-full flex-col">
+        <Routes>
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </main>
     </Router>
   );
 };
