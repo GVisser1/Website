@@ -35,7 +35,7 @@ export interface TextProps {
 
 export const Text: React.FC<TextProps> = ({
   size = "sm",
-  weight,
+  weight = "normal",
   color = "dark",
   italic = false,
   href,

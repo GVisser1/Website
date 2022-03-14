@@ -31,7 +31,7 @@ const ContactPage: FC = () => {
           >
             {"gvisser.business@gmail.com"}
           </Text>
-          <SocialIcons className="py-6" />
+          <SocialIcons className="pt-6" />
         </div>
         <div className="w-full space-y-5 md:py-10">
           <Title size="xl" className="w-full" as="h3">

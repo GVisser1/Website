@@ -43,17 +43,17 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
         return;
       }
       document.documentElement.classList.remove("dark");
-    } else {
-      setUseSystemTheme(false);
-      localStorage.setItem("theme", currentTheme.toLowerCase());
-      if (currentTheme === "DARK") {
-        setThemeIcon(IconType.MOON);
-        document.documentElement.classList.add("dark");
-        return;
-      }
-      setThemeIcon(IconType.SUN);
-      document.documentElement.classList.remove("dark");
+      return;
     }
+    setUseSystemTheme(false);
+    localStorage.setItem("theme", currentTheme.toLowerCase());
+    if (currentTheme === "DARK") {
+      setThemeIcon(IconType.MOON);
+      document.documentElement.classList.add("dark");
+      return;
+    }
+    setThemeIcon(IconType.SUN);
+    document.documentElement.classList.remove("dark");
   }, [currentTheme]);
 
   const isDutch =
@@ -139,7 +139,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                   >
                     <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       {allThemes.map((item) => (
-                        <Menu.Item>
+                        <Menu.Item key={item.theme}>
                           <div
                             onClick={() => setCurrentTheme(item.theme)}
                             className={classes(currentTheme === item.theme)}

@@ -33,7 +33,7 @@ export const Lists: React.FC<ListsProps> = ({
 }) => {
   const listClasses = classNames(
     {
-      "flex lg:flex-none overflow-x-auto py-3": true,
+      "flex lg:flex-none overflow-x-auto scrollbar-hide py-3": true,
       "space-x-2":
         listType === "MUSIC" || listType === "GAMES" || listType === "MOVIES",
       "space-x-16": listType === "LANGUAGES" || listType === "MISC",

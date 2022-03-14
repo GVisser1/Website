@@ -7,9 +7,12 @@ import Text from "../components/Text";
 import { Title } from "../components/Title";
 import { useTranslation } from "react-i18next";
 import PersonalInfo from "../components/PersonalInfo";
+import DateDiff from "date-diff";
 
 const HomePage: FC = () => {
   const { t } = useTranslation();
+  const getTotalMonths = (startingDate: Date, endDate: Date) =>
+    new DateDiff(endDate, startingDate).months().toFixed();
 
   return (
     <Page>
@@ -72,12 +75,43 @@ const HomePage: FC = () => {
           src="images/experience/MoreApp.png"
           className="w-22 h-12 px-2 dark:brightness-150"
         />
-        <div className="space-y-1 py-2 px-2 pb-8">
-          <Text size="lg">{`Sept. 2021 - Feb. 2022`}</Text>
-          <Text>{t("DEVELOPMENT_INTERN")}</Text>
-          <Text>{"MoreApp, Rotterdam"}</Text>
-          <Text href="https://moreapp.dev">{t("VISIT_WEBSITE")}</Text>
+        <div className="space-y-1 py-2 px-2">
+          <Text size="lg" weight="semibold">
+            MoreApp
+          </Text>
+          <Text weight="semibold">
+            {getTotalMonths(new Date(2021, 7, 13), new Date())} mos
+          </Text>
+          <Text>{`Rotterdam, ${t("SOUTH_HOLLAND")}, ${t("NETHERLANDS")}`}</Text>
+          <div className="w-72 border-t-2 border-gray-200 dark:border-gray-700" />
+          <div className="space-y-1 pl-3">
+            <Text size="lg" weight="semibold">
+              Software Engineer
+            </Text>
+            <Text weight="semibold">Part-time</Text>
+            <Text>
+              {`Feb 2022 - ${t("PRESENT")} · ${getTotalMonths(
+                new Date(2022, 1, 21),
+                new Date()
+              )} mos`}
+            </Text>
+            <div className="w-48 border-t-2 border-gray-200 dark:border-gray-700" />
+          </div>
+          <div className="space-y-1 pl-3">
+            <Text size="lg" weight="semibold">
+              {t("DEVELOPMENT_INTERN")}
+            </Text>
+            <Text weight="semibold">{t("INTERNSHIP")}</Text>
+            <Text>
+              {`Sep 2021 - Feb 2022 · ${getTotalMonths(
+                new Date(2021, 7, 13),
+                new Date(2022, 1, 11)
+              )} mos`}
+            </Text>
+            <div className="w-48 border-b-2 border-gray-200 dark:border-gray-700" />
+          </div>
         </div>
+        <Text href="https://moreapp.dev">{t("VISIT_WEBSITE")}</Text>
       </section>
       <section
         id="Education"
@@ -117,7 +151,7 @@ const HomePage: FC = () => {
           {t("LANGUAGES")}
         </Title>
         <ImageList listType="LANGUAGES" />
-        <Title as="h3" size="lg">
+        <Title className="pt-5" as="h3" size="lg">
           {t("OTHER")}
         </Title>
         <ImageList listType="MISC" />
