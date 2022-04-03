@@ -11,15 +11,17 @@ import DateDiff from "date-diff";
 
 const HomePage: FC = () => {
   const { t } = useTranslation();
-  const getTotalMonths = (startingDate: Date, endDate: Date) =>
-    new DateDiff(endDate, startingDate).months().toFixed();
+  const getTotalMonths = (startingDate: Date, endDate: Date) => {
+    const diff = Math.ceil(new DateDiff(endDate, startingDate).months());
+    return `${diff} ${diff === 1 ? t("MONTH") : t("MONTHS")}`;
+  };
 
   return (
     <Page>
       <section id="Intro" className="relative">
         <div className="flex w-full items-center justify-center dark:brightness-75 md:bg-gradient-to-t md:from-[#B9B0AB] md:via-[#867C6D] md:to-[#9FC3F1]">
           <img
-            src="images/personal/GlennMain.jpg"
+            src="images/personal/GlennMain.webp"
             className="h-screen w-screen max-w-screen-xl object-cover lg:h-auto"
           />
         </div>
@@ -46,6 +48,7 @@ const HomePage: FC = () => {
           </div>
         </div>
       </section>
+
       <section id="About" className="mx-auto max-w-5xl px-5 py-10 md:px-8">
         <Title icon={IconType.USER_CIRCLE} className="py-5">
           {t("ABOUT")}
@@ -72,7 +75,7 @@ const HomePage: FC = () => {
           {t("WORK_EXPERIENCE")}
         </Title>
         <img
-          src="images/experience/MoreApp.png"
+          src="images/experience/MoreApp.webp"
           className="w-22 h-12 px-2 dark:brightness-150"
         />
         <div className="space-y-1 py-2 px-2">
@@ -80,10 +83,10 @@ const HomePage: FC = () => {
             MoreApp
           </Text>
           <Text weight="semibold">
-            {getTotalMonths(new Date(2021, 7, 13), new Date())} mos
+            {getTotalMonths(new Date(2021, 7, 13), new Date())}
           </Text>
           <Text>{`Rotterdam, ${t("SOUTH_HOLLAND")}, ${t("NETHERLANDS")}`}</Text>
-          <div className="w-72 border-t-2 border-gray-200 dark:border-gray-700" />
+          <div className="w-9/10 border-t-2 border-gray-200 dark:border-gray-700 sm:w-72" />
           <div className="space-y-1 pl-3">
             <Text size="lg" weight="semibold">
               Software Engineer
@@ -93,7 +96,7 @@ const HomePage: FC = () => {
               {`Feb 2022 - ${t("PRESENT")} · ${getTotalMonths(
                 new Date(2022, 1, 21),
                 new Date()
-              )} mos`}
+              )}`}
             </Text>
             <div className="w-48 border-t-2 border-gray-200 dark:border-gray-700" />
           </div>
@@ -106,7 +109,7 @@ const HomePage: FC = () => {
               {`Sep 2021 - Feb 2022 · ${getTotalMonths(
                 new Date(2021, 7, 13),
                 new Date(2022, 1, 11)
-              )} mos`}
+              )}`}
             </Text>
             <div className="w-48 border-b-2 border-gray-200 dark:border-gray-700" />
           </div>
@@ -121,7 +124,7 @@ const HomePage: FC = () => {
           <Title icon={IconType.LIBRARY} className="py-5">
             {t("EDUCATION")}
           </Title>
-          <img src="images/experience/HR.png" className="w-22 h-16 px-2" />
+          <img src="images/experience/HR.webp" className="w-22 h-16 px-2" />
           <div className="space-y-1 py-2 px-2 pb-8">
             <Text size="lg">{`Sept. 2019 - ${t("PRESENT")}`}</Text>
             <Text>{t("COMPUTER_SCIENCE")}</Text>
@@ -130,7 +133,7 @@ const HomePage: FC = () => {
               {t("VISIT_WEBSITE")}
             </Text>
           </div>
-          <img src="images/experience/Lentiz.png" className="h-12 w-40 px-2" />
+          <img src="images/experience/Lentiz.webp" className="h-12 w-40 px-2" />
           <div className="space-y-1 py-2 px-2">
             <Text size="lg">{`Sept. 2012 - ${t("JULY")} 2019`}</Text>
             <Text icon={IconType.ACADEMIC_CAP} iconPosition="right">
