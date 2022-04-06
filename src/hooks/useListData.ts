@@ -145,46 +145,46 @@ const movieList: ListOption[] = [
 
 const languageList: ListOption[] = [
   {
-    src: "src/images/skills/HTML.svg",
+    src: "/images/skills/HTML.svg",
     subTitle: "HTML",
   },
   {
-    src: "src/images/skills/CSharp.svg",
+    src: "/images/skills/CSharp.svg",
     subTitle: "C#",
   },
   {
-    src: "src/images/skills/Typescript.svg",
+    src: "/images/skills/Typescript.svg",
     subTitle: "TypeScript",
   },
   {
-    src: "src/images/skills/CSS.svg",
+    src: "/images/skills/CSS.svg",
     subTitle: "CSS",
   },
   {
-    src: "src/images/skills/Python.svg",
+    src: "/images/skills/Python.svg",
     subTitle: "Python",
   },
   {
-    src: "src/images/skills/Javascript.svg",
+    src: "/images/skills/Javascript.svg",
     subTitle: "JavaScript",
   },
   {
-    src: "src/images/skills/SQL.svg",
+    src: "/images/skills/SQL.svg",
     subTitle: "SQL",
   },
 ];
 
 const miscList: ListOption[] = [
   {
-    src: "src/images/skills/Git.svg",
+    src: "/images/skills/Git.svg",
     subTitle: "Git",
   },
   {
-    src: "src/images/skills/React.svg",
+    src: "/images/skills/React.svg",
     subTitle: "React",
   },
   {
-    src: "src/images/skills/Unity.svg",
+    src: "/images/skills/Unity.svg",
     subTitle: "Unity",
   },
   {
@@ -192,19 +192,19 @@ const miscList: ListOption[] = [
     subTitle: "Microsoft 365",
   },
   {
-    src: "src/images/skills/TailwindCSS.svg",
+    src: "/images/skills/TailwindCSS.svg",
     subTitle: "TailwindCSS",
   },
   {
-    src: "src/images/skills/Cypress.svg",
+    src: "/images/skills/Cypress.svg",
     subTitle: "Cypress",
   },
   {
-    src: "src/images/skills/MongoDB.svg",
+    src: "/images/skills/MongoDB.svg",
     subTitle: "MongoDB",
   },
   {
-    src: "src/images/skills/CapacitorJS.svg",
+    src: "/images/skills/CapacitorJS.svg",
     subTitle: "Capacitor",
   },
 ];
