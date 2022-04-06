@@ -117,13 +117,13 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center sm:hidden">
                 <Disclosure.Button as={Fragment}>
-                  <>
+                  <div>
                     <Button
                       compact
                       type="clear"
                       icon={open ? IconType.X : IconType.MENU}
                     />
-                  </>
+                  </div>
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
