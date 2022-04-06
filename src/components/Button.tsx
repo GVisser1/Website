@@ -49,8 +49,8 @@ export const Button: React.FC<ButtonProps> = ({
       type === "default" && !disabled,
     "text-white bg-red-500 hover:bg-red-600 ring-red-300":
       type === "destructive" && !disabled,
-    "text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-200":
-      type === "clear",
+    "text-gray-400 hover:bg-gray-700 hover:text-white":
+      type === "clear" && !disabled,
   });
   return (
     <div className={classes} {...props}>

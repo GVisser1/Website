@@ -13,32 +13,32 @@ const useProjectData = (projectType: string) => {
     case "SCHOOL": {
       const schoolProjects: ProjectOption[] = [
         {
-          logo: "images/projects/Bitfilm.webp",
+          logo: "src/images/projects/Bitfilm.webp",
           title: "Bitfilm",
           paragraphs: [
             t("PROJECTS_BITFILM_CONTENT_1"),
             t("PROJECTS_BITFILM_CONTENT_2"),
           ],
-          src: "images/projects/Bitfilm_Menu.webp",
+          src: "src/images/projects/Bitfilm_Menu.webp",
           href: "https://github.com/BrianVa/Project-B-Hogeschool-Rotterdam",
         },
         {
-          logo: "images/projects/Bitmail.webp",
+          logo: "src/images/projects/Bitmail.webp",
           title: "Bitmail",
           paragraphs: [
             t("PROJECTS_BITMAIL_CONTENT_1"),
             t("PROJECTS_BITMAIL_CONTENT_2"),
           ],
-          src: "images/projects/Bitmail_Email.webp",
+          src: "src/images/projects/Bitmail_Email.webp",
         },
         {
-          logo: "images/projects/Bitfit.webp",
+          logo: "src/images/projects/Bitfit.webp",
           title: "Bitfit",
           paragraphs: [
             t("PROJECTS_BITFIT_CONTENT_1"),
             t("PROJECTS_BITFIT_CONTENT_2"),
           ],
-          src: "images/projects/Bitfit_Schedule.webp",
+          src: "src/images/projects/Bitfit_Schedule.webp",
           href: "https://github.com/GVisser1/Project-D-Groep5",
         },
       ];
@@ -47,7 +47,7 @@ const useProjectData = (projectType: string) => {
     case "PERSONAL": {
       const personalProjects: ProjectOption[] = [
         {
-          logo: "images/projects/Website_Logo.webp",
+          logo: "src/images/projects/Website_Logo.webp",
           title: "Glennvisser.com",
           paragraphs: [
             t("PROJECTS_WEBSITE_CONTENT_1"),
@@ -57,13 +57,13 @@ const useProjectData = (projectType: string) => {
           href: "https://github.com/GVisser1/Website",
         },
         {
-          logo: "images/projects/ClickGame.webp",
+          logo: "src/images/projects/ClickGame.webp",
           title: "Clicker Game",
           paragraphs: [
             t("PROJECTS_CLICKER_GAME_CONTENT_1"),
             t("PROJECTS_CLICKER_GAME_CONTENT_2"),
           ],
-          src: "images/projects/ClickGame_Playing.webp",
+          src: "src/images/projects/ClickGame_Playing.webp",
         },
       ];
       return personalProjects;

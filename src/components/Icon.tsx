@@ -24,6 +24,7 @@ export enum IconType {
   MENU,
   MOON,
   MUSIC_NOTE,
+  PENCIL,
   PUZZLE,
   STAR,
   SPARKLES,
@@ -87,6 +88,7 @@ const Icons: Record<IconType, { solid: any; outline: any }> = {
     solid: solid.MusicNoteIcon,
     outline: outline.MusicNoteIcon,
   },
+  [IconType.PENCIL]: { solid: solid.PencilIcon, outline: outline.PencilIcon },
   [IconType.PUZZLE]: { solid: solid.PuzzleIcon, outline: outline.PuzzleIcon },
   [IconType.SPARKLES]: {
     solid: solid.SparklesIcon,

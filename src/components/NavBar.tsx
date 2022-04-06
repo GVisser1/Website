@@ -1,12 +1,12 @@
 import { Fragment, useEffect, useState } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Disclosure } from "@headlessui/react";
 import { useNavigate } from "react-router-dom";
-import { Icon, IconType } from "./Icon";
+import { IconType } from "./Icon";
 import Text from "./Text";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import useSystem from "../hooks/useSystem";
-import { DropdownMenu, MenuItem } from "./DropDown";
+import { DropdownMenu, MenuItem } from "./DropDownMenu";
 import Modal from "./Modal";
 import { Button } from "./Button";
 
@@ -64,18 +64,9 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
     classNames({
       "rounded-md px-3 py-2 text-sm font-medium focus:outline-none focus:ring focus:ring-blue-300":
         true,
-      "bg-blue-600 text-white dark:bg-yellow-600 cursor-default": selected,
+      "bg-blue-600 text-white dark:bg-yellow-600": selected,
       "text-slate-400 hover:bg-gray-700 hover:text-white": !selected,
       "w-full text-left": block,
-    });
-
-  const optClasses = (selected: boolean, active: boolean) =>
-    classNames({
-      "w-full flex h-10 items-center justify-between rounded-md px-4 py-2 text-gray-700 bg-origin-content":
-        true,
-      "bg-green-200": selected,
-      "bg-green-300/80": active && selected,
-      "bg-gray-200": active && !selected,
     });
 
   const themeOptions: MenuItem[] = [
@@ -126,18 +117,20 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center sm:hidden">
                 <Disclosure.Button as={Fragment}>
-                  <Button
-                    compact
-                    type="clear"
-                    icon={open ? IconType.X : IconType.MENU}
-                  />
+                  <>
+                    <Button
+                      compact
+                      type="clear"
+                      icon={open ? IconType.X : IconType.MENU}
+                    />
+                  </>
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center space-x-5 sm:space-x-2">
                   <img
                     className="hidden h-8 w-auto rounded-full sm:block"
-                    src="images/personal/GlennProfile.webp"
+                    src="src/images/personal/GlennProfile.webp"
                   />
                   <Text className="pr-4 sm:pr-0" weight="semibold" size="2xl">
                     Glenn Visser
@@ -163,6 +156,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                     icon: themeIcon,
                     iconType: "outline",
                     type: "clear",
+                    compact: true,
                   }}
                   items={themeOptions}
                 />
@@ -173,6 +167,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                     icon: IconType.GLOBE,
                     iconType: "outline",
                     type: "clear",
+                    compact: true,
                   }}
                   items={languageOptions}
                 />
@@ -187,15 +182,36 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                     compact: true,
                   }}
                 >
-                  <div className="flex w-full flex-col">
-                    <DropdownMenu
-                      btnProps={{ label: t("CHANGE_THEME") }}
-                      items={themeOptions}
-                    />
-                    <DropdownMenu
-                      btnProps={{ label: t("CHANGE_LANGUAGE") }}
-                      items={themeOptions}
-                    />
+                  <div className="flex w-full flex-col space-y-5 py-4">
+                    <Text>{t("SETTINGS_DESCRIPTION")}</Text>
+                    <div>
+                      <DropdownMenu
+                        btnProps={{
+                          label: t("CHANGE_THEME"),
+                          block: true,
+                          icon: IconType.PENCIL,
+                        }}
+                        items={themeOptions}
+                      />
+                      <Text size="xs" className="pt-0.5">
+                        {t("CURRENT_THEME")}: {t(`${currentTheme}`)}
+                      </Text>
+                    </div>
+                    <div>
+                      <DropdownMenu
+                        btnProps={{
+                          label: t("CHANGE_LANGUAGE"),
+                          block: true,
+                          icon: IconType.PENCIL,
+                        }}
+                        items={languageOptions}
+                      />
+                      <Text size="xs" className="pt-0.5">
+                        {`${t("CURRENT_LANGUAGE")}: ${
+                          isDutch ? t("DUTCH") : t("ENGLISH")
+                        }`}
+                      </Text>
+                    </div>
                   </div>
                 </Modal>
               </div>

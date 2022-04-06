@@ -33,11 +33,11 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({
   btnProps,
   className,
 }) => {
-  const classes = classNames("relative ml-3", className);
+  const classes = classNames("relative", className);
 
   const optClasses = (selected = false, active: boolean) =>
     classNames({
-      "w-full flex h-10 items-center justify-between rounded-md px-4 py-2 text-gray-700 bg-origin-content":
+      "w-full flex h-10 items-center justify-between rounded-md px-4 py-2 text-gray-700":
         true,
       "bg-green-200": selected,
       "bg-green-300/80": active && selected,
@@ -49,14 +49,16 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({
       {({ open }) => (
         <>
           <Menu.Button as={Fragment}>
-            <Button
-              label={btnProps?.label}
-              type={btnProps?.type}
-              compact={btnProps?.compact}
-              block={btnProps?.block}
-              icon={btnProps?.icon}
-              iconType={btnProps?.iconType}
-            />
+            <>
+              <Button
+                label={btnProps?.label}
+                type={btnProps?.type}
+                compact={btnProps?.compact}
+                block={btnProps?.block}
+                icon={btnProps?.icon}
+                iconType={btnProps?.iconType}
+              />
+            </>
           </Menu.Button>
 
           <Transition
@@ -69,7 +71,7 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute right-0 z-20 my-2 w-56 origin-top-right divide-y divide-gray-100 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <Menu.Items className="absolute right-0 z-20 my-1 w-56 origin-top-right divide-y divide-gray-100 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-20 focus:outline-none">
               {items.map((item, index) => (
                 <Menu.Item key={index}>
                   {({ active }) => (

@@ -68,7 +68,7 @@ export const Text: React.FC<TextProps> = ({
   );
 
   const linkClasses = classNames({
-    "text-blue-600 hover:text-blue-300 dark:text-yellow-600 dark:hover:text-yellow-100 hover:underline cursor-pointer focus:outline-none focus:ring-1 focus:ring-blue-300 dark:focus:ring-yellow-600":
+    "text-blue-600 hover:text-blue-300 dark:text-yellow-600 dark:hover:text-yellow-100 hover:underline focus:outline-none focus:ring focus:ring-blue-300 dark:focus:ring-yellow-600":
       href,
   });
 
