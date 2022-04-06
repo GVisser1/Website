@@ -117,20 +117,20 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center sm:hidden">
                 <Disclosure.Button as={Fragment}>
-                  <>
+                  <div>
                     <Button
                       compact
                       type="clear"
                       icon={open ? IconType.X : IconType.MENU}
                     />
-                  </>
+                  </div>
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center space-x-5 sm:space-x-2">
                   <img
                     className="hidden h-8 w-auto rounded-full sm:block"
-                    src="src/images/personal/GlennProfile.webp"
+                    src="/images/personal/GlennProfile.webp"
                   />
                   <Text className="pr-4 sm:pr-0" weight="semibold" size="2xl">
                     Glenn Visser

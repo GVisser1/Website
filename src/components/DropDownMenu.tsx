@@ -49,7 +49,7 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({
       {({ open }) => (
         <>
           <Menu.Button as={Fragment}>
-            <>
+            <div>
               <Button
                 label={btnProps?.label}
                 type={btnProps?.type}
@@ -58,7 +58,7 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({
                 icon={btnProps?.icon}
                 iconType={btnProps?.iconType}
               />
-            </>
+            </div>
           </Menu.Button>
 
           <Transition
