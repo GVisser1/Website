@@ -31,7 +31,7 @@ const Input: React.FC<InputProps> = ({
 }) => {
   const Tag = type;
   const inputClasses = classNames({
-    "w-full p-3.5 border-2 text-gray-700 placeholder-gray-400 text-sm focus:outline-none rounded-md":
+    "w-full p-3.5 border-2 text-gray-700 bg-gray-200 placeholder-gray-400 text-sm focus:outline-none rounded-md":
       true,
     "h-28 max-h-48": type === "textarea",
     "bg-gray-100": disabled,

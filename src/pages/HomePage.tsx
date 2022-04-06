@@ -21,7 +21,7 @@ const HomePage: FC = () => {
       <section id="Intro" className="relative">
         <div className="flex w-full items-center justify-center dark:brightness-75 md:bg-gradient-to-t md:from-[#B9B0AB] md:via-[#867C6D] md:to-[#9FC3F1]">
           <img
-            src="images/personal/GlennMain.webp"
+            src="src/images/personal/GlennMain.webp"
             className="h-screen w-screen max-w-screen-xl object-cover lg:h-auto"
           />
         </div>
@@ -75,7 +75,7 @@ const HomePage: FC = () => {
           {t("WORK_EXPERIENCE")}
         </Title>
         <img
-          src="images/experience/MoreApp.webp"
+          src="src/images/experience/MoreApp.webp"
           className="w-22 h-12 px-2 dark:brightness-150"
         />
         <div className="space-y-1 py-2 px-2">
@@ -124,7 +124,7 @@ const HomePage: FC = () => {
           <Title icon={IconType.LIBRARY} className="py-5">
             {t("EDUCATION")}
           </Title>
-          <img src="images/experience/HR.webp" className="w-22 h-16 px-2" />
+          <img src="src/images/experience/HR.webp" className="w-22 h-16 px-2" />
           <div className="space-y-1 py-2 px-2 pb-8">
             <Text size="lg">{`Sept. 2019 - ${t("PRESENT")}`}</Text>
             <Text>{t("COMPUTER_SCIENCE")}</Text>
@@ -133,7 +133,10 @@ const HomePage: FC = () => {
               {t("VISIT_WEBSITE")}
             </Text>
           </div>
-          <img src="images/experience/Lentiz.webp" className="h-12 w-40 px-2" />
+          <img
+            src="src/images/experience/Lentiz.webp"
+            className="h-12 w-40 px-2"
+          />
           <div className="space-y-1 py-2 px-2">
             <Text size="lg">{`Sept. 2012 - ${t("JULY")} 2019`}</Text>
             <Text icon={IconType.ACADEMIC_CAP} iconPosition="right">

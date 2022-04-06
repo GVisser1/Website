@@ -20,9 +20,12 @@ const ProjectsPage: FC = () => {
       </Title>
       <Text className="line-clamp-3">{project.paragraphs[0]}</Text>
       <Modal
-        btnClassName="py-4"
         title={project.title}
-        btnLabel={`${t("READ_MORE")}...`}
+        btnProps={{
+          label: `${t("READ_MORE")}...`,
+          block: true,
+          className: "py-4",
+        }}
       >
         {project.paragraphs.map((paragraph: string, parIndex) => (
           <div key={parIndex} className="flex flex-col space-y-4 py-3">

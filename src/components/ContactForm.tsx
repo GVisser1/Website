@@ -63,7 +63,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={async (values, actions) => {
-        // setIsLoading(true);
+        // setIsLoading(true); // TODO: Add spinner to button when form is submitted
         sendEmail();
         actions.resetForm();
       }}
