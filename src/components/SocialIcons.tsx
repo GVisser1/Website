@@ -63,7 +63,11 @@ export const Icons: React.FC<IconsProps> = ({ className, options }) => {
   return (
     <div className={classNames("flex justify-center space-x-3", className)}>
       {options.map((option) => (
-        <a className="rounded-full" href={option.href} key={option.id}>
+        <a
+          className="rounded-full focus:outline-none focus:ring focus:ring-blue-300"
+          href={option.href}
+          key={option.id}
+        >
           <img
             className={`rounded-full hover:brightness-75 active:brightness-50 ${option.bgColor}`}
             src={option.src}

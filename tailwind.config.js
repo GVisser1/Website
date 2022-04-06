@@ -8,6 +8,11 @@ module.exports = {
       maxWidth: {
         "8xl": "88rem",
       },
+      maxHeight: {
+        xl: "36rem",
+        "2xl": "42rem",
+        "3xl": "54rem",
+      },
       animation: {
         "spin-slow": "spin 5s linear infinite",
       },

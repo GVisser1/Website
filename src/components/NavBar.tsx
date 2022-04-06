@@ -1,4 +1,3 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useEffect, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { useNavigate } from "react-router-dom";
@@ -7,13 +6,13 @@ import Text from "./Text";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import useSystem from "../hooks/useSystem";
-import SettingsModal from "./SettingsModal";
+import { DropdownMenu, MenuItem } from "./DropDown";
+import Modal from "./Modal";
+import { Button } from "./Button";
 
 interface NavBarProps {
   className?: string;
 }
-
-type Themes = "LIGHT" | "DARK" | "SYSTEM";
 
 const NavBar: React.FC<NavBarProps> = ({ className }) => {
   const navigate = useNavigate();
@@ -28,7 +27,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
     !("theme" in localStorage)
   );
   const { getTheme } = useSystem(useSystemTheme);
-  const [currentTheme, setCurrentTheme] = useState<Themes>(getTheme);
+  const [currentTheme, setCurrentTheme] = useState(getTheme);
   const [themeIcon, setThemeIcon] = useState<IconType>(
     IconType.DESKTOP_COMPUTER
   );
@@ -61,13 +60,57 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
     i18n.language === "nl-NL" ||
     i18n.language === "nl-BE";
 
-  const classes = (selected: boolean) =>
+  const navClasses = (selected: boolean, block = false) =>
     classNames({
-      "flex h-10 cursor-pointer items-center justify-between rounded-md px-4 py-2 text-gray-700":
+      "rounded-md px-3 py-2 text-sm font-medium focus:outline-none focus:ring focus:ring-blue-300":
         true,
-      "bg-green-200 hover:bg-green-300/80": selected,
-      "hover:bg-gray-200": !selected,
+      "bg-blue-600 text-white dark:bg-yellow-600 cursor-default": selected,
+      "text-slate-400 hover:bg-gray-700 hover:text-white": !selected,
+      "w-full text-left": block,
     });
+
+  const optClasses = (selected: boolean, active: boolean) =>
+    classNames({
+      "w-full flex h-10 items-center justify-between rounded-md px-4 py-2 text-gray-700 bg-origin-content":
+        true,
+      "bg-green-200": selected,
+      "bg-green-300/80": active && selected,
+      "bg-gray-200": active && !selected,
+    });
+
+  const themeOptions: MenuItem[] = [
+    {
+      label: t("LIGHT"),
+      icon: IconType.SUN,
+      selected: currentTheme === "LIGHT",
+      onClick: () => setCurrentTheme("LIGHT"),
+    },
+    {
+      label: t("DARK"),
+      icon: IconType.MOON,
+      selected: currentTheme === "DARK",
+      onClick: () => setCurrentTheme("DARK"),
+    },
+    {
+      label: t("SYSTEM"),
+      icon: IconType.DESKTOP_COMPUTER,
+      selected: currentTheme === "SYSTEM",
+      onClick: () => setCurrentTheme("SYSTEM"),
+    },
+  ];
+
+  const languageOptions: MenuItem[] = [
+    {
+      label: t("DUTCH"),
+      selected: isDutch,
+      onClick: () => i18n.changeLanguage("nl"),
+    },
+    {
+      label: t("ENGLISH"),
+      selected: !isDutch,
+      onClick: () => i18n.changeLanguage("en"),
+    },
+  ];
 
   return (
     <Disclosure
@@ -82,12 +125,12 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
           <div className="max-w-8xl mx-auto px-2 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center sm:hidden">
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                  {open ? (
-                    <Icon name={IconType.X} className="block h-6 w-6" />
-                  ) : (
-                    <Icon name={IconType.MENU} className="block h-6 w-6" />
-                  )}
+                <Disclosure.Button as={Fragment}>
+                  <Button
+                    compact
+                    type="clear"
+                    icon={open ? IconType.X : IconType.MENU}
+                  />
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
@@ -103,113 +146,58 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <div
+                      <button
                         key={item.name}
-                        className={classNames(
-                          item.href === location.pathname
-                            ? "bg-blue-600 text-white dark:bg-yellow-600"
-                            : "text-slate-400 hover:bg-gray-700 hover:text-white",
-                          "cursor-pointer rounded-md px-3 py-2 text-sm font-medium"
-                        )}
+                        className={navClasses(item.href === location.pathname)}
                         onClick={() => navigate(item.href)}
                       >
                         {item.name}
-                      </div>
+                      </button>
                     ))}
                   </div>
                 </div>
               </div>
               <div className="hidden items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:flex sm:pr-0">
-                <Menu as="div" className="relative ml-3">
-                  <Menu.Button className="mt-2">
-                    <Icon
-                      name={themeIcon}
-                      type="outline"
-                      className="cursor-pointer rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                    />
-                  </Menu.Button>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      {allThemes.map((item) => (
-                        <Menu.Item key={item.theme}>
-                          <div
-                            onClick={() => setCurrentTheme(item.theme)}
-                            className={classes(currentTheme === item.theme)}
-                          >
-                            <Text color="all-dark" icon={item.icon}>
-                              {t(item.theme)}
-                            </Text>
-                            {currentTheme === item.theme && (
-                              <Icon
-                                type="outline"
-                                name={IconType.CHECK_CIRCLE}
-                              />
-                            )}
-                          </div>
-                        </Menu.Item>
-                      ))}
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
+                <DropdownMenu
+                  btnProps={{
+                    icon: themeIcon,
+                    iconType: "outline",
+                    type: "clear",
+                  }}
+                  items={themeOptions}
+                />
               </div>
               <div className="hidden sm:static sm:inset-auto sm:ml-6 sm:flex sm:items-center sm:pr-0">
-                <Menu as="div" className="relative ml-3">
-                  <Menu.Button className="mt-2">
-                    <Icon
-                      name={IconType.GLOBE}
-                      type="outline"
-                      className="cursor-pointer rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                    />
-                  </Menu.Button>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                        <div
-                          onClick={async () => i18n.changeLanguage("en")}
-                          className={classes(!isDutch)}
-                        >
-                          <Text color="all-dark">{t("ENGLISH")}</Text>
-                          {!isDutch && (
-                            <Icon type="outline" name={IconType.CHECK_CIRCLE} />
-                          )}
-                        </div>
-                      </Menu.Item>
-                      <Menu.Item>
-                        <div
-                          onClick={async () => i18n.changeLanguage("nl")}
-                          className={classes(isDutch)}
-                        >
-                          <Text color="all-dark">{t("DUTCH")}</Text>
-                          {isDutch && (
-                            <Icon type="outline" name={IconType.CHECK_CIRCLE} />
-                          )}
-                        </div>
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
+                <DropdownMenu
+                  btnProps={{
+                    icon: IconType.GLOBE,
+                    iconType: "outline",
+                    type: "clear",
+                  }}
+                  items={languageOptions}
+                />
               </div>
               <div className="flex sm:static sm:inset-auto sm:ml-6 sm:hidden sm:items-center sm:pr-0">
-                <SettingsModal
-                  icon={IconType.COG}
-                  className="cursor-pointer text-gray-400"
-                />
+                <Modal
+                  title={"Settings"}
+                  btnProps={{
+                    icon: IconType.COG,
+                    iconType: "outline",
+                    type: "clear",
+                    compact: true,
+                  }}
+                >
+                  <div className="flex w-full flex-col">
+                    <DropdownMenu
+                      btnProps={{ label: t("CHANGE_THEME") }}
+                      items={themeOptions}
+                    />
+                    <DropdownMenu
+                      btnProps={{ label: t("CHANGE_LANGUAGE") }}
+                      items={themeOptions}
+                    />
+                  </div>
+                </Modal>
               </div>
             </div>
           </div>
@@ -217,18 +205,13 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
               {navigation.map((item) => (
-                <div
+                <button
                   key={item.name}
                   onClick={() => navigate(item.href)}
-                  className={classNames(
-                    item.href === location.pathname
-                      ? "bg-blue-600 text-white dark:bg-yellow-600"
-                      : "text-slate-400 hover:bg-gray-700 hover:text-white",
-                    "block cursor-pointer rounded-md px-3 py-2 text-base font-medium"
-                  )}
+                  className={navClasses(item.href === location.pathname, true)}
                 >
                   {item.name}
-                </div>
+                </button>
               ))}
             </div>
           </Disclosure.Panel>
@@ -239,14 +222,3 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
 };
 
 export default NavBar;
-
-interface ThemeOptions {
-  theme: Themes;
-  icon: IconType;
-}
-
-const allThemes: ThemeOptions[] = [
-  { theme: "LIGHT", icon: IconType.SUN },
-  { theme: "DARK", icon: IconType.MOON },
-  { theme: "SYSTEM", icon: IconType.DESKTOP_COMPUTER },
-];

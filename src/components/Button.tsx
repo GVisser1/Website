@@ -8,12 +8,12 @@ export interface ButtonProps {
   className?: string;
   label?: string;
   type?: ButtonType;
+  compact?: boolean;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   icon?: IconType;
   iconType?: "solid" | "outline";
   block?: boolean;
   submit?: boolean;
-  selected?: boolean;
   disabled?: boolean;
 }
 
@@ -22,10 +22,10 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   label,
   type = "default",
+  compact = false,
   icon,
   iconType = "solid",
   submit,
-  selected = false,
   disabled = false,
   className,
   ...props
@@ -39,22 +39,18 @@ export const Button: React.FC<ButtonProps> = ({
   );
 
   const innerClasses = classNames({
-    "inline-flex justify-center space-x-1.5 font-semibold rounded-lg px-4 py-3":
-      true,
+    "inline-flex justify-center space-x-1.5 font-semibold rounded-lg": true,
+    "px-4 py-3": !compact,
+    "p-2": compact,
     "w-full": block,
-    // Text
     "text-gray-400 bg-gray-100": disabled,
-    "text-black bg-blue-100 hover:bg-blue-200": type === "default" && !disabled,
-    "text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-500":
-      type === "clear" && !disabled,
-    "text-white bg-red-500 hover:bg-red-600":
+    "active:ring focus:outline-none focus:ring focus:ring-blue-300": !disabled,
+    "text-black bg-blue-100 hover:bg-blue-200 ring-blue-400":
+      type === "default" && !disabled,
+    "text-white bg-red-500 hover:bg-red-600 ring-red-300":
       type === "destructive" && !disabled,
-    // Focus rings
-    "active:ring": !selected && !disabled,
-    "ring-blue-400": type === "default" && !selected && !disabled,
-    "ring-gray-400": type === "clear" && !selected && !disabled,
-    "ring-red-300": type === "destructive" && !selected && !disabled,
-    "ring-4 ring-green-400": selected,
+    "text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-200":
+      type === "clear",
   });
   return (
     <div className={classes} {...props}>
