@@ -130,7 +130,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                 <div className="flex flex-shrink-0 items-center space-x-5 sm:space-x-2">
                   <img
                     className="hidden h-8 w-auto rounded-full sm:block"
-                    src="/images/personal/GlennProfile.webp"
+                    src="/images/personal/GlennProfile1.webp"
                   />
                   <Text className="pr-4 sm:pr-0" weight="semibold" size="2xl">
                     Glenn Visser
