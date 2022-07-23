@@ -35,7 +35,7 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({
 }) => {
   const classes = classNames("relative", className);
 
-  const optClasses = (selected = false, active: boolean) =>
+  const optClasses = (active: boolean, selected = false) =>
     classNames({
       "w-full flex h-10 items-center justify-between rounded-md px-4 py-2 text-gray-700":
         true,
@@ -76,7 +76,7 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({
                 <Menu.Item key={index}>
                   {({ active }) => (
                     <button
-                      className={optClasses(item.selected, active)}
+                      className={optClasses(active, item.selected)}
                       onClick={item.onClick}
                     >
                       {item.label && (

@@ -9,6 +9,7 @@ import useSystem from "../hooks/useSystem";
 import { DropdownMenu, MenuItem } from "./DropDownMenu";
 import Modal from "./Modal";
 import { Button } from "./Button";
+import useI18n from "../hooks/useI18n";
 
 interface NavBarProps {
   className?: string;
@@ -16,49 +17,15 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = ({ className }) => {
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  const { isDutch, changeLanguage } = useI18n();
+  const { getTheme, switchTheme, getThemeIcon } = useSystem();
+
   const navigation = [
     { name: t("HOME"), href: "/home" },
     { name: t("PROJECTS"), href: "/projects" },
     { name: t("CONTACT"), href: "/contact" },
   ];
-
-  const [useSystemTheme, setUseSystemTheme] = useState(
-    !("theme" in localStorage)
-  );
-  const { getTheme } = useSystem(useSystemTheme);
-  const [currentTheme, setCurrentTheme] = useState(getTheme);
-  const [themeIcon, setThemeIcon] = useState<IconType>(
-    IconType.DESKTOP_COMPUTER
-  );
-
-  useEffect(() => {
-    if (currentTheme === "SYSTEM") {
-      localStorage.removeItem("theme");
-      setUseSystemTheme(true);
-      setThemeIcon(IconType.DESKTOP_COMPUTER);
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        document.documentElement.classList.add("dark");
-        return;
-      }
-      document.documentElement.classList.remove("dark");
-      return;
-    }
-    setUseSystemTheme(false);
-    localStorage.setItem("theme", currentTheme.toLowerCase());
-    if (currentTheme === "DARK") {
-      setThemeIcon(IconType.MOON);
-      document.documentElement.classList.add("dark");
-      return;
-    }
-    setThemeIcon(IconType.SUN);
-    document.documentElement.classList.remove("dark");
-  }, [currentTheme]);
-
-  const isDutch =
-    i18n.language === "nl" ||
-    i18n.language === "nl-NL" ||
-    i18n.language === "nl-BE";
 
   const navClasses = (selected: boolean, block = false) =>
     classNames({
@@ -69,37 +36,37 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
       "w-full text-left": block,
     });
 
-  const themeOptions: MenuItem[] = [
-    {
-      label: t("LIGHT"),
-      icon: IconType.SUN,
-      selected: currentTheme === "LIGHT",
-      onClick: () => setCurrentTheme("LIGHT"),
-    },
-    {
-      label: t("DARK"),
-      icon: IconType.MOON,
-      selected: currentTheme === "DARK",
-      onClick: () => setCurrentTheme("DARK"),
-    },
-    {
-      label: t("SYSTEM"),
-      icon: IconType.DESKTOP_COMPUTER,
-      selected: currentTheme === "SYSTEM",
-      onClick: () => setCurrentTheme("SYSTEM"),
-    },
-  ];
-
   const languageOptions: MenuItem[] = [
     {
       label: t("DUTCH"),
       selected: isDutch,
-      onClick: () => i18n.changeLanguage("nl"),
+      onClick: () => changeLanguage("nl"),
     },
     {
       label: t("ENGLISH"),
       selected: !isDutch,
-      onClick: () => i18n.changeLanguage("en"),
+      onClick: () => changeLanguage("en"),
+    },
+  ];
+
+  const themeOptions: MenuItem[] = [
+    {
+      label: t("LIGHT"),
+      icon: IconType.SUN,
+      selected: getTheme() === "LIGHT",
+      onClick: () => switchTheme("LIGHT"),
+    },
+    {
+      label: t("DARK"),
+      icon: IconType.MOON,
+      selected: getTheme() === "DARK",
+      onClick: () => switchTheme("DARK"),
+    },
+    {
+      label: t("SYSTEM"),
+      icon: IconType.DESKTOP_COMPUTER,
+      selected: getTheme() === "SYSTEM",
+      onClick: () => switchTheme("SYSTEM"),
     },
   ];
 
@@ -153,7 +120,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
               <div className="hidden items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:flex sm:pr-0">
                 <DropdownMenu
                   btnProps={{
-                    icon: themeIcon,
+                    icon: getThemeIcon(),
                     iconType: "outline",
                     type: "clear",
                     compact: true,
@@ -194,7 +161,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                         items={themeOptions}
                       />
                       <Text size="xs" className="pt-0.5">
-                        {t("CURRENT_THEME")}: {t(`${currentTheme}`)}
+                        {t("CURRENT_THEME")}: {t(`${getTheme()}`)}
                       </Text>
                     </div>
                     <div>
