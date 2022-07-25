@@ -1,14 +1,24 @@
+import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { IconType } from "./Icon";
 import Text from "./Text";
 
-const PersonalInfo: React.FC = () => {
+interface PersonalInfoProps {
+  className?: string;
+}
+
+const PersonalInfo: React.FC<PersonalInfoProps> = ({ className }) => {
   const { t } = useTranslation();
   const getAge = (dob: Date) =>
     Math.abs(new Date(Date.now() - dob.getTime()).getUTCFullYear() - 1970);
 
   return (
-    <div className="flex justify-center space-x-3 rounded-lg bg-black/40 p-2">
+    <div
+      className={classNames(
+        "flex justify-center space-x-3 rounded-lg bg-black/40 p-2",
+        className
+      )}
+    >
       <Text icon={IconType.CAKE} color="all-white" spaceBetween="sm">
         {getAge(new Date(2000, 3, 21))}
       </Text>

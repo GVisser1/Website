@@ -7,22 +7,19 @@ import Text from "../components/Text";
 import { Title } from "../components/Title";
 import { useTranslation } from "react-i18next";
 import PersonalInfo from "../components/PersonalInfo";
-import DateDiff from "date-diff";
+import useDate from "../hooks/useDate";
 
 const HomePage: FC = () => {
   const { t } = useTranslation();
-  const getTotalMonths = (startingDate: Date, endDate: Date) => {
-    const diff = Math.ceil(new DateDiff(endDate, startingDate).months());
-    return `${diff} ${diff === 1 ? t("MONTH") : t("MONTHS")}`;
-  };
+  const { getTotalMonths } = useDate();
 
   return (
     <Page>
       <section id="Intro" className="relative">
-        <div className="flex w-full items-center justify-center dark:brightness-75 md:bg-gradient-to-t md:from-[#B9B0AB] md:via-[#867C6D] md:to-[#9FC3F1]">
+        <div className="flex w-full items-center justify-center">
           <img
-            src="/images/personal/GlennMain.webp"
-            className="h-screen w-screen max-w-screen-xl object-cover lg:h-auto"
+            src="/images/personal/GlennMain.jpeg"
+            className="h-[45rem] w-full object-cover object-center lg:h-[52rem] lg:object-top 2xl:h-[55rem]"
           />
         </div>
         <div className="absolute inset-0 flex flex-col items-center justify-between text-center">
@@ -49,7 +46,10 @@ const HomePage: FC = () => {
         </div>
       </section>
 
-      <section id="About" className="mx-auto max-w-5xl px-5 py-10 md:px-8">
+      <section
+        id="About"
+        className="mx-auto max-w-screen-xl px-5 py-10 md:px-8"
+      >
         <Title icon={IconType.USER_CIRCLE} className="py-5">
           {t("ABOUT")}
         </Title>
@@ -59,18 +59,20 @@ const HomePage: FC = () => {
           <Text size="md">{t("ABOUT_CONTENT_3")}</Text>
         </div>
       </section>
+
       <section
         id="Music"
         className="bg-gray-100 dark:border-y-2 dark:border-gray-700 dark:bg-gray-900"
       >
-        <div className="mx-auto max-w-5xl px-5 py-10 md:px-8">
+        <div className="mx-auto max-w-screen-xl px-5 py-10 md:px-8">
           <Title icon={IconType.MUSIC_NOTE} className="pb-2">
             {t("FAVORITE_ALBUMS")}
           </Title>
           <ImageList listType="MUSIC" />
         </div>
       </section>
-      <section id="Work" className="mx-auto max-w-5xl px-5 py-10 md:px-8">
+
+      <section id="Work" className="mx-auto max-w-screen-xl px-5 py-10 md:px-8">
         <Title icon={IconType.BRIEFCASE} className="py-5">
           {t("WORK_EXPERIENCE")}
         </Title>
@@ -83,7 +85,7 @@ const HomePage: FC = () => {
             MoreApp
           </Text>
           <Text weight="semibold">
-            {getTotalMonths(new Date(2021, 7, 13), new Date())}
+            {getTotalMonths(new Date(2021, 8, 13), new Date())}
           </Text>
           <Text>{`Rotterdam, ${t("SOUTH_HOLLAND")}, ${t("NETHERLANDS")}`}</Text>
           <div className="w-9/10 border-t-2 border-gray-200 dark:border-gray-700 sm:w-72" />
@@ -107,7 +109,7 @@ const HomePage: FC = () => {
             <Text weight="semibold">{t("INTERNSHIP")}</Text>
             <Text>
               {`Sep 2021 - Feb 2022 · ${getTotalMonths(
-                new Date(2021, 7, 13),
+                new Date(2021, 8, 13),
                 new Date(2022, 1, 11)
               )}`}
             </Text>
@@ -116,11 +118,12 @@ const HomePage: FC = () => {
         </div>
         <Text href="https://moreapp.dev">{t("VISIT_WEBSITE")}</Text>
       </section>
+
       <section
         id="Education"
         className="bg-gray-100 dark:border-y-2 dark:border-gray-700 dark:bg-gray-900"
       >
-        <div className="mx-auto max-w-5xl px-5 py-10 md:px-8">
+        <div className="mx-auto max-w-screen-xl px-5 py-10 md:px-8">
           <Title icon={IconType.LIBRARY} className="py-5">
             {t("EDUCATION")}
           </Title>
@@ -149,7 +152,11 @@ const HomePage: FC = () => {
           </div>
         </div>
       </section>
-      <section id="Skills" className="mx-auto max-w-5xl px-5 py-10 md:px-8">
+
+      <section
+        id="Skills"
+        className="mx-auto max-w-screen-xl px-5 py-10 md:px-8"
+      >
         <Title icon={IconType.SPARKLES} className="py-5">
           {t("SKILLS")}
         </Title>
@@ -162,18 +169,23 @@ const HomePage: FC = () => {
         </Title>
         <ImageList listType="MISC" />
       </section>
+
       <section
         id="Movies"
         className="bg-gray-100 dark:border-y-2 dark:border-gray-700 dark:bg-gray-900"
       >
-        <div className="mx-auto max-w-5xl px-5 py-10 md:px-8">
+        <div className="mx-auto max-w-screen-xl px-5 py-10 md:px-8">
           <Title icon={IconType.FILM} className="pb-2">
             {t("FAVORITE_MOVIES")}
           </Title>
           <ImageList listType="MOVIES" />
         </div>
       </section>
-      <section id="Games" className="mx-auto max-w-5xl px-5 py-10 md:px-8">
+
+      <section
+        id="Games"
+        className="mx-auto max-w-screen-xl px-5 py-10 md:px-8"
+      >
         <Title icon={IconType.PUZZLE} className="pb-2">
           {t("FAVORITE_GAMES")}
         </Title>

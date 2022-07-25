@@ -74,7 +74,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
     <Disclosure
       as="nav"
       className={classNames(
-        "z-10 border-b-2 border-gray-100 dark:border-gray-700 dark:bg-gray-800",
+        "border-b-2 border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800",
         className
       )}
     >
@@ -94,10 +94,10 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center space-x-5 sm:space-x-2">
+                <div className="flex items-center space-x-5 sm:space-x-2">
                   <img
-                    className="hidden h-8 w-auto rounded-full sm:block"
-                    src="/images/personal/GlennProfile1.webp"
+                    className="hidden h-8 w-8 rounded-full sm:block"
+                    src="/images/personal/GlennProfile1.jpg"
                   />
                   <Text className="pr-4 sm:pr-0" weight="semibold" size="2xl">
                     Glenn Visser

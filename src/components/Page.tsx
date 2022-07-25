@@ -1,20 +1,13 @@
 import { FC } from "react";
-import classNames from "classnames";
 import NavBar from "./NavBar";
 
-interface PageProps {
-  className?: string;
-}
-
-const Page: FC<PageProps> = ({ children, className }) => {
-  const classes = classNames(
-    "absolute inset-0 h-full flex flex-col lg:flex-1 dark:bg-gray-900",
-    className
-  );
+const Page: FC = ({ children }) => {
   return (
-    <div className={classes}>
+    <div className="absolute inset-0 overflow-hidden lg:static lg:flex-1">
       <NavBar />
-      <div className="dark:bg-gray-900">{children}</div>
+      <div className="relative h-full overflow-y-auto bg-white pb-12 dark:bg-gray-900">
+        {children}
+      </div>
     </div>
   );
 };

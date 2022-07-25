@@ -68,6 +68,12 @@ const musicList: ListOption[] = [
     subTitle: "Ms. Lauryn Hill",
     href: "https://open.spotify.com/album/1BZoqf8Zje5nGdwZhOjAtD?si=9jh2dFh2QF6WpTlrfoRx4w",
   },
+  {
+    src: "https://i.scdn.co/image/ab67616d00001e02a91e8d79776c6f83fa22ce72",
+    title: "Trouble Will Find Me",
+    subTitle: "The National",
+    href: "https://open.spotify.com/album/4OI9hKTm1QMRQunqHCfSSL?si=Z67hzgN1SZSVwNKumAcR1g",
+  },
 ];
 
 const gameList: ListOption[] = [
@@ -101,6 +107,18 @@ const gameList: ListOption[] = [
     title: "Bloodborne",
     subTitle: "Sony Interactive Entertainment",
     href: "https://store.playstation.com/en-us/product/UP9000-CUSA00900_00-BLOODBORNE000000",
+  },
+  {
+    src: "https://image.api.playstation.com/vulcan/ap/rnd/202102/1214/gcMVHVG82HnDo0A6WHl6WR6H.png?w=440",
+    title: "Discp Elysium",
+    subTitle: "ZA/UM",
+    href: "https://store.playstation.com/en-us/product/UP6758-PPSA03268_00-6401393671841114",
+  },
+  {
+    src: "https://image.api.playstation.com/vulcan/ap/rnd/202104/0517/9AcM3vy5t77zPiJyKHwRfnNT.png?w=230",
+    title: "Hades",
+    subTitle: "Supergiant Games, LLC",
+    href: "https://store.playstation.com/en-us/product/UP2125-PPSA03355_00-3466019145463410",
   },
 ];
 
@@ -140,6 +158,24 @@ const movieList: ListOption[] = [
     title: "The Lighthouse",
     subTitle: "Robert Eggers",
     href: "https://letterboxd.com/film/the-lighthouse-2019/",
+  },
+  {
+    src: "https://a.ltrbxd.com/resized/sm/upload/7l/hn/46/uz/zGINvGjdlO6TJRu9wESQvWlOKVT-0-230-0-345-crop.jpg?k=ec92903bcc",
+    title: "The Shawshank Redemption",
+    subTitle: "Frank Darabont",
+    href: "https://letterboxd.com/film/the-shawshank-redemption/",
+  },
+  {
+    src: "https://a.ltrbxd.com/resized/film-poster/4/6/8/0/6/46806-the-incredibles-0-230-0-345-crop.jpg?k=a33437f6ef",
+    title: "The Incredibles",
+    subTitle: "Brad Bird",
+    href: "https://letterboxd.com/film/the-incredibles/",
+  },
+  {
+    src: "https://a.ltrbxd.com/resized/film-poster/3/4/8/9/1/4/348914-the-batman-0-230-0-345-crop.jpg?k=22653f43d9",
+    title: "The Batman",
+    subTitle: "Matt Reeves",
+    href: "https://letterboxd.com/film/the-batman/",
   },
 ];
 
