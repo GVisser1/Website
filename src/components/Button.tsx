@@ -13,7 +13,6 @@ export interface ButtonProps {
   icon?: IconType;
   iconType?: "solid" | "outline";
   block?: boolean;
-  submit?: boolean;
   disabled?: boolean;
 }
 
@@ -25,7 +24,6 @@ export const Button: React.FC<ButtonProps> = ({
   compact = false,
   icon,
   iconType = "solid",
-  submit,
   disabled = false,
   className,
   ...props
@@ -55,7 +53,7 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <div className={classes} {...props}>
       <button
-        type={submit ? "submit" : "button"}
+        type={"button"}
         onClick={(event) => onClick && onClick(event)}
         className={innerClasses}
       >

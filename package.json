@@ -40,7 +40,6 @@
     ]
   },
   "dependencies": {
-    "@emailjs/browser": "^3.4.0",
     "@headlessui/react": "^1.4.3",
     "@heroicons/react": "1.0.5",
     "@tailwindcss/line-clamp": "0.3.0",

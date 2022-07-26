@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
-import ContactForm from "../components/ContactForm";
 import { IconType } from "../components/Icon";
 import Page from "../components/Page";
 import SocialIcons from "../components/SocialIcons";
@@ -32,12 +31,6 @@ const ContactPage: FC = () => {
             {"gvisser.business@gmail.com"}
           </Text>
           <SocialIcons className="pt-6" />
-        </div>
-        <div className="w-full space-y-5 md:py-10">
-          <Title size="xl" className="w-full" as="h3">
-            {t("MESSAGE_ME")}
-          </Title>
-          <ContactForm />
         </div>
       </section>
     </Page>
