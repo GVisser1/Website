@@ -8,11 +8,13 @@ const useI18n = () => {
     i18n.language === "nl-NL" ||
     i18n.language === "nl-BE";
 
-  const changeLanguage = (lang: string) => {
+  const switchLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
   };
 
-  return { isDutch, changeLanguage };
+  const getLanguage = () => (isDutch ? "nl" : "en");
+
+  return { isDutch, getLanguage, switchLanguage };
 };
 
 export default useI18n;

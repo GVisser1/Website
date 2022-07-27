@@ -37,11 +37,11 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({
 
   const optClasses = (active: boolean, selected = false) =>
     classNames({
-      "w-full flex h-10 items-center justify-between rounded-md px-4 py-2 text-gray-700":
+      "w-full flex h-10 items-center justify-between px-4 py-2 text-gray-700 dark:text-white":
         true,
-      "bg-green-200": selected,
-      "bg-green-300/80": active && selected,
-      "bg-gray-200": active && !selected,
+      "bg-emerald-100 dark:bg-gray-800 ": !active && selected,
+      "bg-emerald-200/80 dark:bg-gray-600 ": active && selected,
+      "bg-gray-200 dark:bg-gray-600": active && !selected,
     });
 
   return (
@@ -71,7 +71,7 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute right-0 z-20 my-1 w-56 origin-top-right divide-y divide-gray-100 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-20 focus:outline-none">
+            <Menu.Items className="absolute right-0 z-20 my-1 w-56 origin-top-right divide-y divide-gray-200 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black/20 focus:outline-none dark:divide-gray-500 dark:bg-gray-700 dark:ring-gray-500">
               {items.map((item, index) => (
                 <Menu.Item key={index}>
                   {({ active }) => (
@@ -80,7 +80,7 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({
                       onClick={item.onClick}
                     >
                       {item.label && (
-                        <Text color="all-dark" icon={item.icon}>
+                        <Text color="dark" icon={item.icon}>
                           {item.label}
                         </Text>
                       )}

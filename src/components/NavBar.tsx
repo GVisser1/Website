@@ -10,6 +10,7 @@ import { DropdownMenu, MenuItem } from "./DropDownMenu";
 import Modal from "./Modal";
 import { Button } from "./Button";
 import useI18n from "../hooks/useI18n";
+import { Radio } from "./Radio";
 
 interface NavBarProps {
   className?: string;
@@ -18,34 +19,25 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = ({ className }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { isDutch, changeLanguage } = useI18n();
+  const { isDutch, switchLanguage, getLanguage } = useI18n();
   const { getTheme, switchTheme, getThemeIcon } = useSystem();
 
   const navigation = [
-    { name: t("HOME"), href: "/home" },
-    { name: t("PROJECTS"), href: "/projects" },
-    { name: t("CONTACT"), href: "/contact" },
+    { name: t("HOME"), href: "/home", icon: IconType.HOME },
+    { name: t("PROJECTS"), href: "/projects", icon: IconType.FOLDER },
+    { name: t("CONTACT"), href: "/contact", icon: IconType.USER_CIRCLE },
   ];
-
-  const navClasses = (selected: boolean, block = false) =>
-    classNames({
-      "rounded-md px-3 py-2 text-sm font-medium focus:outline-none focus:ring focus:ring-blue-300":
-        true,
-      "bg-blue-600 text-white dark:bg-yellow-600": selected,
-      "text-slate-400 hover:bg-gray-700 hover:text-white": !selected,
-      "w-full text-left": block,
-    });
 
   const languageOptions: MenuItem[] = [
     {
       label: t("DUTCH"),
       selected: isDutch,
-      onClick: () => changeLanguage("nl"),
+      onClick: () => switchLanguage("nl"),
     },
     {
       label: t("ENGLISH"),
       selected: !isDutch,
-      onClick: () => changeLanguage("en"),
+      onClick: () => switchLanguage("en"),
     },
   ];
 
@@ -80,9 +72,9 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
     >
       {({ open }) => (
         <>
-          <div className="max-w-8xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div className="max-w-8xl mx-auto px-2 md:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
-              <div className="flex items-center sm:hidden">
+              <div className="flex items-center md:hidden">
                 <Disclosure.Button as={Fragment}>
                   <div>
                     <Button
@@ -93,31 +85,35 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                   </div>
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex items-center space-x-5 sm:space-x-2">
+              <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
+                <div className="flex items-center space-x-5 md:space-x-2">
                   <img
-                    className="hidden h-8 w-8 rounded-full sm:block"
+                    className="hidden h-8 w-8 rounded-full md:block"
                     src="/images/personal/GlennProfile1.jpg"
                   />
-                  <Text className="pr-4 sm:pr-0" weight="semibold" size="2xl">
+                  <Text className="pr-4 md:pr-0" weight="semibold" size="2xl">
                     Glenn Visser
                   </Text>
                 </div>
-                <div className="hidden sm:ml-6 sm:block">
+                <div className="hidden md:ml-6 md:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <button
+                      <Button
+                        compact
+                        icon={item.icon}
                         key={item.name}
-                        className={navClasses(item.href === location.pathname)}
+                        type={
+                          item.href === location.pathname ? "selected" : "clear"
+                        }
                         onClick={() => navigate(item.href)}
                       >
                         {item.name}
-                      </button>
+                      </Button>
                     ))}
                   </div>
                 </div>
               </div>
-              <div className="hidden items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:flex sm:pr-0">
+              <div className="hidden items-center pr-2 md:static md:inset-auto md:ml-6 md:flex md:pr-0">
                 <DropdownMenu
                   btnProps={{
                     icon: getThemeIcon(),
@@ -128,7 +124,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                   items={themeOptions}
                 />
               </div>
-              <div className="hidden sm:static sm:inset-auto sm:ml-6 sm:flex sm:items-center sm:pr-0">
+              <div className="hidden md:static md:inset-auto md:ml-6 md:flex md:items-center md:pr-0">
                 <DropdownMenu
                   btnProps={{
                     icon: IconType.GLOBE,
@@ -139,9 +135,9 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                   items={languageOptions}
                 />
               </div>
-              <div className="flex sm:static sm:inset-auto sm:ml-6 sm:hidden sm:items-center sm:pr-0">
+              <div className="flex md:static md:inset-auto md:ml-6 md:hidden md:items-center md:pr-0">
                 <Modal
-                  title={"Settings"}
+                  title={t("SETTINGS")}
                   btnProps={{
                     icon: IconType.COG,
                     iconType: "outline",
@@ -149,35 +145,33 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                     compact: true,
                   }}
                 >
-                  <div className="flex w-full flex-col space-y-5 py-4">
+                  <div className="flex w-full flex-col gap-y-5 divide-y-[0.5px] divide-gray-300 py-4 dark:divide-gray-700">
                     <Text>{t("SETTINGS_DESCRIPTION")}</Text>
-                    <div>
-                      <DropdownMenu
-                        btnProps={{
-                          label: t("CHANGE_THEME"),
-                          block: true,
-                          icon: IconType.PENCIL,
+                    <div className="pt-4">
+                      <Text weight="semibold">{t("THEME")}</Text>
+                      <Radio
+                        options={[
+                          { label: t("LIGHT"), value: "LIGHT" },
+                          { label: t("DARK"), value: "DARK" },
+                        ]}
+                        onChange={(e) => {
+                          switchTheme(e.target.value);
                         }}
-                        items={themeOptions}
+                        value={getTheme()}
                       />
-                      <Text size="xs" className="pt-0.5">
-                        {t("CURRENT_THEME")}: {t(`${getTheme()}`)}
-                      </Text>
                     </div>
-                    <div>
-                      <DropdownMenu
-                        btnProps={{
-                          label: t("CHANGE_LANGUAGE"),
-                          block: true,
-                          icon: IconType.PENCIL,
+                    <div className="pt-4">
+                      <Text weight="semibold">{t("LANGUAGE")}</Text>
+                      <Radio
+                        options={[
+                          { label: t("DUTCH"), value: "nl" },
+                          { label: t("ENGLISH"), value: "en" },
+                        ]}
+                        onChange={(e) => {
+                          switchLanguage(e.target.value);
                         }}
-                        items={languageOptions}
+                        value={getLanguage()}
                       />
-                      <Text size="xs" className="pt-0.5">
-                        {`${t("CURRENT_LANGUAGE")}: ${
-                          isDutch ? t("DUTCH") : t("ENGLISH")
-                        }`}
-                      </Text>
                     </div>
                   </div>
                 </Modal>
@@ -185,16 +179,21 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
+          <Disclosure.Panel className="absolute inset-0 top-14 z-20 h-36 border-b-2 border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800 md:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
               {navigation.map((item) => (
-                <button
+                <Button
+                  block
+                  className="text-start"
+                  compact
                   key={item.name}
                   onClick={() => navigate(item.href)}
-                  className={navClasses(item.href === location.pathname, true)}
+                  type={
+                    item.href === location.pathname ? "selected" : "default"
+                  }
                 >
                   {item.name}
-                </button>
+                </Button>
               ))}
             </div>
           </Disclosure.Panel>

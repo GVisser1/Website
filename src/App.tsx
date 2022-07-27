@@ -13,7 +13,7 @@ import ProjectsPage from "./pages/ProjectsPage";
 const App: FC = () => {
   return (
     <Router>
-      <main className="mx-auto flex lg:h-screen">
+      <main className="mx-auto flex overflow-hidden lg:h-screen">
         <Routes>
           <Route path="/home" element={<HomePage />} />
           <Route path="/projects" element={<ProjectsPage />} />

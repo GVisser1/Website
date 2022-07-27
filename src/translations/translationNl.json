@@ -2,8 +2,6 @@
   "ABOUT_CONTENT_1": "Het begon allemaal met Python. Vormen maken in de command line klinkt niet erg spannend, maar daar is mijn liefde voor programmeren begonnen. Sindsdien zijn er drie jaar verstreken. Ik heb verschillende nieuwe talen geleerd, zoals C# en TypeScript. Ook ontdekte ik dat mijn passie vooral ligt bij front-end development.",
   "ABOUT_CONTENT_2": "Momenteel studeer ik Informatica aan Hogeschool Rotterdam. Ik zit in mijn derde jaar en geniet van elke minuut. Mijn stage bij MoreApp was een groot hoogtepunt.",
   "ABOUT_CONTENT_3": "In mijn persoonlijke leven speel ik meestal wat videogames of breek ik mijn hersenen door een bug in mijn code. Ik ben ook een enorme film- en muzieknerd. De kans is groot dat ik nu naar muziek aan het luisteren ben.",
-  "CHANGE_LANGUAGE": "Wijzig taal",
-  "CHANGE_THEME": "Wijzig thema",
   "CHECK_SOURCE_CODE": "Bekijk zelf de broncode:",
   "COMPUTER_SCIENCE": "Informatica",
   "CONTACT_ME": "Neem gerust contact met mij op!",
@@ -32,7 +30,7 @@
   "PROJECTS_WEBSITE_CONTENT_3": "Het bouwen van deze website heeft mij veel geleerd, mocht je vragen hebben over de totstandkoming van deze site of een ander onderwerp dan kun je mij een bericht sturen op de contactpagina.",
   "READ_MORE": "Lees verder",
   "SCHOOL_PROJECTS": "School Projecten",
-  "SETTINGS_DESCRIPTION": "Met deze instellingen is het mogelijk om van taal of thema te veranderen (light/dark).",
+  "SETTINGS_DESCRIPTION": "Met deze instellingen is het mogelijk om van taal of thema te veranderen (licht/donker).",
   "SOUTH_HOLLAND": "Zuid-Holland",
   "VISIT_WEBSITE": "Bezoek Website",
   "WORK_EXPERIENCE": "Werkervaring",
@@ -47,6 +45,7 @@
   "HOME": "Home",
   "INTERNSHIP": "Stage",
   "JULY": "Juli",
+  "LANGUAGE": "Taal",
   "LANGUAGES": "Talen",
   "LIGHT": "Licht",
   "MONTHS": "Maanden",
@@ -60,6 +59,7 @@
   "SETTINGS": "Instellingen",
   "SKILLS": "Vaardigheden",
   "SYSTEM": "Systeem",
+  "THEME": "Thema",
   "THEMES": "Themas",
   "VWO": "VWO"
 }

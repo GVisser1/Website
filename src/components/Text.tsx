@@ -46,7 +46,7 @@ export const Text: React.FC<TextProps> = ({
   className,
   ...props
 }) => {
-  const Tag = href ? "a" : "div";
+  const Tag = href ? "a" : "p";
   const classes = classNames(
     {
       "flex items-center": true,
@@ -68,7 +68,7 @@ export const Text: React.FC<TextProps> = ({
   );
 
   const linkClasses = classNames({
-    "text-blue-600 hover:text-blue-300 dark:text-yellow-600 dark:hover:text-yellow-100 hover:underline focus:outline-none focus:ring focus:ring-blue-300 dark:focus:ring-yellow-600":
+    "text-blue-500 underline visited:text-purple-500 visited:decoration-purple-500 underline-offset-2 decoration-2 decoration-blue-500 hover:decoration-[3px] focus:outline-none pointer:focus:ring focus:ring-blue-300 dark:focus:ring-yellow-600":
       href,
   });
 
