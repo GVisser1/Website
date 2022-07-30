@@ -56,7 +56,7 @@ export const Text: React.FC<TextProps> = ({
       "text-gray-700 dark:text-white": color === "dark",
       "text-white dark:text-gray-700": color === "white",
       "text-red-400": color === "danger",
-      "text-gray-300": color === "light",
+      "text-gray-400": color === "light",
       "text-gray-700": color === "all-dark",
       "text-white": color === "all-white",
       "space-x-1": spaceBetween === "sm",
@@ -68,7 +68,7 @@ export const Text: React.FC<TextProps> = ({
   );
 
   const linkClasses = classNames({
-    "text-blue-500 underline visited:text-purple-500 visited:decoration-purple-500 underline-offset-2 decoration-2 decoration-blue-500 hover:decoration-[3px] focus:outline-none pointer:focus:ring focus:ring-blue-300 dark:focus:ring-yellow-600":
+    "text-blue-500 underline visited:text-purple-500 visited:decoration-purple-500 underline-offset-2 decoration-1 decoration-blue-500 hover:decoration-2 focus:outline-none pointer:focus:ring focus:ring-blue-300 dark:focus:ring-yellow-600":
       href,
   });
 

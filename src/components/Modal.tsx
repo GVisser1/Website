@@ -49,7 +49,7 @@ const Modal: React.FC<ModalProps> = ({
         onClick={openModal}
       />
       <Transition show={isOpen} as={Fragment} appear>
-        <Dialog className="fixed inset-0 z-30 pb-8" onClose={closeModal}>
+        <Dialog className="fixed inset-0 z-20 pb-8" onClose={closeModal}>
           <div className="flex h-full justify-center px-4">
             <Transition.Child
               as={Fragment}
@@ -75,7 +75,7 @@ const Modal: React.FC<ModalProps> = ({
                 <div className="flex h-full w-full transform flex-col rounded-2xl border-2 border-gray-700 bg-white pb-4 dark:bg-gray-600">
                   <div className="border-b pb-3 dark:border-gray-700">
                     <div className="flex items-center justify-between text-center">
-                      <Dialog.Title as="div" className="line-clamp-2 pl-6 pt-5">
+                      <Dialog.Title as="div" className="pl-6 pt-5 line-clamp-2">
                         <Title as="h2" size="2xl">
                           {title}
                         </Title>

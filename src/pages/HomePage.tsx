@@ -8,10 +8,10 @@ import { Title } from "../components/Title";
 import { useTranslation } from "react-i18next";
 import PersonalInfo from "../components/PersonalInfo";
 import useDate from "../hooks/useDate";
+import { WorkList } from "../components/WorkList";
 
 const HomePage: FC = () => {
   const { t } = useTranslation();
-  const { getTotalMonths } = useDate();
 
   return (
     <Page>
@@ -48,16 +48,20 @@ const HomePage: FC = () => {
 
       <section
         id="About"
-        className="mx-auto max-w-screen-xl px-5 py-10 md:px-8"
+        className="relative mx-auto flex max-w-screen-xl justify-evenly overflow-hidden px-5 py-10 md:px-8"
       >
-        <Title icon={IconType.USER_CIRCLE} className="py-5">
-          {t("ABOUT")}
-        </Title>
-        <div className="space-y-4 pb-8">
-          <Text size="md">{t("ABOUT_CONTENT_1")}</Text>
-          <Text size="md">{t("ABOUT_CONTENT_2")}</Text>
-          <Text size="md">{t("ABOUT_CONTENT_3")}</Text>
+        <div className="z-10">
+          <Title icon={IconType.USER_CIRCLE} className="py-5">
+            {t("ABOUT")}
+          </Title>
+          <div className="space-y-4 pb-8">
+            <Text size="md">{t("ABOUT_CONTENT_1")}</Text>
+            <Text size="md">{t("ABOUT_CONTENT_2")}</Text>
+            <Text size="md">{t("ABOUT_CONTENT_3")}</Text>
+          </div>
         </div>
+        <div className="bg-emerald-100 absolute h-48 w-48 translate-y-48 -translate-x-36 rounded-full blur-3xl dark:bg-blue-400/50 md:-translate-x-48" />
+        <div className="absolute h-48 w-48 translate-x-48 -translate-y-16 rounded-full bg-blue-100 blur-3xl dark:bg-purple-400/50" />
       </section>
 
       <section
@@ -72,84 +76,73 @@ const HomePage: FC = () => {
         </div>
       </section>
 
-      <section id="Work" className="mx-auto max-w-screen-xl px-5 py-10 md:px-8">
-        <Title icon={IconType.BRIEFCASE} className="py-5">
-          {t("WORK_EXPERIENCE")}
-        </Title>
-        <img
-          src="/images/experience/MoreApp.webp"
-          className="w-22 h-12 px-2 dark:brightness-150"
-        />
-        <div className="space-y-1 py-2 px-2">
-          <Text size="lg" weight="semibold">
-            MoreApp
-          </Text>
-          <Text weight="semibold">
-            {getTotalMonths(new Date(2021, 8, 13), new Date())}
-          </Text>
-          <Text>{`Rotterdam, ${t("SOUTH_HOLLAND")}, ${t("NETHERLANDS")}`}</Text>
-          <div className="w-9/10 border-t-2 border-gray-200 dark:border-gray-700 sm:w-72" />
-          <div className="space-y-1 pl-3">
-            <Text size="lg" weight="semibold">
-              Software Engineer
-            </Text>
-            <Text weight="semibold">Part-time</Text>
-            <Text>
-              {`Feb 2022 - ${t("PRESENT")} · ${getTotalMonths(
-                new Date(2022, 1, 21),
-                new Date()
-              )}`}
-            </Text>
-            <div className="w-48 border-t-2 border-gray-200 dark:border-gray-700" />
-          </div>
-          <div className="space-y-1 pl-3">
-            <Text size="lg" weight="semibold">
-              {t("DEVELOPMENT_INTERN")}
-            </Text>
-            <Text weight="semibold">{t("INTERNSHIP")}</Text>
-            <Text>
-              {`Sep 2021 - Feb 2022 · ${getTotalMonths(
-                new Date(2021, 8, 13),
-                new Date(2022, 1, 11)
-              )}`}
-            </Text>
-            <div className="w-48 border-b-2 border-gray-200 dark:border-gray-700" />
-          </div>
+      <section
+        id="Work"
+        className="relative mx-auto flex max-w-screen-xl justify-evenly overflow-hidden px-5 py-10 md:px-8"
+      >
+        <div className="z-10 w-full">
+          <Title icon={IconType.BRIEFCASE} className="-ml-4 py-5">
+            {t("WORK_EXPERIENCE")}
+          </Title>
+          <WorkList
+            company={{
+              address: `Rotterdam, ${t("SOUTH_HOLLAND")}, ${t("NETHERLANDS")}`,
+              name: "MoreApp",
+              positions: [
+                {
+                  startDate: new Date(2022, 1, 21),
+                  title: "Software Engineer",
+                  type: "Part-Time",
+                },
+                {
+                  startDate: new Date(2021, 8, 13),
+                  title: t("DEVELOPMENT_INTERN"),
+                  type: t("INTERNSHIP"),
+                  endDate: new Date(2022, 1, 11),
+                },
+              ],
+              startDate: new Date(2021, 8, 13),
+              website: "https://moreapp.dev",
+              logo: "/images/experience/MoreApp.webp",
+            }}
+          />
         </div>
-        <Text href="https://moreapp.dev">{t("VISIT_WEBSITE")}</Text>
       </section>
 
       <section
         id="Education"
         className="bg-gray-100 dark:border-y-2 dark:border-gray-700 dark:bg-gray-900"
       >
-        <div className="mx-auto max-w-screen-xl px-5 py-10 md:px-8">
-          <Title icon={IconType.LIBRARY} className="py-5">
-            {t("EDUCATION")}
-          </Title>
-          <img src="/images/experience/HR.webp" className="w-22 h-16 px-2" />
-          <div className="space-y-1 py-2 px-2 pb-8">
-            <Text size="lg">{`Sept. 2019 - ${t("PRESENT")}`}</Text>
-            <Text>{t("COMPUTER_SCIENCE")}</Text>
-            <Text>{`${t("HOGESCHOOL_ROTTERDAM")}, Rotterdam`}</Text>
-            <Text href="https://www.hogeschoolrotterdam.nl/">
-              {t("VISIT_WEBSITE")}
-            </Text>
+        <div className="relative mx-auto flex max-w-screen-xl justify-evenly overflow-hidden px-5 py-10 md:px-8">
+          <div className="z-10 w-full">
+            <Title icon={IconType.LIBRARY} className="py-5">
+              {t("EDUCATION")}
+            </Title>
+            <img src="/images/experience/HR.webp" className="w-22 h-16 px-2" />
+            <div className="space-y-1 py-2 px-2 pb-8">
+              <Text size="lg">{`Sept. 2019 - ${t("PRESENT")}`}</Text>
+              <Text>{t("COMPUTER_SCIENCE")}</Text>
+              <Text>{`${t("HOGESCHOOL_ROTTERDAM")}, Rotterdam`}</Text>
+              <Text href="https://www.hogeschoolrotterdam.nl/">
+                {t("VISIT_WEBSITE")}
+              </Text>
+            </div>
+            <img
+              src="/images/experience/Lentiz.webp"
+              className="h-12 w-40 px-2"
+            />
+            <div className="space-y-1 py-2 px-2">
+              <Text size="lg">{`Sept. 2012 - ${t("JULY")} 2019`}</Text>
+              <Text icon={IconType.ACADEMIC_CAP} iconPosition="right">
+                {`${t("VWO")} - ${t("GRADUATED")}`}
+              </Text>
+              <Text>{"Lentiz Reviuslyceum, Maassluis"}</Text>
+              <Text href="https://www.lentiz.nl/reviuslyceum/">
+                {t("VISIT_WEBSITE")}
+              </Text>
+            </div>
           </div>
-          <img
-            src="/images/experience/Lentiz.webp"
-            className="h-12 w-40 px-2"
-          />
-          <div className="space-y-1 py-2 px-2">
-            <Text size="lg">{`Sept. 2012 - ${t("JULY")} 2019`}</Text>
-            <Text icon={IconType.ACADEMIC_CAP} iconPosition="right">
-              {`${t("VWO")} - ${t("GRADUATED")}`}
-            </Text>
-            <Text>{"Lentiz Reviuslyceum, Maassluis"}</Text>
-            <Text href="https://www.lentiz.nl/reviuslyceum/">
-              {t("VISIT_WEBSITE")}
-            </Text>
-          </div>
+          <div className="bg-emerald-100 dark:bg-emerald-400/40 absolute h-56 w-56 translate-y-48 -translate-x-36 rounded-full blur-3xl" />
         </div>
       </section>
 
@@ -168,6 +161,7 @@ const HomePage: FC = () => {
           {t("OTHER")}
         </Title>
         <ImageList listType="MISC" />
+        {/* <div className="bg-emerald-100 dark:bg-emerald-400/40 absolute h-56 w-56 translate-y-48 -translate-x-36 rounded-full blur-3xl" /> */}
       </section>
 
       <section

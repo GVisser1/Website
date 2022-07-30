@@ -66,7 +66,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
     <Disclosure
       as="nav"
       className={classNames(
-        "border-b-2 border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800",
+        "relative border-b-2 border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800",
         className
       )}
     >
@@ -153,6 +153,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                         options={[
                           { label: t("LIGHT"), value: "LIGHT" },
                           { label: t("DARK"), value: "DARK" },
+                          { label: t("SYSTEM"), value: "SYSTEM" },
                         ]}
                         onChange={(e) => {
                           switchTheme(e.target.value);
@@ -179,7 +180,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
             </div>
           </div>
 
-          <Disclosure.Panel className="absolute inset-0 top-14 z-20 h-36 border-b-2 border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800 md:hidden">
+          <Disclosure.Panel className="h-36 border-b-2 border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800 md:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
               {navigation.map((item) => (
                 <Button
