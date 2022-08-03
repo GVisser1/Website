@@ -33,7 +33,7 @@ const ContactPage: FC = () => {
           </Text>
           <SocialIcons className="pt-6" />
         </div>
-        <div className="bg-emerald-100 absolute h-56 w-56 translate-y-48 -translate-x-36 rounded-full blur-3xl dark:bg-blue-400/50" />
+        <div className="absolute h-56 w-56 translate-y-48 -translate-x-36 rounded-full bg-emerald-100 blur-3xl dark:bg-blue-400/50" />
         <div className="absolute h-56 w-56 translate-x-48 -translate-y-8 rounded-full bg-blue-100 blur-3xl dark:bg-purple-400/70" />
       </section>
     </Page>

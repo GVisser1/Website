@@ -11,10 +11,7 @@ const ProjectsPage: FC = () => {
 
   const projectElements = (project: ProjectOption, index: number) => (
     <div key={index} className="object-fit flex w-full flex-col p-2 md:w-80">
-      <img
-        src={project.logo}
-        className="border-2 border-gray-100 dark:border-gray-700"
-      />
+      <img src={project.logo} className="border-2 border-gray-100 dark:border-gray-700" />
       <Title as="h3" size="xl" className="pt-2">
         {project.title}
       </Title>
@@ -33,10 +30,7 @@ const ProjectsPage: FC = () => {
           </div>
         ))}
         {project.src && (
-          <img
-            src={project.src}
-            className="border-2 border-gray-100 dark:border-gray-700"
-          />
+          <img src={project.src} className="border-2 border-gray-100 dark:border-gray-700" />
         )}
         {project.href && (
           <Text className="py-2">
@@ -53,17 +47,13 @@ const ProjectsPage: FC = () => {
       <section id="Projects" className="mx-auto max-w-5xl px-5 py-10 md:px-8">
         <Title as="h2">{t("SCHOOL_PROJECTS")}</Title>
         <div className="flex flex-wrap py-3">
-          {useProjectData("SCHOOL")?.map((project, index) =>
-            projectElements(project, index)
-          )}
+          {useProjectData("SCHOOL")?.map((project, index) => projectElements(project, index))}
         </div>
         <Title className="pt-8" as="h2">
           {t("PERSONAL_PROJECTS")}
         </Title>
         <div className="flex flex-wrap py-3">
-          {useProjectData("PERSONAL")?.map((project, index) =>
-            projectElements(project, index)
-          )}
+          {useProjectData("PERSONAL")?.map((project, index) => projectElements(project, index))}
         </div>
       </section>
     </Page>

@@ -28,6 +28,16 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/line-clamp"),
-    require("tailwind-scrollbar-hide"),
+    plugin(({ addUtilities }) => {
+      addUtilities({
+        ".scrollbar-none": {
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        },
+      });
+    }),
   ],
 };

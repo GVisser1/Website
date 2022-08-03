@@ -21,12 +21,7 @@ interface ModalProps {
   btnProps?: ButtonProps;
 }
 
-const Modal: React.FC<ModalProps> = ({
-  title,
-  className,
-  btnProps,
-  ...props
-}) => {
+const Modal: React.FC<ModalProps> = ({ title, className, btnProps, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
@@ -89,7 +84,7 @@ const Modal: React.FC<ModalProps> = ({
                       />
                     </div>
                   </div>
-                  <div className="scrollbar-hide h-full max-h-screen overflow-x-hidden overflow-y-scroll px-4">
+                  <div className="h-full max-h-screen overflow-x-hidden overflow-y-scroll px-4 scrollbar-none">
                     {props.children}
                   </div>
                 </div>

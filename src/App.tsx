@@ -1,10 +1,5 @@
 import { FC } from "react";
-import {
-  BrowserRouter as Router,
-  Navigate,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import ContactPage from "./pages/ContactPage";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";

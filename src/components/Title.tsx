@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classNames from "classnames";
 import { Icon, IconType } from "./Icon";
 
 export interface TitleProps {
   className?: string;
-  size?: "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl";
+  size?: "xs" | "sm" | "md" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl";
   color?: "black" | "dark" | "white" | "light" | "selected";
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   icon?: IconType;
@@ -46,6 +46,7 @@ export const Title: React.FC<TitleProps> = ({
       "text-5xl font-bold": size === "5xl",
       "text-lg font-semibold leading-6": size === "lg",
       "text-base font-semibold": size === "base",
+      "text-md font-semibold": size === "md",
       "text-sm font-semibold": size === "sm",
       "text-xs font-semibold leading-6 tracking-wider uppercase": size === "xs",
 

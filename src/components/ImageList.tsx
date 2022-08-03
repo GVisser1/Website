@@ -1,75 +1,53 @@
 import classNames from "classnames";
-import Text from "../components/Text";
-import useListData from "../hooks/useListData";
+import { ListOption } from "../hooks/useData";
+import { Card } from "./Card";
+import { Icon, IconType } from "./Icon";
+
+type ListType = "MUSIC" | "GAMES" | "MOVIES" | "LANGUAGES" | "TOOLS";
 
 interface ImageListProps {
+  data: ListOption[];
   className?: string;
-  listType: "MUSIC" | "GAMES" | "MOVIES" | "LANGUAGES" | "MISC";
+  listType: ListType;
 }
 
-const ImageList: React.FC<ImageListProps> = ({ className, listType }) => {
-  const data = useListData(listType);
-  return <Lists className={className} listType={listType} options={data!} />;
+const ImageList: React.FC<ImageListProps> = ({ className, listType, data }) => {
+  return <Lists className={className} listType={listType} data={data} />;
 };
-
-interface ListOption {
-  src?: string;
-  title?: string;
-  subTitle?: string;
-  href?: string;
-}
 
 export interface ListsProps {
   className?: string;
-  listType?: "MUSIC" | "GAMES" | "MOVIES" | "LANGUAGES" | "MISC";
-  options: ListOption[];
+  listType: ListType;
+  data: ListOption[];
 }
 
-export const Lists: React.FC<ListsProps> = ({
-  listType,
-  options,
-  className,
-}) => {
-  const listClasses = classNames(
-    {
-      "flex lg:flex-none overflow-x-auto scrollbar-hide py-3": true,
-      "space-x-2":
-        listType === "MUSIC" || listType === "GAMES" || listType === "MOVIES",
-      "space-x-16": listType === "LANGUAGES" || listType === "MISC",
-    },
-    className
+export const Lists: React.FC<ListsProps> = ({ listType, data }) => {
+  const imgClasses = classNames({
+    "h-32 my-8 mx-auto w-32": listType === "LANGUAGES" || listType === "TOOLS",
+    "w-full": ["MUSIC", "GAMES", "MOVIES"].includes(listType),
+  });
+
+  const imgIcon = (
+    <Icon
+      defaultSize={false}
+      className="m-auto hidden h-16 w-16 text-white group-hover:block"
+      name={listType === "MUSIC" ? IconType.PLAY : IconType.EXTERNAL_LINK}
+    />
   );
 
-  const itemClasses = classNames({
-    "object-fit flex-none py-2 md:py-0": true,
-    "w-28 h-fit flex flex-col justify-between items-center":
-      listType === "LANGUAGES" || listType === "MISC",
-    "w-56 h-fit": listType === "MUSIC",
-    "w-44 h-fit": listType === "MOVIES",
-    "w-52 h-fit": listType === "GAMES",
-  });
-
-  const imageClasses = classNames({
-    "h-28": listType === "LANGUAGES" || listType === "MISC",
-    "h-56 shadow-md": listType === "MUSIC",
-    "h-64 shadow-md": listType === "MOVIES",
-    "h-52 shadow-md": listType === "GAMES",
-  });
-
   return (
-    <div className={listClasses}>
-      {options.map((option, index) => (
-        <div className={itemClasses} key={index}>
-          <img className={imageClasses} src={option.src} />
-          <div className="pt-1">
-            <Text size="base" href={option.href} className="line-clamp-1 px-1">
-              {option.title ?? ""}
-            </Text>
-          </div>
-          <div className="max-w-fit pb-3">
-            <Text className="line-clamp-1 px-1">{option.subTitle ?? ""}</Text>
-          </div>
-        </div>
+    <div className="grid grid-cols-2 grid-rows-3 gap-7 md:grid-cols-3 md:grid-rows-2 md:gap-4 lg:grid-cols-6 lg:grid-rows-1">
+      {data.map((item) => (
+        <Card
+          key={item.title}
+          title={item.title}
+          description={item.description}
+          labels={item.labels}
+          src={item.src}
+          href={item.href}
+          imgIcon={imgIcon}
+          imgClassName={imgClasses}
+        />
       ))}
     </div>
   );

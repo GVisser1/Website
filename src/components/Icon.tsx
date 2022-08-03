@@ -1,11 +1,10 @@
-import React from "react";
+import React, { ComponentProps, createElement } from "react";
 import * as solid from "@heroicons/react/solid";
 import * as outline from "@heroicons/react/outline";
 import classNames from "classnames";
 
 export enum IconType {
-  EXCLAMATION,
-  ACADEMIC_CAP,
+  ACADEMIC_CAP = 1,
   BRIEFCASE,
   CAKE,
   CHECK_CIRCLE,
@@ -13,6 +12,7 @@ export enum IconType {
   CHEVRON_RIGHT,
   COG,
   DESKTOP_COMPUTER,
+  EXCLAMATION,
   EXTERNAL_LINK,
   FILM,
   FOLDER,
@@ -25,6 +25,7 @@ export enum IconType {
   MOON,
   MUSIC_NOTE,
   PENCIL,
+  PLAY,
   PUZZLE,
   STAR,
   SPARKLES,
@@ -35,10 +36,6 @@ export enum IconType {
 }
 
 const Icons: Record<IconType, { solid: any; outline: any }> = {
-  [IconType.EXCLAMATION]: {
-    solid: solid.ExclamationIcon,
-    outline: outline.ExclamationIcon,
-  },
   [IconType.ACADEMIC_CAP]: {
     solid: solid.AcademicCapIcon,
     outline: outline.AcademicCapIcon,
@@ -65,6 +62,10 @@ const Icons: Record<IconType, { solid: any; outline: any }> = {
     solid: solid.DesktopComputerIcon,
     outline: outline.DesktopComputerIcon,
   },
+  [IconType.EXCLAMATION]: {
+    solid: solid.ExclamationIcon,
+    outline: outline.ExclamationIcon,
+  },
   [IconType.EXTERNAL_LINK]: {
     solid: solid.ExternalLinkIcon,
     outline: outline.ExternalLinkIcon,
@@ -89,6 +90,7 @@ const Icons: Record<IconType, { solid: any; outline: any }> = {
     outline: outline.MusicNoteIcon,
   },
   [IconType.PENCIL]: { solid: solid.PencilIcon, outline: outline.PencilIcon },
+  [IconType.PLAY]: { solid: solid.PlayIcon, outline: outline.PlayIcon },
   [IconType.PUZZLE]: { solid: solid.PuzzleIcon, outline: outline.PuzzleIcon },
   [IconType.SPARKLES]: {
     solid: solid.SparklesIcon,
@@ -108,13 +110,15 @@ export interface IconProps {
   name: IconType;
   type?: "solid" | "outline";
   className?: string;
+  defaultSize?: boolean;
 }
 
 export const Icon: React.FC<IconProps> = ({
   name,
   type = "solid",
   className,
+  defaultSize = true,
 }) => {
-  const classes = classNames("w-6 h-6", className);
-  return Icons[name][type]({ className: classes });
+  const classes = classNames(defaultSize && "w-6 h-6", className);
+  return Icons[name][type].render({ className: classes });
 };

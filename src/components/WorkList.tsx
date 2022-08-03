@@ -1,20 +1,21 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import useDate from "../hooks/useDate";
-import { Icon, IconType } from "./Icon";
 import Text from "./Text";
+import Timeline, { TimelineItem } from "./Timeline";
 import { Title } from "./Title";
 
 interface WorkListProps {
+  className?: string;
   company: CompanyProps;
 }
 
-export const WorkList: React.FC<WorkListProps> = ({ company }) => {
+export const WorkList: React.FC<WorkListProps> = ({ company, className }) => {
   const { getTotalMonths, getTimeFrame } = useDate();
   const { t } = useTranslation();
 
   return (
-    <div>
+    <div className={className}>
       <img src={company.logo} className="w-22 h-12 px-2 dark:brightness-150" />
       <div className="gap-y-1 py-2">
         <Text size="lg" weight="semibold">
@@ -24,26 +25,9 @@ export const WorkList: React.FC<WorkListProps> = ({ company }) => {
           {getTotalMonths(company.startDate, company.endDate ?? new Date())}
         </Text>
         <Text color="light">{company.address}</Text>
+        <Text href={company.website}>{t("VISIT_WEBSITE")}</Text>
       </div>
-      <ol className="relative space-y-6 border-l border-gray-200 py-2 dark:border-gray-700">
-        {company.positions.map((pos) => (
-          <li key={pos.title} className="ml-4">
-            <div className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full bg-blue-300 dark:bg-blue-700" />
-            <Text color="light">{`${getTimeFrame(
-              pos.startDate,
-              pos.endDate
-            )}`}</Text>
-            <Title as="h3" size="lg">
-              {pos.title}
-            </Title>
-            <Text color="light">{pos.type}</Text>
-            <Text color="light">
-              {`${getTotalMonths(pos.startDate, pos.endDate ?? new Date())}`}
-            </Text>
-          </li>
-        ))}
-      </ol>
-      <Text href={company.website}>{t("VISIT_WEBSITE")}</Text>
+      <Timeline items={company.positions} />
     </div>
   );
 };
@@ -51,16 +35,9 @@ export const WorkList: React.FC<WorkListProps> = ({ company }) => {
 interface CompanyProps {
   address: string;
   name: string;
-  positions: PositionProps[];
+  positions: TimelineItem[];
   startDate: Date;
   website: string;
   endDate?: Date;
   logo?: string;
-}
-
-interface PositionProps {
-  startDate: Date;
-  title: string;
-  type: string;
-  endDate?: Date;
 }

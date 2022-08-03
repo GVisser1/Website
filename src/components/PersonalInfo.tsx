@@ -14,10 +14,7 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({ className }) => {
 
   return (
     <div
-      className={classNames(
-        "flex justify-center space-x-3 rounded-lg bg-black/40 p-2",
-        className
-      )}
+      className={classNames("flex justify-center space-x-3 rounded-lg bg-black/40 p-2", className)}
     >
       <Text icon={IconType.CAKE} color="all-white" spaceBetween="sm">
         {getAge(new Date(2000, 3, 21))}

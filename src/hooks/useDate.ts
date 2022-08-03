@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 
 const useDate = () => {
   const { t } = useTranslation();
-  const getTotalMonths = (start: Date, end: Date) => {
-    const diff = Math.round(new DateDiff(end, start).months());
+  const getTotalMonths = (start: Date, end?: Date) => {
+    const diff = Math.round(new DateDiff(end ?? new Date(), start).months());
     return `${diff} ${diff === 1 ? t("MONTH") : t("MONTHS")}`;
   };
 
@@ -41,8 +41,7 @@ const useDate = () => {
   };
 
   const getTimeFrame = (startDate: Date, endDate?: Date) => {
-    const start =
-      getMonthName(startDate.getMonth()) + " " + startDate.getFullYear();
+    const start = getMonthName(startDate.getMonth()) + " " + startDate.getFullYear();
     const end = endDate
       ? getMonthName(endDate.getMonth()) + " " + endDate.getFullYear()
       : t("PRESENT");

@@ -28,17 +28,12 @@ export interface DropdownMenuProps {
   items: MenuItem[];
 }
 
-export const DropdownMenu: FC<DropdownMenuProps> = ({
-  items,
-  btnProps,
-  className,
-}) => {
+export const DropdownMenu: FC<DropdownMenuProps> = ({ items, btnProps, className }) => {
   const classes = classNames("relative", className);
 
   const optClasses = (active: boolean, selected = false) =>
     classNames({
-      "w-full flex h-10 items-center justify-between px-4 py-2 text-gray-700 dark:text-white":
-        true,
+      "w-full flex h-10 items-center justify-between px-4 py-2 text-gray-700 dark:text-white": true,
       "bg-emerald-100 dark:bg-gray-800 ": !active && selected,
       "bg-emerald-200/80 dark:bg-gray-600 ": active && selected,
       "bg-gray-200 dark:bg-gray-600": active && !selected,
@@ -75,18 +70,13 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({
               {items.map((item, index) => (
                 <Menu.Item key={index}>
                   {({ active }) => (
-                    <button
-                      className={optClasses(active, item.selected)}
-                      onClick={item.onClick}
-                    >
+                    <button className={optClasses(active, item.selected)} onClick={item.onClick}>
                       {item.label && (
                         <Text color="dark" icon={item.icon}>
                           {item.label}
                         </Text>
                       )}
-                      {item.selected && (
-                        <Icon name={IconType.CHECK_CIRCLE} type="outline" />
-                      )}
+                      {item.selected && <Icon name={IconType.CHECK_CIRCLE} type="outline" />}
                     </button>
                   )}
                 </Menu.Item>

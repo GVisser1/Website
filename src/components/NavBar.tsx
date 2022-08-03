@@ -72,16 +72,12 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
     >
       {({ open }) => (
         <>
-          <div className="max-w-8xl mx-auto px-2 md:px-6 lg:px-8">
+          <div className="mx-auto max-w-8xl px-2 md:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center md:hidden">
                 <Disclosure.Button as={Fragment}>
                   <div>
-                    <Button
-                      compact
-                      type="clear"
-                      icon={open ? IconType.X : IconType.MENU}
-                    />
+                    <Button compact type="clear" icon={open ? IconType.X : IconType.MENU} />
                   </div>
                 </Disclosure.Button>
               </div>
@@ -102,9 +98,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                         compact
                         icon={item.icon}
                         key={item.name}
-                        type={
-                          item.href === location.pathname ? "selected" : "clear"
-                        }
+                        type={item.href === location.pathname ? "selected" : "clear"}
                         onClick={() => navigate(item.href)}
                       >
                         {item.name}
@@ -189,9 +183,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                   compact
                   key={item.name}
                   onClick={() => navigate(item.href)}
-                  type={
-                    item.href === location.pathname ? "selected" : "default"
-                  }
+                  type={item.href === location.pathname ? "selected" : "default"}
                 >
                   {item.name}
                 </Button>

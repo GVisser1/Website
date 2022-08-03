@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import { IconType } from "../components/Icon";
 
 const useSystem = () => {
-  const [useSystemTheme, setUseSystemTheme] = useState(
-    !("theme" in localStorage)
-  );
+  const [useSystemTheme, setUseSystemTheme] = useState(!("theme" in localStorage));
   const [, setThemeIcon] = useState<IconType>();
 
   const getTheme = () => {

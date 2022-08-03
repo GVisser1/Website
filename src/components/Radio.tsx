@@ -13,11 +13,7 @@ export interface RadioProps {
   value: string;
 }
 
-export const Radio: React.FC<RadioProps> = ({
-  onChange,
-  options = [],
-  value = "",
-}) => {
+export const Radio: React.FC<RadioProps> = ({ onChange, options = [], value = "" }) => {
   const isSelected = (option: RadioOption) => value === option.value;
 
   const getLabelClasses = (option: RadioOption) =>

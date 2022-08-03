@@ -4,27 +4,9 @@ import { Icon, IconType } from "./Icon";
 
 export interface TextProps {
   className?: string;
-  size?:
-    | "xs"
-    | "sm"
-    | "base"
-    | "md"
-    | "lg"
-    | "xl"
-    | "2xl"
-    | "3xl"
-    | "4xl"
-    | "5xl"
-    | "6xl";
+  size?: "xs" | "sm" | "base" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl";
   weight?: "light" | "normal" | "medium" | "semibold" | "bold";
-  color?:
-    | "black"
-    | "dark"
-    | "white"
-    | "light"
-    | "danger"
-    | "all-white"
-    | "all-dark";
+  color?: "black" | "dark" | "white" | "light" | "danger" | "all-white" | "all-dark";
   italic?: boolean;
   href?: string;
   spaceBetween?: "sm" | "base" | "lg";

@@ -3,10 +3,7 @@ import { useTranslation } from "react-i18next";
 const useI18n = () => {
   const { i18n } = useTranslation();
 
-  const isDutch =
-    i18n.language === "nl" ||
-    i18n.language === "nl-NL" ||
-    i18n.language === "nl-BE";
+  const isDutch = i18n.language === "nl" || i18n.language === "nl-NL" || i18n.language === "nl-BE";
 
   const switchLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
