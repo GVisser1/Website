@@ -6,24 +6,28 @@ import { Title } from "./Title";
 
 export interface CardProps {
   title: string;
+  subTitle?: string;
   description?: string;
   labels?: string[];
   href?: string;
   src?: string;
   imgClassName?: string;
   imgIcon?: ReactElement;
+  button?: ReactElement;
 }
 
 const labelColors: LabelColor[] = ["blue", "green", "red", "yellow", "dark", "pink"];
 
 export const Card: React.FC<CardProps> = ({
   title,
+  subTitle,
   description,
   labels,
   href,
   src,
   imgIcon,
   imgClassName,
+  button,
 }) => {
   const classes = (hover: boolean) =>
     classNames({
@@ -49,8 +53,13 @@ export const Card: React.FC<CardProps> = ({
         <Title as="h5" size={description ? "lg" : "md"} className="line-clamp-1">
           {title}
         </Title>
-        {description && (
+        {subTitle && (
           <Text className="line-clamp-1" color="light">
+            {subTitle}
+          </Text>
+        )}
+        {description && (
+          <Text className="line-clamp-3" color="light">
             {description}
           </Text>
         )}
@@ -63,6 +72,7 @@ export const Card: React.FC<CardProps> = ({
             ))}
           </div>
         )}
+        {button}
       </div>
     </div>
   );

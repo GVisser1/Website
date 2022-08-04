@@ -41,7 +41,7 @@ export const Lists: React.FC<ListsProps> = ({ listType, data }) => {
         <Card
           key={item.title}
           title={item.title}
-          description={item.description}
+          subTitle={item.description}
           labels={item.labels}
           src={item.src}
           href={item.href}
