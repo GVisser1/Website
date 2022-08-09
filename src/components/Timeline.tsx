@@ -1,18 +1,17 @@
 import classNames from "classnames";
 import React from "react";
-import { useTranslation } from "react-i18next";
-import { IconType } from "./Icon";
-import Text from "./Text";
-import { Title } from "./Title";
+import { Card } from "./Card";
+import { Icon, IconType } from "./Icon";
 
 export interface TimelineItem {
   title: string;
-  titleIcon?: IconType;
   timeFrame: string;
   subTitle?: string;
   description?: string;
+  color?: string;
   img?: React.ReactElement;
   href?: string;
+  labels?: string[];
 }
 
 interface TimelineProps {
@@ -21,29 +20,50 @@ interface TimelineProps {
 }
 
 const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
-  const { t } = useTranslation();
+  const isEven = (num: number) => num % 2 === 0;
+  const timeLineCard = (item: TimelineItem) => (
+    <Card
+      title={item.title}
+      subTitle={item.subTitle}
+      description={item.description}
+      headerText={item.timeFrame}
+      labels={item.labels}
+      color={item.color}
+      href={item.href}
+    />
+  );
+
+  const classes = (color: string) =>
+    classNames({
+      "bg-blue-100 ring-blue-400 text-blue-400": color === "blue",
+      "bg-emerald-100 ring-emerald-400 text-emerald-400": color === "green",
+      "bg-red-100 ring-red-400 text-red-400": color === "red",
+      "bg-yellow-100 ring-yellow-500 text-yellow-500": color === "yellow",
+      "bg-gray-100 ring-gray-400 text-gray-400": color === "gray",
+      "bg-pink-100 ring-pink-400 text-pink-400": color === "pink",
+    });
 
   return (
-    <ol
-      className={classNames(
-        "relative space-y-6 border-l border-gray-200 py-2 dark:border-gray-700",
-        className
-      )}
-    >
-      {items.map((item) => (
-        <li key={item.title} className="ml-4">
-          <div className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full bg-blue-300" />
-          {item.img}
-          <Text color="light">{item.timeFrame}</Text>
-          <Title as="h3" size="lg" icon={item.titleIcon} iconPosition={"right"}>
-            {item.title}
-          </Title>
-          {item.subTitle && <Text color="light">{item.subTitle}</Text>}
-          {item.description && <Text color="light">{item.description}</Text>}
-          {item.href && <Text href={item.href}>{t("VISIT_WEBSITE")}</Text>}
-        </li>
+    <div className={classNames("grid w-full grid-cols-4 sm:grid-cols-5", className)}>
+      {items.map((item, i) => (
+        <React.Fragment key={i}>
+          <div className="col-span-2 mb-12">{isEven(i) && timeLineCard(item)}</div>
+          <div className="relative col-span-1 mx-auto hidden w-full justify-center pt-3 sm:flex">
+            <div
+              className={classNames(
+                "absolute z-10 mt-1 h-10 w-10 rounded-full ring-4",
+                classes(item.color || "blue")
+              )}
+            >
+              <Icon overrideSize className="mx-auto" name={IconType.CHEVRON_UP} />
+            </div>
+            <div className="absolute flex h-full w-0.5 bg-gray-200 dark:bg-gray-700" />
+          </div>
+
+          <div className="col-span-2 mb-12">{!isEven(i) && timeLineCard(item)}</div>
+        </React.Fragment>
       ))}
-    </ol>
+    </div>
   );
 };
 

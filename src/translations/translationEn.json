@@ -36,6 +36,7 @@
   "WORK_EXPERIENCE": "Work Experience",
   "ABOUT": "About",
   "CLOSE": "Close",
+  "COMPLETED": "Completed",
   "CONTACT": "Contact",
   "DARK": "Dark",
   "DUTCH": "Dutch",
@@ -50,6 +51,7 @@
   "MONTHS": "Months",
   "MONTH": "Month",
   "NETHERLANDS": "Netherlands",
+  "ONGOING": "Ongoing",
   "OTHER": "Other",
   "PRESENT": "Present",
   "PROJECTS": "Projects",
@@ -60,6 +62,7 @@
   "SYSTEM": "System",
   "THEME": "Theme",
   "THEMES": "Themes",
+  "TIMELINE": "Timeline",
   "VWO": "Pre-university Education",
 
   "JANUARY": "January",

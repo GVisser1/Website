@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 import { Disclosure } from "@headlessui/react";
 import { useNavigate } from "react-router-dom";
 import { IconType } from "./Icon";
@@ -66,7 +66,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
     <Disclosure
       as="nav"
       className={classNames(
-        "relative border-b-2 border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800",
+        "relative z-10 border-b-2 border-gray-100 bg-white transition duration-300 ease-in-out dark:border-gray-700 dark:bg-gray-800",
         className
       )}
     >
@@ -174,19 +174,21 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
             </div>
           </div>
 
-          <Disclosure.Panel className="h-36 border-b-2 border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800 md:hidden">
-            <div className="space-y-1 px-2 pt-2 pb-3">
+          <Disclosure.Panel className="h-36 border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800 md:hidden">
+            <div className="divide-y">
               {navigation.map((item) => (
-                <Button
-                  block
-                  className="text-start"
-                  compact
+                <div
                   key={item.name}
+                  className={classNames({
+                    "w-full cursor-pointer px-2 py-3 font-semibold": true,
+                    "text-gray-400": item.href !== location.pathname,
+                    "bg-emerald-100 text-gray-700 dark:bg-gray-700 dark:text-white":
+                      item.href === location.pathname,
+                  })}
                   onClick={() => navigate(item.href)}
-                  type={item.href === location.pathname ? "selected" : "default"}
                 >
                   {item.name}
-                </Button>
+                </div>
               ))}
             </div>
           </Disclosure.Panel>

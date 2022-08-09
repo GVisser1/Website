@@ -36,6 +36,7 @@
   "WORK_EXPERIENCE": "Werkervaring",
   "ABOUT": "Over",
   "CLOSE": "Sluit",
+  "COMPLETED": "Voltooid",
   "CONTACT": "Contact",
   "DARK": "Donker",
   "DUTCH": "Nederlands",
@@ -50,6 +51,7 @@
   "MONTHS": "Maanden",
   "MONTH": "Maand",
   "NETHERLANDS": "Nederland",
+  "ONGOING": "Lopend",
   "OTHER": "Overig",
   "PRESENT": "Heden",
   "PROJECTS": "Projecten",
@@ -60,6 +62,7 @@
   "SYSTEM": "Systeem",
   "THEME": "Thema",
   "THEMES": "Themas",
+  "TIMELINE": "Tijdlijn",
   "VWO": "VWO",
 
   "JANUARY": "Januari",

@@ -28,34 +28,26 @@ export const Button: React.FC<ButtonProps> = ({
   type = "default",
   ...props
 }) => {
-  const classes = classNames(
-    {
-      "outline-none": true,
-      "w-full": block,
-    },
-    className
-  );
-
   const innerClasses = classNames({
-    "flex justify-center gap-x-1 font-semibold rounded-lg": true,
+    "flex justify-center gap-x-1 font-medium rounded-lg focus:outline-none pointer:focus:ring":
+      true,
     "transition duration-300 ease-in-out": true,
     "px-4 py-3": !compact,
     "p-2": compact,
     "w-full": block,
     "text-gray-400 bg-gray-100": disabled,
-    "focus:outline-none focus:ring touch:focus:ring-0 active:ring-0":
-      !disabled && type !== "selected",
-    "text-black bg-blue-100 hover:bg-blue-200 active:bg-blue-300 focus:ring-blue-300 ":
+    "text-black bg-blue-100 hover:bg-blue-200 active:bg-blue-300 focus:ring-blue-300":
       type === "default" && !disabled,
     "text-white bg-red-500 hover:bg-red-600 ring-red-300 focus:ring-red-300 ":
       type === "destructive" && !disabled,
     "text-gray-400 hover:text-gray-500 dark:hover:text-white focus:ring-blue-300 active:bg-gray-200 dark:active:bg-gray-900":
       type === "clear" && !disabled,
-    "bg-emerald-100 dark:bg-gray-700 dark:text-white cursor-default":
+    "bg-black/5 dark:bg-gray-900 dark:text-white focus:ring-blue-300":
       type === "selected" && !disabled,
   });
+
   return (
-    <div className={classes} {...props}>
+    <div className={classNames("w-full" && block, className)} {...props}>
       <button
         type={"button"}
         onClick={(event) => onClick && onClick(event)}

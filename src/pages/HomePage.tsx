@@ -1,25 +1,24 @@
 import { FC } from "react";
-import { Icon, IconType } from "../components/Icon";
-import ImageList from "../components/ImageList";
+import { IconType } from "../components/Icon";
+import Cards from "../components/Cards";
 import Page from "../components/Page";
 import SocialIcons from "../components/SocialIcons";
 import Text from "../components/Text";
 import { Title } from "../components/Title";
 import { useTranslation } from "react-i18next";
 import PersonalInfo from "../components/PersonalInfo";
-import useDate from "../hooks/useDate";
-import { WorkList } from "../components/WorkList";
 import Timeline from "../components/Timeline";
-import useData from "../hooks/useData";
+import { getAlbums, getGames, getMovies } from "../data/Media";
+import { getProgrammingLanguages } from "../data/Languages";
+import TimeLineData from "../data/TimelineData";
 
 const HomePage: FC = () => {
   const { t } = useTranslation();
-  const { getTotalMonths, getTimeFrame } = useDate();
-  const { getMusic, getLanguages, getTools, getMovies, getGames } = useData();
+  const { getTimeLineItems } = TimeLineData();
 
   return (
     <Page>
-      <section id="Intro" className="relative">
+      <section id="Intro" className="relative hidden">
         <div className="flex w-full items-center justify-center">
           <img
             src="/images/personal/GlennMain.jpeg"
@@ -44,133 +43,62 @@ const HomePage: FC = () => {
 
       <section
         id="About"
-        className="relative mx-auto flex max-w-screen-xl justify-evenly overflow-hidden px-5 py-10 md:px-8"
+        className="relative mx-auto flex max-w-screen-2xl justify-evenly py-36 px-5 md:px-8"
       >
-        <div className="z-10">
-          <Title icon={IconType.USER_CIRCLE} className="mb-3">
+        <div className="z-10 flex">
+          <Title icon={IconType.USER_CIRCLE} size="2xl" className="mb-3">
             {t("ABOUT")}
           </Title>
-          <div className="space-y-4 pb-8">
+          <div className="space-y-4">
             <Text size="md">{t("ABOUT_CONTENT_1")}</Text>
             <Text size="md">{t("ABOUT_CONTENT_2")}</Text>
             <Text size="md">{t("ABOUT_CONTENT_3")}</Text>
           </div>
         </div>
-        <div className="absolute h-48 w-48 translate-y-48 -translate-x-36 rounded-full bg-emerald-100 blur-3xl dark:bg-blue-400/50 md:-translate-x-48" />
-        <div className="absolute h-48 w-48 translate-x-48 -translate-y-16 rounded-full bg-blue-100 blur-3xl dark:bg-purple-400/50" />
       </section>
 
       <section
-        id="Music"
-        className="bg-gray-100 dark:border-y-2 dark:border-gray-700 dark:bg-gray-900"
+        id="Timeline"
+        className="relative mx-auto flex w-full max-w-screen-2xl items-center justify-center py-36 px-5 md:px-8"
       >
-        <div className="mx-auto max-w-screen-xl px-5 py-10 md:px-8">
-          <Title icon={IconType.MUSIC_NOTE} className="mb-3">
-            {t("FAVORITE_ALBUMS")}
-          </Title>
-          <ImageList data={getMusic} listType="MUSIC" />
+        <div className="z-10 flex w-full flex-col items-center justify-center gap-8">
+          <Title size="2xl">{t("TIMELINE")}</Title>
+          <Timeline className="max-w-screen-lg" items={getTimeLineItems} />
         </div>
+        {/* <div className="absolute hidden translate-x-48 rounded-full bg-emerald-100 p-40 mix-blend-multiply blur-xl dark:bg-emerald-400 dark:mix-blend-overlay md:flex" />
+        <div className="absolute hidden rounded-full bg-red-100 p-40 mix-blend-multiply blur-xl dark:bg-red-400 dark:mix-blend-overlay md:flex" />
+        <div className="absolute hidden -translate-x-48 rounded-full bg-blue-100 p-40 mix-blend-multiply blur-xl dark:bg-yellow-400 dark:mix-blend-overlay md:flex" /> */}
       </section>
 
-      <section
-        id="Work"
-        className="relative mx-auto flex max-w-screen-xl justify-evenly overflow-hidden px-5 py-10 md:px-8"
-      >
-        <div className="z-10 w-full">
-          <Title icon={IconType.BRIEFCASE} className="mb-3">
-            {t("WORK_EXPERIENCE")}
-          </Title>
-          <WorkList
-            className="pl-2"
-            company={{
-              address: `Rotterdam, ${t("SOUTH_HOLLAND")}, ${t("NETHERLANDS")}`,
-              name: "MoreApp",
-              positions: [
-                {
-                  timeFrame: getTimeFrame(new Date(2022, 1, 21)),
-                  title: "Software Engineer",
-                  subTitle: "Part-Time",
-                  description: getTotalMonths(new Date(2022, 1, 21)),
-                },
-                {
-                  timeFrame: getTimeFrame(new Date(2021, 8, 13), new Date(2022, 1, 11)),
-                  title: t("DEVELOPMENT_INTERN"),
-                  subTitle: t("INTERNSHIP"),
-                  description: getTotalMonths(new Date(2021, 8, 13), new Date(2022, 1, 11)),
-                },
-              ],
-              startDate: new Date(2021, 8, 13),
-              website: "https://moreapp.dev",
-              logo: "/images/experience/MoreApp.webp",
-            }}
-          />
-        </div>
+      <section id="Music" className="mx-auto max-w-screen-2xl py-36 px-5 md:px-8">
+        <Title icon={IconType.MUSIC_NOTE} size="2xl" className="mb-3">
+          {t("FAVORITE_ALBUMS")}
+        </Title>
+        <Cards data={getAlbums} type="MUSIC" />
       </section>
 
-      <section
-        id="Education"
-        className="bg-gray-100 dark:border-y-2 dark:border-gray-700 dark:bg-gray-900"
-      >
-        <div className="relative mx-auto flex max-w-screen-xl justify-evenly overflow-hidden px-5 py-10 md:px-8">
-          <div className="z-10 w-full">
-            <Title icon={IconType.LIBRARY} className="mb-3">
-              {t("EDUCATION")}
-            </Title>
-            <div className="space-y-1 py-2 px-2 pb-8">
-              <Timeline
-                items={[
-                  {
-                    img: <img src="/images/experience/HR.webp" className="w-22 mb-2 h-16" />,
-                    timeFrame: getTimeFrame(new Date(2019, 8, 1)),
-                    title: t("COMPUTER_SCIENCE"),
-                    subTitle: `${t("HOGESCHOOL_ROTTERDAM")}, Rotterdam`,
-                    href: "https://www.hogeschoolrotterdam.nl/",
-                  },
-                  {
-                    img: <img src="/images/experience/Lentiz.webp" className="mb-2 h-12 w-36" />,
-                    timeFrame: getTimeFrame(new Date(2012, 8, 1), new Date(2019, 6, 1)),
-                    title: `${t("VWO")} - ${t("GRADUATED")}`,
-                    titleIcon: IconType.ACADEMIC_CAP,
-                    subTitle: "Lentiz Reviuslyceum, Maassluis",
-                    href: "https://www.lentiz.nl/reviuslyceum/",
-                  },
-                ]}
-              />
-            </div>
-          </div>
-          <div className="absolute h-56 w-56 translate-y-48 -translate-x-36 rounded-full bg-emerald-100 blur-3xl dark:bg-emerald-400/40" />
-        </div>
-      </section>
-
-      <section id="Skills" className="mx-auto max-w-screen-xl px-5 py-10 md:px-8">
-        <Title icon={IconType.SPARKLES}>{t("SKILLS")}</Title>
+      <section id="Skills" className="mx-auto max-w-screen-2xl px-5 py-36 md:px-8">
+        <Title size="2xl" icon={IconType.SPARKLES}>
+          {t("SKILLS")}
+        </Title>
         <Title className="my-5" as="h3" size="lg">
           {t("LANGUAGES")}
         </Title>
-        <ImageList data={getLanguages} listType="LANGUAGES" />
-        <Title className="mb-5 mt-10" as="h3" size="lg">
-          {t("OTHER")}
+        <Cards data={getProgrammingLanguages} type="LANGUAGES" />
+      </section>
+
+      <section id="Movies" className="mx-auto max-w-screen-2xl px-5 py-36 md:px-8">
+        <Title size="2xl" icon={IconType.FILM} className="mb-3">
+          {t("FAVORITE_MOVIES")}
         </Title>
-        <ImageList data={getTools} listType="TOOLS" />
+        <Cards data={getMovies} type="MOVIES" />
       </section>
 
-      <section
-        id="Movies"
-        className="bg-gray-100 dark:border-y-2 dark:border-gray-700 dark:bg-gray-900"
-      >
-        <div className="mx-auto max-w-screen-xl px-5 py-10 md:px-8">
-          <Title icon={IconType.FILM} className="mb-3">
-            {t("FAVORITE_MOVIES")}
-          </Title>
-          <ImageList data={getMovies} listType="MOVIES" />
-        </div>
-      </section>
-
-      <section id="Games" className="mx-auto max-w-screen-xl px-5 py-10 md:px-8">
-        <Title icon={IconType.PUZZLE} className="mb-3">
+      <section id="Games" className="mx-auto max-w-screen-2xl px-5 py-36 md:px-8">
+        <Title size="2xl" icon={IconType.PUZZLE} className="mb-3">
           {t("FAVORITE_GAMES")}
         </Title>
-        <ImageList data={getGames} listType="GAMES" />
+        <Cards data={getGames} type="GAMES" />
       </section>
     </Page>
   );

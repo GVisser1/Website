@@ -12,7 +12,7 @@ const NotFoundPage: FC = () => {
   const { t } = useTranslation();
   return (
     <Page>
-      <div className="flex h-full flex-col items-center justify-center space-y-10">
+      <div className="flex flex-col items-center gap-y-10">
         <Text size="xl">{"404"}</Text>
         <Title size="3xl">{t("PAGE_NOT_FOUND")}</Title>
         <Button

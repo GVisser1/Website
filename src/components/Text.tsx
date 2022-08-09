@@ -7,9 +7,7 @@ export interface TextProps {
   size?: "xs" | "sm" | "base" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl";
   weight?: "light" | "normal" | "medium" | "semibold" | "bold";
   color?: "black" | "dark" | "white" | "light" | "danger" | "all-white" | "all-dark";
-  italic?: boolean;
   href?: string;
-  spaceBetween?: "sm" | "base" | "lg";
   icon?: IconType;
   iconType?: "outline" | "solid";
   iconPosition?: "left" | "right";
@@ -19,9 +17,7 @@ export const Text: React.FC<TextProps> = ({
   size = "sm",
   weight = "normal",
   color = "dark",
-  italic = false,
   href,
-  spaceBetween = "base",
   icon,
   iconType = "outline",
   iconPosition = "left",
@@ -31,7 +27,8 @@ export const Text: React.FC<TextProps> = ({
   const Tag = href ? "a" : "p";
   const classes = classNames(
     {
-      "flex items-center": true,
+      "transition duration-300 ease-in-out": true,
+      "flex items-center space-x-2": icon,
       [`text-${size}`]: size,
       [`font-${weight}`]: weight,
       "text-black dark:text-white": color === "black",
@@ -41,10 +38,6 @@ export const Text: React.FC<TextProps> = ({
       "text-gray-400": color === "light",
       "text-gray-700": color === "all-dark",
       "text-white": color === "all-white",
-      "space-x-1": spaceBetween === "sm",
-      "space-x-2": spaceBetween === "base",
-      "space-x-4": spaceBetween === "lg",
-      italic: italic,
     },
     className
   );

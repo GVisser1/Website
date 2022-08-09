@@ -16,13 +16,13 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({ className }) => {
     <div
       className={classNames("flex justify-center space-x-3 rounded-lg bg-black/40 p-2", className)}
     >
-      <Text icon={IconType.CAKE} color="all-white" spaceBetween="sm">
+      <Text icon={IconType.CAKE} color="all-white">
         {getAge(new Date(2000, 3, 21))}
       </Text>
-      <Text icon={IconType.USER} color="all-white" spaceBetween="sm">
+      <Text icon={IconType.USER} color="all-white">
         {t("PRONOUNS")}
       </Text>
-      <Text icon={IconType.GLOBE} color="all-white" spaceBetween="sm">
+      <Text icon={IconType.GLOBE} color="all-white">
         {t("NETHERLANDS")}
       </Text>
     </div>

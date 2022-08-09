@@ -16,19 +16,18 @@ module.exports = {
       maxWidth: {
         "8xl": "88rem",
       },
+      minWidth: {
+        "1/4": "25%",
+      },
       ringWidth: {
         0.5: "0.5px",
         1.5: "1.5px",
-      },
-      screens: {
-        pointer: { raw: "(hover: hover)" },
-        touch: { raw: "(hover: none)" },
       },
     },
   },
   plugins: [
     require("@tailwindcss/line-clamp"),
-    plugin(({ addUtilities }) => {
+    plugin(({ addUtilities, addVariant }) => {
       addUtilities({
         ".scrollbar-none": {
           "-ms-overflow-style": "none",
@@ -38,6 +37,7 @@ module.exports = {
           },
         },
       });
+      addVariant("pointer", "@media (hover: hover)");
     }),
   ],
 };

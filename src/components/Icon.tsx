@@ -1,4 +1,4 @@
-import React, { ComponentProps, createElement } from "react";
+import React from "react";
 import * as solid from "@heroicons/react/solid";
 import * as outline from "@heroicons/react/outline";
 import classNames from "classnames";
@@ -10,6 +10,7 @@ export enum IconType {
   CHECK_CIRCLE,
   CHEVRON_LEFT,
   CHEVRON_RIGHT,
+  CHEVRON_UP,
   COG,
   DESKTOP_COMPUTER,
   EXCLAMATION,
@@ -56,6 +57,10 @@ const Icons: Record<IconType, { solid: any; outline: any }> = {
   [IconType.CHEVRON_RIGHT]: {
     solid: solid.ChevronRightIcon,
     outline: outline.ChevronRightIcon,
+  },
+  [IconType.CHEVRON_UP]: {
+    solid: solid.ChevronUpIcon,
+    outline: outline.ChevronUpIcon,
   },
   [IconType.COG]: { solid: solid.CogIcon, outline: outline.CogIcon },
   [IconType.DESKTOP_COMPUTER]: {
@@ -110,15 +115,15 @@ export interface IconProps {
   name: IconType;
   type?: "solid" | "outline";
   className?: string;
-  defaultSize?: boolean;
+  overrideSize?: boolean;
 }
 
 export const Icon: React.FC<IconProps> = ({
   name,
   type = "solid",
   className,
-  defaultSize = true,
+  overrideSize = false,
 }) => {
-  const classes = classNames(defaultSize && "w-6 h-6", className);
+  const classes = classNames(!overrideSize && "w-6 h-6", className);
   return Icons[name][type].render({ className: classes });
 };
