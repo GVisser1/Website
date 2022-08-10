@@ -34,8 +34,8 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({ items, btnProps, className
   const optClasses = (active: boolean, selected = false) =>
     classNames({
       "w-full flex h-10 items-center justify-between px-4 py-2 text-gray-700 dark:text-white": true,
-      "bg-emerald-100 dark:bg-gray-800 ": !active && selected,
-      "bg-emerald-200/80 dark:bg-gray-600 ": active && selected,
+      "bg-black/5 dark:bg-gray-800 ": !active && selected,
+      "bg-black/10 dark:bg-gray-600 ": active && selected,
       "bg-gray-200 dark:bg-gray-600": active && !selected,
     });
 

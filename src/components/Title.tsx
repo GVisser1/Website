@@ -27,7 +27,7 @@ export const Title: React.FC<TitleProps> = ({
   const Tag = as;
   const classes = classNames(
     {
-      "transition duration-300 ease-in-out": true,
+      "transition duration-300": true,
       "flex items-center space-x-2": icon,
       // Colors
       "text-black": color === "black",

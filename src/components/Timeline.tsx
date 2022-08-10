@@ -1,16 +1,19 @@
 import classNames from "classnames";
 import React from "react";
+import { Color } from "../types/Color";
+import { getTimelineIconTheme } from "../utils/colorUtils";
+import { isEven } from "../utils/numberUtil";
 import { Card } from "./Card";
+import Header from "./Header";
 import { Icon, IconType } from "./Icon";
+import Text from "./Text";
 
 export interface TimelineItem {
   title: string;
   timeFrame: string;
   subTitle?: string;
   description?: string;
-  color?: string;
-  img?: React.ReactElement;
-  href?: string;
+  color?: Color;
   labels?: string[];
 }
 
@@ -20,28 +23,26 @@ interface TimelineProps {
 }
 
 const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
-  const isEven = (num: number) => num % 2 === 0;
   const timeLineCard = (item: TimelineItem) => (
     <Card
       title={item.title}
-      subTitle={item.subTitle}
-      description={item.description}
-      headerText={item.timeFrame}
+      header={<Header color={item.color ?? "BLUE"} title={item.timeFrame} />}
       labels={item.labels}
+      labelColors={[item.color ?? "BLUE"]}
       color={item.color}
-      href={item.href}
-    />
+    >
+      {item.subTitle && (
+        <Text className="line-clamp-1" color="light">
+          {item.subTitle}
+        </Text>
+      )}
+      {item.description && (
+        <Text className="line-clamp-3" color="light">
+          {item.description}
+        </Text>
+      )}
+    </Card>
   );
-
-  const classes = (color: string) =>
-    classNames({
-      "bg-blue-100 ring-blue-400 text-blue-400": color === "blue",
-      "bg-emerald-100 ring-emerald-400 text-emerald-400": color === "green",
-      "bg-red-100 ring-red-400 text-red-400": color === "red",
-      "bg-yellow-100 ring-yellow-500 text-yellow-500": color === "yellow",
-      "bg-gray-100 ring-gray-400 text-gray-400": color === "gray",
-      "bg-pink-100 ring-pink-400 text-pink-400": color === "pink",
-    });
 
   return (
     <div className={classNames("grid w-full grid-cols-4 sm:grid-cols-5", className)}>
@@ -51,8 +52,8 @@ const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
           <div className="relative col-span-1 mx-auto hidden w-full justify-center pt-3 sm:flex">
             <div
               className={classNames(
-                "absolute z-10 mt-1 h-10 w-10 rounded-full ring-4",
-                classes(item.color || "blue")
+                "absolute z-10 mt-1 h-10 w-10 rounded-full ring-4 ring-current",
+                getTimelineIconTheme(item.color ?? "BLUE")
               )}
             >
               <Icon overrideSize className="mx-auto" name={IconType.CHEVRON_UP} />

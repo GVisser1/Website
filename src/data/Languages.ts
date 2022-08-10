@@ -1,26 +1,26 @@
 export const getProgrammingLanguages = [
   {
-    src: "/images/skills/HTML.svg",
+    src: "/images/languages/HTML.svg",
     title: "HTML",
   },
   {
-    src: "/images/skills/CSharp.svg",
+    src: "/images/languages/CSharp.svg",
     title: "C#",
   },
   {
-    src: "/images/skills/Typescript.svg",
+    src: "/images/languages/Typescript.svg",
     title: "TypeScript",
   },
   {
-    src: "/images/skills/CSS.svg",
+    src: "/images/languages/CSS.svg",
     title: "CSS",
   },
   {
-    src: "/images/skills/Python.svg",
+    src: "/images/languages/Python.svg",
     title: "Python",
   },
   {
-    src: "/images/skills/Javascript.svg",
+    src: "/images/languages/Javascript.svg",
     title: "JavaScript",
   },
 ];

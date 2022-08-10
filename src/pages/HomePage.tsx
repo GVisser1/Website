@@ -1,6 +1,5 @@
 import { FC } from "react";
-import { IconType } from "../components/Icon";
-import Cards from "../components/Cards";
+import { Icon, IconType } from "../components/Icon";
 import Page from "../components/Page";
 import SocialIcons from "../components/SocialIcons";
 import Text from "../components/Text";
@@ -11,6 +10,7 @@ import Timeline from "../components/Timeline";
 import { getAlbums, getGames, getMovies } from "../data/Media";
 import { getProgrammingLanguages } from "../data/Languages";
 import TimeLineData from "../data/TimelineData";
+import { Card } from "../components/Card";
 
 const HomePage: FC = () => {
   const { t } = useTranslation();
@@ -66,39 +66,119 @@ const HomePage: FC = () => {
           <Timeline className="max-w-screen-lg" items={getTimeLineItems} />
         </div>
         {/* <div className="absolute hidden translate-x-48 rounded-full bg-emerald-100 p-40 mix-blend-multiply blur-xl dark:bg-emerald-400 dark:mix-blend-overlay md:flex" />
-        <div className="absolute hidden rounded-full bg-red-100 p-40 mix-blend-multiply blur-xl dark:bg-red-400 dark:mix-blend-overlay md:flex" />
-        <div className="absolute hidden -translate-x-48 rounded-full bg-blue-100 p-40 mix-blend-multiply blur-xl dark:bg-yellow-400 dark:mix-blend-overlay md:flex" /> */}
+          <div className="absolute hidden rounded-full bg-red-100 p-40 mix-blend-multiply blur-xl dark:bg-red-400 dark:mix-blend-overlay md:flex" />
+          <div className="absolute hidden -translate-x-48 rounded-full bg-blue-100 p-40 mix-blend-multiply blur-xl dark:bg-yellow-400 dark:mix-blend-overlay md:flex" /> */}
       </section>
 
       <section id="Music" className="mx-auto max-w-screen-2xl py-36 px-5 md:px-8">
         <Title icon={IconType.MUSIC_NOTE} size="2xl" className="mb-3">
           {t("FAVORITE_ALBUMS")}
         </Title>
-        <Cards data={getAlbums} type="MUSIC" />
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+          {getAlbums.map((item, i) => (
+            <Card
+              key={i}
+              title={item.title}
+              labels={item.labels}
+              labelColors={["BLUE", "GREEN", "RED", "YELLOW", "GRAY", "PINK"]}
+              image={
+                <a className="relative" href={item.href}>
+                  <div className="group absolute inset-0 transition duration-300 hover:flex hover:bg-black/40">
+                    <Icon
+                      overrideSize
+                      className="m-auto hidden h-16 w-16 text-white group-hover:block"
+                      name={IconType.PLAY}
+                    />
+                  </div>
+                  <img className={"aspect-square w-full"} src={item.src} />
+                </a>
+              }
+            >
+              <Text className="line-clamp-1" color="light">
+                {item.subTitle}
+              </Text>
+            </Card>
+          ))}
+        </div>
       </section>
 
       <section id="Skills" className="mx-auto max-w-screen-2xl px-5 py-36 md:px-8">
-        <Title size="2xl" icon={IconType.SPARKLES}>
-          {t("SKILLS")}
-        </Title>
-        <Title className="my-5" as="h3" size="lg">
+        <Title size="2xl" icon={IconType.GLOBE} className="mb-3">
           {t("LANGUAGES")}
         </Title>
-        <Cards data={getProgrammingLanguages} type="LANGUAGES" />
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+          {getProgrammingLanguages.map((item, i) => (
+            <Card
+              key={i}
+              title={item.title}
+              image={<img className={"aspect-square w-full p-6"} src={item.src} />}
+            />
+          ))}
+        </div>
       </section>
 
       <section id="Movies" className="mx-auto max-w-screen-2xl px-5 py-36 md:px-8">
         <Title size="2xl" icon={IconType.FILM} className="mb-3">
           {t("FAVORITE_MOVIES")}
         </Title>
-        <Cards data={getMovies} type="MOVIES" />
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+          {getMovies.map((item, i) => (
+            <Card
+              key={i}
+              title={item.title}
+              labels={item.labels}
+              labelColors={["BLUE", "GREEN", "RED", "YELLOW", "GRAY", "PINK"]}
+              image={
+                <a className="relative" href={item.href}>
+                  <div className="group absolute inset-0 transition duration-300 hover:flex hover:bg-black/40">
+                    <Icon
+                      overrideSize
+                      className="m-auto hidden h-16 w-16 text-white group-hover:block"
+                      name={IconType.EXTERNAL_LINK}
+                    />
+                  </div>
+                  <img className={"aspect-[2/3] w-full"} src={item.src} />
+                </a>
+              }
+            >
+              <Text className="line-clamp-1" color="light">
+                {item.subTitle}
+              </Text>
+            </Card>
+          ))}
+        </div>
       </section>
 
       <section id="Games" className="mx-auto max-w-screen-2xl px-5 py-36 md:px-8">
         <Title size="2xl" icon={IconType.PUZZLE} className="mb-3">
           {t("FAVORITE_GAMES")}
         </Title>
-        <Cards data={getGames} type="GAMES" />
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+          {getGames.map((item, i) => (
+            <Card
+              key={i}
+              title={item.title}
+              labels={item.labels}
+              labelColors={["BLUE", "GREEN", "RED", "YELLOW", "GRAY", "PINK"]}
+              image={
+                <a className="relative" href={item.href}>
+                  <div className="group absolute inset-0 transition duration-300 hover:flex hover:bg-black/40">
+                    <Icon
+                      overrideSize
+                      className="m-auto hidden h-16 w-16 text-white group-hover:block"
+                      name={IconType.EXTERNAL_LINK}
+                    />
+                  </div>
+                  <img className={"aspect-square w-full"} src={item.src} />
+                </a>
+              }
+            >
+              <Text className="line-clamp-1" color="light">
+                {item.subTitle}
+              </Text>
+            </Card>
+          ))}
+        </div>
       </section>
     </Page>
   );

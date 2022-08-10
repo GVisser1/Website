@@ -27,7 +27,7 @@ export const Text: React.FC<TextProps> = ({
   const Tag = href ? "a" : "p";
   const classes = classNames(
     {
-      "transition duration-300 ease-in-out": true,
+      "transition duration-300": true,
       "flex items-center space-x-2": icon,
       [`text-${size}`]: size,
       [`font-${weight}`]: weight,

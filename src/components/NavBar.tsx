@@ -7,10 +7,8 @@ import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import useSystem from "../hooks/useSystem";
 import { DropdownMenu, MenuItem } from "./DropDownMenu";
-import Modal from "./Modal";
 import { Button } from "./Button";
 import useI18n from "../hooks/useI18n";
-import { Radio } from "./Radio";
 
 interface NavBarProps {
   className?: string;
@@ -19,7 +17,7 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = ({ className }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { isDutch, switchLanguage, getLanguage } = useI18n();
+  const { isDutch, switchLanguage } = useI18n();
   const { getTheme, switchTheme, getThemeIcon } = useSystem();
 
   const navigation = [
@@ -66,7 +64,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
     <Disclosure
       as="nav"
       className={classNames(
-        "relative z-10 border-b-2 border-gray-100 bg-white transition duration-300 ease-in-out dark:border-gray-700 dark:bg-gray-800",
+        "relative z-10 border-b-2 border-gray-100 bg-white transition duration-300 dark:border-gray-700 dark:bg-gray-800",
         className
       )}
     >
@@ -128,48 +126,6 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                   }}
                   items={languageOptions}
                 />
-              </div>
-              <div className="flex md:static md:inset-auto md:ml-6 md:hidden md:items-center md:pr-0">
-                <Modal
-                  title={t("SETTINGS")}
-                  btnProps={{
-                    icon: IconType.COG,
-                    iconType: "outline",
-                    type: "clear",
-                    compact: true,
-                  }}
-                >
-                  <div className="flex w-full flex-col gap-y-5 divide-y-[0.5px] divide-gray-300 py-4 dark:divide-gray-700">
-                    <Text>{t("SETTINGS_DESCRIPTION")}</Text>
-                    <div className="pt-4">
-                      <Text weight="semibold">{t("THEME")}</Text>
-                      <Radio
-                        options={[
-                          { label: t("LIGHT"), value: "LIGHT" },
-                          { label: t("DARK"), value: "DARK" },
-                          { label: t("SYSTEM"), value: "SYSTEM" },
-                        ]}
-                        onChange={(e) => {
-                          switchTheme(e.target.value);
-                        }}
-                        value={getTheme()}
-                      />
-                    </div>
-                    <div className="pt-4">
-                      <Text weight="semibold">{t("LANGUAGE")}</Text>
-                      <Radio
-                        options={[
-                          { label: t("DUTCH"), value: "nl" },
-                          { label: t("ENGLISH"), value: "en" },
-                        ]}
-                        onChange={(e) => {
-                          switchLanguage(e.target.value);
-                        }}
-                        value={getLanguage()}
-                      />
-                    </div>
-                  </div>
-                </Modal>
               </div>
             </div>
           </div>
