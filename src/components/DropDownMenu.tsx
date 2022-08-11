@@ -66,16 +66,12 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({ items, btnProps, className
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute right-0 z-10 my-1 w-56 origin-top-right divide-y divide-gray-200 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black/20 focus:outline-none dark:divide-gray-500 dark:bg-gray-700 dark:ring-gray-500">
+            <Menu.Items className="absolute right-0 z-10 my-1 w-56 origin-top-right divide-y divide-gray-200 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black/20 transition duration-300 focus:outline-none dark:divide-gray-500 dark:bg-gray-700 dark:ring-gray-500">
               {items.map((item, index) => (
                 <Menu.Item key={index}>
                   {({ active }) => (
                     <button className={optClasses(active, item.selected)} onClick={item.onClick}>
-                      {item.label && (
-                        <Text color="dark" icon={item.icon}>
-                          {item.label}
-                        </Text>
-                      )}
+                      {item.label && <Text icon={item.icon}>{item.label}</Text>}
                       {item.selected && <Icon name={IconType.CHECK_CIRCLE} type="outline" />}
                     </button>
                   )}

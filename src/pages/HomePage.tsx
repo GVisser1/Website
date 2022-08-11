@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { Icon, IconType } from "../components/Icon";
-import Page from "../components/Page";
 import SocialIcons from "../components/SocialIcons";
 import Text from "../components/Text";
 import { Title } from "../components/Title";
@@ -17,7 +16,7 @@ const HomePage: FC = () => {
   const { getTimeLineItems } = TimeLineData();
 
   return (
-    <Page>
+    <>
       <section id="Intro" className="relative hidden">
         <div className="flex w-full items-center justify-center">
           <img
@@ -41,36 +40,30 @@ const HomePage: FC = () => {
         </div>
       </section>
 
-      <section
-        id="About"
-        className="relative mx-auto flex max-w-screen-2xl justify-evenly py-36 px-5 md:px-8"
-      >
-        <div className="z-10 flex">
-          <Title icon={IconType.USER_CIRCLE} size="2xl" className="mb-3">
-            {t("ABOUT")}
-          </Title>
-          <div className="space-y-4">
-            <Text size="md">{t("ABOUT_CONTENT_1")}</Text>
-            <Text size="md">{t("ABOUT_CONTENT_2")}</Text>
-            <Text size="md">{t("ABOUT_CONTENT_3")}</Text>
-          </div>
+      <section id="About" className="relative px-5 py-36 md:px-8">
+        <Title icon={IconType.USER_CIRCLE} size="2xl" className="mb-3">
+          {t("ABOUT")}
+        </Title>
+        <div className="space-y-4">
+          <Text size="md">{t("ABOUT_CONTENT_1")}</Text>
+          <Text size="md">{t("ABOUT_CONTENT_2")}</Text>
+          <Text size="md">{t("ABOUT_CONTENT_3")}</Text>
         </div>
       </section>
 
-      <section
-        id="Timeline"
-        className="relative mx-auto flex w-full max-w-screen-2xl items-center justify-center py-36 px-5 md:px-8"
-      >
-        <div className="z-10 flex w-full flex-col items-center justify-center gap-8">
-          <Title size="2xl">{t("TIMELINE")}</Title>
+      <section id="Timeline" className="relative px-5 py-36 md:px-8">
+        <Title size="2xl" className="mb-3">
+          {t("TIMELINE")}
+        </Title>
+        <div className="flex justify-center">
           <Timeline className="max-w-screen-lg" items={getTimeLineItems} />
         </div>
         {/* <div className="absolute hidden translate-x-48 rounded-full bg-emerald-100 p-40 mix-blend-multiply blur-xl dark:bg-emerald-400 dark:mix-blend-overlay md:flex" />
-          <div className="absolute hidden rounded-full bg-red-100 p-40 mix-blend-multiply blur-xl dark:bg-red-400 dark:mix-blend-overlay md:flex" />
-          <div className="absolute hidden -translate-x-48 rounded-full bg-blue-100 p-40 mix-blend-multiply blur-xl dark:bg-yellow-400 dark:mix-blend-overlay md:flex" /> */}
+        <div className="absolute hidden rounded-full bg-red-100 p-40 mix-blend-multiply blur-xl dark:bg-red-400 dark:mix-blend-overlay md:flex" />
+        <div className="absolute hidden -translate-x-48 rounded-full bg-blue-100 p-40 mix-blend-multiply blur-xl dark:bg-yellow-400 dark:mix-blend-overlay md:flex" /> */}
       </section>
 
-      <section id="Music" className="mx-auto max-w-screen-2xl py-36 px-5 md:px-8">
+      <section id="Music" className="relative px-5 py-36 md:px-8">
         <Title icon={IconType.MUSIC_NOTE} size="2xl" className="mb-3">
           {t("FAVORITE_ALBUMS")}
         </Title>
@@ -80,9 +73,8 @@ const HomePage: FC = () => {
               key={i}
               title={item.title}
               labels={item.labels}
-              labelColors={["BLUE", "GREEN", "RED", "YELLOW", "GRAY", "PINK"]}
               image={
-                <a className="relative" href={item.href}>
+                <a className="relative flex" href={item.href}>
                   <div className="group absolute inset-0 transition duration-300 hover:flex hover:bg-black/40">
                     <Icon
                       overrideSize
@@ -94,7 +86,7 @@ const HomePage: FC = () => {
                 </a>
               }
             >
-              <Text className="line-clamp-1" color="light">
+              <Text className="line-clamp-1" color="medium">
                 {item.subTitle}
               </Text>
             </Card>
@@ -102,7 +94,7 @@ const HomePage: FC = () => {
         </div>
       </section>
 
-      <section id="Skills" className="mx-auto max-w-screen-2xl px-5 py-36 md:px-8">
+      <section id="Skills" className="relative px-5 py-36 md:px-8">
         <Title size="2xl" icon={IconType.GLOBE} className="mb-3">
           {t("LANGUAGES")}
         </Title>
@@ -117,7 +109,7 @@ const HomePage: FC = () => {
         </div>
       </section>
 
-      <section id="Movies" className="mx-auto max-w-screen-2xl px-5 py-36 md:px-8">
+      <section id="Movies" className="relative px-5 py-36 md:px-8">
         <Title size="2xl" icon={IconType.FILM} className="mb-3">
           {t("FAVORITE_MOVIES")}
         </Title>
@@ -127,9 +119,8 @@ const HomePage: FC = () => {
               key={i}
               title={item.title}
               labels={item.labels}
-              labelColors={["BLUE", "GREEN", "RED", "YELLOW", "GRAY", "PINK"]}
               image={
-                <a className="relative" href={item.href}>
+                <a className="relative flex" href={item.href}>
                   <div className="group absolute inset-0 transition duration-300 hover:flex hover:bg-black/40">
                     <Icon
                       overrideSize
@@ -141,7 +132,7 @@ const HomePage: FC = () => {
                 </a>
               }
             >
-              <Text className="line-clamp-1" color="light">
+              <Text className="line-clamp-1" color="medium">
                 {item.subTitle}
               </Text>
             </Card>
@@ -149,7 +140,7 @@ const HomePage: FC = () => {
         </div>
       </section>
 
-      <section id="Games" className="mx-auto max-w-screen-2xl px-5 py-36 md:px-8">
+      <section id="Games" className="relative px-5 py-36 md:px-8">
         <Title size="2xl" icon={IconType.PUZZLE} className="mb-3">
           {t("FAVORITE_GAMES")}
         </Title>
@@ -159,9 +150,8 @@ const HomePage: FC = () => {
               key={i}
               title={item.title}
               labels={item.labels}
-              labelColors={["BLUE", "GREEN", "RED", "YELLOW", "GRAY", "PINK"]}
               image={
-                <a className="relative" href={item.href}>
+                <a className="relative flex" href={item.href}>
                   <div className="group absolute inset-0 transition duration-300 hover:flex hover:bg-black/40">
                     <Icon
                       overrideSize
@@ -173,14 +163,14 @@ const HomePage: FC = () => {
                 </a>
               }
             >
-              <Text className="line-clamp-1" color="light">
+              <Text className="line-clamp-1" color="medium">
                 {item.subTitle}
               </Text>
             </Card>
           ))}
         </div>
       </section>
-    </Page>
+    </>
   );
 };
 

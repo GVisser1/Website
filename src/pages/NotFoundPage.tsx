@@ -16,17 +16,18 @@ const NotFoundPage: FC = () => {
   const { pokéData } = usePokémon();
 
   return (
-    <Page>
-      <div className="mx-auto flex max-w-screen-2xl flex-col items-center gap-y-10">
-        <Text size="xl">{"404"}</Text>
+    <section id="About" className="relative py-20 md:px-8">
+      <div className="flex flex-col items-center">
+        <Text size="xl">404</Text>
         <Title size="3xl">{t("PAGE_NOT_FOUND")}</Title>
         <Button
+          className="mt-8"
           type="destructive"
           onClick={() => navigate("/home")}
           icon={IconType.HOME}
           label={t("Home")}
         />
-        {pokéData && (
+        {/* {pokéData && (
           <Card
             className="w-56 capitalize"
             title={`#${pokéData.id} ${pokéData.name}`}
@@ -41,11 +42,11 @@ const NotFoundPage: FC = () => {
               pokéData.types && (pokéData.types.map((type) => type.toUpperCase()) as Color[])
             }
           >
-            <Text color="light">{`Ability: ${pokéData.ability}`}</Text>
+            <Text color="medium">{`Ability: ${pokéData.ability}`}</Text>
           </Card>
-        )}
+        )} */}
       </div>
-    </Page>
+    </section>
   );
 };
 

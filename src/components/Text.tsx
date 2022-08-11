@@ -6,7 +6,7 @@ export interface TextProps {
   className?: string;
   size?: "xs" | "sm" | "base" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl";
   weight?: "light" | "normal" | "medium" | "semibold" | "bold";
-  color?: "black" | "dark" | "white" | "light" | "danger" | "all-white" | "all-dark";
+  color?: "white" | "light" | "medium" | "dark" | "all-white";
   href?: string;
   icon?: IconType;
   iconType?: "outline" | "solid";
@@ -31,20 +31,17 @@ export const Text: React.FC<TextProps> = ({
       "flex items-center space-x-2": icon,
       [`text-${size}`]: size,
       [`font-${weight}`]: weight,
-      "text-black dark:text-white": color === "black",
-      "text-gray-700 dark:text-white": color === "dark",
-      "text-white dark:text-gray-700": color === "white",
-      "text-red-400": color === "danger",
-      "text-gray-400": color === "light",
-      "text-gray-700": color === "all-dark",
       "text-white": color === "all-white",
+      "text-white dark:text-gray-700": color === "white",
+      "text-gray-300": color === "light",
+      "text-gray-500 dark:text-gray-400": color === "medium",
+      "text-gray-700 dark:text-white": color === "dark",
     },
     className
   );
 
   const linkClasses = classNames({
-    "text-blue-500 underline visited:text-purple-500 visited:decoration-purple-500 underline-offset-2 decoration-1 decoration-blue-500 hover:decoration-2 focus:outline-none pointer:focus:ring focus:ring-blue-300 dark:focus:ring-yellow-600":
-      href,
+    "hover:underline underline-offset-2 focus:outline-none": href,
   });
 
   return (
@@ -52,13 +49,13 @@ export const Text: React.FC<TextProps> = ({
       {icon ? (
         <>
           {iconPosition === "left" && <Icon name={icon} type={iconType} />}
-          <Tag className={linkClasses} href={href}>
+          <Tag tabIndex={-1} className={linkClasses} href={href}>
             {props.children}
           </Tag>
           {iconPosition === "right" && <Icon name={icon} type={iconType} />}
         </>
       ) : (
-        <Tag className={linkClasses} href={href}>
+        <Tag tabIndex={-1} className={linkClasses} href={href}>
           {props.children}
         </Tag>
       )}

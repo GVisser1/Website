@@ -1,5 +1,7 @@
 import { Color } from "../types/Color";
 
+export const Colors: Color[] = ["BLUE", "GREEN", "RED", "YELLOW", "GRAY", "PINK"];
+
 export const getCardTheme = (type: Color) =>
   ({
     BLUE: "bg-blue-100 dark:bg-blue-200 text-blue-800",

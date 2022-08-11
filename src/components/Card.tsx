@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import React, { ReactElement } from "react";
 import { Color } from "../types/Color";
+import { Colors } from "../utils/colorUtils";
 import { Badge } from "./Badge";
 import { Title } from "./Title";
 
@@ -20,7 +21,7 @@ export const Card: React.FC<CardProps> = ({
   title,
   header,
   labels,
-  labelColors = ["BLUE"],
+  labelColors,
   hover = true,
   image,
   button,
@@ -42,7 +43,7 @@ export const Card: React.FC<CardProps> = ({
     <div className={classes}>
       {header}
       {image}
-      <div className="px-3 py-3">
+      <div className="border-t-2 border-gray-200 px-3 py-3 transition duration-300 dark:border-gray-700">
         <Title as="h4" className="line-clamp-1">
           {title}
         </Title>
@@ -55,7 +56,7 @@ export const Card: React.FC<CardProps> = ({
             )}
           >
             {labels.map((label, i) => (
-              <Badge key={i} color={labelColors[i] ?? "BLUE"}>
+              <Badge key={i} color={labelColors ? labelColors[i] : Colors[i]}>
                 {label}
               </Badge>
             ))}

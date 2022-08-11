@@ -5,6 +5,7 @@ import classNames from "classnames";
 
 export enum IconType {
   ACADEMIC_CAP = 1,
+  ARROW_RIGHT,
   BRIEFCASE,
   CAKE,
   CHECK_CIRCLE,
@@ -40,6 +41,10 @@ const Icons: Record<IconType, { solid: any; outline: any }> = {
   [IconType.ACADEMIC_CAP]: {
     solid: solid.AcademicCapIcon,
     outline: outline.AcademicCapIcon,
+  },
+  [IconType.ARROW_RIGHT]: {
+    solid: solid.ArrowRightIcon,
+    outline: outline.ArrowRightIcon,
   },
   [IconType.BRIEFCASE]: {
     solid: solid.BriefcaseIcon,

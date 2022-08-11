@@ -11,6 +11,7 @@ export interface ButtonProps {
   disabled?: boolean;
   icon?: IconType;
   iconType?: "solid" | "outline";
+  iconPosition?: "left" | "right";
   label?: string;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   type?: ButtonType;
@@ -23,6 +24,7 @@ export const Button: React.FC<ButtonProps> = ({
   disabled = false,
   icon,
   iconType = "solid",
+  iconPosition = "left",
   label,
   onClick,
   type = "default",
@@ -47,14 +49,15 @@ export const Button: React.FC<ButtonProps> = ({
   });
 
   return (
-    <div className={classNames("w-full" && block, className)} {...props}>
+    <div className={className} {...props}>
       <button
         type={"button"}
         onClick={(event) => onClick && onClick(event)}
         className={innerClasses}
       >
-        {icon && <Icon name={icon} type={iconType} />}
+        {icon && iconPosition === "left" && <Icon name={icon} type={iconType} />}
         {label && <span>{label}</span>}
+        {icon && iconPosition === "right" && <Icon name={icon} type={iconType} />}
         {props.children}
       </button>
     </div>

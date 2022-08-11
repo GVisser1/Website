@@ -1,10 +1,9 @@
 import classNames from "classnames";
 import React from "react";
 import { Color } from "../types/Color";
-import { getTimelineIconTheme } from "../utils/colorUtils";
+import { getCardTheme, getTimelineIconTheme } from "../utils/colorUtils";
 import { isEven } from "../utils/numberUtil";
 import { Card } from "./Card";
-import Header from "./Header";
 import { Icon, IconType } from "./Icon";
 import Text from "./Text";
 
@@ -26,18 +25,22 @@ const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
   const timeLineCard = (item: TimelineItem) => (
     <Card
       title={item.title}
-      header={<Header color={item.color ?? "BLUE"} title={item.timeFrame} />}
+      header={
+        <div className={classNames("p-2", getCardTheme(item.color ?? "BLUE"))}>
+          <p className="text-xs line-clamp-1">{item.title}</p>
+        </div>
+      }
       labels={item.labels}
       labelColors={[item.color ?? "BLUE"]}
       color={item.color}
     >
       {item.subTitle && (
-        <Text className="line-clamp-1" color="light">
+        <Text className="line-clamp-1" color="medium">
           {item.subTitle}
         </Text>
       )}
       {item.description && (
-        <Text className="line-clamp-3" color="light">
+        <Text className="line-clamp-3" color="medium">
           {item.description}
         </Text>
       )}
@@ -58,7 +61,7 @@ const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
             >
               <Icon overrideSize className="mx-auto" name={IconType.CHEVRON_UP} />
             </div>
-            <div className="absolute flex h-full w-0.5 bg-gray-200 dark:bg-gray-700" />
+            <div className="absolute flex h-full w-0.5 bg-gray-200 transition duration-300 dark:bg-gray-700" />
           </div>
 
           <div className="col-span-2 mb-12">{!isEven(i) && timeLineCard(item)}</div>

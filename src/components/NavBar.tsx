@@ -64,7 +64,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
     <Disclosure
       as="nav"
       className={classNames(
-        "relative z-10 border-b-2 border-gray-100 bg-white transition duration-300 dark:border-gray-700 dark:bg-gray-800",
+        "z-30 border-b-2 border-gray-100 bg-white transition duration-300 dark:border-gray-700 dark:bg-gray-800",
         className
       )}
     >
@@ -96,7 +96,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                         compact
                         icon={item.icon}
                         key={item.name}
-                        type={item.href === location.pathname ? "selected" : "clear"}
+                        type={location.pathname.includes(item.href) ? "selected" : "clear"}
                         onClick={() => navigate(item.href)}
                       >
                         {item.name}
@@ -130,16 +130,17 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
             </div>
           </div>
 
-          <Disclosure.Panel className="h-36 border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800 md:hidden">
+          <Disclosure.Panel className="h-36 border-gray-100 bg-white transition duration-300 dark:border-gray-700 dark:bg-gray-800 md:hidden">
             <div className="divide-y">
               {navigation.map((item) => (
                 <div
                   key={item.name}
                   className={classNames({
                     "w-full cursor-pointer px-2 py-3 font-semibold": true,
-                    "text-gray-400": item.href !== location.pathname,
+                    "text-gray-400 hover:text-gray-500 dark:hover:text-white":
+                      !location.pathname.includes(item.href),
                     "bg-emerald-100 text-gray-700 dark:bg-gray-700 dark:text-white":
-                      item.href === location.pathname,
+                      location.pathname.includes(item.href),
                   })}
                   onClick={() => navigate(item.href)}
                 >

@@ -1,9 +1,10 @@
 import { useTranslation } from "react-i18next";
 
 export interface ProjectItem {
+  id: string;
   title: string;
   description: string[];
-  src?: string;
+  src: string;
   href?: string;
   labels?: string[];
 }
@@ -11,33 +12,35 @@ export interface ProjectItem {
 const ProjectsData = () => {
   const { t } = useTranslation();
 
-  const getSchoolProjects = [
+  const getSchoolProjects: ProjectItem[] = [
     {
-      logo: "/images/projects/Bitfilm.webp",
+      id: "bitfilm",
       title: "Bitfilm",
       description: [t("PROJECTS_BITFILM_CONTENT_1"), t("PROJECTS_BITFILM_CONTENT_2")],
-      src: "/images/projects/Bitfilm_Menu2.png",
+      src: "/images/projects/Bitfilm_Menu.png",
       href: "https://github.com/BrianVa/Project-B-Hogeschool-Rotterdam",
-      imgClassName: "object-cover overflow-none",
+      labels: ["C#", "WinForms"],
     },
     {
-      logo: "/images/projects/Bitmail.webp",
+      id: "bitmail",
       title: "Bitmail",
       description: [t("PROJECTS_BITMAIL_CONTENT_1"), t("PROJECTS_BITMAIL_CONTENT_2")],
       src: "/images/projects/Bitmail_Email.png",
+      labels: ["C#", "Blazor", "HTML", "CSS"],
     },
     {
-      logo: "/images/projects/Bitfit.webp",
+      id: "bitfit",
       title: "Bitfit",
       description: [t("PROJECTS_BITFIT_CONTENT_1"), t("PROJECTS_BITFIT_CONTENT_2")],
       src: "/images/projects/Bitfit_Schedule.png",
       href: "https://github.com/GVisser1/Project-D-Groep5",
+      labels: ["C#", "Blazor", "HTML", "CSS"],
     },
   ];
 
-  const getPersonalProjects = [
+  const getPersonalProjects: ProjectItem[] = [
     {
-      logo: "/images/projects/Website_Logo.webp",
+      id: "portfolio_website",
       title: "Portfolio Website",
       description: [
         t("PROJECTS_WEBSITE_CONTENT_1"),
@@ -46,13 +49,14 @@ const ProjectsData = () => {
       ],
       href: "https://github.com/GVisser1/Website",
       src: "/images/projects/Website.png",
-      imgClassName: "object-cover overflow-none",
+      labels: ["TypeScript", "React", "TailwindCSS", "HTML"],
     },
     {
-      logo: "/images/projects/ClickGame.png",
+      id: "click_game",
       title: "Clicker Game",
       description: [t("PROJECTS_CLICKER_GAME_CONTENT_1"), t("PROJECTS_CLICKER_GAME_CONTENT_2")],
       src: "/images/projects/ClickGame_Playing.png",
+      labels: ["C#", "Unity"],
     },
   ];
 

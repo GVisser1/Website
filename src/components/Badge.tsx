@@ -13,7 +13,7 @@ export const Badge: React.FC<BadgeProps> = ({ color = "BLUE", className, childre
     <span
       className={classNames(
         getCardTheme(color),
-        "rounded-full py-0.5 px-3 text-xs font-semibold",
+        "rounded-full px-3 py-0.5 text-xs font-semibold",
         className
       )}
     >
