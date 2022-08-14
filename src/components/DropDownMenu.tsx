@@ -34,9 +34,9 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({ items, btnProps, className
   const optClasses = (active: boolean, selected = false) =>
     classNames({
       "w-full flex h-10 items-center justify-between px-4 py-2 text-gray-700 dark:text-white": true,
-      "bg-black/5 dark:bg-gray-800 ": !active && selected,
-      "bg-black/10 dark:bg-gray-600 ": active && selected,
-      "bg-gray-200 dark:bg-gray-600": active && !selected,
+      "bg-black/5 dark:bg-slate-800 ": !active && selected,
+      "bg-black/10 dark:bg-slate-600 ": active && selected,
+      "bg-gray-200 dark:bg-slate-600": active && !selected,
     });
 
   return (
@@ -66,7 +66,7 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({ items, btnProps, className
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute right-0 z-10 my-1 w-56 origin-top-right divide-y divide-gray-200 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black/20 transition duration-300 focus:outline-none dark:divide-gray-500 dark:bg-gray-700 dark:ring-gray-500">
+            <Menu.Items className="absolute right-0 z-40 my-1 w-56 origin-top-right divide-y divide-slate-200 overflow-hidden rounded-md border border-black/20 bg-white shadow-lg transition focus:outline-none dark:divide-slate-400 dark:border-slate-500 dark:bg-slate-700">
               {items.map((item, index) => (
                 <Menu.Item key={index}>
                   {({ active }) => (

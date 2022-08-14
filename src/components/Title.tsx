@@ -4,13 +4,12 @@ import { Icon, IconType } from "./Icon";
 
 export interface TitleProps {
   className?: string;
-  size?: "xs" | "sm" | "md" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl";
-  color?: "black" | "dark" | "white" | "light" | "selected";
+  size?: "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl";
+  color?: "white" | "light" | "medium" | "dark" | "all-white" | "all-dark";
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   icon?: IconType;
   iconType?: "outline" | "solid";
   iconPosition?: "left" | "right";
-  href?: string;
 }
 
 export const Title: React.FC<TitleProps> = ({
@@ -20,35 +19,32 @@ export const Title: React.FC<TitleProps> = ({
   icon,
   iconType = "outline",
   iconPosition = "left",
-  href,
   className,
   ...props
 }) => {
   const Tag = as;
   const classes = classNames(
     {
-      "transition duration-300": true,
+      "transition font-bold": true,
       "flex items-center space-x-2": icon,
       // Colors
-      "text-black": color === "black",
-      "text-white": color === "white",
-      "text-gray-100": color === "light",
-      "text-gray-700 dark:text-white": color === "dark",
+      "text-white": color === "all-white",
+      "text-white dark:text-gray-700": color === "white",
       "text-gray-300": color === "light",
-      "text-blue-600": color === "selected",
-      "hover:text-blue-200": href,
+      "text-gray-500 dark:text-gray-400": color === "medium",
+      "text-gray-700 dark:text-white": color === "dark",
+      "text-gray-700": color === "all-dark",
 
       // Font sizes
-      "text-xl font-bold": size === "xl",
-      "text-2xl font-bold": size === "2xl",
-      "text-3xl font-bold": size === "3xl",
-      "text-4xl font-bold": size === "4xl",
-      "text-5xl font-bold": size === "5xl",
-      "text-lg font-semibold leading-6": size === "lg",
-      "text-base font-semibold": size === "base",
-      "text-md font-semibold": size === "md",
-      "text-sm font-semibold": size === "sm",
-      "text-xs font-semibold leading-6 tracking-wider uppercase": size === "xs",
+      "text-base": size === "base",
+      "text-lg": size === "lg",
+      "text-xl": size === "xl",
+      "text-2xl": size === "2xl",
+      "text-2xl sm:text-3xl": size === "3xl",
+      "text-4xl": size === "4xl",
+      "text-5xl": size === "5xl",
+      "text-6xl": size === "6xl",
+      "text-5xl sm:text-6xl lg:text-7xl": size === "7xl",
     },
     className
   );

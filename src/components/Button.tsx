@@ -31,9 +31,8 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const innerClasses = classNames({
-    "flex justify-center gap-x-1 font-medium rounded-lg focus:outline-none pointer:focus:ring":
+    "flex transition justify-center gap-x-1 font-medium rounded-lg focus:outline-none pointer:focus:ring":
       true,
-    "transition duration-300": true,
     "px-4 py-3": !compact,
     "p-2": compact,
     "w-full": block,

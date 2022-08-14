@@ -33,7 +33,7 @@ const NotFoundPage: FC = () => {
             title={`#${pokéData.id} ${pokéData.name}`}
             image={
               <img
-                className="w-full bg-gray-100 transition duration-300 dark:bg-gray-700"
+                className="w-full bg-gray-100 transition dark:bg-gray-700"
                 src={pokéData.src}
               />
             }

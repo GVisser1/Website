@@ -6,7 +6,7 @@ import { Badge } from "./Badge";
 import { Title } from "./Title";
 
 export interface CardProps {
-  title: string;
+  title?: string;
   labels?: string[];
   labelColors?: Color[];
   color?: Color;
@@ -30,9 +30,8 @@ export const Card: React.FC<CardProps> = ({
 }) => {
   const classes = classNames(
     {
-      "w-full overflow-hidden bg-clip-padding rounded-xl border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800":
+      "w-full transition overflow-hidden rounded-xl border border-gray-200 bg-white shadow-gray-300 dark:shadow-current shadow-md dark:border-slate-700 dark:bg-slate-800":
         true,
-      "transition duration-300": true,
       "text-center": header,
       "pointer:hover:scale-105": hover,
     },
@@ -43,7 +42,12 @@ export const Card: React.FC<CardProps> = ({
     <div className={classes}>
       {header}
       {image}
-      <div className="border-t-2 border-gray-200 px-3 py-3 transition duration-300 dark:border-gray-700">
+      <div
+        className={classNames(
+          "px-3 py-3 ",
+          header && "border-t-2 border-gray-100 transition dark:border-slate-700"
+        )}
+      >
         <Title as="h4" className="line-clamp-1">
           {title}
         </Title>
@@ -51,7 +55,7 @@ export const Card: React.FC<CardProps> = ({
         {labels && (
           <div
             className={classNames(
-              "mt-3 flex flex-wrap gap-1 text-center",
+              "mt-3 flex flex-wrap gap-0.5 text-center",
               header && "justify-center"
             )}
           >

@@ -6,11 +6,12 @@ export interface TextProps {
   className?: string;
   size?: "xs" | "sm" | "base" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl";
   weight?: "light" | "normal" | "medium" | "semibold" | "bold";
-  color?: "white" | "light" | "medium" | "dark" | "all-white";
+  color?: "white" | "light" | "medium" | "dark" | "all-white" | "all-dark";
   href?: string;
   icon?: IconType;
   iconType?: "outline" | "solid";
   iconPosition?: "left" | "right";
+  tabIndex?: number;
 }
 
 export const Text: React.FC<TextProps> = ({
@@ -21,14 +22,15 @@ export const Text: React.FC<TextProps> = ({
   icon,
   iconType = "outline",
   iconPosition = "left",
+  tabIndex,
   className,
   ...props
 }) => {
   const Tag = href ? "a" : "p";
   const classes = classNames(
     {
-      "transition duration-300": true,
-      "flex items-center space-x-2": icon,
+      transition: true,
+      "flex items-center space-x-2 whitespace-pre-line": icon,
       [`text-${size}`]: size,
       [`font-${weight}`]: weight,
       "text-white": color === "all-white",
@@ -36,11 +38,13 @@ export const Text: React.FC<TextProps> = ({
       "text-gray-300": color === "light",
       "text-gray-500 dark:text-gray-400": color === "medium",
       "text-gray-700 dark:text-white": color === "dark",
+      "text-gray-700": color === "all-dark",
     },
     className
   );
 
-  const linkClasses = classNames({
+  const innerClasses = classNames({
+    "whitespace-pre-line": true,
     "hover:underline underline-offset-2 focus:outline-none": href,
   });
 
@@ -49,13 +53,13 @@ export const Text: React.FC<TextProps> = ({
       {icon ? (
         <>
           {iconPosition === "left" && <Icon name={icon} type={iconType} />}
-          <Tag tabIndex={-1} className={linkClasses} href={href}>
+          <Tag tabIndex={tabIndex} className={innerClasses} href={href}>
             {props.children}
           </Tag>
           {iconPosition === "right" && <Icon name={icon} type={iconType} />}
         </>
       ) : (
-        <Tag tabIndex={-1} className={linkClasses} href={href}>
+        <Tag tabIndex={tabIndex} className={innerClasses} href={href}>
           {props.children}
         </Tag>
       )}

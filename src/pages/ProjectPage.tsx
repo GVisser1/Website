@@ -28,11 +28,14 @@ const ProjectPage: React.FC = () => {
   }, [location]);
 
   return (
-    <div className="max-w-screen-md">
+    <section id={project.id ?? "404"} className="mx-auto max-w-screen-md px-5 py-10 md:px-8">
+      <Text color="medium" size="xs" className="mb-1 opacity-60">
+        {project.date}
+      </Text>
       <div className="flex justify-between">
         <Title size="3xl">{project.title}</Title>
         <Button
-          className="-mt-0.5"
+          className="-mt-1.5"
           type="clear"
           icon={IconType.ARROW_RIGHT}
           iconPosition="right"
@@ -52,13 +55,9 @@ const ProjectPage: React.FC = () => {
           {t("VIEW_GITHUB_REPO")}
         </Text>
       )}
-      <div className="mt-4 flex flex-col gap-4">
-        {project?.description.map((item, i) => (
-          <Text key={i}>{item}</Text>
-        ))}
-      </div>
+      <Text className="pt-4 ">{project.description}</Text>
       <img className="max-h-xl w-full object-contain py-8" src={project.src} />
-    </div>
+    </section>
   );
 };
 export default ProjectPage;

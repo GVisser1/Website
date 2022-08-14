@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
 import { Card } from "../components/Card";
+import { IconType } from "../components/Icon";
 import Text from "../components/Text";
 import { Title } from "../components/Title";
 import ProjectsData, { ProjectItem } from "../data/ProjectsData";
@@ -28,29 +29,31 @@ const ProjectsPage: FC = () => {
         <Button
           block
           onClick={() => navigate(`/projects/${project.id}`)}
-          label={`${t("READ_MORE")}...`}
+          icon={IconType.ARROW_RIGHT}
+          iconPosition="right"
+          label={`${t("READ_MORE")}`}
           className="mt-5"
         />
       }
     >
       <Text className="line-clamp-3" color="medium">
-        {project.description[0]}
+        {project.description}
       </Text>
     </Card>
   );
 
   return (
-    <section id="Projects" className="relative mx-auto mb-10 max-w-screen-xl px-5 md:px-8">
+    <section id="Projects" className="relative mx-auto mb-10 max-w-screen-xl px-5 pt-10 md:px-8">
       <Title as="h2" size="xl" className="mb-3">
         {t("SCHOOL_PROJECTS")}
       </Title>
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {getSchoolProjects.map((project, index) => projectCard(project, index))}
       </div>
       <Title as="h2" size="xl" className="mt-8 mb-3">
         {t("PERSONAL_PROJECTS")}
       </Title>
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {getPersonalProjects.map((project, index) => projectCard(project, index))}
       </div>
     </section>

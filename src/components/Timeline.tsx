@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React from "react";
+import React, { ReactElement } from "react";
 import { Color } from "../types/Color";
 import { getCardTheme, getTimelineIconTheme } from "../utils/colorUtils";
 import { isEven } from "../utils/numberUtil";
@@ -10,7 +10,7 @@ import Text from "./Text";
 export interface TimelineItem {
   title: string;
   timeFrame: string;
-  subTitle?: string;
+  subTitle?: string | HTMLAnchorElement;
   description?: string;
   color?: Color;
   labels?: string[];
@@ -27,7 +27,7 @@ const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
       title={item.title}
       header={
         <div className={classNames("p-2", getCardTheme(item.color ?? "BLUE"))}>
-          <p className="text-xs line-clamp-1">{item.title}</p>
+          <p className="text-xs line-clamp-1">{item.timeFrame}</p>
         </div>
       }
       labels={item.labels}
@@ -61,7 +61,7 @@ const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
             >
               <Icon overrideSize className="mx-auto" name={IconType.CHEVRON_UP} />
             </div>
-            <div className="absolute flex h-full w-0.5 bg-gray-200 transition duration-300 dark:bg-gray-700" />
+            <div className="absolute flex h-full w-0.5 bg-gray-200 transition dark:bg-gray-700" />
           </div>
 
           <div className="col-span-2 mb-12">{!isEven(i) && timeLineCard(item)}</div>

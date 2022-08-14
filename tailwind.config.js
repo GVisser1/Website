@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       borderWidth: {
         1.5: "1.5px",
+        6: "6px",
       },
       maxHeight: {
         xl: "36rem",
@@ -27,16 +28,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/line-clamp"),
-    plugin(({ addUtilities, addVariant }) => {
-      addUtilities({
-        ".scrollbar-none": {
-          "-ms-overflow-style": "none",
-          "scrollbar-width": "none",
-          "&::-webkit-scrollbar": {
-            display: "none",
-          },
-        },
-      });
+    plugin(({ addVariant }) => {
       addVariant("pointer", "@media (hover: hover)");
     }),
   ],
