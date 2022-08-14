@@ -1,11 +1,10 @@
 import classNames from "classnames";
-import { FC } from "react";
 
 interface SocialIconsProps {
   className?: string;
 }
 
-const SocialIcons: FC<SocialIconsProps> = ({ className }) => {
+const SocialIcons: React.FC<SocialIconsProps> = ({ className }) => {
   return (
     <Icons
       className={className}

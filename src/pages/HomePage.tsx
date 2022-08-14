@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { IconType } from "../components/Icon";
 import Text from "../components/Text";
 import { Title } from "../components/Title";
@@ -9,7 +8,7 @@ import TimeLineData from "../data/TimelineData";
 import { Card } from "../components/Card";
 import { getAge } from "../utils/numberUtil";
 
-const HomePage: FC = () => {
+const HomePage: React.FC = () => {
   const { t } = useTranslation();
   const { getTimeLineItems } = TimeLineData();
 

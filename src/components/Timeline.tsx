@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { ReactElement } from "react";
+import { Fragment } from "react";
 import { Color } from "../types/Color";
 import { getCardTheme, getTimelineIconTheme } from "../utils/colorUtils";
 import { isEven } from "../utils/numberUtil";
@@ -50,7 +50,7 @@ const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
   return (
     <div className={classNames("grid w-full grid-cols-4 sm:grid-cols-5", className)}>
       {items.map((item, i) => (
-        <React.Fragment key={i}>
+        <Fragment key={i}>
           <div className="col-span-2 mb-12">{isEven(i) && timeLineCard(item)}</div>
           <div className="relative col-span-1 mx-auto hidden w-full justify-center pt-3 sm:flex">
             <div
@@ -65,7 +65,7 @@ const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
           </div>
 
           <div className="col-span-2 mb-12">{!isEven(i) && timeLineCard(item)}</div>
-        </React.Fragment>
+        </Fragment>
       ))}
     </div>
   );

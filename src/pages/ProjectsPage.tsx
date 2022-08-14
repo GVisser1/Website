@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
@@ -8,7 +8,7 @@ import Text from "../components/Text";
 import { Title } from "../components/Title";
 import ProjectsData, { ProjectItem } from "../data/ProjectsData";
 
-const ProjectsPage: FC = () => {
+const ProjectsPage: React.FC = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();

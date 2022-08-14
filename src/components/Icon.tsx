@@ -1,4 +1,3 @@
-import React from "react";
 import * as solid from "@heroicons/react/solid";
 import * as outline from "@heroicons/react/outline";
 import classNames from "classnames";

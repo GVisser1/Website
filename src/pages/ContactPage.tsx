@@ -1,11 +1,10 @@
-import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { IconType } from "../components/Icon";
 import SocialIcons from "../components/SocialIcons";
 import Text from "../components/Text";
 import { Title } from "../components/Title";
 
-const ContactPage: FC = () => {
+const ContactPage: React.FC = () => {
   const { t } = useTranslation();
   return (
     <section id="Contact" className="my-24 flex justify-center px-5 md:px-8">

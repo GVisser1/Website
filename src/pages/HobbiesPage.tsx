@@ -1,7 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
-import { Button } from "../components/Button";
 import { Card } from "../components/Card";
 import { Icon, IconType } from "../components/Icon";
 import Text from "../components/Text";
@@ -11,7 +8,7 @@ import { getAlbums, getGames, getMovies } from "../data/Media";
 import { Color } from "../types/Color";
 import { Badge } from "../components/Badge";
 
-const HobbiesPage: FC = () => {
+const HobbiesPage: React.FC = () => {
   const { t } = useTranslation();
   const { pokéData, getRandomPokémon } = usePokémon();
 
@@ -40,7 +37,7 @@ const HobbiesPage: FC = () => {
             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
             mollit anim id est laborum. Some of my favorite Albums:
           </Text>
-          <div className="my-4 grid grid-cols-2 gap-5 md:grid-cols-4">
+          <div className="my-4 mx-8 grid grid-cols-1 gap-5 xs:mx-0 xs:grid-cols-2 md:grid-cols-4">
             {getAlbums.map((item, i) => (
               <Card
                 key={i}
@@ -86,7 +83,7 @@ const HobbiesPage: FC = () => {
             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
             mollit anim id est laborum. Some of my favorite movies:
           </Text>
-          <div className="my-4 grid grid-cols-2 gap-5 md:grid-cols-4">
+          <div className="my-4 mx-8 grid grid-cols-1 gap-5 xs:mx-0 xs:grid-cols-2 md:grid-cols-4">
             {getMovies.map((item, i) => (
               <Card
                 key={i}
@@ -132,7 +129,7 @@ const HobbiesPage: FC = () => {
             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
             mollit anim id est laborum. Some of my favorite games:
           </Text>
-          <div className="my-4 grid grid-cols-2 gap-5 md:grid-cols-4">
+          <div className="my-4 mx-8 grid grid-cols-1 gap-5 xs:mx-0 xs:grid-cols-2 md:grid-cols-4">
             {getGames.map((item, i) => (
               <Card
                 key={i}
@@ -160,7 +157,7 @@ const HobbiesPage: FC = () => {
         </Card>
       </section>
 
-      <section id="About" className="relative mx-auto max-w-screen-lg px-5 py-20 md:px-8">
+      <section id="Pokémon" className="relative mx-auto max-w-screen-lg px-5 py-20 md:px-8">
         {!pokéData && (
           <div className="relative mx-auto mb-8 h-20 w-20 rounded-full shadow-md shadow-current ring-0.5 ring-gray-700">
             <div className="absolute h-1/2 w-full rounded-t-full bg-red-500" />

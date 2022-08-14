@@ -24,7 +24,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
 
   const navigation = [
     { name: t("HOME"), href: "/home", icon: IconType.HOME },
-    { name: "Hobbies", href: "/hobbies", icon: IconType.SPARKLES },
+    { name: t("Hobbies"), href: "/hobbies", icon: IconType.SPARKLES },
     { name: t("PROJECTS"), href: "/projects", icon: IconType.COLLECTION },
     { name: t("CONTACT"), href: "/contact", icon: IconType.AT_SYMBOL },
   ];
@@ -186,7 +186,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                     "w-full cursor-pointer px-2 py-3 font-semibold": true,
                     "text-gray-400 hover:text-gray-500 dark:hover:text-white":
                       !location.pathname.includes(item.href),
-                    "bg-emerald-100 text-gray-700 dark:bg-slate-800/60 dark:text-white":
+                    "bg-blue-50 text-gray-700 dark:bg-slate-800/60 dark:text-white":
                       location.pathname.includes(item.href),
                   })}
                   onClick={() => navigate(item.href)}

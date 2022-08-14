@@ -1,4 +1,4 @@
-import { FC, Fragment, MouseEventHandler } from "react";
+import { Fragment, MouseEventHandler } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import classNames from "classnames";
 import { Icon, IconType } from "./Icon";
@@ -28,7 +28,7 @@ export interface DropdownMenuProps {
   items: MenuItem[];
 }
 
-export const DropdownMenu: FC<DropdownMenuProps> = ({ items, btnProps, className }) => {
+export const DropdownMenu: React.FC<DropdownMenuProps> = ({ items, btnProps, className }) => {
   const classes = classNames("relative", className);
 
   const optClasses = (active: boolean, selected = false) =>
