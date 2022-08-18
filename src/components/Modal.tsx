@@ -3,7 +3,6 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Title } from "./Title";
 import { Button, ButtonType } from "./Button";
 import { IconType } from "./Icon";
-import { t } from "i18next";
 import classNames from "classnames";
 
 interface ButtonProps {
@@ -21,12 +20,7 @@ interface ModalProps {
   btnProps?: ButtonProps;
 }
 
-const Modal: React.FC<ModalProps> = ({
-  title,
-  className,
-  btnProps,
-  ...props
-}) => {
+const Modal: React.FC<ModalProps> = ({ title, className, btnProps, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
@@ -49,7 +43,7 @@ const Modal: React.FC<ModalProps> = ({
         onClick={openModal}
       />
       <Transition show={isOpen} as={Fragment} appear>
-        <Dialog className="fixed inset-0 z-10 pb-8" onClose={closeModal}>
+        <Dialog className="fixed inset-0 z-40 pb-8" onClose={closeModal}>
           <div className="flex h-full justify-center px-4">
             <Transition.Child
               as={Fragment}
@@ -60,7 +54,7 @@ const Modal: React.FC<ModalProps> = ({
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+              <Dialog.Overlay className="fixed inset-0 bg-slate-500 bg-opacity-75 transition-opacity" />
             </Transition.Child>
             <Transition.Child
               as={Fragment}
@@ -72,10 +66,10 @@ const Modal: React.FC<ModalProps> = ({
               leaveTo="opacity-0 scale-95"
             >
               <div className={classes}>
-                <div className="flex h-full w-full transform flex-col rounded-2xl border-2 border-gray-700 bg-white dark:bg-gray-600">
-                  <div className="border-b pb-3">
+                <div className="flex h-full w-full transform flex-col rounded-2xl border-2 border-slate-700 bg-white pb-4 dark:bg-slate-600">
+                  <div className="border-b pb-3 dark:border-slate-700">
                     <div className="flex items-center justify-between text-center">
-                      <Dialog.Title as="div" className="line-clamp-2 pl-6 pt-5">
+                      <Dialog.Title as="div" className="pl-6 pt-5 line-clamp-2">
                         <Title as="h2" size="2xl">
                           {title}
                         </Title>
@@ -89,11 +83,8 @@ const Modal: React.FC<ModalProps> = ({
                       />
                     </div>
                   </div>
-                  <div className="scrollbar-hide h-full max-h-screen overflow-x-hidden overflow-y-scroll px-4 pb-24">
+                  <div className="scrollbar-none h-full max-h-screen overflow-x-hidden overflow-y-scroll px-4">
                     {props.children}
-                  </div>
-                  <div className="absolute bottom-0 w-full rounded-b-2xl bg-white bg-opacity-70 p-4 pt-6 dark:bg-gray-600 dark:bg-opacity-70">
-                    <Button block onClick={closeModal} label={t("CLOSE")} />
                   </div>
                 </div>
               </div>

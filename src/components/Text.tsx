@@ -1,93 +1,64 @@
-import React from "react";
 import classNames from "classnames";
 import { Icon, IconType } from "./Icon";
 
 export interface TextProps {
   className?: string;
-  size?:
-    | "xs"
-    | "sm"
-    | "base"
-    | "md"
-    | "lg"
-    | "xl"
-    | "2xl"
-    | "3xl"
-    | "4xl"
-    | "5xl"
-    | "6xl";
+  size?: "xs" | "sm" | "base" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl";
   weight?: "light" | "normal" | "medium" | "semibold" | "bold";
-  color?:
-    | "black"
-    | "dark"
-    | "white"
-    | "light"
-    | "danger"
-    | "all-white"
-    | "all-dark";
-  italic?: boolean;
+  color?: "white" | "light" | "medium" | "dark" | "all-white" | "all-dark";
   href?: string;
-  spaceBetween?: "sm" | "base" | "lg";
   icon?: IconType;
   iconType?: "outline" | "solid";
   iconPosition?: "left" | "right";
+  tabIndex?: number;
 }
 
 export const Text: React.FC<TextProps> = ({
   size = "sm",
   weight = "normal",
   color = "dark",
-  italic = false,
   href,
-  spaceBetween = "base",
   icon,
   iconType = "outline",
   iconPosition = "left",
+  tabIndex,
   className,
   ...props
 }) => {
-  const Tag = href ? "a" : "div";
+  const Tag = href ? "a" : "p";
   const classes = classNames(
     {
-      "flex items-center": true,
+      "transition-300 whitespace-pre-line": true,
+      "flex items-center space-x-2": icon,
+      "flex-row-reverse space-x-reverse": iconPosition === "right",
       [`text-${size}`]: size,
       [`font-${weight}`]: weight,
-      "text-black dark:text-white": color === "black",
-      "text-gray-700 dark:text-white": color === "dark",
-      "text-white dark:text-gray-700": color === "white",
-      "text-red-400": color === "danger",
-      "text-gray-300": color === "light",
-      "text-gray-700": color === "all-dark",
       "text-white": color === "all-white",
-      "space-x-1": spaceBetween === "sm",
-      "space-x-2": spaceBetween === "base",
-      "space-x-4": spaceBetween === "lg",
-      italic: italic,
+      "text-white dark:text-gray-700": color === "white",
+      "text-gray-300": color === "light",
+      "text-gray-500 dark:text-gray-400": color === "medium",
+      "text-gray-700 dark:text-white": color === "dark",
+      "text-gray-700": color === "all-dark",
+      "hover:underline underline-offset-2 focus:outline-none": href,
     },
     className
   );
 
-  const linkClasses = classNames({
-    "text-blue-600 hover:text-blue-300 dark:text-yellow-600 dark:hover:text-yellow-100 hover:underline focus:outline-none focus:ring focus:ring-blue-300 dark:focus:ring-yellow-600":
-      href,
-  });
-
   return (
-    <div className={classes}>
+    <>
       {icon ? (
-        <>
-          {iconPosition === "left" && <Icon name={icon} type={iconType} />}
-          <Tag className={linkClasses} href={href}>
+        <div className={classes}>
+          <Icon name={icon} type={iconType} />
+          <Tag tabIndex={tabIndex} href={href}>
             {props.children}
           </Tag>
-          {iconPosition === "right" && <Icon name={icon} type={iconType} />}
-        </>
+        </div>
       ) : (
-        <Tag className={linkClasses} href={href}>
+        <Tag tabIndex={tabIndex} className={classNames(classes)} href={href}>
           {props.children}
         </Tag>
       )}
-    </div>
+    </>
   );
 };
 

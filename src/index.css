@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .animation-delay-5000 {
+    animation-delay: 5s;
+  }
+  .animation-delay-10000 {
+    animation-delay: 10s;
+  }
+  .transition-300 {
+    @apply transition duration-300;
+  }
+}

@@ -1,11 +1,10 @@
 import classNames from "classnames";
-import { FC } from "react";
 
 interface SocialIconsProps {
   className?: string;
 }
 
-const SocialIcons: FC<SocialIconsProps> = ({ className }) => {
+const SocialIcons: React.FC<SocialIconsProps> = ({ className }) => {
   return (
     <Icons
       className={className}
@@ -72,6 +71,7 @@ export const Icons: React.FC<IconsProps> = ({ className, options }) => {
             className={`rounded-full hover:brightness-75 active:brightness-50 ${option.bgColor}`}
             src={option.src}
             style={{ height: 32, width: 32 }}
+            alt={`${option.id} icon`}
           />
         </a>
       ))}

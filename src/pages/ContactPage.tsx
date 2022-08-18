@@ -1,46 +1,35 @@
-import { FC } from "react";
 import { useTranslation } from "react-i18next";
-import ContactForm from "../components/ContactForm";
 import { IconType } from "../components/Icon";
-import Page from "../components/Page";
 import SocialIcons from "../components/SocialIcons";
 import Text from "../components/Text";
 import { Title } from "../components/Title";
 
-const ContactPage: FC = () => {
+const ContactPage: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <Page>
-      <section
-        id="Contact"
-        className="mx-auto max-w-5xl flex-none px-5 py-10 md:flex md:justify-evenly md:px-8"
-      >
-        <div className="flex w-full flex-col items-center pt-4 pb-16 md:pb-0 md:pt-16">
-          <img
-            src="/images/personal/GlennProfile2.jpg"
-            className="h-56 w-56 rounded-full object-cover shadow-2xl sm:h-72 sm:w-72"
-          />
-          <Title className="py-4" as="h2" size="xl">
-            {t("CONTACT_ME")}
-          </Title>
-          <Text
-            icon={IconType.MAIL}
-            iconType="solid"
-            iconPosition="left"
-            href="mailto:gvisser.business@gmail.com"
-          >
-            {"gvisser.business@gmail.com"}
-          </Text>
-          <SocialIcons className="pt-6" />
-        </div>
-        <div className="w-full space-y-5 md:py-10">
-          <Title size="xl" className="w-full" as="h3">
-            {t("MESSAGE_ME")}
-          </Title>
-          <ContactForm />
-        </div>
-      </section>
-    </Page>
+    <section id="Contact" className="my-24 flex justify-center px-5 md:px-8">
+      <div className="z-10 flex flex-col items-center overflow-hidden">
+        <img
+          src="/images/personal/GlennProfile1.jpg"
+          className="h-60 w-60 rounded-full object-cover shadow-md shadow-current saturate-150 md:h-72 md:w-72"
+          alt="Glenn profile picture large 2"
+        />
+        <Title className="my-4" as="h2" size="lg">
+          {t("CONTACT_ME")}
+        </Title>
+        <Text
+          className="font-semibold"
+          icon={IconType.MAIL}
+          iconType="solid"
+          color="medium"
+          iconPosition="left"
+          href="mailto:gvisser.business@gmail.com"
+        >
+          {"gvisser.business@gmail.com"}
+        </Text>
+        <SocialIcons className="mt-6" />
+      </div>
+    </section>
   );
 };
 

@@ -1,4 +1,4 @@
-import { FC, Fragment, MouseEventHandler } from "react";
+import { Fragment, MouseEventHandler } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import classNames from "classnames";
 import { Icon, IconType } from "./Icon";
@@ -28,20 +28,15 @@ export interface DropdownMenuProps {
   items: MenuItem[];
 }
 
-export const DropdownMenu: FC<DropdownMenuProps> = ({
-  items,
-  btnProps,
-  className,
-}) => {
+export const DropdownMenu: React.FC<DropdownMenuProps> = ({ items, btnProps, className }) => {
   const classes = classNames("relative", className);
 
   const optClasses = (active: boolean, selected = false) =>
     classNames({
-      "w-full flex h-10 items-center justify-between rounded-md px-4 py-2 text-gray-700":
-        true,
-      "bg-green-200": selected,
-      "bg-green-300/80": active && selected,
-      "bg-gray-200": active && !selected,
+      "w-full flex h-10 items-center justify-between px-4 py-2 text-gray-700 dark:text-white": true,
+      "bg-black/5 dark:bg-slate-800 ": !active && selected,
+      "bg-black/10 dark:bg-slate-600 ": active && selected,
+      "bg-gray-200 dark:bg-slate-600": active && !selected,
     });
 
   return (
@@ -71,22 +66,13 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute right-0 z-20 my-1 w-56 origin-top-right divide-y divide-gray-100 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-20 focus:outline-none">
+            <Menu.Items className="transition-300 absolute right-0 z-40 my-1 w-56 origin-top-right divide-y divide-slate-200 overflow-hidden rounded-md border border-black/20 bg-white shadow-lg focus:outline-none dark:divide-slate-400 dark:border-slate-500 dark:bg-slate-700">
               {items.map((item, index) => (
                 <Menu.Item key={index}>
                   {({ active }) => (
-                    <button
-                      className={optClasses(active, item.selected)}
-                      onClick={item.onClick}
-                    >
-                      {item.label && (
-                        <Text color="all-dark" icon={item.icon}>
-                          {item.label}
-                        </Text>
-                      )}
-                      {item.selected && (
-                        <Icon name={IconType.CHECK_CIRCLE} type="outline" />
-                      )}
+                    <button className={optClasses(active, item.selected)} onClick={item.onClick}>
+                      {item.label && <Text icon={item.icon}>{item.label}</Text>}
+                      {item.selected && <Icon name={IconType.CHECK_CIRCLE} type="outline" />}
                     </button>
                   )}
                 </Menu.Item>

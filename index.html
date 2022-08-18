@@ -4,8 +4,7 @@
     <script>
       if (
         localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
+        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
       ) {
         document.documentElement.classList.add("dark");
       } else {
@@ -13,9 +12,11 @@
       }
     </script>
     <meta charset="utf-8" />
-    <link rel="preload" as="image" href="/images/personal/GlennMain.webp" />
     <link rel="icon" href="/images/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0"
+    />
     <meta name="theme-color" content="#000000" />
     <title>Glenn Visser</title>
     <meta
@@ -23,7 +24,9 @@
       content="Welcome to my website, I'm Glenn. This site was made with React, TypeScript, TailwindCSS and serves as a personal portfolio."
     />
   </head>
-  <body>
+  <body
+    class="transition-300 bg-gradient-to-b from-white via-sky-300/25 to-white dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-900"
+  >
     <div id="root"></div>
     <script type="module" src="/src/index.tsx"></script>
   </body>
