@@ -64,30 +64,6 @@ const HomePage: React.FC = () => {
           <Timeline className="max-w-screen-lg" items={getTimeLineItems} />
         </div>
       </section>
-
-      <section
-        id="Skills"
-        className="relative mx-auto max-w-screen-xl space-y-8 px-5 py-36 md:px-8"
-      >
-        <Title size="4xl" className="text-center">
-          {t("LANGUAGES")}
-        </Title>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-          {getProgrammingLanguages.map((item, i) => (
-            <Card
-              key={i}
-              title={item.title}
-              image={
-                <img
-                  className={"aspect-square w-full p-6"}
-                  src={item.src}
-                  alt={`Language icon: ${item.title}`}
-                />
-              }
-            />
-          ))}
-        </div>
-      </section>
     </>
   );
 };
