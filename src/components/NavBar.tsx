@@ -67,13 +67,13 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
     <Disclosure
       as="nav"
       className={classNames(
-        "z-30 border-b border-gray-100 bg-white transition dark:border-slate-700 dark:bg-slate-900",
+        "transition-300 z-30 border-b border-gray-100 bg-white dark:border-slate-700 dark:bg-slate-900",
         className
       )}
     >
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-8xl px-2 md:px-6 lg:px-8">
+          <div className="mx-auto max-w-screen-2xl px-2 md:px-6 lg:px-8">
             <div className="flex h-16 items-center">
               <div className="flex items-center md:hidden">
                 <Disclosure.Button as={Fragment}>
@@ -87,6 +87,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                   <img
                     className="hidden h-8 w-8 rounded-full saturate-150 lg:block"
                     src="/images/personal/GlennProfile1.jpg"
+                    alt="Glenn profile picture"
                   />
                   <Text className="pr-4 md:pr-0 " weight="semibold" size="2xl">
                     Glenn Visser
@@ -177,7 +178,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
             </div>
           </div>
 
-          <Disclosure.Panel className="h-48 border-gray-100 bg-white transition dark:border-slate-700 dark:bg-slate-900 md:hidden">
+          <Disclosure.Panel className="transition-300 h-48 border-gray-100 bg-white dark:border-slate-700 dark:bg-slate-900 md:hidden">
             <div className="divide-y divide-slate-200 dark:divide-slate-600">
               {navigation.map((item) => (
                 <div

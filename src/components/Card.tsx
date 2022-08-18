@@ -30,10 +30,10 @@ export const Card: React.FC<CardProps> = ({
 }) => {
   const classes = classNames(
     {
-      "w-full transition overflow-hidden rounded-xl border border-gray-200 bg-white shadow-gray-300 dark:shadow-current shadow-md dark:border-slate-700 dark:bg-slate-800":
+      "w-full transition-300 overflow-hidden rounded-xl border border-slate-400 bg-white dark:border-slate-500 dark:bg-slate-800":
         true,
       "text-center": header,
-      "pointer:hover:scale-105": hover,
+      "shadow-slate-300 dark:shadow-slate-900 hover:shadow-lg": hover,
     },
     className
   );
@@ -45,7 +45,7 @@ export const Card: React.FC<CardProps> = ({
       <div
         className={classNames(
           "px-3 py-3 ",
-          header && "border-t-2 border-gray-100 transition dark:border-slate-700"
+          header && "transition-300 border-t-2 border-slate-100 dark:border-slate-700"
         )}
       >
         <Title as="h4" className="line-clamp-1">

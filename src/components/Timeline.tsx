@@ -61,7 +61,7 @@ const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
             >
               <Icon overrideSize className="mx-auto" name={IconType.CHEVRON_UP} />
             </div>
-            <div className="absolute flex h-full w-0.5 bg-gray-200 transition dark:bg-gray-700" />
+            <div className="transition-300 absolute flex h-full w-0.5 bg-gray-200 dark:bg-gray-700" />
           </div>
 
           <div className="col-span-2 mb-12">{!isEven(i) && timeLineCard(item)}</div>

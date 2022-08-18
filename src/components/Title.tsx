@@ -1,31 +1,23 @@
 import classNames from "classnames";
-import { Icon, IconType } from "./Icon";
 
 export interface TitleProps {
   className?: string;
   size?: "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl";
   color?: "white" | "light" | "medium" | "dark" | "all-white" | "all-dark";
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  icon?: IconType;
-  iconType?: "outline" | "solid";
-  iconPosition?: "left" | "right";
 }
 
 export const Title: React.FC<TitleProps> = ({
   as = "h2",
   size = "base",
   color = "dark",
-  icon,
-  iconType = "outline",
-  iconPosition = "left",
   className,
   ...props
 }) => {
   const Tag = as;
   const classes = classNames(
     {
-      "transition font-bold": true,
-      "flex items-center space-x-2": icon,
+      "transition-300 font-bold": true,
       // Colors
       "text-white": color === "all-white",
       "text-white dark:text-gray-700": color === "white",
@@ -49,16 +41,8 @@ export const Title: React.FC<TitleProps> = ({
   );
 
   return (
-    <div className={classes}>
-      {icon ? (
-        <>
-          {iconPosition === "left" && <Icon name={icon} type={iconType} />}
-          <Tag>{props.children}</Tag>
-          {iconPosition === "right" && <Icon name={icon} type={iconType} />}
-        </>
-      ) : (
-        <Tag>{props.children}</Tag>
-      )}
-    </div>
+    <>
+      <Tag className={classes}>{props.children}</Tag>
+    </>
   );
 };

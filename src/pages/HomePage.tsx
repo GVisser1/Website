@@ -1,4 +1,3 @@
-import { IconType } from "../components/Icon";
 import Text from "../components/Text";
 import { Title } from "../components/Title";
 import { useTranslation } from "react-i18next";
@@ -15,18 +14,23 @@ const HomePage: React.FC = () => {
   return (
     <>
       <section id="Intro" className="relative">
-        <img src="/images/rdam.webp" className="h-[620px] w-full object-cover xl:h-[800px]" />
+        <img
+          src="/images/rdam.webp"
+          className="h-[620px] w-full object-cover xl:h-[800px]"
+          alt="Rotterdam"
+        />
         <div className="absolute inset-0 mx-auto flex max-w-screen-2xl flex-col items-center justify-between text-center">
           <div className="absolute top-0 mx-auto flex flex-col items-center justify-center space-y-4 pt-10 lg:left-16 2xl:left-8">
-            <Title as="h1" size="7xl" color="all-dark" className="underline">
+            <Title as="h1" size="7xl" color="all-white" className="underline lg:text-gray-700">
               {t("HOME_TITLE")}
             </Title>
-            <Title size="3xl" color="all-dark">
+            <Title size="3xl" color="all-white" className="lg:text-gray-700">
               {t("HOME_SUBTITLE", { age: getAge(new Date(2000, 3, 21)) })}
             </Title>
             <img
               src="/images/personal/GlennProfile2.jpg"
               className="h-60 w-60 rounded-full object-cover shadow-lg shadow-current saturate-150 md:h-64 md:w-64"
+              alt="Glenn profile picture large"
             />
           </div>
           <Text
@@ -40,8 +44,8 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      <section id="About" className="relative mx-auto max-w-screen-xl space-y-5 px-5 py-36 md:px-8">
-        <Title size="4xl" className="pb-2 text-center underline">
+      <section id="About" className="relative mx-auto max-w-screen-md space-y-8 px-5 py-36 md:px-8">
+        <Title size="4xl" className="text-center ">
           {t("ABOUT")}
         </Title>
         <Text className="mx-5" size="md">
@@ -51,9 +55,9 @@ const HomePage: React.FC = () => {
 
       <section
         id="Timeline"
-        className="relative mx-auto max-w-screen-xl space-y-5 py-36 px-5 md:px-8"
+        className="relative mx-auto max-w-screen-xl space-y-8 py-36 px-5 md:px-8"
       >
-        <Title size="4xl" className="pb-2 text-center underline">
+        <Title size="4xl" className="text-center">
           {t("TIMELINE")}
         </Title>
         <div className="flex justify-center">
@@ -61,8 +65,11 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      <section id="Skills" className="relative mx-auto max-w-screen-xl px-5 py-36 md:px-8">
-        <Title size="2xl" icon={IconType.GLOBE} className="mb-3">
+      <section
+        id="Skills"
+        className="relative mx-auto max-w-screen-xl space-y-8 px-5 py-36 md:px-8"
+      >
+        <Title size="4xl" className="text-center">
           {t("LANGUAGES")}
         </Title>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
@@ -70,7 +77,13 @@ const HomePage: React.FC = () => {
             <Card
               key={i}
               title={item.title}
-              image={<img className={"aspect-square w-full p-6"} src={item.src} />}
+              image={
+                <img
+                  className={"aspect-square w-full p-6"}
+                  src={item.src}
+                  alt={`Language icon: ${item.title}`}
+                />
+              }
             />
           ))}
         </div>

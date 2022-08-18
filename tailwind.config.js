@@ -13,9 +13,23 @@ module.exports = {
       "2xl": "1536px",
     },
     extend: {
+      animation: {
+        shake: "shake 15s infinite ease-in-out",
+      },
       borderWidth: {
         1.5: "1.5px",
         6: "6px",
+      },
+      keyframes: {
+        shake: {
+          "0%": { transform: "translate(0, 0) rotate(0)" },
+          "3%": { transform: "translate(-10px, 0) rotate(-20deg)" },
+          "6%": { transform: "translate(10px, 0) rotate(20deg)" },
+          "9%": { transform: "translate(-10px, 0) rotate(-10deg)" },
+          "12%": { transform: "translate(10px, 0) rotate(10deg)" },
+          "15%": { transform: "translate(0, 0) rotate(0)" },
+          "100%": { transform: "translate(0, 0) rotate(0)" },
+        },
       },
       maxHeight: {
         xl: "36rem",

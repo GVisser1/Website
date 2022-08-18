@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState } from "react";
-import { getRandomNumber } from "../utils/numberUtil";
 
 interface PokéStats {
   name: string;
@@ -17,45 +16,37 @@ export interface PokéData {
   stats?: PokéStats[];
   species?: string;
   moves?: string[];
-  isLegendary?: boolean;
-  isMythical?: boolean;
 }
+
+const BASE_URL = "https://pokeapi.co/api/v2/";
 
 const usePokémon = () => {
   const [pokéData, setPokéData] = useState<PokéData>();
 
-  const getRandomPokémon = (id = getRandomNumber(1, 898)) => {
-    // const id = ;
-    const retrieveData = async () => {
-      try {
-        const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`);
-        const species = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
-        const types = data.types.map((item: any) => item.type.name);
+  const getPokéData = (id: string) => axios.get(`${BASE_URL}pokemon/${id}`);
+  const getPokéSpecies = (id: string) => axios.get(`${BASE_URL}pokemon-species/${id}`);
 
-        console.log(species);
-
+  const getData = (id: string) => {
+    Promise.all([getPokéData(id), getPokéSpecies(id)]).then(
+      ([{ data: basicData }, { data: speciesData }]) => {
         setPokéData({
-          id: formatId(data.id),
-          name: data.name,
-          types: types,
-          species: species.data.genera[7].genus,
-          src: data.sprites.front_default,
-          ability: data.abilities[0].ability.name,
-          height: formatUnit(data.height),
-          weight: formatUnit(data.weight),
-          stats: data.stats.map(
+          id: formatId(basicData.id),
+          name: basicData.name,
+          types: basicData.types.map((item: any) => item.type.name),
+          species: speciesData.genera[7].genus,
+          src: basicData.sprites.front_default,
+          ability: basicData.abilities[0].ability.name,
+          height: formatUnit(basicData.height),
+          weight: formatUnit(basicData.weight),
+          stats: basicData.stats.map(
             (stat: any) => new Object({ base_stat: stat.base_stat, name: stat.stat.name })
           ),
-          isLegendary: species.data.is_legendary,
-          isMythical: species.data.is_mythical,
         });
-      } catch (error) {
-        console.error("Failed to get Pokémon");
       }
-    };
-    retrieveData();
+    );
   };
-  return { pokéData, getRandomPokémon };
+
+  return { pokéData, getData };
 };
 
 const formatId = (id: number) => {

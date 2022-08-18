@@ -31,8 +31,9 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const innerClasses = classNames({
-    "flex transition justify-center gap-x-1 font-medium rounded-lg focus:outline-none pointer:focus:ring":
+    "flex transition-300 justify-center gap-x-1 font-medium rounded-lg focus:outline-none pointer:focus:ring":
       true,
+    "flex-row-reverse space-x-reverse": iconPosition === "right",
     "px-4 py-3": !compact,
     "p-2": compact,
     "w-full": block,
@@ -54,9 +55,8 @@ export const Button: React.FC<ButtonProps> = ({
         onClick={(event) => onClick && onClick(event)}
         className={innerClasses}
       >
-        {icon && iconPosition === "left" && <Icon name={icon} type={iconType} />}
+        {icon && <Icon name={icon} type={iconType} />}
         {label && <span>{label}</span>}
-        {icon && iconPosition === "right" && <Icon name={icon} type={iconType} />}
         {props.children}
       </button>
     </div>

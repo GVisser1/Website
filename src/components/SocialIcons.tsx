@@ -71,6 +71,7 @@ export const Icons: React.FC<IconsProps> = ({ className, options }) => {
             className={`rounded-full hover:brightness-75 active:brightness-50 ${option.bgColor}`}
             src={option.src}
             style={{ height: 32, width: 32 }}
+            alt={`${option.id} icon`}
           />
         </a>
       ))}

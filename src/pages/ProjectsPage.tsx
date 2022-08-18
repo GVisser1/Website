@@ -23,7 +23,13 @@ const ProjectsPage: React.FC = () => {
       key={index}
       title={project.title}
       hover={false}
-      image={<img className="h-52 w-full object-cover object-bottom" src={project.src} />}
+      image={
+        <img
+          className="h-64 w-full object-cover object-bottom"
+          src={project.src}
+          alt={`Project: ${project.title} preview`}
+        />
+      }
       labels={project.labels}
       button={
         <Button
@@ -43,7 +49,7 @@ const ProjectsPage: React.FC = () => {
   );
 
   return (
-    <section id="Projects" className="relative mx-auto mb-10 max-w-screen-xl px-5 pt-10 md:px-8">
+    <section id="Projects" className="relative mx-auto mb-10 max-w-screen-2xl px-5 pt-10 md:px-8">
       <Title as="h2" size="xl" className="mb-3">
         {t("SCHOOL_PROJECTS")}
       </Title>

@@ -28,8 +28,9 @@ export const Text: React.FC<TextProps> = ({
   const Tag = href ? "a" : "p";
   const classes = classNames(
     {
-      transition: true,
-      "flex items-center space-x-2 whitespace-pre-line": icon,
+      "transition-300 whitespace-pre-line": true,
+      "flex items-center space-x-2": icon,
+      "flex-row-reverse space-x-reverse": iconPosition === "right",
       [`text-${size}`]: size,
       [`font-${weight}`]: weight,
       "text-white": color === "all-white",
@@ -38,31 +39,26 @@ export const Text: React.FC<TextProps> = ({
       "text-gray-500 dark:text-gray-400": color === "medium",
       "text-gray-700 dark:text-white": color === "dark",
       "text-gray-700": color === "all-dark",
+      "hover:underline underline-offset-2 focus:outline-none": href,
     },
     className
   );
 
-  const innerClasses = classNames({
-    "whitespace-pre-line": true,
-    "hover:underline underline-offset-2 focus:outline-none": href,
-  });
-
   return (
-    <div className={classes}>
+    <>
       {icon ? (
-        <>
-          {iconPosition === "left" && <Icon name={icon} type={iconType} />}
-          <Tag tabIndex={tabIndex} className={innerClasses} href={href}>
+        <div className={classes}>
+          <Icon name={icon} type={iconType} />
+          <Tag tabIndex={tabIndex} href={href}>
             {props.children}
           </Tag>
-          {iconPosition === "right" && <Icon name={icon} type={iconType} />}
-        </>
+        </div>
       ) : (
-        <Tag tabIndex={tabIndex} className={innerClasses} href={href}>
+        <Tag tabIndex={tabIndex} className={classNames(classes)} href={href}>
           {props.children}
         </Tag>
       )}
-    </div>
+    </>
   );
 };
 

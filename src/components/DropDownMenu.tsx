@@ -66,7 +66,7 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({ items, btnProps, cla
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute right-0 z-40 my-1 w-56 origin-top-right divide-y divide-slate-200 overflow-hidden rounded-md border border-black/20 bg-white shadow-lg transition focus:outline-none dark:divide-slate-400 dark:border-slate-500 dark:bg-slate-700">
+            <Menu.Items className="transition-300 absolute right-0 z-40 my-1 w-56 origin-top-right divide-y divide-slate-200 overflow-hidden rounded-md border border-black/20 bg-white shadow-lg focus:outline-none dark:divide-slate-400 dark:border-slate-500 dark:bg-slate-700">
               {items.map((item, index) => (
                 <Menu.Item key={index}>
                   {({ active }) => (
