@@ -28,7 +28,7 @@ export const Title: React.FC<PropsWithChildren<TitleProps>> = ({
     size === "2xl" && "text-2xl",
     size === "3xl" && "text-3xl",
     size === "4xl" && "text-4xl",
-    size === "5xl" && "text-5xl sm:text-6xl lg:text-7xl",
+    size === "5xl" && "text-5xl",
     className
   );
 

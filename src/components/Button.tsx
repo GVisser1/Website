@@ -25,7 +25,7 @@ export const Button: React.FC<ButtonProps & React.ButtonHTMLAttributes<HTMLButto
   variant = "default",
   ...props
 }) => {
-  const innerClasses = classNames(
+  const classes = classNames(
     "flex transition justify-center gap-x-1 font-medium rounded-lg outline-none focus-visible:ring",
     compact ? "p-2" : "px-4 py-3",
     block && "w-full",
@@ -33,20 +33,20 @@ export const Button: React.FC<ButtonProps & React.ButtonHTMLAttributes<HTMLButto
     disabled
       ? "text-gray-400 bg-gray-100"
       : {
-          "text-black bg-blue-100 hover:bg-blue-200 active:bg-blue-300 focus-visible:ring-blue-300":
+          "text-black bg-blue-100 hover:bg-blue-200 active:bg-blue-300 focus-visible:ring-blue-400":
             variant === "default",
-          "text-white bg-blue-500 pointer:hover:bg-blue-600 active:!bg-blue-700 focus-visible:ring-blue-300":
+          "text-white bg-blue-600 pointer:hover:bg-blue-700 active:!bg-blue-800 focus-visible:ring-blue-400":
             variant === "primary",
-          "text-white bg-red-500 pointer:hover:bg-red-600 active:!bg-red-700 ring-red-300 focus-visible:ring-red-300 ":
+          "text-white bg-red-500 pointer:hover:bg-red-600 active:!bg-red-700 ring-red-300 focus-visible:ring-red-400":
             variant === "destructive",
-          "text-gray-400 pointer:hover:text-gray-500 dark:pointer:hover:text-gray-300 focus-visible:ring-blue-300 active:bg-gray-200 dark:active:bg-gray-800":
+          "text-gray-400 pointer:hover:text-gray-500 dark:pointer:hover:text-gray-300 focus-visible:ring-blue-400 active:bg-gray-200 dark:active:bg-gray-800":
             variant === "clear",
         },
     className
   );
 
   return (
-    <button className={innerClasses} {...props}>
+    <button className={classes} {...props}>
       {icon && <Icon name={icon} type={iconType} />}
       {label && <span>{label}</span>}
       {props.children}

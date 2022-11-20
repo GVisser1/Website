@@ -63,7 +63,7 @@ export const Icons: React.FC<IconsProps> = ({ className, options }) => {
     <div className={classNames("flex justify-center gap-x-3", className)}>
       {options.map((option) => (
         <a
-          className="rounded-full outline-none focus-visible:ring focus-visible:ring-blue-300"
+          className="rounded-full outline-none focus-visible:ring focus-visible:ring-blue-400"
           href={option.href}
           key={option.id}
         >

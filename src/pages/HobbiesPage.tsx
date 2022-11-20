@@ -62,7 +62,7 @@ const HobbiesPage: React.FC = () => {
             </div>
             <div className="flex flex-col items-center justify-center gap-1 xs:flex-row">
               <Card
-                hover={false}
+                shadow={false}
                 className="h-80 w-56 capitalize"
                 title={`#${pokéData.id} ${pokéData.name}`}
                 image={

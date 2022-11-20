@@ -1,6 +1,5 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Disclosure } from "@headlessui/react";
-import { useNavigate } from "react-router-dom";
 import Text from "./Text";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
@@ -17,7 +16,6 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ className }) => {
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const { isDutch, switchLanguage, getLanguage } = useI18n();
   const { getTheme, switchTheme, getThemeIcon } = useSystem();
@@ -73,20 +71,18 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
         className
       )}
     >
-      {({ open }) => (
+      {({ open, close }) => (
         <>
           <div className="mx-auto max-w-screen-2xl px-2 md:px-6 lg:px-8">
             <div className="flex h-16 items-center">
               <div className="flex items-center md:hidden">
-                <Disclosure.Button as={Fragment}>
-                  <div>
-                    <Button
-                      compact
-                      variant="clear"
-                      aria-label={open ? "close menu" : "open menu"}
-                      icon={open ? "XMarkIcon" : "Bars3Icon"}
-                    />
-                  </div>
+                <Disclosure.Button as="div">
+                  <Button
+                    compact
+                    variant="clear"
+                    aria-label={open ? "close menu" : "open menu"}
+                    icon={open ? "XMarkIcon" : "Bars3Icon"}
+                  />
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
@@ -191,21 +187,16 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
           </div>
 
           <Disclosure.Panel className="h-48 border-gray-100 bg-white transition dark:border-slate-700 dark:bg-slate-900 md:hidden">
-            <div className="divide-y divide-slate-200 dark:divide-slate-600">
+            <div className="flex flex-col divide-y divide-slate-200 dark:divide-slate-600">
               {navigation.map((item) => (
-                <div
+                <a
                   key={item.name}
-                  className={classNames({
-                    "w-full cursor-pointer px-2 py-3 font-semibold": true,
-                    "text-gray-400 pointer:hover:text-gray-500 dark:pointer:hover:text-white":
-                      !location.pathname.includes(item.href),
-                    "bg-blue-50 text-gray-700 dark:bg-slate-800/60 dark:text-white":
-                      location.pathname.includes(item.href),
-                  })}
-                  onClick={() => navigate(item.href)}
+                  className="w-full px-2 py-3 font-semibold text-gray-400 pointer:hover:text-gray-500 dark:pointer:hover:text-white"
+                  href={item.href}
+                  onClick={() => close()}
                 >
                   {item.name}
-                </div>
+                </a>
               ))}
             </div>
           </Disclosure.Panel>

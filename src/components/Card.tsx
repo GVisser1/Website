@@ -10,7 +10,7 @@ export interface CardProps {
   labels?: string[];
   labelColors?: Color[];
   color?: Color;
-  hover?: boolean;
+  shadow?: boolean;
   className?: string;
   image?: ReactElement;
   button?: ReactElement;
@@ -22,19 +22,16 @@ export const Card: React.FC<PropsWithChildren<CardProps>> = ({
   header,
   labels,
   labelColors,
-  hover = true,
+  shadow = true,
   image,
   button,
   className,
   children,
 }) => {
   const classes = classNames(
-    {
-      "w-full transition overflow-hidden rounded-xl border border-slate-400 bg-white dark:border-slate-500 dark:bg-slate-800":
-        true,
-      "text-center": header,
-      "shadow-slate-300 dark:shadow-slate-900 pointer:hover:shadow-lg": hover,
-    },
+    "w-full transition overflow-hidden rounded-xl border border-slate-400 bg-white dark:border-slate-500 dark:bg-slate-800",
+    header && "text-center",
+    shadow && "shadow-lg shadow-slate-300 dark:shadow-slate-900",
     className
   );
 
