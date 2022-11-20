@@ -14,12 +14,12 @@ const useSystem = () => {
 
   const getThemeIcon = () => {
     if (!("theme" in localStorage)) {
-      return IconType.DESKTOP_COMPUTER;
+      return "ComputerDesktopIcon";
     }
     if (localStorage.getItem("theme") === "light") {
-      return IconType.SUN;
+      return "SunIcon";
     }
-    return IconType.MOON;
+    return "MoonIcon";
   };
 
   const detectThemeSwitch = (e: MediaQueryListEvent) => {
@@ -46,19 +46,19 @@ const useSystem = () => {
     switch (theme) {
       case "LIGHT":
         setUseSystemTheme(false);
-        setThemeIcon(IconType.SUN);
+        setThemeIcon("SunIcon");
         localStorage.setItem("theme", "light");
         document.documentElement.classList.remove("dark");
         return;
       case "DARK":
         setUseSystemTheme(false);
-        setThemeIcon(IconType.MOON);
+        setThemeIcon("MoonIcon");
         localStorage.setItem("theme", "dark");
         document.documentElement.classList.add("dark");
         return;
       case "SYSTEM":
         setUseSystemTheme(true);
-        setThemeIcon(IconType.DESKTOP_COMPUTER);
+        setThemeIcon("ComputerDesktopIcon");
         localStorage.removeItem("theme");
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
           document.documentElement.classList.add("dark");

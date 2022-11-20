@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { ReactElement } from "react";
+import React, { PropsWithChildren, ReactElement } from "react";
 import { Color } from "../types/Color";
 import { Colors } from "../utils/colorUtils";
 import { Badge } from "./Badge";
@@ -10,31 +10,28 @@ export interface CardProps {
   labels?: string[];
   labelColors?: Color[];
   color?: Color;
-  hover?: boolean;
+  shadow?: boolean;
   className?: string;
   image?: ReactElement;
   button?: ReactElement;
   header?: ReactElement;
 }
 
-export const Card: React.FC<CardProps> = ({
+export const Card: React.FC<PropsWithChildren<CardProps>> = ({
   title,
   header,
   labels,
   labelColors,
-  hover = true,
+  shadow = true,
   image,
   button,
   className,
-  ...props
+  children,
 }) => {
   const classes = classNames(
-    {
-      "w-full transition-300 overflow-hidden rounded-xl border border-slate-400 bg-white dark:border-slate-500 dark:bg-slate-800":
-        true,
-      "text-center": header,
-      "shadow-slate-300 dark:shadow-slate-900 hover:shadow-lg": hover,
-    },
+    "w-full transition overflow-hidden rounded-xl border border-slate-400 bg-white dark:border-slate-500 dark:bg-slate-800",
+    header && "text-center",
+    shadow && "shadow-lg shadow-slate-300 dark:shadow-slate-900",
     className
   );
 
@@ -42,20 +39,15 @@ export const Card: React.FC<CardProps> = ({
     <div className={classes}>
       {header}
       {image}
-      <div
-        className={classNames(
-          "px-3 py-3 ",
-          header && "transition-300 border-t-2 border-slate-100 dark:border-slate-700"
-        )}
-      >
-        <Title as="h4" className="line-clamp-1">
+      <div className="px-3 py-3">
+        <Title as="h3" className="line-clamp-1">
           {title}
         </Title>
-        {props.children}
+        {children}
         {labels && (
           <div
             className={classNames(
-              "mt-3 flex flex-wrap gap-0.5 text-center",
+              "mt-3 flex flex-wrap gap-x-1.5 text-center",
               header && "justify-center"
             )}
           >

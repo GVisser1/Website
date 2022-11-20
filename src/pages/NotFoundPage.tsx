@@ -14,9 +14,9 @@ const NotFoundPage: React.FC = () => {
       <Text size="xl">404</Text>
       <Title size="3xl">{t("PAGE_NOT_FOUND")}</Title>
       <Button
-        type="destructive"
+        variant="destructive"
         onClick={() => navigate("/home")}
-        icon={IconType.HOME}
+        icon="HomeIcon"
         label={t("Home")}
       />
     </section>

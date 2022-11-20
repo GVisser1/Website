@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { Color } from "../types/Color";
 import { getCardTheme } from "../utils/colorUtils";
 
@@ -8,7 +8,11 @@ interface BadgeProps {
   color?: Color;
 }
 
-export const Badge: React.FC<BadgeProps> = ({ color = "BLUE", className, children }) => {
+export const Badge: React.FC<PropsWithChildren<BadgeProps>> = ({
+  color = "BLUE",
+  className,
+  children,
+}) => {
   return (
     <span
       className={classNames(

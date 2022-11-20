@@ -3,57 +3,36 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^17.0.10",
-    "@types/react": "^17.0.20",
-    "@types/react-dom": "^17.0.9",
-    "@vitejs/plugin-react": "^1.1.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "typescript": "^4.4.2",
-    "vite": "^2.7.0",
-    "web-vitals": "^2.1.0"
+    "@types/jest": "^29.2.2",
+    "@types/node": "^18.11.9",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.8.4",
+    "vite": "^3.2.2",
+    "web-vitals": "^3.0.4"
   },
   "scripts": {
     "start": "vite",
     "build": "vite build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "dependencies": {
-    "@headlessui/react": "^1.4.3",
-    "@heroicons/react": "^1.0.5",
-    "@tailwindcss/line-clamp": "^0.3.0",
-    "autoprefixer": "^10.4.2",
-    "axios": "^0.27.2",
-    "classnames": "^2.3.1",
+    "@headlessui/react": "^1.7.4",
+    "@heroicons/react": "^2.0.13",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "autoprefixer": "^10.4.13",
+    "axios": "^1.1.3",
+    "classnames": "^2.3.2",
     "date-diff": "^1.0.2",
-    "i18next": "^21.6.10",
-    "i18next-browser-languagedetector": "^6.1.3",
+    "i18next": "^22.0.4",
+    "i18next-browser-languagedetector": "^7.0.1",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.5",
-    "react-i18next": "^11.15.3",
-    "react-router-dom": "^6.2.1",
-    "tailwindcss": "^3.0.12"
+    "react-i18next": "^12.0.0",
+    "react-router-dom": "^6.4.3",
+    "tailwindcss": "^3.2.2"
   },
   "prettier": {
     "printWidth": 100,

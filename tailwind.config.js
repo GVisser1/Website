@@ -18,7 +18,6 @@ module.exports = {
       },
       borderWidth: {
         1.5: "1.5px",
-        6: "6px",
       },
       keyframes: {
         shake: {
@@ -30,17 +29,6 @@ module.exports = {
           "15%": { transform: "translate(0, 0) rotate(0)" },
           "100%": { transform: "translate(0, 0) rotate(0)" },
         },
-      },
-      maxHeight: {
-        xl: "36rem",
-        "2xl": "42rem",
-        "3xl": "54rem",
-      },
-      maxWidth: {
-        "8xl": "88rem",
-      },
-      minWidth: {
-        "1/4": "25%",
       },
       ringWidth: {
         0.5: "0.5px",
@@ -60,7 +48,7 @@ module.exports = {
           },
         },
       });
-      addVariant("pointer", "@media (hover: hover)");
+      addVariant("pointer", "@media (hover: hover) and (pointer: fine)");
     }),
   ],
 };

@@ -10,7 +10,7 @@ import Text from "./Text";
 export interface TimelineItem {
   title: string;
   timeFrame: string;
-  subTitle?: string | HTMLAnchorElement;
+  subTitle?: string;
   description?: string;
   color?: Color;
   labels?: string[];
@@ -35,12 +35,12 @@ const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
       color={item.color}
     >
       {item.subTitle && (
-        <Text className="line-clamp-1" color="medium">
+        <Text className="line-clamp-1" size="sm" color="medium">
           {item.subTitle}
         </Text>
       )}
       {item.description && (
-        <Text className="line-clamp-3" color="medium">
+        <Text className="line-clamp-3" size="sm" color="medium">
           {item.description}
         </Text>
       )}
@@ -48,23 +48,55 @@ const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
   );
 
   return (
-    <div className={classNames("grid w-full grid-cols-4 sm:grid-cols-5", className)}>
+    <div
+      className={classNames("grid w-full grid-cols-3 gap-y-8 sm:grid-cols-5 sm:gap-y-0", className)}
+    >
       {items.map((item, i) => (
         <Fragment key={i}>
-          <div className="col-span-2 mb-12">{isEven(i) && timeLineCard(item)}</div>
+          {/*  */}
+          {i !== 0 && (
+            <div className="relative col-span-3 my-auto flex items-center justify-center sm:hidden">
+              <div
+                className={classNames(
+                  "z-10 mt-1 h-10 w-10 rounded-full ring-4 ring-current",
+                  getTimelineIconTheme(items[i].color ?? "BLUE")
+                )}
+              >
+                <Icon overrideSize className="mx-auto" name="ChevronUpIcon" />
+              </div>
+              <div className="absolute h-[104px] w-0.5 bg-gray-200 transition dark:bg-gray-700" />
+            </div>
+          )}
+          <div
+            className={classNames(
+              "col-span-3 sm:col-span-2 sm:mb-8",
+              isEven(i) ? "flex" : "hidden sm:flex"
+            )}
+          >
+            {isEven(i) && timeLineCard(item)}
+          </div>
+
           <div className="relative col-span-1 mx-auto hidden w-full justify-center pt-3 sm:flex">
             <div
               className={classNames(
                 "absolute z-10 mt-1 h-10 w-10 rounded-full ring-4 ring-current",
+                "shadow-lg shadow-slate-300 dark:shadow-slate-900",
                 getTimelineIconTheme(item.color ?? "BLUE")
               )}
             >
-              <Icon overrideSize className="mx-auto" name={IconType.CHEVRON_UP} />
+              <Icon overrideSize className="mx-auto" name="ChevronUpIcon" />
             </div>
-            <div className="transition-300 absolute flex h-full w-0.5 bg-gray-200 dark:bg-gray-700" />
+            <div className="absolute flex h-full w-0.5 bg-gray-200 transition dark:bg-gray-700" />
           </div>
 
-          <div className="col-span-2 mb-12">{!isEven(i) && timeLineCard(item)}</div>
+          <div
+            className={classNames(
+              "col-span-3 sm:col-span-2 sm:mb-8",
+              !isEven(i) ? "flex" : "hidden sm:flex"
+            )}
+          >
+            {!isEven(i) && timeLineCard(item)}
+          </div>
         </Fragment>
       ))}
     </div>

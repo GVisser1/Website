@@ -9,7 +9,4 @@
   .animation-delay-10000 {
     animation-delay: 10s;
   }
-  .transition-300 {
-    @apply transition duration-300;
-  }
 }

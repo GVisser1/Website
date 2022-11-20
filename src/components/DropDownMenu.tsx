@@ -1,9 +1,9 @@
-import { Fragment, MouseEventHandler } from "react";
+import { Fragment, MouseEventHandler, ReactElement } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import classNames from "classnames";
 import { Icon, IconType } from "./Icon";
 import Text from "./Text";
-import { Button, ButtonType } from "./Button";
+import { Button, ButtonProps, ButtonVariant } from "./Button";
 
 export interface MenuItem {
   label: string;
@@ -11,51 +11,26 @@ export interface MenuItem {
   selected?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }
-
-interface ButtonProps {
-  label?: string;
-  type?: ButtonType;
-  compact?: boolean;
-  icon?: IconType;
-  iconType?: "solid" | "outline";
-  block?: boolean;
-  className?: string;
-}
-
 export interface DropdownMenuProps {
   className?: string;
-  btnProps?: ButtonProps;
+  menuBtn?: ReactElement<ButtonProps>;
   items: MenuItem[];
 }
 
-export const DropdownMenu: React.FC<DropdownMenuProps> = ({ items, btnProps, className }) => {
+export const DropdownMenu: React.FC<DropdownMenuProps> = ({ items, menuBtn, className }) => {
   const classes = classNames("relative", className);
 
   const optClasses = (active: boolean, selected = false) =>
-    classNames({
-      "w-full flex h-10 items-center justify-between px-4 py-2 text-gray-700 dark:text-white": true,
-      "bg-black/5 dark:bg-slate-800 ": !active && selected,
-      "bg-black/10 dark:bg-slate-600 ": active && selected,
-      "bg-gray-200 dark:bg-slate-600": active && !selected,
-    });
+    classNames(
+      "w-full flex transition h-10 items-center justify-between px-4 py-2 text-gray-700 dark:text-white",
+      active && "bg-black/5 dark:bg-slate-800/50"
+    );
 
   return (
     <Menu as="div" className={classes}>
       {({ open }) => (
         <>
-          <Menu.Button as={Fragment}>
-            <div>
-              <Button
-                label={btnProps?.label}
-                type={btnProps?.type}
-                compact={btnProps?.compact}
-                block={btnProps?.block}
-                icon={btnProps?.icon}
-                iconType={btnProps?.iconType}
-              />
-            </div>
-          </Menu.Button>
-
+          <Menu.Button as="div">{menuBtn}</Menu.Button>
           <Transition
             show={open}
             as={Fragment}
@@ -66,13 +41,19 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({ items, btnProps, cla
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="transition-300 absolute right-0 z-40 my-1 w-56 origin-top-right divide-y divide-slate-200 overflow-hidden rounded-md border border-black/20 bg-white shadow-lg focus:outline-none dark:divide-slate-400 dark:border-slate-500 dark:bg-slate-700">
+            <Menu.Items className="absolute right-0 z-40 my-1 w-56 origin-top-right divide-y divide-slate-200 overflow-hidden rounded-md border border-black/20 bg-white shadow-lg outline-none transition dark:divide-slate-600 dark:border-slate-500 dark:bg-slate-700">
               {items.map((item, index) => (
                 <Menu.Item key={index}>
                   {({ active }) => (
                     <button className={optClasses(active, item.selected)} onClick={item.onClick}>
                       {item.label && <Text icon={item.icon}>{item.label}</Text>}
-                      {item.selected && <Icon name={IconType.CHECK_CIRCLE} type="outline" />}
+                      {item.selected && (
+                        <Icon
+                          name="CheckCircleIcon"
+                          type="outline"
+                          className="text-emerald-500 dark:text-emerald-300"
+                        />
+                      )}
                     </button>
                   )}
                 </Menu.Item>
