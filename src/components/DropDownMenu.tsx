@@ -21,12 +21,10 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({ items, menuBtn, clas
   const classes = classNames("relative", className);
 
   const optClasses = (active: boolean, selected = false) =>
-    classNames({
-      "w-full flex h-10 items-center justify-between px-4 py-2 text-gray-700 dark:text-white": true,
-      "bg-black/5 dark:bg-slate-800 ": !active && selected,
-      "bg-black/10 dark:bg-slate-700 ": active && selected,
-      "bg-gray-200 dark:bg-slate-900": active && !selected,
-    });
+    classNames(
+      "w-full flex transition h-10 items-center justify-between px-4 py-2 text-gray-700 dark:text-white",
+      active && "bg-black/5 dark:bg-slate-800/50"
+    );
 
   return (
     <Menu as="div" className={classes}>
@@ -49,7 +47,13 @@ export const DropdownMenu: React.FC<DropdownMenuProps> = ({ items, menuBtn, clas
                   {({ active }) => (
                     <button className={optClasses(active, item.selected)} onClick={item.onClick}>
                       {item.label && <Text icon={item.icon}>{item.label}</Text>}
-                      {item.selected && <Icon name="CheckCircleIcon" type="outline" />}
+                      {item.selected && (
+                        <Icon
+                          name="CheckCircleIcon"
+                          type="outline"
+                          className="text-emerald-500 dark:text-emerald-300"
+                        />
+                      )}
                     </button>
                   )}
                 </Menu.Item>

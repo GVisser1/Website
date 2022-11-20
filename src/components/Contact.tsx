@@ -31,7 +31,7 @@ export const Contact: FC = () => {
               name="EnvelopeIcon"
               className="mt-0.5 h-3.5 w-3.5 text-gray-700 dark:text-white"
             />
-            <Text color="medium" href="mailto:gvisser.business@gmail.com">
+            <Text size="sm" color="medium" href="mailto:gvisser.business@gmail.com">
               {"gvisser.business@gmail.com"}
             </Text>
           </div>
