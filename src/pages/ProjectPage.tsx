@@ -57,7 +57,7 @@ const ProjectPage: React.FC = () => {
       )}
       <Text className="pt-4 ">{project.description}</Text>
       <img
-        className="max-h-xl w-full object-contain py-8"
+        className="max-h-[36rem] w-full object-contain py-8"
         src={project.src}
         alt={`Project: ${project.title} thumbnail`}
       />

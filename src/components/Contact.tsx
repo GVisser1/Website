@@ -3,6 +3,7 @@ import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { getAge } from "../utils/numberUtil";
 import { Button } from "./Button";
+import { Icon } from "./Icon";
 import SocialIcons from "./SocialIcons";
 import Text from "./Text";
 import { Title } from "./Title";
@@ -15,12 +16,12 @@ export const Contact: FC = () => {
         <img
           src="/images/GlennProfile1.webp"
           loading="lazy"
-          className="h-60 w-60 rounded-full object-cover shadow-md shadow-current saturate-150 md:h-72 md:w-72"
+          className="h-60 w-60 rounded-full object-cover shadow-md shadow-current"
           alt="Profile picture"
         />
-        <div className="flex flex-col items-center">
+        <div className="mt-4 flex flex-col items-center">
           <Text size="xs" color="medium">
-            {getAge(new Date(2000, 3, 21))} - {t("Netherlands")} - {t("PRONOUNS")}
+            {getAge(new Date(2000, 3, 21))} - {t("PRONOUNS")} - {t("NETHERLANDS")}
           </Text>
           <Title as="h3" size="4xl">
             Glenn Visser
@@ -28,17 +29,16 @@ export const Contact: FC = () => {
           <Text className="" color="medium">
             Software Engineer
           </Text>
-          <Text
-            className="mt-6"
-            icon="EnvelopeIcon"
-            iconType="solid"
-            color="dark"
-            iconPosition="left"
-            href="mailto:gvisser.business@gmail.com"
-          >
-            {"gvisser.business@gmail.com"}
-          </Text>
-          <SocialIcons className="mt-6" />
+          <div className="mt-6 flex items-center gap-x-2">
+            <Icon
+              name="EnvelopeIcon"
+              className="mt-0.5 h-3.5 w-3.5 text-gray-700 dark:text-white"
+            />
+            <Text size="sm" weight="semibold" color="dark" href="mailto:gvisser.business@gmail.com">
+              {"gvisser.business@gmail.com"}
+            </Text>
+          </div>
+          <SocialIcons className="mt-4" />
         </div>
       </div>
       <Form />
@@ -63,7 +63,7 @@ const Form: FC = () => {
     >
       <fieldset className="space-y-6">
         <legend className="text-2xl font-semibold text-gray-700 underline underline-offset-4 dark:text-white">
-          Contact Me!
+          {t("CONTACT_ME")}
         </legend>
         <div className="flex flex-col">
           <label htmlFor="name" className="sr-only">
@@ -94,7 +94,7 @@ const Form: FC = () => {
             className={classNames("max-h-[12rem] min-h-[6rem]", inputClasses)}
           />
         </div>
-        <Button block type="submit" label={t("SEND")} />
+        <Button block type="submit" variant="primary" label={t("SEND")} />
       </fieldset>
     </form>
   );

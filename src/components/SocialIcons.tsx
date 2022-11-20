@@ -60,7 +60,7 @@ export interface IconsProps {
 
 export const Icons: React.FC<IconsProps> = ({ className, options }) => {
   return (
-    <div className={classNames("flex justify-center space-x-3", className)}>
+    <div className={classNames("flex justify-center gap-x-3", className)}>
       {options.map((option) => (
         <a
           className="rounded-full outline-none focus-visible:ring focus-visible:ring-blue-300"
@@ -68,10 +68,9 @@ export const Icons: React.FC<IconsProps> = ({ className, options }) => {
           key={option.id}
         >
           <img
-            className={`rounded-full hover:brightness-75 active:brightness-50 ${option.bgColor}`}
+            className={`h-7 w-7 rounded-full active:!brightness-50 pointer:hover:brightness-75 ${option.bgColor}`}
             loading="lazy"
             src={option.src}
-            style={{ height: 32, width: 32 }}
             alt={`${option.id} icon`}
           />
         </a>

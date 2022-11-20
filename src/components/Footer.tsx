@@ -9,18 +9,18 @@ const Footer: React.FC = () => {
         <Text color="medium">{`© ${new Date().getFullYear()} Glenn Visser`}</Text>
         <ul className="my-4 flex items-center justify-center gap-x-4 sm:my-0">
           <li>
-            <Text tabIndex={-1} color="medium" href="/home">
+            <Text tabIndex={-1} color="medium" href="#intro">
               {t("HOME")}
             </Text>
           </li>
           <li>
-            <Text tabIndex={-1} color="medium" href="/hobbies">
-              {t("HOBBIES")}
+            <Text tabIndex={-1} color="medium" href="#about">
+              {t("ABOUT")}
             </Text>
           </li>
           <li>
-            <Text tabIndex={-1} color="medium" href="/projects">
-              {t("PROJECTS")}
+            <Text tabIndex={-1} color="medium" href="#timeline">
+              {t("TIMELINE")}
             </Text>
           </li>
           <li>

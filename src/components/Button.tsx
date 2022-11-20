@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { Icon, IconType } from "./Icon";
 
-export type ButtonVariant = "default" | "clear" | "destructive" | "selected";
+export type ButtonVariant = "default" | "primary" | "clear" | "destructive";
 
 export interface ButtonProps {
   block?: boolean;
@@ -35,12 +35,12 @@ export const Button: React.FC<ButtonProps & React.ButtonHTMLAttributes<HTMLButto
       : {
           "text-black bg-blue-100 hover:bg-blue-200 active:bg-blue-300 focus-visible:ring-blue-300":
             variant === "default",
-          "text-white bg-red-500 hover:bg-red-600 ring-red-300 focus-visible:ring-red-300 ":
+          "text-white bg-blue-500 pointer:hover:bg-blue-600 active:!bg-blue-700 focus-visible:ring-blue-300":
+            variant === "primary",
+          "text-white bg-red-500 pointer:hover:bg-red-600 active:!bg-red-700 ring-red-300 focus-visible:ring-red-300 ":
             variant === "destructive",
-          "text-gray-400 hover:text-gray-500 dark:hover:text-white focus-visible:ring-blue-300 active:bg-gray-200 dark:active:bg-gray-900":
+          "text-gray-400 pointer:hover:text-gray-500 dark:pointer:hover:text-gray-300 focus-visible:ring-blue-300 active:bg-gray-200 dark:active:bg-gray-800":
             variant === "clear",
-          "bg-black/5 dark:bg-gray-900 dark:text-white focus-visible:ring-blue-300":
-            variant === "selected",
         },
     className
   );

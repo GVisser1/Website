@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <section id="Intro" className="relative">
+      <section id="intro" className="relative pb-36">
         <img
           src="/images/rdam.webp"
           className="h-[620px] w-full object-cover xl:h-[800px]"
@@ -28,15 +28,17 @@ const HomePage: React.FC = () => {
             </Title>
             <img
               src="/images/GlennProfile2.webp"
-              className="h-60 w-60 rounded-full object-cover shadow-lg shadow-current saturate-150 md:h-64 md:w-64"
+              className="h-60 w-60 rounded-full object-cover shadow-lg shadow-current md:h-64 md:w-64"
               alt="Glenn profile picture large"
             />
           </div>
         </div>
       </section>
-      <a href="#contact">link</a>
 
-      <section id="About" className="relative mx-auto max-w-screen-md space-y-8 px-5 py-36 md:px-8">
+      <section
+        id="about"
+        className="relative mx-auto max-w-screen-md space-y-8 px-5 pb-36 pt-4 md:px-8"
+      >
         <Title size="4xl" className="text-center ">
           {t("ABOUT")}
         </Title>
@@ -46,8 +48,8 @@ const HomePage: React.FC = () => {
       </section>
 
       <section
-        id="Timeline"
-        className="relative mx-auto max-w-screen-xl space-y-8 py-36 px-5 md:px-8"
+        id="timeline"
+        className="relative mx-auto max-w-screen-xl space-y-8 px-5 pb-36 pt-4 md:px-8"
       >
         <Title size="4xl" className="text-center">
           {t("TIMELINE")}
@@ -56,7 +58,8 @@ const HomePage: React.FC = () => {
           <Timeline className="max-w-screen-lg" items={getTimeLineItems} />
         </div>
       </section>
-      <section id="contact" className="mx-auto max-w-2xl justify-center pb-20">
+
+      <section id="contact" className="mx-auto max-w-2xl justify-center px-5 pb-20 pt-4 md:px-8">
         <Contact />
       </section>
     </>

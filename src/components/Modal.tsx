@@ -19,7 +19,7 @@ const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
   children,
 }) => {
   const classes = classNames(
-    "max-h-3xl mx-auto inline-block h-full w-full max-w-lg pt-12",
+    "max-h-[54rem] mx-auto inline-block h-full w-full max-w-lg pt-12",
     className
   );
 

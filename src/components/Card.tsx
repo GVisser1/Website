@@ -33,7 +33,7 @@ export const Card: React.FC<PropsWithChildren<CardProps>> = ({
       "w-full transition overflow-hidden rounded-xl border border-slate-400 bg-white dark:border-slate-500 dark:bg-slate-800":
         true,
       "text-center": header,
-      "shadow-slate-300 dark:shadow-slate-900 hover:shadow-lg": hover,
+      "shadow-slate-300 dark:shadow-slate-900 pointer:hover:shadow-lg": hover,
     },
     className
   );

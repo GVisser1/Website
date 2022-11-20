@@ -15,7 +15,7 @@ export interface TextProps {
 }
 
 export const Text: React.FC<PropsWithChildren<TextProps>> = ({
-  size = "sm",
+  size = "base",
   weight,
   color = "dark",
   href,
@@ -29,7 +29,7 @@ export const Text: React.FC<PropsWithChildren<TextProps>> = ({
   const Tag = href ? "a" : "p";
   const classes = classNames(
     "transition whitespace-pre-line",
-    href && "hover:underline underline-offset-2 outline-none",
+    href && "pointer:hover:underline underline-offset-2 outline-none",
     icon && "flex items-center space-x-2",
     iconPosition === "right" && "flex-row-reverse space-x-reverse",
 

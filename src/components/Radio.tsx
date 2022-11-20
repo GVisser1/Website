@@ -22,9 +22,9 @@ export const Radio: React.FC<RadioProps> = ({ onChange, options = [], value = ""
         true,
       "pointer:focus-within:ring-1 pointer:focus-within:ring-blue-300 pointer:focus-within:border-blue-300 dark:pointer:focus-within:border-blue-300":
         true,
-      "border-gray-200 dark:bg-gray-500/20 active:bg-gray-100 dark:active:bg-gray-700/40 hover:ring-0.5 hover:ring-gray-200":
+      "border-gray-200 dark:bg-gray-500/20 active:bg-gray-100 dark:active:bg-gray-700/40 pointer:hover:ring-0.5 hover:ring-gray-200":
         !isSelected(option),
-      "border-blue-300 dark:border-gray-200 bg-blue-50 dark:bg-gray-700 hover:ring-0.5 hover:ring-blue-300 dark:hover:ring-gray-300":
+      "border-blue-300 dark:border-gray-200 bg-blue-50 dark:bg-gray-700 pointer:hover:ring-0.5 hover:ring-blue-300 dark:hover:ring-gray-300":
         isSelected(option),
     });
 

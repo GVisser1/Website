@@ -25,9 +25,9 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
   const [showSettingsModal, setShowSettingsModal] = useState(false);
 
   const navigation: { name: string; href: string; icon: IconType }[] = [
-    { name: t("HOME"), href: "/home", icon: "HomeIcon" },
-    { name: t("HOBBIES"), href: "/hobbies", icon: "SparklesIcon" },
-    { name: t("PROJECTS"), href: "/projects", icon: "RectangleStackIcon" },
+    { name: t("HOME"), href: "#intro", icon: "HomeIcon" },
+    { name: t("ABOUT"), href: "#about", icon: "SparklesIcon" },
+    { name: t("TIMELINE"), href: "#timeline", icon: "RectangleStackIcon" },
     { name: t("CONTACT"), href: "#contact", icon: "AtSymbolIcon" },
   ];
 
@@ -92,7 +92,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
               <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
                 <div className="flex items-center space-x-5 md:space-x-2">
                   <img
-                    className="hidden h-8 w-8 rounded-full saturate-150 lg:block"
+                    className="hidden h-8 w-8 rounded-full lg:block"
                     src="/images/GlennProfile1.webp"
                     alt="Glenn profile picture"
                   />
@@ -100,23 +100,17 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                     Glenn Visser
                   </Text>
                 </div>
-                <div className="hidden md:ml-6 md:block">
-                  <div className="flex space-x-0.5 lg:space-x-4">
-                    {navigation.map((item) => (
-                      <Button
-                        compact
-                        block
-                        aria-label={`navigate to ${item.name} page`}
-                        icon={item.icon}
-                        iconType={location.pathname.includes(item.href) ? "solid" : "outline"}
-                        key={item.name}
-                        variant={location.pathname.includes(item.href) ? "selected" : "clear"}
-                        onClick={() => navigate(item.href)}
-                      >
-                        {item.name}
-                      </Button>
-                    ))}
-                  </div>
+                <div className="ml-6 hidden items-center justify-center gap-x-4 md:flex">
+                  {navigation.map((item) => (
+                    <a
+                      className="text-gray-500 pointer:hover:text-gray-900 dark:pointer:hover:text-gray-300"
+                      href={item.href}
+                      aria-label={`navigate to ${item.name} page`}
+                      key={item.name}
+                    >
+                      {item.name}
+                    </a>
+                  ))}
                 </div>
               </div>
               <div className="hidden items-center pr-2 md:static md:inset-auto md:ml-6 md:flex md:pr-0">
@@ -203,7 +197,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                   key={item.name}
                   className={classNames({
                     "w-full cursor-pointer px-2 py-3 font-semibold": true,
-                    "text-gray-400 hover:text-gray-500 dark:hover:text-white":
+                    "text-gray-400 pointer:hover:text-gray-500 dark:pointer:hover:text-white":
                       !location.pathname.includes(item.href),
                     "bg-blue-50 text-gray-700 dark:bg-slate-800/60 dark:text-white":
                       location.pathname.includes(item.href),

@@ -103,7 +103,7 @@ const PokéBall: React.FC<PokéBallProps> = ({ onClick, className }) => (
       <div className="absolute h-1/2 w-full rounded-t-full bg-red-500" />
       <div className="absolute inset-0 z-10 m-auto h-1 w-full bg-gray-800" />
       <button
-        className="absolute inset-0 z-10 m-auto h-5 w-5 rounded-full bg-white ring ring-gray-800 hover:bg-gray-200 active:bg-gray-300"
+        className="absolute inset-0 z-10 m-auto h-5 w-5 rounded-full bg-white ring ring-gray-800 active:!bg-gray-300 pointer:hover:bg-gray-200"
         onClick={onClick}
       />
       <div className="absolute bottom-0 h-1/2 w-full rounded-b-full bg-white" />
