@@ -40,7 +40,7 @@ export const Card: React.FC<PropsWithChildren<CardProps>> = ({
       {header}
       {image}
       <div className="px-3 py-3">
-        <Title as="h4" className="line-clamp-1">
+        <Title as="h3" className="line-clamp-1">
           {title}
         </Title>
         {children}

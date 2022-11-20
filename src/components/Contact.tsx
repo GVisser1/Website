@@ -20,9 +20,6 @@ export const Contact: FC = () => {
           alt="Profile picture"
         />
         <div className="mt-4 flex flex-col items-center">
-          <Text size="xs" color="medium">
-            {getAge(new Date(2000, 3, 21))} - {t("PRONOUNS")} - {t("NETHERLANDS")}
-          </Text>
           <Title as="h3" size="4xl">
             Glenn Visser
           </Title>
@@ -34,7 +31,7 @@ export const Contact: FC = () => {
               name="EnvelopeIcon"
               className="mt-0.5 h-3.5 w-3.5 text-gray-700 dark:text-white"
             />
-            <Text color="dark" href="mailto:gvisser.business@gmail.com">
+            <Text color="medium" href="mailto:gvisser.business@gmail.com">
               {"gvisser.business@gmail.com"}
             </Text>
           </div>
@@ -58,7 +55,7 @@ const Form: FC = () => {
 
   return (
     <form
-      // action={`https://getform.io/f/${import.meta.env.VITE_GETFORM_ENDPOINT}`}
+      action={`https://getform.io/f/${import.meta.env.VITE_GETFORM_ENDPOINT}`}
       method="POST"
       className="flex w-full flex-col gap-y-12"
     >

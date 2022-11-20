@@ -66,10 +66,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
   return (
     <Disclosure
       as="nav"
-      className={classNames(
-        "z-30 border-b border-gray-100 bg-white transition dark:border-slate-700 dark:bg-slate-900",
-        className
-      )}
+      className={classNames("z-30 bg-white transition dark:bg-slate-900", className)}
     >
       {({ open, close }) => (
         <>
@@ -99,7 +96,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                 <div className="ml-6 hidden items-center justify-center gap-x-4 md:flex">
                   {navigation.map((item) => (
                     <a
-                      className="text-gray-500 pointer:hover:text-gray-900 dark:pointer:hover:text-gray-300"
+                      className="text-gray-500 pointer:hover:text-gray-900 dark:text-gray-400 dark:pointer:hover:text-gray-300"
                       href={item.href}
                       aria-label={`navigate to ${item.name} page`}
                       key={item.name}
@@ -154,8 +151,8 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                   <div className="flex w-full flex-col gap-y-5 divide-y-[0.5px] divide-gray-300 py-4 dark:divide-gray-700">
                     <Text>{t("SETTINGS_DESCRIPTION")}</Text>
                     <div className="pt-4">
-                      <Text weight="semibold">{t("THEME")}</Text>
                       <Radio
+                        label={t("THEME")}
                         options={[
                           { label: t("LIGHT"), value: "LIGHT" },
                           { label: t("DARK"), value: "DARK" },
@@ -168,8 +165,8 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                       />
                     </div>
                     <div className="pt-4">
-                      <Text weight="semibold">{t("LANGUAGE")}</Text>
                       <Radio
+                        label={t("LANGUAGE")}
                         options={[
                           { label: t("DUTCH"), value: "nl" },
                           { label: t("ENGLISH"), value: "en" },
@@ -193,6 +190,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                   key={item.name}
                   className="w-full px-2 py-3 font-semibold text-gray-400 pointer:hover:text-gray-500 dark:pointer:hover:text-white"
                   href={item.href}
+                  aria-label={`navigate to ${item.name} page`}
                   onClick={() => close()}
                 >
                   {item.name}

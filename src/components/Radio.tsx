@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ChangeEvent } from "react";
+import { ChangeEvent, MutableRefObject, useRef } from "react";
 import Text from "./Text";
 
 interface RadioOption {
@@ -11,17 +11,22 @@ export interface RadioProps {
   options: RadioOption[];
   onChange: (e: ChangeEvent<any>) => void;
   value: string;
+  label: string;
 }
 
-export const Radio: React.FC<RadioProps> = ({ onChange, options = [], value = "" }) => {
+export const Radio: React.FC<RadioProps> = ({ onChange, options = [], value = "", label }) => {
   const isSelected = (option: RadioOption) => value === option.value;
 
   const getLabelClasses = (option: RadioOption) =>
     classNames(
       "my-1 flex justify-between cursor-pointer items-center rounded-lg border-1.5 p-4 text-sm transition",
-      "pointer:focus-within:ring-1 pointer:focus-within:ring-blue-300 pointer:focus-within:border-blue-300 dark:pointer:focus-within:border-blue-300",
       isSelected(option)
-        ? "border-blue-300 dark:border-gray-200 bg-blue-50 dark:bg-gray-700 pointer:hover:ring-0.5 hover:ring-blue-300 dark:hover:ring-gray-300"
+        ? {
+            "border-blue-300 dark:border-gray-200 bg-blue-50 dark:bg-gray-700 pointer:hover:ring-0.5 hover:ring-blue-300 dark:hover:ring-gray-300":
+              true,
+            "peer-focus-visible:ring-1 peer-focus-visible:ring-blue-300 peer-focus-visible:border-blue-300 dark:peer-focus-visible:border-blue-300":
+              true,
+          }
         : "border-gray-200 dark:bg-gray-500/20 active:bg-gray-100 dark:active:bg-gray-700/40 pointer:hover:ring-0.5 hover:ring-gray-200"
     );
 
@@ -34,20 +39,30 @@ export const Radio: React.FC<RadioProps> = ({ onChange, options = [], value = ""
     );
 
   return (
-    <div>
-      {options.map((option) => (
-        <label key={option.value} className={getLabelClasses(option)}>
-          <Text>{option.label}</Text>
-          <input
-            className="h-0 w-0 appearance-none"
-            type="radio"
-            value={option.value}
-            onChange={onChange}
-            checked={isSelected(option)}
-          />
-          <span className={getRadioClasses(option)} />
-        </label>
-      ))}
-    </div>
+    <fieldset>
+      <legend>
+        <Text weight="semibold">{label}</Text>
+      </legend>
+      <div className="flex flex-col">
+        {options.map((option) => (
+          <>
+            <input
+              aria-label={option.label}
+              id={option.value}
+              className="peer h-0 w-0 appearance-none"
+              type="radio"
+              name={label}
+              value={option.value}
+              onChange={onChange}
+              checked={isSelected(option)}
+            />
+            <label key={option.value} htmlFor={option.value} className={getLabelClasses(option)}>
+              <Text>{option.label}</Text>
+              <span className={getRadioClasses(option)} />
+            </label>
+          </>
+        ))}
+      </div>
+    </fieldset>
   );
 };

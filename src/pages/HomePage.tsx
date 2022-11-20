@@ -13,11 +13,14 @@ const HomePage: React.FC = () => {
   return (
     <>
       <section id="intro" className="relative pb-36">
-        <img
-          src="/images/rdam.webp"
-          className="h-[620px] w-full object-cover xl:h-[800px]"
-          alt="Rotterdam"
-        />
+        <picture>
+          <source srcSet="/images/rdam-m.webp" media="(min-width: 640px)"></source>
+          <img
+            src="/images/rdam.webp"
+            className="h-[620px] w-full object-cover xl:h-[800px]"
+            alt="Rotterdam"
+          />
+        </picture>
         <div className="absolute inset-0 mx-auto flex max-w-screen-2xl flex-col items-center justify-between text-center">
           <div className="absolute top-0 mx-auto flex flex-col items-center justify-center space-y-4 pt-10 lg:left-16 2xl:left-8">
             <Title
