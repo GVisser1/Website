@@ -20,7 +20,7 @@ const HomePage: React.FC = () => {
         />
         <div className="absolute inset-0 mx-auto flex max-w-screen-2xl flex-col items-center justify-between text-center">
           <div className="absolute top-0 mx-auto flex flex-col items-center justify-center space-y-4 pt-10 lg:left-16 2xl:left-8">
-            <Title as="h1" size="7xl" color="all-white" className="underline lg:text-gray-700">
+            <Title as="h1" size="5xl" color="all-white" className="underline lg:text-gray-700">
               {t("HOME_TITLE")}
             </Title>
             <Title size="3xl" color="all-white" className="lg:text-gray-700">
