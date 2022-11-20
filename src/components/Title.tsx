@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { PropsWithChildren } from "react";
 
 export interface TitleProps {
   className?: string;
@@ -7,17 +8,17 @@ export interface TitleProps {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
-export const Title: React.FC<TitleProps> = ({
+export const Title: React.FC<PropsWithChildren<TitleProps>> = ({
   as = "h2",
   size = "base",
   color = "dark",
   className,
-  ...props
+  children,
 }) => {
   const Tag = as;
   const classes = classNames(
     {
-      "transition-300 font-bold": true,
+      "transition font-bold": true,
       // Colors
       "text-white": color === "all-white",
       "text-white dark:text-gray-700": color === "white",
@@ -42,7 +43,7 @@ export const Title: React.FC<TitleProps> = ({
 
   return (
     <>
-      <Tag className={classes}>{props.children}</Tag>
+      <Tag className={classes}>{children}</Tag>
     </>
   );
 };

@@ -1,11 +1,12 @@
 import classNames from "classnames";
+import { PropsWithChildren } from "react";
 import { Icon, IconType } from "./Icon";
 
 export interface TextProps {
   className?: string;
-  size?: "xs" | "sm" | "base" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl";
-  weight?: "light" | "normal" | "medium" | "semibold" | "bold";
-  color?: "white" | "light" | "medium" | "dark" | "all-white" | "all-dark";
+  size?: "xs" | "sm" | "base" | "md" | "lg" | "xl" | "2xl";
+  weight?: "semibold" | "bold";
+  color?: "medium" | "dark" | "all-white";
   href?: string;
   icon?: IconType;
   iconType?: "outline" | "solid";
@@ -13,9 +14,9 @@ export interface TextProps {
   tabIndex?: number;
 }
 
-export const Text: React.FC<TextProps> = ({
+export const Text: React.FC<PropsWithChildren<TextProps>> = ({
   size = "sm",
-  weight = "normal",
+  weight,
   color = "dark",
   href,
   icon,
@@ -23,24 +24,29 @@ export const Text: React.FC<TextProps> = ({
   iconPosition = "left",
   tabIndex,
   className,
-  ...props
+  children,
 }) => {
   const Tag = href ? "a" : "p";
   const classes = classNames(
-    {
-      "transition-300 whitespace-pre-line": true,
-      "flex items-center space-x-2": icon,
-      "flex-row-reverse space-x-reverse": iconPosition === "right",
-      [`text-${size}`]: size,
-      [`font-${weight}`]: weight,
-      "text-white": color === "all-white",
-      "text-white dark:text-gray-700": color === "white",
-      "text-gray-300": color === "light",
-      "text-gray-500 dark:text-gray-400": color === "medium",
-      "text-gray-700 dark:text-white": color === "dark",
-      "text-gray-700": color === "all-dark",
-      "hover:underline underline-offset-2 focus:outline-none": href,
-    },
+    "transition whitespace-pre-line",
+    href && "hover:underline underline-offset-2 outline-none",
+    icon && "flex items-center space-x-2",
+    iconPosition === "right" && "flex-row-reverse space-x-reverse",
+
+    weight === "bold" && "font-bold",
+    weight === "semibold" && "font-semibold",
+
+    size === "xs" && "text-xs",
+    size === "sm" && "text-sm",
+    size === "base" && "text-base",
+    size === "lg" && "text-lg",
+    size === "xl" && "text-xl",
+    size === "2xl" && "text-2xl",
+
+    color === "all-white" && "text-white",
+    color === "medium" && "text-gray-500 dark:text-gray-400",
+    color === "dark" && "text-gray-700 dark:text-white",
+
     className
   );
 
@@ -50,12 +56,12 @@ export const Text: React.FC<TextProps> = ({
         <div className={classes}>
           <Icon name={icon} type={iconType} />
           <Tag tabIndex={tabIndex} href={href}>
-            {props.children}
+            {children}
           </Tag>
         </div>
       ) : (
         <Tag tabIndex={tabIndex} className={classNames(classes)} href={href}>
-          {props.children}
+          {children}
         </Tag>
       )}
     </>

@@ -1,7 +1,6 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { useNavigate } from "react-router-dom";
-import { IconType } from "./Icon";
 import Text from "./Text";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
@@ -11,6 +10,7 @@ import { Button } from "./Button";
 import useI18n from "../hooks/useI18n";
 import { Radio } from "./Radio";
 import Modal from "./Modal";
+import { IconType } from "./Icon";
 
 interface NavBarProps {
   className?: string;
@@ -22,11 +22,13 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
   const { isDutch, switchLanguage, getLanguage } = useI18n();
   const { getTheme, switchTheme, getThemeIcon } = useSystem();
 
-  const navigation = [
-    { name: t("HOME"), href: "/home", icon: IconType.HOME },
-    { name: t("HOBBIES"), href: "/hobbies", icon: IconType.SPARKLES },
-    { name: t("PROJECTS"), href: "/projects", icon: IconType.COLLECTION },
-    { name: t("CONTACT"), href: "/contact", icon: IconType.AT_SYMBOL },
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
+
+  const navigation: { name: string; href: string; icon: IconType }[] = [
+    { name: t("HOME"), href: "/home", icon: "HomeIcon" },
+    { name: t("HOBBIES"), href: "/hobbies", icon: "SparklesIcon" },
+    { name: t("PROJECTS"), href: "/projects", icon: "RectangleStackIcon" },
+    { name: t("CONTACT"), href: "#contact", icon: "AtSymbolIcon" },
   ];
 
   const languageOptions: MenuItem[] = [
@@ -45,19 +47,19 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
   const themeOptions: MenuItem[] = [
     {
       label: t("LIGHT"),
-      icon: IconType.SUN,
+      icon: "SunIcon",
       selected: getTheme() === "LIGHT",
       onClick: () => switchTheme("LIGHT"),
     },
     {
       label: t("DARK"),
-      icon: IconType.MOON,
+      icon: "MoonIcon",
       selected: getTheme() === "DARK",
       onClick: () => switchTheme("DARK"),
     },
     {
       label: t("SYSTEM"),
-      icon: IconType.DESKTOP_COMPUTER,
+      icon: "ComputerDesktopIcon",
       selected: getTheme() === "SYSTEM",
       onClick: () => switchTheme("SYSTEM"),
     },
@@ -67,7 +69,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
     <Disclosure
       as="nav"
       className={classNames(
-        "transition-300 z-30 border-b border-gray-100 bg-white dark:border-slate-700 dark:bg-slate-900",
+        "z-30 border-b border-gray-100 bg-white transition dark:border-slate-700 dark:bg-slate-900",
         className
       )}
     >
@@ -78,7 +80,12 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
               <div className="flex items-center md:hidden">
                 <Disclosure.Button as={Fragment}>
                   <div>
-                    <Button compact type="clear" icon={open ? IconType.X : IconType.MENU} />
+                    <Button
+                      compact
+                      variant="clear"
+                      aria-label={open ? "close menu" : "open menu"}
+                      icon={open ? "XMarkIcon" : "Bars3Icon"}
+                    />
                   </div>
                 </Disclosure.Button>
               </div>
@@ -86,7 +93,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                 <div className="flex items-center space-x-5 md:space-x-2">
                   <img
                     className="hidden h-8 w-8 rounded-full saturate-150 lg:block"
-                    src="/images/personal/GlennProfile1.jpg"
+                    src="/images/GlennProfile1.webp"
                     alt="Glenn profile picture"
                   />
                   <Text className="pr-4 md:pr-0 " weight="semibold" size="2xl">
@@ -99,10 +106,11 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                       <Button
                         compact
                         block
+                        aria-label={`navigate to ${item.name} page`}
                         icon={item.icon}
                         iconType={location.pathname.includes(item.href) ? "solid" : "outline"}
                         key={item.name}
-                        type={location.pathname.includes(item.href) ? "selected" : "clear"}
+                        variant={location.pathname.includes(item.href) ? "selected" : "clear"}
                         onClick={() => navigate(item.href)}
                       >
                         {item.name}
@@ -113,35 +121,45 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
               </div>
               <div className="hidden items-center pr-2 md:static md:inset-auto md:ml-6 md:flex md:pr-0">
                 <DropdownMenu
-                  btnProps={{
-                    icon: getThemeIcon(),
-                    iconType: "outline",
-                    type: "clear",
-                    compact: true,
-                  }}
+                  menuBtn={
+                    <Button
+                      icon={getThemeIcon()}
+                      iconType="outline"
+                      variant="clear"
+                      compact
+                      aria-label="open theme switcher dropdown"
+                    />
+                  }
                   items={themeOptions}
                 />
               </div>
               <div className="hidden md:static md:inset-auto md:ml-6 md:flex md:items-center md:pr-0">
                 <DropdownMenu
-                  btnProps={{
-                    icon: IconType.GLOBE,
-                    iconType: "outline",
-                    type: "clear",
-                    compact: true,
-                  }}
+                  menuBtn={
+                    <Button
+                      icon={"GlobeEuropeAfricaIcon"}
+                      iconType="outline"
+                      variant="clear"
+                      compact
+                      aria-label="open language switcher dropdown"
+                    />
+                  }
                   items={languageOptions}
                 />
               </div>
               <div className="flex md:static md:inset-auto md:ml-6 md:hidden md:items-center md:pr-0">
+                <Button
+                  compact
+                  icon={"CogIcon"}
+                  iconType="outline"
+                  variant="clear"
+                  aria-label="open settings"
+                  onClick={() => setShowSettingsModal(true)}
+                />
                 <Modal
+                  open={showSettingsModal}
+                  onClose={() => setShowSettingsModal(false)}
                   title={t("SETTINGS")}
-                  btnProps={{
-                    icon: IconType.COG,
-                    iconType: "outline",
-                    type: "clear",
-                    compact: true,
-                  }}
                 >
                   <div className="flex w-full flex-col gap-y-5 divide-y-[0.5px] divide-gray-300 py-4 dark:divide-gray-700">
                     <Text>{t("SETTINGS_DESCRIPTION")}</Text>
@@ -178,7 +196,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
             </div>
           </div>
 
-          <Disclosure.Panel className="transition-300 h-48 border-gray-100 bg-white dark:border-slate-700 dark:bg-slate-900 md:hidden">
+          <Disclosure.Panel className="h-48 border-gray-100 bg-white transition dark:border-slate-700 dark:bg-slate-900 md:hidden">
             <div className="divide-y divide-slate-200 dark:divide-slate-600">
               {navigation.map((item) => (
                 <div

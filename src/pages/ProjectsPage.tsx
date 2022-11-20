@@ -35,7 +35,7 @@ const ProjectsPage: React.FC = () => {
         <Button
           block
           onClick={() => navigate(`/projects/${project.id}`)}
-          icon={IconType.ARROW_RIGHT}
+          icon="ArrowRightIcon"
           iconPosition="right"
           label={`${t("READ_MORE")}`}
           className="mt-5"

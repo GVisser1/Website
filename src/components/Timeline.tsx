@@ -10,7 +10,7 @@ import Text from "./Text";
 export interface TimelineItem {
   title: string;
   timeFrame: string;
-  subTitle?: string | HTMLAnchorElement;
+  subTitle?: string;
   description?: string;
   color?: Color;
   labels?: string[];
@@ -59,9 +59,9 @@ const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
                 getTimelineIconTheme(item.color ?? "BLUE")
               )}
             >
-              <Icon overrideSize className="mx-auto" name={IconType.CHEVRON_UP} />
+              <Icon overrideSize className="mx-auto" name="ChevronUpIcon" />
             </div>
-            <div className="transition-300 absolute flex h-full w-0.5 bg-gray-200 dark:bg-gray-700" />
+            <div className="absolute flex h-full w-0.5 bg-gray-200 transition dark:bg-gray-700" />
           </div>
 
           <div className="col-span-2 mb-12">{!isEven(i) && timeLineCard(item)}</div>

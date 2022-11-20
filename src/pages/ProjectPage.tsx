@@ -36,8 +36,8 @@ const ProjectPage: React.FC = () => {
         <Title size="3xl">{project.title}</Title>
         <Button
           className="-mt-1.5"
-          type="clear"
-          icon={IconType.ARROW_RIGHT}
+          variant="clear"
+          icon="ArrowRightIcon"
           iconPosition="right"
           label="All projects"
           onClick={() => navigate("/projects")}

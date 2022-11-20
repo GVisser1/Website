@@ -1,11 +1,10 @@
 import Text from "../components/Text";
-import { Title } from "../components/Title";
 import { useTranslation } from "react-i18next";
 import Timeline from "../components/Timeline";
-import { getProgrammingLanguages } from "../data/Languages";
 import TimeLineData from "../data/TimelineData";
-import { Card } from "../components/Card";
 import { getAge } from "../utils/numberUtil";
+import { Title } from "../components/Title";
+import { Contact } from "../components/Contact";
 
 const HomePage: React.FC = () => {
   const { t } = useTranslation();
@@ -28,21 +27,14 @@ const HomePage: React.FC = () => {
               {t("HOME_SUBTITLE", { age: getAge(new Date(2000, 3, 21)) })}
             </Title>
             <img
-              src="/images/personal/GlennProfile2.jpg"
+              src="/images/GlennProfile2.webp"
               className="h-60 w-60 rounded-full object-cover shadow-lg shadow-current saturate-150 md:h-64 md:w-64"
               alt="Glenn profile picture large"
             />
           </div>
-          <Text
-            color="light"
-            size="xs"
-            className="absolute bottom-0 right-0 opacity-25 xl:opacity-50"
-          >
-            'Rotterdam' by Bart Ros on Unsplash
-          </Text>
-          <div className="w-64 space-y-2 pb-10 md:w-72"></div>
         </div>
       </section>
+      <a href="#contact">link</a>
 
       <section id="About" className="relative mx-auto max-w-screen-md space-y-8 px-5 py-36 md:px-8">
         <Title size="4xl" className="text-center ">
@@ -63,6 +55,9 @@ const HomePage: React.FC = () => {
         <div className="flex justify-center">
           <Timeline className="max-w-screen-lg" items={getTimeLineItems} />
         </div>
+      </section>
+      <section id="contact" className="mx-auto max-w-2xl justify-center pb-20">
+        <Contact />
       </section>
     </>
   );
