@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
-import ContactPage from "./pages/ContactPage";
 import HobbiesPage from "./pages/HobbiesPage";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -20,7 +19,6 @@ const App: React.FC = () => {
               <Route path="/hobbies" element={<HobbiesPage />} />
               <Route path="/projects/*" element={<ProjectsPage />} />
               <Route path="/projects/:id" element={<ProjectPage />} />
-              <Route path="/contact" element={<ContactPage />} />
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
