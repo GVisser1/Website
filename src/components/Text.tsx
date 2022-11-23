@@ -49,23 +49,16 @@ export const Text: React.FC<PropsWithChildren<TextProps>> = ({
 
     className
   );
-
-  return (
-    <>
-      {icon ? (
-        <div className={classes}>
-          <Icon name={icon} type={iconType} />
-          <Tag tabIndex={tabIndex} href={href}>
-            {children}
-          </Tag>
-        </div>
-      ) : (
-        <Tag tabIndex={tabIndex} className={classNames(classes)} href={href}>
-          {children}
-        </Tag>
-      )}
-    </>
+  return icon ? (
+    <div className={classes}>
+      <Icon name={icon} type={iconType} />
+      <Tag tabIndex={tabIndex} href={href}>
+        {children}
+      </Tag>
+    </div>
+  ) : (
+    <Tag tabIndex={tabIndex} className={classes} href={href}>
+      {children}
+    </Tag>
   );
 };
-
-export default Text;

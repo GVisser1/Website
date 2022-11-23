@@ -1,10 +1,11 @@
 import classNames from "classnames";
+import { FC } from "react";
 
 interface SocialIconsProps {
   className?: string;
 }
 
-const SocialIcons: React.FC<SocialIconsProps> = ({ className }) => {
+export const SocialIcons: FC<SocialIconsProps> = ({ className }) => {
   return (
     <Icons
       className={className}
@@ -78,5 +79,3 @@ export const Icons: React.FC<IconsProps> = ({ className, options }) => {
     </div>
   );
 };
-
-export default SocialIcons;

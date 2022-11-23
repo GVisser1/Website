@@ -38,9 +38,10 @@ const usePokémon = () => {
           ability: basicData.abilities[0].ability.name,
           height: formatUnit(basicData.height),
           weight: formatUnit(basicData.weight),
-          stats: basicData.stats.map(
-            (stat: any) => new Object({ base_stat: stat.base_stat, name: stat.stat.name })
-          ),
+          stats: basicData.stats.map((stat: any) => ({
+            base_stat: stat.base_stat,
+            name: stat.stat.name,
+          })),
         });
       }
     );
@@ -52,7 +53,8 @@ const usePokémon = () => {
 const formatId = (id: number) => {
   if (id > 0 && id < 10) {
     return `00${id}`;
-  } else if (id > 9 && id < 100) {
+  }
+  if (id > 9 && id < 100) {
     return `0${id}`;
   }
   return id.toString();

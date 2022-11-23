@@ -1,11 +1,11 @@
 import classNames from "classnames";
-import { Fragment } from "react";
+import { FC, Fragment } from "react";
 import { Color } from "../types/Color";
 import { getCardTheme, getTimelineIconTheme } from "../utils/colorUtils";
 import { isEven } from "../utils/numberUtil";
 import { Card } from "./Card";
-import { Icon, IconType } from "./Icon";
-import Text from "./Text";
+import { Icon } from "./Icon";
+import { Text } from "./Text";
 
 export interface TimelineItem {
   title: string;
@@ -21,7 +21,7 @@ interface TimelineProps {
   items: TimelineItem[];
 }
 
-const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
+export const Timeline: FC<TimelineProps> = ({ items, className }) => {
   const timeLineCard = (item: TimelineItem) => (
     <Card
       title={item.title}
@@ -32,7 +32,6 @@ const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
       }
       labels={item.labels}
       labelColors={[item.color ?? "BLUE"]}
-      color={item.color}
     >
       {item.subTitle && (
         <Text className="line-clamp-1" size="sm" color="medium">
@@ -52,8 +51,7 @@ const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
       className={classNames("grid w-full grid-cols-3 gap-y-8 sm:grid-cols-5 sm:gap-y-0", className)}
     >
       {items.map((item, i) => (
-        <Fragment key={i}>
-          {/*  */}
+        <Fragment key={item.title}>
           {i !== 0 && (
             <div className="relative col-span-3 my-auto flex items-center justify-center sm:hidden">
               <div
@@ -102,5 +100,3 @@ const Timeline: React.FC<TimelineProps> = ({ items, className }) => {
     </div>
   );
 };
-
-export default Timeline;

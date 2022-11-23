@@ -1,21 +1,21 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Disclosure } from "@headlessui/react";
-import Text from "./Text";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
+import { Text } from "./Text";
 import useSystem from "../hooks/useSystem";
 import { DropdownMenu, MenuItem } from "./DropDownMenu";
 import { Button } from "./Button";
 import useI18n from "../hooks/useI18n";
 import { Radio } from "./Radio";
-import Modal from "./Modal";
+import { Modal } from "./Modal";
 import { IconType } from "./Icon";
 
 interface NavBarProps {
   className?: string;
 }
 
-const NavBar: React.FC<NavBarProps> = ({ className }) => {
+export const NavBar: FC<NavBarProps> = ({ className }) => {
   const { t } = useTranslation();
   const { isDutch, switchLanguage, getLanguage } = useI18n();
   const { getTheme, switchTheme, getThemeIcon } = useSystem();
@@ -87,7 +87,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                   <img
                     className="hidden h-8 w-8 rounded-full lg:block"
                     src="/images/GlennProfile1.webp"
-                    alt="Glenn profile picture"
+                    alt="Glenn profile"
                   />
                   <Text className="pr-4 md:pr-0 " weight="semibold" size="2xl">
                     Glenn Visser
@@ -124,7 +124,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
                 <DropdownMenu
                   menuBtn={
                     <Button
-                      icon={"GlobeEuropeAfricaIcon"}
+                      icon="GlobeEuropeAfricaIcon"
                       iconType="outline"
                       variant="clear"
                       compact
@@ -137,7 +137,7 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
               <div className="flex md:static md:inset-auto md:ml-6 md:hidden md:items-center md:pr-0">
                 <Button
                   compact
-                  icon={"CogIcon"}
+                  icon="CogIcon"
                   iconType="outline"
                   variant="clear"
                   aria-label="open settings"
@@ -203,5 +203,3 @@ const NavBar: React.FC<NavBarProps> = ({ className }) => {
     </Disclosure>
   );
 };
-
-export default NavBar;

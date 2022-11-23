@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { FC } from "react";
 import { Icon, IconType } from "./Icon";
 
 export type ButtonVariant = "default" | "primary" | "clear" | "destructive";
@@ -13,7 +14,7 @@ export interface ButtonProps {
   variant?: ButtonVariant;
 }
 
-export const Button: React.FC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
+export const Button: FC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
   block = false,
   className,
   compact = false,

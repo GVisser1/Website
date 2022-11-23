@@ -1,6 +1,6 @@
-import Text from "../components/Text";
 import { useTranslation } from "react-i18next";
-import Timeline from "../components/Timeline";
+import { Text } from "../components/Text";
+import { Timeline } from "../components/Timeline";
 import TimeLineData from "../data/TimelineData";
 import { getAge } from "../utils/numberUtil";
 import { Title } from "../components/Title";
@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
     <>
       <section id="intro" className="relative pb-36">
         <picture>
-          <source srcSet="/images/rdam-m.webp" media="(min-width: 640px)"></source>
+          <source srcSet="/images/rdam-m.webp" media="(min-width: 640px)" />
           <img
             src="/images/rdam.webp"
             className="h-[620px] w-full object-cover xl:h-[800px]"
@@ -37,7 +37,7 @@ const HomePage: React.FC = () => {
             <img
               src="/images/GlennProfile2.webp"
               className="h-60 w-60 rounded-full object-cover shadow-lg shadow-current md:h-64 md:w-64"
-              alt="Glenn profile picture large"
+              alt="Glenn large profile"
             />
           </div>
         </div>

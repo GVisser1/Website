@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { PropsWithChildren, ReactElement } from "react";
+import { FC, PropsWithChildren, ReactElement } from "react";
 import { Color } from "../types/Color";
 import { Colors } from "../utils/colorUtils";
 import { Badge } from "./Badge";
@@ -9,7 +9,6 @@ export interface CardProps {
   title?: string;
   labels?: string[];
   labelColors?: Color[];
-  color?: Color;
   shadow?: boolean;
   className?: string;
   image?: ReactElement;
@@ -17,7 +16,7 @@ export interface CardProps {
   header?: ReactElement;
 }
 
-export const Card: React.FC<PropsWithChildren<CardProps>> = ({
+export const Card: FC<PropsWithChildren<CardProps>> = ({
   title,
   header,
   labels,
@@ -52,7 +51,7 @@ export const Card: React.FC<PropsWithChildren<CardProps>> = ({
             )}
           >
             {labels.map((label, i) => (
-              <Badge key={i} color={labelColors ? labelColors[i] : Colors[i]}>
+              <Badge key={label} color={labelColors ? labelColors[i] : Colors[i]}>
                 {label}
               </Badge>
             ))}

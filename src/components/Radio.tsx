@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import { ChangeEvent, MutableRefObject, useRef } from "react";
-import Text from "./Text";
+import { ChangeEvent, FC } from "react";
+import { Text } from "./Text";
 
 interface RadioOption {
   value: string;
@@ -14,7 +14,7 @@ export interface RadioProps {
   label: string;
 }
 
-export const Radio: React.FC<RadioProps> = ({ onChange, options = [], value = "", label }) => {
+export const Radio: FC<RadioProps> = ({ onChange, options = [], value = "", label }) => {
   const isSelected = (option: RadioOption) => value === option.value;
 
   const getLabelClasses = (option: RadioOption) =>

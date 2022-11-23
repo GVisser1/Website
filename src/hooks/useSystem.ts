@@ -39,6 +39,7 @@ const useSystem = () => {
       return;
     }
     darkThemeMq.addEventListener("change", detectThemeSwitch);
+    // eslint-disable-next-line consistent-return
     return () => darkThemeMq.removeEventListener("change", detectThemeSwitch);
   }, [useSystemTheme]);
 
@@ -65,7 +66,6 @@ const useSystem = () => {
           return;
         }
         document.documentElement.classList.remove("dark");
-        return;
     }
   };
 

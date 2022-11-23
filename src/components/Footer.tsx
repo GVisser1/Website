@@ -1,7 +1,8 @@
+import { FC } from "react";
 import { useTranslation } from "react-i18next";
-import Text from "./Text";
+import { Text } from "./Text";
 
-const Footer: React.FC = () => {
+export const Footer: FC = () => {
   const { t } = useTranslation();
   return (
     <footer className="z-30 w-full border-t border-gray-200 bg-white p-4 transition dark:border-slate-700 dark:bg-gray-900 md:px-6 md:py-8">
@@ -33,4 +34,3 @@ const Footer: React.FC = () => {
     </footer>
   );
 };
-export default Footer;

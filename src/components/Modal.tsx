@@ -1,9 +1,9 @@
-import { useState, Fragment, PropsWithChildren, ReactElement } from "react";
+import { Fragment, PropsWithChildren, FC } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Title } from "./Title";
-import { Button, ButtonProps } from "./Button";
-import { IconType } from "./Icon";
 import classNames from "classnames";
+import { Title } from "./Title";
+import { Button } from "./Button";
+
 interface ModalProps {
   title: string;
   className?: string;
@@ -11,7 +11,7 @@ interface ModalProps {
   onClose: () => void;
 }
 
-const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
+export const Modal: FC<PropsWithChildren<ModalProps>> = ({
   title,
   className,
   open,
@@ -77,5 +77,3 @@ const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
     </Transition>
   );
 };
-
-export default Modal;

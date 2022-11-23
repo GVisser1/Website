@@ -1,15 +1,13 @@
 import classNames from "classnames";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { getAge } from "../utils/numberUtil";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
-import SocialIcons from "./SocialIcons";
-import Text from "./Text";
+import { SocialIcons } from "./SocialIcons";
+import { Text } from "./Text";
 import { Title } from "./Title";
 
 export const Contact: FC = () => {
-  const { t } = useTranslation();
   return (
     <div className="flex flex-col gap-y-20">
       <div className="flex flex-col items-center justify-evenly sm:flex-row">
@@ -17,7 +15,7 @@ export const Contact: FC = () => {
           src="/images/GlennProfile1.webp"
           loading="lazy"
           className="h-60 w-60 rounded-full object-cover shadow-md shadow-current"
-          alt="Profile picture"
+          alt="Profile"
         />
         <div className="mt-4 flex flex-col items-center">
           <Title as="h3" size="4xl">
@@ -32,7 +30,7 @@ export const Contact: FC = () => {
               className="mt-0.5 h-3.5 w-3.5 text-gray-700 dark:text-white"
             />
             <Text size="sm" color="medium" href="mailto:gvisser.business@gmail.com">
-              {"gvisser.business@gmail.com"}
+              gvisser.business@gmail.com
             </Text>
           </div>
           <SocialIcons className="mt-4" />

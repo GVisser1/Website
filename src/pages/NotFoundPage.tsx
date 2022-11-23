@@ -1,8 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
-import { IconType } from "../components/Icon";
-import Text from "../components/Text";
+import { Text } from "../components/Text";
 import { Title } from "../components/Title";
 
 const NotFoundPage: React.FC = () => {
@@ -15,7 +14,7 @@ const NotFoundPage: React.FC = () => {
       <Title size="3xl">{t("PAGE_NOT_FOUND")}</Title>
       <Button
         variant="destructive"
-        onClick={() => navigate("/home")}
+        onClick={() => navigate("")}
         icon="HomeIcon"
         label={t("Home")}
       />

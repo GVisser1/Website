@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { PropsWithChildren } from "react";
+import { FC, PropsWithChildren } from "react";
 
 export interface TitleProps {
   className?: string;
@@ -8,7 +8,7 @@ export interface TitleProps {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
-export const Title: React.FC<PropsWithChildren<TitleProps>> = ({
+export const Title: FC<PropsWithChildren<TitleProps>> = ({
   as = "h2",
   size = "base",
   color = "dark",
