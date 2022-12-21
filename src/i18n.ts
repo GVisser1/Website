@@ -4,13 +4,10 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import translationsEn from "./translations/translationEn.json";
 import translationsNl from "./translations/translationNl.json";
 
-const resources = {
-  en: {
-    translation: translationsEn,
-  },
-  nl: {
-    translation: translationsNl,
-  },
+export const defaultNS = "translation";
+export const resources = {
+  en: { translation: translationsEn },
+  nl: { translation: translationsNl },
 };
 
 i18n.on("languageChanged", (lng) => {
@@ -25,6 +22,7 @@ i18n
     fallbackLng: ["en"],
     debug: false,
 
+    defaultNS,
     interpolation: {
       escapeValue: false,
     },
