@@ -46,7 +46,7 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({ items, menuBtn, className 
                 <Menu.Item key={item.label}>
                   {({ active }) => (
                     <button className={optClasses(active)} onClick={item.onClick}>
-                      {item.label && <Text icon={item.icon}>{item.label}</Text>}
+                      {item.label && <Text>{item.label}</Text>}
                       {item.selected && (
                         <Icon
                           name="CheckCircleIcon"

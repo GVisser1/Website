@@ -4,7 +4,7 @@ import { FC, PropsWithChildren } from "react";
 export interface TitleProps {
   className?: string;
   size?: "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl";
-  color?: "medium" | "dark" | "all-white";
+  color?: "medium" | "dark" | "all-white" | "all-dark";
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
@@ -19,6 +19,7 @@ export const Title: FC<PropsWithChildren<TitleProps>> = ({
   const classes = classNames(
     "transition font-bold",
     color === "all-white" && "text-white",
+    color === "all-dark" && "text-gray-700",
     color === "medium" && "text-gray-500 dark:text-gray-400",
     color === "dark" && "text-gray-700 dark:text-white",
 

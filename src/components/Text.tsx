@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import { PropsWithChildren } from "react";
-import { Icon, IconType } from "./Icon";
 
 export interface TextProps {
   className?: string;
@@ -8,9 +7,6 @@ export interface TextProps {
   weight?: "semibold" | "bold";
   color?: "medium" | "dark" | "all-white";
   href?: string;
-  icon?: IconType;
-  iconType?: "outline" | "solid";
-  iconPosition?: "left" | "right";
   tabIndex?: number;
 }
 
@@ -19,9 +15,6 @@ export const Text: React.FC<PropsWithChildren<TextProps>> = ({
   weight,
   color = "dark",
   href,
-  icon,
-  iconType = "outline",
-  iconPosition = "left",
   tabIndex,
   className,
   children,
@@ -30,8 +23,6 @@ export const Text: React.FC<PropsWithChildren<TextProps>> = ({
   const classes = classNames(
     "transition whitespace-pre-line",
     href && "pointer:hover:underline underline-offset-2 outline-none",
-    icon && "flex items-center space-x-2",
-    iconPosition === "right" && "flex-row-reverse space-x-reverse",
 
     weight === "bold" && "font-bold",
     weight === "semibold" && "font-semibold",
@@ -49,14 +40,8 @@ export const Text: React.FC<PropsWithChildren<TextProps>> = ({
 
     className
   );
-  return icon ? (
-    <div className={classes}>
-      <Icon name={icon} type={iconType} />
-      <Tag tabIndex={tabIndex} href={href}>
-        {children}
-      </Tag>
-    </div>
-  ) : (
+
+  return (
     <Tag tabIndex={tabIndex} className={classes} href={href}>
       {children}
     </Tag>
