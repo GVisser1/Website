@@ -1,56 +1,86 @@
 import classNames from "classnames";
-import { FC } from "react";
+import { ButtonHTMLAttributes, FC } from "react";
 import { Icon, IconType } from "./Icon";
 
-export type ButtonVariant = "default" | "primary" | "clear" | "destructive";
+export type ButtonVariant = "default" | "primary" | "destructive" | "clear";
 
 export interface ButtonProps {
-  block?: boolean;
-  compact?: boolean;
-  icon?: IconType;
-  iconType?: "solid" | "outline";
-  iconPosition?: "left" | "right";
-  label?: string;
   variant?: ButtonVariant;
+  size?: "xs" | "sm" | "md" | "lg";
+  label?: string;
+  icon?: IconType;
+  iconAlign?: "left" | "right";
+  iconType?: "solid" | "outline";
+  disabled?: boolean;
+  loading?: boolean;
+  block?: boolean;
+  className?: string;
 }
 
-export const Button: FC<ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
+export const Button: FC<ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> = ({
+  variant = "default",
+  size = "lg",
+  label,
+  icon,
+  iconAlign = "left",
+  iconType = "solid",
+  disabled = false,
+  loading = false,
   block = false,
   className,
-  compact = false,
-  disabled = false,
-  icon,
-  iconType = "solid",
-  iconPosition = "left",
-  label,
-  variant = "default",
   ...props
 }) => {
+  const isClickable = !loading && !disabled;
+
   const classes = classNames(
-    "flex transition justify-center gap-x-1 font-medium rounded-lg outline-none focus-visible:ring",
-    compact ? "p-2" : "px-4 py-3",
+    "flex items-center gap-x-1.5 outline-none justify-center font-semibold transition",
     block && "w-full",
-    iconPosition === "right" && "flex-row-reverse space-x-reverse",
-    disabled
-      ? "text-gray-400 bg-gray-100"
-      : {
-          "text-black bg-blue-100 hover:bg-blue-200 active:bg-blue-300 focus-visible:ring-blue-400":
-            variant === "default",
-          "text-white bg-blue-600 pointer:hover:bg-blue-700 active:!bg-blue-800 focus-visible:ring-blue-400":
-            variant === "primary",
-          "text-white bg-red-500 pointer:hover:bg-red-600 active:!bg-red-700 ring-red-300 focus-visible:ring-red-400":
-            variant === "destructive",
-          "text-gray-400 pointer:hover:text-gray-500 dark:pointer:hover:text-gray-300 focus-visible:ring-blue-400 active:bg-gray-200 dark:active:bg-gray-800":
-            variant === "clear",
-        },
+    iconAlign === "right" && "flex-row-reverse space-x-reverse",
+    disabled && "bg-gray-200 text-gray-400 dark:bg-gray-400 dark:text-gray-500",
+    !disabled && "focus-visible:ring",
+
+    variant === "default" && {
+      "text-gray-700 bg-blue-200 dark:text-gray-800": !disabled,
+      "hover:bg-blue-300 active:bg-blue-400": isClickable,
+    },
+    variant === "primary" && {
+      "text-white bg-blue-600": !disabled,
+      "hover:bg-blue-700 active:bg-blue-800": isClickable,
+    },
+    variant === "destructive" && {
+      "text-gray-50 bg-red-500": !disabled,
+      "hover:bg-red-600 active:bg-red-800": isClickable,
+    },
+    variant === "clear" &&
+      "text-gray-500 pointer:hover:text-gray-700 dark:pointer:hover:text-gray-400 focus-visible:ring-blue-400 active:!text-gray-800 dark:active:!text-gray-300",
+
+    // sizes
+    {
+      "rounded text-xs": size === "xs",
+      "rounded-md p-1": size === "sm",
+      "rounded-lg p-2": size === "md",
+      "rounded-lg p-3": size === "lg",
+    },
     className
   );
 
   return (
-    <button className={classes} {...props}>
-      {icon && <Icon name={icon} type={iconType} />}
-      {label && <span>{label}</span>}
-      {props.children}
+    <button
+      aria-label={loading ? "Loading" : label}
+      type="button"
+      disabled={disabled || loading}
+      className={classes}
+      {...props}
+    >
+      {icon && (
+        <Icon
+          name={icon}
+          type={iconType}
+          overrideSize={size === "xs"}
+          className={`shrink-0 ${size === "xs" && "h-5 w-5"}`}
+        />
+      )}
+      {label}
     </button>
   );
 };

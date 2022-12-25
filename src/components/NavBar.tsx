@@ -75,7 +75,7 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
               <div className="flex items-center md:hidden">
                 <Disclosure.Button as="div">
                   <Button
-                    compact
+                    size="md"
                     variant="clear"
                     aria-label={open ? "close menu" : "open menu"}
                     icon={open ? "XMarkIcon" : "Bars3Icon"}
@@ -113,7 +113,7 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
                       icon={getThemeIcon()}
                       iconType="outline"
                       variant="clear"
-                      compact
+                      size="md"
                       aria-label="open theme switcher dropdown"
                     />
                   }
@@ -127,7 +127,7 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
                       icon="GlobeEuropeAfricaIcon"
                       iconType="outline"
                       variant="clear"
-                      compact
+                      size="md"
                       aria-label="open language switcher dropdown"
                     />
                   }
@@ -136,7 +136,7 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
               </div>
               <div className="flex md:static md:inset-auto md:ml-6 md:hidden md:items-center md:pr-0">
                 <Button
-                  compact
+                  size="md"
                   icon="CogIcon"
                   iconType="outline"
                   variant="clear"

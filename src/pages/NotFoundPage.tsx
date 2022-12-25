@@ -16,7 +16,7 @@ const NotFoundPage: React.FC = () => {
         variant="destructive"
         onClick={() => navigate("")}
         icon="HomeIcon"
-        label={t("Home")}
+        label={t("HOME")}
       />
     </section>
   );
