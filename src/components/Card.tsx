@@ -1,64 +1,61 @@
 import classNames from "classnames";
-import { FC, PropsWithChildren, ReactElement } from "react";
+import { FC, PropsWithChildren } from "react";
 import { Color } from "../types/Color";
-import { Colors } from "../utils/colorUtils";
+import { Themes } from "../types/Themes";
 import { Badge } from "./Badge";
+import { Text } from "./Text";
 import { Title } from "./Title";
 
+export interface FrontCardProps {}
 export interface CardProps {
   title?: string;
-  labels?: string[];
-  labelColors?: Color[];
-  shadow?: boolean;
+  banner?: string;
+  theme?: Color;
+  status?: string;
   className?: string;
-  image?: ReactElement;
-  button?: ReactElement;
-  header?: ReactElement;
 }
 
 export const Card: FC<PropsWithChildren<CardProps>> = ({
+  banner,
+  theme = "BLUE",
+  status,
   title,
-  header,
-  labels,
-  labelColors,
-  shadow = true,
-  image,
-  button,
   className,
-  children,
 }) => {
   const classes = classNames(
-    "w-full transition overflow-hidden rounded-xl border border-slate-400 bg-white dark:border-slate-500 dark:bg-slate-800",
-    header && "text-center",
-    shadow && "shadow-lg shadow-slate-300 dark:shadow-slate-900",
+    "relative h-40 min-w-0 transition overflow-hidden rounded-xl border border-slate-400 bg-white shadow-lg",
+    "dark:border-slate-500 dark:bg-slate-800",
     className
   );
 
-  return (
+  const Theme = Themes[theme];
+
+  const frontCard = (
     <div className={classes}>
-      {header}
-      {image}
-      <div className="px-3 py-3">
-        <Title as="h3" className="line-clamp-1">
+      <p
+        className={`truncate p-2 text-center text-xs font-semibold ${Theme.bgColor} ${Theme.textColor}`}
+      >
+        {banner}
+      </p>
+      <div className="flex h-32 flex-col justify-between p-3">
+        <Title as="h3" className="truncate">
           {title}
         </Title>
-        {children}
-        {labels && (
-          <div
-            className={classNames(
-              "mt-3 flex flex-wrap gap-x-1.5 text-center",
-              header && "justify-center"
-            )}
-          >
-            {labels.map((label, i) => (
-              <Badge key={label} color={labelColors ? labelColors[i] : Colors[i]}>
-                {label}
-              </Badge>
-            ))}
+
+        <Text color="medium" size="sm" className="line-clamp-2">
+          {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam odit nam autem, omnis
+          pariatur officia eum earum neque, libero expedita voluptates, voluptatum adipisci. Tempore
+          dolore modi necessitatibus, incidunt libero tempora. */}
+          This sub title really should not have more than 72 characters! some more
+        </Text>
+        {status && (
+          <div className="flex items-center justify-end">
+            <Badge theme={theme}>{status}</Badge>
           </div>
         )}
-        {button}
       </div>
     </div>
   );
+
+  return frontCard;
 };
