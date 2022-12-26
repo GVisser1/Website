@@ -1,12 +1,7 @@
-import DateDiff from "date-diff";
 import { useTranslation } from "react-i18next";
 
 const useDate = () => {
   const { t } = useTranslation();
-  const getTotalMonths = (start: Date, end?: Date) => {
-    const diff = Math.round(new DateDiff(end ?? new Date(), start).months());
-    return `${diff} ${diff === 1 ? t("MONTH") : t("MONTHS")}`;
-  };
 
   const getMonthName = (monthIndex: number, compact: boolean = true) => {
     const ext = compact ? "_COMPACT" : "";
@@ -48,7 +43,7 @@ const useDate = () => {
     return `${start} - ${end}`;
   };
 
-  return { getTotalMonths, getMonthName, getTimeFrame };
+  return { getMonthName, getTimeFrame };
 };
 
 export default useDate;

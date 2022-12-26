@@ -10,6 +10,7 @@ import useI18n from "../hooks/useI18n";
 import { Radio } from "./Radio";
 import { Modal } from "./Modal";
 import { IconType } from "./Icon";
+import { Link } from "./Link";
 
 interface NavBarProps {
   className?: string;
@@ -23,7 +24,7 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
   const [showSettingsModal, setShowSettingsModal] = useState(false);
 
   const navigation: { name: string; href: string; icon: IconType }[] = [
-    { name: t("HOME"), href: "#intro", icon: "HomeIcon" },
+    { name: t("HOME"), href: "/", icon: "HomeIcon" },
     { name: t("ABOUT"), href: "#about", icon: "SparklesIcon" },
     { name: t("TIMELINE"), href: "#timeline", icon: "RectangleStackIcon" },
     { name: t("CONTACT"), href: "#contact", icon: "AtSymbolIcon" },
@@ -95,14 +96,13 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
                 </div>
                 <div className="ml-6 hidden items-center justify-center gap-x-4 md:flex">
                   {navigation.map((item) => (
-                    <a
+                    <Link
                       className="text-gray-500 pointer:hover:text-gray-900 dark:text-gray-400 dark:pointer:hover:text-gray-300"
                       href={item.href}
-                      aria-label={`navigate to ${item.name} page`}
                       key={item.name}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -137,7 +137,7 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
               <div className="flex md:static md:inset-auto md:ml-6 md:hidden md:items-center md:pr-0">
                 <Button
                   size="md"
-                  icon="CogIcon"
+                  icon="Cog8ToothIcon"
                   iconType="outline"
                   variant="clear"
                   aria-label="open settings"
@@ -186,15 +186,9 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
           <Disclosure.Panel className="h-48 border-gray-100 bg-white transition dark:border-slate-700 dark:bg-slate-900 md:hidden">
             <div className="flex flex-col divide-y divide-slate-200 dark:divide-slate-600">
               {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  className="w-full px-2 py-3 font-semibold text-gray-400 pointer:hover:text-gray-500 dark:pointer:hover:text-white"
-                  href={item.href}
-                  aria-label={`navigate to ${item.name} page`}
-                  onClick={() => close()}
-                >
+                <Link key={item.name} className="p-2.5" href={item.href} onClick={() => close()}>
                   {item.name}
-                </a>
+                </Link>
               ))}
             </div>
           </Disclosure.Panel>

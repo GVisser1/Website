@@ -24,7 +24,16 @@ interface TimelineProps {
 
 export const Timeline: FC<TimelineProps> = ({ items, className }) => {
   const timeLineCard = (item: TimelineItem) => (
-    <Card banner={item.timeFrame} title={item.title} status={item.status} theme={item.theme} />
+    <Card
+      className="w-full"
+      theme={item.theme}
+      title={item.title}
+      subTitle={item.subTitle}
+      description={item.description}
+      href={item.href}
+      banner={item.timeFrame}
+      status={item.status}
+    />
   );
 
   const pointer = (theme: Color = "BLUE") => {
@@ -52,7 +61,7 @@ export const Timeline: FC<TimelineProps> = ({ items, className }) => {
           {i !== 0 && (
             <div className="relative col-span-3 my-auto flex items-center justify-center sm:hidden">
               {pointer(item.theme)}
-              <div className="absolute z-[-5] h-28 w-0.5 bg-gray-200 transition dark:bg-gray-700" />
+              <div className="absolute z-[-5] h-28 w-0.5 bg-gray-300 transition dark:bg-gray-700" />
             </div>
           )}
           <div
@@ -66,7 +75,7 @@ export const Timeline: FC<TimelineProps> = ({ items, className }) => {
 
           <div className="relative col-span-1 mx-auto hidden w-full justify-center pt-3 sm:flex">
             {pointer(item.theme)}
-            <div className="absolute flex h-full w-0.5 bg-gray-200 transition dark:bg-gray-700" />
+            <div className="absolute flex h-full w-0.5 bg-gray-300 transition dark:bg-gray-700" />
           </div>
 
           <div

@@ -28,7 +28,6 @@
     "autoprefixer": "^10.4.13",
     "axios": "^1.2.1",
     "classnames": "^2.3.2",
-    "date-diff": "^1.0.2",
     "eslint": "^8.30.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",

@@ -3,27 +3,35 @@ import { FC, PropsWithChildren } from "react";
 import { Color } from "../types/Color";
 import { Themes } from "../types/Themes";
 import { Badge } from "./Badge";
+import { Icon } from "./Icon";
+import { Link } from "./Link";
 import { Text } from "./Text";
 import { Title } from "./Title";
 
 export interface FrontCardProps {}
 export interface CardProps {
-  title?: string;
-  banner?: string;
   theme?: Color;
+  title?: string;
+  subTitle?: string;
+  description?: string;
+  href?: string;
+  banner?: string;
   status?: string;
   className?: string;
 }
 
 export const Card: FC<PropsWithChildren<CardProps>> = ({
-  banner,
   theme = "BLUE",
-  status,
   title,
+  subTitle,
+  description,
+  href,
+  banner,
+  status,
   className,
 }) => {
   const classes = classNames(
-    "relative h-40 min-w-0 transition overflow-hidden rounded-xl border border-slate-400 bg-white shadow-lg",
+    "relative min-w-0 transition overflow-hidden rounded-xl border border-slate-400 bg-white shadow-lg",
     "dark:border-slate-500 dark:bg-slate-800",
     className
   );
@@ -37,20 +45,25 @@ export const Card: FC<PropsWithChildren<CardProps>> = ({
       >
         {banner}
       </p>
-      <div className="flex h-32 flex-col justify-between p-3">
-        <Title as="h3" className="truncate">
+      <div className="flex flex-col items-start p-3">
+        <Title as="h3" size="lg" className="truncate">
           {title}
         </Title>
-
-        <Text color="medium" size="sm" className="line-clamp-2">
-          {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam odit nam autem, omnis
-          pariatur officia eum earum neque, libero expedita voluptates, voluptatum adipisci. Tempore
-          dolore modi necessitatibus, incidunt libero tempora. */}
-          This sub title really should not have more than 72 characters! some more
+        <Text size="sm" weight="bold" color="medium">
+          {subTitle}
         </Text>
-        {status && (
-          <div className="flex items-center justify-end">
+
+        <Text color="medium" size="sm" className="mt-4">
+          {description}
+        </Text>
+        {(status || href) && (
+          <div className="mt-4 flex w-full items-center justify-between">
             <Badge theme={theme}>{status}</Badge>
+            {href && (
+              <Link href={href} color="blue" size="xs">
+                <Icon name="ArrowTopRightOnSquareIcon" />
+              </Link>
+            )}
           </div>
         )}
       </div>

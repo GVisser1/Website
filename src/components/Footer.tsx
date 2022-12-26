@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "./Link";
 import { Text } from "./Text";
 
 export const Footer: FC = () => {
@@ -10,24 +11,24 @@ export const Footer: FC = () => {
         <Text size="sm" color="medium">{`© ${new Date().getFullYear()} Glenn Visser`}</Text>
         <ul className="my-4 flex items-center justify-center gap-x-4 sm:my-0">
           <li>
-            <Text tabIndex={-1} size="sm" color="medium" href="#intro">
+            <Link size="sm" color="gray" href="/">
               {t("HOME")}
-            </Text>
+            </Link>
           </li>
           <li>
-            <Text tabIndex={-1} size="sm" color="medium" href="#about">
+            <Link size="sm" color="gray" href="#about">
               {t("ABOUT")}
-            </Text>
+            </Link>
           </li>
           <li>
-            <Text tabIndex={-1} size="sm" color="medium" href="#timeline">
+            <Link size="sm" color="gray" href="#timeline">
               {t("TIMELINE")}
-            </Text>
+            </Link>
           </li>
           <li>
-            <Text tabIndex={-1} size="sm" color="medium" href="#contact">
+            <Link size="sm" color="gray" href="#contact">
               {t("CONTACT")}
-            </Text>
+            </Link>
           </li>
         </ul>
       </div>

@@ -5,7 +5,7 @@ export interface TextProps {
   className?: string;
   size?: "xs" | "sm" | "base" | "md" | "lg" | "xl" | "2xl";
   weight?: "semibold" | "bold";
-  color?: "medium" | "dark" | "all-white";
+  color?: "medium" | "dark" | "all-white" | "blue";
   href?: string;
   tabIndex?: number;
 }
@@ -14,15 +14,11 @@ export const Text: React.FC<PropsWithChildren<TextProps>> = ({
   size = "base",
   weight,
   color = "dark",
-  href,
-  tabIndex,
   className,
   children,
 }) => {
-  const Tag = href ? "a" : "p";
   const classes = classNames(
     "transition whitespace-pre-line",
-    href && "pointer:hover:underline underline-offset-2 outline-none",
 
     weight === "bold" && "font-bold",
     weight === "semibold" && "font-semibold",
@@ -41,9 +37,5 @@ export const Text: React.FC<PropsWithChildren<TextProps>> = ({
     className
   );
 
-  return (
-    <Tag tabIndex={tabIndex} className={classes} href={href}>
-      {children}
-    </Tag>
-  );
+  return <p className={classes}>{children}</p>;
 };

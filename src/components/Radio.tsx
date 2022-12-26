@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ChangeEvent, FC } from "react";
+import React, { ChangeEvent, FC, Fragment } from "react";
 import { Text } from "./Text";
 
 interface RadioOption {
@@ -45,7 +45,7 @@ export const Radio: FC<RadioProps> = ({ onChange, options = [], value = "", labe
       </legend>
       <div className="flex flex-col">
         {options.map((option) => (
-          <>
+          <Fragment key={option.value}>
             <input
               aria-label={option.label}
               id={option.value}
@@ -60,7 +60,7 @@ export const Radio: FC<RadioProps> = ({ onChange, options = [], value = "", labe
               <Text>{option.label}</Text>
               <span className={getRadioClasses(option)} />
             </label>
-          </>
+          </Fragment>
         ))}
       </div>
     </fieldset>
