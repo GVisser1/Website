@@ -1,19 +1,20 @@
 import classNames from "classnames";
 import { FC, Fragment } from "react";
 import { Color } from "../types/Color";
-import { getCardTheme, getTimelineIconTheme } from "../utils/colorUtils";
+import { Themes } from "../types/Themes";
 import { isEven } from "../utils/numberUtil";
 import { Card } from "./Card";
 import { Icon } from "./Icon";
-import { Text } from "./Text";
 
 export interface TimelineItem {
   title: string;
   timeFrame: string;
   subTitle?: string;
   description?: string;
-  color?: Color;
-  labels?: string[];
+  status?: string;
+  logoSrc?: string;
+  href?: string;
+  theme?: Color;
 }
 
 interface TimelineProps {
@@ -24,27 +25,32 @@ interface TimelineProps {
 export const Timeline: FC<TimelineProps> = ({ items, className }) => {
   const timeLineCard = (item: TimelineItem) => (
     <Card
+      className="w-full"
+      theme={item.theme}
       title={item.title}
-      header={
-        <div className={classNames("p-2", getCardTheme(item.color ?? "BLUE"))}>
-          <p className="text-xs line-clamp-1">{item.timeFrame}</p>
-        </div>
-      }
-      labels={item.labels}
-      labelColors={[item.color ?? "BLUE"]}
-    >
-      {item.subTitle && (
-        <Text className="line-clamp-1" size="sm" color="medium">
-          {item.subTitle}
-        </Text>
-      )}
-      {item.description && (
-        <Text className="line-clamp-3" size="sm" color="medium">
-          {item.description}
-        </Text>
-      )}
-    </Card>
+      subTitle={item.subTitle}
+      description={item.description}
+      href={item.href}
+      banner={item.timeFrame}
+      status={item.status}
+    />
   );
+
+  const pointer = (theme: Color = "BLUE") => {
+    const Theme = Themes[theme];
+    return (
+      <div
+        className={classNames(
+          "z-10 mt-1 h-10 w-10 rounded-full ring-4",
+          Theme.bgColor,
+          Theme.ringColor,
+          Theme.textColor
+        )}
+      >
+        <Icon overrideSize className="mx-auto" name="ChevronUpIcon" />
+      </div>
+    );
+  };
 
   return (
     <div
@@ -54,15 +60,8 @@ export const Timeline: FC<TimelineProps> = ({ items, className }) => {
         <Fragment key={item.title}>
           {i !== 0 && (
             <div className="relative col-span-3 my-auto flex items-center justify-center sm:hidden">
-              <div
-                className={classNames(
-                  "z-10 mt-1 h-10 w-10 rounded-full ring-4 ring-current",
-                  getTimelineIconTheme(items[i].color ?? "BLUE")
-                )}
-              >
-                <Icon overrideSize className="mx-auto" name="ChevronUpIcon" />
-              </div>
-              <div className="absolute h-[104px] w-0.5 bg-gray-200 transition dark:bg-gray-700" />
+              {pointer(item.theme)}
+              <div className="absolute z-[-5] h-28 w-0.5 bg-gray-300 transition dark:bg-gray-700" />
             </div>
           )}
           <div
@@ -75,16 +74,8 @@ export const Timeline: FC<TimelineProps> = ({ items, className }) => {
           </div>
 
           <div className="relative col-span-1 mx-auto hidden w-full justify-center pt-3 sm:flex">
-            <div
-              className={classNames(
-                "absolute z-10 mt-1 h-10 w-10 rounded-full ring-4 ring-current",
-                "shadow-lg shadow-slate-300 dark:shadow-slate-900",
-                getTimelineIconTheme(item.color ?? "BLUE")
-              )}
-            >
-              <Icon overrideSize className="mx-auto" name="ChevronUpIcon" />
-            </div>
-            <div className="absolute flex h-full w-0.5 bg-gray-200 transition dark:bg-gray-700" />
+            {pointer(item.theme)}
+            <div className="absolute flex h-full w-0.5 bg-gray-300 transition dark:bg-gray-700" />
           </div>
 
           <div

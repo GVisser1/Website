@@ -26,12 +26,12 @@ const HomePage: React.FC = () => {
             <Title
               as="h1"
               size="5xl"
-              color="all-white"
-              className="underline sm:text-6xl lg:text-7xl lg:text-gray-700"
+              color="all-dark"
+              className="underline sm:text-6xl lg:text-7xl"
             >
               {t("HOME_TITLE")}
             </Title>
-            <Title size="3xl" color="all-white" className="lg:text-gray-700">
+            <Title size="3xl" color="all-dark">
               {t("HOME_SUBTITLE", { age: getAge(new Date(2000, 3, 21)) })}
             </Title>
             <img

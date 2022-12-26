@@ -61,7 +61,7 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
                       aria-label="close modal"
                       icon="XMarkIcon"
                       variant="clear"
-                      compact
+                      size="md"
                       onClick={onClose}
                     />
                   </div>

@@ -1,64 +1,74 @@
 import classNames from "classnames";
-import { FC, PropsWithChildren, ReactElement } from "react";
+import { FC, PropsWithChildren } from "react";
 import { Color } from "../types/Color";
-import { Colors } from "../utils/colorUtils";
+import { Themes } from "../types/Themes";
 import { Badge } from "./Badge";
+import { Icon } from "./Icon";
+import { Link } from "./Link";
+import { Text } from "./Text";
 import { Title } from "./Title";
 
+export interface FrontCardProps {}
 export interface CardProps {
+  theme?: Color;
   title?: string;
-  labels?: string[];
-  labelColors?: Color[];
-  shadow?: boolean;
+  subTitle?: string;
+  description?: string;
+  href?: string;
+  banner?: string;
+  status?: string;
   className?: string;
-  image?: ReactElement;
-  button?: ReactElement;
-  header?: ReactElement;
 }
 
 export const Card: FC<PropsWithChildren<CardProps>> = ({
+  theme = "BLUE",
   title,
-  header,
-  labels,
-  labelColors,
-  shadow = true,
-  image,
-  button,
+  subTitle,
+  description,
+  href,
+  banner,
+  status,
   className,
-  children,
 }) => {
   const classes = classNames(
-    "w-full transition overflow-hidden rounded-xl border border-slate-400 bg-white dark:border-slate-500 dark:bg-slate-800",
-    header && "text-center",
-    shadow && "shadow-lg shadow-slate-300 dark:shadow-slate-900",
+    "relative min-w-0 transition overflow-hidden rounded-xl border border-slate-400 bg-white shadow-lg",
+    "dark:border-slate-500 dark:bg-slate-800",
     className
   );
 
-  return (
+  const Theme = Themes[theme];
+
+  const frontCard = (
     <div className={classes}>
-      {header}
-      {image}
-      <div className="px-3 py-3">
-        <Title as="h3" className="line-clamp-1">
+      <p
+        className={`truncate p-2 text-center text-xs font-semibold ${Theme.bgColor} ${Theme.textColor}`}
+      >
+        {banner}
+      </p>
+      <div className="flex flex-col items-start p-3">
+        <Title as="h3" size="lg" className="truncate">
           {title}
         </Title>
-        {children}
-        {labels && (
-          <div
-            className={classNames(
-              "mt-3 flex flex-wrap gap-x-1.5 text-center",
-              header && "justify-center"
+        <Text size="sm" weight="bold" color="medium">
+          {subTitle}
+        </Text>
+
+        <Text color="medium" size="sm" className="mt-4">
+          {description}
+        </Text>
+        {(status || href) && (
+          <div className="mt-4 flex w-full items-center justify-between">
+            <Badge theme={theme}>{status}</Badge>
+            {href && (
+              <Link href={href} color="blue" size="xs">
+                <Icon name="ArrowTopRightOnSquareIcon" />
+              </Link>
             )}
-          >
-            {labels.map((label, i) => (
-              <Badge key={label} color={labelColors ? labelColors[i] : Colors[i]}>
-                {label}
-              </Badge>
-            ))}
           </div>
         )}
-        {button}
       </div>
     </div>
   );
+
+  return frontCard;
 };

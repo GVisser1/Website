@@ -3,6 +3,7 @@ import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
+import { Link } from "./Link";
 import { SocialIcons } from "./SocialIcons";
 import { Text } from "./Text";
 import { Title } from "./Title";
@@ -24,15 +25,15 @@ export const Contact: FC = () => {
           <Text size="sm" color="medium">
             Software Engineer
           </Text>
-          <div className="mt-6 flex items-center gap-x-2">
-            <Icon
-              name="EnvelopeIcon"
-              className="mt-0.5 h-3.5 w-3.5 text-gray-700 dark:text-white"
-            />
-            <Text size="sm" color="medium" href="mailto:gvisser.business@gmail.com">
-              gvisser.business@gmail.com
-            </Text>
-          </div>
+          <Link
+            size="sm"
+            color="gray-blue"
+            href="mailto:gvisser.business@gmail.com"
+            className="mt-6 flex items-center gap-x-2"
+          >
+            <Icon name="EnvelopeIcon" className="mt-0.5 h-3.5 w-3.5" />
+            gvisser.business@gmail.com
+          </Link>
           <SocialIcons className="mt-4" />
         </div>
       </div>
@@ -46,8 +47,8 @@ const Form: FC = () => {
 
   const inputClasses = classNames(
     "w-full rounded-md border p-3.5 text-sm text-gray-700 placeholder-gray-400 outline-none",
-    "focus:ring-1.5 focus:ring-blue-400 focus:border-blue-500",
-    "dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:focus:border-blue-500",
+    "focus:ring-1.5 focus:ring-blue-400 focus:border-blue-400",
+    "dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:focus:border-blue-400",
     "shadow shadow-slate-300 dark:shadow-slate-900"
   );
 
