@@ -60,7 +60,7 @@ export const Card: FC<PropsWithChildren<CardProps>> = ({
           <div className="mt-4 flex w-full items-center justify-between">
             <Badge theme={theme}>{status}</Badge>
             {href && (
-              <Link href={href} color="blue" size="xs">
+              <Link href={href} color="blue" size="xs" ariaLabel={`Visit ${href}`}>
                 <Icon name="ArrowTopRightOnSquareIcon" />
               </Link>
             )}
