@@ -52,7 +52,7 @@ export const Button: FC<ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> =
       "hover:bg-red-600 active:bg-red-800": isClickable,
     },
     variant === "clear" &&
-      "text-gray-500 pointer:hover:text-gray-700 dark:pointer:hover:text-gray-400 focus-visible:ring-blue-400 active:!text-gray-800 dark:active:!text-gray-300",
+      "text-gray-400 pointer:hover:text-gray-700 dark:pointer:hover:text-gray-400 focus-visible:ring-blue-400 active:!text-gray-800 dark:active:!text-gray-300",
 
     // sizes
     {

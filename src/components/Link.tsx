@@ -30,7 +30,7 @@ export const Link: React.FC<PropsWithChildren<LinkProps>> = ({
         color === "gray",
       "text-blue-600 dark:text-blue-400 pointer:hover:text-blue-800 dark:pointer:hover:text-blue-500 active:!text-blue-900 dark:active:!text-blue-700":
         color === "blue",
-      "text-gray-400 pointer:hover:text-gray-700 active:!text-gray-800 dark:text-blue-400 dark:pointer:hover:text-blue-500 dark:active:!text-blue-700":
+      "text-gray-500 pointer:hover:text-gray-700 active:!text-gray-800 dark:text-blue-400 dark:pointer:hover:text-blue-500 dark:active:!text-blue-700":
         color === "gray-blue",
     },
     className
