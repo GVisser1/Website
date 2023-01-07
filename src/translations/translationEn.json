@@ -25,6 +25,8 @@
   "CONTACT": "Contact",
   "MESSAGE_ME": "Send me a message",
   "SEND": "Send",
+  "NAME": "Name",
+  "MESSAGE": "Message",
 
   "SETTINGS": "Settings",
   "SETTINGS_DESCRIPTION": "With these settings you can change the language or switch to a different theme (light/dark).",

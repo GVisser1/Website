@@ -1,6 +1,17 @@
 import { t } from "i18next";
-import { TimelineItem } from "../components/Timeline";
 import useDate from "../hooks/useDate";
+import { Color } from "../types/Color";
+
+export interface TimelineItem {
+  title: string;
+  timeFrame: string;
+  subTitle?: string;
+  description?: string;
+  status?: string;
+  logoSrc?: string;
+  href?: string;
+  theme?: Color;
+}
 
 const TimeLineData = () => {
   const { getTimeFrame } = useDate();

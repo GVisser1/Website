@@ -86,7 +86,7 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
               <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
                 <div className="flex items-center space-x-5 md:space-x-2">
                   <img
-                    className="hidden h-8 w-8 rounded-full lg:block"
+                    className="hidden h-8 w-8 rounded-full md:block"
                     src="/images/GlennProfile1.webp"
                     alt="Glenn profile"
                   />
