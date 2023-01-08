@@ -19,7 +19,7 @@ export const Radio: FC<RadioProps> = ({ onChange, options = [], value = "", labe
 
   const getLabelClasses = (option: RadioOption) =>
     classNames(
-      "my-1 flex justify-between cursor-pointer items-center rounded-lg border-1.5 p-4 text-sm transition",
+      "my-1 flex h-12 justify-between cursor-pointer items-center rounded-lg border-1.5 p-4 text-sm transition",
       isSelected(option)
         ? {
             "border-blue-300 dark:border-gray-200 bg-blue-50 dark:bg-gray-700 pointer:hover:ring-0.5 hover:ring-blue-300 dark:hover:ring-gray-300":

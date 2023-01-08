@@ -15,23 +15,19 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <div className="h-full overflow-y-auto">
-        <motion.div
-          className="fixed inset-x-0 top-0 z-50 h-1 origin-[0%] bg-gray-700 transition dark:bg-gray-300"
-          style={{ scaleX }}
-        />
-        <NavBar />
-        <div className="mx-auto w-full">
-          <main className="relative z-20">
-            <Routes>
-              <Route path="" element={<HomePage />} />
-              <Route path="/" element={<Navigate to="" />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </main>
-        </div>
-        <Footer />
-      </div>
+      <motion.div
+        className="fixed inset-x-0 top-0 z-50 h-1 origin-[0%] bg-gray-700 transition dark:bg-gray-300"
+        style={{ scaleX }}
+      />
+      <NavBar />
+      <main className="relative z-20">
+        <Routes>
+          <Route path="" element={<HomePage />} />
+          <Route path="/" element={<Navigate to="" />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </main>
+      <Footer />
     </Router>
   );
 };

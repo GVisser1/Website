@@ -9,4 +9,15 @@
   .animation-delay-10000 {
     animation-delay: 10s;
   }
+
+  .scrollbar::-webkit-scrollbar,
+  mo {
+    @apply h-2 w-2 bg-blue-200 dark:bg-gray-700;
+    -webkit-border-radius: 4px;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-white;
+    -webkit-border-radius: 1ex;
+  }
 }

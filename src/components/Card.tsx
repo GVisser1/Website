@@ -33,7 +33,7 @@ export const Card: FC<PropsWithChildren<CardProps>> = ({
 }) => {
   const classes = classNames(
     "relative min-w-0 overflow-hidden rounded-xl border border-slate-400 bg-white shadow-lg",
-    "transition hover:scale-110 dark:border-slate-500 dark:bg-slate-800",
+    "hover:z-10 hover:scale-110 dark:border-slate-500 dark:bg-slate-800 transition-all",
     className
   );
 
@@ -44,6 +44,7 @@ export const Card: FC<PropsWithChildren<CardProps>> = ({
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
+      viewport={{ once: true }}
       className={classes}
     >
       <p

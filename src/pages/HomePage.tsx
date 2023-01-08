@@ -1,24 +1,17 @@
-import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
-import { Text } from "../components/Text";
 import { Timeline } from "../components/Timeline";
-import TimeLineData from "../data/TimelineData";
-import { Title } from "../components/Title";
 import { Contact } from "../components/Contact";
 import { Hero } from "../components/Hero";
 import { About } from "../components/About";
 
 const HomePage: React.FC = () => {
-  const { t } = useTranslation();
-
   return (
-    <>
+    <div className="space-y-32 pb-32">
       <Hero />
       <About />
       <Timeline />
       <Contact />
 
-      <section
+      {/* <section
         id="movies"
         className="mx-auto flex max-w-screen-lg items-center justify-center gap-x-8 pb-20"
       >
@@ -39,19 +32,8 @@ const HomePage: React.FC = () => {
             </Text>
           </div>
         </div>
-        {/* <img
-        className="rounded-xl border"
-        src="/images/eternal-sunshine.jpeg"
-        alt="Eternal sunshine of the spotless mind"
-      />
-      <img className="rounded-xl border" src="/images/paddington-2.jpeg" alt="Paddington 2" />
-      <img
-        className="rounded-xl border"
-        src="/images/blade-runner-2049.jpeg"
-        alt="Blade Runner 2049"
-      /> */}
-      </section>
-    </>
+      </section> */}
+    </div>
   );
 };
 
