@@ -187,7 +187,7 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute flex w-full flex-col border-t bg-white transition dark:border-gray-700 dark:bg-slate-900 sm:hidden"
+            className="absolute flex w-full flex-col border-t bg-white transition dark:border-gray-700 dark:bg-slate-900 md:hidden"
           >
             {navigation.map((item) => (
               <Link
