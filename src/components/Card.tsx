@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { motion } from "framer-motion";
 import { FC, PropsWithChildren } from "react";
 import { Color } from "../types/Color";
 import { Themes } from "../types/Themes";
@@ -31,15 +32,21 @@ export const Card: FC<PropsWithChildren<CardProps>> = ({
   className,
 }) => {
   const classes = classNames(
-    "relative min-w-0 transition overflow-hidden rounded-xl border border-slate-400 bg-white shadow-lg",
-    "dark:border-slate-500 dark:bg-slate-800",
+    "relative min-w-0 overflow-hidden rounded-xl border border-slate-400 bg-white shadow-lg",
+    "hover:z-10 hover:scale-110 dark:border-slate-500 dark:bg-slate-800 transition-all",
     className
   );
 
   const Theme = Themes[theme];
 
-  const frontCard = (
-    <div className={classes}>
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      viewport={{ once: true }}
+      className={classes}
+    >
       <p
         className={`truncate p-2 text-center text-xs font-semibold ${Theme.bgColor} ${Theme.textColor}`}
       >
@@ -67,8 +74,6 @@ export const Card: FC<PropsWithChildren<CardProps>> = ({
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
-
-  return frontCard;
 };

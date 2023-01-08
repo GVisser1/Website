@@ -15,6 +15,7 @@ module.exports = {
     extend: {
       animation: {
         shake: "shake 15s infinite ease-in-out",
+        wiggle: "wiggle 50s infinite ease-in-out",
       },
       borderWidth: {
         1.5: "1.5px",
@@ -28,6 +29,11 @@ module.exports = {
           "12%": { transform: "translate(10px, 0) rotate(10deg)" },
           "15%": { transform: "translate(0, 0) rotate(0)" },
           "100%": { transform: "translate(0, 0) rotate(0)" },
+        },
+        wiggle: {
+          "0%": { transform: "translateX(-60%)" },
+          "50%": { transform: "translateX(80%)" },
+          "100%": { transform: "translateX(-60%)" },
         },
       },
       ringWidth: {
