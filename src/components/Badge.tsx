@@ -5,26 +5,24 @@ import { Themes } from "../types/Themes";
 
 interface BadgeProps {
   className?: string;
+  size?: "default" | "lg";
   theme?: Color;
 }
 
 export const Badge: FC<PropsWithChildren<BadgeProps>> = ({
   theme = "BLUE",
+  size = "default",
   className,
   children,
 }) => {
   const Theme = Themes[theme];
-
-  return (
-    <span
-      className={classNames(
-        "rounded-full px-3 py-0.5 text-xs font-semibold",
-        Theme.bgColor,
-        Theme.textColor,
-        className
-      )}
-    >
-      {children}
-    </span>
+  const classes = classNames(
+    "rounded-full text-xs font-semibold",
+    Theme.bgColor,
+    Theme.textColor,
+    size === "default" ? "px-3 py-0.5" : "px-6 py-1",
+    className
   );
+
+  return <span className={classes}>{children}</span>;
 };
