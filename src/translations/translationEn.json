@@ -5,7 +5,7 @@
 
   "ABOUT": "About",
   "ABOUT_ME": "About me",
-  "ABOUT_CONTENT": "Welcome to my website! My name is Glenn Visser and I live in Maassluis, Netherlands. I am a fourth year computer science student at the Rotterdam University of Applied Sciences, who loves a challenge. During this study I was able to gain experience with the following languages and frameworks: Python, C#, HTML, CSS, .NET & SQL. I also did an Artificial Intelligence (A.I.) Minor.\n\nIn addition to my studies, I work part-time as a software engineer at the company MoreApp. MoreApp and I crossed paths in 2021 when I was looking for a place to do my internship, and after that I sort of stuck around. MoreApp helps companies stop using paper forms by providing a digital alternative that is safe and environmentally friendly. As a Software Engineer I mostly work on the frontend side of our application with languages and tools such as TypeScript, React & TailwindCSS. Currently I am trying to expand my developer toolkit by working on backend issues in Java.\n\nIn my spare time I play video games, experiment with programming, watch movies and shows, listen to a lot of music, go to concerts and like to walk. Chances are I'm listening to music right now.",
+  "ABOUT_CONTENT": "Welcome to my website! My name is Glenn Visser and I live in Maassluis, Netherlands. I am a fourth year computer science student at the Rotterdam University of Applied Sciences, who loves a challenge. During this study I was able to gain experience with the following languages and frameworks: Python, C#, HTML, CSS, .NET & SQL. I also did an Artificial Intelligence (A.I.) Minor.\n\nIn addition to my studies, I work part-time as a software engineer at the company MoreApp. MoreApp helps companies stop using paper forms by providing a digital alternative that is safe and environmentally friendly. As a Software Engineer I mostly work on the frontend side of our application with languages and tools such as TypeScript, React & TailwindCSS. Currently I am trying to expand my developer toolkit by working on backend issues in Java.\n\nIn my spare time I play video games, experiment with programming, watch movies and shows, listen to a lot of music, go to concerts and like to walk. Chances are I'm listening to music right now.",
 
   "TIMELINE": "Timeline",
   "ONGOING": "Ongoing",
@@ -29,7 +29,6 @@
   "MESSAGE": "Message",
 
   "SETTINGS": "Settings",
-  "SETTINGS_DESCRIPTION": "With these settings you can change the language or switch to a different theme (light/dark).",
   "THEME": "Theme",
   "LIGHT": "Light",
   "DARK": "Dark",

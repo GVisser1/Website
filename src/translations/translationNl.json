@@ -5,7 +5,7 @@
 
   "ABOUT": "Over",
   "ABOUT_ME": "Over mij",
-  "ABOUT_CONTENT": "Welkom op mijn website! Mijn naam is Glenn Visser en ik woon in Maassluis, Nederland. Ik ben een vierdejaars student informatica aan de Hogeschool Rotterdam, die van een uitdaging houdt. Tijdens deze studie heb ik ervaring op kunnen doen met de volgende talen en frameworks: Python, C#, HTML, CSS, .NET & SQL. Ook heb ik een Artificial Intelligence (A.I.) Minor gedaan.\n\nNaast mijn studie werk ik parttime als software engineer bij het bedrijf MoreApp. MoreApp en ik kruisten elkaars pad in 2021 toen ik op zoek was naar een plek om mijn stage te doen, en daarna ben ik eigenlijk blijven hangen. MoreApp helpt bedrijven te stoppen met het gebruik van papieren formulieren door een digitaal alternatief te bieden dat veilig en milieuvriendelijk is. Als Software Engineer werk ik voornamelijk aan de frontend kant van onze applicatie met talen en tools zoals TypeScript, React & TailwindCSS. Momenteel probeer ik mijn ontwikkelaarstoolkit uit te breiden, door te werken aan backend-problemen in Java.\n\nIn mijn vrije tijd speel ik videogames, experimenteer ik met programmeren, kijk ik films en shows, luister ik veel naar muziek, ga ik naar concerten en wandel ik graag. De kans is groot dat ik nu naar muziek aan het luisteren ben.",
+  "ABOUT_CONTENT": "Welkom op mijn website! Mijn naam is Glenn Visser en ik woon in Maassluis, Nederland. Ik ben een vierdejaars student informatica aan de Hogeschool Rotterdam, die van een uitdaging houdt. Tijdens deze studie heb ik ervaring op kunnen doen met de volgende talen en frameworks: Python, C#, HTML, CSS, .NET & SQL. Ook heb ik een Artificial Intelligence (A.I.) Minor gedaan.\n\nNaast mijn studie werk ik parttime als software engineer bij het bedrijf MoreApp. MoreApp helpt bedrijven te stoppen met het gebruik van papieren formulieren door een digitaal alternatief te bieden dat veilig en milieuvriendelijk is. Als Software Engineer werk ik voornamelijk aan de frontend kant van onze applicatie met talen en tools zoals TypeScript, React & TailwindCSS. Momenteel probeer ik mijn ontwikkelaarstoolkit uit te breiden, door te werken aan backend-problemen in Java.\n\nIn mijn vrije tijd speel ik videogames, experimenteer ik met programmeren, kijk ik films en shows, luister ik veel naar muziek, ga ik naar concerten en wandel ik graag. De kans is groot dat ik nu naar muziek aan het luisteren ben.",
 
   "TIMELINE": "Tijdlijn",
   "ONGOING": "Lopend",
@@ -29,7 +29,6 @@
   "MESSAGE": "Bericht",
 
   "SETTINGS": "Instellingen",
-  "SETTINGS_DESCRIPTION": "Met deze instellingen kun je de taal wijzigen of overstappen op een ander thema (licht/donker).",
   "THEME": "Thema",
   "LIGHT": "Licht",
   "DARK": "Donker",

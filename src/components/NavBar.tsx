@@ -70,35 +70,30 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
       onClose={() => setShowSettingsModal(false)}
       title={t("SETTINGS")}
     >
-      <div className="flex w-full flex-col gap-y-5 divide-y-[0.5px] divide-gray-300 py-4 dark:divide-gray-700">
-        <Text>{t("SETTINGS_DESCRIPTION")}</Text>
-        <div className="pt-4">
-          <Radio
-            label={t("THEME")}
-            options={[
-              { label: t("LIGHT"), value: "LIGHT" },
-              { label: t("DARK"), value: "DARK" },
-              { label: t("SYSTEM"), value: "SYSTEM" },
-            ]}
-            onChange={(e) => {
-              switchTheme(e.target.value);
-            }}
-            value={getTheme()}
-          />
-        </div>
-        <div className="pt-4">
-          <Radio
-            label={t("LANGUAGE")}
-            options={[
-              { label: t("DUTCH"), value: "nl" },
-              { label: t("ENGLISH"), value: "en" },
-            ]}
-            onChange={(e) => {
-              switchLanguage(e.target.value);
-            }}
-            value={getLanguage()}
-          />
-        </div>
+      <div className="flex w-full flex-col gap-y-5 dark:divide-gray-700">
+        <Radio
+          label={t("THEME")}
+          options={[
+            { label: t("LIGHT"), value: "LIGHT" },
+            { label: t("DARK"), value: "DARK" },
+            { label: t("SYSTEM"), value: "SYSTEM" },
+          ]}
+          onChange={(e) => {
+            switchTheme(e.target.value);
+          }}
+          value={getTheme()}
+        />
+        <Radio
+          label={t("LANGUAGE")}
+          options={[
+            { label: t("DUTCH"), value: "nl" },
+            { label: t("ENGLISH"), value: "en" },
+          ]}
+          onChange={(e) => {
+            switchLanguage(e.target.value);
+          }}
+          value={getLanguage()}
+        />
       </div>
     </Modal>
   );

@@ -10,8 +10,7 @@
     animation-delay: 10s;
   }
 
-  .scrollbar::-webkit-scrollbar,
-  mo {
+  .scrollbar::-webkit-scrollbar {
     @apply h-2 w-2 bg-blue-200 dark:bg-gray-700;
     -webkit-border-radius: 4px;
   }

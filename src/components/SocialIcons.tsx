@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { FC } from "react";
+import { Icon, IconType } from "./Icon";
 
 interface SocialIconsProps {
   className?: string;
@@ -13,34 +14,34 @@ export const SocialIcons: FC<SocialIconsProps> = ({ className }) => {
         {
           id: "LinkedIn",
           href: "https://linkedin.com/in/g-visser",
-          src: "/images/social/Linkedin.svg",
+          icon: "LinkedInIcon",
         },
         {
           id: "GitHub",
           href: "https://github.com/GVisser1",
-          src: "/images/social/GitHub.svg",
+          icon: "GitHubIcon",
           bgColor: "bg-black",
         },
         {
           id: "Instagram",
           href: "https://instagram.com/instaglenn_",
-          src: "/images/social/Instagram.svg",
+          icon: "InstagramIcon",
         },
         {
           id: "Spotify",
           href: "https://open.spotify.com/user/iglenn2345",
-          src: "/images/social/Spotify.svg",
+          icon: "SpotifyIcon",
           bgColor: "bg-black",
         },
         {
           id: "Lastfm",
           href: "https://last.fm/user/instaglenn",
-          src: "/images/social/Lastfm.svg",
+          icon: "LastFmIcon",
         },
         {
           id: "Letterboxd",
           href: "https://letterboxd.com/iGlenn/",
-          src: "https://a.ltrbxd.com/logos/letterboxd-decal-dots-pos-rgb.svg",
+          icon: "LetterboxdIcon",
         },
       ]}
     />
@@ -50,7 +51,7 @@ export const SocialIcons: FC<SocialIconsProps> = ({ className }) => {
 interface IconsOption {
   id: string;
   href?: string;
-  src?: string;
+  icon: IconType;
   bgColor?: string;
 }
 
@@ -68,11 +69,9 @@ export const Icons: React.FC<IconsProps> = ({ className, options }) => {
           href={option.href}
           key={option.id}
         >
-          <img
+          <Icon
             className={`h-7 w-7 rounded-full active:!brightness-50 pointer:hover:brightness-75 ${option.bgColor}`}
-            loading="lazy"
-            src={option.src}
-            alt={`${option.id} icon`}
+            name={option.icon}
           />
         </a>
       ))}
