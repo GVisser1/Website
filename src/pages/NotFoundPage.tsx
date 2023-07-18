@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
+import { Section } from "../components/Section";
 import { Text } from "../components/Text";
 import { Title } from "../components/Title";
 
@@ -9,16 +10,16 @@ const NotFoundPage: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="404" className="relative flex flex-col items-center gap-y-10 py-20 md:px-8">
+    <Section id="404" className="items-center justify-center">
       <Text size="xl">404</Text>
-      <Title size="3xl">{t("PAGE_NOT_FOUND")}</Title>
+      <Title>{t("PAGE_NOT_FOUND")}</Title>
       <Button
         variant="destructive"
         onClick={() => navigate("")}
         icon="HomeIcon"
         label={t("HOME")}
       />
-    </section>
+    </Section>
   );
 };
 
