@@ -13,10 +13,10 @@ export interface TimelineItem {
   theme?: Color;
 }
 
-const TimeLineData = () => {
+export const TimeLineData = () => {
   const { getTimeFrame } = useDate();
 
-  const getTimeLineItems: TimelineItem[] = [
+  const timeLineItems: TimelineItem[] = [
     {
       timeFrame: getTimeFrame(new Date(2022, 1, 21)),
       title: "Software Engineer",
@@ -55,6 +55,5 @@ const TimeLineData = () => {
     },
   ];
 
-  return { getTimeLineItems };
+  return { timeLineItems };
 };
-export default TimeLineData;

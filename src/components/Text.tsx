@@ -34,7 +34,7 @@ export const Text: React.FC<PropsWithChildren<TextProps>> = ({
     color === "medium" && "text-gray-500 dark:text-gray-400",
     color === "dark" && "text-gray-700 dark:text-white",
 
-    className
+    className,
   );
 
   return <p className={classes}>{children}</p>;
