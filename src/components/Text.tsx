@@ -1,16 +1,14 @@
 import classNames from "classnames";
-import { PropsWithChildren } from "react";
+import { FC, PropsWithChildren } from "react";
 
 export interface TextProps {
   className?: string;
   size?: "xs" | "sm" | "base" | "md" | "lg" | "xl" | "2xl";
   weight?: "semibold" | "bold";
   color?: "medium" | "dark" | "all-white" | "blue";
-  href?: string;
-  tabIndex?: number;
 }
 
-export const Text: React.FC<PropsWithChildren<TextProps>> = ({
+export const Text: FC<PropsWithChildren<TextProps>> = ({
   size = "base",
   weight,
   color = "dark",

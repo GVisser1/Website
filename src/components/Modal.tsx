@@ -1,8 +1,8 @@
-import { Fragment, PropsWithChildren, FC } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import classNames from "classnames";
-import { Title } from "./Title";
+import { FC, Fragment, PropsWithChildren } from "react";
 import { Button } from "./Button";
+import { Title } from "./Title";
 
 interface ModalProps {
   title: string;
@@ -20,7 +20,7 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
 }) => {
   const classes = classNames(
     "max-h-[54rem] mx-auto inline-block h-full w-full max-w-lg pt-12",
-    className
+    className,
   );
 
   return (
@@ -51,10 +51,8 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
               <div className="flex h-full w-full transform flex-col rounded-2xl border-2 border-slate-700 bg-white pb-4 dark:bg-slate-600">
                 <div className="border-b pb-3 dark:border-slate-700">
                   <div className="flex items-center justify-between text-center">
-                    <Dialog.Title as="div" className="pl-6 pt-5 line-clamp-2">
-                      <Title as="h2" size="2xl">
-                        {title}
-                      </Title>
+                    <Dialog.Title as="div" className="line-clamp-2 pl-6 pt-5">
+                      <Title>{title}</Title>
                     </Dialog.Title>
                     <Button
                       className="mr-4 mt-6"
@@ -66,7 +64,7 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
                     />
                   </div>
                 </div>
-                <div className="h-full max-h-screen overflow-x-hidden overflow-y-scroll px-4 scrollbar-none">
+                <div className="h-full max-h-screen overflow-x-hidden overflow-y-scroll p-4 scrollbar-none">
                   {children}
                 </div>
               </div>

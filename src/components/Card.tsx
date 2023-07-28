@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import { motion } from "framer-motion";
 import { FC, PropsWithChildren } from "react";
 import { Color } from "../types/Color";
 import { Themes } from "../types/Themes";
@@ -9,7 +8,6 @@ import { Link } from "./Link";
 import { Text } from "./Text";
 import { Title } from "./Title";
 
-export interface FrontCardProps {}
 export interface CardProps {
   theme?: Color;
   title?: string;
@@ -32,28 +30,22 @@ export const Card: FC<PropsWithChildren<CardProps>> = ({
   className,
 }) => {
   const classes = classNames(
-    "relative min-w-0 overflow-hidden rounded-xl border border-slate-400 bg-white shadow-lg",
-    "hover:z-10 hover:scale-110 dark:border-slate-500 dark:bg-slate-800 transition-all",
-    className
+    "min-w-0 overflow-hidden rounded-xl border border-slate-400 bg-white shadow-lg",
+    "transition dark:border-slate-500 dark:bg-slate-800",
+    className,
   );
 
   const Theme = Themes[theme];
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-      viewport={{ once: true }}
-      className={classes}
-    >
+    <div className={classes}>
       <p
         className={`truncate p-2 text-center text-xs font-semibold ${Theme.bgColor} ${Theme.textColor}`}
       >
         {banner}
       </p>
-      <div className="flex flex-col items-start p-3">
-        <Title as="h3" size="lg" className="truncate">
+      <div className="flex flex-col items-start py-4 px-6">
+        <Title as="h3" className="truncate">
           {title}
         </Title>
         <Text size="sm" weight="bold" color="medium">
@@ -74,6 +66,6 @@ export const Card: FC<PropsWithChildren<CardProps>> = ({
           </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 };

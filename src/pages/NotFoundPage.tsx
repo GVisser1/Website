@@ -5,7 +5,7 @@ import { Section } from "../components/Section";
 import { Text } from "../components/Text";
 import { Title } from "../components/Title";
 
-const NotFoundPage: React.FC = () => {
+const NotFoundPage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 

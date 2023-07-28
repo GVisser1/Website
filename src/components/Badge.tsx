@@ -21,7 +21,7 @@ export const Badge: FC<PropsWithChildren<BadgeProps>> = ({
         "rounded-full px-3 py-0.5 text-xs font-semibold",
         Theme.bgColor,
         Theme.textColor,
-        className
+        className,
       )}
     >
       {children}

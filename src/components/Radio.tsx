@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { ChangeEvent, FC, Fragment } from "react";
+import { ChangeEvent, FC, Fragment } from "react";
 import { Text } from "./Text";
 
 interface RadioOption {
@@ -27,7 +27,7 @@ export const Radio: FC<RadioProps> = ({ onChange, options = [], value = "", labe
             "peer-focus-visible:ring-1 peer-focus-visible:ring-blue-300 peer-focus-visible:border-blue-300 dark:peer-focus-visible:border-blue-300":
               true,
           }
-        : "border-gray-200 dark:bg-gray-500/20 active:bg-gray-100 dark:active:bg-gray-700/40 pointer:hover:ring-0.5 hover:ring-gray-200"
+        : "border-gray-200 dark:bg-gray-500/20 active:bg-gray-100 dark:active:bg-gray-700/40 pointer:hover:ring-0.5 hover:ring-gray-200",
     );
 
   const getRadioClasses = (option: RadioOption) =>
@@ -35,7 +35,7 @@ export const Radio: FC<RadioProps> = ({ onChange, options = [], value = "", labe
       "mr-4 h-4 w-4 shrink-0 rounded-full border-1.5 transition",
       isSelected(option)
         ? "dark:border-white dark:bg-white border-blue-400 bg-blue-400 ring-1.5 ring-inset dark:ring-slate-700 ring-white"
-        : "border-gray-300 dark:border-white"
+        : "border-gray-300 dark:border-white",
     );
 
   return (

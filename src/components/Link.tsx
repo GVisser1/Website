@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { MouseEventHandler, PropsWithChildren } from "react";
+import { FC, MouseEventHandler, PropsWithChildren } from "react";
 
 export interface LinkProps {
   className?: string;
@@ -10,7 +10,7 @@ export interface LinkProps {
   onClick?: MouseEventHandler<HTMLAnchorElement>;
 }
 
-export const Link: React.FC<PropsWithChildren<LinkProps>> = ({
+export const Link: FC<PropsWithChildren<LinkProps>> = ({
   size = "base",
   color = "gray",
   href,
@@ -33,7 +33,7 @@ export const Link: React.FC<PropsWithChildren<LinkProps>> = ({
       "text-gray-500 pointer:hover:text-gray-700 active:!text-gray-800 dark:text-blue-400 dark:pointer:hover:text-blue-500 dark:active:!text-blue-700":
         color === "gray-blue",
     },
-    className
+    className,
   );
 
   return (

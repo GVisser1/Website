@@ -1,16 +1,16 @@
-import { FC, useState } from "react";
 import classNames from "classnames";
-import { useTranslation } from "react-i18next";
 import { AnimatePresence, motion } from "framer-motion";
-import { Text } from "./Text";
-import useSystem from "../hooks/useSystem";
-import { DropdownMenu, MenuItem } from "./DropDownMenu";
-import { Button } from "./Button";
+import { FC, useState } from "react";
+import { useTranslation } from "react-i18next";
 import useI18n from "../hooks/useI18n";
-import { Radio } from "./Radio";
-import { Modal } from "./Modal";
+import useSystem from "../hooks/useSystem";
+import { Button } from "./Button";
+import { DropdownMenu, MenuItem } from "./DropDownMenu";
 import { IconType } from "./Icon";
 import { Link } from "./Link";
+import { Modal } from "./Modal";
+import { Radio } from "./Radio";
+import { Text } from "./Text";
 
 interface NavBarProps {
   className?: string;
@@ -21,7 +21,6 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
   const { isDutch, switchLanguage, getLanguage } = useI18n();
   const { getTheme, switchTheme, getThemeIcon } = useSystem();
   const [openMenu, setOpenMenu] = useState(false);
-
   const [showSettingsModal, setShowSettingsModal] = useState(false);
 
   const navigation: { name: string; href: string; icon: IconType }[] = [
@@ -64,6 +63,7 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
       onClick: () => switchTheme("SYSTEM"),
     },
   ];
+
   const settingsModal = (
     <Modal
       open={showSettingsModal}

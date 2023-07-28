@@ -54,14 +54,13 @@ export const Button: FC<ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> =
     variant === "clear" &&
       "text-gray-400 pointer:hover:text-gray-700 dark:pointer:hover:text-gray-300 focus-visible:ring-blue-400 active:!text-gray-800 dark:active:!text-gray-200",
 
-    // sizes
     {
       "rounded text-xs": size === "xs",
       "rounded-md p-1": size === "sm",
       "rounded-lg p-2": size === "md",
       "rounded-lg p-3": size === "lg",
     },
-    className
+    className,
   );
 
   return (

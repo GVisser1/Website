@@ -1,9 +1,9 @@
-import { FC, Fragment, MouseEventHandler, ReactElement } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import classNames from "classnames";
+import { FC, Fragment, MouseEventHandler, ReactElement } from "react";
+import { ButtonProps } from "./Button";
 import { Icon, IconType } from "./Icon";
 import { Text } from "./Text";
-import { ButtonProps } from "./Button";
 
 export interface MenuItem {
   label: string;
@@ -23,7 +23,7 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({ items, menuBtn, className 
   const optClasses = (active: boolean) =>
     classNames(
       "w-full flex transition h-10 items-center justify-between px-4 py-2 text-gray-700 dark:text-white",
-      active && "bg-black/5 dark:bg-slate-900"
+      active && "bg-black/5 dark:bg-slate-900",
     );
 
   return (
@@ -41,7 +41,7 @@ export const DropdownMenu: FC<DropdownMenuProps> = ({ items, menuBtn, className 
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute right-0 z-40 my-1 w-56 origin-top-right divide-y divide-slate-200 overflow-hidden rounded-md border border-black/20 bg-white shadow-lg outline-none transition dark:divide-slate-600 dark:border-slate-500 dark:bg-slate-800">
+            <Menu.Items className="absolute right-0 z-40 my-1 w-56 origin-top-right divide-y divide-slate-200 overflow-hidden rounded-md border border-black/20 bg-white shadow-xl outline-none transition dark:divide-slate-600 dark:border-slate-500 dark:bg-slate-800">
               {items.map((item) => (
                 <Menu.Item key={item.label}>
                   {({ active }) => (

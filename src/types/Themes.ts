@@ -6,7 +6,7 @@ export interface Theme {
   ringColor: string;
 }
 
-export const Themes: { [key in Color]: Theme } = {
+export const Themes: Record<Color, Theme> = {
   BLUE: {
     bgColor: "bg-blue-100",
     textColor: "text-blue-700",
