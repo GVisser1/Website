@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import clsx from "clsx";
 import { FC, PropsWithChildren } from "react";
 import { Title } from "./Title";
 
@@ -16,7 +16,7 @@ export const Section: FC<PropsWithChildren<SectionProps>> = ({
   className,
   children,
 }) => {
-  const classes = classNames(
+  const classes = clsx(
     "gap-y-12 flex-1 flex flex-col mx-auto",
     {
       "px-8 max-w-screen-xl": size === "lg",

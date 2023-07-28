@@ -1,5 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
-import classNames from "classnames";
+import clsx from "clsx";
 import { FC, Fragment, MouseEventHandler, ReactElement } from "react";
 import { ButtonProps } from "./Button";
 import { Icon, IconType } from "./Icon";
@@ -18,10 +18,10 @@ export interface DropdownMenuProps {
 }
 
 export const DropdownMenu: FC<DropdownMenuProps> = ({ items, menuBtn, className }) => {
-  const classes = classNames("relative", className);
+  const classes = clsx("relative", className);
 
   const optClasses = (active: boolean) =>
-    classNames(
+    clsx(
       "w-full flex transition h-10 items-center justify-between px-4 py-2 text-gray-700 dark:text-white",
       active && "bg-black/5 dark:bg-slate-900",
     );

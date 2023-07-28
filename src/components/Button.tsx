@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import clsx from "clsx";
 import { ButtonHTMLAttributes, FC } from "react";
 import { Icon, IconType } from "./Icon";
 
@@ -32,7 +32,7 @@ export const Button: FC<ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> =
 }) => {
   const isClickable = !loading && !disabled;
 
-  const classes = classNames(
+  const classes = clsx(
     "flex items-center gap-x-1.5 outline-none justify-center font-semibold transition",
     block && "w-full",
     iconAlign === "right" && "flex-row-reverse space-x-reverse",

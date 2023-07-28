@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import clsx from "clsx";
 import { ChangeEvent, FC, Fragment } from "react";
 import { Text } from "./Text";
 
@@ -18,7 +18,7 @@ export const Radio: FC<RadioProps> = ({ onChange, options = [], value = "", labe
   const isSelected = (option: RadioOption) => value === option.value;
 
   const getLabelClasses = (option: RadioOption) =>
-    classNames(
+    clsx(
       "my-1 flex h-12 justify-between cursor-pointer items-center rounded-lg border-1.5 p-4 text-sm transition",
       isSelected(option)
         ? {
@@ -31,7 +31,7 @@ export const Radio: FC<RadioProps> = ({ onChange, options = [], value = "", labe
     );
 
   const getRadioClasses = (option: RadioOption) =>
-    classNames(
+    clsx(
       "mr-4 h-4 w-4 shrink-0 rounded-full border-1.5 transition",
       isSelected(option)
         ? "dark:border-white dark:bg-white border-blue-400 bg-blue-400 ring-1.5 ring-inset dark:ring-slate-700 ring-white"

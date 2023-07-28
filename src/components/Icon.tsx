@@ -1,6 +1,6 @@
 import * as outline from "@heroicons/react/24/outline";
 import * as solid from "@heroicons/react/24/solid";
-import classNames from "classnames";
+import clsx from "clsx";
 import { FC } from "react";
 
 type CustomIcon =
@@ -20,7 +20,7 @@ export interface IconProps {
 }
 
 export const Icon: FC<IconProps> = ({ name, type = "solid", className, overrideSize = false }) => {
-  const classes = classNames(!overrideSize && "w-6 h-6", className);
+  const classes = clsx(!overrideSize && "w-6 h-6", className);
   if (name === "LinkedInIcon") {
     return <LinkedInIcon className={classes} />;
   }

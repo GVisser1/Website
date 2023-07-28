@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
@@ -46,7 +46,7 @@ const Form = () => {
   const { t } = useTranslation();
 
   const inputClasses = (className?: string) =>
-    classNames(
+    clsx(
       "w-full rounded-md border p-3.5 text-sm text-gray-700 placeholder-gray-400 outline-none",
       "focus:ring-1.5 focus:ring-blue-400 focus:border-blue-400",
       "dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:focus:border-blue-400",

@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -99,9 +99,7 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
   );
 
   return (
-    <nav
-      className={classNames("sticky top-0 z-30 bg-white transition dark:bg-slate-900", className)}
-    >
+    <nav className={clsx("sticky top-0 z-30 bg-white transition dark:bg-slate-900", className)}>
       <div className="mx-auto max-w-screen-2xl px-2 md:px-6 lg:px-8">
         <div className="flex h-14 items-center sm:h-16">
           <Button

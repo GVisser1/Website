@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import clsx from "clsx";
 import { FC, PropsWithChildren } from "react";
 
 export interface TitleProps {
@@ -14,7 +14,7 @@ export const Title: FC<PropsWithChildren<TitleProps>> = ({
   children,
 }) => {
   const Tag = as;
-  const classes = classNames(
+  const classes = clsx(
     "transition font-bold",
     color === "all-white" && "text-white",
     color === "all-dark" && "text-gray-700",

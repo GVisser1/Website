@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import clsx from "clsx";
 import { FC } from "react";
 import { Icon, IconType } from "./Icon";
 
@@ -59,7 +59,7 @@ export interface IconsProps {
 }
 
 export const Icons: FC<IconsProps> = ({ className, options }) => (
-  <div className={classNames("flex justify-center gap-x-3", className)}>
+  <div className={clsx("flex justify-center gap-x-3", className)}>
     {options.map((option) => (
       <a
         className="rounded-full outline-none focus-visible:ring focus-visible:ring-blue-400"

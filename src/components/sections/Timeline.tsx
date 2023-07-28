@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import clsx from "clsx";
 import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import { TimeLineData, TimelineItem } from "../../data/TimelineData";
@@ -30,7 +30,7 @@ export const Timeline = () => {
     const Theme = Themes[theme];
     return (
       <div
-        className={classNames(
+        className={clsx(
           "z-10 mt-1 h-10 w-10 rounded-full ring-4",
           Theme.bgColor,
           Theme.ringColor,
@@ -54,7 +54,7 @@ export const Timeline = () => {
               </div>
             )}
             <div
-              className={classNames(
+              className={clsx(
                 "col-span-3 sm:col-span-2 sm:mb-8",
                 isEven(i) ? "flex" : "hidden sm:flex",
               )}
@@ -68,7 +68,7 @@ export const Timeline = () => {
             </div>
 
             <div
-              className={classNames(
+              className={clsx(
                 "col-span-3 sm:col-span-2 sm:mb-8",
                 !isEven(i) ? "flex" : "hidden sm:flex",
               )}

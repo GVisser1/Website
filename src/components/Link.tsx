@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import clsx from "clsx";
 import { FC, MouseEventHandler, PropsWithChildren } from "react";
 
 export interface LinkProps {
@@ -19,7 +19,7 @@ export const Link: FC<PropsWithChildren<LinkProps>> = ({
   className,
   children,
 }) => {
-  const classes = classNames(
+  const classes = clsx(
     "transition whitespace-pre-line focus-visible:ring focus-visible:ring-blue-400 outline-none",
     {
       "text-xs": size === "xs",

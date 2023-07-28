@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import classNames from "classnames";
+import clsx from "clsx";
 import { FC, Fragment, PropsWithChildren } from "react";
 import { Button } from "./Button";
 import { Title } from "./Title";
@@ -18,7 +18,7 @@ export const Modal: FC<PropsWithChildren<ModalProps>> = ({
   onClose,
   children,
 }) => {
-  const classes = classNames(
+  const classes = clsx(
     "max-h-[54rem] mx-auto inline-block h-full w-full max-w-lg pt-12",
     className,
   );

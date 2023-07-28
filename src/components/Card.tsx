@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import clsx from "clsx";
 import { FC, PropsWithChildren } from "react";
 import { Color } from "../types/Color";
 import { Themes } from "../types/Themes";
@@ -29,7 +29,7 @@ export const Card: FC<PropsWithChildren<CardProps>> = ({
   status,
   className,
 }) => {
-  const classes = classNames(
+  const classes = clsx(
     "min-w-0 overflow-hidden rounded-xl border border-slate-400 bg-white shadow-lg",
     "transition dark:border-slate-500 dark:bg-slate-800",
     className,

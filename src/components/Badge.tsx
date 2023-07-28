@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import clsx from "clsx";
 import { FC, PropsWithChildren } from "react";
 import { Color } from "../types/Color";
 import { Themes } from "../types/Themes";
@@ -17,7 +17,7 @@ export const Badge: FC<PropsWithChildren<BadgeProps>> = ({
 
   return (
     <span
-      className={classNames(
+      className={clsx(
         "rounded-full px-3 py-0.5 text-xs font-semibold",
         Theme.bgColor,
         Theme.textColor,
