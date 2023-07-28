@@ -27,7 +27,7 @@ export const Contact = () => {
           </Text>
           <Link
             size="sm"
-            color="gray-blue"
+            color="blue"
             href="mailto:gvisser.business@gmail.com"
             className="mt-6 flex items-center gap-x-2"
           >
