@@ -1,11 +1,11 @@
 import { motion, useScroll, useSpring } from "framer-motion";
-import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { Footer } from "./components/Footer";
 import { NavBar } from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
 
-const App: React.FC = () => {
+export const App = () => {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -13,8 +13,15 @@ const App: React.FC = () => {
     restDelta: 0.001,
   });
 
+  const { theme } = localStorage;
+  if (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen-dvh flex flex-col">
       <motion.div
         className="fixed inset-x-0 top-0 z-50 h-1 origin-[0%] bg-blue-600"
         style={{ scaleX }}
@@ -24,7 +31,6 @@ const App: React.FC = () => {
         <Router>
           <Routes>
             <Route path="" element={<HomePage />} />
-            <Route path="/" element={<Navigate to="" />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Router>
@@ -33,4 +39,3 @@ const App: React.FC = () => {
     </div>
   );
 };
-export default App;
