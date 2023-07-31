@@ -12,7 +12,7 @@ export const Contact = () => {
   const { t } = useTranslation();
 
   return (
-    <Section id="contact" size="sm" title={t("CONTACT")} className="flex-col">
+    <Section id="contact" size="sm" title={{ text: t("CONTACT") }} altBackground>
       <div className="flex flex-col items-center justify-evenly sm:flex-row">
         <img
           src="/images/profile-1.webp"
@@ -47,17 +47,17 @@ const Form = () => {
 
   const inputClasses = (className?: string) =>
     clsx(
-      "w-full rounded-md border p-3.5 text-sm text-gray-700 placeholder-gray-400 outline-none",
+      "transition w-full rounded-md border p-3.5 text-sm text-gray-700 placeholder-gray-400 outline-none",
       "focus:ring-1.5 focus:ring-blue-400 focus:border-blue-400",
       "dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:focus:border-blue-400",
       "shadow shadow-slate-300 dark:shadow-slate-900",
-      className,
+      className
     );
 
   return (
     <form action={`https://getform.io/f/${import.meta.env.VITE_GETFORM_ENDPOINT}`} method="POST">
       <fieldset className="space-y-5">
-        <legend className="text-3xl font-semibold text-gray-700 dark:text-white">
+        <legend className="text-3xl font-semibold text-gray-700 transition-colors dark:text-white">
           {t("MESSAGE_ME")}
         </legend>
         <div>

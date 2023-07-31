@@ -1,81 +1,48 @@
 import clsx from "clsx";
-import { Fragment } from "react";
 import { useTranslation } from "react-i18next";
-import { TimeLineData, TimelineItem } from "../../data/TimelineData";
-import { Color } from "../../types/Color";
-import { Themes } from "../../types/Themes";
+import { TimeLineData } from "../../data/TimelineData";
 import { isEven } from "../../utils/numberUtil";
-import { Card } from "../Card";
-import { Icon } from "../Icon";
+import { Badge } from "../Badge";
 import { Section } from "../Section";
+import { Text } from "../Text";
+import { Title } from "../Title";
 
 export const Timeline = () => {
   const { t } = useTranslation();
   const { timeLineItems } = TimeLineData();
 
-  const timeLineCard = (item: TimelineItem) => (
-    <Card
-      className="w-full"
-      theme={item.theme}
-      title={item.title}
-      subTitle={item.subTitle}
-      description={item.description}
-      href={item.href}
-      banner={item.timeFrame}
-      status={item.status}
-    />
-  );
-
-  const pointer = (theme: Color = "BLUE") => {
-    const Theme = Themes[theme];
-    return (
-      <div
-        className={clsx(
-          "z-10 mt-1 h-10 w-10 rounded-full ring-4",
-          Theme.bgColor,
-          Theme.ringColor,
-          Theme.textColor,
-        )}
-      >
-        <Icon overrideSize className="mx-auto" name="ChevronUpIcon" />
-      </div>
-    );
-  };
-
   return (
-    <Section id="timeline" title={t("TIMELINE")} size="lg">
-      <div className="grid grid-cols-3 gap-y-8 sm:grid-cols-5 sm:gap-y-0">
+    <Section id="timeline" title={{ text: t("TIMELINE"), center: true }}>
+      <div className="relative overflow-hidden">
+        <div className="absolute left-2 h-full w-0.5 bg-gray-200 shadow-md transition-colors dark:bg-white/50 sm:inset-x-0 sm:mx-auto" />
         {timeLineItems.map((item, i) => (
-          <Fragment key={item.title}>
-            {i !== 0 && (
-              <div className="relative col-span-3 my-auto flex items-center justify-center sm:hidden">
-                {pointer(item.theme)}
-                <div className="absolute z-[-5] h-28 w-0.5 bg-gray-300 transition dark:bg-gray-700" />
-              </div>
+          <div
+            key={item.title}
+            className={clsx(
+              "relative py-5 pl-8 text-justify sm:w-1/2 sm:px-5",
+              isEven(i) && "sm:text-end",
+              !isEven(i) && "sm:ml-auto sm:text-start"
             )}
+          >
+            <div className="space-y-5">
+              <div>
+                <Title as="h3">{item.title}</Title>
+                <Text size="sm" weight="semibold" color="medium">
+                  {item.subTitle}
+                </Text>
+              </div>
+              <Badge theme="GREEN">{item.timeFrame}</Badge>
+              <Text size="sm" color="medium">
+                {item.description}
+              </Text>
+            </div>
             <div
               className={clsx(
-                "col-span-3 sm:col-span-2 sm:mb-8",
-                isEven(i) ? "flex" : "hidden sm:flex",
+                "absolute top-0 mt-7 h-2.5 w-2.5 -translate-x-7 rounded-full bg-white ring-4 ring-blue-500 sm:translate-x-0",
+                isEven(i) ? "sm:-right-[5px]" : "sm:-left-[5px]"
               )}
-            >
-              {isEven(i) && timeLineCard(item)}
-            </div>
-
-            <div className="relative col-span-1 mx-auto hidden w-full justify-center pt-3 sm:flex">
-              {pointer(item.theme)}
-              <div className="absolute flex h-full w-0.5 bg-gray-300 transition dark:bg-gray-700" />
-            </div>
-
-            <div
-              className={clsx(
-                "col-span-3 sm:col-span-2 sm:mb-8",
-                !isEven(i) ? "flex" : "hidden sm:flex",
-              )}
-            >
-              {!isEven(i) && timeLineCard(item)}
-            </div>
-          </Fragment>
+            />
+          </div>
         ))}
       </div>
     </Section>

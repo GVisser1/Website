@@ -8,8 +8,8 @@ export interface Theme {
 
 export const Themes: Record<Color, Theme> = {
   BLUE: {
-    bgColor: "bg-blue-100",
-    textColor: "text-blue-700",
+    bgColor: "bg-blue-100 dark:bg-blue-200",
+    textColor: "text-blue-700 dark:text-blue-800",
     ringColor: "ring-blue-400",
   },
   GRAY: {
@@ -18,13 +18,13 @@ export const Themes: Record<Color, Theme> = {
     ringColor: "ring-gray-400",
   },
   YELLOW: {
-    bgColor: "bg-yellow-100",
-    textColor: "text-yellow-700",
+    bgColor: "bg-yellow-100 dark:bg-yellow-200",
+    textColor: "text-yellow-700 dark:text-yellow-800",
     ringColor: "ring-yellow-500",
   },
   GREEN: {
-    bgColor: "bg-emerald-100",
-    textColor: "text-emerald-700",
+    bgColor: "bg-emerald-100 dark:bg-emerald-200",
+    textColor: "text-emerald-700 dark:text-emerald-800",
     ringColor: "ring-emerald-400",
   },
   PINK: {

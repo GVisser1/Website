@@ -2,14 +2,9 @@ import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
-import useI18n from "../hooks/useI18n";
-import useSystem from "../hooks/useSystem";
 import { Button } from "./Button";
-import { DropdownMenu, MenuItem } from "./DropDownMenu";
 import { IconType } from "./Icon";
 import { Link } from "./Link";
-import { Modal } from "./Modal";
-import { Radio } from "./Radio";
 import { Text } from "./Text";
 
 interface NavBarProps {
@@ -17,89 +12,38 @@ interface NavBarProps {
 }
 
 export const NavBar: FC<NavBarProps> = ({ className }) => {
-  const { t } = useTranslation();
-  const { isDutch, switchLanguage, getLanguage } = useI18n();
-  const { getTheme, switchTheme, getThemeIcon } = useSystem();
+  const { t, i18n } = useTranslation();
   const [openMenu, setOpenMenu] = useState(false);
-  const [showSettingsModal, setShowSettingsModal] = useState(false);
+  const [useDarkMode, setUseDarkMode] = useState(localStorage.getItem("theme") === "dark");
 
   const navigation: { name: string; href: string; icon: IconType }[] = [
-    { name: t("HOME"), href: "/", icon: "HomeIcon" },
+    { name: t("HOME"), href: "#intro", icon: "HomeIcon" },
     { name: t("ABOUT"), href: "#about", icon: "SparklesIcon" },
     { name: t("TIMELINE"), href: "#timeline", icon: "RectangleStackIcon" },
     { name: t("CONTACT"), href: "#contact", icon: "AtSymbolIcon" },
   ];
 
-  const languageOptions: MenuItem[] = [
-    {
-      label: t("DUTCH"),
-      selected: isDutch,
-      onClick: () => switchLanguage("nl"),
-    },
-    {
-      label: t("ENGLISH"),
-      selected: !isDutch,
-      onClick: () => switchLanguage("en"),
-    },
-  ];
+  const switchTheme = () => {
+    if (useDarkMode) {
+      localStorage.setItem("theme", "light");
+      document.documentElement.classList.remove("dark");
+      setUseDarkMode(false);
+      return;
+    }
+    localStorage.setItem("theme", "dark");
+    document.documentElement.classList.add("dark");
+    setUseDarkMode(true);
+  };
 
-  const themeOptions: MenuItem[] = [
-    {
-      label: t("LIGHT"),
-      icon: "SunIcon",
-      selected: getTheme() === "LIGHT",
-      onClick: () => switchTheme("LIGHT"),
-    },
-    {
-      label: t("DARK"),
-      icon: "MoonIcon",
-      selected: getTheme() === "DARK",
-      onClick: () => switchTheme("DARK"),
-    },
-    {
-      label: t("SYSTEM"),
-      icon: "ComputerDesktopIcon",
-      selected: getTheme() === "SYSTEM",
-      onClick: () => switchTheme("SYSTEM"),
-    },
-  ];
-
-  const settingsModal = (
-    <Modal
-      open={showSettingsModal}
-      onClose={() => setShowSettingsModal(false)}
-      title={t("SETTINGS")}
-    >
-      <div className="flex w-full flex-col gap-y-5 dark:divide-gray-700">
-        <Radio
-          label={t("THEME")}
-          options={[
-            { label: t("LIGHT"), value: "LIGHT" },
-            { label: t("DARK"), value: "DARK" },
-            { label: t("SYSTEM"), value: "SYSTEM" },
-          ]}
-          onChange={(e) => {
-            switchTheme(e.target.value);
-          }}
-          value={getTheme()}
-        />
-        <Radio
-          label={t("LANGUAGE")}
-          options={[
-            { label: t("DUTCH"), value: "nl" },
-            { label: t("ENGLISH"), value: "en" },
-          ]}
-          onChange={(e) => {
-            switchLanguage(e.target.value);
-          }}
-          value={getLanguage()}
-        />
-      </div>
-    </Modal>
-  );
+  const isDutch = i18n.language === "nl" || i18n.language === "nl-NL" || i18n.language === "nl-BE";
 
   return (
-    <nav className={clsx("sticky top-0 z-30 bg-white transition dark:bg-slate-900", className)}>
+    <nav
+      className={clsx(
+        "sticky top-0 z-30 border-b bg-white transition dark:border-gray-800 dark:bg-black",
+        className
+      )}
+    >
       <div className="mx-auto max-w-screen-2xl px-2 md:px-6 lg:px-8">
         <div className="flex h-14 items-center sm:h-16">
           <Button
@@ -133,44 +77,23 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
               ))}
             </div>
           </div>
-          <div className="hidden items-center pr-2 md:static md:inset-auto md:ml-6 md:flex md:pr-0">
-            <DropdownMenu
-              menuBtn={
-                <Button
-                  icon={getThemeIcon()}
-                  iconType="outline"
-                  variant="clear"
-                  size="md"
-                  aria-label="open theme switcher dropdown"
-                />
-              }
-              items={themeOptions}
-            />
-          </div>
-          <div className="hidden md:static md:inset-auto md:ml-6 md:flex md:items-center md:pr-0">
-            <DropdownMenu
-              menuBtn={
-                <Button
-                  icon="GlobeEuropeAfricaIcon"
-                  iconType="outline"
-                  variant="clear"
-                  size="md"
-                  aria-label="open language switcher dropdown"
-                />
-              }
-              items={languageOptions}
-            />
-          </div>
-          <div className="flex md:static md:inset-auto md:ml-6 md:hidden md:items-center md:pr-0">
+          <div className="flex items-center gap-x-2">
             <Button
-              size="md"
-              icon="Cog8ToothIcon"
+              aria-label={`Switch to ${useDarkMode ? "light" : "dark"} mode`}
+              icon={useDarkMode ? "MoonIcon" : "SunIcon"}
               iconType="outline"
               variant="clear"
-              aria-label="open settings"
-              onClick={() => setShowSettingsModal(true)}
+              size="md"
+              onClick={switchTheme}
             />
-            {settingsModal}
+            <Button
+              className="text-2xl leading-6"
+              onClick={() => i18n.changeLanguage(isDutch ? "en" : "nl")}
+              label={isDutch ? "🇳🇱" : "🇬🇧"}
+              variant="clear"
+              size="md"
+              aria-label={`Switch to ${isDutch ? "English" : "Dutch"}`}
+            />
           </div>
         </div>
       </div>

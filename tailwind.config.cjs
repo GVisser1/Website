@@ -1,4 +1,5 @@
 const plugin = require("tailwindcss/plugin");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   darkMode: "class",
@@ -7,6 +8,9 @@ module.exports = {
     extend: {
       borderWidth: {
         1.5: "1.5px",
+      },
+      fontFamily: {
+        sans: ["Inter", ...defaultTheme.fontFamily.sans],
       },
       minHeight: {
         "screen-dvh": "100dvh",

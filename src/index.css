@@ -3,11 +3,8 @@
 @tailwind utilities;
 
 @layer utilities {
-  .animation-delay-5000 {
-    animation-delay: 5s;
-  }
-  .animation-delay-10000 {
-    animation-delay: 10s;
+  html {
+    scroll-padding-top: 100px;
   }
 
   .scrollbar::-webkit-scrollbar {
@@ -19,4 +16,14 @@
     @apply bg-white;
     -webkit-border-radius: 1ex;
   }
+}
+
+@font-face {
+  font-family: "Inter";
+  src:
+    url("/fonts/InterVariable.woff2") format("woff2"),
+    url("/fonts/InterVariable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-stretch: 25% 151%;
+  font-display: swap;
 }
