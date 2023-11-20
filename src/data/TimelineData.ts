@@ -18,7 +18,25 @@ export const TimeLineData = () => {
 
   const timeLineItems: TimelineItem[] = [
     {
-      timeFrame: getTimeFrame(new Date(2022, 1, 21)),
+      timeFrame: getTimeFrame(new Date(2023, 7, 1)),
+      title: "Quality Assurance Engineer",
+      subTitle: "MoreApp",
+      description: t("QA_ENGINEER_DESCRIPTION"),
+      status: t("COMPLETED"),
+      href: "https://moreapp.com",
+      theme: "GRAY",
+    },
+    {
+      timeFrame: getTimeFrame(new Date(2023, 1, 6), new Date(2023, 6, 7)),
+      title: "Graduation Internship",
+      subTitle: "MoreApp",
+      description: t("GRADUATION_INTERN_DESCRIPTION"),
+      status: t("COMPLETED"),
+      href: "https://moreapp.com",
+      theme: "PINK",
+    },
+    {
+      timeFrame: getTimeFrame(new Date(2022, 1, 21), new Date(2023, 0, 31)),
       title: "Software Engineer",
       subTitle: "MoreApp",
       description: t("MOREAPP_PART-TIME_DESCRIPTION"),
@@ -36,11 +54,11 @@ export const TimeLineData = () => {
       theme: "YELLOW",
     },
     {
-      timeFrame: getTimeFrame(new Date(2019, 8, 1)),
+      timeFrame: getTimeFrame(new Date(2019, 8, 1), new Date(2021, 6, 1)),
       title: t("COMPUTER_SCIENCE"),
       subTitle: t("HOGESCHOOL_ROTTERDAM"),
       description: t("COMPUTER_SCIENCE_DESCRIPTION"),
-      status: t("ONGOING"),
+      status: t("GRADUATED"),
       href: "https://www.hogeschoolrotterdam.nl/",
       theme: "RED",
     },

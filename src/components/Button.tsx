@@ -33,7 +33,7 @@ export const Button: FC<ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> =
   const isClickable = !loading && !disabled;
 
   const classes = clsx(
-    "flex items-center gap-x-1.5 outline-none justify-center font-semibold transition",
+    "flex items-center gap-x-1.5 outline-none justify-center font-semibold select-none transition",
     block && "w-full",
     iconAlign === "right" && "flex-row-reverse space-x-reverse",
     disabled && "bg-gray-200 text-gray-400 dark:bg-gray-400 dark:text-gray-500",
@@ -60,7 +60,7 @@ export const Button: FC<ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> =
       "rounded-lg p-2": size === "md",
       "rounded-lg p-3": size === "lg",
     },
-    className,
+    className
   );
 
   return (

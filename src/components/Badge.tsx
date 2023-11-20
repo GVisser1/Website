@@ -18,10 +18,10 @@ export const Badge: FC<PropsWithChildren<BadgeProps>> = ({
   return (
     <span
       className={clsx(
-        "rounded-full px-3 py-0.5 text-xs font-semibold",
+        "rounded-full px-3 py-0.5 text-xs font-semibold transition-colors",
         Theme.bgColor,
         Theme.textColor,
-        className,
+        className
       )}
     >
       {children}

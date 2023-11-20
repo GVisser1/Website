@@ -16,7 +16,7 @@ export const Text: FC<PropsWithChildren<TextProps>> = ({
   children,
 }) => {
   const classes = clsx(
-    "transition whitespace-pre-line",
+    "transition-colors whitespace-pre-line",
 
     weight === "bold" && "font-bold",
     weight === "semibold" && "font-semibold",
@@ -29,10 +29,10 @@ export const Text: FC<PropsWithChildren<TextProps>> = ({
     size === "2xl" && "text-2xl",
 
     color === "all-white" && "text-white",
-    color === "medium" && "text-gray-500 dark:text-gray-400",
+    color === "medium" && "text-gray-600 dark:text-gray-400",
     color === "dark" && "text-gray-700 dark:text-white",
 
-    className,
+    className
   );
 
   return <p className={classes}>{children}</p>;

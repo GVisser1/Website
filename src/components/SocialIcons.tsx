@@ -59,12 +59,13 @@ export interface IconsProps {
 }
 
 export const Icons: FC<IconsProps> = ({ className, options }) => (
-  <div className={clsx("flex justify-center gap-x-3", className)}>
+  <div className={clsx("flex flex-wrap gap-5", className)}>
     {options.map((option) => (
       <a
         className="rounded-full outline-none focus-visible:ring focus-visible:ring-blue-400"
         href={option.href}
         key={option.id}
+        aria-label={`Follow me on ${option.id}`}
       >
         <Icon
           className={`h-7 w-7 rounded-full active:!brightness-50 pointer:hover:brightness-75 ${option.bgColor}`}

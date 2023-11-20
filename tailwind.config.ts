@@ -1,12 +1,21 @@
-const plugin = require("tailwindcss/plugin");
+import plugin from "tailwindcss/plugin";
+import { fontFamily } from "tailwindcss/defaultTheme";
+import type { Config } from "tailwindcss";
 
-module.exports = {
+const config: Config = {
   darkMode: "class",
   content: ["./src/**/*.{js,jsx,ts,tsx}", "index.html"],
   theme: {
     extend: {
       borderWidth: {
         1.5: "1.5px",
+      },
+      fontFamily: {
+        sans: ["Inter", ...fontFamily.sans],
+      },
+      screens: {
+        xs: "480px",
+        "2xs": "320px",
       },
       minHeight: {
         "screen-dvh": "100dvh",
@@ -32,3 +41,5 @@ module.exports = {
     }),
   ],
 };
+
+export default config;
