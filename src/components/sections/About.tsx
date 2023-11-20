@@ -4,7 +4,7 @@ export const About = () => {
   const images = [
     { src: "/images/beach.webp", alt: "Beach" },
     { src: "/images/nature.webp", alt: "Nature" },
-    { src: "/images/fleet-foxes-2022.webp", alt: "Mallorca" },
+    { src: "/images/fleet-foxes-2022.webp", alt: "Fleet Foxes Concert" },
   ];
 
   return (
