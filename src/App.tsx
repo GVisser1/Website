@@ -6,7 +6,7 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 
 export const App = () => {
   const { theme } = localStorage;
-  if (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+  if (theme === "dark") {
     document.documentElement.classList.add("dark");
   } else {
     document.documentElement.classList.remove("dark");

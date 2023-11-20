@@ -17,17 +17,14 @@ export const Hero = () => {
       <div className="space-y-6">
         <div className="space-y-2">
           <Title color="dark" as="h1">
-            <p className="text-2xl font-medium text-blue-500">Hi! My name is</p>
+            <p className="text-2xl font-medium text-blue-500">{t("HOME_TITLE")}</p>
             Glenn Visser
           </Title>
-          <p className="text-xl font-medium text-gray-500 dark:text-gray-400">
+          {/* <p className="text-xl font-medium text-gray-500 dark:text-gray-400">
             {t("HOME_SUBTITLE", { age: getAge(new Date(2000, 3, 21)) })}
-          </p>
+          </p> */}
         </div>
-        <Text color="medium">
-          Welkom op mijn website! Mijn naam is Glenn Visser en ik woon in Maassluis. Tijdens mijn
-          studie heb ik ervaring op kunnen doen met Python en C#.
-        </Text>
+        <Text color="medium">{t("HOME_INTRO", { age: getAge(new Date(2000, 3, 21)) })}</Text>
         <SocialIcons />
       </div>
       <div className="relative mt-4 max-w-xs shrink-0 rotate-3 lg:max-w-sm">

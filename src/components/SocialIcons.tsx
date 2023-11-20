@@ -59,7 +59,7 @@ export interface IconsProps {
 }
 
 export const Icons: FC<IconsProps> = ({ className, options }) => (
-  <div className={clsx("flex gap-x-5", className)}>
+  <div className={clsx("flex flex-wrap gap-5", className)}>
     {options.map((option) => (
       <a
         className="rounded-full outline-none focus-visible:ring focus-visible:ring-blue-400"

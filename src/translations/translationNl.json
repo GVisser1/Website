@@ -2,10 +2,11 @@
   "HOME": "Home",
   "HOME_TITLE": "Hi, ik ben Glenn",
   "HOME_SUBTITLE": "Een {{age}}-jarige QA Engineer",
+  "HOME_INTRO": "Welkom op mijn website! Ik ben een {{age}}-jarige Nederlandse QA Engineer. Als ik niet aan het programmeren ben, speel ik videogames, kijk ik films of luister ik naar muziek. De kans is groot dat ik nu naar muziek luister.",
 
   "ABOUT": "Over",
   "ABOUT_ME": "Over mij",
-  "ABOUT_CONTENT": "Welkom op mijn website! Mijn naam is Glenn Visser en ik woon in Maassluis, Nederland. Ik ben een vierdejaars student informatica aan de Hogeschool Rotterdam, die van een uitdaging houdt. Tijdens deze studie heb ik ervaring op kunnen doen met de volgende talen en frameworks: Python, C#, HTML, CSS, .NET & SQL. Ook heb ik een Artificial Intelligence (A.I.) Minor gedaan.\n\nNaast mijn studie werk ik parttime als software engineer bij het bedrijf MoreApp. MoreApp helpt bedrijven te stoppen met het gebruik van papieren formulieren door een digitaal alternatief te bieden dat veilig en milieuvriendelijk is. Als Software Engineer werk ik voornamelijk aan de frontend kant van onze applicatie met talen en tools zoals TypeScript, React & TailwindCSS. Momenteel probeer ik mijn ontwikkelaarstoolkit uit te breiden, door te werken aan backend-problemen in Java.\n\nIn mijn vrije tijd speel ik videogames, experimenteer ik met programmeren, kijk ik films en shows, luister ik veel naar muziek, ga ik naar concerten en wandel ik graag. De kans is groot dat ik nu naar muziek aan het luisteren ben.",
+  "ABOUT_CONTENT": "Welkom op mijn website! Ik ben een 23-jarige Nederlandse QA Engineer. Als ik niet aan het programmeren ben, speel ik videogames, kijk ik films of luister ik naar muziek. De kans is groot dat ik nu naar muziek luister.",
 
   "TIMELINE": "Tijdlijn",
   "ONGOING": "Lopend",
@@ -18,7 +19,10 @@
   "INTERNSHIP": "Stage",
   "DEVELOPMENT_INTERN": "Development Stagiair",
   "DEVELOPMENT_INTERN_DESCRIPTION": "Tijdens mijn stage bij MoreApp heb ik veel kennis kunnen opdoen met TypeScript, TailwindCSS, React en SCRUM. Ik heb ook veel Unit- en E2E-tests gedaan.",
-  "MOREAPP_PART-TIME_DESCRIPTION": "Als parttime software engineer werk ik voornamelijk aan de frontend. Denk hierbij aan werken met TypeScript, React & TailwindCSS. Ik heb ook een beetje geëxperimenteerd met Java op backend-problemen.",
+  "GRADUATION_INTERN_DESCRIPTION": "Tijdens mijn afstudeerstage heb ik een prototype ontwikkeld voor een rapportontwerper die gegevens integreerde vanuit een MoreApp-formulier. Voor de frontend heb ik React, TailwindCSS en TypeScript gebruikt, Java voor de backend Java, en MongoDB als database.",
+  "MOREAPP_PART-TIME_DESCRIPTION": "In mijn functie als parttime software engineer lag mijn voornaamste taak in het oplossen van bugs in de applicatie van MoreApp, die is ontwikkeld met behulp van TypeScript, React en TailwindCSS.",
+  "QA_ENGINEER_DESCRIPTION": "Als QA Engineer is het mijn verantwoordelijkheid om de kwaliteit van alle softwareproducten van MoreApp te waarborgen. Mijn taken omvatten handmatig testen, het rapporteren van bugs, testautomatisering en nauwe samenwerking met mede-ontwikkelaars, UX-designers en de producteigenaar.",
+
   "VWO": "VWO",
   "VWO_DESCRIPTION": "Op de middelbare school volgde ik het profiel Natuur/Gezondheid. Dit omvat vakken als natuurkunde, scheikunde, biologie en wiskunde A.",
 

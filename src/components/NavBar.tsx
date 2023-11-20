@@ -55,13 +55,13 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
             icon={openMenu ? "XMarkIcon" : "Bars3Icon"}
           />
           <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
-            <div className="flex items-center space-x-5 md:space-x-2">
+            <div className="flex items-center gap-x-2">
               <img
                 className="hidden h-8 w-8 rounded-full md:block"
                 src="/images/profile-1.webp"
                 alt="Glenn profile"
               />
-              <Text className="pr-4 md:pr-0 " weight="semibold" size="2xl">
+              <Text className="2xs:text-2xl" weight="semibold" size="md">
                 Glenn Visser
               </Text>
             </div>
@@ -103,7 +103,7 @@ export const NavBar: FC<NavBarProps> = ({ className }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute flex w-full flex-col border-t bg-white transition dark:border-gray-700 dark:bg-slate-900 md:hidden"
+            className="absolute flex w-full flex-col border-y bg-white shadow transition-colors dark:border-gray-700 dark:bg-black md:hidden"
           >
             {navigation.map((item) => (
               <Link
