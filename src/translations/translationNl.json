@@ -1,6 +1,6 @@
 {
   "HOME": "Home",
-  "HOME_TITLE": "Hi, ik ben Glenn",
+  "HOME_TITLE": "Hi, mijn naam is",
   "HOME_SUBTITLE": "Een {{age}}-jarige QA Engineer",
   "HOME_INTRO": "Welkom op mijn website! Ik ben een {{age}}-jarige Nederlandse QA Engineer. Als ik niet aan het programmeren ben, speel ik videogames, kijk ik films of luister ik naar muziek. De kans is groot dat ik nu naar muziek luister.",
 
@@ -19,7 +19,7 @@
   "INTERNSHIP": "Stage",
   "DEVELOPMENT_INTERN": "Development Stagiair",
   "DEVELOPMENT_INTERN_DESCRIPTION": "Tijdens mijn stage bij MoreApp heb ik veel kennis kunnen opdoen met TypeScript, TailwindCSS, React en SCRUM. Ik heb ook veel Unit- en E2E-tests gedaan.",
-  "GRADUATION_INTERN_DESCRIPTION": "Tijdens mijn afstudeerstage heb ik een prototype ontwikkeld voor een rapportontwerper die gegevens integreerde vanuit een MoreApp-formulier. Voor de frontend heb ik React, TailwindCSS en TypeScript gebruikt, Java voor de backend Java, en MongoDB als database.",
+  "GRADUATION_INTERN_DESCRIPTION": "Tijdens mijn afstudeerstage heb ik een prototype ontwikkeld voor een rapportontwerper die gegevens integreerde vanuit een MoreApp-formulier. Voor de frontend heb ik React, TailwindCSS en TypeScript gebruikt, Java voor de backend, en MongoDB als database.",
   "MOREAPP_PART-TIME_DESCRIPTION": "In mijn functie als parttime software engineer lag mijn voornaamste taak in het oplossen van bugs in de applicatie van MoreApp, die is ontwikkeld met behulp van TypeScript, React en TailwindCSS.",
   "QA_ENGINEER_DESCRIPTION": "Als QA Engineer is het mijn verantwoordelijkheid om de kwaliteit van alle softwareproducten van MoreApp te waarborgen. Mijn taken omvatten handmatig testen, het rapporteren van bugs, testautomatisering en nauwe samenwerking met mede-ontwikkelaars, UX-designers en de producteigenaar.",
 
