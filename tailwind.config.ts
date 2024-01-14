@@ -2,8 +2,7 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: "class",
-  content: ["./src/**/*.{js,jsx,ts,tsx}", "index.html"],
+  content: ["./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     fontFamily: {
       inter: ["var(--inter)", ...fontFamily.sans],

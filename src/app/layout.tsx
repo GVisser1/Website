@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="en">
-    <body className={`${inter.variable} mx-auto max-w-screen-xl bg-white px-4 font-inter md:px-8`}>
+    <body className={`${inter.variable} mx-auto max-w-screen-xl bg-white px-4 font-inter text-gray-700 md:px-8`}>
       <NavBar />
       {children}
       <Footer />

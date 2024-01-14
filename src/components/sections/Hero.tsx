@@ -7,7 +7,7 @@ import { Text } from "../Text";
 import { Title } from "../Title";
 
 export const Hero = () => (
-  <Section id="intro" className="justify-between text-justify md:flex-row md:items-center md:gap-x-20">
+  <Section id="intro" className="justify-between gap-20 text-justify lg:flex-row lg:items-center">
     <div className="space-y-6">
       <div className="space-y-2">
         <Title color="dark" as="h1">
@@ -22,13 +22,13 @@ export const Hero = () => (
       </Text>
       <SocialIcons />
     </div>
-    <div className="relative mt-4 max-w-xs shrink-0 rotate-3 lg:max-w-sm">
+    <div className="relative mx-auto mt-12 shrink-0 rotate-3 lg:mt-4">
       <Image
         height={0}
         width={0}
         sizes="100vw"
         src="/images/profile-2.webp"
-        className="h-full w-full rounded-xl object-cover"
+        className="h-80 w-full rounded-xl object-cover md:h-96"
         alt="Glenn large profile"
       />
       <Icon
