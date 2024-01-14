@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { Button } from "../Button";
 import { Section } from "../Section";
+import { Title } from "../Title";
 
 export const Contact = () => {
   const inputClasses = (className?: string) =>
@@ -12,9 +13,12 @@ export const Contact = () => {
     );
 
   return (
-    <Section id="contact" title={{ text: "Send me a message" }} size="sm">
+    <Section id="contact" size="sm">
       <form action={`https://getform.io/f/${process.env.NEXT_GETFORM_ENDPOINT}`} method="POST">
         <fieldset className="space-y-5">
+          <legend>
+            <Title as="h2">Contact Me!</Title>
+          </legend>
           <div>
             <label htmlFor="name" className="sr-only">
               Name

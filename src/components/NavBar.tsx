@@ -34,6 +34,6 @@ export const NavBar = () => (
 
 const links: { name: string; href: string; icon: IconType }[] = [
   { name: "Home", href: "/", icon: "HomeIcon" },
-  { name: "Timeline", href: "#timeline", icon: "RectangleStackIcon" },
-  { name: "Contact", href: "#contact", icon: "AtSymbolIcon" },
+  { name: "Timeline", href: "/#timeline", icon: "RectangleStackIcon" },
+  { name: "Contact", href: "/#contact", icon: "AtSymbolIcon" },
 ];

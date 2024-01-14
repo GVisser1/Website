@@ -12,17 +12,12 @@ export const Footer = () => (
           </Link>
         </li>
         <li>
-          <Link size="sm" color="gray" href="#about">
-            About
-          </Link>
-        </li>
-        <li>
-          <Link size="sm" color="gray" href="#timeline">
+          <Link size="sm" color="gray" href="/#timeline">
             Timeline
           </Link>
         </li>
         <li>
-          <Link size="sm" color="gray" href="#contact">
+          <Link size="sm" color="gray" href="/#contact">
             Contact
           </Link>
         </li>
