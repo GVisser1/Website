@@ -26,7 +26,7 @@ export const Timeline = () => (
                 {item.subTitle}
               </Text>
             </div>
-            <Badge theme="GREEN">{item.timeFrame}</Badge>
+            <Badge color="green">{item.timeFrame}</Badge>
             <Text size="sm" color="medium">
               {item.description}
             </Text>
