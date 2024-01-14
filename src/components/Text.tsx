@@ -1,22 +1,16 @@
 import clsx from "clsx";
-import { FC, PropsWithChildren } from "react";
 
-export interface TextProps {
+export type TextProps = {
   className?: string;
   size?: "xs" | "sm" | "base" | "md" | "lg" | "xl" | "2xl";
   weight?: "semibold" | "bold";
-  color?: "medium" | "dark" | "all-white" | "blue";
-}
+  color?: "medium" | "dark";
+  children: React.ReactNode;
+};
 
-export const Text: FC<PropsWithChildren<TextProps>> = ({
-  size = "base",
-  weight,
-  color = "dark",
-  className,
-  children,
-}) => {
+export const Text = ({ size = "base", weight, color = "dark", className, children }: TextProps) => {
   const classes = clsx(
-    "transition-colors whitespace-pre-line",
+    "whitespace-pre-line",
 
     weight === "bold" && "font-bold",
     weight === "semibold" && "font-semibold",
@@ -28,11 +22,10 @@ export const Text: FC<PropsWithChildren<TextProps>> = ({
     size === "xl" && "text-xl",
     size === "2xl" && "text-2xl",
 
-    color === "all-white" && "text-white",
-    color === "medium" && "text-gray-600 dark:text-gray-400",
-    color === "dark" && "text-gray-700 dark:text-white",
+    color === "medium" && "text-gray-600",
+    color === "dark" && "text-gray-700",
 
-    className
+    className,
   );
 
   return <p className={classes}>{children}</p>;

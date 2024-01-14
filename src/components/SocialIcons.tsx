@@ -2,11 +2,11 @@ import clsx from "clsx";
 import { FC } from "react";
 import { Icon, IconType } from "./Icon";
 
-interface SocialIconsProps {
+type SocialIconsProps = {
   className?: string;
-}
+};
 
-export const SocialIcons: FC<SocialIconsProps> = ({ className }) => (
+export const SocialIcons = ({ className }: SocialIconsProps) => (
   <Icons
     className={className}
     options={[
@@ -46,17 +46,17 @@ export const SocialIcons: FC<SocialIconsProps> = ({ className }) => (
   />
 );
 
-interface IconsOption {
+type IconsOption = {
   id: string;
   href?: string;
   icon: IconType;
   bgColor?: string;
-}
+};
 
-export interface IconsProps {
+export type IconsProps = {
   className?: string;
   options: IconsOption[];
-}
+};
 
 export const Icons: FC<IconsProps> = ({ className, options }) => (
   <div className={clsx("flex flex-wrap gap-5", className)}>
@@ -68,7 +68,7 @@ export const Icons: FC<IconsProps> = ({ className, options }) => (
         aria-label={`Follow me on ${option.id}`}
       >
         <Icon
-          className={`h-7 w-7 rounded-full active:!brightness-50 pointer:hover:brightness-75 ${option.bgColor}`}
+          className={`h-7 w-7 rounded-full hover:brightness-75 active:!brightness-50 ${option.bgColor}`}
           name={option.icon}
         />
       </a>

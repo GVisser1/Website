@@ -3,11 +3,13 @@ import { Contact } from "../components/sections/Contact";
 import { Hero } from "../components/sections/Hero";
 import { Timeline } from "../components/sections/Timeline";
 
-export const HomePage = () => (
-  <div className="space-y-32 overflow-x-hidden">
+const HomePage = () => (
+  <main>
     <Hero />
     <About />
     <Timeline />
     <Contact />
-  </div>
+  </main>
 );
+
+export default HomePage;

@@ -1,40 +1,37 @@
 import clsx from "clsx";
-import { FC, MouseEventHandler, PropsWithChildren } from "react";
 
-export interface LinkProps {
+export type LinkProps = {
   className?: string;
   href: string;
   size?: "xs" | "sm" | "base";
   color?: "gray" | "blue" | "gray-blue";
   ariaLabel?: string;
-  onClick?: MouseEventHandler<HTMLAnchorElement>;
-}
+  children: React.ReactNode;
+};
 
-export const Link: FC<PropsWithChildren<LinkProps>> = ({
+export const Link = ({
   size = "base",
   color = "gray",
   href,
   ariaLabel,
-  onClick = () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   className,
   children,
-}) => {
+}: LinkProps) => {
   const classes = clsx(
-    "transition focus-visible:ring ring-blue-400 outline-none",
+    "outline-none ring-blue-400 transition focus-visible:ring",
     {
       "text-xs": size === "xs",
       "text-sm": size === "sm",
 
-      "text-gray-500 dark:text-gray-400 pointer:hover:text-gray-700 dark:pointer:hover:text-gray-300 active:!text-gray-800 dark:active:!text-gray-200":
-        color === "gray",
-      "text-blue-600 dark:text-blue-400 pointer:hover:text-blue-800 dark:pointer:hover:text-blue-500 active:!text-blue-900 dark:active:!text-blue-700":
-        color === "blue",
+      "text-gray-500 hover:text-gray-700 active:!text-gray-800": color === "gray",
+      "text-blue-600 hover:text-blue-800 active:!text-blue-900": color === "blue",
     },
     className,
   );
 
   return (
-    <a onClick={onClick} className={classes} href={href} aria-label={ariaLabel}>
+    <a className={classes} href={href} aria-label={ariaLabel}>
       {children}
     </a>
   );

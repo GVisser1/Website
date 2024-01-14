@@ -1,26 +1,20 @@
 import * as outline from "@heroicons/react/24/outline";
 import * as solid from "@heroicons/react/24/solid";
 import clsx from "clsx";
-import { FC } from "react";
 
-type CustomIcon =
-  | "LinkedInIcon"
-  | "LastFmIcon"
-  | "GitHubIcon"
-  | "SpotifyIcon"
-  | "LetterboxdIcon"
-  | "InstagramIcon";
-export type IconType = keyof typeof solid | keyof typeof outline | CustomIcon;
+type CustomIcon = "LinkedInIcon" | "LastFmIcon" | "GitHubIcon" | "SpotifyIcon" | "LetterboxdIcon" | "InstagramIcon";
+export type IconType = keyof typeof solid | CustomIcon;
 
-export interface IconProps {
+export type IconProps = {
   name: IconType;
   type?: "solid" | "outline";
   className?: string;
   overrideSize?: boolean;
-}
+};
+type CustomIconProps = { className?: string };
 
-export const Icon: FC<IconProps> = ({ name, type = "solid", className, overrideSize = false }) => {
-  const classes = clsx(!overrideSize && "w-6 h-6", className);
+export const Icon = ({ name, type = "solid", className, overrideSize = false }: IconProps) => {
+  const classes = clsx(!overrideSize && "h-6 w-6", className);
   if (name === "LinkedInIcon") {
     return <LinkedInIcon className={classes} />;
   }
@@ -39,11 +33,12 @@ export const Icon: FC<IconProps> = ({ name, type = "solid", className, overrideS
   if (name === "InstagramIcon") {
     return <InstagramIcon className={classes} />;
   }
+  // eslint-disable-next-line import/namespace
   const HeroIcon = type === "solid" ? solid[name] : outline[name];
   return <HeroIcon className={classes} />;
 };
 
-const LinkedInIcon = ({ className = "" }) => (
+const LinkedInIcon = ({ className }: CustomIconProps) => (
   <svg className={className} viewBox="0 0 1000 1000">
     <path
       fill="#2867B2"
@@ -60,18 +55,9 @@ const LinkedInIcon = ({ className = "" }) => (
   </svg>
 );
 
-const LastFmIcon = ({ className = "" }) => (
+const LastFmIcon = ({ className }: CustomIconProps) => (
   <svg className={className} viewBox="0 0 512 512">
-    <rect
-      height="512"
-      rx="70"
-      ry="70"
-      fill="#b72024"
-      transform="scale(-1,-1)"
-      width="512"
-      x="-512"
-      y="-512"
-    />
+    <rect height="512" rx="70" ry="70" fill="#b72024" transform="scale(-1,-1)" width="512" x="-512" y="-512" />
     <path
       d="m 377.00362,237.11269 c -3.06474,-1.00495 -6.02969,-1.9315 -8.88061,-2.83668 -21.78813,-6.84932 -34.92375,-10.98316 -34.92375,-27.93898 0,-13.75569 10.60542,-23.72676 25.23776,-23.72676 11.2041,0 19.5573,4.64699 27.04807,15.13124 0.69848,0.97645 2.01704,1.32567 3.1075,0.74836 l 21.98058,-11.21836 c 0.5987,-0.29222 1.04058,-0.83389 1.22589,-1.47535 0.19243,-0.64145 0.12829,-1.32567 -0.20669,-1.91011 -11.77428,-20.92574 -28.75864,-31.09638 -51.92233,-31.09638 -35.24447,0 -58.03756,21.32487 -58.03756,54.32423 0,33.74061 22.03761,47.39651 62.68455,60.77443 23.5557,7.85429 33.96868,12.01662 33.96868,28.77289 0,18.83743 -16.98433,32.3793 -40.17655,31.58816 -24.28981,-0.81963 -31.65231,-13.69865 -40.91067,-34.78832 C 301.53983,257.73907 283.7216,216.03727 283.55055,215.63102 265.66103,174.364 230.20989,150.71562 186.27011,150.71562 128.22544,150.71562 81,197.9482 81,256.01426 c 0,58.03755 47.22544,105.27012 105.27011,105.27012 31.65943,0 61.33749,-14.03365 81.40795,-38.51589 0.58446,-0.71274 0.72698,-1.6678 0.36349,-2.52308 l -13.27813,-30.62598 c -0.37777,-0.84814 -1.22592,-1.41831 -2.15959,-1.46109 -0.96219,-0.0428 -1.82459,0.48467 -2.25221,1.31142 -12.52978,23.94058 -37.08331,38.80811 -64.09575,38.80811 -39.83446,0 -72.23512,-32.4078 -72.23512,-72.26362 0,-39.85583 32.40779,-72.26362 72.24224,-72.26362 29.00096,0 55.57151,17.2124 66.12702,42.89205 l 32.82119,74.86508 3.78459,8.41021 c 14.83903,34.56739 36.64143,50.055 70.78829,50.18329 40.60418,0 71.21592,-26.90555 71.21592,-62.57052 0,-35.83602 -19.80677,-49.26385 -53.99638,-60.41806 z"
       fill="#FFFFFF"
@@ -79,7 +65,7 @@ const LastFmIcon = ({ className = "" }) => (
   </svg>
 );
 
-const GitHubIcon = ({ className = "" }) => (
+const GitHubIcon = ({ className }: CustomIconProps) => (
   <svg className={className} viewBox="0 0 512 512">
     <path
       clipRule="evenodd"
@@ -90,7 +76,7 @@ const GitHubIcon = ({ className = "" }) => (
   </svg>
 );
 
-const SpotifyIcon = ({ className = "" }) => (
+const SpotifyIcon = ({ className }: CustomIconProps) => (
   <svg className={className} viewBox="0 0 24 24">
     <path
       fill="#10BD4C"
@@ -99,7 +85,7 @@ const SpotifyIcon = ({ className = "" }) => (
   </svg>
 );
 
-const LetterboxdIcon = ({ className = "" }) => (
+const LetterboxdIcon = ({ className }: CustomIconProps) => (
   <svg className={className} viewBox="0 0 500 500">
     <circle fill="#202830" cx="250" cy="250" r="250" />
     <g transform="translate(61.000000, 180.000000)">
@@ -125,7 +111,7 @@ const LetterboxdIcon = ({ className = "" }) => (
   </svg>
 );
 
-const InstagramIcon = ({ className = "" }) => (
+const InstagramIcon = ({ className }: CustomIconProps) => (
   <svg id="Layer_1" version="1.1" className={className} viewBox="0 0 1000 1000">
     <linearGradient
       gradientUnits="userSpaceOnUse"

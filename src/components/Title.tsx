@@ -1,32 +1,25 @@
 import clsx from "clsx";
-import { FC, PropsWithChildren } from "react";
 
-export interface TitleProps {
+export type TitleProps = {
   className?: string;
-  color?: "medium" | "dark" | "all-white" | "all-dark";
+  color?: "medium" | "dark";
   as?: "h1" | "h2" | "h3" | "h4";
-}
+  children: React.ReactNode;
+};
 
-export const Title: FC<PropsWithChildren<TitleProps>> = ({
-  as = "h2",
-  color = "dark",
-  className,
-  children,
-}) => {
+export const Title = ({ as = "h2", color = "dark", className, children }: TitleProps) => {
   const Tag = as;
   const classes = clsx(
-    "transition-colors font-bold",
-    color === "all-white" && "text-white",
-    color === "all-dark" && "text-gray-700",
-    color === "medium" && "text-gray-500 dark:text-gray-400",
-    color === "dark" && "text-gray-700 dark:text-white",
+    "font-bold",
+    color === "medium" && "text-gray-500",
+    color === "dark" && "text-gray-700",
 
     as === "h1" && "text-5xl",
     as === "h2" && "text-4xl",
     as === "h3" && "text-xl",
     as === "h4" && "text-base",
 
-    className
+    className,
   );
 
   return <Tag className={classes}>{children}</Tag>;
