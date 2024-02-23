@@ -9,15 +9,7 @@ export type LinkProps = {
   children: React.ReactNode;
 };
 
-export const Link = ({
-  size = "base",
-  color = "gray",
-  href,
-  ariaLabel,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  className,
-  children,
-}: LinkProps) => {
+const Link = ({ size = "base", color = "gray", href, ariaLabel, className, children }: LinkProps): JSX.Element => {
   const classes = clsx(
     "outline-none ring-blue-400 transition focus-visible:ring",
     {
@@ -36,3 +28,5 @@ export const Link = ({
     </a>
   );
 };
+
+export default Link;

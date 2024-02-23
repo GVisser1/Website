@@ -1,18 +1,17 @@
 import Image from "next/image";
 import { getAge } from "../../utils/numberUtil";
-import { Icon } from "../Icon";
-import { Section } from "../Section";
-import { SocialIcons } from "../SocialIcons";
-import { Text } from "../Text";
-import { Title } from "../Title";
+import Icon from "../Icon";
+import Section from "../Section";
+import SocialIcons from "../SocialIcons";
+import Text from "../Text";
+import Title from "../Title";
 
-export const Hero = () => (
-  <Section id="intro" className="justify-between gap-20 text-justify lg:flex-row lg:items-center">
+export const Hero = (): JSX.Element => (
+  <Section id="intro" className="justify-between gap-20 lg:flex-row lg:items-center">
     <div className="space-y-6">
       <div className="space-y-2">
         <Title color="dark" as="h1">
-          <p className="text-2xl font-medium text-blue-500">Hi, my name is</p>
-          Glenn Visser
+          <span className="block text-2xl font-medium text-blue-500">Hi, my name is</span> Glenn Visser
         </Title>
       </div>
       <Text color="medium">
@@ -24,6 +23,7 @@ export const Hero = () => (
     </div>
     <div className="relative mx-auto mt-12 shrink-0 rotate-3 lg:mt-4">
       <Image
+        priority
         height={0}
         width={0}
         sizes="100vw"

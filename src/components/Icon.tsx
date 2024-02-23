@@ -1,45 +1,48 @@
-import * as outline from "@heroicons/react/24/outline";
-import * as solid from "@heroicons/react/24/solid";
 import clsx from "clsx";
 
-type CustomIcon = "LinkedInIcon" | "LastFmIcon" | "GitHubIcon" | "SpotifyIcon" | "LetterboxdIcon" | "InstagramIcon";
-export type IconType = keyof typeof solid | CustomIcon;
+export type IconName =
+  | "LinkedInIcon"
+  | "LastFmIcon"
+  | "GitHubIcon"
+  | "SpotifyIcon"
+  | "LetterboxdIcon"
+  | "InstagramIcon"
+  | "MusicalNoteIcon";
 
-export type IconProps = {
-  name: IconType;
-  type?: "solid" | "outline";
+type IconProps = {
+  name: IconName;
   className?: string;
   overrideSize?: boolean;
 };
-type CustomIconProps = { className?: string };
+type IconComponentProps = { className: string };
 
-export const Icon = ({ name, type = "solid", className, overrideSize = false }: IconProps) => {
+const Icon = ({ name, className, overrideSize = false }: IconProps): JSX.Element => {
   const classes = clsx(!overrideSize && "h-6 w-6", className);
-  if (name === "LinkedInIcon") {
-    return <LinkedInIcon className={classes} />;
-  }
-  if (name === "LastFmIcon") {
-    return <LastFmIcon className={classes} />;
-  }
-  if (name === "GitHubIcon") {
-    return <GitHubIcon className={classes} />;
-  }
-  if (name === "SpotifyIcon") {
-    return <SpotifyIcon className={classes} />;
-  }
-  if (name === "LetterboxdIcon") {
-    return <LetterboxdIcon className={classes} />;
-  }
-  if (name === "InstagramIcon") {
-    return <InstagramIcon className={classes} />;
-  }
-  // eslint-disable-next-line import/namespace
-  const HeroIcon = type === "solid" ? solid[name] : outline[name];
-  return <HeroIcon className={classes} />;
+  const icons = {
+    LinkedInIcon: <LinkedInIcon className={classes} />,
+    LastFmIcon: <LastFmIcon className={classes} />,
+    GitHubIcon: <GitHubIcon className={classes} />,
+    SpotifyIcon: <SpotifyIcon className={classes} />,
+    LetterboxdIcon: <LetterboxdIcon className={classes} />,
+    InstagramIcon: <InstagramIcon className={classes} />,
+    MusicalNoteIcon: <MusicalNoteIcon className={classes} />,
+  };
+
+  return icons[name];
 };
 
-const LinkedInIcon = ({ className }: CustomIconProps) => (
-  <svg className={className} viewBox="0 0 1000 1000">
+const MusicalNoteIcon = ({ className }: IconComponentProps): JSX.Element => (
+  <svg aria-hidden viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path
+      fillRule="evenodd"
+      d="M19.952 1.651a.75.75 0 0 1 .298.599V16.303a3 3 0 0 1-2.176 2.884l-1.32.377a2.553 2.553 0 1 1-1.403-4.909l2.311-.66a1.5 1.5 0 0 0 1.088-1.442V6.994l-9 2.572v9.737a3 3 0 0 1-2.176 2.884l-1.32.377a2.553 2.553 0 1 1-1.402-4.909l2.31-.66a1.5 1.5 0 0 0 1.088-1.442V5.25a.75.75 0 0 1 .544-.721l10.5-3a.75.75 0 0 1 .658.122Z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
+const LinkedInIcon = ({ className }: IconComponentProps): JSX.Element => (
+  <svg aria-hidden className={className} viewBox="0 0 1000 1000">
     <path
       fill="#2867B2"
       d="M500,1000L500,1000C223.9,1000,0,776.1,0,500l0,0C0,223.9,223.9,0,500,0l0,0c276.1,0,500,223.9,500,500l0,0 C1000,776.1,776.1,1000,500,1000z"
@@ -55,8 +58,8 @@ const LinkedInIcon = ({ className }: CustomIconProps) => (
   </svg>
 );
 
-const LastFmIcon = ({ className }: CustomIconProps) => (
-  <svg className={className} viewBox="0 0 512 512">
+const LastFmIcon = ({ className }: IconComponentProps): JSX.Element => (
+  <svg aria-hidden className={className} viewBox="0 0 512 512">
     <rect height="512" rx="70" ry="70" fill="#b72024" transform="scale(-1,-1)" width="512" x="-512" y="-512" />
     <path
       d="m 377.00362,237.11269 c -3.06474,-1.00495 -6.02969,-1.9315 -8.88061,-2.83668 -21.78813,-6.84932 -34.92375,-10.98316 -34.92375,-27.93898 0,-13.75569 10.60542,-23.72676 25.23776,-23.72676 11.2041,0 19.5573,4.64699 27.04807,15.13124 0.69848,0.97645 2.01704,1.32567 3.1075,0.74836 l 21.98058,-11.21836 c 0.5987,-0.29222 1.04058,-0.83389 1.22589,-1.47535 0.19243,-0.64145 0.12829,-1.32567 -0.20669,-1.91011 -11.77428,-20.92574 -28.75864,-31.09638 -51.92233,-31.09638 -35.24447,0 -58.03756,21.32487 -58.03756,54.32423 0,33.74061 22.03761,47.39651 62.68455,60.77443 23.5557,7.85429 33.96868,12.01662 33.96868,28.77289 0,18.83743 -16.98433,32.3793 -40.17655,31.58816 -24.28981,-0.81963 -31.65231,-13.69865 -40.91067,-34.78832 C 301.53983,257.73907 283.7216,216.03727 283.55055,215.63102 265.66103,174.364 230.20989,150.71562 186.27011,150.71562 128.22544,150.71562 81,197.9482 81,256.01426 c 0,58.03755 47.22544,105.27012 105.27011,105.27012 31.65943,0 61.33749,-14.03365 81.40795,-38.51589 0.58446,-0.71274 0.72698,-1.6678 0.36349,-2.52308 l -13.27813,-30.62598 c -0.37777,-0.84814 -1.22592,-1.41831 -2.15959,-1.46109 -0.96219,-0.0428 -1.82459,0.48467 -2.25221,1.31142 -12.52978,23.94058 -37.08331,38.80811 -64.09575,38.80811 -39.83446,0 -72.23512,-32.4078 -72.23512,-72.26362 0,-39.85583 32.40779,-72.26362 72.24224,-72.26362 29.00096,0 55.57151,17.2124 66.12702,42.89205 l 32.82119,74.86508 3.78459,8.41021 c 14.83903,34.56739 36.64143,50.055 70.78829,50.18329 40.60418,0 71.21592,-26.90555 71.21592,-62.57052 0,-35.83602 -19.80677,-49.26385 -53.99638,-60.41806 z"
@@ -65,8 +68,8 @@ const LastFmIcon = ({ className }: CustomIconProps) => (
   </svg>
 );
 
-const GitHubIcon = ({ className }: CustomIconProps) => (
-  <svg className={className} viewBox="0 0 512 512">
+const GitHubIcon = ({ className }: IconComponentProps): JSX.Element => (
+  <svg aria-hidden className={className} viewBox="0 0 512 512">
     <path
       clipRule="evenodd"
       d="M296.133,354.174c49.885-5.891,102.942-24.029,102.942-110.192   c0-24.49-8.624-44.448-22.67-59.869c2.266-5.89,9.515-28.114-2.734-58.947c0,0-18.139-5.898-60.759,22.669   c-18.139-4.983-38.09-8.163-56.682-8.163c-19.053,0-39.011,3.18-56.697,8.163c-43.082-28.567-61.22-22.669-61.22-22.669   c-12.241,30.833-4.983,53.057-2.718,58.947c-14.061,15.42-22.677,35.379-22.677,59.869c0,86.163,53.057,104.301,102.942,110.192   c-6.344,5.452-12.241,15.873-14.507,30.387c-12.702,5.438-45.808,15.873-65.758-18.592c0,0-11.795-21.31-34.012-22.669   c0,0-22.224-0.453-1.813,13.592c0,0,14.96,6.812,24.943,32.653c0,0,13.6,43.089,76.179,29.48v38.543   c0,5.906-4.53,12.702-15.865,10.89C96.139,438.977,32.2,354.626,32.2,255.77c0-123.807,100.216-224.022,224.03-224.022   c123.347,0,224.023,100.216,223.57,224.022c0,98.856-63.946,182.754-152.828,212.688c-11.342,2.266-15.873-4.53-15.873-10.89   V395.45C311.1,374.577,304.288,360.985,296.133,354.174L296.133,354.174z M512,256.23C512,114.73,397.263,0,256.23,0   C114.73,0,0,114.73,0,256.23C0,397.263,114.73,512,256.23,512C397.263,512,512,397.263,512,256.23L512,256.23z"
@@ -76,8 +79,8 @@ const GitHubIcon = ({ className }: CustomIconProps) => (
   </svg>
 );
 
-const SpotifyIcon = ({ className }: CustomIconProps) => (
-  <svg className={className} viewBox="0 0 24 24">
+const SpotifyIcon = ({ className }: IconComponentProps): JSX.Element => (
+  <svg aria-hidden className={className} viewBox="0 0 24 24">
     <path
       fill="#10BD4C"
       d="M12,2C6.477,2,2,6.477,2,12c0,5.523,4.477,10,10,10c5.523,0,10-4.477,10-10C22,6.477,17.523,2,12,2 M16.586,16.424 c-0.18,0.295-0.563,0.387-0.857,0.207c-2.348-1.435-5.304-1.76-8.785-0.964c-0.335,0.077-0.67-0.133-0.746-0.469 c-0.077-0.335,0.132-0.67,0.469-0.746c3.809-0.871,7.077-0.496,9.713,1.115C16.673,15.746,16.766,16.13,16.586,16.424 M17.81,13.7 c-0.226,0.367-0.706,0.482-1.072,0.257c-2.687-1.652-6.785-2.131-9.965-1.166C6.36,12.917,5.925,12.684,5.8,12.273 C5.675,11.86,5.908,11.425,6.32,11.3c3.632-1.102,8.147-0.568,11.234,1.328C17.92,12.854,18.035,13.335,17.81,13.7 M17.915,10.865 c-3.223-1.914-8.54-2.09-11.618-1.156C5.804,9.859,5.281,9.58,5.131,9.086C4.982,8.591,5.26,8.069,5.755,7.919 c3.532-1.072,9.404-0.865,13.115,1.338c0.445,0.264,0.59,0.838,0.327,1.282C18.933,10.983,18.359,11.129,17.915,10.865"
@@ -85,8 +88,8 @@ const SpotifyIcon = ({ className }: CustomIconProps) => (
   </svg>
 );
 
-const LetterboxdIcon = ({ className }: CustomIconProps) => (
-  <svg className={className} viewBox="0 0 500 500">
+const LetterboxdIcon = ({ className }: IconComponentProps): JSX.Element => (
+  <svg aria-hidden className={className} viewBox="0 0 500 500">
     <circle fill="#202830" cx="250" cy="250" r="250" />
     <g transform="translate(61.000000, 180.000000)">
       <ellipse fill="#00E054" cx="189" cy="69.9732824" rx="70.0786517" ry="69.9732824" />
@@ -111,8 +114,8 @@ const LetterboxdIcon = ({ className }: CustomIconProps) => (
   </svg>
 );
 
-const InstagramIcon = ({ className }: CustomIconProps) => (
-  <svg id="Layer_1" version="1.1" className={className} viewBox="0 0 1000 1000">
+const InstagramIcon = ({ className }: IconComponentProps): JSX.Element => (
+  <svg aria-hidden id="Layer_1" version="1.1" className={className} viewBox="0 0 1000 1000">
     <linearGradient
       gradientUnits="userSpaceOnUse"
       id="SVGID_1_"
@@ -154,3 +157,5 @@ const InstagramIcon = ({ className }: CustomIconProps) => (
     </g>
   </svg>
 );
+
+export default Icon;

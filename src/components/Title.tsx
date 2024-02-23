@@ -7,7 +7,7 @@ export type TitleProps = {
   children: React.ReactNode;
 };
 
-export const Title = ({ as = "h2", color = "dark", className, children }: TitleProps) => {
+const Title = ({ as = "h2", color = "dark", className, children }: TitleProps): JSX.Element => {
   const Tag = as;
   const classes = clsx(
     "font-bold",
@@ -24,3 +24,5 @@ export const Title = ({ as = "h2", color = "dark", className, children }: TitleP
 
   return <Tag className={classes}>{children}</Tag>;
 };
+
+export default Title;

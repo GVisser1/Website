@@ -1,12 +1,12 @@
 import clsx from "clsx";
 import { timeLineData } from "../../data/TimelineData";
 import { isEven } from "../../utils/numberUtil";
-import { Badge } from "../Badge";
-import { Section } from "../Section";
-import { Text } from "../Text";
-import { Title } from "../Title";
+import Badge from "../Badge";
+import Section from "../Section";
+import Text from "../Text";
+import Title from "../Title";
 
-export const Timeline = () => (
+export const Timeline = (): JSX.Element => (
   <Section id="timeline" title={{ text: "Timeline", center: true }}>
     <div className="relative overflow-hidden">
       <div className="absolute left-2 h-full w-0.5 bg-gray-200 shadow-md sm:inset-x-0 sm:mx-auto" />
@@ -14,9 +14,8 @@ export const Timeline = () => (
         <div
           key={item.title}
           className={clsx(
-            "relative py-5 pl-8 text-justify sm:w-1/2 sm:px-5",
-            isEven(i) && "sm:text-end",
-            !isEven(i) && "sm:ml-auto sm:text-start",
+            "relative py-5 pl-8 sm:w-1/2 sm:px-5",
+            isEven(i) ? "sm:text-end" : "sm:ml-auto sm:text-start",
           )}
         >
           <div className="space-y-5">
@@ -26,7 +25,7 @@ export const Timeline = () => (
                 {item.subTitle}
               </Text>
             </div>
-            <Badge color="green">{item.timeFrame}</Badge>
+            <Badge color="green" label={item.timeFrame} />
             <Text size="sm" color="medium">
               {item.description}
             </Text>

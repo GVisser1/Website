@@ -1,10 +1,10 @@
 import clsx from "clsx";
 import { Button } from "../Button";
-import { Section } from "../Section";
-import { Title } from "../Title";
+import Section from "../Section";
+import Title from "../Title";
 
-export const Contact = () => {
-  const inputClasses = (className?: string) =>
+export const Contact = (): JSX.Element => {
+  const inputClasses = (className?: string): string =>
     clsx(
       "w-full rounded-md border p-3.5 text-sm text-gray-700 outline-none placeholder:text-gray-400",
       "focus:border-blue-400 focus:ring-1.5 focus:ring-blue-400",
@@ -43,7 +43,7 @@ export const Contact = () => {
               className={inputClasses("max-h-[12rem] min-h-[6rem]")}
             />
           </div>
-          <Button block type="submit" variant="primary" label="Send" />
+          <Button block type="submit" label="Send" />
         </fieldset>
       </form>
     </Section>

@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { Section } from "../Section";
+import Section from "../Section";
 
-export const About = () => (
+export const About = (): JSX.Element => (
   <Section id="about">
     <div className="flex flex-wrap items-center justify-center gap-8 p-4">
       {images.map((image) => (

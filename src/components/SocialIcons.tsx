@@ -1,12 +1,9 @@
 import clsx from "clsx";
-import { FC } from "react";
-import { Icon, IconType } from "./Icon";
+import Icon, { type IconName } from "./Icon";
 
-type SocialIconsProps = {
-  className?: string;
-};
+type SocialIconsProps = { className?: string };
 
-export const SocialIcons = ({ className }: SocialIconsProps) => (
+const SocialIcons = ({ className }: SocialIconsProps): JSX.Element => (
   <Icons
     className={className}
     options={[
@@ -49,16 +46,16 @@ export const SocialIcons = ({ className }: SocialIconsProps) => (
 type IconsOption = {
   id: string;
   href?: string;
-  icon: IconType;
+  icon: IconName;
   bgColor?: string;
 };
 
-export type IconsProps = {
+type IconsProps = {
   className?: string;
   options: IconsOption[];
 };
 
-export const Icons: FC<IconsProps> = ({ className, options }) => (
+const Icons = ({ className, options }: IconsProps): JSX.Element => (
   <div className={clsx("flex flex-wrap gap-5", className)}>
     {options.map((option) => (
       <a
@@ -75,3 +72,5 @@ export const Icons: FC<IconsProps> = ({ className, options }) => (
     ))}
   </div>
 );
+
+export default SocialIcons;

@@ -1,9 +1,14 @@
 import Image from "next/image";
-import { IconType } from "./Icon";
-import { Link } from "./Link";
-import { Text } from "./Text";
+import Link from "./Link";
+import Text from "./Text";
 
-export const NavBar = () => (
+const links: { name: string; href: string }[] = [
+  { name: "Home", href: "/" },
+  { name: "Timeline", href: "/#timeline" },
+  { name: "Contact", href: "/#contact" },
+];
+
+const NavBar = (): JSX.Element => (
   <header className="border-b bg-white pb-4 pt-8">
     <nav>
       <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
@@ -16,7 +21,7 @@ export const NavBar = () => (
             src="/images/profile-1.webp"
             alt="Glenn profile"
           />
-          <Text weight="semibold" size="2xl">
+          <Text weight="semibold" size="lg">
             Glenn Visser
           </Text>
         </div>
@@ -32,8 +37,4 @@ export const NavBar = () => (
   </header>
 );
 
-const links: { name: string; href: string; icon: IconType }[] = [
-  { name: "Home", href: "/", icon: "HomeIcon" },
-  { name: "Timeline", href: "/#timeline", icon: "RectangleStackIcon" },
-  { name: "Contact", href: "/#contact", icon: "AtSymbolIcon" },
-];
+export default NavBar;

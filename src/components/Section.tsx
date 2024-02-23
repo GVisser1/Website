@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Title } from "./Title";
+import Title from "./Title";
 
 export type SectionProps = {
   id: string;
@@ -9,7 +9,7 @@ export type SectionProps = {
   children: React.ReactNode;
 };
 
-export const Section = ({ id, size = "md", title, className, children }: SectionProps) => {
+const Section = ({ id, size = "md", title, className, children }: SectionProps): JSX.Element => {
   const classes = clsx("mx-auto flex flex-col gap-y-4 bg-white py-20", {
     "px-8 max-w-screen-xl": size === "lg",
     "px-6 max-w-screen-lg": size === "md",
@@ -27,3 +27,5 @@ export const Section = ({ id, size = "md", title, className, children }: Section
     </section>
   );
 };
+
+export default Section;
