@@ -11,7 +11,7 @@ export type LinkProps = {
 
 const Link = ({ size = "base", color = "gray", href, ariaLabel, className, children }: LinkProps): JSX.Element => {
   const classes = clsx(
-    "outline-none ring-blue-400 transition focus-visible:ring",
+    "transition focus-visible:outline",
     {
       "text-xs": size === "xs",
       "text-sm": size === "sm",

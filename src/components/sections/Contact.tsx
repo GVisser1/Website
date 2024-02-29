@@ -6,9 +6,7 @@ import Title from "../Title";
 export const Contact = (): JSX.Element => {
   const inputClasses = (className?: string): string =>
     clsx(
-      "w-full rounded-md border p-3.5 text-sm text-gray-700 outline-none placeholder:text-gray-400",
-      "focus:border-blue-400 focus:ring-1.5 focus:ring-blue-400",
-      "shadow shadow-slate-300",
+      "w-full rounded-md border p-3.5 text-sm text-gray-700 shadow shadow-slate-300 placeholder:text-gray-400 focus-visible:outline",
       className,
     );
 

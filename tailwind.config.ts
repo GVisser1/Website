@@ -7,17 +7,16 @@ const config: Config = {
     fontFamily: {
       inter: ["var(--inter)", ...fontFamily.sans],
     },
+    outlineColor: {
+      DEFAULT: "#3b82f6",
+    },
+    outlineWidth: {
+      DEFAULT: "1.5px",
+    },
     extend: {
-      borderWidth: {
-        1.5: "1.5px",
-      },
       screens: {
         xs: "480px",
         "2xs": "320px",
-      },
-      ringWidth: {
-        0.5: "0.5px",
-        1.5: "1.5px",
       },
     },
   },

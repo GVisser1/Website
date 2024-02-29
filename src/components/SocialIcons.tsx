@@ -59,10 +59,10 @@ const Icons = ({ className, options }: IconsProps): JSX.Element => (
   <div className={clsx("flex flex-wrap gap-5", className)}>
     {options.map((option) => (
       <a
-        className="rounded-full outline-none focus-visible:ring focus-visible:ring-blue-400"
-        href={option.href}
         key={option.id}
         aria-label={`Follow me on ${option.id}`}
+        href={option.href}
+        className="rounded-full focus-visible:outline"
       >
         <Icon
           className={`h-7 w-7 rounded-full hover:brightness-75 active:!brightness-50 ${option.bgColor}`}
