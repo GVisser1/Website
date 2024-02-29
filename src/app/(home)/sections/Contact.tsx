@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import { Button } from "../Button";
-import Section from "../Section";
-import Title from "../Title";
+import { Button } from "../../../components/Button";
+import Section from "../../../components/Section";
+import Title from "../../../components/Title";
 
 export const Contact = (): JSX.Element => {
   const inputClasses = (className?: string): string =>

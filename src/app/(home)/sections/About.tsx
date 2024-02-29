@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Section from "../Section";
+import Section from "../../../components/Section";
 
 export const About = (): JSX.Element => (
   <Section id="about">

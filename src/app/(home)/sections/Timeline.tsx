@@ -1,10 +1,10 @@
 import clsx from "clsx";
-import { timeLineData } from "../../data/TimelineData";
-import { isEven } from "../../utils/numberUtil";
-import Badge from "../Badge";
-import Section from "../Section";
-import Text from "../Text";
-import Title from "../Title";
+import { timeLineData } from "../../../data/TimelineData";
+import { isEven } from "../../../utils/numberUtil";
+import Badge from "../../../components/Badge";
+import Section from "../../../components/Section";
+import Text from "../../../components/Text";
+import Title from "../../../components/Title";
 
 export const Timeline = (): JSX.Element => (
   <Section id="timeline" title={{ text: "Timeline", center: true }}>

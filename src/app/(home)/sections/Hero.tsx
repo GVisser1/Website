@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { getAge } from "../../utils/numberUtil";
-import Icon from "../Icon";
-import Section from "../Section";
-import SocialIcons from "../SocialIcons";
-import Text from "../Text";
-import Title from "../Title";
+import { getAge } from "../../../utils/numberUtil";
+import Icon from "../../../components/Icon";
+import Section from "../../../components/Section";
+import SocialIcons from "../../../components/SocialIcons";
+import Text from "../../../components/Text";
+import Title from "../../../components/Title";
 
 export const Hero = (): JSX.Element => (
   <Section id="intro" className="justify-between gap-20 lg:flex-row lg:items-center">
