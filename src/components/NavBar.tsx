@@ -18,7 +18,7 @@ const NavBar = (): JSX.Element => (
             width={0}
             sizes="100vw"
             className="h-8 w-8 rounded-full object-cover"
-            src="/images/profile-1.webp"
+            src="/images/logo.webp"
             alt="Glenn profile"
           />
           <Text weight="semibold" size="lg">

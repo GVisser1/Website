@@ -13,6 +13,12 @@ export const metadata: Metadata = {
   },
   description:
     "Welcome to my website, I'm Glenn. This site was made with React, TypeScript, TailwindCSS and serves as a personal portfolio.",
+  icons: {
+    icon: "/favicon.ico?v=4",
+    apple: "/apple-touch-icon.png?v=4",
+    shortcut: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }): JSX.Element => (

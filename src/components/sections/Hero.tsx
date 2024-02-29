@@ -27,9 +27,9 @@ export const Hero = (): JSX.Element => (
         height={0}
         width={0}
         sizes="100vw"
-        src="/images/profile-2.webp"
+        src="/images/profile.webp"
         className="h-80 w-full rounded-xl object-cover md:h-96"
-        alt="Glenn large profile"
+        alt="Glenn Visser"
       />
       <Icon
         overrideSize
