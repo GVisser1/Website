@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { getAge } from "../../../utils/numberUtil";
-import Icon from "../../../components/Icon";
-import Section from "../../../components/Section";
-import SocialIcons from "../../../components/SocialIcons";
-import Text from "../../../components/Text";
-import Title from "../../../components/Title";
+import Icon from "../../../components/icon";
+import Section from "../../../components/section";
+import SocialIcons from "../../../components/socialIcons";
+import Text from "../../../components/text";
+import Title from "../../../components/title";
 
-export const Hero = (): JSX.Element => (
+const Hero = (): JSX.Element => (
   <Section id="intro" className="justify-between gap-20 lg:flex-row lg:items-center">
     <div className="space-y-6">
       <div className="space-y-2">
@@ -33,9 +33,11 @@ export const Hero = (): JSX.Element => (
       />
       <Icon
         overrideSize
-        className="absolute -bottom-12 -right-8 h-32 w-32 stroke-black stroke-[0.5] text-blue-500 md:-left-12"
+        className="absolute -bottom-12 -right-8 size-32 stroke-black stroke-[0.5] text-blue-500 md:-left-12"
         name="MusicalNoteIcon"
       />
     </div>
   </Section>
 );
+
+export default Hero;

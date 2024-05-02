@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import Title from "./Title";
+import Title from "./title";
 
 export type SectionProps = {
   id: string;

@@ -1,9 +1,9 @@
 import clsx from "clsx";
-import { Button } from "../../../components/Button";
-import Section from "../../../components/Section";
-import Title from "../../../components/Title";
+import { Button } from "../../../components/button";
+import Section from "../../../components/section";
+import Title from "../../../components/title";
 
-export const Contact = (): JSX.Element => {
+const Contact = (): JSX.Element => {
   const inputClasses = (className?: string): string =>
     clsx(
       "w-full rounded-md border p-3.5 text-sm text-gray-700 shadow shadow-slate-300 placeholder:text-gray-400 focus-visible:outline",
@@ -47,3 +47,5 @@ export const Contact = (): JSX.Element => {
     </Section>
   );
 };
+
+export default Contact;

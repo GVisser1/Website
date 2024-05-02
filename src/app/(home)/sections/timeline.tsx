@@ -1,12 +1,12 @@
 import clsx from "clsx";
-import { timeLineData } from "../../../data/TimelineData";
+import { timeLineData } from "../../../data/timelineData";
 import { isEven } from "../../../utils/numberUtil";
-import Badge from "../../../components/Badge";
-import Section from "../../../components/Section";
-import Text from "../../../components/Text";
-import Title from "../../../components/Title";
+import Badge from "../../../components/badge";
+import Section from "../../../components/section";
+import Text from "../../../components/text";
+import Title from "../../../components/title";
 
-export const Timeline = (): JSX.Element => (
+const Timeline = (): JSX.Element => (
   <Section id="timeline" title={{ text: "Timeline", center: true }}>
     <div className="relative overflow-hidden">
       <div className="absolute left-2 h-full w-0.5 bg-gray-200 shadow-md sm:inset-x-0 sm:mx-auto" />
@@ -32,7 +32,7 @@ export const Timeline = (): JSX.Element => (
           </div>
           <div
             className={clsx(
-              "absolute top-0 mt-7 h-2.5 w-2.5 -translate-x-7 rounded-full bg-white ring-4 ring-blue-500 sm:translate-x-0",
+              "absolute top-0 mt-7 size-2.5 -translate-x-7 rounded-full bg-white ring-4 ring-blue-500 sm:translate-x-0",
               isEven(i) ? "sm:right-[-5px]" : "sm:left-[-5px]",
             )}
           />
@@ -41,3 +41,5 @@ export const Timeline = (): JSX.Element => (
     </div>
   </Section>
 );
+
+export default Timeline;

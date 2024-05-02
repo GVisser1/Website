@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "./Link";
-import Text from "./Text";
+import Link from "./link";
+import Text from "./text";
 
 const links: { name: string; href: string }[] = [
   { name: "Home", href: "/" },
@@ -17,7 +17,7 @@ const NavBar = (): JSX.Element => (
             height={0}
             width={0}
             sizes="100vw"
-            className="h-8 w-8 rounded-full object-cover"
+            className="size-8 rounded-full object-cover"
             src="/images/logo.webp"
             alt="Glenn profile"
           />

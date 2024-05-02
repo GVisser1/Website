@@ -1,5 +1,5 @@
 import { getTimeFrame } from "@/utils/dateUtil";
-import { BadgeColor } from "../components/Badge";
+import { BadgeColor } from "../components/badge";
 
 export type TimelineItem = {
   title: string;

@@ -4,10 +4,11 @@ export type TextProps = {
   size?: "sm" | "base" | "lg";
   weight?: "semibold";
   color?: "medium" | "dark";
+  className?: string;
   children: React.ReactNode;
 };
 
-const Text = ({ size = "base", weight, color = "dark", children }: TextProps): JSX.Element => {
+const Text = ({ size = "base", weight, color = "dark", className, children }: TextProps): JSX.Element => {
   const classes = clsx(
     "whitespace-pre-line",
     weight === "semibold" && "font-semibold",
@@ -16,6 +17,7 @@ const Text = ({ size = "base", weight, color = "dark", children }: TextProps): J
     size === "lg" && "text-2xl",
     color === "medium" && "text-gray-600",
     color === "dark" && "text-gray-700",
+    className,
   );
 
   return <p className={classes}>{children}</p>;

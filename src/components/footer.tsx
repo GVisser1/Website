@@ -1,5 +1,5 @@
-import Link from "./Link";
-import Text from "./Text";
+import Link from "./link";
+import Text from "./text";
 
 export const Footer = (): JSX.Element => (
   <footer className="z-30 w-full border-t bg-white p-4 md:px-6 md:py-8">

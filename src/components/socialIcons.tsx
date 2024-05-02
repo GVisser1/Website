@@ -1,5 +1,6 @@
 import clsx from "clsx";
-import Icon, { type IconName } from "./Icon";
+import Icon, { type IconName } from "./icon";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./tooltip";
 
 type SocialIconsProps = { className?: string };
 
@@ -57,19 +58,24 @@ type IconsProps = {
 
 const Icons = ({ className, options }: IconsProps): JSX.Element => (
   <div className={clsx("flex flex-wrap gap-5", className)}>
-    {options.map((option) => (
-      <a
-        key={option.id}
-        aria-label={`Follow me on ${option.id}`}
-        href={option.href}
-        className="rounded-full focus-visible:outline"
-      >
-        <Icon
-          className={`h-7 w-7 rounded-full hover:brightness-75 active:!brightness-50 ${option.bgColor}`}
-          name={option.icon}
-        />
-      </a>
-    ))}
+    <TooltipProvider>
+      {options.map((option) => (
+        <Tooltip key={option.id}>
+          <TooltipTrigger asChild>
+            <a
+              aria-label={option.id}
+              href={option.href}
+              target="_blank"
+              className="rounded-full hover:brightness-75 focus-visible:outline active:!brightness-50"
+              rel="noreferrer"
+            >
+              <Icon className={`size-7 rounded-full ${option.bgColor}`} name={option.icon} />
+            </a>
+          </TooltipTrigger>
+          <TooltipContent>{option.id}</TooltipContent>
+        </Tooltip>
+      ))}
+    </TooltipProvider>
   </div>
 );
 

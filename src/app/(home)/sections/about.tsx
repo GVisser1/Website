@@ -1,7 +1,13 @@
 import Image from "next/image";
-import Section from "../../../components/Section";
+import Section from "../../../components/section";
 
-export const About = (): JSX.Element => (
+const images = [
+  { src: "/images/beach.webp", alt: "Beach" },
+  { src: "/images/nature.webp", alt: "Nature" },
+  { src: "/images/fleet-foxes-2022.webp", alt: "Fleet Foxes Concert" },
+];
+
+const About = (): JSX.Element => (
   <Section id="about">
     <div className="flex flex-wrap items-center justify-center gap-8 p-4">
       {images.map((image) => (
@@ -21,8 +27,4 @@ export const About = (): JSX.Element => (
   </Section>
 );
 
-const images = [
-  { src: "/images/beach.webp", alt: "Beach" },
-  { src: "/images/nature.webp", alt: "Nature" },
-  { src: "/images/fleet-foxes-2022.webp", alt: "Fleet Foxes Concert" },
-];
+export default About;

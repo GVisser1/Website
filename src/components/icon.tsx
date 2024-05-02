@@ -1,13 +1,14 @@
 import clsx from "clsx";
 
 export type IconName =
+  | "ArrowRightIcon"
+  | "MusicalNoteIcon"
   | "LinkedInIcon"
   | "LastFmIcon"
   | "GitHubIcon"
   | "SpotifyIcon"
   | "LetterboxdIcon"
-  | "InstagramIcon"
-  | "MusicalNoteIcon";
+  | "InstagramIcon";
 
 type IconProps = {
   name: IconName;
@@ -17,19 +18,33 @@ type IconProps = {
 type IconComponentProps = { className: string };
 
 const Icon = ({ name, className, overrideSize = false }: IconProps): JSX.Element => {
-  const classes = clsx(!overrideSize && "h-6 w-6", className);
+  const classes = clsx(!overrideSize && "size-6", className);
   const icons = {
+    ArrowRightIcon: <ArrowRightIcon className={classes} />,
+    MusicalNoteIcon: <MusicalNoteIcon className={classes} />,
     LinkedInIcon: <LinkedInIcon className={classes} />,
     LastFmIcon: <LastFmIcon className={classes} />,
     GitHubIcon: <GitHubIcon className={classes} />,
     SpotifyIcon: <SpotifyIcon className={classes} />,
     LetterboxdIcon: <LetterboxdIcon className={classes} />,
     InstagramIcon: <InstagramIcon className={classes} />,
-    MusicalNoteIcon: <MusicalNoteIcon className={classes} />,
   };
 
   return icons[name];
 };
+
+const ArrowRightIcon = ({ className }: IconComponentProps): JSX.Element => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="currentColor"
+    className={className}
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+  </svg>
+);
 
 const MusicalNoteIcon = ({ className }: IconComponentProps): JSX.Element => (
   <svg aria-hidden viewBox="0 0 24 24" fill="currentColor" className={className}>

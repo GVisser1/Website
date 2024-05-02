@@ -1,7 +1,7 @@
-import { About } from "./sections/About";
-import { Contact } from "./sections/Contact";
-import { Hero } from "./sections/Hero";
-import { Timeline } from "./sections/Timeline";
+import About from "./sections/about";
+import Contact from "./sections/contact";
+import Hero from "./sections/hero";
+import Timeline from "./sections/timeline";
 
 const HomePage = (): JSX.Element => (
   <main>
