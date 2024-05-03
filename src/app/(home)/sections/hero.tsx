@@ -7,7 +7,7 @@ import Text from "../../../components/text";
 import Title from "../../../components/title";
 
 const Hero = (): JSX.Element => (
-  <Section id="intro" className="justify-between gap-20 lg:flex-row lg:items-center">
+  <Section id="intro" className="flex flex-col justify-between gap-20 lg:flex-row lg:items-center">
     <div className="space-y-6">
       <div className="space-y-2">
         <Title color="dark" as="h1">
@@ -15,9 +15,9 @@ const Hero = (): JSX.Element => (
         </Title>
       </div>
       <Text color="medium">
-        Welcome to my website! I am a {getAge(new Date(2000, 3, 21))}-year-old Dutch QA Engineer. When I&apos;m not busy
-        programming, you can find me playing video games, watching movies, or listening to music. Chances are, I am
-        listening to music right now.
+        Welcome to my website! I am a {getAge()}-year-old Dutch QA Engineer. When I&apos;m not busy programming, you can
+        find me playing video games, watching movies, or listening to music. Chances are, I am listening to music right
+        now.
       </Text>
       <SocialIcons />
     </div>
@@ -33,7 +33,7 @@ const Hero = (): JSX.Element => (
       />
       <Icon
         overrideSize
-        className="absolute -bottom-12 -right-8 size-32 stroke-black stroke-[0.5] text-blue-500 md:-left-12"
+        className="absolute -bottom-12 -right-8 size-32 stroke-black stroke-[0.5] text-blue-500 lg:-left-12"
         name="MusicalNoteIcon"
       />
     </div>

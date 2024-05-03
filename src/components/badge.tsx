@@ -10,10 +10,10 @@ const badgeColors = {
 };
 
 export type BadgeColor = keyof typeof badgeColors;
-type BadgeProps = { label: string; color?: BadgeColor };
+type BadgeProps = { label: string; color?: BadgeColor; className?: string };
 
-const Badge = ({ color = "blue", label }: BadgeProps): JSX.Element => (
-  <span className={clsx("rounded-full px-3 py-0.5 text-xs font-semibold", badgeColors[color])}>{label}</span>
+const Badge = ({ color = "blue", label, className }: BadgeProps): JSX.Element => (
+  <span className={clsx("rounded-full px-2 py-0.5 text-xs font-semibold", badgeColors[color], className)}>{label}</span>
 );
 
 export default Badge;
