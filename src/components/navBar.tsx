@@ -9,7 +9,7 @@ const links: { name: string; href: string }[] = [
 ];
 
 const NavBar = (): JSX.Element => (
-  <header className="border-b bg-white pb-4 pt-8">
+  <header className="mx-auto max-w-screen-xl border-b bg-white pb-4 pt-8">
     <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
       <div className="flex items-center gap-x-2">
         <Image

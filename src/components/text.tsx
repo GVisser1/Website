@@ -1,11 +1,12 @@
 import clsx from "clsx";
+import type { ReactNode } from "react";
 
 export type TextProps = {
   size?: "sm" | "base" | "lg";
   weight?: "semibold";
   color?: "medium" | "dark";
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const Text = ({ size = "base", weight, color = "dark", className, children }: TextProps): JSX.Element => {

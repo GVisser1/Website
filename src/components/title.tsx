@@ -1,10 +1,11 @@
 import clsx from "clsx";
+import type { ReactNode } from "react";
 
 export type TitleProps = {
   className?: string;
   color?: "medium" | "dark";
   as?: "h1" | "h2" | "h3" | "h4";
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const Title = ({ as = "h2", color = "dark", className, children }: TitleProps): JSX.Element => {

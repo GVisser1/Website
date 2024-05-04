@@ -2,6 +2,8 @@ import clsx from "clsx";
 
 export type IconName =
   | "ArrowRightIcon"
+  | "ChevronDownIcon"
+  | "ChevronUpIcon"
   | "MusicalNoteIcon"
   | "LinkedInIcon"
   | "LastFmIcon"
@@ -15,12 +17,15 @@ type IconProps = {
   className?: string;
   overrideSize?: boolean;
 };
+
 type IconComponentProps = { className: string };
 
 const Icon = ({ name, className, overrideSize = false }: IconProps): JSX.Element => {
   const classes = clsx(!overrideSize && "size-6", className);
   const icons = {
-    ArrowRightIcon: <ArrowRightIcon className={classes} />,
+    ArrowRightIcon: <HeroIcon className={classes} d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />,
+    ChevronDownIcon: <HeroIcon className={classes} d="M19 9l-7 7-7-7" />,
+    ChevronUpIcon: <HeroIcon className={classes} d="M5 15l7-7 7 7" />,
     MusicalNoteIcon: <MusicalNoteIcon className={classes} />,
     LinkedInIcon: <LinkedInIcon className={classes} />,
     LastFmIcon: <LastFmIcon className={classes} />,
@@ -33,16 +38,17 @@ const Icon = ({ name, className, overrideSize = false }: IconProps): JSX.Element
   return icons[name];
 };
 
-const ArrowRightIcon = ({ className }: IconComponentProps): JSX.Element => (
+const HeroIcon = ({ d, className }: IconComponentProps & { d: string }): JSX.Element => (
   <svg
+    aria-hidden
     xmlns="http://www.w3.org/2000/svg"
-    fill="currentColor"
+    fill="none"
     viewBox="0 0 24 24"
     strokeWidth="1.5"
     stroke="currentColor"
     className={className}
   >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+    <path strokeLinecap="round" strokeLinejoin="round" d={d} />
   </svg>
 );
 

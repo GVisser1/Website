@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Button } from "../../../components/button";
+import Button from "../../../components/button";
 import Section from "../../../components/section";
 import Title from "../../../components/title";
 

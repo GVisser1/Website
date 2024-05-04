@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import NavBar from "../components/navBar";
-import { Footer } from "../components/footer";
+import Footer from "../components/footer";
+import type { ReactNode } from "react";
 
 const inter = Inter({ subsets: ["latin"], variable: "--inter" });
 
@@ -21,9 +22,9 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }): JSX.Element => (
+const RootLayout = ({ children }: { children: ReactNode }): JSX.Element => (
   <html lang="en">
-    <body className={`${inter.variable} mx-auto max-w-screen-xl bg-white px-4 font-inter text-gray-700 md:px-8`}>
+    <body className={`${inter.variable} relative mx-auto bg-white px-4 font-inter text-gray-700 md:px-8`}>
       <NavBar />
       {children}
       <Footer />

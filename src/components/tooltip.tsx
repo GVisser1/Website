@@ -2,7 +2,7 @@
 
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import clsx from "clsx";
-import { type ReactNode, forwardRef } from "react";
+import { type ReactNode, forwardRef, type ElementRef, type ComponentPropsWithoutRef } from "react";
 
 const TooltipProvider = ({ children }: { children: ReactNode }): JSX.Element => (
   <TooltipPrimitive.Provider delayDuration={0}>{children}</TooltipPrimitive.Provider>
@@ -13,8 +13,8 @@ const Tooltip = TooltipPrimitive.Root;
 const TooltipTrigger = TooltipPrimitive.Trigger;
 
 const TooltipContent = forwardRef<
-  React.ElementRef<typeof TooltipPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
+  ElementRef<typeof TooltipPrimitive.Content>,
+  ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
 >(({ className, sideOffset = 4, ...props }, ref) => (
   <TooltipPrimitive.Content
     ref={ref}

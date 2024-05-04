@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import type { ReactNode } from "react";
 
 export type LinkProps = {
   className?: string;
@@ -6,7 +7,7 @@ export type LinkProps = {
   size?: "xs" | "sm" | "base";
   color?: "gray" | "blue" | "gray-blue";
   ariaLabel?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const Link = ({ size = "base", color = "gray", href, ariaLabel, className, children }: LinkProps): JSX.Element => {
