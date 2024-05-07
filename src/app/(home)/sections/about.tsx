@@ -8,22 +8,20 @@ const images = [
 ];
 
 const About = (): JSX.Element => (
-  <Section id="about">
-    <div className="flex flex-wrap items-center justify-center gap-8 p-4">
-      {images.map((image) => (
-        <div key={image.alt} className="w-72 overflow-hidden rounded-xl odd:-rotate-2 even:rotate-2 sm:rounded-2xl">
-          <Image
-            height={0}
-            width={0}
-            sizes="100vw"
-            src={image.src}
-            alt={image.alt}
-            loading="lazy"
-            className="h-72 w-full object-cover"
-          />
-        </div>
-      ))}
-    </div>
+  <Section id="about" className="flex flex-wrap items-center justify-center gap-8 px-4">
+    {images.map((image) => (
+      <div key={image.alt} className="w-72 overflow-hidden rounded-xl odd:-rotate-2 even:rotate-2 sm:rounded-2xl">
+        <Image
+          height={0}
+          width={0}
+          sizes="100vw"
+          src={image.src}
+          alt={image.alt}
+          loading="lazy"
+          className="h-72 w-full object-cover"
+        />
+      </div>
+    ))}
   </Section>
 );
 
