@@ -34,7 +34,7 @@ const Timeline = (): JSX.Element => {
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
+    return (): void => {
       window.removeEventListener("scroll", onScroll);
     };
   }, [expanded, showCollapseButton, inView]);
@@ -90,18 +90,17 @@ const TimeLineItem = ({ item, align }: TimeLineItemProps): JSX.Element => (
       align === "right" ? "sm:text-end" : "sm:ml-auto sm:text-start",
     )}
   >
-    <>
-      <Badge color="green" label={item.timeFrame} />
-      <div className="mt-1">
-        <Title as="h3">{item.title}</Title>
-        <Text size="sm" weight="semibold" color="medium">
-          {item.subTitle}
-        </Text>
-      </div>
-      <Text size="sm" color="medium" className="mt-2">
-        {item.description}
+    <Badge color="green" label={item.timeFrame} />
+    <div className="mt-1">
+      <Title as="h3">{item.title}</Title>
+      <Text size="sm" weight="semibold" color="medium">
+        {item.subTitle}
       </Text>
-    </>
+    </div>
+    <Text size="sm" color="medium" className="mt-2">
+      {item.description}
+    </Text>
+
     <div
       className={clsx(
         "absolute top-0 mt-7 size-2.5 -translate-x-7 rounded-full bg-white ring-4 ring-blue-600 sm:translate-x-0",
