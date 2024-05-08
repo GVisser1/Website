@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { getAge } from "../../../utils/numberUtil";
 import Icon from "../../../components/icon";
 import Section from "../../../components/section";
 import SocialIcons from "../../../components/socialIcons";
 import Text from "../../../components/text";
 import Title from "../../../components/title";
+import { getAge } from "@/utils/dateUtil";
 
 const Hero = (): JSX.Element => (
   <Section id="intro" className="flex flex-col justify-between gap-20 lg:flex-row lg:items-center">
