@@ -10,7 +10,7 @@
     "test_ui": "vitest --ui --coverage",
     "test:e2e": "playwright test",
     "test:e2e-report": "exec playwright show-report e2e-tests/test-reports",
-    "lint:check": "next lint"
+    "lint:check": "next lint --fix"
   },
   "dependencies": {
     "@radix-ui/react-select": "2.0.0",

@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { forwardRef, type HTMLAttributes } from "react";
-import Icon, { IconName } from "./icon";
+import type { IconName } from "./icon";
+import Icon from "./icon";
 
 type ButtonProps = {
   label?: string;

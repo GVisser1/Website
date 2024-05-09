@@ -1,5 +1,6 @@
 import clsx from "clsx";
-import Icon, { type IconName } from "./icon";
+import type { IconName } from "./icon";
+import Icon from "./icon";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./tooltip";
 
 type SocialIconsProps = { className?: string };

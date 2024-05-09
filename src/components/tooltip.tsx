@@ -2,7 +2,8 @@
 
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import clsx from "clsx";
-import { type ReactNode, forwardRef, type ElementRef, type ComponentPropsWithoutRef } from "react";
+import type { ReactNode, ElementRef, ComponentPropsWithoutRef } from "react";
+import { forwardRef } from "react";
 
 const TooltipProvider = ({ children }: { children: ReactNode }): JSX.Element => (
   <TooltipPrimitive.Provider delayDuration={0}>{children}</TooltipPrimitive.Provider>

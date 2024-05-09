@@ -11,7 +11,7 @@ const ThemeSwitcher = (): JSX.Element => {
   return (
     <Select onValueChange={handleOnChange}>
       <SelectTrigger aria-label="Select theme">
-        <SelectValue placeholder="Theme" />
+        <SelectValue placeholder="System" />
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="light">Light</SelectItem>
