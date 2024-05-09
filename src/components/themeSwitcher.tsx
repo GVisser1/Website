@@ -3,13 +3,13 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select";
 import { useTheme } from "next-themes";
 
-const ThemeSwitcher = (): JSX.Element => {
-  const { setTheme } = useTheme();
+const ThemeSwitcher = (): JSX.Element | null => {
+  const { theme, setTheme } = useTheme();
 
   const handleOnChange = (value: string): void => setTheme(value);
 
   return (
-    <Select onValueChange={handleOnChange}>
+    <Select value={theme} onValueChange={handleOnChange}>
       <SelectTrigger aria-label="Select theme">
         <SelectValue placeholder="System" />
       </SelectTrigger>

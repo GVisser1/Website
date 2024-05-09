@@ -26,15 +26,15 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: ReactNode }): JSX.Element => (
   <html lang="en">
     <body className="bg-zinc-50 transition-colors dark:bg-black">
-      <div
-        className={`${inter.variable} relative mx-auto  max-w-screen-xl bg-white font-inter transition-colors dark:bg-zinc-900`}
-      >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <div
+          className={`${inter.variable} relative mx-auto  max-w-screen-xl bg-white font-inter transition-colors dark:bg-zinc-900`}
+        >
           <NavBar />
           <div className="px-4 md:px-8">{children}</div>
           <Footer />
-        </ThemeProvider>
-      </div>
+        </div>
+      </ThemeProvider>
     </body>
   </html>
 );

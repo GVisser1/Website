@@ -17,7 +17,7 @@ const About = (): JSX.Element => (
           sizes="100vw"
           src={image.src}
           alt={image.alt}
-          loading="lazy"
+          priority
           className="h-72 w-full object-cover"
         />
       </div>
