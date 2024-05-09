@@ -48,14 +48,14 @@ const Timeline = (): JSX.Element => {
       </Title>
       <div className="relative">
         <div ref={inViewRef} className="relative overflow-hidden">
-          <div className="absolute left-2 h-full w-0.5 bg-gray-200 shadow-md sm:inset-x-0 sm:mx-auto" />
+          <div className="absolute left-2 h-full w-0.5 bg-gray-200 shadow-md dark:bg-zinc-700 sm:inset-x-0 sm:mx-auto" />
           {filteredTimeLineData.map((item, i) => (
             <TimeLineItem key={item.timeFrame} item={item} align={isEven(i) ? "right" : "left"} />
           ))}
         </div>
         <div
           className={clsx(
-            "pointer-events-none inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-white pb-8 pt-32",
+            "pointer-events-none inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-white pb-8 pt-32 dark:from-zinc-900",
             expanded
               ? {
                   "sticky -mt-24 transition-opacity duration-300": true,
@@ -66,7 +66,7 @@ const Timeline = (): JSX.Element => {
           )}
         >
           <Button
-            variant="ghost"
+            variant="outline"
             onClick={() => setExpanded(!expanded)}
             label={expanded ? "Show less" : "Show more"}
             icon={expanded ? "ChevronUpIcon" : "ChevronDownIcon"}
@@ -103,7 +103,7 @@ const TimeLineItem = ({ item, align }: TimeLineItemProps): JSX.Element => (
 
     <div
       className={clsx(
-        "absolute top-0 mt-7 size-2.5 -translate-x-7 rounded-full bg-white ring-4 ring-blue-600 sm:translate-x-0",
+        "absolute top-0 mt-7 size-2.5 -translate-x-7 rounded-full bg-white ring-4 ring-blue-600 dark:bg-white dark:ring-blue-600 sm:translate-x-0",
         align === "right" ? "sm:right-[-5px]" : "sm:left-[-5px]",
       )}
     />

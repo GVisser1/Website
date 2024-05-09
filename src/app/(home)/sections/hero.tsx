@@ -28,7 +28,7 @@ const Hero = (): JSX.Element => (
         width={0}
         sizes="100vw"
         src="/images/profile.webp"
-        className="h-80 w-full rounded-xl object-cover md:h-96"
+        className="h-80 w-full rounded-xl object-cover dark:border dark:border-zinc-800 md:h-96"
         alt="Glenn Visser"
       />
       <Icon

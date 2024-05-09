@@ -13,9 +13,11 @@
     "lint:check": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-select": "2.0.0",
     "@radix-ui/react-tooltip": "1.0.7",
     "cmdk": "1.0.0",
     "next": "14.2.3",
+    "next-themes": "0.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-intersection-observer": "9.10.2",

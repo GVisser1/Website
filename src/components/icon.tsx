@@ -2,6 +2,7 @@ import clsx from "clsx";
 
 export type IconName =
   | "ArrowRightIcon"
+  | "CheckIcon"
   | "ChevronDownIcon"
   | "ChevronUpIcon"
   | "MusicalNoteIcon"
@@ -24,6 +25,7 @@ const Icon = ({ name, className, overrideSize = false }: IconProps): JSX.Element
   const classes = clsx(!overrideSize && "size-6", className);
   const icons = {
     ArrowRightIcon: <HeroIcon className={classes} d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />,
+    CheckIcon: <HeroIcon className={classes} d="M5 13l4 4L19 7" />,
     ChevronDownIcon: <HeroIcon className={classes} d="M19 9l-7 7-7-7" />,
     ChevronUpIcon: <HeroIcon className={classes} d="M5 15l7-7 7 7" />,
     MusicalNoteIcon: <MusicalNoteIcon className={classes} />,

@@ -16,8 +16,8 @@ const Text = ({ size = "base", weight, color = "dark", className, children }: Te
     size === "sm" && "text-sm",
     size === "base" && "text-base",
     size === "lg" && "text-2xl",
-    color === "medium" && "text-gray-600",
-    color === "dark" && "text-gray-700",
+    color === "medium" && "text-gray-600 dark:text-gray-400",
+    color === "dark" && "text-gray-700 dark:text-gray-200",
     className,
   );
 

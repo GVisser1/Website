@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import NavBar from "../components/navBar";
 import Footer from "../components/footer";
 import type { ReactNode } from "react";
+import { ThemeProvider } from "@/providers/themeProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--inter" });
 
@@ -24,10 +25,16 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: { children: ReactNode }): JSX.Element => (
   <html lang="en">
-    <body className={`${inter.variable} relative mx-auto bg-white px-4 font-inter text-gray-700 md:px-8`}>
-      <NavBar />
-      {children}
-      <Footer />
+    <body className="bg-zinc-50 transition-colors dark:bg-black">
+      <div
+        className={`${inter.variable} relative mx-auto  max-w-screen-xl bg-white font-inter transition-colors dark:bg-zinc-900`}
+      >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <NavBar />
+          <div className="px-4 md:px-8">{children}</div>
+          <Footer />
+        </ThemeProvider>
+      </div>
     </body>
   </html>
 );
