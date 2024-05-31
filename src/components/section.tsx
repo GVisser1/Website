@@ -11,7 +11,7 @@ export type SectionProps = {
 const Section = forwardRef<HTMLElement, SectionProps>(
   ({ id, size = "md", className, children }: SectionProps, ref): JSX.Element => {
     const classes = clsx(
-      "mx-auto py-20",
+      "mx-auto py-24",
       {
         "px-8 max-w-screen-xl": size === "lg",
         "px-6 max-w-screen-lg": size === "md",

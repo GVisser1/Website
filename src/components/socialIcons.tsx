@@ -73,7 +73,7 @@ const Icons = ({ className, options }: IconsProps): JSX.Element => (
               <Icon className={`size-7 rounded-full ${option.bgColor}`} name={option.icon} />
             </a>
           </TooltipTrigger>
-          <TooltipContent>{option.id}</TooltipContent>
+          <TooltipContent side="bottom">{option.id}</TooltipContent>
         </Tooltip>
       ))}
     </TooltipProvider>

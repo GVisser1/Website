@@ -2,7 +2,7 @@ import clsx from "clsx";
 import type { ReactNode } from "react";
 
 export type TextProps = {
-  size?: "sm" | "base" | "lg";
+  size?: "sm" | "base" | "lg" | "2xl";
   weight?: "semibold";
   color?: "medium" | "dark";
   className?: string;
@@ -12,10 +12,11 @@ export type TextProps = {
 const Text = ({ size = "base", weight, color = "dark", className, children }: TextProps): JSX.Element => {
   const classes = clsx(
     "whitespace-pre-line",
-    weight === "semibold" && "font-semibold",
+    weight === "semibold" && "font-semibold ",
     size === "sm" && "text-sm",
     size === "base" && "text-base",
-    size === "lg" && "text-2xl",
+    size === "lg" && "text-lg",
+    size === "2xl" && "text-2xl",
     color === "medium" && "text-gray-600 dark:text-gray-400",
     color === "dark" && "text-gray-700 dark:text-gray-200",
     className,

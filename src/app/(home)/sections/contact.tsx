@@ -1,6 +1,6 @@
-import Button from "../../../components/button";
-import Section from "../../../components/section";
-import Title from "../../../components/title";
+import Button from "@/components/button";
+import Section from "@/components/section";
+import Title from "@/components/title";
 import Input from "@/components/input";
 
 const Contact = (): JSX.Element => (
