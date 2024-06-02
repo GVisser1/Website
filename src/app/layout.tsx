@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/styles/globals.css";
-import NavBar from "@/components/navBar";
-import Footer from "@/components/footer";
 import type { ReactNode } from "react";
 import { ThemeProvider } from "@/providers/themeProvider";
+import { Layout } from "@/components/layout";
+import type { Metadata } from "next/types";
 
 const inter = Inter({ subsets: ["latin"], variable: "--inter" });
 
@@ -25,14 +24,10 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: { children: ReactNode }): JSX.Element => (
   <html lang="en" className="scroll-smooth">
-    <body className="bg-zinc-50 transition-colors dark:bg-zinc-950">
+    <body className="bg-zinc-50 dark:bg-zinc-950 lg:bg-zinc-100">
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <div
-          className={`${inter.variable} relative mx-auto max-w-screen-xl bg-white font-inter transition-colors dark:bg-zinc-900`}
-        >
-          <NavBar />
-          <div className="px-4 lg:px-8">{children}</div>
-          <Footer />
+        <div className={`${inter.variable} relative flex bg-white font-inter dark:bg-zinc-900`}>
+          <Layout>{children}</Layout>
         </div>
       </ThemeProvider>
     </body>

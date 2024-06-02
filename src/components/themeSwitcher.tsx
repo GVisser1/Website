@@ -1,6 +1,7 @@
 "use client";
 
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select";
+import Icon from "@/components/icon";
+import { Listbox, ListboxLabel, ListboxOption } from "@/components/listbox";
 import { useTheme } from "next-themes";
 
 const ThemeSwitcher = (): JSX.Element | null => {
@@ -9,16 +10,20 @@ const ThemeSwitcher = (): JSX.Element | null => {
   const handleOnChange = (value: string): void => setTheme(value);
 
   return (
-    <Select value={theme} onValueChange={handleOnChange}>
-      <SelectTrigger aria-label="Select theme">
-        <SelectValue placeholder="System" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="light">Light</SelectItem>
-        <SelectItem value="dark">Dark</SelectItem>
-        <SelectItem value="system">System</SelectItem>
-      </SelectContent>
-    </Select>
+    <Listbox aria-label="Theme" name="theme" defaultValue={theme} onChange={handleOnChange}>
+      <ListboxOption value="light">
+        <Icon className="size-4" overrideSize name="SunIcon" />
+        <ListboxLabel>Light</ListboxLabel>
+      </ListboxOption>
+      <ListboxOption value="dark">
+        <Icon className="size-4" overrideSize name="MoonIcon" />
+        <ListboxLabel>Dark</ListboxLabel>
+      </ListboxOption>
+      <ListboxOption value="system">
+        <Icon className="size-4" overrideSize name="ComputerIcon" />
+        <ListboxLabel>System</ListboxLabel>
+      </ListboxOption>
+    </Listbox>
   );
 };
 
