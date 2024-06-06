@@ -4,15 +4,28 @@ import * as Headless from "@headlessui/react";
 import clsx from "clsx";
 import { LayoutGroup, motion } from "framer-motion";
 import type { ComponentPropsWithoutRef, ForwardedRef, ReactNode } from "react";
-import React, { Fragment, forwardRef, useId } from "react";
+import React, { Fragment, forwardRef, useEffect, useId, useState } from "react";
 import { Link } from "@/components/link";
 import { TouchTarget } from "@/components/touchTarget";
 import Logo from "@/components/logo";
 import { usePathname } from "next/navigation";
 import Icon from "@/components/icon";
+import SearchDialog from "./dialog/searchDialog";
 
 export const Sidebar = (): JSX.Element => {
   const pathname = usePathname();
+  const [showSearchDialog, setShowSearchDialog] = useState(false);
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent): void => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setShowSearchDialog((open) => !open);
+      }
+    };
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
 
   return (
     <nav className="flex h-full flex-col overflow-y-hidden">
@@ -20,6 +33,19 @@ export const Sidebar = (): JSX.Element => {
         <SidebarItem href="/">
           <Logo />
         </SidebarItem>
+        <SidebarSection>
+          <SidebarItem current={false} onClick={() => setShowSearchDialog(true)}>
+            <Icon name="MagnifyingGlassIcon" />
+            <SidebarLabel>Search</SidebarLabel>
+            <kbd className=" ml-auto font-sans font-semibold text-zinc-500 group-hover:visible group-data-[focus]:visible dark:text-zinc-400">
+              <abbr title="Command" className="no-underline">
+                ⌘
+              </abbr>{" "}
+              K
+            </kbd>
+            <SearchDialog open={showSearchDialog} onClose={() => setShowSearchDialog(false)} />
+          </SidebarItem>
+        </SidebarSection>
       </SidebarHeader>
       <SidebarBody>
         <SidebarSection>
@@ -107,28 +133,27 @@ const SidebarSpacer = ({ className, ...props }: ComponentPropsWithoutRef<"div">)
 //   </h3>
 // );
 
+type SidebarItemProps = {
+  current?: boolean;
+  className?: string;
+  children: ReactNode;
+} & (Omit<Headless.ButtonProps, "className"> | Omit<ComponentPropsWithoutRef<typeof Link>, "type" | "className">);
 const SidebarItem = forwardRef(
   (
-    {
-      current,
-      className,
-      children,
-      ...props
-    }: { current?: boolean; className?: string; children: ReactNode } & (
-      | Omit<Headless.ButtonProps, "className">
-      | Omit<ComponentPropsWithoutRef<typeof Link>, "type" | "className">
-    ),
+    { current, className, children, ...props }: SidebarItemProps,
     ref: ForwardedRef<HTMLAnchorElement | HTMLButtonElement>
   ): JSX.Element => {
     const classes = clsx(
       // Base
       "flex w-full items-center gap-3 rounded-lg px-2 py-2.5 text-left text-base/6 font-medium text-zinc-700 sm:py-2 sm:text-sm/5",
+      // Focus
+      "data-[focus]:outline",
       // Hover
       "data-[hover]:bg-zinc-950/5 data-[slot=icon]:*:data-[hover]:fill-zinc-950",
       // Current
-      "data-[current]:text-zinc-950 data-[slot=icon]:*:data-[current]:fill-zinc-950",
+      "data-[current=true]:text-zinc-950 data-[slot=icon]:*:data-[current=true]:fill-zinc-950",
       // Dark mode
-      "dark:text-zinc-400 dark:data-[current]:text-white dark:data-[slot=icon]:*:fill-zinc-400",
+      "dark:text-zinc-400 dark:data-[current=true]:text-white dark:data-[slot=icon]:*:fill-zinc-400",
       "dark:data-[hover]:bg-white/5 dark:data-[slot=icon]:*:data-[hover]:fill-white"
     );
 
@@ -149,7 +174,7 @@ const SidebarItem = forwardRef(
         ) : (
           <Headless.Button
             {...props}
-            className={clsx("cursor-default", classes)}
+            className={clsx("group cursor-default", classes)}
             data-current={current ? "true" : "false"}
             ref={ref}
           >

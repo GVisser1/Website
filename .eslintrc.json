@@ -29,6 +29,7 @@
   "parserOptions": { "project": "./tsconfig.json" },
   "plugins": ["@typescript-eslint", "jsx-a11y", "prefer-arrow-functions"],
   "rules": {
+    "jsx-a11y/no-autofocus": [2, { "ignoreNonDOM": true }],
     "import/no-unresolved": [2, { "caseSensitive": false }],
     "import/namespace": ["error", { "allowComputed": true }],
     "@typescript-eslint/explicit-function-return-type": "error",
