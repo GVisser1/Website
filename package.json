@@ -22,8 +22,8 @@
     "sharp": "0.33.4"
   },
   "devDependencies": {
-    "@axe-core/playwright": "4.9.0",
-    "@playwright/test": "1.44.1",
+    "@axe-core/playwright": "4.9.1",
+    "@playwright/test": "1.45.1",
     "@tailwindcss/typography": "0.5.13",
     "@types/node": "20.11.24",
     "@types/react": "18.2.61",
