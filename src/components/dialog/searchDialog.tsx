@@ -23,7 +23,7 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
 
   const handleOnClose = (): void => {
     onClose();
-    setQuery("");
+    setTimeout(() => setQuery(""), 200);
   };
 
   return (
