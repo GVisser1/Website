@@ -1,27 +1,26 @@
 import clsx from "clsx";
 import { isEven } from "@/utils/numberUtil";
-import Badge from "@/components/badge";
+import Pill from "@/components/pill";
 import { getTimeFrame } from "@/utils/dateUtil";
-import { Header } from "@/components/header";
+import Header from "@/components/header";
 import type { Metadata } from "next/types";
 
 export const metadata: Metadata = {
   title: "Timeline",
+  description: "A chronological overview of my education and work experience",
 };
 
 const TimelinePage = (): JSX.Element => (
   <>
     <Header title="Timeline" description="A chronological overview of my education and work experience" />
 
-    <div className="relative">
-      <div className="relative overflow-hidden">
-        <div className="absolute left-2 h-full w-0.5 bg-zinc-200 shadow-md dark:bg-zinc-700 sm:inset-x-0 sm:mx-auto" />
-        <ol>
-          {timeLineData.map((item, i) => (
-            <TimeLineItem key={item.timeFrame} item={item} align={isEven(i) ? "right" : "left"} />
-          ))}
-        </ol>
-      </div>
+    <div className="relative overflow-hidden">
+      <div className="absolute left-2 h-full w-0.5 bg-zinc-200 shadow-md dark:bg-zinc-700 sm:inset-x-0 sm:mx-auto" />
+      <ol>
+        {timeLineData.map((item, i) => (
+          <TimeLineItem key={item.timeFrame} item={item} align={isEven(i) ? "right" : "left"} />
+        ))}
+      </ol>
     </div>
   </>
 );
@@ -38,7 +37,7 @@ const TimeLineItem = ({ item, align }: TimeLineItemProps): JSX.Element => (
       align === "right" ? "sm:text-end" : "sm:ml-auto sm:text-start"
     )}
   >
-    <Badge label={item.timeFrame} />
+    <Pill colour="green" label={item.timeFrame} />
     <div className="mt-1">
       <h2 className="text-lg font-semibold text-zinc-700 dark:text-white">{item.title}</h2>
       <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">{item.subTitle}</p>

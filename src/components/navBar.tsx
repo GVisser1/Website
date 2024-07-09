@@ -6,7 +6,7 @@ import { LayoutGroup, motion } from "framer-motion";
 import type { ComponentPropsWithoutRef, ForwardedRef, ReactNode } from "react";
 import React, { forwardRef, useId } from "react";
 import { TouchTarget } from "@/components/touchTarget";
-import { Link } from "@/components/link";
+import Link from "@/components/link";
 
 export const Navbar = ({ className, ...props }: ComponentPropsWithoutRef<"nav">): JSX.Element => (
   <nav {...props} className={clsx(className, "flex flex-1 items-center gap-4 py-2.5")} />

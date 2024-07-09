@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { LayoutGroup, motion } from "framer-motion";
 import type { ComponentPropsWithoutRef, ForwardedRef, ReactNode } from "react";
 import React, { Fragment, forwardRef, useEffect, useId, useState } from "react";
-import { Link } from "@/components/link";
+import Link from "@/components/link";
 import { TouchTarget } from "@/components/touchTarget";
 import Logo from "@/components/logo";
 import { usePathname } from "next/navigation";

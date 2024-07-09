@@ -2,19 +2,19 @@ import Image from "next/image";
 import beach from "@/images/beach.webp";
 import persona5 from "@/images/persona5.webp";
 import fleetFoxes from "@/images/fleetFoxes.webp";
-import { Header } from "@/components/header";
+import Header from "@/components/header";
 import { InlineLink } from "@/components/link";
 import { Divider } from "@/components/divider";
 import type { Metadata } from "next/types";
 
 export const metadata: Metadata = {
   title: "About me",
+  description: "Learn more about me and my interests, hobbies, and professional life",
 };
 
 const AboutPage = (): JSX.Element => (
   <>
     <Header title="About me" description="Learn more about me and my interests" />
-
     <div className="prose dark:prose-dark">
       <Image src={beach} alt="Me at the beach" priority className="max-h-96 w-full rounded-2xl object-cover" />
       <p>
@@ -98,8 +98,9 @@ const AboutPage = (): JSX.Element => (
       <p>
         Feel free to reach out if you want to chat about music, movies, gaming, programming, or anything else that
         sparks your interest. You can find me on{" "}
-        <InlineLink href="https://instagram.com/instaglenn_">Instagram</InlineLink> and{" "}
-        <InlineLink href="https://linkedin.com/in/g-visser">LinkedIn</InlineLink>.
+        <InlineLink href="https://instagram.com/instaglenn_">Instagram</InlineLink>,{" "}
+        <InlineLink href="https://linkedin.com/in/g-visser">LinkedIn</InlineLink>, and <b>Discord</b> with the username{" "}
+        <b>gvisser</b>.
       </p>
     </div>
   </>

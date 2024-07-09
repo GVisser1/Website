@@ -24,7 +24,7 @@ const MobileSidebar = ({
   children,
 }: PropsWithChildren<{ open: boolean; close: () => void }>): JSX.Element => (
   <Headless.Transition show={open}>
-    <Headless.Dialog onClose={close} className="lg:hidden">
+    <Headless.Dialog onClose={close} aria-label="Navigation" className="lg:hidden">
       <Headless.TransitionChild
         enter="ease-out duration-300"
         enterFrom="opacity-0"
@@ -71,7 +71,7 @@ export const Layout = ({ children }: PropsWithChildren): JSX.Element => {
         <Sidebar />
       </MobileSidebar>
 
-      <header className="sticky top-0 flex items-center bg-white px-4 dark:bg-zinc-900 lg:hidden dark:lg:bg-zinc-950">
+      <header className="sticky top-0 z-10 flex items-center bg-white px-4 dark:bg-zinc-900 lg:hidden dark:lg:bg-zinc-950">
         <div className="py-2.5">
           <NavbarItem onClick={() => setShowSidebar(true)} aria-label="Open navigation">
             <OpenMenuIcon />

@@ -1,9 +1,10 @@
-import { Header } from "@/components/header";
+import Header from "@/components/header";
 import ThemeSwitcher from "@/components/themeSwitcher";
 import type { Metadata } from "next/types";
 
 export const metadata: Metadata = {
   title: "Settings",
+  description: "Personalize your experience by adjusting the settings to your liking",
 };
 
 const SettingsPage = (): JSX.Element => (
