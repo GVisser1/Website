@@ -4,7 +4,7 @@ import profileImg from "@/images/profile.webp";
 import Icon from "@/components/icon";
 
 const HomePage = (): JSX.Element => (
-  <div className="grid grid-cols-1 justify-between gap-4 md:h-full md:grid-cols-2 md:items-center md:gap-14 xl:gap-20">
+  <div className="h-full justify-between gap-4 md:grid md:grid-cols-2 md:items-center md:gap-14 xl:gap-20">
     <div className="space-y-6">
       <div className="space-y-2">
         <h1 className="text-4xl font-semibold text-zinc-700 dark:text-white sm:text-5xl">
