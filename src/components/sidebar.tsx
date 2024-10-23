@@ -18,9 +18,9 @@ export const Sidebar = (): JSX.Element => {
 
   useEffect(() => {
     const down = (e: KeyboardEvent): void => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey) && !showSearchDialog) {
         e.preventDefault();
-        setShowSearchDialog((open) => !open);
+        setShowSearchDialog(true);
       }
     };
     document.addEventListener("keydown", down);

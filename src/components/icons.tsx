@@ -23,6 +23,12 @@ export const CalendarIcon = (props: IconProps): JSX.Element => (
   </svg>
 );
 
+export const CloseMenuIcon = (props: IconProps): JSX.Element => (
+  <svg data-slot="icon" viewBox="0 0 20 20" {...props}>
+    <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+  </svg>
+);
+
 export const CogIcon = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
@@ -90,6 +96,12 @@ export const MusicalNoteIcon = (props: IconProps): JSX.Element => (
       d="M17.721 1.599a.75.75 0 0 1 .279.583v11.29a2.25 2.25 0 0 1-1.774 2.2l-2.041.44a2.216 2.216 0 0 1-.938-4.332l2.662-.577a.75.75 0 0 0 .591-.733V6.112l-8 1.73v7.684a2.25 2.25 0 0 1-1.774 2.2l-2.042.44a2.216 2.216 0 1 1-.935-4.331l2.659-.573A.75.75 0 0 0 7 12.529V4.236a.75.75 0 0 1 .591-.733l9.5-2.054a.75.75 0 0 1 .63.15Z"
       clipRule="evenodd"
     />
+  </svg>
+);
+
+export const OpenMenuIcon = (props: IconProps): JSX.Element => (
+  <svg data-slot="icon" viewBox="0 0 20 20" {...props}>
+    <path d="M2 6.75C2 6.33579 2.33579 6 2.75 6H17.25C17.6642 6 18 6.33579 18 6.75C18 7.16421 17.6642 7.5 17.25 7.5H2.75C2.33579 7.5 2 7.16421 2 6.75ZM2 13.25C2 12.8358 2.33579 12.5 2.75 12.5H17.25C17.6642 12.5 18 12.8358 18 13.25C18 13.6642 17.6642 14 17.25 14H2.75C2.33579 14 2 13.6642 2 13.25Z" />
   </svg>
 );
 

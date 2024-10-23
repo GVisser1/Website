@@ -1,5 +1,7 @@
-import * as Headless from "@headlessui/react";
+import type { DialogProps as HeadlessDialogProps } from "@headlessui/react";
+import { Dialog as HeadlessDialog, DialogPanel, Transition, TransitionChild } from "@headlessui/react";
 import clsx from "clsx";
+import type { ReactNode } from "react";
 
 const sizes = {
   xs: "sm:max-w-xs",
@@ -13,15 +15,15 @@ const sizes = {
   "5xl": "sm:max-w-5xl",
 };
 
-type DialogProps = { size?: keyof typeof sizes; className?: string; children: React.ReactNode } & Omit<
-  Headless.DialogProps,
+type DialogProps = { size?: keyof typeof sizes; className?: string; children: ReactNode } & Omit<
+  HeadlessDialogProps,
   "className"
 >;
 
 const Dialog = ({ size = "lg", open, onClose, children, className, ...props }: DialogProps): JSX.Element => (
-  <Headless.Transition show={open} appear {...props}>
-    <Headless.Dialog onClose={onClose}>
-      <Headless.TransitionChild
+  <Transition show={open} appear {...props}>
+    <HeadlessDialog onClose={onClose}>
+      <TransitionChild
         enter="ease-out duration-100"
         enterFrom="opacity-0"
         enterTo="opacity-100"
@@ -30,11 +32,11 @@ const Dialog = ({ size = "lg", open, onClose, children, className, ...props }: D
         leaveTo="opacity-0"
       >
         <div className="fixed inset-0 flex w-screen justify-center overflow-y-auto bg-zinc-950/25 p-2 focus:outline-none dark:bg-zinc-950/50 sm:px-6 sm:py-8 lg:px-8 lg:py-16" />
-      </Headless.TransitionChild>
+      </TransitionChild>
 
       <div className="fixed inset-0 w-screen pt-6 sm:pt-0">
         <div className="grid min-h-full grid-rows-[1fr_auto] justify-items-center sm:grid-rows-[1fr_auto_3fr] sm:p-4">
-          <Headless.TransitionChild
+          <TransitionChild
             enter="ease-out duration-100"
             enterFrom="opacity-0 translate-y-12 sm:translate-y-0 sm:scale-95"
             enterTo="opacity-100 translate-y-0 sm:scale-100"
@@ -42,7 +44,7 @@ const Dialog = ({ size = "lg", open, onClose, children, className, ...props }: D
             leaveFrom="opacity-100 translate-y-0"
             leaveTo="opacity-0 translate-y-12 sm:translate-y-0"
           >
-            <Headless.DialogPanel
+            <DialogPanel
               className={clsx(
                 className,
                 sizes[size],
@@ -50,12 +52,12 @@ const Dialog = ({ size = "lg", open, onClose, children, className, ...props }: D
               )}
             >
               {children}
-            </Headless.DialogPanel>
-          </Headless.TransitionChild>
+            </DialogPanel>
+          </TransitionChild>
         </div>
       </div>
-    </Headless.Dialog>
-  </Headless.Transition>
+    </HeadlessDialog>
+  </Transition>
 );
 
 export default Dialog;
