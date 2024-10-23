@@ -6,11 +6,11 @@ import Icon from "@/components/icon";
 const HomePage = (): JSX.Element => (
   <div className="h-full justify-between gap-4 md:grid md:grid-cols-2 md:items-center md:gap-14 xl:gap-20">
     <div className="space-y-6">
-      <div className="space-y-2">
+      <header className="space-y-2">
         <h1 className="text-4xl font-semibold text-zinc-700 dark:text-white sm:text-5xl">
           <span className="block text-2xl font-semibold text-blue-600">Hi, my name is</span> Glenn Visser
         </h1>
-      </div>
+      </header>
       <p className="text-lg text-zinc-700 dark:text-zinc-400">
         I am a {getAge()}-year-old Dutch QA Engineer with a big passion for consistency. I am also a huge nerd when it
         comes to music, movies, and video games.
