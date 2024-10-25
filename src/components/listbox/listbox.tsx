@@ -88,7 +88,7 @@ export const Listbox = <T,>({
           // Popover background
           "bg-white/75 backdrop-blur-xl dark:bg-zinc-800/75",
           // Shadows
-          "shadow-lg ring-1 ring-zinc-950/10 dark:ring-inset dark:ring-white/10",
+          "shadow-lg ring-1 ring-zinc-950/10 dark:ring-inset dark:ring-white/10"
         )}
       >
         {options}
@@ -111,7 +111,7 @@ export const ListboxOption = <T,>({
     // Icons
     "[&>[data-slot=icon]]:size-5 [&>[data-slot=icon]]:shrink-0 sm:[&>[data-slot=icon]]:size-4",
     "[&>[data-slot=icon]]:text-zinc-500 [&>[data-slot=icon]]:group-data-[focus]/option:text-white [&>[data-slot=icon]]:dark:text-zinc-400",
-    "forced-colors:[&>[data-slot=icon]]:text-[CanvasText] forced-colors:[&>[data-slot=icon]]:group-data-[focus]/option:text-[Canvas]",
+    "forced-colors:[&>[data-slot=icon]]:text-[CanvasText] forced-colors:[&>[data-slot=icon]]:group-data-[focus]/option:text-[Canvas]"
   );
 
   return (
@@ -131,7 +131,7 @@ export const ListboxOption = <T,>({
               // Focus
               "outline-none data-[focus]:bg-blue-500 data-[focus]:text-white",
               // Forced colors mode
-              "forced-color-adjust-none forced-colors:data-[focus]:bg-[Highlight] forced-colors:data-[focus]:text-[HighlightText]",
+              "forced-color-adjust-none forced-colors:data-[focus]:bg-[Highlight] forced-colors:data-[focus]:text-[HighlightText]"
             )}
           >
             <svg
@@ -163,7 +163,7 @@ export const ListboxDescription = ({
     {...props}
     className={clsx(
       className,
-      "flex flex-1 overflow-hidden text-zinc-500 before:w-2 before:min-w-0 before:shrink group-data-[focus]/option:text-white dark:text-zinc-400",
+      "flex flex-1 overflow-hidden text-zinc-500 before:w-2 before:min-w-0 before:shrink group-data-[focus]/option:text-white dark:text-zinc-400"
     )}
   >
     <span className="flex-1 truncate">{children}</span>
