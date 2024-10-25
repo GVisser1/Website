@@ -33,7 +33,7 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
     } else {
       setSearchResults(pages);
     }
-    setSelectedIndex(0);
+    setSelectedIndex(-1);
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {

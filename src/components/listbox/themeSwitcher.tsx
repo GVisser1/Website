@@ -1,7 +1,7 @@
 "use client";
 
 import Icon from "@/components/icon";
-import { Listbox, ListboxLabel, ListboxOption } from "@/components/listbox";
+import { Listbox, ListboxLabel, ListboxOption } from "@/components/listbox/listbox";
 import { useTheme } from "next-themes";
 
 const ThemeSwitcher = (): JSX.Element | null => {

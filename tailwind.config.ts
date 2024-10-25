@@ -8,7 +8,9 @@ const config: Config = {
   theme: {
     fontFamily: {
       inter: ["var(--inter)", ...fontFamily.sans],
+      mono: fontFamily.mono,
       sans: fontFamily.sans,
+      serif: fontFamily.serif,
     },
     outlineColor: {
       DEFAULT: "#3b82f6",

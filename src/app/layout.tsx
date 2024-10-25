@@ -1,11 +1,8 @@
-import { Inter } from "next/font/google";
 import "@/styles/globals.css";
-import type { ReactNode } from "react";
-import { ThemeProvider } from "@/providers/themeProvider";
+import { type ReactNode } from "react";
 import { Layout } from "@/components/layout";
 import type { Metadata } from "next/types";
-
-const inter = Inter({ subsets: ["latin"], variable: "--inter" });
+import { Inter } from "next/font/google";
 
 export const metadata: Metadata = {
   title: {
@@ -22,14 +19,12 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
+const inter = Inter({ subsets: ["latin"], variable: "--inter" });
+
 const RootLayout = ({ children }: { children: ReactNode }): JSX.Element => (
   <html lang="en" className="scroll-smooth">
-    <body className="bg-zinc-50 dark:bg-zinc-950 lg:bg-zinc-100">
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <div className={`${inter.variable} relative flex bg-white font-inter dark:bg-zinc-900`}>
-          <Layout>{children}</Layout>
-        </div>
-      </ThemeProvider>
+    <body className={`${inter.variable} bg-zinc-50 dark:bg-zinc-950 lg:bg-zinc-100`}>
+      <Layout>{children}</Layout>
     </body>
   </html>
 );
