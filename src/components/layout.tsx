@@ -35,7 +35,7 @@ const MobileSidebar = ({
         leaveFrom="translate-x-0"
         leaveTo="-translate-x-full"
       >
-        <DialogPanel className="fixed inset-y-0 w-full max-w-80 p-2 transition">
+        <DialogPanel className="fixed inset-y-0 left-0 w-full max-w-80 p-2 transition">
           <div className="flex h-full flex-col rounded-lg bg-white shadow-sm ring-1 ring-zinc-950/5 dark:bg-zinc-900 dark:ring-white/10">
             <div className="-mb-3 px-4 pt-3">
               <CloseButton as={NavbarItem} aria-label="Close navigation">
