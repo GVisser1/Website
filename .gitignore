@@ -10,3 +10,5 @@ next-env.d.ts
 .env.local
 /blob-report/
 /playwright-report/
+
+*storybook.log

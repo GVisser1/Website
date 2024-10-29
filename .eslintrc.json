@@ -9,7 +9,8 @@
     "plugin:jsx-a11y/recommended",
     "plugin:tailwindcss/recommended",
     "plugin:import/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:storybook/recommended"
   ],
   "overrides": [
     {
