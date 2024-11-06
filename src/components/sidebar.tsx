@@ -24,7 +24,7 @@ export const Sidebar = (): JSX.Element => {
       }
     };
     document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
+    return (): void => document.removeEventListener("keydown", down);
   }, []);
 
   return (
