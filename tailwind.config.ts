@@ -3,7 +3,7 @@ import type { Config } from "tailwindcss";
 import typographyPlugin from "@tailwindcss/typography";
 
 const config: Config = {
-  content: ["./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   darkMode: "class",
   theme: {
     fontFamily: {
@@ -22,7 +22,7 @@ const config: Config = {
     extend: {
       screens: {
         xs: "480px",
-        "2xs": "320px",
+        "2xs": "400px",
       },
       typography: {
         DEFAULT: {
@@ -73,6 +73,9 @@ const config: Config = {
             },
           },
         },
+      },
+      width: {
+        "42": "10.5rem",
       },
     },
   },

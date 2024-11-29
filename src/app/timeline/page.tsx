@@ -39,7 +39,7 @@ const TimeLineItem = ({ item, align }: TimeLineItemProps): JSX.Element => (
   >
     <Pill colour="green" label={item.timeFrame} />
     <div className="mt-1">
-      <h2 className="text-lg font-semibold text-zinc-700 dark:text-white">{item.title}</h2>
+      <h2 className="text-lg font-semibold text-zinc-700 dark:text-zinc-200">{item.title}</h2>
       <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">{item.subTitle}</p>
     </div>
     <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{item.description}</p>

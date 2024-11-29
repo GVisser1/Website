@@ -7,7 +7,7 @@ const HomePage = (): JSX.Element => (
   <div className="h-full justify-between gap-4 md:grid md:grid-cols-2 md:items-center md:gap-14 xl:gap-20">
     <div className="space-y-6">
       <header className="space-y-2">
-        <h1 className="text-4xl font-semibold text-zinc-700 dark:text-white sm:text-5xl">
+        <h1 className="text-4xl font-semibold text-zinc-700 dark:text-zinc-200 sm:text-5xl">
           <span className="block text-2xl font-semibold text-blue-600">Hi, my name is</span> Glenn Visser
         </h1>
       </header>
