@@ -5,12 +5,13 @@ import clsx from "clsx";
 import { LayoutGroup, motion } from "framer-motion";
 import type { ComponentPropsWithoutRef, ForwardedRef, ReactNode } from "react";
 import React, { Fragment, forwardRef, useEffect, useId, useState } from "react";
-import Link from "@/components/link";
 import { TouchTarget } from "@/components/touchTarget";
 import Logo from "@/components/logo";
 import { usePathname } from "next/navigation";
 import Icon from "@/components/icon";
 import SearchDialog from "./dialog/searchDialog";
+import Link from "next/link";
+import { Divider } from "./divider";
 
 export const Sidebar = (): JSX.Element => {
   const pathname = usePathname();
@@ -25,7 +26,7 @@ export const Sidebar = (): JSX.Element => {
     };
     document.addEventListener("keydown", down);
     return (): void => document.removeEventListener("keydown", down);
-  }, []);
+  }, [showSearchDialog]);
 
   return (
     <nav className="flex h-full flex-col overflow-y-hidden">
@@ -65,6 +66,12 @@ export const Sidebar = (): JSX.Element => {
             <Icon name="CogIcon" />
             <SidebarLabel>Settings</SidebarLabel>
           </SidebarItem>
+          <Divider className="my-4" />
+          <SidebarLabel className="text-sm font-medium text-zinc-700 dark:text-zinc-200">Projects</SidebarLabel>
+          <SidebarItem href="/projects/pokemon" current={pathname.startsWith("/projects/pokemon")}>
+            <Icon name="PokéBallIcon" />
+            <SidebarLabel>Pokémon</SidebarLabel>
+          </SidebarItem>
         </SidebarSection>
         <SidebarSpacer />
         <SidebarSection>
@@ -75,7 +82,7 @@ export const Sidebar = (): JSX.Element => {
         </SidebarSection>
       </SidebarBody>
       <SidebarFooter className="min-w-0 shrink-0">
-        <span className="block truncate text-xs/5 font-normal text-zinc-600 dark:text-zinc-400">
+        <span className="block truncate text-xs/5 font-normal text-zinc-500 dark:text-zinc-400">
           {`© ${new Date().getFullYear()} Glenn Visser`}
         </span>
       </SidebarFooter>
@@ -88,7 +95,7 @@ const SidebarHeader = ({ className, ...props }: ComponentPropsWithoutRef<"div">)
     {...props}
     className={clsx(
       className,
-      "flex flex-col border-b border-zinc-950/5 p-4 dark:border-white/5 [&>[data-slot=section]+[data-slot=section]]:mt-2.5"
+      "flex flex-col border-b border-zinc-950/5 p-4 dark:border-zinc-200/5 [&>[data-slot=section]+[data-slot=section]]:mt-2.5"
     )}
   />
 );
@@ -108,7 +115,7 @@ const SidebarFooter = ({ className, ...props }: ComponentPropsWithoutRef<"div">)
     {...props}
     className={clsx(
       className,
-      "flex flex-col border-t border-zinc-950/5 p-4 dark:border-white/5 [&>[data-slot=section]+[data-slot=section]]:mt-2.5"
+      "flex flex-col border-t border-zinc-950/5 p-4 dark:border-zinc-200/5 [&>[data-slot=section]+[data-slot=section]]:mt-2.5"
     )}
   />
 );
@@ -147,14 +154,14 @@ const SidebarItem = forwardRef(
       // Base
       "flex w-full items-center gap-3 rounded-lg px-2 py-2.5 text-left text-base/6 font-medium text-zinc-700 sm:py-2 sm:text-sm/5",
       // Focus
-      "data-[focus]:outline",
+      "focus-visible:outline",
       // Hover
-      "data-[hover]:bg-zinc-950/5 data-[slot=icon]:*:data-[hover]:fill-zinc-950",
+      "hover:bg-zinc-950/5 data-[slot=icon]:*:data-[hover]:fill-zinc-950",
       // Current
       "data-[current=true]:text-zinc-950 data-[slot=icon]:*:data-[current=true]:fill-zinc-950",
       // Dark mode
       "dark:text-zinc-400 dark:data-[current=true]:text-white dark:data-[slot=icon]:*:fill-zinc-400",
-      "dark:data-[hover]:bg-white/5 dark:data-[slot=icon]:*:data-[hover]:fill-white"
+      "dark:hover:bg-white/5 dark:data-[slot=icon]:*:data-[hover]:fill-white"
     );
 
     return (

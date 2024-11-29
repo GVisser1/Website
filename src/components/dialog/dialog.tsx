@@ -2,6 +2,7 @@ import type { DialogProps as HeadlessDialogProps } from "@headlessui/react";
 import { Dialog as HeadlessDialog, DialogPanel, Transition, TransitionChild } from "@headlessui/react";
 import clsx from "clsx";
 import type { ReactNode } from "react";
+import Icon from "../icon";
 
 const sizes = {
   xs: "sm:max-w-xs",
@@ -15,12 +16,14 @@ const sizes = {
   "5xl": "sm:max-w-5xl",
 };
 
-type DialogProps = { size?: keyof typeof sizes; className?: string; children: ReactNode } & Omit<
-  HeadlessDialogProps,
-  "className"
->;
+type DialogProps = {
+  title: { value: string; capitalize?: boolean };
+  size?: keyof typeof sizes;
+  className?: string;
+  children: ReactNode;
+} & Omit<HeadlessDialogProps, "className" | "title">;
 
-const Dialog = ({ size = "lg", open, onClose, children, className, ...props }: DialogProps): JSX.Element => (
+const Dialog = ({ title, size = "lg", open, onClose, children, className, ...props }: DialogProps): JSX.Element => (
   <Transition show={open} appear {...props}>
     <HeadlessDialog onClose={onClose}>
       <TransitionChild
@@ -48,10 +51,29 @@ const Dialog = ({ size = "lg", open, onClose, children, className, ...props }: D
               className={clsx(
                 className,
                 sizes[size],
-                "row-start-2 w-full min-w-0 rounded-t-3xl bg-white p-[--gutter] shadow-lg ring-1 ring-zinc-950/10 [--gutter:theme(spacing.8)] dark:bg-zinc-900 dark:ring-white/10 sm:mb-auto sm:rounded-2xl forced-colors:outline"
+                "row-start-2 w-full min-w-0 rounded-t-3xl bg-white shadow-lg ring-1 ring-zinc-950/10 [--gutter:theme(spacing.8)] dark:bg-zinc-900 dark:ring-white/10 sm:mb-auto sm:rounded-2xl forced-colors:outline"
               )}
             >
-              {children}
+              <div className="flex items-center justify-between px-5 pt-5">
+                <h1
+                  className={clsx(
+                    "truncate text-xl font-semibold text-zinc-700 dark:text-zinc-200",
+                    title.capitalize && "capitalize"
+                  )}
+                >
+                  {title.value}
+                </h1>
+
+                <button
+                  onClick={() => onClose(true)}
+                  aria-label="Close"
+                  title="Close"
+                  className="flex cursor-default items-center justify-center rounded-lg p-2 hover:bg-zinc-100 active:bg-zinc-200 dark:hover:bg-zinc-800 dark:active:bg-zinc-700"
+                >
+                  <Icon name="XIcon" className="size-6" />
+                </button>
+              </div>
+              <div className="max-h-[75vh] w-full overflow-y-auto px-5 pb-5 pt-2">{children}</div>
             </DialogPanel>
           </TransitionChild>
         </div>

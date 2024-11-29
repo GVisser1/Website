@@ -1,16 +1,17 @@
 import Dialog from "@/components/dialog/dialog";
-import { Button } from "@headlessui/react";
 import Link from "next/link";
 import type { ChangeEvent, KeyboardEvent } from "react";
 import { useState } from "react";
 import Icon from "../icon";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
+import { normalizeString } from "@/utils/textUtil";
 
 const pages = [
   { title: "Home", href: "/" },
   { title: "About me", href: "/about" },
   { title: "Timeline", href: "/timeline" },
+  { title: "Pokémon", href: "/projects/pokemon" },
   { title: "Settings", href: "/settings" },
 ];
 
@@ -18,6 +19,7 @@ type SearchDialogProps = {
   open: boolean;
   onClose: () => void;
 };
+
 const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
   const router = useRouter();
   const [query, setQuery] = useState("");
@@ -28,7 +30,7 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
     const value = e.target.value;
     setQuery(value);
     if (value) {
-      const filteredResults = pages.filter((page) => page.title.toLowerCase().includes(value.toLowerCase()));
+      const filteredResults = pages.filter((page) => normalizeString(page.title).includes(normalizeString(value)));
       setSearchResults(filteredResults);
     } else {
       setSearchResults(pages);
@@ -68,18 +70,13 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
   };
 
   return (
-    <Dialog open={open} onClose={handleOnClose} aria-label="Search dialog" className="relative">
-      <div className="mb-2 flex items-center justify-between">
-        <h1 className="text-xl font-semibold text-zinc-700 dark:text-white">Search for a page</h1>
-
-        <Button
-          onClick={handleOnClose}
-          aria-label="Close"
-          className="flex cursor-default items-center justify-center rounded-lg p-2 data-[hover]:bg-zinc-950/5 dark:data-[hover]:bg-white/5"
-        >
-          <Icon name="XIcon" className="size-6" />
-        </Button>
-      </div>
+    <Dialog
+      open={open}
+      onClose={handleOnClose}
+      title={{ value: "Search for a page" }}
+      aria-label="Search dialog"
+      className="relative"
+    >
       <search>
         <label htmlFor="search-input" className="sr-only">
           Search for a page
@@ -95,7 +92,7 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
             type="search"
             value={query}
             placeholder="Search"
-            className="h-10 w-full rounded-md border py-1 pl-10 pr-1 placeholder:text-zinc-500 dark:border-white/10 dark:bg-zinc-800 dark:placeholder:text-zinc-500"
+            className="h-10 w-full rounded-md border py-1 pl-10 pr-1 placeholder:text-zinc-500 dark:border-zinc-200/10 dark:bg-zinc-800 dark:placeholder:text-zinc-500"
             onKeyDown={handleKeyDown}
             onChange={handleChange}
             onBlur={() => setSelectedIndex(-1)}

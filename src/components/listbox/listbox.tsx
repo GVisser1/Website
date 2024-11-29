@@ -25,17 +25,11 @@ export const Listbox = <T,>({
       className={clsx([
         className,
         // Basic layout
-        "group relative block w-full",
-        // Background color + shadow applied to inset pseudo element, so shadow blends with border in light mode
-        "before:absolute before:inset-px before:rounded-[calc(theme(borderRadius.lg)-1px)] before:bg-white before:shadow",
-        // Background color is moved to control and shadow is removed in dark mode so hide `before` pseudo
-        "dark:before:hidden",
-        // Hide default focus styles
-        "focus:outline-none",
-        // Focus ring
-        "after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-inset after:ring-transparent after:data-[focus]:ring-2 after:data-[focus]:ring-blue-500",
+        "relative block h-10 w-full overflow-hidden rounded-lg",
         // Disabled state
         "data-[disabled]:opacity-50 before:data-[disabled]:bg-zinc-950/5 before:data-[disabled]:shadow-none",
+        // Border
+        "border border-zinc-950/10 group-data-[active]:border-zinc-950/20 group-data-[hover]:border-zinc-950/20 dark:border-zinc-200/10 dark:group-data-[active]:border-white/20 dark:group-data-[hover]:border-white/20",
       ])}
     >
       <Headless.ListboxSelectedOption
@@ -44,17 +38,13 @@ export const Listbox = <T,>({
         placeholder={placeholder && <span className="block truncate text-zinc-500">{placeholder}</span>}
         className={clsx([
           // Basic layout
-          "relative block w-full appearance-none rounded-lg py-[calc(theme(spacing[2.5])-1px)] sm:py-[calc(theme(spacing[1.5])-1px)]",
-          // Set minimum height for when no value is selected
-          "min-h-11 sm:min-h-9",
+          "relative flex size-full appearance-none items-center",
           // Horizontal padding
           "pl-[calc(theme(spacing[3.5])-1px)] pr-[calc(theme(spacing.7)-1px)] sm:pl-[calc(theme(spacing.3)-1px)]",
           // Typography
-          "text-left text-base/6 text-zinc-950 placeholder:text-zinc-500 dark:text-white sm:text-sm/6 forced-colors:text-[CanvasText]",
-          // Border
-          "border border-zinc-950/10 group-data-[active]:border-zinc-950/20 group-data-[hover]:border-zinc-950/20 dark:border-white/10 dark:group-data-[active]:border-white/20 dark:group-data-[hover]:border-white/20",
+          "text-left text-base/6 text-zinc-950 placeholder:text-zinc-500 dark:text-zinc-200 sm:text-sm/6 forced-colors:text-[CanvasText]",
           // Background color
-          "bg-transparent dark:bg-white/5",
+          "bg-transparent dark:bg-zinc-800",
         ])}
       />
       <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -127,7 +117,7 @@ export const ListboxOption = <T,>({
               // Basic layout
               "group/option grid cursor-default grid-cols-[theme(spacing.5),1fr] items-baseline gap-x-2 rounded-lg py-2.5 pl-2 pr-3.5 sm:grid-cols-[theme(spacing.4),1fr] sm:py-1.5 sm:pl-1.5 sm:pr-3",
               // Typography
-              "text-base/6 text-zinc-950 dark:text-white sm:text-sm/6 forced-colors:text-[CanvasText]",
+              "text-base/6 text-zinc-950 dark:text-zinc-200 sm:text-sm/6 forced-colors:text-[CanvasText]",
               // Focus
               "outline-none data-[focus]:bg-blue-500 data-[focus]:text-white",
               // Forced colors mode

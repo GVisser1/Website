@@ -6,7 +6,7 @@ import { LayoutGroup, motion } from "framer-motion";
 import type { ComponentPropsWithoutRef, ForwardedRef, ReactNode } from "react";
 import React, { forwardRef, useId } from "react";
 import { TouchTarget } from "@/components/touchTarget";
-import Link from "@/components/link";
+import Link from "next/link";
 
 export const Navbar = ({ className, ...props }: ComponentPropsWithoutRef<"nav">): JSX.Element => (
   <nav {...props} className={clsx(className, "flex flex-1 items-center gap-4 py-2.5")} />
@@ -55,7 +55,7 @@ export const NavbarItem = forwardRef(
       // Active
       "data-[active]:bg-zinc-950/5 data-[slot=icon]:*:data-[active]:fill-zinc-950",
       // Dark mode
-      "dark:text-white dark:data-[slot=icon]:*:fill-zinc-400",
+      "dark:text-zinc-200 dark:data-[slot=icon]:*:fill-zinc-400",
       "dark:data-[hover]:bg-white/5 dark:data-[slot=icon]:*:data-[hover]:fill-white",
       "dark:data-[active]:bg-white/5 dark:data-[slot=icon]:*:data-[active]:fill-white"
     );
