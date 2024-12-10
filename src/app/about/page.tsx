@@ -48,7 +48,7 @@ const AboutPage = (): JSX.Element => (
           I love watching movies and TV shows, and I have a growing collection of Blu-rays. From timeless classics to
           the latest blockbusters, I enjoy exploring different genres and directors. I am always up for a good horror
           movie, so if you have any recommendations, feel free to share them with me. You can find my movie ratings and
-          reviews on <InlineLink href="https://letterboxd.com/iGlenn/">Letterboxd</InlineLink>.
+          reviews on <InlineLink href="https://letterboxd.com/gvisser/">Letterboxd</InlineLink>.
         </p>
         <p>
           Some of my all-time favourite films include masterpieces like <i>Paddington 2</i>, <i>The Holdovers</i>, and{" "}
