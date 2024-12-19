@@ -3,7 +3,7 @@ import type { ComponentType, SVGProps } from "react";
 
 type IconProps = ComponentType<SVGProps<SVGElement>>;
 
-export const ArrowDownIcon = (props: IconProps): JSX.Element => (
+export const ArrowDown = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -13,7 +13,7 @@ export const ArrowDownIcon = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const ArrowRightIcon = (props: IconProps): JSX.Element => (
+export const ArrowRight = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -23,7 +23,7 @@ export const ArrowRightIcon = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const AtIcon = (props: IconProps): JSX.Element => (
+export const At = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -33,17 +33,17 @@ export const AtIcon = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const Bars2Icon = (props: IconProps): JSX.Element => (
+export const Bars3BottomLeft = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
-      d="M2 6.75A.75.75 0 0 1 2.75 6h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 6.75Zm0 6.5a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z"
+      d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75Zm0 10.5a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1-.75-.75ZM2 10a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Z"
       clipRule="evenodd"
     />
   </svg>
 );
 
-export const CalendarIcon = (props: IconProps): JSX.Element => (
+export const Calendar = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path d="M5.25 12a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H6a.75.75 0 0 1-.75-.75V12ZM6 13.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V14a.75.75 0 0 0-.75-.75H6ZM7.25 12a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H8a.75.75 0 0 1-.75-.75V12ZM8 13.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V14a.75.75 0 0 0-.75-.75H8ZM9.25 10a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H10a.75.75 0 0 1-.75-.75V10ZM10 11.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V12a.75.75 0 0 0-.75-.75H10ZM9.25 14a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H10a.75.75 0 0 1-.75-.75V14ZM12 9.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V10a.75.75 0 0 0-.75-.75H12ZM11.25 12a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75V12ZM12 13.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V14a.75.75 0 0 0-.75-.75H12ZM13.25 10a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H14a.75.75 0 0 1-.75-.75V10ZM14 11.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V12a.75.75 0 0 0-.75-.75H14Z" />
     <path
@@ -54,7 +54,27 @@ export const CalendarIcon = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const ChevronLeftIcon = (props: IconProps): JSX.Element => (
+export const Check = (props: IconProps): JSX.Element => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
+    <path
+      fillRule="evenodd"
+      d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
+export const ChevronDown = (props: IconProps): JSX.Element => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
+    <path
+      fillRule="evenodd"
+      d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
+export const ChevronLeft = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -63,7 +83,8 @@ export const ChevronLeftIcon = (props: IconProps): JSX.Element => (
     />
   </svg>
 );
-export const ChevronLeftDoubleIcon = (props: IconProps): JSX.Element => (
+
+export const ChevronLeftDouble = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -72,7 +93,8 @@ export const ChevronLeftDoubleIcon = (props: IconProps): JSX.Element => (
     />
   </svg>
 );
-export const ChevronRightIcon = (props: IconProps): JSX.Element => (
+
+export const ChevronRight = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -81,7 +103,8 @@ export const ChevronRightIcon = (props: IconProps): JSX.Element => (
     />
   </svg>
 );
-export const ChevronRightDoubleIcon = (props: IconProps): JSX.Element => (
+
+export const ChevronRightDouble = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -91,13 +114,23 @@ export const ChevronRightDoubleIcon = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const CloseMenuIcon = (props: IconProps): JSX.Element => (
+export const ChevronUpDown = (props: IconProps): JSX.Element => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
+    <path
+      fillRule="evenodd"
+      d="M10.53 3.47a.75.75 0 0 0-1.06 0L6.22 6.72a.75.75 0 0 0 1.06 1.06L10 5.06l2.72 2.72a.75.75 0 1 0 1.06-1.06l-3.25-3.25Zm-4.31 9.81 3.25 3.25a.75.75 0 0 0 1.06 0l3.25-3.25a.75.75 0 1 0-1.06-1.06L10 14.94l-2.72-2.72a.75.75 0 0 0-1.06 1.06Z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
+export const CloseMenu = (props: IconProps): JSX.Element => (
   <svg data-slot="icon" viewBox="0 0 20 20" {...props}>
     <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
   </svg>
 );
 
-export const CogIcon = (props: IconProps): JSX.Element => (
+export const Cog = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -107,7 +140,7 @@ export const CogIcon = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const ComputerIcon = (props: IconProps): JSX.Element => (
+export const Computer = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -117,7 +150,20 @@ export const ComputerIcon = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const ExclamationCircleIcon = (props: IconProps): JSX.Element => (
+export const Document = (props: IconProps): JSX.Element => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
+    <path d="M3 3.5A1.5 1.5 0 0 1 4.5 2h6.879a1.5 1.5 0 0 1 1.06.44l4.122 4.12A1.5 1.5 0 0 1 17 7.622V16.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 3 16.5v-13Z" />
+  </svg>
+);
+
+export const DocumentDuplicate = (props: IconProps): JSX.Element => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
+    <path d="M7 3.5A1.5 1.5 0 0 1 8.5 2h3.879a1.5 1.5 0 0 1 1.06.44l3.122 3.12A1.5 1.5 0 0 1 17 6.622V12.5a1.5 1.5 0 0 1-1.5 1.5h-1v-3.379a3 3 0 0 0-.879-2.121L10.5 5.379A3 3 0 0 0 8.379 4.5H7v-1Z" />
+    <path d="M4.5 6A1.5 1.5 0 0 0 3 7.5v9A1.5 1.5 0 0 0 4.5 18h7a1.5 1.5 0 0 0 1.5-1.5v-5.879a1.5 1.5 0 0 0-.44-1.06L9.44 6.439A1.5 1.5 0 0 0 8.378 6H4.5Z" />
+  </svg>
+);
+
+export const ExclamationCircle = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -127,7 +173,7 @@ export const ExclamationCircleIcon = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const HomeIcon = (props: { className: string }): JSX.Element => (
+export const Home = (props: { className: string }): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -137,7 +183,7 @@ export const HomeIcon = (props: { className: string }): JSX.Element => (
   </svg>
 );
 
-export const IdIcon = (props: { className: string }): JSX.Element => (
+export const Id = (props: { className: string }): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -147,7 +193,7 @@ export const IdIcon = (props: { className: string }): JSX.Element => (
   </svg>
 );
 
-export const InfoIcon = (props: { className: string }): JSX.Element => (
+export const Info = (props: { className: string }): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -157,7 +203,7 @@ export const InfoIcon = (props: { className: string }): JSX.Element => (
   </svg>
 );
 
-export const MagnifyingGlassIcon = (props: IconProps): JSX.Element => (
+export const MagnifyingGlass = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -167,7 +213,28 @@ export const MagnifyingGlassIcon = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const MoonIcon = (props: IconProps): JSX.Element => (
+export const MagnifyingGlassCircle = (props: IconProps): JSX.Element => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
+    <path d="M6.5 9a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0Z" />
+    <path
+      fillRule="evenodd"
+      d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM9 5a4 4 0 1 0 2.248 7.309l1.472 1.471a.75.75 0 1 0 1.06-1.06l-1.471-1.472A4 4 0 0 0 9 5Z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
+export const MapPin = (props: IconProps): JSX.Element => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
+    <path
+      fillRule="evenodd"
+      d="m9.69 18.933.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 0 0 .281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 1 0 3 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 0 0 2.273 1.765 11.842 11.842 0 0 0 .976.544l.062.029.018.008.006.003ZM10 11.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
+export const Moon = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -177,7 +244,7 @@ export const MoonIcon = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const MusicalNoteIcon = (props: IconProps): JSX.Element => (
+export const MusicalNote = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -187,13 +254,25 @@ export const MusicalNoteIcon = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const OpenMenuIcon = (props: IconProps): JSX.Element => (
+export const NumberedList = (props: IconProps): JSX.Element => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
+    <path d="M3 1.25a.75.75 0 0 0 0 1.5h.25v2.5a.75.75 0 0 0 1.5 0V2A.75.75 0 0 0 4 1.25H3ZM2.97 8.654a3.5 3.5 0 0 1 1.524-.12.034.034 0 0 1-.012.012L2.415 9.579A.75.75 0 0 0 2 10.25v1c0 .414.336.75.75.75h2.5a.75.75 0 0 0 0-1.5H3.927l1.225-.613c.52-.26.848-.79.848-1.371 0-.647-.429-1.327-1.193-1.451a5.03 5.03 0 0 0-2.277.155.75.75 0 0 0 .44 1.434ZM7.75 3a.75.75 0 0 0 0 1.5h9.5a.75.75 0 0 0 0-1.5h-9.5ZM7.75 9.25a.75.75 0 0 0 0 1.5h9.5a.75.75 0 0 0 0-1.5h-9.5ZM7.75 15.5a.75.75 0 0 0 0 1.5h9.5a.75.75 0 0 0 0-1.5h-9.5ZM2.625 13.875a.75.75 0 0 0 0 1.5h1.5a.125.125 0 0 1 0 .25H3.5a.75.75 0 0 0 0 1.5h.625a.125.125 0 0 1 0 .25h-1.5a.75.75 0 0 0 0 1.5h1.5a1.625 1.625 0 0 0 1.37-2.5 1.625 1.625 0 0 0-1.37-2.5h-1.5Z" />
+  </svg>
+);
+
+export const OpenMenu = (props: IconProps): JSX.Element => (
   <svg data-slot="icon" viewBox="0 0 20 20" {...props}>
     <path d="M2 6.75C2 6.33579 2.33579 6 2.75 6H17.25C17.6642 6 18 6.33579 18 6.75C18 7.16421 17.6642 7.5 17.25 7.5H2.75C2.33579 7.5 2 7.16421 2 6.75ZM2 13.25C2 12.8358 2.33579 12.5 2.75 12.5H17.25C17.6642 12.5 18 12.8358 18 13.25C18 13.6642 17.6642 14 17.25 14H2.75C2.33579 14 2 13.6642 2 13.25Z" />
   </svg>
 );
 
-export const PokéBallIcon = (props: IconProps): JSX.Element => (
+export const Plus = (props: IconProps): JSX.Element => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
+    <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
+  </svg>
+);
+
+export const PokéBall = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" {...props}>
     <circle cx="12" cy="12" r="10.5" stroke="currentColor" strokeWidth="3" />
     <line x1="15" y1="12.5" x2="23" y2="12.5" stroke="currentColor" strokeWidth="2" />
@@ -202,7 +281,13 @@ export const PokéBallIcon = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const SpinnerIcon = (props: IconProps): JSX.Element => (
+export const ShoppingCart = (props: IconProps): JSX.Element => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
+    <path d="M1 1.75A.75.75 0 0 1 1.75 1h1.628a1.75 1.75 0 0 1 1.734 1.51L5.18 3a65.25 65.25 0 0 1 13.36 1.412.75.75 0 0 1 .58.875 48.645 48.645 0 0 1-1.618 6.2.75.75 0 0 1-.712.513H6a2.503 2.503 0 0 0-2.292 1.5H17.25a.75.75 0 0 1 0 1.5H2.76a.75.75 0 0 1-.748-.807 4.002 4.002 0 0 1 2.716-3.486L3.626 2.716a.25.25 0 0 0-.248-.216H1.75A.75.75 0 0 1 1 1.75ZM6 17.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM15.5 19a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" />
+  </svg>
+);
+
+export const Spinner = (props: IconProps): JSX.Element => (
   <svg
     width="24"
     height="24"
@@ -217,7 +302,7 @@ export const SpinnerIcon = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const StarIcon = (props: IconProps): JSX.Element => (
+export const Star = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
@@ -227,13 +312,38 @@ export const StarIcon = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const SunIcon = (props: IconProps): JSX.Element => (
+export const Sun = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.06 1.06l1.06 1.06ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z" />
   </svg>
 );
 
-export const XIcon = (props: IconProps): JSX.Element => (
+export const Text = (props: IconProps): JSX.Element => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" {...props}>
+    <path
+      d="M3.60342 14.8509H1.66666L5.19293 5H7.43292L10.9641 14.8509H9.02733L6.35206 7.0202H6.2738L3.60342 14.8509ZM3.667 10.9885H8.94908V12.4218H3.667V10.9885Z"
+      fill="currentColor"
+    />
+    <path
+      d="M14.3669 15C13.8908 15 13.4621 14.9166 13.0806 14.7499C12.7024 14.5799 12.4024 14.3298 12.1807 13.9995C11.9622 13.6692 11.853 13.262 11.853 12.7778C11.853 12.3609 11.9312 12.0162 12.0878 11.7436C12.2443 11.4711 12.4578 11.253 12.7285 11.0895C12.9991 10.9259 13.3039 10.8025 13.643 10.7191C13.9854 10.6325 14.3392 10.57 14.7043 10.5315C15.1445 10.4866 15.5015 10.4465 15.7754 10.4113C16.0493 10.3728 16.2482 10.3151 16.3721 10.2381C16.4993 10.1579 16.5628 10.0345 16.5628 9.86772V9.83887C16.5628 9.47651 16.4536 9.19593 16.2352 8.99711C16.0167 8.7983 15.7021 8.69889 15.2912 8.69889C14.8576 8.69889 14.5136 8.79189 14.2593 8.97787C14.0082 9.16386 13.8387 9.38352 13.7506 9.63684L12.0975 9.40596C12.228 8.95703 12.4432 8.58185 12.7431 8.28042C13.0431 7.97579 13.4099 7.74812 13.8436 7.5974C14.2772 7.44348 14.7565 7.36652 15.2815 7.36652C15.6434 7.36652 16.0037 7.40821 16.3623 7.49158C16.721 7.57496 17.0487 7.71284 17.3454 7.90524C17.6421 8.09444 17.8801 8.35257 18.0594 8.67965C18.242 9.00673 18.3333 9.41558 18.3333 9.9062V14.8509H16.6313V13.836H16.5726C16.465 14.0412 16.3134 14.2336 16.1178 14.4132C15.9254 14.5895 15.6825 14.7322 15.3891 14.8413C15.0989 14.9471 14.7581 15 14.3669 15ZM14.8266 13.7205C15.182 13.7205 15.4901 13.6516 15.751 13.5137C16.0118 13.3726 16.2123 13.1866 16.3525 12.9557C16.496 12.7249 16.5677 12.4731 16.5677 12.2006V11.33C16.5123 11.3749 16.4178 11.4165 16.2841 11.455C16.1537 11.4935 16.0069 11.5272 15.8439 11.556C15.6809 11.5849 15.5195 11.6105 15.3597 11.633C15.1999 11.6554 15.0614 11.6747 14.944 11.6907C14.6799 11.726 14.4435 11.7837 14.2348 11.8639C14.0261 11.944 13.8615 12.0563 13.7409 12.2006C13.6202 12.3417 13.5599 12.5245 13.5599 12.7489C13.5599 13.0696 13.6789 13.3117 13.9169 13.4752C14.1549 13.6388 14.4582 13.7205 14.8266 13.7205Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+export const User = (props: { className: string }): JSX.Element => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
+    <path d="M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.465 14.493a1.23 1.23 0 0 0 .41 1.412A9.957 9.957 0 0 0 10 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 0 0-13.074.003Z" />
+  </svg>
+);
+
+export const UserGroup = (props: { className: string }): JSX.Element => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
+    <path d="M10 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM6 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM1.49 15.326a.78.78 0 0 1-.358-.442 3 3 0 0 1 4.308-3.516 6.484 6.484 0 0 0-1.905 3.959c-.023.222-.014.442.025.654a4.97 4.97 0 0 1-2.07-.655ZM16.44 15.98a4.97 4.97 0 0 0 2.07-.654.78.78 0 0 0 .357-.442 3 3 0 0 0-4.308-3.517 6.484 6.484 0 0 1 1.907 3.96 2.32 2.32 0 0 1-.026.654ZM18 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM5.304 16.19a.844.844 0 0 1-.277-.71 5 5 0 0 1 9.947 0 .843.843 0 0 1-.277.71A6.975 6.975 0 0 1 10 18a6.974 6.974 0 0 1-4.696-1.81Z" />
+  </svg>
+);
+
+export const X = (props: IconProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
   </svg>

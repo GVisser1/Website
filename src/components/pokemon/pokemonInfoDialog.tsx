@@ -107,7 +107,7 @@ const DialogContent = ({
               title="This Pokémon is legendary"
               className="absolute left-2 top-2"
             >
-              <Icon name="StarIcon" className="text-yellow-500" />
+              <Icon name="Star" className="text-yellow-500" />
             </span>
           )}
           {isMythical && (
@@ -116,7 +116,7 @@ const DialogContent = ({
               title="This Pokémon is mythical"
               className={clsx("absolute left-2", !isLegendary ? "top-2" : "top-8")}
             >
-              <Icon name="StarIcon" className="text-pink-500" />
+              <Icon name="Star" className="text-pink-500" />
             </span>
           )}
         </div>
@@ -176,11 +176,11 @@ const DialogContent = ({
                     ))}
                   </div>
                   <Icon
-                    name="ArrowRightIcon"
+                    name="ArrowRight"
                     className="mx-2 hidden size-8 text-zinc-500 group-last-of-type:hidden dark:text-zinc-400 xs:block"
                   />
                   <Icon
-                    name="ArrowDownIcon"
+                    name="ArrowDown"
                     className="my-5 block size-8 text-zinc-500 group-last-of-type:hidden dark:text-zinc-400 xs:hidden"
                   />
                 </div>
@@ -198,7 +198,7 @@ export const SkeletonLoader = (): JSX.Element => (
     <span className="sr-only">Loading content</span>
     <div aria-hidden className="relative flex animate-pulse flex-col gap-y-4">
       <div className="grid grid-cols-1 gap-x-8 gap-y-2 xs:grid-cols-2">
-        <div className="box-content flex h-32 w-full justify-center rounded-lg border border-zinc-200 bg-zinc-200 dark:border-zinc-800 dark:bg-zinc-700" />
+        <div className="box-content flex h-32 w-full justify-center rounded-lg border border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700" />
         <div>
           <span className="mb-1 block h-6 rounded bg-zinc-200 dark:bg-zinc-700" />
           <ul className="flex gap-x-2 text-center">
@@ -224,13 +224,13 @@ export const SkeletonLoader = (): JSX.Element => (
       </dl>
       <Divider />
       <div>
-        <h3 className="mb-2 h-7 w-48 rounded bg-zinc-200 dark:bg-zinc-700" />
+        <div className="mb-2 h-7 w-48 rounded bg-zinc-200 dark:bg-zinc-700" />
         <div className="flex flex-col xs:grid xs:auto-cols-fr xs:grid-flow-col">
           {Array.from({ length: 3 }).map((_, i) => (
             <div key={i} className="group flex flex-col items-center text-zinc-500 dark:text-zinc-400 xs:flex-row">
               <div className="h-28 w-full rounded-lg bg-zinc-200 dark:bg-zinc-700" />
-              <Icon name="ArrowRightIcon" className="mx-2 hidden size-8 group-last-of-type:hidden xs:block" />
-              <Icon name="ArrowDownIcon" className="my-5 block size-8 group-last-of-type:hidden xs:hidden" />
+              <Icon name="ArrowRight" className="mx-2 hidden size-8 group-last-of-type:hidden xs:block" />
+              <Icon name="ArrowDown" className="my-5 block size-8 group-last-of-type:hidden xs:hidden" />
             </div>
           ))}
         </div>

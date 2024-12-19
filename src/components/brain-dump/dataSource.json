@@ -1,0 +1,78 @@
+{
+  "fields": [
+    { "id": "e47ad6c4-469f-4cb5-ac19-aca747aee11a", "label": "Text", "pill": "text", "type": "text" },
+    { "id": "31a3e208-47f2-493e-a4be-c5e0517bf1f5", "label": "Text Area", "pill": "textArea", "type": "textArea" },
+    { "id": "be6eab58-ddbd-4db6-bee4-736a93228e8c", "label": "Subform", "pill": "subform", "type": "subform" },
+    {
+      "id": "638c1f3d-cb64-45bb-8fcd-a21c2102ff31",
+      "label": "THIS IS A REALLY LONG LABEL LIKE WTF WHY IS IT SO LONG",
+      "pill": "THIS IS A REALLY LONG PILL LIKE WTF WHY IS IT SO LONG",
+      "type": "number"
+    }
+  ],
+  "subforms": [
+    {
+      "title": "Building",
+      "fields": [
+        { "id": "944107c1-73e9-4cbe-96a0-5c4ff9b66c33", "label": "Text", "pill": "text", "type": "text" },
+        {
+          "id": "729e5190-264d-4e1f-8e5f-cfd2a5b490ae",
+          "label": "Catalogue",
+          "pill": "catalogue",
+          "type": "catalogue"
+        },
+        { "id": "0507298b-dd38-41cd-95ba-6db2a05947db", "label": "Subform", "pill": "subform", "type": "subform" }
+      ]
+    },
+    {
+      "title": "Floor",
+      "fields": [
+        { "id": "6a11df16-6848-40ec-ba2d-3c711984ad57", "label": "Text", "pill": "text", "type": "text" },
+        { "id": "f4f76941-bee1-407f-a480-ab8345eb61f0", "label": "Number", "pill": "number", "type": "number" },
+        { "id": "3a2bff9d-1efb-4b51-b3d5-7e941d0cc0e6", "label": "Search", "pill": "search", "type": "search" }
+      ]
+    }
+  ],
+  "groups": [
+    { "id": "6ffba70f-1107-4451-a6d8-7225b1b28d63", "label": "Administrators", "type": "group" },
+    { "id": "94c20434-9804-4c2f-bfe4-fad4e5848d8f", "label": "Developers", "type": "group" },
+    { "id": "9eafa6bc-a4c0-4cce-9db6-734fa448cbb6", "label": "UX Designers", "type": "group" },
+    { "id": "189d57de-2a91-477f-99f0-6eecced7a175", "label": "Finance", "type": "group" },
+    { "id": "8221622e-38c9-4b9d-91f6-6b7d2a646933", "label": "Marketing", "type": "group" },
+    { "id": "ce9f9ae3-dbae-4cbc-80d2-ab3e06ec5ce2", "label": "Sales", "type": "group" },
+    { "id": "bd63b488-9487-4b49-b725-fd08964368e8", "label": "Support", "type": "group" }
+  ],
+  "users": [
+    { "id": "4915486a-97d7-47a0-8938-08403fdb76e0", "label": "n.cage@test.com", "type": "user" },
+    { "id": "fa20c35e-2103-48f4-aac6-8717b2f77a40", "label": "a.jolie@test.com", "type": "user" },
+    { "id": "b22e6b07-6059-4b21-b1e6-2ec3da8a639e", "label": "b.pitt@test.com", "type": "user" },
+    { "id": "7ff48b49-2594-463e-979e-620c81fe251a", "label": "j.depp@test.com", "type": "user" },
+    { "id": "5ef22b27-4c5c-44c3-b7fb-219d2899adb3", "label": "m.rob@test.com", "type": "user" },
+    { "id": "e60ba249-89e7-4649-972f-5cae81fd2bf1", "label": "l.dicaprio@test.com", "type": "user" },
+    { "id": "8cb194d1-3ed0-4c12-b311-e3b10c3ebd9c", "label": "s.bullock@test.com", "type": "user" },
+    { "id": "a62fe571-d3c8-44ee-85af-d8914aff50e9", "label": "r.downey@test.com", "type": "user" },
+    { "id": "3811424e-1184-44e2-89c5-7d0e72809c02", "label": "c.evans@test.com", "type": "user" },
+    { "id": "0105b52f-2958-4952-8937-9bc0616ef7ab", "label": "c.theron@test.com", "type": "user" },
+    { "id": "9b7c18eb-b63c-4790-abea-2cb074e575b6", "label": "m.mcconaughey@test.com", "type": "user" },
+    { "id": "23e0c932-2ed0-4d3d-a12d-28340ba6a1fd", "label": "t.cruise@test.com", "type": "user" },
+    { "id": "1b12c48b-4667-431b-90d8-71aed613dae1", "label": "n.portman@test.com", "type": "user" },
+    { "id": "50f94eea-c778-4114-b6e7-8c651bdeffaa", "label": "g.clooney@test.com", "type": "user" },
+    { "id": "41b8b9fe-afb6-4f5f-b105-3a2d3ce839c9", "label": "j.garner@test.com", "type": "user" },
+    { "id": "725da9cc-b8e3-4342-9717-594fe59dc339", "label": "h.ford@test.com", "type": "user" },
+    { "id": "fe0cb166-3271-4f69-b96a-e2f0390db01c", "label": "j.anst@test.com", "type": "user" },
+    { "id": "718dfbc3-f202-4f13-b292-db5f012f90d0", "label": "w.smith@test.com", "type": "user" },
+    { "id": "e244dffa-0abd-44d3-8e71-22d8bd0650af", "label": "m.fox@test.com", "type": "user" },
+    { "id": "30ac098d-bc70-44d4-9bf9-2f9889a74b5c", "label": "b.cooper@test.com", "type": "user" },
+    { "id": "a8d08b07-3d4b-4500-a415-d73b71183c4e", "label": "r.gosling@test.com", "type": "user" },
+    { "id": "cf035646-e423-432d-9055-d8ff7d4b7579", "label": "e.blunt@test.com", "type": "user" },
+    { "id": "5d8ef02a-3cd1-471b-a233-966a1b4262da", "label": "a.hathaway@test.com", "type": "user" },
+    { "id": "3e824a3f-d38d-478d-b35e-c9ed8561f9ae", "label": "h.jackman@test.com", "type": "user" }
+  ],
+  "variables": [
+    { "id": "96fd46a6-8bfd-45db-b404-81c85b5201cb", "label": "Form name", "type": "formName" },
+    { "id": "dccd9d68-d1a2-4a83-adc5-98ce22118b57", "label": "Registration date", "type": "date" },
+    { "id": "048ab21b-d3ef-49aa-9ff8-fb7eacc34606", "label": "Longitude", "type": "coords" },
+    { "id": "39b93b82-d77f-493a-ba21-64db5bc3e930", "label": "Latitude", "type": "coords" }
+  ],
+  "custom": []
+}

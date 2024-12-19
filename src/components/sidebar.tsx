@@ -15,6 +15,7 @@ import { Divider } from "./divider";
 
 export const Sidebar = (): JSX.Element => {
   const pathname = usePathname();
+  const isDev = process.env.NODE_ENV === "development";
   const [showSearchDialog, setShowSearchDialog] = useState(false);
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export const Sidebar = (): JSX.Element => {
         </SidebarItem>
         <SidebarSection>
           <SidebarItem current={false} onClick={() => setShowSearchDialog(true)}>
-            <Icon name="MagnifyingGlassIcon" />
+            <Icon name="MagnifyingGlass" />
             <SidebarLabel>Search</SidebarLabel>
             <kbd className=" ml-auto font-sans font-semibold text-zinc-500 group-hover:visible group-data-[focus]:visible dark:text-zinc-400">
               <abbr title="Command" className="no-underline">
@@ -51,38 +52,44 @@ export const Sidebar = (): JSX.Element => {
       <SidebarBody>
         <SidebarSection>
           <SidebarItem href="/" current={pathname === "/"}>
-            <Icon name="HomeIcon" />
+            <Icon name="Home" />
             <SidebarLabel>Home</SidebarLabel>
           </SidebarItem>
           <SidebarItem href="/about" current={pathname.startsWith("/about")}>
-            <Icon name="IdIcon" />
+            <Icon name="Id" />
             <SidebarLabel>About me</SidebarLabel>
           </SidebarItem>
           <SidebarItem href="/timeline" current={pathname.startsWith("/timeline")}>
-            <Icon name="CalendarIcon" />
+            <Icon name="Calendar" />
             <SidebarLabel>Timeline</SidebarLabel>
           </SidebarItem>
           <SidebarItem href="/settings" current={pathname.startsWith("/settings")}>
-            <Icon name="CogIcon" />
+            <Icon name="Cog" />
             <SidebarLabel>Settings</SidebarLabel>
           </SidebarItem>
           <Divider className="my-4" />
           <SidebarLabel className="text-sm font-medium text-zinc-700 dark:text-zinc-200">Projects</SidebarLabel>
           <SidebarItem href="/projects/pokemon" current={pathname.startsWith("/projects/pokemon")}>
-            <Icon name="PokéBallIcon" />
+            <Icon name="PokéBall" />
             <SidebarLabel>Pokémon</SidebarLabel>
           </SidebarItem>
+          {isDev && (
+            <SidebarItem href="/projects/brain-dump" current={pathname.startsWith("/projects/brain-dump")}>
+              <Icon name="Document" />
+              <SidebarLabel>Brain dump</SidebarLabel>
+            </SidebarItem>
+          )}
         </SidebarSection>
         <SidebarSpacer />
         <SidebarSection>
           <SidebarItem href="mailto:gvisser.business@gmail.com">
-            <Icon name="AtIcon" />
+            <Icon name="At" />
             <SidebarLabel>Contact</SidebarLabel>
           </SidebarItem>
         </SidebarSection>
       </SidebarBody>
       <SidebarFooter className="min-w-0 shrink-0">
-        <span className="block truncate text-xs/5 font-normal text-zinc-500 dark:text-zinc-400">
+        <span className="block truncate text-xs/5 font-normal text-zinc-600 dark:text-zinc-400">
           {`© ${new Date().getFullYear()} Glenn Visser`}
         </span>
       </SidebarFooter>

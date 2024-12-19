@@ -4,6 +4,7 @@ import { useLocalStorage } from "usehooks-ts";
 type UseFontSwitcherResult = {
   font: Font;
   handleFontChange: (newFont: Font) => void;
+  getFontClass: () => string;
 };
 
 export const useFont = (): UseFontSwitcherResult => {
@@ -13,5 +14,18 @@ export const useFont = (): UseFontSwitcherResult => {
     setFont(newFont);
   };
 
-  return { font, handleFontChange };
+  const getFontClass = (): string => {
+    switch (font) {
+      case "mono":
+        return "font-mono";
+      case "sans":
+        return "font-sans";
+      case "serif":
+        return "font-serif";
+      default:
+        return "font-inter";
+    }
+  };
+
+  return { font, handleFontChange, getFontClass };
 };

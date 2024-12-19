@@ -20,13 +20,13 @@ const HomePage = (): JSX.Element => (
       <Image
         priority
         src={profileImg}
-        className="h-96 w-full rounded-xl object-cover dark:border dark:border-zinc-800 md:h-80 xl:h-96"
+        className="h-96 w-full rounded-xl object-cover shadow-md dark:border dark:border-zinc-800 md:h-80 xl:h-96"
         alt="Glenn Visser"
       />
       <Icon
         overrideSize
         className="absolute -bottom-8 -right-4 size-28 stroke-zinc-950 stroke-[0.5] text-blue-600 md:-left-12 md:size-28 xl:size-32"
-        name="MusicalNoteIcon"
+        name="MusicalNote"
       />
     </div>
   </div>

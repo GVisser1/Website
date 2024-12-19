@@ -27,7 +27,7 @@ const PokemonCard = ({ pokemon, onClick }: PokemonCardProps): JSX.Element => {
           className="text-zinc-500 hover:text-zinc-600 active:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300 dark:active:text-zinc-200"
           onClick={onClick}
         >
-          <Icon name="InfoIcon" />
+          <Icon name="Info" />
         </button>
       </div>
       {!isNil(pokemon.sprite) && (
@@ -70,14 +70,14 @@ const Sprite = ({ name, sprite, hidden, onLoad, onError }: SpriteProps): JSX.Ele
 const SpriteLoadingState = (): JSX.Element => (
   <div className="relative mx-auto flex h-24 w-full items-center justify-center">
     <span className="sr-only">Loading sprite</span>
-    <Icon name="SpinnerIcon" />
+    <Icon name="Spinner" />
   </div>
 );
 PokemonCard.SpriteLoadingState = SpriteLoadingState;
 
 const SpriteErrorState = (): JSX.Element => (
   <div className="mx-auto flex h-24 flex-col items-center justify-center gap-y-2">
-    <Icon name="ExclamationCircleIcon" className="size-7 text-red-700" />
+    <Icon name="ExclamationCircle" className="size-7 text-red-700" />
     <p className="text-zinc-500 dark:text-zinc-400">Could not load sprite</p>
   </div>
 );

@@ -1,7 +1,7 @@
 import { Divider } from "@/components/divider";
 import Header from "@/components/header";
-import FontSwitcher from "@/components/listbox/fontSwitcher";
-import ThemeSwitcher from "@/components/listbox/themeSwitcher";
+import FontSwitcher from "@/components/select/fontSwitcher";
+import ThemeSwitcher from "@/components/select/themeSwitcher";
 import type { Metadata } from "next/types";
 
 export const metadata: Metadata = {

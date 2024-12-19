@@ -39,7 +39,7 @@ const MobileSidebar = ({
           <div className="flex h-full flex-col rounded-lg bg-white shadow-sm ring-1 ring-zinc-950/5 dark:bg-zinc-900 dark:ring-white/10">
             <div className="-mb-3 px-4 pt-3">
               <CloseButton as={NavbarItem} aria-label="Close navigation">
-                <Icon name="CloseMenuIcon" />
+                <Icon name="CloseMenu" />
               </CloseButton>
             </div>
             {children}
@@ -76,7 +76,7 @@ export const Layout = ({ children }: PropsWithChildren): JSX.Element | null => {
           <header className="sticky top-0 z-10 flex items-center bg-white px-4 dark:bg-zinc-900 lg:hidden dark:lg:bg-zinc-950">
             <div className="py-2.5">
               <NavbarItem onClick={() => setShowSidebar(true)} aria-label="Open navigation">
-                <Icon name="OpenMenuIcon" />
+                <Icon name="OpenMenu" />
               </NavbarItem>
             </div>
             <div className="min-w-0 flex-1 ">
@@ -86,7 +86,7 @@ export const Layout = ({ children }: PropsWithChildren): JSX.Element | null => {
 
           <main className="flex flex-1 flex-col pb-2 lg:min-w-0 lg:pl-64 lg:pr-2 lg:pt-2">
             <div className="grow p-6 lg:rounded-lg lg:bg-white lg:p-10 lg:shadow-sm lg:ring-1 lg:ring-zinc-950/5 dark:lg:bg-zinc-900 dark:lg:ring-white/10">
-              <div className="mx-auto h-full max-w-4xl">{children}</div>
+              <div className="relative mx-auto h-full max-w-4xl">{children}</div>
             </div>
           </main>
         </div>
