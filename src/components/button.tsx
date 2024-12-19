@@ -1,56 +1,84 @@
-import * as Headless from "@headlessui/react";
+import type { ComponentProps } from "react";
+import React from "react";
 import clsx from "clsx";
-import Link from "next/link";
-import React, { forwardRef } from "react";
+import type { IconName } from "./icon";
+import Icon from "./icon";
 
-const styles = {
-  base: [
-    "relative isolate inline-flex items-center justify-center gap-x-2 rounded-lg border text-base/6 font-semibold p-2",
-    // Focus
-    "border-transparent text-zinc-950 active:bg-zinc-950/5 hover:bg-zinc-950/5",
-    "focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500",
-    // Disabled
-    "disabled:opacity-50",
-    "dark:text-zinc-200 dark:active:bg-white/10 dark:hover:bg-white/10",
-  ],
+type ButtonVariant = "default" | "ghost";
+type ButtonSize = "sm" | "md" | "lg";
+
+export type ButtonProps = {
+  as?: "button" | "div";
+  size?: ButtonSize;
+  variant?: ButtonVariant;
+  label?: string;
+  icon?: IconName;
+} & Pick<ComponentProps<"button">, "aria-label" | "title" | "onClick" | "className" | "disabled">;
+
+const variantClasses: Record<ButtonVariant, string> = {
+  default:
+    "bg-zinc-100 hover:bg-zinc-200 active:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:active:bg-zinc-600",
+  ghost: "hover:bg-zinc-100 active:bg-zinc-200 dark:hover:bg-zinc-700 dark:active:bg-zinc-600",
 };
 
-type ButtonProps = (
-  | { outline?: never; plain?: never }
-  | { outline: true; plain?: never }
-  | { outline?: never; plain: true }
-) & { className?: string; children: React.ReactNode } & (
-    | Omit<Headless.ButtonProps, "as" | "className">
-    | Omit<React.ComponentPropsWithoutRef<typeof Link>, "className">
+const sizeClasses: Record<ButtonSize, string> = {
+  sm: "h-7",
+  md: "h-8",
+  lg: "h-9",
+};
+
+const iconSizeClasses: Record<ButtonSize, string> = {
+  sm: "size-4",
+  md: "size-5",
+  lg: "size-6",
+};
+
+const Button = ({
+  as = "button",
+  "aria-label": ariaLabel,
+  title,
+  onClick,
+  className,
+  size = "md",
+  variant = "default",
+  label,
+  icon,
+  disabled,
+}: ButtonProps): JSX.Element => {
+  const classes = clsx(
+    "flex shrink-0 items-center justify-center gap-x-1.5 rounded p-1.5 text-sm font-medium focus-visible:outline",
+    sizeClasses[size],
+    disabled ? "cursor-not-allowed text-zinc-500 dark:bg-zinc-900/10" : variantClasses[variant],
+    className
   );
 
-const Button = forwardRef(({ className, children, ...props }: ButtonProps, ref: React.ForwardedRef<HTMLElement>) => {
-  let classes = clsx(className, styles.base);
-
-  return "href" in props ? (
-    <Link {...props} className={classes} ref={ref as React.ForwardedRef<HTMLAnchorElement>}>
-      <TouchTarget>{children}</TouchTarget>
-    </Link>
-  ) : (
-    <Headless.Button {...props} className={clsx(classes, "cursor-default")} ref={ref}>
-      <TouchTarget>{children}</TouchTarget>
-    </Headless.Button>
+  const content = (
+    <>
+      {icon && <Icon overrideSize className={iconSizeClasses[size]} name={icon} />}
+      {label && <p className="truncate">{label}</p>}
+    </>
   );
-});
 
-Button.displayName = "Button";
+  if (as === "div") {
+    return (
+      <div aria-label={ariaLabel} title={title} className={classes}>
+        {content}
+      </div>
+    );
+  }
 
-export { Button };
+  return (
+    <button
+      type="button"
+      aria-label={ariaLabel}
+      title={title}
+      disabled={disabled}
+      onClick={onClick}
+      className={classes}
+    >
+      {content}
+    </button>
+  );
+};
 
-/**
- * Expand the hit area to at least 44×44px on touch devices
- */
-export const TouchTarget = ({ children }: { children: React.ReactNode }): JSX.Element => (
-  <>
-    <span
-      className="absolute left-1/2 top-1/2 size-[max(100%,2.75rem)] -translate-x-1/2 -translate-y-1/2 [@media(pointer:fine)]:hidden"
-      aria-hidden="true"
-    />
-    {children}
-  </>
-);
+export default Button;

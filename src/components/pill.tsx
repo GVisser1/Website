@@ -1,4 +1,6 @@
 import clsx from "clsx";
+import type { IconName } from "./icon";
+import Icon from "./icon";
 
 const colours = {
   blue: "bg-blue-100 text-blue-700 dark:bg-blue-700 dark:text-blue-100",
@@ -11,11 +13,21 @@ const colours = {
   pink: "bg-pink-100 text-pink-700 dark:bg-pink-700 dark:text-pink-100",
 };
 
-export type PillProps = { label: string; colour: keyof typeof colours; className?: string };
-const Pill = ({ label, colour, className }: PillProps): JSX.Element => {
-  const classes = clsx("rounded px-1 py-0.5 text-xs font-semibold", colours[colour], className);
+export type PillProps = { label: string; colour: keyof typeof colours; icon?: IconName; className?: string };
 
-  return <span className={classes}>{label}</span>;
+const Pill = ({ label, colour, icon, className }: PillProps): JSX.Element => {
+  const classes = clsx(
+    "inline-flex min-w-0 max-w-72 items-center gap-x-1 rounded px-1 py-0.5 text-xs font-semibold",
+    colours[colour],
+    className
+  );
+
+  return (
+    <span className={classes}>
+      {icon && <Icon overrideSize className="size-2.5 shrink-0" name={icon} />}
+      <span className="truncate">{label}</span>
+    </span>
+  );
 };
 
 export default Pill;

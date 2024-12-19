@@ -2,10 +2,10 @@ import Dialog from "@/components/dialog/dialog";
 import Link from "next/link";
 import type { ChangeEvent, KeyboardEvent } from "react";
 import { useState } from "react";
-import Icon from "../icon";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import { normalizeString } from "@/utils/textUtil";
+import SearchInput from "../search";
 
 const pages = [
   { title: "Home", href: "/" },
@@ -78,26 +78,17 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
       className="relative"
     >
       <search>
-        <label htmlFor="search-input" className="sr-only">
-          Search for a page
-        </label>
-        <div className="relative">
-          <Icon
-            name="MagnifyingGlassIcon"
-            className="pointer-events-none absolute left-2.5 top-2.5 size-4 fill-zinc-500 dark:fill-zinc-400"
-          />
-          <input
-            data-autofocus
-            id="search-input"
-            type="search"
-            value={query}
-            placeholder="Search"
-            className="h-10 w-full rounded-md border py-1 pl-10 pr-1 placeholder:text-zinc-500 dark:border-zinc-200/10 dark:bg-zinc-800 dark:placeholder:text-zinc-500"
-            onKeyDown={handleKeyDown}
-            onChange={handleChange}
-            onBlur={() => setSelectedIndex(-1)}
-          />
-        </div>
+        <SearchInput
+          data-autofocus
+          aria-label="Search for a page"
+          id="search-input"
+          type="search"
+          value={query}
+          placeholder="Search"
+          onKeyDown={handleKeyDown}
+          onChange={handleChange}
+          onBlur={() => setSelectedIndex(-1)}
+        />
         <section className="relative mt-4">
           {searchResults.length > 0 && (
             <>
