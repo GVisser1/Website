@@ -251,8 +251,8 @@ const MultiPlaceholderMenu = (): JSX.Element => {
               value={query}
             />
             <Select value={filter} onValueChange={handleFilterChange}>
-              <SelectTrigger className="w-40">
-                <SelectValue placeholder="Theme" />
+              <SelectTrigger aria-label="Select filter" className="w-40">
+                <SelectValue placeholder="Filter" />
               </SelectTrigger>
               <SelectContent className="z-20">
                 {FILTERS.map((value) => (

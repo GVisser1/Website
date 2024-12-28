@@ -5,7 +5,7 @@ import Pagination from "@/components/pagination";
 import { PokemonInfoDialog } from "@/components/pokemon/pokemonInfoDialog";
 import SkeletonLoader from "@/components/skeleton";
 import { getPokemonDetails, type PokemonDetails } from "@/utils/pokemonUtil";
-import { isNil } from "lodash-es";
+import { isEmpty, isNil } from "lodash-es";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import usePokemon from "../../../hooks/usePokemon";
@@ -33,7 +33,7 @@ const PokémonPage = (): JSX.Element => {
       return;
     }
 
-      if (highlightedName !== highlightedPokemon?.name) {
+    if (highlightedName !== highlightedPokemon?.name) {
       getPokemonDetails(highlightedName).then((pokemon) => {
         if (!pokemon) {
           return;
@@ -49,15 +49,17 @@ const PokémonPage = (): JSX.Element => {
     setHighlightedPokemon(null);
   };
 
+  const showLoadingState = (isLoading && !error) || isNil(pokemon) || isEmpty(pokemon);
+  const showErrorState = error && !isLoading;
+  const showContent = !isLoading && !isNil(pokemon) && !isEmpty(pokemon);
+
   return (
     <>
       <Header title="Pokémon" description="Explore the world of Pokémon." />
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-        {isLoading ? (
-          Array.from({ length: PAGE_SIZE }).map((_, i) => <SkeletonLoader key={i} />)
-        ) : error ? (
-          <p className="col-span-full text-center text-red-500">{error}</p>
-        ) : (
+        {showLoadingState && Array.from({ length: PAGE_SIZE }).map((_, i) => <SkeletonLoader key={i} />)}
+        {showErrorState && <p className="col-span-full text-center text-red-500">{error}</p>}
+        {showContent &&
           pokemon.map((i) => (
             <PokemonCard
               key={i.id}
@@ -67,8 +69,7 @@ const PokémonPage = (): JSX.Element => {
                 setHighlightedPokemon(i);
               }}
             />
-          ))
-        )}
+          ))}
       </div>
       {highlightedPokemon && <PokemonInfoDialog open={true} pokemon={highlightedPokemon} onClose={closeDialog} />}
       {!error && (

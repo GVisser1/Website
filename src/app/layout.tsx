@@ -3,6 +3,7 @@ import { type ReactNode } from "react";
 import { Layout } from "@/components/layout";
 import type { Metadata } from "next/types";
 import { Inter } from "next/font/google";
+import Providers from "@/providers/providers";
 
 export const metadata: Metadata = {
   title: {
@@ -24,7 +25,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--inter" });
 const RootLayout = ({ children }: { children: ReactNode }): JSX.Element => (
   <html lang="en" className="scroll-smooth">
     <body className={`${inter.variable} bg-zinc-50 dark:bg-zinc-950 lg:bg-zinc-100`}>
-      <Layout>{children}</Layout>
+      <Providers>
+        <Layout>{children}</Layout>
+      </Providers>
     </body>
   </html>
 );

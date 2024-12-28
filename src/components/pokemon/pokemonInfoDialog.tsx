@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useRef, useState } from "react";
 import Dialog from "../dialog/dialog";
 import clsx from "clsx";

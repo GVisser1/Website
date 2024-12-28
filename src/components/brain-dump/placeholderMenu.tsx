@@ -266,7 +266,11 @@ const PlaceholderMenu = (): JSX.Element => {
           />
         )}
       </div>
-      <PopoverContent align="start" className="z-10 mt-1 flex flex-col bg-white shadow-lg dark:bg-zinc-900">
+      <PopoverContent
+        aria-label="Select a placeholder"
+        align="start"
+        className="z-10 mt-1 flex flex-col bg-white shadow-lg dark:bg-zinc-900"
+      >
         <div className="relative w-[480px] overflow-hidden rounded border pb-1 dark:border-zinc-700">
           <div className="grid grid-cols-3 gap-x-2 px-3 pb-2 pt-3">
             <SearchInput
@@ -280,8 +284,8 @@ const PlaceholderMenu = (): JSX.Element => {
               value={query}
             />
             <Select value={filter} onValueChange={handleFilterChange}>
-              <SelectTrigger className="w-40">
-                <SelectValue placeholder="Theme" />
+              <SelectTrigger aria-label="Select filter" className="w-40">
+                <SelectValue placeholder="Filter" />
               </SelectTrigger>
               <SelectContent className="z-20">
                 {FILTERS.map((value) => (
