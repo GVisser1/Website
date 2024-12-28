@@ -8,7 +8,7 @@ const FontSwitcher = (): JSX.Element | null => {
 
   return (
     <Select aria-label="Font" name="font" value={font} onValueChange={handleFontChange}>
-      <SelectTrigger>
+      <SelectTrigger aria-label="Select font">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

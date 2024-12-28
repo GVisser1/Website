@@ -11,7 +11,7 @@ const ThemeSwitcher = (): JSX.Element | null => {
 
   return (
     <Select aria-label="Theme" name="theme" value={theme} onValueChange={handleOnChange}>
-      <SelectTrigger>
+      <SelectTrigger aria-label="Select theme">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

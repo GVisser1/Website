@@ -86,7 +86,7 @@ test.describe("Settings page", () => {
 
     await expect(page.getByRole("heading", { name: "Settings", level: 1 })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Theme", level: 2 })).toBeVisible();
-    await expect(page.getByRole("button", { name: "Theme" })).toBeVisible();
+    await expect(page.getByRole("combobox", { name: "Select theme" })).toBeVisible();
   });
 
   test("is accessible", async ({ page }) => {
