@@ -1,5 +1,5 @@
+import { IconButton } from "./button";
 import type { IconName } from "./icon";
-import Button from "./button";
 
 type PaginationProps = {
   currentPage: number;
@@ -35,9 +35,9 @@ type PaginationButtonProps = {
 };
 
 const PaginationButton = ({ ariaLabel, disabled, onClick, icon }: PaginationButtonProps): JSX.Element => (
-  <Button
+  <IconButton
+    variant="default"
     aria-label={ariaLabel}
-    size="md"
     disabled={disabled}
     onClick={onClick}
     title={!disabled ? ariaLabel : ""}

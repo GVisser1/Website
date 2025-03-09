@@ -12,9 +12,9 @@ import { OptionIcon } from "@/utils/iconUtil";
 import { EmptyState } from "./emptyState";
 import ds from "./dataSource.json";
 import SearchInput from "../search";
-import Button from "../button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select/select";
 import { upperFirst } from "lodash-es";
+import { IconButton } from "../button";
 
 const dataSource = ds as DataSource;
 const FILTERS = ["fields", "groups", "users", "variables"] as const;
@@ -253,7 +253,8 @@ const PlaceholderMenu = (): JSX.Element => {
           </div>
         </PopoverTrigger>
         {selectedOption && (
-          <Button
+          <IconButton
+            variant="default"
             aria-label="Clear selected option"
             title="Clear selected option"
             size="md"

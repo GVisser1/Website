@@ -25,6 +25,15 @@ const config: Config = {
         xs: "480px",
         "2xs": "400px",
       },
+      fontSize: {
+        button: [
+          "0.875rem",
+          {
+            lineHeight: "1rem",
+            fontWeight: "500",
+          },
+        ],
+      },
       typography: {
         DEFAULT: {
           css: {
@@ -75,7 +84,8 @@ const config: Config = {
           },
         },
       },
-      width: {
+      spacing: {
+        "4.5": "1.125rem",
         "42": "10.5rem",
       },
     },

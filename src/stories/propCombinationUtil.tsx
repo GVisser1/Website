@@ -22,7 +22,7 @@ export const CombinationGrid = <ComponentProps extends object>({
   columns = "4",
 }: CombinationGridProps<ComponentProps>): JSX.Element => {
   const combinations = generateCombinations(properties);
-  const classes = clsx("grid gap-4", columns === "1" ? "grid-cols-1" : "grid-cols-2", {
+  const classes = clsx("grid justify-items-start gap-4", columns === "1" ? "grid-cols-1" : "grid-cols-2", {
     "lg:grid-cols-2": columns === "2",
     "lg:grid-cols-3": columns === "3",
     "lg:grid-cols-4": columns === "4",
@@ -33,21 +33,7 @@ export const CombinationGrid = <ComponentProps extends object>({
   return (
     <div className={classes}>
       {combinations.map((props, index) => (
-        <div key={index}>
-          <div className="flex flex-wrap gap-x-1 text-xs text-gray-500">
-            {Object.keys(props).map((key) =>
-              props[key as keyof ComponentProps] ? (
-                <p key={key}>
-                  {key}: {}
-                  <span className="inline-block max-w-[25ch] truncate align-top font-medium text-blue-700">
-                    {JSON.stringify(props[key as keyof ComponentProps])}
-                  </span>
-                </p>
-              ) : null
-            )}
-          </div>
-          <Component {...(defaultProps as ComponentProps)} {...(props as ComponentProps)} />
-        </div>
+        <Component key={index} {...(defaultProps as ComponentProps)} {...(props as ComponentProps)} />
       ))}
     </div>
   );

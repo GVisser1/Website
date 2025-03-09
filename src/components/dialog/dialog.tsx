@@ -2,7 +2,7 @@ import type { DialogProps as HeadlessDialogProps } from "@headlessui/react";
 import { Dialog as HeadlessDialog, DialogPanel, Transition, TransitionChild } from "@headlessui/react";
 import clsx from "clsx";
 import type { ReactNode } from "react";
-import Button from "../button";
+import { IconButton } from "../button";
 
 const sizes = {
   xs: "sm:max-w-xs",
@@ -64,14 +64,7 @@ const Dialog = ({ title, size = "lg", open, onClose, children, className, ...pro
                   {title.value}
                 </h1>
 
-                <Button
-                  size="lg"
-                  icon="X"
-                  variant="ghost"
-                  onClick={() => onClose(true)}
-                  aria-label="Close"
-                  title="Close"
-                />
+                <IconButton variant="ghost" icon="X" onClick={() => onClose(true)} aria-label="Close" title="Close" />
               </div>
               <div className="max-h-[75vh] w-full overflow-y-auto px-5 pb-5 pt-2">{children}</div>
             </DialogPanel>

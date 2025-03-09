@@ -1,84 +1,104 @@
-import type { ComponentProps } from "react";
+import type { ComponentProps, PropsWithChildren } from "react";
 import React from "react";
 import clsx from "clsx";
 import type { IconName } from "./icon";
 import Icon from "./icon";
+import type { LinkProps as NextLinkProps } from "next/link";
+import Link from "next/link";
 
-type ButtonVariant = "default" | "ghost";
-type ButtonSize = "sm" | "md" | "lg";
+type ButtonVariant = keyof typeof variantClasses;
 
-export type ButtonProps = {
-  as?: "button" | "div";
-  size?: ButtonSize;
-  variant?: ButtonVariant;
-  label?: string;
-  icon?: IconName;
-} & Pick<ComponentProps<"button">, "aria-label" | "title" | "onClick" | "className" | "disabled">;
-
-const variantClasses: Record<ButtonVariant, string> = {
-  default:
-    "bg-zinc-100 hover:bg-zinc-200 active:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:active:bg-zinc-600",
-  ghost: "hover:bg-zinc-100 active:bg-zinc-200 dark:hover:bg-zinc-700 dark:active:bg-zinc-600",
+type DefaultProps = {
+  disabled?: boolean;
+  variant: ButtonVariant;
 };
+type ButtonProps = Pick<ComponentProps<"button">, "onClick" | "className" | "aria-label" | "title"> & DefaultProps;
+type LinkProps = Pick<NextLinkProps & ComponentProps<"a">, "href" | "className"> & DefaultProps;
 
-const sizeClasses: Record<ButtonSize, string> = {
-  sm: "h-7",
-  md: "h-8",
-  lg: "h-9",
-};
+type IconButtonProps = ButtonProps & { icon: IconName };
+const IconButton = (props: IconButtonProps): JSX.Element => (
+  <BaseButton {...props} className={props.className}>
+    <Icon name={props.icon} overrideSize className="size-4" />
+  </BaseButton>
+);
 
-const iconSizeClasses: Record<ButtonSize, string> = {
-  sm: "size-4",
-  md: "size-5",
-  lg: "size-6",
-};
+type IconLinkProps = LinkProps & { icon: IconName };
+const IconLink = (props: IconLinkProps): JSX.Element => (
+  <BaseButton {...props} className={props.className}>
+    <Icon name={props.icon} overrideSize className="size-4" />
+  </BaseButton>
+);
 
-const Button = ({
-  as = "button",
-  "aria-label": ariaLabel,
-  title,
-  onClick,
-  className,
-  size = "md",
-  variant = "default",
-  label,
-  icon,
-  disabled,
-}: ButtonProps): JSX.Element => {
+type TextButtonProps = ButtonProps & { label: string };
+const TextButton = (props: TextButtonProps): JSX.Element => (
+  <BaseButton {...props} className={clsx("text-button", props.className)}>
+    <span>{props.label}</span>
+  </BaseButton>
+);
+
+type TextLinkProps = LinkProps & { label: string };
+const TextLink = (props: TextLinkProps): JSX.Element => (
+  <BaseButton {...props} className={clsx("text-button", props.className)}>
+    <span>{props.label}</span>
+  </BaseButton>
+);
+
+type IconAndTextButtonProps = ButtonProps & { label: string; icon: IconName };
+const IconAndTextButton = (props: IconAndTextButtonProps): JSX.Element => (
+  <BaseButton {...props} className={clsx("gap-x-1.5 text-button", props.className)}>
+    <Icon name={props.icon} overrideSize className="size-4" />
+    <span>{props.label}</span>
+  </BaseButton>
+);
+
+type IconAndTextLinkProps = LinkProps & { label: string; icon: IconName };
+const IconAndTextLink = (props: IconAndTextLinkProps): JSX.Element => (
+  <BaseButton {...props} className={clsx("gap-x-1.5 text-button", props.className)}>
+    <Icon name={props.icon} overrideSize className="size-4" />
+    <span>{props.label}</span>
+  </BaseButton>
+);
+
+export { IconButton, IconLink, TextButton, TextLink, IconAndTextButton, IconAndTextLink };
+
+const BaseButton = (props: PropsWithChildren<ButtonProps | LinkProps>): JSX.Element => {
   const classes = clsx(
-    "flex shrink-0 items-center justify-center gap-x-1.5 rounded p-1.5 text-sm font-medium focus-visible:outline",
-    sizeClasses[size],
-    disabled ? "cursor-not-allowed text-zinc-500 dark:bg-zinc-900/10" : variantClasses[variant],
-    className
+    props.className,
+    "inline-flex select-none items-center justify-center rounded p-2 transition-colors focus-visible:outline",
+    props.disabled ? "cursor-not-allowed text-zinc-500 dark:bg-zinc-900" : variantClasses[props.variant]
   );
 
-  const content = (
-    <>
-      {icon && <Icon overrideSize className={iconSizeClasses[size]} name={icon} />}
-      {label && <p className="truncate">{label}</p>}
-    </>
-  );
-
-  if (as === "div") {
+  if ("href" in props) {
     return (
-      <div aria-label={ariaLabel} title={title} className={classes}>
-        {content}
-      </div>
+      <Link href={props.href} className={classes}>
+        {props.children}
+      </Link>
     );
   }
 
-  return (
-    <button
-      type="button"
-      aria-label={ariaLabel}
-      title={title}
-      disabled={disabled}
-      onClick={onClick}
-      className={classes}
-    >
-      {content}
-    </button>
-  );
+  if (props.onClick) {
+    return (
+      <button
+        type="button"
+        aria-label={props["aria-label"]}
+        disabled={props.disabled}
+        onClick={props.onClick}
+        title={props.title}
+        className={classes}
+      >
+        {props.children}
+      </button>
+    );
+  }
+
+  return <div className={classes}>{props.children}</div>;
 };
 
-export default Button;
+const variantClasses = {
+  default:
+    "bg-zinc-100 text-zinc-700 hover:bg-zinc-200 active:bg-zinc-300 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700 dark:active:bg-zinc-600",
+  primary:
+    "bg-blue-950 text-white hover:bg-blue-900 active:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-900 dark:active:bg-blue-950",
+  ghost:
+    "text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:active:bg-zinc-700",
+};

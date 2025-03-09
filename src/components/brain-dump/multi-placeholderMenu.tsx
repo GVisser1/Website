@@ -14,9 +14,9 @@ import ds from "./dataSource.json";
 import PillButton from "./optionPill";
 import clsx from "clsx";
 import Pill from "../pill";
-import Button from "../button";
 import SearchInput from "../search";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select/select";
+import { IconButton } from "../button";
 
 const dataSource = ds as DataSource;
 const FILTERS = ["fields", "groups", "users", "variables"] as const;
@@ -218,8 +218,8 @@ const MultiPlaceholderMenu = (): JSX.Element => {
                   Add placeholders
                 </span>
                 <div className="absolute right-0 top-0 inline-flex justify-end">
-                  <Button
-                    as="div"
+                  <IconButton
+                    variant="default"
                     size="md"
                     title="Select placeholders"
                     icon="Plus"
