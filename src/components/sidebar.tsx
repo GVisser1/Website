@@ -67,7 +67,7 @@ export const Sidebar = (): JSX.Element => {
             <Icon name="Cog" />
             <SidebarLabel>Settings</SidebarLabel>
           </SidebarItem>
-          <Divider className="my-4" />
+          <Divider className="my-4" soft />
           <SidebarLabel className="text-sm font-medium text-zinc-700 dark:text-zinc-200">Projects</SidebarLabel>
           <SidebarItem href="/projects/pokemon" current={pathname.startsWith("/projects/pokemon")}>
             <Icon name="PokéBall" />
@@ -89,7 +89,7 @@ export const Sidebar = (): JSX.Element => {
         </SidebarSection>
       </SidebarBody>
       <SidebarFooter className="min-w-0 shrink-0">
-        <span className="block truncate text-xs/5 font-normal text-zinc-600 dark:text-zinc-400">
+        <span className="block truncate text-xs font-normal text-zinc-600 dark:text-zinc-400">
           {`© ${new Date().getFullYear()} Glenn Visser`}
         </span>
       </SidebarFooter>
