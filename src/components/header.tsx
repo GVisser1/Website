@@ -15,6 +15,7 @@ const Header = ({ title, description, topLink }: HeaderProps): JSX.Element => (
       <IconAndTextLink
         variant="ghost"
         href={topLink.href}
+        aria-label="Back to overview"
         label="Back to overview"
         icon="ChevronLeft"
         className="-ml-3 mb-8"

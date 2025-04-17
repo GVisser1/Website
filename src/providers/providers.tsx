@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import { ThemeProvider } from "./themeProvider";
 import { dehydrate, HydrationBoundary, QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { GlobalSearchProvider } from "./globalSearchProvider";
 
 type ProvidersProps = {
   children: ReactNode;
@@ -16,7 +17,7 @@ const Providers = ({ children }: ProvidersProps): JSX.Element => {
     <QueryClientProvider client={queryClient}>
       <HydrationBoundary state={dehydratedState}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
+          <GlobalSearchProvider>{children}</GlobalSearchProvider>
         </ThemeProvider>
       </HydrationBoundary>
     </QueryClientProvider>

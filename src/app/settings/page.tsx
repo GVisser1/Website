@@ -20,7 +20,9 @@ const SettingsPage = (): JSX.Element => (
       </div>
       <ThemeSwitcher />
     </section>
-    <Divider className="my-10" />
+
+    <Divider className="my-10" soft />
+
     <section className="grid items-start gap-x-8 gap-y-6 sm:grid-cols-2">
       <div>
         <h2 className="mb-1 font-semibold text-zinc-700 dark:text-zinc-200">Font Family</h2>

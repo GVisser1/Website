@@ -247,7 +247,7 @@ const PlaceholderMenu = (): JSX.Element => {
             </div>
             {!selectedOption && (
               <div className="p-2.5">
-                <Icon name="ChevronDown" className="size-4 text-zinc-500 dark:text-zinc-400" />
+                <Icon name="ChevronDown" size="sm" className="text-zinc-500 dark:text-zinc-400" />
               </div>
             )}
           </div>
@@ -256,10 +256,9 @@ const PlaceholderMenu = (): JSX.Element => {
           <IconButton
             variant="default"
             aria-label="Clear selected option"
-            title="Clear selected option"
-            size="md"
+            tooltip={{ title: "Clear selected option" }}
             icon="X"
-            className="absolute right-[5px] top-1"
+            className="absolute right-[3px] top-[2px]"
             onClick={(e) => {
               e.preventDefault();
               setSelectedOption(null);

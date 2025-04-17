@@ -38,7 +38,7 @@ export const OptionIcon = ({ type, applyBgColour = true, className }: OptionIcon
 
   return (
     <div className={classes}>
-      <Icon name={icon.name} className="size-3.5 stroke-2" />
+      <Icon name={icon.name} size="xs" />
     </div>
   );
 };

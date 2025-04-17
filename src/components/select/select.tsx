@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import * as Radix from "@radix-ui/react-select";
 import type { SelectContentProps, SelectItemProps } from "@radix-ui/react-select";
 import clsx from "clsx";
@@ -17,7 +16,7 @@ const SelectTrigger = forwardRef<ElementRef<typeof Radix.Trigger>, Radix.SelectT
     <Radix.Trigger
       ref={ref}
       className={clsx(
-        "flex h-10 w-full items-center justify-between rounded border px-3 py-2 text-sm text-zinc-700 focus-visible:outline dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200",
+        "flex h-10 w-full items-center justify-between rounded border bg-white px-3 py-2 text-sm text-zinc-700 focus-visible:outline dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200",
         className
       )}
       {...props}
@@ -37,14 +36,16 @@ const SelectContent = forwardRef<ElementRef<typeof Radix.Content>, SelectContent
         <Radix.Content
           ref={ref}
           className={clsx(
-            "relative z-50 max-h-96 min-w-32 overflow-hidden rounded-md border shadow-md",
+            "relative z-50 max-h-96 w-[--radix-select-trigger-width] min-w-32 overflow-hidden rounded-md border shadow-sm",
             "bg-white text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200",
             "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
             "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
             className,
             getFontClass()
           )}
-          position="item-aligned"
+          position="popper"
+          align="end"
+          sideOffset={4}
           {...props}
         >
           <Radix.Viewport className="p-1">{children}</Radix.Viewport>
@@ -67,7 +68,7 @@ const SelectItem = forwardRef<ElementRef<typeof Radix.Item>, SelectItemProps>(
     >
       <span className="absolute right-2 flex size-3.5 items-center justify-center">
         <Radix.ItemIndicator>
-          <Icon name="Check" overrideSize className="size-4" />
+          <Icon name="Check" size="sm" />
         </Radix.ItemIndicator>
       </span>
       <Radix.ItemText>

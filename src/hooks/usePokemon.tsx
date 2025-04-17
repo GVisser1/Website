@@ -1,6 +1,5 @@
 import type { PokemonDetails } from "@/utils/pokemonUtil";
 import { getPaginatedPokemon, getPokemonDetails } from "@/utils/pokemonUtil";
-import { minutes } from "@/utils/timeUtil";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
@@ -25,7 +24,6 @@ const usePokemon = (currentPage: number): UsePokemonResult => {
 
       return { pokemonData, totalPages: Math.ceil(paginatedPokemon.count / PAGE_SIZE) };
     },
-    staleTime: minutes(5),
   });
 
   useEffect(() => {

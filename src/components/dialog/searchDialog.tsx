@@ -1,19 +1,17 @@
 import Dialog from "@/components/dialog/dialog";
 import Link from "next/link";
 import type { ChangeEvent, KeyboardEvent } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { normalizeString } from "@/utils/textUtil";
 import SearchInput from "../search";
+import Icon from "../icon";
+import type { Page } from "../../constants";
+import { PAGES } from "../../constants";
+import { isEmpty, isNil } from "lodash-es";
 
-const pages = [
-  { title: "Home", href: "/" },
-  { title: "About me", href: "/about" },
-  { title: "Timeline", href: "/timeline" },
-  { title: "Pokémon", href: "/projects/pokemon" },
-  { title: "Settings", href: "/settings" },
-];
+const EXIT_ANIMATION_DURATION = 200;
 
 type SearchDialogProps = {
   open: boolean;
@@ -22,40 +20,45 @@ type SearchDialogProps = {
 
 const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
   const router = useRouter();
+  const pathname = usePathname();
+
   const [query, setQuery] = useState("");
-  const [searchResults, setSearchResults] = useState<typeof pages>(pages);
-  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
+  const [availablePages, setAvailablePages] = useState<Page[]>(PAGES);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAvailablePages(PAGES.filter((page) => page.href !== pathname));
+    }, EXIT_ANIMATION_DURATION);
+  }, [pathname]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const value = e.target.value;
     setQuery(value);
-    if (value) {
-      const filteredResults = pages.filter((page) => normalizeString(page.title).includes(normalizeString(value)));
-      setSearchResults(filteredResults);
-    } else {
-      setSearchResults(pages);
+
+    if (isNil(value)) {
+      setAvailablePages(PAGES.filter((page) => page.href !== pathname));
+      setSelectedIndex(0);
+      return;
     }
-    setSelectedIndex(-1);
+
+    const filteredResults = PAGES.filter(
+      (page) => page.href !== pathname && normalizeString(page.name).includes(normalizeString(value))
+    );
+
+    setAvailablePages(filteredResults);
+    setSelectedIndex(isEmpty(filteredResults) ? -1 : 0);
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
-    if (e.key === "ArrowDown" || e.key === "ArrowRight") {
-      setSelectedIndex((prevIndex) => {
-        if (prevIndex === searchResults.length - 1) {
-          return 0;
-        }
-        return Math.min(prevIndex + 1, searchResults.length - 1);
-      });
-    } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
-      setSelectedIndex((prevIndex) => {
-        if (prevIndex === 0) {
-          return searchResults.length - 1;
-        }
-        return Math.max(prevIndex - 1, 0);
-      });
-    } else if (e.key === "Enter" && selectedIndex >= 0) {
-      setSelectedIndex(-1);
-      router.push(searchResults[selectedIndex].href);
+    const { key } = e;
+
+    if (key === "ArrowDown" || key === "ArrowRight") {
+      setSelectedIndex((prevIndex) => (prevIndex + 1) % availablePages.length);
+    } else if (key === "ArrowUp" || key === "ArrowLeft") {
+      setSelectedIndex((prevIndex) => (prevIndex - 1 + availablePages.length) % availablePages.length);
+    } else if (key === "Enter" && selectedIndex >= 0) {
+      router.push(availablePages[selectedIndex].href);
       handleOnClose();
     }
   };
@@ -64,9 +67,8 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
     onClose();
     setTimeout(() => {
       setQuery("");
-      setSelectedIndex(-1);
-      setSearchResults(pages);
-    }, 200);
+      setSelectedIndex(0);
+    }, EXIT_ANIMATION_DURATION);
   };
 
   return (
@@ -90,38 +92,51 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
           onBlur={() => setSelectedIndex(-1)}
         />
         <section className="relative mt-4">
-          {searchResults.length > 0 && (
-            <>
-              <h2 className="sr-only">Results</h2>
-              <div className="divide-y dark:divide-white/10" role="listbox" aria-label="Pages">
-                {searchResults.map((page, index) => (
-                  <Link
-                    key={page.title}
-                    id={page.title}
-                    role="option"
-                    aria-selected={selectedIndex === index}
-                    href={page.href}
-                    onClick={handleOnClose}
-                    className={clsx(
-                      "flex h-10 w-full items-center p-2 hover:bg-zinc-50 dark:hover:bg-zinc-800",
-                      selectedIndex === index && "bg-zinc-50 dark:bg-zinc-800"
-                    )}
-                  >
-                    {page.title}
-                  </Link>
-                ))}
-              </div>
-            </>
-          )}
-          {searchResults.length === 0 && (
-            <output className={clsx("flex w-full flex-col items-center justify-center gap-y-8 pt-5")}>
-              <h2>No results found</h2>
-            </output>
+          {isEmpty(availablePages) ? (
+            <EmptyState />
+          ) : (
+            <ResultsList results={availablePages} selectedIndex={selectedIndex} onClose={handleOnClose} />
           )}
         </section>
       </search>
     </Dialog>
   );
 };
+
+const EmptyState = (): JSX.Element => (
+  <output className="flex h-10 w-full flex-col items-center justify-center gap-y-8">
+    <h2>No results found</h2>
+  </output>
+);
+
+type ResultsListProps = {
+  results: Page[];
+  selectedIndex: number;
+  onClose: () => void;
+};
+const ResultsList = (props: ResultsListProps): JSX.Element => (
+  <>
+    <h2 className="sr-only">Results</h2>
+    <div role="listbox" aria-label="Pages" className="flex flex-col gap-y-1">
+      {props.results.map((page, index) => (
+        <Link
+          key={page.name}
+          id={page.name}
+          role="option"
+          aria-selected={props.selectedIndex === index}
+          href={page.href}
+          onClick={props.onClose}
+          className={clsx(
+            "flex h-10 w-full items-center gap-x-2 rounded px-2 hover:bg-zinc-50 focus-visible:outline dark:hover:bg-zinc-800",
+            props.selectedIndex === index && "bg-zinc-50 dark:bg-zinc-800"
+          )}
+        >
+          <Icon name={page.icon} />
+          {page.name}
+        </Link>
+      ))}
+    </div>
+  </>
+);
 
 export default SearchDialog;

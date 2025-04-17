@@ -18,10 +18,25 @@ const Pagination = ({ currentPage, totalPages, onPrevious, onNext, onFirst, onLa
     <div className="mt-4 flex items-center justify-between">
       <PageCounter currentPage={currentPage} totalPages={totalPages} />
       <div className="flex gap-x-1">
-        <PaginationButton ariaLabel="First page" onClick={onFirst} disabled={isFirstPage} icon="ChevronLeftDouble" />
-        <PaginationButton ariaLabel="Previous page" onClick={onPrevious} disabled={isFirstPage} icon="ChevronLeft" />
-        <PaginationButton ariaLabel="Next page" onClick={onNext} disabled={isLastPage} icon="ChevronRight" />
-        <PaginationButton ariaLabel="Last page" onClick={onLast} disabled={isLastPage} icon="ChevronRightDouble" />
+        <PaginationButton
+          ariaLabel="Go to the first page"
+          onClick={onFirst}
+          disabled={isFirstPage}
+          icon="ChevronLeftDouble"
+        />
+        <PaginationButton
+          ariaLabel="Go to the previous page"
+          onClick={onPrevious}
+          disabled={isFirstPage}
+          icon="ChevronLeft"
+        />
+        <PaginationButton ariaLabel="Go to the next page" onClick={onNext} disabled={isLastPage} icon="ChevronRight" />
+        <PaginationButton
+          ariaLabel="Go to the last page"
+          onClick={onLast}
+          disabled={isLastPage}
+          icon="ChevronRightDouble"
+        />
       </div>
     </div>
   );
@@ -40,7 +55,7 @@ const PaginationButton = ({ ariaLabel, disabled, onClick, icon }: PaginationButt
     aria-label={ariaLabel}
     disabled={disabled}
     onClick={onClick}
-    title={!disabled ? ariaLabel : ""}
+    tooltip={{ title: ariaLabel, side: "top" }}
     icon={icon}
   />
 );
