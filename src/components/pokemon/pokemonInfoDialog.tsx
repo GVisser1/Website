@@ -103,7 +103,7 @@ const DialogContent = ({
           {isLegendary && (
             <Tooltip
               trigger={
-                <div className="absolute left-0 top-0 p-2">
+                <div className="absolute top-0 left-0 p-2">
                   <span className="sr-only">This Pokémon is legendary</span>
                   <Icon name="Star" className="text-yellow-500" />
                 </div>
@@ -128,7 +128,7 @@ const DialogContent = ({
           <ul className="flex gap-x-2 text-center">
             {types.map((type) => (
               <li key={type}>
-                <span className={clsx("block rounded px-1.5 py-0.5 text-xs font-semibold", typingColor[type])}>
+                <span className={clsx("block rounded-sm px-1.5 py-0.5 text-xs font-semibold", typingColor[type])}>
                   {type}
                 </span>
               </li>
@@ -177,7 +177,7 @@ const DialogContent = ({
                             {pokemon.sprite && (
                               <img src={pokemon.sprite} alt={`${pokemon.name} sprite`} className="h-16" />
                             )}
-                            <span className="mt-2 text-sm font-medium capitalize text-zinc-700 dark:text-zinc-200">
+                            <span className="mt-2 text-sm font-medium text-zinc-700 capitalize dark:text-zinc-200">
                               {pokemon.name}
                             </span>
                           </button>
@@ -190,12 +190,12 @@ const DialogContent = ({
                   <Icon
                     name="ArrowRight"
                     size="2xl"
-                    className="mx-2 hidden text-zinc-500 group-last-of-type:hidden dark:text-zinc-400 xs:block"
+                    className="mx-2 hidden text-zinc-500 group-last-of-type:hidden xs:block dark:text-zinc-400"
                   />
                   <Icon
                     name="ArrowDown"
                     size="2xl"
-                    className="my-5 block text-zinc-500 group-last-of-type:hidden dark:text-zinc-400 xs:hidden"
+                    className="my-5 block text-zinc-500 group-last-of-type:hidden xs:hidden dark:text-zinc-400"
                   />
                 </div>
               ))}
@@ -214,34 +214,34 @@ export const SkeletonLoader = (): JSX.Element => (
       <div className="grid grid-cols-1 gap-x-8 gap-y-2 xs:grid-cols-2">
         <div className="box-content flex h-32 w-full justify-center rounded-lg border border-zinc-200 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-700" />
         <div>
-          <span className="mb-1 block h-6 rounded bg-zinc-200 dark:bg-zinc-700" />
+          <span className="mb-1 block h-6 rounded-sm bg-zinc-200 dark:bg-zinc-700" />
           <ul className="flex gap-x-2 text-center">
             {Array.from({ length: 2 }).map((_, i) => (
-              <li key={i} className="h-6 w-20 rounded bg-zinc-200 dark:bg-zinc-700" />
+              <li key={i} className="h-6 w-20 rounded-sm bg-zinc-200 dark:bg-zinc-700" />
             ))}
           </ul>
           <div className="mt-4 flex flex-col gap-y-1">
-            <span className="h-6 w-42 rounded bg-zinc-200 dark:bg-zinc-700" />
-            <span className="h-6 w-42 rounded bg-zinc-200 dark:bg-zinc-700" />
+            <span className="h-6 w-42 rounded-sm bg-zinc-200 dark:bg-zinc-700" />
+            <span className="h-6 w-42 rounded-sm bg-zinc-200 dark:bg-zinc-700" />
           </div>
         </div>
       </div>
-      <span className="h-12 w-full rounded bg-zinc-200 dark:bg-zinc-700" />
+      <span className="h-12 w-full rounded-sm bg-zinc-200 dark:bg-zinc-700" />
       <Divider />
       <dl className="grid grid-cols-1 gap-2 capitalize xs:grid-cols-2">
         {Array.from({ length: 6 }).map((_, i) => (
           <div key={i} className="flex justify-between rounded-lg p-1">
-            <dt className="h-6 w-1/2 rounded bg-zinc-200 dark:bg-zinc-700" />
-            <dd className="h-6 w-1/4 rounded bg-zinc-200 dark:bg-zinc-700" />
+            <dt className="h-6 w-1/2 rounded-sm bg-zinc-200 dark:bg-zinc-700" />
+            <dd className="h-6 w-1/4 rounded-sm bg-zinc-200 dark:bg-zinc-700" />
           </div>
         ))}
       </dl>
       <Divider />
       <div>
-        <div className="mb-2 h-7 w-48 rounded bg-zinc-200 dark:bg-zinc-700" />
+        <div className="mb-2 h-7 w-48 rounded-sm bg-zinc-200 dark:bg-zinc-700" />
         <div className="flex flex-col xs:grid xs:auto-cols-fr xs:grid-flow-col">
           {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="group flex flex-col items-center text-zinc-500 dark:text-zinc-400 xs:flex-row">
+            <div key={i} className="group flex flex-col items-center text-zinc-500 xs:flex-row dark:text-zinc-400">
               <div className="h-28 w-full rounded-lg bg-zinc-200 dark:bg-zinc-700" />
               <Icon name="ArrowRight" size="2xl" className="mx-2 hidden group-last-of-type:hidden xs:block" />
               <Icon name="ArrowDown" size="2xl" className="my-5 block group-last-of-type:hidden xs:hidden" />

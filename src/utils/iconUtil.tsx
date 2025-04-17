@@ -30,10 +30,10 @@ type OptionIconProps = {
 export const OptionIcon = ({ type, applyBgColour = true, className }: OptionIconProps): JSX.Element => {
   const icon = iconMap[type];
   const classes = clsx(
-    "flex size-5 items-center justify-center rounded-sm p-[3px]",
+    "flex size-5 items-center justify-center rounded-xs p-[3px]",
     applyBgColour && icon.bg,
     icon.text,
-    className
+    className,
   );
 
   return (

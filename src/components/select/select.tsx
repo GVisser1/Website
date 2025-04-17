@@ -16,15 +16,15 @@ const SelectTrigger = forwardRef<ElementRef<typeof Radix.Trigger>, Radix.SelectT
     <Radix.Trigger
       ref={ref}
       className={clsx(
-        "flex h-10 w-full items-center justify-between rounded border bg-white px-3 py-2 text-sm text-zinc-700 focus-visible:outline dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200",
-        className
+        "flex h-10 w-full items-center justify-between rounded-sm border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-700 focus-visible:outline dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200",
+        className,
       )}
       {...props}
     >
       {children}
       <Icon name="ChevronDown" className="text-zinc-500 dark:text-zinc-400" />
     </Radix.Trigger>
-  )
+  ),
 );
 SelectTrigger.displayName = Radix.Trigger.displayName;
 
@@ -36,12 +36,12 @@ const SelectContent = forwardRef<ElementRef<typeof Radix.Content>, SelectContent
         <Radix.Content
           ref={ref}
           className={clsx(
-            "relative z-50 max-h-96 w-[--radix-select-trigger-width] min-w-32 overflow-hidden rounded-md border shadow-sm",
+            "relative z-50 max-h-96 w-(--radix-select-trigger-width) min-w-32 overflow-hidden rounded-md border border-zinc-200 shadow-xs",
             "bg-white text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200",
-            "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
+            "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
             "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
             className,
-            getFontClass()
+            getFontClass(),
           )}
           position="popper"
           align="end"
@@ -52,7 +52,7 @@ const SelectContent = forwardRef<ElementRef<typeof Radix.Content>, SelectContent
         </Radix.Content>
       </Radix.Portal>
     );
-  }
+  },
 );
 SelectContent.displayName = Radix.Content.displayName;
 
@@ -61,8 +61,8 @@ const SelectItem = forwardRef<ElementRef<typeof Radix.Item>, SelectItemProps>(
     <Radix.Item
       ref={ref}
       className={clsx(
-        "relative flex w-full select-none items-center truncate rounded py-1.5 pl-2 pr-8 text-sm outline-none focus:bg-zinc-50 dark:focus:bg-zinc-800",
-        className
+        "relative flex w-full items-center truncate rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none focus:bg-zinc-50 dark:focus:bg-zinc-800",
+        className,
       )}
       {...props}
     >
@@ -75,7 +75,7 @@ const SelectItem = forwardRef<ElementRef<typeof Radix.Item>, SelectItemProps>(
         <div className="flex items-center gap-x-1">{children}</div>
       </Radix.ItemText>
     </Radix.Item>
-  )
+  ),
 );
 SelectItem.displayName = Radix.Item.displayName;
 

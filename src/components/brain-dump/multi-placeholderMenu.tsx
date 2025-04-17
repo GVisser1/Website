@@ -80,7 +80,7 @@ const MultiPlaceholderMenu = (): JSX.Element => {
 
   const removeOption = useCallback(
     (option: DataSourceItem): void => setSelectedOptions(selectedOptions.filter((o) => o.id !== option.id)),
-    [selectedOptions]
+    [selectedOptions],
   );
 
   const handleOptionClick = useCallback(
@@ -91,7 +91,7 @@ const MultiPlaceholderMenu = (): JSX.Element => {
       }
       setSelectedOptions((prev) => [...prev, option]);
     },
-    [selectedOptions, removeOption]
+    [selectedOptions, removeOption],
   );
 
   const handleKeyDown = useCallback(
@@ -121,7 +121,7 @@ const MultiPlaceholderMenu = (): JSX.Element => {
           break;
       }
     },
-    [filter, filteredResults, selectedIndex, handleOptionClick]
+    [filter, filteredResults, selectedIndex, handleOptionClick],
   );
 
   const handleCreateOption = useCallback((): void => {
@@ -160,7 +160,7 @@ const MultiPlaceholderMenu = (): JSX.Element => {
         </OptionGroup>
       );
     },
-    [selectedOptions, selectedIndex, handleOptionClick]
+    [selectedOptions, selectedIndex, handleOptionClick],
   );
 
   const renderFilteredOptions = useCallback(() => {
@@ -196,8 +196,8 @@ const MultiPlaceholderMenu = (): JSX.Element => {
       }}
     >
       <div className="w-80">
-        <PopoverAnchor className="relative w-full rounded">
-          <div className="flex w-full grow items-center justify-between rounded border dark:border-zinc-700 dark:bg-zinc-900">
+        <PopoverAnchor className="relative w-full rounded-sm">
+          <div className="flex w-full grow items-center justify-between rounded-sm border border-zinc-200 dark:border-zinc-700 dark:bg-zinc-900">
             <div className="flex max-h-80 w-full flex-wrap items-center gap-1 overflow-y-auto p-2 pr-10">
               {selectedOptions.map((option) => (
                 <PillButton
@@ -206,17 +206,17 @@ const MultiPlaceholderMenu = (): JSX.Element => {
                   label={option.label}
                   iconType={option.type}
                   onClick={() => removeOption(option)}
-                  className="z-[1]"
+                  className="z-1"
                 />
               ))}
-              <PopoverTrigger className="group my-auto flex h-6 min-w-0 grow items-center rounded outline-none">
+              <PopoverTrigger className="group my-auto flex h-6 min-w-0 grow items-center rounded-sm outline-hidden">
                 <span
                   aria-hidden
-                  className="w-full select-none truncate py-2 text-left text-zinc-500 dark:text-zinc-400"
+                  className="w-full truncate py-2 text-left text-zinc-500 select-none dark:text-zinc-400"
                 >
                   Add placeholders
                 </span>
-                <div className="absolute right-0 top-0 inline-flex justify-end">
+                <div className="absolute top-0 right-0 inline-flex justify-end">
                   <IconButton
                     aria-label="Select placeholders"
                     variant="default"
@@ -237,8 +237,8 @@ const MultiPlaceholderMenu = (): JSX.Element => {
         align="start"
         className="mt-1 flex flex-col bg-white shadow-lg dark:bg-zinc-900"
       >
-        <div className="relative w-[480px] overflow-hidden rounded border pb-1 dark:border-zinc-700">
-          <div className="grid grid-cols-3 gap-x-2 px-3 pb-2 pt-3">
+        <div className="relative w-[480px] overflow-hidden rounded-sm border border-zinc-200 pb-1 dark:border-zinc-700">
+          <div className="grid grid-cols-3 gap-x-2 px-3 pt-3 pb-2">
             <SearchInput
               ref={inputRef}
               aria-controls="listbox"
@@ -298,7 +298,7 @@ const getTotalOptions = (filter: Filter, data: Partial<DataSource>): number => {
 const getSelectedOption = (
   filter: Filter,
   filteredResults: Partial<DataSource>,
-  selectedIndex: number
+  selectedIndex: number,
 ): DataSourceItem | undefined => {
   const selectionMap: Record<Filter, DataSourceItem | undefined> = {
     fields: [...(filteredResults.fields ?? []), ...(filteredResults.subforms?.flatMap((sf) => sf.fields) ?? [])][
@@ -315,7 +315,7 @@ const CreateOptionButton = ({ onClick, value }: { onClick: () => void; value: st
   <button
     type="button"
     onClick={onClick}
-    className="mx-1 mt-1 flex items-center justify-center gap-x-1 rounded bg-zinc-50 px-3 py-1.5 text-sm font-semibold text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700 dark:active:bg-zinc-600"
+    className="mx-1 mt-1 flex items-center justify-center gap-x-1 rounded-sm bg-zinc-50 px-3 py-1.5 text-sm font-semibold text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700 dark:active:bg-zinc-600"
   >
     <Icon name="Plus" />
     Create <Pill label={value} icon="Star" colour="gray" />

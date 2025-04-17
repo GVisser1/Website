@@ -28,9 +28,9 @@ export const Layout = ({ children }: PropsWithChildren): JSX.Element | null => {
           <Navbar />
           <main
             tabIndex={0}
-            className="group flex h-screen w-full grow flex-col overflow-y-auto overscroll-y-none outline-none"
+            className="group flex h-screen w-full grow flex-col overflow-y-auto overscroll-y-none outline-hidden"
           >
-            <div className="flex grow flex-col bg-white ring-inset ring-blue-500 group-focus-visible:ring-1 dark:bg-zinc-900 lg:mt-3 lg:rounded-tl-lg">
+            <div className="flex grow flex-col bg-white -outline-offset-1 group-focus-visible:outline lg:mt-3 lg:rounded-tl-lg dark:bg-zinc-900">
               <div className="mx-auto flex w-full max-w-5xl grow flex-col p-8">{children}</div>
             </div>
           </main>

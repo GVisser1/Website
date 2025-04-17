@@ -16,7 +16,7 @@ const AboutPage = (): JSX.Element => (
   <>
     <Header title="About me" description="Learn more about me and my interests" />
 
-    <div className="prose dark:prose-dark">
+    <div className="prose prose-zinc dark:prose-invert">
       <section id="introduction">
         <Image src={beach} alt="Me at the beach" priority className="max-h-96 w-full rounded-2xl object-cover" />
         <p>

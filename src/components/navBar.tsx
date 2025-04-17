@@ -6,7 +6,7 @@ export const Navbar = (): JSX.Element => {
   const { setOpen } = useGlobalSearch();
 
   return (
-    <header className="sticky top-0 bg-white p-3 dark:bg-zinc-900 lg:hidden">
+    <header className="sticky top-0 bg-white p-3 lg:hidden dark:bg-zinc-900">
       <nav className="flex items-center justify-between">
         <Logo withTitle={false} size="lg" />
         <div className="flex gap-x-3">

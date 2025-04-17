@@ -27,7 +27,7 @@ const Dialog = ({ title, size = "lg", open, onClose, children, className, ...pro
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div className="fixed inset-0 flex w-screen justify-center overflow-y-auto bg-zinc-950/25 p-2 focus:outline-none dark:bg-zinc-950/50 sm:px-6 sm:py-8 lg:px-8 lg:py-16" />
+        <div className="fixed inset-0 flex w-screen justify-center overflow-y-auto bg-zinc-950/25 p-2 focus:outline-hidden sm:px-6 sm:py-8 lg:px-8 lg:py-16 dark:bg-zinc-950/50" />
       </TransitionChild>
 
       <div className="fixed inset-0 w-screen pt-6 sm:pt-0">
@@ -44,14 +44,14 @@ const Dialog = ({ title, size = "lg", open, onClose, children, className, ...pro
               className={clsx(
                 className,
                 sizes[size],
-                "row-start-2 w-full min-w-0 rounded-t-3xl bg-white shadow-lg ring-1 ring-zinc-950/10 [--gutter:theme(spacing.8)] dark:bg-zinc-900 dark:ring-white/10 sm:mb-auto sm:rounded-2xl forced-colors:outline"
+                "row-start-2 w-full min-w-0 rounded-t-3xl bg-white shadow-lg ring-1 ring-zinc-950/10 [--gutter:--spacing(8)] sm:mb-auto sm:rounded-2xl dark:bg-zinc-900 dark:ring-white/10 forced-colors:outline",
               )}
             >
               <div className="flex items-center justify-between px-5 pt-5">
                 <h1
                   className={clsx(
                     "truncate text-xl font-semibold text-zinc-700 dark:text-zinc-200",
-                    title.capitalize && "capitalize"
+                    title.capitalize && "capitalize",
                   )}
                 >
                   {title.value}
@@ -65,7 +65,7 @@ const Dialog = ({ title, size = "lg", open, onClose, children, className, ...pro
                   tooltip={{ title: "Close" }}
                 />
               </div>
-              <div className="max-h-[75vh] w-full overflow-y-auto px-5 pb-5 pt-2">{children}</div>
+              <div className="max-h-[75vh] w-full overflow-y-auto px-5 pt-2 pb-5">{children}</div>
             </DialogPanel>
           </TransitionChild>
         </div>

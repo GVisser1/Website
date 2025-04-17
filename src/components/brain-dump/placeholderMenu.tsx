@@ -56,7 +56,7 @@ const PlaceholderMenu = (): JSX.Element => {
 
     if (newFilter === "fields") {
       const filteredFields = dataSource.fields.filter((field) =>
-        normalizeString(field.label).includes(normalizedQuery)
+        normalizeString(field.label).includes(normalizedQuery),
       );
 
       const filteredSubforms = dataSource.subforms
@@ -72,12 +72,12 @@ const PlaceholderMenu = (): JSX.Element => {
       setSearchResults({ fields: [], groups: [], subforms: [], users: filteredUsers, variables: [] });
     } else if (newFilter === "variables") {
       const filteredVariables = dataSource.variables.filter((variable) =>
-        normalizeString(variable.label).includes(normalizedQuery)
+        normalizeString(variable.label).includes(normalizedQuery),
       );
       setSearchResults({ fields: [], groups: [], subforms: [], users: [], variables: filteredVariables });
     } else if (newFilter === "groups") {
       const filteredGroups = dataSource.groups.filter((group) =>
-        normalizeString(group.label).includes(normalizedQuery)
+        normalizeString(group.label).includes(normalizedQuery),
       );
       setSearchResults({ fields: [], groups: filteredGroups, subforms: [], users: [], variables: [] });
     }
@@ -106,10 +106,10 @@ const PlaceholderMenu = (): JSX.Element => {
         filter === "fields"
           ? [...searchResults.fields, ...searchResults.subforms.flatMap((sf) => sf.fields)][selectedIndex]
           : filter === "users"
-          ? searchResults.users[selectedIndex]
-          : filter === "variables"
-          ? searchResults.variables[selectedIndex]
-          : searchResults.groups[selectedIndex];
+            ? searchResults.users[selectedIndex]
+            : filter === "variables"
+              ? searchResults.variables[selectedIndex]
+              : searchResults.groups[selectedIndex];
 
       if (selected) {
         setSelectedOption(selected);
@@ -231,15 +231,15 @@ const PlaceholderMenu = (): JSX.Element => {
   return (
     <Popover open={openPopover} onOpenChange={setOpenPopover}>
       <div className="relative w-80">
-        <PopoverTrigger className="w-full rounded focus-visible:outline">
-          <div className="flex h-10 w-full items-center justify-between rounded border dark:border-zinc-700">
+        <PopoverTrigger className="w-full rounded-sm focus-visible:outline">
+          <div className="flex h-10 w-full items-center justify-between rounded-sm border border-zinc-200 dark:border-zinc-700">
             <div className="flex min-w-0 items-center gap-x-1 pl-2">
               {selectedOption && <OptionIcon type={selectedOption.type} />}
               <p
                 className={clsx(
                   selectedOption
                     ? "truncate pr-10 font-medium text-zinc-700 dark:text-zinc-200"
-                    : "text-zinc-500 dark:text-zinc-400"
+                    : "text-zinc-500 dark:text-zinc-400",
                 )}
               >
                 {selectedOption?.label ?? "Select a placeholder"}
@@ -258,7 +258,7 @@ const PlaceholderMenu = (): JSX.Element => {
             aria-label="Clear selected option"
             tooltip={{ title: "Clear selected option" }}
             icon="X"
-            className="absolute right-[3px] top-[2px]"
+            className="absolute top-[2px] right-[3px]"
             onClick={(e) => {
               e.preventDefault();
               setSelectedOption(null);
@@ -271,8 +271,8 @@ const PlaceholderMenu = (): JSX.Element => {
         align="start"
         className="z-10 mt-1 flex flex-col bg-white shadow-lg dark:bg-zinc-900"
       >
-        <div className="relative w-[480px] overflow-hidden rounded border pb-1 dark:border-zinc-700">
-          <div className="grid grid-cols-3 gap-x-2 px-3 pb-2 pt-3">
+        <div className="relative w-[480px] overflow-hidden rounded-sm border border-zinc-200 pb-1 dark:border-zinc-700">
+          <div className="grid grid-cols-3 gap-x-2 px-3 pt-3 pb-2">
             <SearchInput
               aria-controls="listbox"
               aria-expanded="true"

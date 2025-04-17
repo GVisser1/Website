@@ -16,6 +16,7 @@ export const Sidebar = (): JSX.Element => {
   const { setOpen } = useGlobalSearch();
   const metaKey = useMetaKey();
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const listClasses = clsx("flex flex-col gap-y-1 p-4");
 
   useEffect(() => {
     const down = (e: KeyboardEvent): void => {
@@ -29,13 +30,8 @@ export const Sidebar = (): JSX.Element => {
   }, []);
 
   return (
-    <nav
-      className={clsx(
-        "relative hidden shrink-0 flex-col transition-all duration-300 lg:flex",
-        isCollapsed ? "w-16" : "w-64"
-      )}
-    >
-      <div className="p-4">
+    <nav className={clsx("relative hidden shrink-0 flex-col transition-all lg:flex", isCollapsed ? "w-17" : "w-64")}>
+      <div className={listClasses}>
         <div className="mb-2 flex items-center justify-between">
           {!isCollapsed && <Logo withTitle size="sm" />}
           <IconButton
@@ -64,7 +60,7 @@ export const Sidebar = (): JSX.Element => {
 
       <Divider soft />
 
-      <ul className="flex flex-col gap-y-1 p-4">
+      <ul className={listClasses}>
         {MAIN_PAGES.map((item) => (
           <SidebarLink
             key={item.name}
@@ -79,7 +75,7 @@ export const Sidebar = (): JSX.Element => {
 
       <Divider soft />
 
-      <ul className="flex flex-col gap-y-1 p-4">
+      <ul className={listClasses}>
         {PROJECT_PAGES.map((item) => (
           <SidebarLink
             key={item.name}
@@ -96,7 +92,7 @@ export const Sidebar = (): JSX.Element => {
 
       <Divider soft />
 
-      <ul className="flex flex-col gap-y-1 p-4">
+      <ul className={listClasses}>
         <SidebarLink href={MAIL_TO} icon="At" label="Contact" isCollapsed={isCollapsed} />
       </ul>
     </nav>
