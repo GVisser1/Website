@@ -7,6 +7,7 @@ import { Divider } from "../divider";
 import Icon from "../icon";
 import { useRouter, useSearchParams } from "next/navigation";
 import { isNil } from "lodash-es";
+import Tooltip from "../tooltip";
 
 type PokemonInfoDialogProps = {
   open: boolean;
@@ -100,22 +101,26 @@ const DialogContent = ({
         <div className="relative box-content flex h-32 w-full justify-center rounded-lg border dark:border-zinc-200/10">
           {sprite.src && <img src={sprite.src} alt={sprite.alt} className="h-32 p-2" />}
           {isLegendary && (
-            <span
-              aria-label="This Pokémon is legendary"
+            <Tooltip
+              trigger={
+                <div className="absolute left-0 top-0 p-2">
+                  <span className="sr-only">This Pokémon is legendary</span>
+                  <Icon name="Star" className="text-yellow-500" />
+                </div>
+              }
               title="This Pokémon is legendary"
-              className="absolute left-2 top-2"
-            >
-              <Icon name="Star" className="text-yellow-500" />
-            </span>
+            />
           )}
           {isMythical && (
-            <span
-              aria-label="This Pokémon is mythical"
+            <Tooltip
+              trigger={
+                <div className={clsx("absolute left-0 p-2", !isLegendary ? "top-0" : "top-6")}>
+                  <span className="sr-only">This Pokémon is mythical</span>
+                  <Icon name="Star" className="text-pink-500" />
+                </div>
+              }
               title="This Pokémon is mythical"
-              className={clsx("absolute left-2", !isLegendary ? "top-2" : "top-8")}
-            >
-              <Icon name="Star" className="text-pink-500" />
-            </span>
+            />
           )}
         </div>
         <div>
@@ -161,25 +166,36 @@ const DialogContent = ({
                 <div key={i} className="group flex flex-col items-center xs:flex-row">
                   <div className="flex w-full flex-col items-center gap-4">
                     {stage.map((pokemon) => (
-                      <button
-                        key={pokemon.id}
-                        onClick={() => handleScrollToTop(pokemon.name)}
-                        className="flex size-full grow flex-col items-center justify-center rounded-lg border border-zinc-200 bg-zinc-50 p-3 hover:bg-zinc-100 active:bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-900 dark:active:bg-zinc-950"
-                      >
-                        {pokemon.sprite && <img src={pokemon.sprite} alt={`${pokemon.name} sprite`} className="h-16" />}
-                        <span className="mt-2 text-sm font-medium capitalize text-zinc-700 dark:text-zinc-200">
-                          {pokemon.name}
-                        </span>
-                      </button>
+                      <Tooltip
+                        key={pokemon.name}
+                        trigger={
+                          <button
+                            key={pokemon.id}
+                            onClick={() => handleScrollToTop(pokemon.name)}
+                            className="flex size-full grow flex-col items-center justify-center rounded-lg border border-zinc-200 bg-zinc-50 p-3 hover:bg-zinc-100 focus-visible:outline active:bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:active:bg-zinc-600"
+                          >
+                            {pokemon.sprite && (
+                              <img src={pokemon.sprite} alt={`${pokemon.name} sprite`} className="h-16" />
+                            )}
+                            <span className="mt-2 text-sm font-medium capitalize text-zinc-700 dark:text-zinc-200">
+                              {pokemon.name}
+                            </span>
+                          </button>
+                        }
+                        title={`View details of ${pokemon.name}`}
+                        side="top"
+                      />
                     ))}
                   </div>
                   <Icon
                     name="ArrowRight"
-                    className="mx-2 hidden size-8 text-zinc-500 group-last-of-type:hidden dark:text-zinc-400 xs:block"
+                    size="2xl"
+                    className="mx-2 hidden text-zinc-500 group-last-of-type:hidden dark:text-zinc-400 xs:block"
                   />
                   <Icon
                     name="ArrowDown"
-                    className="my-5 block size-8 text-zinc-500 group-last-of-type:hidden dark:text-zinc-400 xs:hidden"
+                    size="2xl"
+                    className="my-5 block text-zinc-500 group-last-of-type:hidden dark:text-zinc-400 xs:hidden"
                   />
                 </div>
               ))}
@@ -227,8 +243,8 @@ export const SkeletonLoader = (): JSX.Element => (
           {Array.from({ length: 3 }).map((_, i) => (
             <div key={i} className="group flex flex-col items-center text-zinc-500 dark:text-zinc-400 xs:flex-row">
               <div className="h-28 w-full rounded-lg bg-zinc-200 dark:bg-zinc-700" />
-              <Icon name="ArrowRight" className="mx-2 hidden size-8 group-last-of-type:hidden xs:block" />
-              <Icon name="ArrowDown" className="my-5 block size-8 group-last-of-type:hidden xs:hidden" />
+              <Icon name="ArrowRight" size="2xl" className="mx-2 hidden group-last-of-type:hidden xs:block" />
+              <Icon name="ArrowDown" size="2xl" className="my-5 block group-last-of-type:hidden xs:hidden" />
             </div>
           ))}
         </div>

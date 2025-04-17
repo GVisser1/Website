@@ -9,10 +9,9 @@ import Option from "./option";
 import OptionGroup from "./optionGroup";
 import type { IconType } from "@/utils/iconUtil";
 import { EmptyState } from "./emptyState";
-import { isEmpty, uniqueId, upperFirst } from "lodash-es";
+import { isEmpty, noop, uniqueId, upperFirst } from "lodash-es";
 import ds from "./dataSource.json";
 import PillButton from "./optionPill";
-import clsx from "clsx";
 import Pill from "../pill";
 import SearchInput from "../search";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select/select";
@@ -210,7 +209,7 @@ const MultiPlaceholderMenu = (): JSX.Element => {
                   className="z-[1]"
                 />
               ))}
-              <PopoverTrigger className={clsx("group my-auto flex h-6 min-w-0 grow items-center rounded outline-none")}>
+              <PopoverTrigger className="group my-auto flex h-6 min-w-0 grow items-center rounded outline-none">
                 <span
                   aria-hidden
                   className="w-full select-none truncate py-2 text-left text-zinc-500 dark:text-zinc-400"
@@ -219,11 +218,12 @@ const MultiPlaceholderMenu = (): JSX.Element => {
                 </span>
                 <div className="absolute right-0 top-0 inline-flex justify-end">
                   <IconButton
+                    aria-label="Select placeholders"
                     variant="default"
-                    size="md"
-                    title="Select placeholders"
+                    tooltip={{ title: "Select placeholders" }}
                     icon="Plus"
-                    className="translate-x-[-5px] translate-y-[5px] group-focus-visible:outline"
+                    className="translate-x-[-3px] translate-y-[3px] group-focus-visible:outline"
+                    onClick={noop}
                   />
                 </div>
               </PopoverTrigger>

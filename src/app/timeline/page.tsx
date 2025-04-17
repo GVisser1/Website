@@ -14,7 +14,7 @@ const TimelinePage = (): JSX.Element => (
   <>
     <Header title="Timeline" description="A chronological overview of my education and work experience" />
 
-    <div className="relative overflow-hidden">
+    <div className="relative">
       <div className="absolute left-2 h-full w-0.5 bg-zinc-200 shadow-md dark:bg-zinc-700 sm:inset-x-0 sm:mx-auto" />
       <ol>
         {timeLineData.map((item, i) => (

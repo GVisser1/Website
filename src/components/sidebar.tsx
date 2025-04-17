@@ -1,207 +1,140 @@
 "use client";
 
-import * as Headless from "@headlessui/react";
-import clsx from "clsx";
-import { LayoutGroup, motion } from "framer-motion";
-import type { ComponentPropsWithoutRef, ForwardedRef, ReactNode } from "react";
-import React, { Fragment, forwardRef, useEffect, useId, useState } from "react";
-import { TouchTarget } from "@/components/touchTarget";
+import React, { useEffect, useState } from "react";
 import Logo from "@/components/logo";
 import { usePathname } from "next/navigation";
-import Icon from "@/components/icon";
-import SearchDialog from "./dialog/searchDialog";
-import Link from "next/link";
+import type { IconName } from "@/components/icon";
+import { IconAndTextButton, IconAndTextLink, IconButton, IconLink } from "./button";
+import { useGlobalSearch } from "@/providers/globalSearchProvider";
+import { MAIL_TO, MAIN_PAGES, PROJECT_PAGES } from "../constants";
+import clsx from "clsx";
+import useMetaKey from "../hooks/useMetaKey";
 import { Divider } from "./divider";
 
 export const Sidebar = (): JSX.Element => {
   const pathname = usePathname();
-  const isDev = process.env.NODE_ENV === "development";
-  const [showSearchDialog, setShowSearchDialog] = useState(false);
+  const { setOpen } = useGlobalSearch();
+  const metaKey = useMetaKey();
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
     const down = (e: KeyboardEvent): void => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey) && !showSearchDialog) {
+      if (e.key === "/" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setShowSearchDialog(true);
+        setIsCollapsed((prev) => !prev);
       }
     };
     document.addEventListener("keydown", down);
     return (): void => document.removeEventListener("keydown", down);
-  }, [showSearchDialog]);
+  }, []);
 
   return (
-    <nav className="flex h-full flex-col overflow-y-hidden">
-      <SidebarHeader>
-        <SidebarItem href="/">
-          <Logo />
-        </SidebarItem>
-        <SidebarSection>
-          <SidebarItem current={false} onClick={() => setShowSearchDialog(true)}>
-            <Icon name="MagnifyingGlass" />
-            <SidebarLabel>Search</SidebarLabel>
-            <kbd className=" ml-auto font-sans font-semibold text-zinc-500 group-hover:visible group-data-[focus]:visible dark:text-zinc-400">
-              <abbr title="Command" className="no-underline">
-                ⌘
-              </abbr>{" "}
-              K
-            </kbd>
-            <SearchDialog open={showSearchDialog} onClose={() => setShowSearchDialog(false)} />
-          </SidebarItem>
-        </SidebarSection>
-      </SidebarHeader>
-      <SidebarBody>
-        <SidebarSection>
-          <SidebarItem href="/" current={pathname === "/"}>
-            <Icon name="Home" />
-            <SidebarLabel>Home</SidebarLabel>
-          </SidebarItem>
-          <SidebarItem href="/about" current={pathname.startsWith("/about")}>
-            <Icon name="Id" />
-            <SidebarLabel>About me</SidebarLabel>
-          </SidebarItem>
-          <SidebarItem href="/timeline" current={pathname.startsWith("/timeline")}>
-            <Icon name="Calendar" />
-            <SidebarLabel>Timeline</SidebarLabel>
-          </SidebarItem>
-          <SidebarItem href="/settings" current={pathname.startsWith("/settings")}>
-            <Icon name="Cog" />
-            <SidebarLabel>Settings</SidebarLabel>
-          </SidebarItem>
-          <Divider className="my-4" soft />
-          <SidebarLabel className="text-sm font-medium text-zinc-700 dark:text-zinc-200">Projects</SidebarLabel>
-          <SidebarItem href="/projects/pokemon" current={pathname.startsWith("/projects/pokemon")}>
-            <Icon name="PokéBall" />
-            <SidebarLabel>Pokémon</SidebarLabel>
-          </SidebarItem>
-          {isDev && (
-            <SidebarItem href="/projects/brain-dump" current={pathname.startsWith("/projects/brain-dump")}>
-              <Icon name="Document" />
-              <SidebarLabel>Brain dump</SidebarLabel>
-            </SidebarItem>
-          )}
-        </SidebarSection>
-        <SidebarSpacer />
-        <SidebarSection>
-          <SidebarItem href="mailto:gvisser.business@gmail.com">
-            <Icon name="At" />
-            <SidebarLabel>Contact</SidebarLabel>
-          </SidebarItem>
-        </SidebarSection>
-      </SidebarBody>
-      <SidebarFooter className="min-w-0 shrink-0">
-        <span className="block truncate text-xs font-normal text-zinc-600 dark:text-zinc-400">
-          {`© ${new Date().getFullYear()} Glenn Visser`}
-        </span>
-      </SidebarFooter>
+    <nav
+      className={clsx(
+        "relative hidden shrink-0 flex-col transition-all duration-300 lg:flex",
+        isCollapsed ? "w-16" : "w-64"
+      )}
+    >
+      <div className="p-4">
+        <div className="mb-2 flex items-center justify-between">
+          {!isCollapsed && <Logo withTitle size="sm" />}
+          <IconButton
+            variant="ghost"
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+            icon={isCollapsed ? "ChevronRightDouble" : "ChevronLeftDouble"}
+            tooltip={{
+              title: isCollapsed ? "Expand sidebar" : "Collapse sidebar",
+              description: `${metaKey}/`,
+              side: "right",
+            }}
+          />
+        </div>
+        <SidebarButton
+          label="Search"
+          icon="MagnifyingGlass"
+          onClick={() => setOpen(true)}
+          tooltip={{
+            title: "Search and quickly jump to a Page",
+            description: `${metaKey}K`,
+          }}
+          isCollapsed={isCollapsed}
+        />
+      </div>
+
+      <Divider soft />
+
+      <ul className="flex flex-col gap-y-1 p-4">
+        {MAIN_PAGES.map((item) => (
+          <SidebarLink
+            key={item.name}
+            href={item.href}
+            current={pathname === item.href}
+            icon={item.icon}
+            label={item.name}
+            isCollapsed={isCollapsed}
+          />
+        ))}
+      </ul>
+
+      <Divider soft />
+
+      <ul className="flex flex-col gap-y-1 p-4">
+        {PROJECT_PAGES.map((item) => (
+          <SidebarLink
+            key={item.name}
+            href={item.href}
+            current={pathname === item.href}
+            icon={item.icon}
+            label={item.name}
+            isCollapsed={isCollapsed}
+          />
+        ))}
+      </ul>
+
+      <div aria-hidden="true" className="mt-8 flex-1" />
+
+      <Divider soft />
+
+      <ul className="flex flex-col gap-y-1 p-4">
+        <SidebarLink href={MAIL_TO} icon="At" label="Contact" isCollapsed={isCollapsed} />
+      </ul>
     </nav>
   );
 };
 
-const SidebarHeader = ({ className, ...props }: ComponentPropsWithoutRef<"div">): JSX.Element => (
-  <div
-    {...props}
-    className={clsx(
-      className,
-      "flex flex-col border-b border-zinc-950/5 p-4 dark:border-zinc-200/5 [&>[data-slot=section]+[data-slot=section]]:mt-2.5"
-    )}
-  />
-);
-
-const SidebarBody = ({ className, ...props }: ComponentPropsWithoutRef<"div">): JSX.Element => (
-  <div
-    {...props}
-    className={clsx(
-      className,
-      "flex flex-1 flex-col overflow-y-auto p-4 [&>[data-slot=section]+[data-slot=section]]:mt-8"
-    )}
-  />
-);
-
-const SidebarFooter = ({ className, ...props }: ComponentPropsWithoutRef<"div">): JSX.Element => (
-  <div
-    {...props}
-    className={clsx(
-      className,
-      "flex flex-col border-t border-zinc-950/5 p-4 dark:border-zinc-200/5 [&>[data-slot=section]+[data-slot=section]]:mt-2.5"
-    )}
-  />
-);
-
-const SidebarSection = ({ className, ...props }: ComponentPropsWithoutRef<"div">): JSX.Element => {
-  const id = useId();
-
-  return (
-    <LayoutGroup id={id}>
-      <div {...props} data-slot="section" className={clsx(className, "flex flex-col gap-0.5")} />
-    </LayoutGroup>
-  );
+type SidebarLinkProps = {
+  current?: boolean;
+  icon: IconName;
+  label: string;
+  href: string;
+  isCollapsed: boolean;
 };
 
-const SidebarSpacer = ({ className, ...props }: ComponentPropsWithoutRef<"div">): JSX.Element => (
-  <div aria-hidden="true" {...props} className={clsx(className, "mt-8 flex-1")} />
+const SidebarLink = ({ current, label, isCollapsed, ...props }: SidebarLinkProps): JSX.Element => (
+  <li className="relative">
+    {isCollapsed ? (
+      <IconLink aria-label={label} variant="ghost" active={current} tooltip={{ title: label }} {...props} />
+    ) : (
+      <IconAndTextLink aria-label={label} variant="ghost" label={label} fullWidth active={current} {...props} />
+    )}
+  </li>
 );
 
-// const SidebarHeading = ({ className, children, ...props }: ComponentPropsWithoutRef<"h3">): JSX.Element => (
-//   <h3 {...props} className={clsx(className, "mb-1 px-2 text-xs/6 font-medium text-zinc-600 dark:text-zinc-400")}>
-//     {children}
-//   </h3>
-// );
+type SidebarButtonProps = {
+  icon: IconName;
+  label: string;
+  onClick: () => void;
+  tooltip: {
+    title: string;
+    description: string;
+  };
+  isCollapsed: boolean;
+};
 
-type SidebarItemProps = {
-  current?: boolean;
-  className?: string;
-  children: ReactNode;
-} & (Omit<Headless.ButtonProps, "className"> | Omit<ComponentPropsWithoutRef<typeof Link>, "type" | "className">);
-const SidebarItem = forwardRef(
-  (
-    { current, className, children, ...props }: SidebarItemProps,
-    ref: ForwardedRef<HTMLAnchorElement | HTMLButtonElement>
-  ): JSX.Element => {
-    const classes = clsx(
-      // Base
-      "flex w-full items-center gap-3 rounded-lg px-2 py-2.5 text-left text-base/6 font-medium text-zinc-700 sm:py-2 sm:text-sm/5",
-      // Focus
-      "focus-visible:outline",
-      // Hover
-      "hover:bg-zinc-950/5 data-[slot=icon]:*:data-[hover]:fill-zinc-950",
-      // Current
-      "data-[current=true]:text-zinc-950 data-[slot=icon]:*:data-[current=true]:fill-zinc-950",
-      // Dark mode
-      "dark:text-zinc-400 dark:data-[current=true]:text-white dark:data-[slot=icon]:*:fill-zinc-400",
-      "dark:hover:bg-white/5 dark:data-[slot=icon]:*:data-[hover]:fill-white"
-    );
-
-    return (
-      <span className={clsx(className, "relative")}>
-        {current && (
-          <motion.span
-            layoutId="current-indicator"
-            className="absolute inset-y-2 -left-4 w-1 rounded-full bg-zinc-950 dark:bg-white"
-          />
-        )}
-        {"href" in props ? (
-          <Headless.CloseButton as={Fragment} ref={ref}>
-            <Link className={classes} {...props} data-current={current ? "true" : undefined}>
-              <TouchTarget>{children}</TouchTarget>
-            </Link>
-          </Headless.CloseButton>
-        ) : (
-          <Headless.Button
-            {...props}
-            className={clsx("group cursor-default", classes)}
-            data-current={current ? "true" : "false"}
-            ref={ref}
-          >
-            <TouchTarget>{children}</TouchTarget>
-          </Headless.Button>
-        )}
-      </span>
-    );
+const SidebarButton = ({ isCollapsed, label, ...props }: SidebarButtonProps): JSX.Element => {
+  if (isCollapsed) {
+    return <IconButton variant="ghost" aria-label={label} {...props} />;
   }
-);
-
-const SidebarLabel = ({ className, ...props }: ComponentPropsWithoutRef<"span">): JSX.Element => (
-  <span {...props} className={clsx(className, "truncate")} />
-);
-
-SidebarItem.displayName = "SidebarItem";
+  return <IconAndTextButton variant="ghost" aria-label={label} label={label} fullWidth {...props} />;
+};

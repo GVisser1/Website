@@ -14,17 +14,19 @@ const config: Config = {
       serif: fontFamily.serif,
     },
     outlineColor: {
-      DEFAULT: "#3b82f6",
+      DEFAULT: "#3B82F6",
+      white: "#FFFFFF",
       transparent: "transparent",
     },
     outlineWidth: {
       DEFAULT: "1.5px",
     },
+    strokeWidth: {
+      xs: "0.5px",
+      sm: "1px",
+      md: "2px",
+    },
     extend: {
-      screens: {
-        xs: "480px",
-        "2xs": "400px",
-      },
       fontSize: {
         button: [
           "0.875rem",
@@ -33,6 +35,23 @@ const config: Config = {
             fontWeight: "500",
           },
         ],
+        "button-lg": [
+          "1rem",
+          {
+            lineHeight: "1.25rem",
+            fontWeight: "500",
+          },
+        ],
+      },
+      translate: {
+        "54": "13.5rem",
+      },
+      screens: {
+        xs: "480px",
+      },
+      spacing: {
+        "4.5": "1.125rem",
+        "42": "10.5rem",
       },
       typography: {
         DEFAULT: {
@@ -40,7 +59,7 @@ const config: Config = {
             maxWidth: "none",
             color: "#334155",
             h2: {
-              color: "#3f3f46",
+              color: "#3F3F46",
               fontSize: "1.25rem",
               fontWeight: "600",
               marginBottom: "0.25rem",
@@ -49,9 +68,9 @@ const config: Config = {
               color: "#334155",
               textDecoration: "none",
               fontWeight: "600",
-              borderBottom: "1px solid #2563eb",
+              borderBottom: "1px solid #2563EB",
               "&:hover": {
-                borderBottomColor: "#1d4ed8",
+                borderBottomColor: "#1D4ED8",
                 borderBottomWidth: "2px",
               },
             },
@@ -64,7 +83,7 @@ const config: Config = {
         dark: {
           css: {
             maxWidth: "none",
-            color: "#a1a1aa",
+            color: "#A1A1AA",
             h2: {
               color: "#FFFFFF",
               fontSize: "1.125rem",
@@ -75,18 +94,14 @@ const config: Config = {
               color: "#FFFFFF",
               textDecoration: "none",
               fontWeight: "600",
-              borderBottom: "1px solid #3b82f6",
+              borderBottom: "1px solid #3B82F6",
               "&:hover": {
-                borderBottomColor: "#60a5fa",
+                borderBottomColor: "#60A5fA",
                 borderBottomWidth: "2px",
               },
             },
           },
         },
-      },
-      spacing: {
-        "4.5": "1.125rem",
-        "42": "10.5rem",
       },
     },
   },

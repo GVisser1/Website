@@ -23,8 +23,8 @@ export const metadata: Metadata = {
 const inter = Inter({ subsets: ["latin"], variable: "--inter" });
 
 const RootLayout = ({ children }: { children: ReactNode }): JSX.Element => (
-  <html lang="en" className="scroll-smooth">
-    <body className={`${inter.variable} bg-zinc-50 dark:bg-zinc-950 lg:bg-zinc-100`}>
+  <html lang="en">
+    <body className={`${inter.variable} overscroll-y-none`}>
       <Providers>
         <Layout>{children}</Layout>
       </Providers>

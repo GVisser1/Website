@@ -2,6 +2,7 @@ import type { IconType } from "@/utils/iconUtil";
 import { OptionIcon } from "@/utils/iconUtil";
 import Icon from "../icon";
 import clsx from "clsx";
+import Tooltip from "../tooltip";
 
 type PillButtonProps = {
   label: string;
@@ -20,22 +21,25 @@ const PillButton = ({ label, ariaLabel, iconType, onClick, className }: PillButt
   );
 
   return (
-    <button
-      type="button"
-      aria-label={ariaLabel}
+    <Tooltip
+      side="top"
+      trigger={
+        <button
+          type="button"
+          aria-label={ariaLabel}
+          className={classes}
+          onClick={(e) => {
+            e.preventDefault();
+            onClick();
+          }}
+        >
+          <OptionIcon type={iconType} applyBgColour={false} />
+          <p className="truncate text-sm font-medium">{label}</p>
+          <Icon name="X" size="sm" />
+        </button>
+      }
       title={ariaLabel}
-      className={classes}
-      onClick={(e) => {
-        e.preventDefault();
-        onClick();
-      }}
-    >
-      <OptionIcon type={iconType} applyBgColour={false} />
-      <p className="truncate text-sm font-medium">{label}</p>
-      <div className="flex size-4 items-center justify-center rounded">
-        <Icon overrideSize name="X" className="size-4 shrink-0 text-inherit" />
-      </div>
-    </button>
+    />
   );
 };
 

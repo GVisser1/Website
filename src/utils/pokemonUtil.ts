@@ -1,5 +1,5 @@
 import axios from "axios";
-import { isNil } from "lodash-es";
+import { isNil, startCase } from "lodash-es";
 
 const TOTAL_POKEMON = 1025;
 const POKEMON_API_URL = "https://pokeapi.co/api/v2/pokemon";
@@ -57,7 +57,7 @@ export const getPokemonDetails = async (identifier: string): Promise<PokemonDeta
   const stats = data.stats.map(({ base_stat, stat }) => ({ name: stat.name, base_stat }));
   const types = data.types.map((type) => type.type.name);
 
-  return { id: data.id, height: data.height, name: data.name, sprite, stats, types, weight: data.weight };
+  return { id: data.id, height: data.height, name: startCase(data.name), sprite, stats, types, weight: data.weight };
 };
 
 type EvolutionChain = {
@@ -135,7 +135,6 @@ const getEvolutionsByStage = async (
 };
 
 export const getEvolutionChain = async (url: string): Promise<PokemonDetails[][]> => {
-  // Fetch the evolution chain data
   const { data } = await axios.get<EvolutionChainResponse>(url).catch((error) => {
     console.error("Error fetching evolution chain:", error instanceof Error ? error.message : error);
     throw new Error("Failed to fetch evolution chain");

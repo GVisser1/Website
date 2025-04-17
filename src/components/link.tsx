@@ -1,20 +1,14 @@
-import * as Headless from "@headlessui/react";
-import type { ComponentPropsWithoutRef, ForwardedRef } from "react";
-import React, { forwardRef } from "react";
-import type { LinkProps } from "next/link";
+import type { ReactNode } from "react";
+import React from "react";
 import NextLink from "next/link";
 
-const Link = forwardRef((props: LinkProps & ComponentPropsWithoutRef<"a">, ref: ForwardedRef<HTMLAnchorElement>) => (
-  <Headless.DataInteractive>
-    <NextLink {...props} ref={ref} />
-  </Headless.DataInteractive>
-));
+type InlineLinkProps = {
+  href: string;
+  children: ReactNode;
+};
 
-Link.displayName = "Link";
-
-type InlineLinkProps = LinkProps & ComponentPropsWithoutRef<"a">;
 export const InlineLink = (props: InlineLinkProps): JSX.Element => (
-  <NextLink {...props} rel="noopener noreferrer" target="_blank" />
+  <NextLink href={props.href} rel="noopener noreferrer" target="_blank" className="focus-visible:outline">
+    {props.children}
+  </NextLink>
 );
-
-export default Link;
