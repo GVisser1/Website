@@ -11,7 +11,7 @@ export const Divider = ({ className, soft }: DividerProps): JSX.Element => (
     className={clsx(
       className,
       "w-full border-t",
-      soft ? "border-zinc-100 dark:border-zinc-800" : "border-zinc-200 dark:border-zinc-700"
+      soft ? "border-zinc-100 dark:border-zinc-800" : "border-zinc-200 dark:border-zinc-700",
     )}
   />
 );

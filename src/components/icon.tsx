@@ -32,7 +32,7 @@ const iconSizes = {
 } as const;
 
 const strokeSizes = {
-  xs: "stroke-xs",
-  sm: "stroke-sm",
-  md: "stroke-md",
+  xs: "stroke-0.5",
+  sm: "stroke-1",
+  md: "stroke-2",
 } as const;

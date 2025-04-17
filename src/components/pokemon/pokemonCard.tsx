@@ -41,7 +41,7 @@ const PokemonCard = ({ pokemon, onClick }: PokemonCardProps): JSX.Element => {
           )}
           {showLoadingState && <SpriteLoadingState />}
           {showErrorState && <SpriteErrorState />}
-          <p className="mt-2 truncate font-medium capitalize text-gray-700 dark:text-zinc-200">{pokemon.name}</p>
+          <p className="mt-2 truncate font-medium text-gray-700 capitalize dark:text-zinc-200">{pokemon.name}</p>
         </button>
       }
       title={`View details of ${pokemon.name}`}

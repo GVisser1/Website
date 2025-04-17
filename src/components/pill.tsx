@@ -17,9 +17,9 @@ export type PillProps = { label: string; colour: keyof typeof colours; icon?: Ic
 
 const Pill = ({ label, colour, icon, className }: PillProps): JSX.Element => {
   const classes = clsx(
-    "inline-flex min-w-0 max-w-72 items-center gap-x-1 rounded px-1 py-0.5 text-xs font-semibold",
+    "inline-flex max-w-72 min-w-0 items-center gap-x-1 rounded-sm px-1 py-0.5 text-xs font-semibold",
     colours[colour],
-    className
+    className,
   );
 
   return (

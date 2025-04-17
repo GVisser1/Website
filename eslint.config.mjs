@@ -5,7 +5,6 @@ import preferArrowFunctionsPlugin from "eslint-plugin-prefer-arrow-functions";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
 import reactPlugin from "eslint-plugin-react";
 import storybookPlugin from "eslint-plugin-storybook";
-import tailwindPlugin from "eslint-plugin-tailwindcss";
 import globals from "globals";
 import playwrightPlugin from "eslint-plugin-playwright";
 
@@ -21,7 +20,6 @@ export default [
     files: ["**/*.{js,jsx,ts,tsx}"],
     plugins: {
       react: reactPlugin,
-      tailwindcss: tailwindPlugin,
       "@typescript-eslint": typescriptPlugin,
       "jsx-a11y": jsxA11YPlugin,
       "prefer-arrow-functions": preferArrowFunctionsPlugin,
@@ -33,7 +31,6 @@ export default [
       ...typescriptPlugin.configs.recommended.rules,
       ...typescriptPlugin.configs.strict.rules,
       ...typescriptPlugin.configs.stylistic.rules,
-      ...tailwindPlugin.configs.recommended.rules,
       ...reactHooksPlugin.configs.recommended.rules,
       ...storybookPlugin.configs["flat/recommended"].rules,
       "jsx-a11y/no-autofocus": [2, { ignoreNonDOM: true }],

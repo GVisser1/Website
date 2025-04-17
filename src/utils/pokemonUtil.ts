@@ -115,7 +115,7 @@ type EvolutionChainResponse = {
 const getEvolutionsByStage = async (
   chain: EvolutionChain,
   stages: PokemonDetails[][] = [],
-  depth = 0
+  depth = 0,
 ): Promise<PokemonDetails[][]> => {
   if (isNil(chain) || (depth === 0 && chain.evolves_to.length === 0)) {
     return stages;

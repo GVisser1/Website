@@ -45,10 +45,10 @@ export const CombinationGrid = <ComponentProps extends object>({
  * @returns An array of combinations, where each combination is an object with properties and their corresponding values.
  */
 export const generateCombinations = <ComponentProps,>(
-  properties: ComponentProperty<ComponentProps>[]
+  properties: ComponentProperty<ComponentProps>[],
 ): Partial<ComponentProps>[] =>
   properties.reduce<Partial<ComponentProps>[]>(
     (combinations, { name, values }) =>
       combinations.flatMap((combination) => values.map((value) => ({ ...combination, [name]: value }))),
-    [{}]
+    [{}],
   );
