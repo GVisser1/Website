@@ -26,7 +26,7 @@ const PokemonCard = ({ pokemon, onClick }: PokemonCardProps): JSX.Element => {
           onClick={onClick}
           className="relative flex flex-col rounded-lg border border-zinc-200 bg-zinc-100 p-2 text-center hover:bg-zinc-200 focus-visible:outline active:bg-zinc-300 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:active:bg-zinc-600"
         >
-          <div className="flex h-6 items-center justify-between">
+          <div className="flex h-6 w-full items-center justify-between">
             <span className="text-zinc-700 dark:text-zinc-200">#{pokemon.id}</span>
             <Icon name="Info" className="size-5 text-zinc-500 dark:text-zinc-400" />
           </div>
@@ -41,7 +41,7 @@ const PokemonCard = ({ pokemon, onClick }: PokemonCardProps): JSX.Element => {
           )}
           {showLoadingState && <SpriteLoadingState />}
           {showErrorState && <SpriteErrorState />}
-          <p className="mt-2 truncate font-medium text-gray-700 capitalize dark:text-zinc-200">{pokemon.name}</p>
+          <p className="mt-2 w-full truncate font-medium text-gray-700 capitalize dark:text-zinc-200">{pokemon.name}</p>
         </button>
       }
       title={`View details of ${pokemon.name}`}
@@ -59,7 +59,7 @@ type SpriteProps = {
 } & Required<Pick<ComponentPropsWithoutRef<"img">, "onLoad" | "onError">>;
 
 const Sprite = ({ name, sprite, hidden, onLoad, onError }: SpriteProps): JSX.Element => (
-  <div className={clsx(`flex h-24 items-center ${hidden ? "hidden" : "block"}`)}>
+  <div className={clsx(`flex h-24 w-full items-center ${hidden ? "hidden" : "block"}`)}>
     <img
       aria-hidden={hidden}
       src={sprite}
