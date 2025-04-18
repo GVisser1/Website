@@ -1,4 +1,4 @@
-import { Divider } from "./divider";
+import Divider from "./divider";
 import { IconAndTextLink } from "./button";
 
 import type { JSX } from "react";

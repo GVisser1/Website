@@ -1,11 +1,10 @@
-import clsx from "clsx";
-import { isEven } from "@/utils/numberUtil";
-import Pill from "@/components/pill";
-import { getTimeFrame } from "@/utils/dateUtil";
-import Header from "@/components/header";
 import type { Metadata } from "next/types";
-
 import type { JSX } from "react";
+import clsx from "clsx";
+import Header from "../../components/header";
+import { isEven } from "../../utils/numberUtil";
+import Pill from "../../components/pill";
+import { getTimeFrame } from "../../utils/dateUtil";
 
 export const metadata: Metadata = {
   title: "Timeline",

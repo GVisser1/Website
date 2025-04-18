@@ -1,5 +1,5 @@
-import type { PokemonDetails } from "@/utils/pokemonUtil";
-import { getPaginatedPokemon, getPokemonDetails } from "@/utils/pokemonUtil";
+import type { PokemonDetails } from "../utils/pokemonUtil";
+import { getPaginatedPokemon, getPokemonDetails } from "../utils/pokemonUtil";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 

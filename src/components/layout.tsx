@@ -1,12 +1,12 @@
 "use client";
 
 import type { PropsWithChildren, JSX } from "react";
-import { Navbar } from "@/components/navBar";
-import { Sidebar } from "@/components/sidebar";
 import { useFont } from "../hooks/useFont";
 import clsx from "clsx";
 import SearchDialog from "./dialog/searchDialog";
-import { useGlobalSearch } from "@/providers/globalSearchProvider";
+import { Sidebar } from "./sidebar";
+import { useGlobalSearch } from "../providers/globalSearchProvider";
+import { Navbar } from "./navBar";
 
 export const Layout = ({ children }: PropsWithChildren): JSX.Element | null => {
   const { getFontClass } = useFont();

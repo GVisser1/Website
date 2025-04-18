@@ -13,11 +13,18 @@ jobs:
         with:
           node-version: 18
       - uses: pnpm/action-setup@v4
+
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
+
       - name: Build
         run: pnpm build
+
       - name: Run linter
         run: pnpm lint:check
+
+      - name: Run formatter
+        run: pnpm format:check
+
       - name: Run unit tests
         run: pnpm test

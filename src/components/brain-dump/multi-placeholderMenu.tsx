@@ -3,11 +3,9 @@
 import { useEffect, useMemo, useRef, useState, useCallback, type JSX } from "react";
 import type { ChangeEvent, KeyboardEvent } from "react";
 import Icon from "../icon";
-import { normalizeString } from "@/utils/textUtil";
 import { Popover, PopoverAnchor, PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
 import Option from "./option";
 import OptionGroup from "./optionGroup";
-import type { IconType } from "@/utils/iconUtil";
 import { EmptyState } from "./emptyState";
 import { isEmpty, noop, uniqueId, upperFirst } from "lodash-es";
 import ds from "./dataSource.json";
@@ -16,6 +14,8 @@ import Pill from "../pill";
 import SearchInput from "../search";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select/select";
 import { IconButton } from "../button";
+import type { IconType } from "../../utils/iconUtil";
+import { normalizeString } from "../../utils/textUtil";
 
 const dataSource = ds as DataSource;
 const FILTERS = ["fields", "groups", "users", "variables"] as const;

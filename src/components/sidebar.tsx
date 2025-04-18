@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useEffect, useState, type JSX } from "react";
-import Logo from "@/components/logo";
 import { usePathname } from "next/navigation";
-import type { IconName } from "@/components/icon";
 import { IconAndTextButton, IconAndTextLink, IconButton, IconLink } from "./button";
-import { useGlobalSearch } from "@/providers/globalSearchProvider";
 import { MAIL_TO, MAIN_PAGES, PROJECT_PAGES } from "../constants";
 import clsx from "clsx";
 import useMetaKey from "../hooks/useMetaKey";
-import { Divider } from "./divider";
+import Divider from "./divider";
+import { useGlobalSearch } from "../providers/globalSearchProvider";
+import Logo from "./logo";
+import type { IconName } from "./icon";
 
 export const Sidebar = (): JSX.Element => {
   const pathname = usePathname();

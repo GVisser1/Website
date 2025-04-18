@@ -1,13 +1,12 @@
 import Image from "next/image";
-import beach from "@/images/beach.webp";
-import persona5 from "@/images/persona5.webp";
-import fleetFoxes from "@/images/fleetFoxes.webp";
-import Header from "@/components/header";
-import { InlineLink } from "@/components/link";
-import { Divider } from "@/components/divider";
+import beach from "../../../public/images/beach.webp";
+import persona5 from "../../../public/images/persona5.webp";
+import fleetFoxes from "../../../public/images/fleetFoxes.webp";
 import type { Metadata } from "next/types";
-
 import type { JSX } from "react";
+import Header from "../../components/header";
+import InlineLink from "../../components/inlineLink";
+import Divider from "../../components/divider";
 
 export const metadata: Metadata = {
   title: "About me",

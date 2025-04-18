@@ -1,9 +1,9 @@
-import "@/styles/globals.css";
+import "../styles/globals.css";
 import { type ReactNode, type JSX } from "react";
-import { Layout } from "@/components/layout";
 import type { Metadata } from "next/types";
 import { Inter } from "next/font/google";
-import Providers from "@/providers/providers";
+import Providers from "../providers/providers";
+import { Layout } from "../components/layout";
 
 export const metadata: Metadata = {
   title: {

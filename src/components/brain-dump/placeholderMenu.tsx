@@ -9,19 +9,19 @@ import React, {
   type JSX,
 } from "react";
 import Icon from "../icon";
-import { normalizeString } from "@/utils/textUtil";
 import clsx from "clsx";
 import { Popover, PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
 import Option from "./option";
 import OptionGroup from "./optionGroup";
-import type { IconType } from "@/utils/iconUtil";
-import { OptionIcon } from "@/utils/iconUtil";
 import { EmptyState } from "./emptyState";
 import ds from "./dataSource.json";
 import SearchInput from "../search";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select/select";
 import { upperFirst } from "lodash-es";
 import { IconButton } from "../button";
+import { normalizeString } from "../../utils/textUtil";
+import type { IconType } from "../../utils/iconUtil";
+import { OptionIcon } from "../../utils/iconUtil";
 
 const dataSource = ds as DataSource;
 const FILTERS = ["fields", "groups", "users", "variables"] as const;

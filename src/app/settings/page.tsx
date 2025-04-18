@@ -1,10 +1,9 @@
-import { Divider } from "@/components/divider";
-import Header from "@/components/header";
-import FontSwitcher from "@/components/select/fontSwitcher";
-import ThemeSwitcher from "@/components/select/themeSwitcher";
 import type { Metadata } from "next/types";
-
 import type { JSX } from "react";
+import Header from "../../components/header";
+import ThemeSwitcher from "../../components/select/themeSwitcher";
+import Divider from "../../components/divider";
+import FontSwitcher from "../../components/select/fontSwitcher";
 
 export const metadata: Metadata = {
   title: "Settings",
