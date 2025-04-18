@@ -88,13 +88,12 @@ const ButtonIcon = (props: ButtonIconProps): JSX.Element => <Icon name={props.ic
 
 const BaseButton = (props: PropsWithChildren<ButtonProps | LinkProps>): JSX.Element => {
   const classes = clsx(
-    "inline-flex shrink-0 items-center rounded-sm p-2 select-none focus-visible:outline",
+    "inline-flex shrink-0 items-center rounded-sm select-none focus-visible:outline",
     "data-[active=true]:bg-zinc-100 data-[active=true]:font-semibold dark:data-[active=true]:bg-zinc-800",
     "disabled:cursor-not-allowed disabled:text-zinc-500 dark:disabled:bg-zinc-900",
-    props.size === "lg" ? "h-12 px-3 py-2" : "h-9 p-2",
+    props.size === "lg" ? "h-12 px-3" : "h-9 px-2",
     props.fullWidth && "w-full",
     !props.disabled && !props.active && variantClasses[props.variant],
-    // !("icon" in props) ? "px-4 py-2" : "px-2 py-2",
     props.className,
   );
 
