@@ -1,6 +1,13 @@
 "use client";
 
-import React, { useEffect, useRef, useState, type ChangeEvent, type KeyboardEvent } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type KeyboardEvent,
+  type JSX,
+} from "react";
 import Icon from "../icon";
 import { normalizeString } from "@/utils/textUtil";
 import clsx from "clsx";

@@ -1,6 +1,6 @@
 import * as Icons from "@/components/icons";
 import clsx from "clsx";
-import type { ComponentType, SVGProps } from "react";
+import type { ComponentType, SVGProps, JSX } from "react";
 
 export type IconName = keyof typeof Icons;
 type IconProps = {

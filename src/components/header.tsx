@@ -1,6 +1,8 @@
 import { Divider } from "./divider";
 import { IconAndTextLink } from "./button";
 
+import type { JSX } from "react";
+
 type HeaderProps = {
   title: string;
   description: string;

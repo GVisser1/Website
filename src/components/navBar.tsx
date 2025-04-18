@@ -2,6 +2,8 @@ import { useGlobalSearch } from "@/providers/globalSearchProvider";
 import { IconButton, IconLink } from "./button";
 import Logo from "./logo";
 
+import type { JSX } from "react";
+
 export const Navbar = (): JSX.Element => {
   const { setOpen } = useGlobalSearch();
 

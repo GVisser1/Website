@@ -1,4 +1,4 @@
-import type { MouseEvent, PropsWithChildren } from "react";
+import type { MouseEvent, PropsWithChildren, JSX } from "react";
 import React from "react";
 import clsx from "clsx";
 import type { IconName } from "./icon";

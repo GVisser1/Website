@@ -5,6 +5,8 @@ import { getTimeFrame } from "@/utils/dateUtil";
 import Header from "@/components/header";
 import type { Metadata } from "next/types";
 
+import type { JSX } from "react";
+
 export const metadata: Metadata = {
   title: "Timeline",
   description: "A chronological overview of my education and work experience",

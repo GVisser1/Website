@@ -1,5 +1,7 @@
 import clsx from "clsx";
 
+import type { JSX } from "react";
+
 type DividerProps = {
   soft?: boolean;
   className?: string;

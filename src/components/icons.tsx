@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import type { ComponentProps } from "react";
+import type { ComponentProps, JSX } from "react";
 
 type IconProps = ComponentProps<"svg">;
 

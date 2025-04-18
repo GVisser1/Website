@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { forwardRef } from "react";
+import { forwardRef, type JSX } from "react";
 import type { IconType } from "@/utils/iconUtil";
 import { OptionIcon } from "@/utils/iconUtil";
 

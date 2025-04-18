@@ -1,7 +1,7 @@
 import type { DialogProps as HeadlessDialogProps } from "@headlessui/react";
 import { Dialog as HeadlessDialog, DialogPanel, Transition, TransitionChild } from "@headlessui/react";
 import clsx from "clsx";
-import type { ReactNode } from "react";
+import type { ReactNode, JSX } from "react";
 import { IconButton } from "../button";
 
 const sizes = {

@@ -4,6 +4,8 @@ import profileImg from "@/images/profile.webp";
 import { TextLink } from "@/components/button";
 import { MAIL_TO } from "../../constants";
 
+import type { JSX } from "react";
+
 const age = getAge();
 
 const HomePage = (): JSX.Element => (

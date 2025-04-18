@@ -2,6 +2,8 @@ import clsx from "clsx";
 import type { IconName } from "./icon";
 import Icon from "./icon";
 
+import type { JSX } from "react";
+
 const colours = {
   blue: "bg-blue-100 text-blue-700 dark:bg-blue-700 dark:text-blue-100",
   green: "bg-emerald-100 text-emerald-700 dark:bg-emerald-700 dark:text-emerald-100",
