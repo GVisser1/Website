@@ -84,7 +84,9 @@ const ButtonLabel = (props: ButtonLabelProps): JSX.Element => {
 };
 
 type ButtonIconProps = { icon: IconName; size?: ButtonSize };
-const ButtonIcon = (props: ButtonIconProps): JSX.Element => <Icon name={props.icon} size={props.size} />;
+const ButtonIcon = (props: ButtonIconProps): JSX.Element => (
+  <Icon name={props.icon} className={props.size === "lg" ? "size-6" : "size-5"} />
+);
 
 const BaseButton = (props: PropsWithChildren<ButtonProps | LinkProps>): JSX.Element => {
   const classes = clsx(

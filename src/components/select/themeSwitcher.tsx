@@ -17,15 +17,15 @@ const ThemeSwitcher = (): JSX.Element | null => {
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="light">
-          <Icon name="Sun" size="sm" />
+          <Icon name="Sun" className="size-4" />
           Light
         </SelectItem>
         <SelectItem value="dark">
-          <Icon name="Moon" size="sm" />
+          <Icon name="Moon" className="size-4" />
           Dark
         </SelectItem>
         <SelectItem value="system">
-          <Icon name="Computer" size="sm" />
+          <Icon name="Computer" className="size-4" />
           System
         </SelectItem>
       </SelectContent>

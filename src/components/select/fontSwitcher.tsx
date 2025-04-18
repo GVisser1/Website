@@ -1,4 +1,4 @@
-"use client";;
+"use client";
 import { FONTS, useFont } from "../../hooks/useFont";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select";
 

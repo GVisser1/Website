@@ -1,13 +1,6 @@
 "use client";
 
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  type ChangeEvent,
-  type KeyboardEvent,
-  type JSX,
-} from "react";
+import React, { useEffect, useRef, useState, type ChangeEvent, type KeyboardEvent, type JSX } from "react";
 import Icon from "../icon";
 import clsx from "clsx";
 import { Popover, PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
@@ -254,7 +247,7 @@ const PlaceholderMenu = (): JSX.Element => {
             </div>
             {!selectedOption && (
               <div className="p-2.5">
-                <Icon name="ChevronDown" size="sm" className="text-zinc-500 dark:text-zinc-400" />
+                <Icon name="ChevronDown" className="size-4 text-zinc-500 dark:text-zinc-400" />
               </div>
             )}
           </div>

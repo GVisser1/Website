@@ -105,7 +105,7 @@ const DialogContent = ({
               trigger={
                 <div className="absolute top-0 left-0 p-2">
                   <span className="sr-only">This Pokémon is legendary</span>
-                  <Icon name="Star" className="text-yellow-500" />
+                  <Icon name="Star" className="size-5 text-yellow-500" />
                 </div>
               }
               title="This Pokémon is legendary"
@@ -116,7 +116,7 @@ const DialogContent = ({
               trigger={
                 <div className={clsx("absolute left-0 p-2", !isLegendary ? "top-0" : "top-6")}>
                   <span className="sr-only">This Pokémon is mythical</span>
-                  <Icon name="Star" className="text-pink-500" />
+                  <Icon name="Star" className="size-5 text-pink-500" />
                 </div>
               }
               title="This Pokémon is mythical"
@@ -189,13 +189,11 @@ const DialogContent = ({
                   </div>
                   <Icon
                     name="ArrowRight"
-                    size="2xl"
-                    className="mx-2 hidden text-zinc-500 group-last-of-type:hidden xs:block dark:text-zinc-400"
+                    className="mx-2 hidden size-8 text-zinc-500 group-last-of-type:hidden xs:block dark:text-zinc-400"
                   />
                   <Icon
                     name="ArrowDown"
-                    size="2xl"
-                    className="my-5 block text-zinc-500 group-last-of-type:hidden xs:hidden dark:text-zinc-400"
+                    className="my-5 block size-8 text-zinc-500 group-last-of-type:hidden xs:hidden dark:text-zinc-400"
                   />
                 </div>
               ))}
@@ -243,8 +241,8 @@ export const SkeletonLoader = (): JSX.Element => (
           {Array.from({ length: 3 }).map((_, i) => (
             <div key={i} className="group flex flex-col items-center text-zinc-500 xs:flex-row dark:text-zinc-400">
               <div className="h-28 w-full rounded-lg bg-zinc-200 dark:bg-zinc-700" />
-              <Icon name="ArrowRight" size="2xl" className="mx-2 hidden group-last-of-type:hidden xs:block" />
-              <Icon name="ArrowDown" size="2xl" className="my-5 block group-last-of-type:hidden xs:hidden" />
+              <Icon name="ArrowRight" className="mx-2 hidden size-8 group-last-of-type:hidden xs:block" />
+              <Icon name="ArrowDown" className="my-5 block size-8 group-last-of-type:hidden xs:hidden" />
             </div>
           ))}
         </div>
