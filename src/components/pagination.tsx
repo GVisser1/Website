@@ -1,6 +1,8 @@
 import { IconButton } from "./button";
 import type { IconName } from "./icon";
 
+import type { JSX } from "react";
+
 type PaginationProps = {
   currentPage: number;
   totalPages: number;

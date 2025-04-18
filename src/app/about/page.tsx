@@ -7,6 +7,8 @@ import { InlineLink } from "@/components/link";
 import { Divider } from "@/components/divider";
 import type { Metadata } from "next/types";
 
+import type { JSX } from "react";
+
 export const metadata: Metadata = {
   title: "About me",
   description: "Learn more about me and my interests, hobbies, and professional life",

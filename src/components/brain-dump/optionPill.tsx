@@ -4,6 +4,8 @@ import Icon from "../icon";
 import clsx from "clsx";
 import Tooltip from "../tooltip";
 
+import type { JSX } from "react";
+
 type PillButtonProps = {
   label: string;
   ariaLabel: string;

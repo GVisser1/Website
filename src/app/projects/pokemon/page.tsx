@@ -7,7 +7,7 @@ import SkeletonLoader from "@/components/skeleton";
 import { getPokemonDetails, type PokemonDetails } from "@/utils/pokemonUtil";
 import { isEmpty, isNil } from "lodash-es";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type JSX } from "react";
 import usePokemon from "../../../hooks/usePokemon";
 import PokemonCard from "@/components/pokemon/pokemonCard";
 

@@ -1,5 +1,5 @@
 import Icon from "../icon";
-import type { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef, JSX } from "react";
 import { useState } from "react";
 import type { PokemonDetails } from "@/utils/pokemonUtil";
 import { isNil } from "lodash-es";

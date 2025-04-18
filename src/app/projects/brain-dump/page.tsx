@@ -2,6 +2,8 @@ import Header from "@/components/header";
 import MultiPlaceholderMenu from "@/components/brain-dump/multi-placeholderMenu";
 import PlaceholderMenu from "@/components/brain-dump/placeholderMenu";
 
+import type { JSX } from "react";
+
 const TestPage = (): JSX.Element => (
   <>
     <Header

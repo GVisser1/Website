@@ -4,6 +4,8 @@ import FontSwitcher from "@/components/select/fontSwitcher";
 import ThemeSwitcher from "@/components/select/themeSwitcher";
 import type { Metadata } from "next/types";
 
+import type { JSX } from "react";
+
 export const metadata: Metadata = {
   title: "Settings",
   description: "Personalize your experience by adjusting the settings to your liking",

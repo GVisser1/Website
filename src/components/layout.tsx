@@ -1,6 +1,6 @@
 "use client";
 
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren, JSX } from "react";
 import { Navbar } from "@/components/navBar";
 import { Sidebar } from "@/components/sidebar";
 import { useFont } from "../hooks/useFont";

@@ -1,3 +1,4 @@
+import type { JSX } from "react";
 const SkeletonLoader = (): JSX.Element => (
   <div
     aria-hidden

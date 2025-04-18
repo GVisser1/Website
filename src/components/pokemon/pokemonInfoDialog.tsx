@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type JSX } from "react";
 import Dialog from "../dialog/dialog";
 import clsx from "clsx";
 import type { PokemonDetails, PokemonSpeciesDetails } from "@/utils/pokemonUtil";
@@ -98,7 +98,7 @@ const DialogContent = ({
   return (
     <div ref={topOfDialogRef} className="flex flex-col gap-y-4">
       <div className="grid grid-cols-1 gap-x-8 gap-y-2 xs:grid-cols-2">
-        <div className="relative box-content flex h-32 w-full justify-center rounded-lg border dark:border-zinc-200/10">
+        <div className="relative box-content flex h-32 w-full justify-center rounded-lg border border-zinc-200 dark:border-zinc-200/10">
           {sprite.src && <img src={sprite.src} alt={sprite.alt} className="h-32 p-2" />}
           {isLegendary && (
             <Tooltip

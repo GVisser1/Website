@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { type ReactNode } from "react";
+import { type ReactNode, type JSX } from "react";
 import { Layout } from "@/components/layout";
 import type { Metadata } from "next/types";
 import { Inter } from "next/font/google";

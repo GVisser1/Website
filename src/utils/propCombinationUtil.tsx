@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import type { ComponentType } from "react";
+import type { ComponentType, JSX } from "react";
 
 type ComponentProperty<ComponentProps> = {
   [PropertyKey in keyof ComponentProps]: {

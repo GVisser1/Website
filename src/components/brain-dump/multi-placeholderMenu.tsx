@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, useCallback } from "react";
+import { useEffect, useMemo, useRef, useState, useCallback, type JSX } from "react";
 import type { ChangeEvent, KeyboardEvent } from "react";
 import Icon from "../icon";
 import { normalizeString } from "@/utils/textUtil";

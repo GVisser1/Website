@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import type { ReactNode, JSX } from "react";
 import { ThemeProvider } from "./themeProvider";
 import { dehydrate, HydrationBoundary, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { GlobalSearchProvider } from "./globalSearchProvider";

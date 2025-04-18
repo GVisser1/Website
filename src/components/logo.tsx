@@ -2,6 +2,8 @@ import Image from "next/image";
 import logo from "@/images/logo.webp";
 import clsx from "clsx";
 
+import type { JSX } from "react";
+
 type LogoProps = {
   withTitle: boolean;
   size: "lg" | "sm";
