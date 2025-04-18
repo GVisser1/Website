@@ -1,15 +1,15 @@
 "use client";
 
-import Header from "@/components/header";
-import Pagination from "@/components/pagination";
-import { PokemonInfoDialog } from "@/components/pokemon/pokemonInfoDialog";
-import SkeletonLoader from "@/components/skeleton";
-import { getPokemonDetails, type PokemonDetails } from "@/utils/pokemonUtil";
 import { isEmpty, isNil } from "lodash-es";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, type JSX } from "react";
 import usePokemon from "../../../hooks/usePokemon";
-import PokemonCard from "@/components/pokemon/pokemonCard";
+import { getPokemonDetails, type PokemonDetails } from "../../../utils/pokemonUtil";
+import Header from "../../../components/header";
+import SkeletonLoader from "../../../components/skeleton";
+import Pagination from "../../../components/pagination";
+import { PokemonInfoDialog } from "../../../components/pokemon/pokemonInfoDialog";
+import PokemonCard from "../../../components/pokemon/pokemonCard";
 
 const PAGE_SIZE = 16;
 

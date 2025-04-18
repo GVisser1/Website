@@ -1,7 +1,6 @@
-import Icon from "@/components/icon";
-import clsx from "clsx";
-
 import type { JSX } from "react";
+import clsx from "clsx";
+import Icon from "../components/icon";
 
 export type IconType = keyof typeof iconMap;
 const iconMap = {

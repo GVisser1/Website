@@ -1,10 +1,10 @@
 import Icon from "../icon";
 import type { ComponentPropsWithoutRef, JSX } from "react";
 import { useState } from "react";
-import type { PokemonDetails } from "@/utils/pokemonUtil";
 import { isNil } from "lodash-es";
 import clsx from "clsx";
 import Tooltip from "../tooltip";
+import type { PokemonDetails } from "../../utils/pokemonUtil";
 
 export type PokemonCardProps = {
   pokemon: PokemonDetails;

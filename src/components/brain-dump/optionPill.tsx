@@ -1,10 +1,8 @@
-import type { IconType } from "@/utils/iconUtil";
-import { OptionIcon } from "@/utils/iconUtil";
 import Icon from "../icon";
 import clsx from "clsx";
 import Tooltip from "../tooltip";
-
 import type { JSX } from "react";
+import { OptionIcon, type IconType } from "../../utils/iconUtil";
 
 type PillButtonProps = {
   label: string;

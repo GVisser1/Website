@@ -1,11 +1,11 @@
-"use client";;
-import { IconAndTextButton, IconButton, TextButton } from "@/components/button";
-import Header from "@/components/header";
-import { CombinationGrid } from "../../../../stories/propCombinationUtil";
-import { Divider } from "@/components/divider";
-import { noop } from "lodash-es";
+"use client";
 
+import { CombinationGrid } from "../../../../utils/propCombinationUtil";
+import { noop } from "lodash-es";
 import type { JSX } from "react";
+import Header from "../../../../components/header";
+import { IconAndTextButton, IconButton, TextButton } from "../../../../components/button";
+import Divider from "../../../../components/divider";
 
 const variants = ["default", "ghost", "primary", "light"] as const;
 const sizes = ["lg", "md"] as const;

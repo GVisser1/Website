@@ -1,15 +1,15 @@
-import Dialog from "@/components/dialog/dialog";
 import Link from "next/link";
 import type { ChangeEvent, KeyboardEvent, JSX } from "react";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import { usePathname, useRouter } from "next/navigation";
-import { normalizeString } from "@/utils/textUtil";
 import SearchInput from "../search";
 import Icon from "../icon";
 import type { Page } from "../../constants";
 import { PAGES } from "../../constants";
 import { isEmpty, isNil } from "lodash-es";
+import { normalizeString } from "../../utils/textUtil";
+import Dialog from "./dialog";
 
 const EXIT_ANIMATION_DURATION = 200;
 

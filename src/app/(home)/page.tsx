@@ -1,10 +1,9 @@
-import { getAge } from "@/utils/dateUtil";
 import Image from "next/image";
-import profileImg from "@/images/profile.webp";
-import { TextLink } from "@/components/button";
+import profileImg from "../../../public/images/profile.webp";
 import { MAIL_TO } from "../../constants";
-
 import type { JSX } from "react";
+import { TextLink } from "../../components/button";
+import { getAge } from "../../utils/dateUtil";
 
 const age = getAge();
 

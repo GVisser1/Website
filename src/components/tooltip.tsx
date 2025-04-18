@@ -11,7 +11,7 @@ import {
   TooltipContent,
 } from "@radix-ui/react-tooltip";
 import { uniqueId } from "lodash-es";
-import { seconds } from "@/utils/timeUtil";
+import { seconds } from "../utils/timeUtil";
 
 const DELAY = seconds(0.3);
 const ID = uniqueId("tooltip-");

@@ -1,4 +1,4 @@
-import * as Icons from "@/components/icons";
+import * as Icons from "../components/icons";
 import clsx from "clsx";
 import type { ComponentType, SVGProps, JSX } from "react";
 

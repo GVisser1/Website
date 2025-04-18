@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "@/images/logo.webp";
+import logo from "../../public/images/logo.webp";
 import clsx from "clsx";
 
 import type { JSX } from "react";

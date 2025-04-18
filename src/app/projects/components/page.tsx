@@ -1,7 +1,6 @@
-import Header from "@/components/header";
-import Link from "next/link";
-
 import type { JSX } from "react";
+import Link from "next/link";
+import Header from "../../../components/header";
 
 const Components = (): JSX.Element => (
   <>

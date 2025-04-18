@@ -2,7 +2,7 @@ import { renderHook, act } from "@testing-library/react";
 import { useLocalStorage } from "usehooks-ts";
 import type { Mock } from "vitest";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { Font } from "../../types";
+import type { Font } from "../useFont";
 import { useFont } from "../useFont";
 
 // Mocking the useLocalStorage hook
@@ -25,21 +25,21 @@ describe("useFont hook", () => {
   it("returns the default font", () => {
     const { result } = renderHook(() => useFont());
 
-    expect(result.current.font).toBe("inter");
+    expect(result.current.font).toBe("Inter");
   });
 
   it("changes the font", () => {
     const { result } = renderHook(() => useFont());
 
-    act(() => result.current.handleFontChange("sans"));
+    act(() => result.current.handleFontChange("Sans"));
 
-    expect(setFontMock).toHaveBeenCalledWith("sans");
-    expect(result.current.font).toBe("inter");
+    expect(setFontMock).toHaveBeenCalledWith("Sans");
+    expect(result.current.font).toBe("Inter");
 
-    useLocalStorageMock.mockImplementationOnce(() => ["sans", setFontMock]);
+    useLocalStorageMock.mockImplementationOnce(() => ["Sans", setFontMock]);
 
     const { result: updatedResult } = renderHook(() => useFont());
 
-    expect(updatedResult.current.font).toBe("sans");
+    expect(updatedResult.current.font).toBe("Sans");
   });
 });

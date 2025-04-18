@@ -1,6 +1,6 @@
 import { useLocalStorage } from "usehooks-ts";
 
-type Font = keyof typeof FONTS;
+export type Font = keyof typeof FONTS;
 export const FONTS = {
   Inter: { label: "Inter", class: "font-inter" },
   Mono: { label: "Mono", class: "font-mono" },

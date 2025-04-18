@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { forwardRef, type JSX } from "react";
-import type { IconType } from "@/utils/iconUtil";
-import { OptionIcon } from "@/utils/iconUtil";
+import { OptionIcon, type IconType } from "../../utils/iconUtil";
 
 type OptionProps = {
   label: string;

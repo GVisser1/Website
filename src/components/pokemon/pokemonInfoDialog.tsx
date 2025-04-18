@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState, type JSX } from "react";
 import Dialog from "../dialog/dialog";
 import clsx from "clsx";
-import type { PokemonDetails, PokemonSpeciesDetails } from "@/utils/pokemonUtil";
-import { getPokemonSpeciesDetails, typingColor } from "@/utils/pokemonUtil";
-import { Divider } from "../divider";
+import Divider from "../divider";
 import Icon from "../icon";
 import { useRouter, useSearchParams } from "next/navigation";
 import { isNil } from "lodash-es";
 import Tooltip from "../tooltip";
+import type { PokemonDetails, PokemonSpeciesDetails } from "../../utils/pokemonUtil";
+import { getPokemonSpeciesDetails, typingColor } from "../../utils/pokemonUtil";
 
 type PokemonInfoDialogProps = {
   open: boolean;

@@ -4,14 +4,14 @@ import * as Radix from "@radix-ui/react-select";
 import type { SelectContentProps, SelectItemProps } from "@radix-ui/react-select";
 import clsx from "clsx";
 import Icon from "../icon";
-import type { ElementRef } from "react";
+import type { ComponentRef } from "react";
 import { forwardRef } from "react";
 import { useFont } from "../../hooks/useFont";
 
 const Select = Radix.Root;
 const SelectValue = Radix.Value;
 
-const SelectTrigger = forwardRef<ElementRef<typeof Radix.Trigger>, Radix.SelectTriggerProps>(
+const SelectTrigger = forwardRef<ComponentRef<typeof Radix.Trigger>, Radix.SelectTriggerProps>(
   ({ className, children, ...props }, ref) => (
     <Radix.Trigger
       ref={ref}
@@ -28,7 +28,7 @@ const SelectTrigger = forwardRef<ElementRef<typeof Radix.Trigger>, Radix.SelectT
 );
 SelectTrigger.displayName = Radix.Trigger.displayName;
 
-const SelectContent = forwardRef<ElementRef<typeof Radix.Content>, SelectContentProps>(
+const SelectContent = forwardRef<ComponentRef<typeof Radix.Content>, SelectContentProps>(
   ({ className, children, ...props }, ref) => {
     const { getFontClass } = useFont();
     return (
@@ -56,7 +56,7 @@ const SelectContent = forwardRef<ElementRef<typeof Radix.Content>, SelectContent
 );
 SelectContent.displayName = Radix.Content.displayName;
 
-const SelectItem = forwardRef<ElementRef<typeof Radix.Item>, SelectItemProps>(
+const SelectItem = forwardRef<ComponentRef<typeof Radix.Item>, SelectItemProps>(
   ({ className, children, ...props }, ref) => (
     <Radix.Item
       ref={ref}

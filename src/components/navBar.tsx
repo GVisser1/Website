@@ -1,4 +1,4 @@
-import { useGlobalSearch } from "@/providers/globalSearchProvider";
+import { useGlobalSearch } from "../providers/globalSearchProvider";
 import { IconButton, IconLink } from "./button";
 import Logo from "./logo";
 

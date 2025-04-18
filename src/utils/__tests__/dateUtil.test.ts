@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test, vi } from "vitest";
 import { getAge, getMonthName, getTimeFrame } from "../dateUtil";
 
 describe("getMonthName", () => {
@@ -44,12 +44,11 @@ describe("getTimeFrame", () => {
 
 describe("getAge", () => {
   test("should return the correct age based on the hardcoded date of birth", () => {
-    const currentDate = new Date();
-    const dob = new Date(2000, 3, 21);
-    const expectedAge = currentDate.getFullYear() - dob.getFullYear();
-
+    vi.setSystemTime(new Date(2024, 3, 22));
     const age = getAge();
 
-    expect(age).toBe(expectedAge);
+    expect(age).toBe(24);
+
+    vi.useRealTimers();
   });
 });

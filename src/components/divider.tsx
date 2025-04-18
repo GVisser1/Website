@@ -7,7 +7,7 @@ type DividerProps = {
   className?: string;
 };
 
-export const Divider = ({ className, soft }: DividerProps): JSX.Element => (
+const Divider = ({ className, soft }: DividerProps): JSX.Element => (
   <hr
     role="presentation"
     className={clsx(
@@ -17,3 +17,5 @@ export const Divider = ({ className, soft }: DividerProps): JSX.Element => (
     )}
   />
 );
+
+export default Divider;

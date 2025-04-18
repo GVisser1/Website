@@ -1,9 +1,9 @@
-"use client";;
-import Icon from "@/components/icon";
+"use client";
 import { useTheme } from "next-themes";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select";
 
 import type { JSX } from "react";
+import Icon from "../icon";
 
 const ThemeSwitcher = (): JSX.Element | null => {
   const { theme, setTheme } = useTheme();
