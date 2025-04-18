@@ -10,8 +10,8 @@ const age = getAge();
 const HomePage = (): JSX.Element => (
   <div>
     <div className="flex h-[640px] flex-col-reverse items-center justify-end gap-x-20 gap-y-8 lg:my-auto lg:h-[720px] lg:flex-row lg:items-center lg:justify-center">
-      <header className="flex max-w-xl flex-col gap-y-6 text-center lg:gap-y-6 lg:text-left">
-        <h1 className="text-4xl font-bold text-zinc-700 sm:text-5xl dark:text-zinc-200">
+      <header className="flex flex-col gap-y-6 text-center lg:gap-y-6 lg:text-left">
+        <h1 className="text-4xl font-bold text-zinc-700 xs:text-5xl lg:text-6xl dark:text-zinc-200">
           <span className="text-blue-500">QA Engineer</span>, consistency advocate, and a{" "}
           <span className="text-blue-500">nerd</span>
         </h1>
