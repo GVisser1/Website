@@ -16,7 +16,7 @@ const SelectTrigger = forwardRef<ElementRef<typeof Radix.Trigger>, Radix.SelectT
     <Radix.Trigger
       ref={ref}
       className={clsx(
-        "flex h-10 w-full items-center justify-between rounded-sm border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-700 focus-visible:outline dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200",
+        "flex h-10 w-full items-center justify-between rounded-sm border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-700 focus-visible:outline dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200",
         className,
       )}
       {...props}
@@ -61,7 +61,7 @@ const SelectItem = forwardRef<ElementRef<typeof Radix.Item>, SelectItemProps>(
     <Radix.Item
       ref={ref}
       className={clsx(
-        "relative flex w-full items-center truncate rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none focus:bg-zinc-50 dark:focus:bg-zinc-800",
+        "relative flex h-10 w-full items-center truncate rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none focus:bg-zinc-50 dark:focus:bg-zinc-800",
         className,
       )}
       {...props}

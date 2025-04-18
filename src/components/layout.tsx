@@ -9,15 +9,10 @@ import SearchDialog from "./dialog/searchDialog";
 import { useGlobalSearch } from "@/providers/globalSearchProvider";
 
 export const Layout = ({ children }: PropsWithChildren): JSX.Element | null => {
-  const { font } = useFont();
+  const { getFontClass } = useFont();
   const { open, setOpen } = useGlobalSearch();
 
-  const classes = clsx("relative flex max-h-screen bg-zinc-50 dark:bg-zinc-900 lg:dark:bg-zinc-950", {
-    "font-inter": font === "inter",
-    "font-sans": font === "sans",
-    "font-mono": font === "mono",
-    "font-serif": font === "serif",
-  });
+  const classes = clsx("relative flex max-h-screen bg-zinc-50 dark:bg-zinc-900 lg:dark:bg-zinc-950", getFontClass());
 
   return (
     <div id="headlessui-portal-root" className={classes}>

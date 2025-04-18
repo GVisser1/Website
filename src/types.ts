@@ -1,5 +1,3 @@
-export type Font = "inter" | "mono" | "sans" | "serif";
-
 export type Pokemon = {
   id: number;
   name: string;

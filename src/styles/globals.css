@@ -6,6 +6,7 @@
 
 @theme inline {
   --font-inter: var(--inter, var(--font-sans));
+  --font-comic-sans: "Comic Sans MS", var(--font-sans);
   --breakpoint-xs: 30rem;
 
   --text-button: 0.875rem;
