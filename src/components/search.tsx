@@ -12,7 +12,7 @@ const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({ className,
 
   return (
     <div className={clsx("relative", className)}>
-      <Icon name="MagnifyingGlass" className="absolute top-2.5 left-2 text-zinc-500 dark:text-zinc-400" />
+      <Icon name="MagnifyingGlass" className="absolute top-2.5 left-2 size-5 text-zinc-500 dark:text-zinc-400" />
       <input {...props} ref={ref} className={classes} />
     </div>
   );

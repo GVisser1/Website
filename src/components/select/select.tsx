@@ -22,7 +22,7 @@ const SelectTrigger = forwardRef<ComponentRef<typeof Radix.Trigger>, Radix.Selec
       {...props}
     >
       {children}
-      <Icon name="ChevronDown" className="text-zinc-500 dark:text-zinc-400" />
+      <Icon name="ChevronDown" className="size-5 text-zinc-500 dark:text-zinc-400" />
     </Radix.Trigger>
   ),
 );
@@ -68,7 +68,7 @@ const SelectItem = forwardRef<ComponentRef<typeof Radix.Item>, SelectItemProps>(
     >
       <span className="absolute right-2 flex size-3.5 items-center justify-center">
         <Radix.ItemIndicator>
-          <Icon name="Check" size="sm" />
+          <Icon name="Check" className="size-4" />
         </Radix.ItemIndicator>
       </span>
       <Radix.ItemText>

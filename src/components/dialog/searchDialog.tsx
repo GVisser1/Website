@@ -131,7 +131,7 @@ const ResultsList = (props: ResultsListProps): JSX.Element => (
             props.selectedIndex === index && "bg-zinc-50 dark:bg-zinc-800",
           )}
         >
-          <Icon name={page.icon} />
+          <Icon name={page.icon} className="size-5" />
           {page.name}
         </Link>
       ))}

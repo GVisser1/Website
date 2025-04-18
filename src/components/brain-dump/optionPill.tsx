@@ -35,7 +35,7 @@ const PillButton = ({ label, ariaLabel, iconType, onClick, className }: PillButt
         >
           <OptionIcon type={iconType} applyBgColour={false} />
           <p className="truncate text-sm font-medium">{label}</p>
-          <Icon name="X" size="sm" />
+          <Icon name="X" className="size-4" />
         </button>
       }
       title={ariaLabel}

@@ -26,7 +26,7 @@ const Pill = ({ label, colour, icon, className }: PillProps): JSX.Element => {
 
   return (
     <span className={classes}>
-      {icon && <Icon size="2xs" name={icon} />}
+      {icon && <Icon className="size-2.5" name={icon} />}
       <span className="truncate">{label}</span>
     </span>
   );

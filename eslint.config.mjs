@@ -57,6 +57,6 @@ export default [
     },
   },
   {
-    ignores: ["node_modules", "dist", "*.config.*", ".next"],
+    ignores: ["node_modules", "dist", "*.config.*", ".next", "e2e-tests/test-reports", "e2e-tests/test-results"],
   },
 ];

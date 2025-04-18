@@ -317,7 +317,7 @@ const CreateOptionButton = ({ onClick, value }: { onClick: () => void; value: st
     onClick={onClick}
     className="mx-1 mt-1 flex items-center justify-center gap-x-1 rounded-sm bg-zinc-50 px-3 py-1.5 text-sm font-semibold text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700 dark:active:bg-zinc-600"
   >
-    <Icon name="Plus" />
+    <Icon name="Plus" className="size-5" />
     Create <Pill label={value} icon="Star" colour="gray" />
   </button>
 );
