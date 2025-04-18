@@ -1,6 +1,6 @@
 "use client";
 
-import { useFont } from "../../hooks/useFont";
+import { FONTS, useFont } from "../../hooks/useFont";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select";
 
 const FontSwitcher = (): JSX.Element | null => {
@@ -12,18 +12,11 @@ const FontSwitcher = (): JSX.Element | null => {
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="inter">
-          <div className="font-inter">Inter</div>
-        </SelectItem>
-        <SelectItem value="mono">
-          <div className="font-mono">Mono</div>
-        </SelectItem>
-        <SelectItem value="sans">
-          <div className="font-sans">Sans</div>
-        </SelectItem>
-        <SelectItem value="serif">
-          <div className="font-serif">Serif</div>
-        </SelectItem>
+        {Object.values(FONTS).map((font) => (
+          <SelectItem key={font.label} value={font.label}>
+            <div className={font.class}>{font.label}</div>
+          </SelectItem>
+        ))}
       </SelectContent>
     </Select>
   );

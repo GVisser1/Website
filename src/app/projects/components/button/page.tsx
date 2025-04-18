@@ -1,12 +1,13 @@
 "use client";
 
-import { IconAndTextButton, IconButton } from "@/components/button";
+import { IconAndTextButton, IconButton, TextButton } from "@/components/button";
 import Header from "@/components/header";
 import { CombinationGrid } from "../../../../stories/propCombinationUtil";
 import { Divider } from "@/components/divider";
 import { noop } from "lodash-es";
 
-const variants = ["default", "ghost", "primary"] as const;
+const variants = ["default", "ghost", "primary", "light"] as const;
+const sizes = ["lg", "md"] as const;
 
 const ButtonComponentPage = (): JSX.Element => (
   <>
@@ -19,8 +20,9 @@ const ButtonComponentPage = (): JSX.Element => (
     <h2 className="mb-4 font-semibold text-zinc-700 dark:text-zinc-200">Icon and text</h2>
     <CombinationGrid
       Component={IconAndTextButton}
-      columns="3"
+      columns="4"
       properties={[
+        { name: "size", values: [...sizes] },
         { name: "disabled", values: [false, true] },
         { name: "variant", values: [...variants] },
       ]}
@@ -29,11 +31,26 @@ const ButtonComponentPage = (): JSX.Element => (
 
     <Divider className="my-12" soft />
 
+    <h2 className="mb-4 font-semibold text-zinc-700 dark:text-zinc-200">Text</h2>
+    <CombinationGrid
+      Component={TextButton}
+      columns="4"
+      properties={[
+        { name: "size", values: [...sizes] },
+        { name: "disabled", values: [false, true] },
+        { name: "variant", values: [...variants] },
+      ]}
+      defaultProps={{ label: "Button content", onClick: noop }}
+    />
+
+    <Divider className="my-12" soft />
+
     <h2 className="mb-4 font-semibold text-zinc-700 dark:text-zinc-200">Icon</h2>
     <CombinationGrid
       Component={IconButton}
-      columns="3"
+      columns="4"
       properties={[
+        { name: "size", values: [...sizes] },
         { name: "disabled", values: [false, true] },
         { name: "variant", values: [...variants] },
       ]}

@@ -1,5 +1,13 @@
-import type { Font } from "../types";
 import { useLocalStorage } from "usehooks-ts";
+
+type Font = keyof typeof FONTS;
+export const FONTS = {
+  Inter: { label: "Inter", class: "font-inter" },
+  Mono: { label: "Mono", class: "font-mono" },
+  Sans: { label: "Sans", class: "font-sans" },
+  Serif: { label: "Serif", class: "font-serif" },
+  "Comic Sans": { label: "Comic Sans", class: "font-comic-sans" },
+} as const;
 
 type UseFontSwitcherResult = {
   font: Font;
@@ -8,24 +16,13 @@ type UseFontSwitcherResult = {
 };
 
 export const useFont = (): UseFontSwitcherResult => {
-  const [font, setFont] = useLocalStorage<Font>("font", "inter");
+  const [font, setFont] = useLocalStorage<Font>("font", "Inter");
 
   const handleFontChange = (newFont: Font): void => {
     setFont(newFont);
   };
 
-  const getFontClass = (): string => {
-    switch (font) {
-      case "mono":
-        return "font-mono";
-      case "sans":
-        return "font-sans";
-      case "serif":
-        return "font-serif";
-      default:
-        return "font-inter";
-    }
-  };
+  const getFontClass = (): string => FONTS[font]?.class ?? FONTS.Inter.class;
 
   return { font, handleFontChange, getFontClass };
 };
