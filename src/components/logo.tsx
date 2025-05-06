@@ -18,7 +18,9 @@ const Logo = ({ withTitle, size, className }: LogoProps): JSX.Element => {
   return (
     <div className={classes}>
       <Image className={imageClasses} src={logo} alt="" />
-      {withTitle && <p className="truncate text-lg/6 font-semibold text-zinc-700 dark:text-zinc-200">Glenn Visser</p>}
+      {withTitle && (
+        <p className="truncate text-lg/6 font-semibold text-primary dark:text-primary-dark">Glenn Visser</p>
+      )}
     </div>
   );
 };

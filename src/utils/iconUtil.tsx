@@ -5,22 +5,44 @@ import Icon from "../components/icon";
 export type IconType = keyof typeof iconMap;
 const iconMap = {
   // fields
-  text: { name: "Text", bg: "bg-blue-100", text: "text-blue-600" },
-  textArea: { name: "Bars3BottomLeft", bg: "bg-blue-100", text: "text-blue-600" },
-  subform: { name: "DocumentDuplicate", bg: "bg-indigo-100", text: "text-indigo-600" },
-  catalogue: { name: "ShoppingCart", bg: "bg-[#E8F9F9]", text: "text-[#1AB0AF]" },
-  number: { name: "NumberedList", bg: "bg-amber-100", text: "text-amber-600" },
-  search: { name: "MagnifyingGlassCircle", bg: "bg-[#E8F9F9]", text: "text-[#1AB0AF]" },
+  text: { name: "Text", bg: "bg-accent-text-fields", text: "text-icons-accent-text-fields" },
+  textArea: { name: "Bars3BottomLeft", bg: "bg-accent-text-fields", text: "text-icons-accent-text-fields" },
+  subform: { name: "DocumentDuplicate", bg: "bg-accent-subform", text: "text-icons-accent-subform" },
+  catalogue: { name: "ShoppingCart", bg: "bg-accent-search-items", text: "text-icons-accent-search-items" },
+  number: { name: "NumberedList", bg: "bg-accent-number", text: "text-icons-accent-number" },
+  search: { name: "MagnifyingGlassCircle", bg: "bg-accent-search-items", text: "text-icons-accent-search-items" },
 
   // variables
-  group: { name: "UserGroup", bg: "bg-zinc-100 dark:bg-zinc-800", text: "text-zinc-700 dark:text-zinc-200" },
-  user: { name: "User", bg: "bg-zinc-100 dark:bg-zinc-800", text: "text-zinc-700 dark:text-zinc-200" },
-  coords: { name: "MapPin", bg: "bg-zinc-100 dark:bg-zinc-800", text: "text-zinc-700 dark:text-zinc-200" },
-  date: { name: "Calendar", bg: "bg-zinc-100 dark:bg-zinc-800", text: "text-zinc-700 dark:text-zinc-200" },
-  formName: { name: "Document", bg: "bg-zinc-100 dark:bg-zinc-800", text: "text-zinc-700 dark:text-zinc-200" },
-
-  // custom
-  custom: { name: "Star", bg: "bg-zinc-100 dark:bg-zinc-800", text: "text-zinc-700 dark:text-zinc-200" },
+  group: {
+    name: "UserGroup",
+    bg: "bg-sunken-secondary dark:bg-sunken-secondary-dark",
+    text: "text-primary dark:text-primary-dark",
+  },
+  user: {
+    name: "User",
+    bg: "bg-sunken-secondary dark:bg-sunken-secondary-dark",
+    text: "text-primary dark:text-primary-dark",
+  },
+  coords: {
+    name: "MapPin",
+    bg: "bg-sunken-secondary dark:bg-sunken-secondary-dark",
+    text: "text-primary dark:text-primary-dark",
+  },
+  date: {
+    name: "Calendar",
+    bg: "bg-sunken-secondary dark:bg-sunken-secondary-dark",
+    text: "text-primary dark:text-primary-dark",
+  },
+  formName: {
+    name: "Document",
+    bg: "bg-sunken-secondary dark:bg-sunken-secondary-dark",
+    text: "text-primary dark:text-primary-dark",
+  },
+  custom: {
+    name: "Star",
+    bg: "bg-sunken-secondary dark:bg-sunken-secondary-dark",
+    text: "text-primary dark:text-primary-dark",
+  },
 } as const;
 
 type OptionIconProps = {

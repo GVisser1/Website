@@ -14,9 +14,12 @@ type OptionProps = {
 const Option = forwardRef<HTMLDivElement, OptionProps>(
   ({ label, pill, type, checked, selected, onClick }, ref): JSX.Element => {
     const classes = clsx(
-      "flex h-10 min-w-0 items-center justify-between gap-x-2 px-3 py-2.5 select-none",
-      "text-zinc-700 hover:bg-zinc-50 active:bg-zinc-100 aria-checked:bg-blue-50 aria-selected:bg-zinc-50 aria-selected:aria-checked:bg-zinc-100",
-      "dark:text-zinc-300 dark:hover:bg-zinc-800 dark:active:bg-zinc-700 dark:aria-checked:bg-blue-900/50 dark:aria-selected:bg-zinc-800 dark:aria-selected:aria-checked:bg-zinc-800",
+      "flex h-10 min-w-0 items-center justify-between gap-x-2 px-3 py-2.5 text-primary select-none dark:text-primary-dark",
+      "hover:bg-btn-ghost-hover dark:hover:bg-btn-ghost-hover-dark",
+      "active:bg-btn-ghost-pressed dark:active:bg-btn-ghost-pressed-dark",
+      "aria-selected:bg-btn-ghost-hover dark:aria-selected:bg-btn-ghost-hover-dark",
+      "aria-checked:bg-btn-ghost-checked dark:aria-checked:bg-btn-ghost-checked-dark",
+      "aria-checked:hover:bg-btn-ghost-hover dark:aria-checked:hover:bg-btn-ghost-hover-dark",
     );
 
     return (
@@ -50,8 +53,8 @@ type OptionPillProps = {
 const OptionPill = ({ label }: OptionPillProps): JSX.Element => {
   const classes = clsx(
     "h-4 max-w-32 truncate rounded-sm px-1 text-xs font-medium",
-    "bg-zinc-100 text-zinc-700",
-    "dark:bg-zinc-800 dark:text-zinc-200",
+    "bg-sunken-secondary text-primary",
+    "dark:bg-sunken-secondary-dark dark:text-primary-dark",
   );
 
   return (

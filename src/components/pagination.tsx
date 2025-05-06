@@ -1,7 +1,9 @@
+import clsx from "clsx";
 import { IconButton } from "./button";
 import type { IconName } from "./icon";
 
-import type { JSX } from "react";
+import { useEffect, type JSX } from "react";
+import useMetaKey from "../hooks/useMetaKey";
 
 type PaginationProps = {
   currentPage: number;
@@ -10,36 +12,82 @@ type PaginationProps = {
   onNext: () => void;
   onFirst: () => void;
   onLast: () => void;
+  className?: string;
 };
 
-const Pagination = ({ currentPage, totalPages, onPrevious, onNext, onFirst, onLast }: PaginationProps): JSX.Element => {
+const Pagination = ({
+  currentPage,
+  totalPages,
+  onPrevious,
+  onNext,
+  onFirst,
+  onLast,
+  className,
+}: PaginationProps): JSX.Element => {
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === totalPages;
+  const metaKey = useMetaKey();
+
+  const classes = clsx("flex w-full items-center justify-between gap-x-1 sm:w-auto", className);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent): void => {
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        if (!isLastPage)
+          if (e.metaKey) {
+            onLast();
+          } else {
+            onNext();
+          }
+      }
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        if (!isFirstPage) {
+          if (e.metaKey) {
+            onFirst();
+          } else {
+            onPrevious();
+          }
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return (): void => document.removeEventListener("keydown", handleKeyDown);
+  }, [onNext, onPrevious, onFirst, onLast, isFirstPage, isLastPage]);
 
   return (
-    <div className="mt-4 flex items-center justify-between">
+    <div className={classes}>
+      <PaginationButton
+        ariaLabel="Go to the first page"
+        onClick={onFirst}
+        disabled={isFirstPage}
+        icon="ChevronLeftDouble"
+        shortcut={`${metaKey} + Left Arrow`}
+      />
+      <PaginationButton
+        ariaLabel="Go to the previous page"
+        onClick={onPrevious}
+        disabled={isFirstPage}
+        icon="ChevronLeft"
+        shortcut="Left Arrow"
+      />
       <PageCounter currentPage={currentPage} totalPages={totalPages} />
-      <div className="flex gap-x-1">
-        <PaginationButton
-          ariaLabel="Go to the first page"
-          onClick={onFirst}
-          disabled={isFirstPage}
-          icon="ChevronLeftDouble"
-        />
-        <PaginationButton
-          ariaLabel="Go to the previous page"
-          onClick={onPrevious}
-          disabled={isFirstPage}
-          icon="ChevronLeft"
-        />
-        <PaginationButton ariaLabel="Go to the next page" onClick={onNext} disabled={isLastPage} icon="ChevronRight" />
-        <PaginationButton
-          ariaLabel="Go to the last page"
-          onClick={onLast}
-          disabled={isLastPage}
-          icon="ChevronRightDouble"
-        />
-      </div>
+      <PaginationButton
+        ariaLabel="Go to the next page"
+        onClick={onNext}
+        disabled={isLastPage}
+        icon="ChevronRight"
+        shortcut="Right Arrow"
+      />
+      <PaginationButton
+        ariaLabel="Go to the last page"
+        onClick={onLast}
+        disabled={isLastPage}
+        icon="ChevronRightDouble"
+        shortcut={`${metaKey} + Right Arrow`}
+      />
     </div>
   );
 };
@@ -49,22 +97,25 @@ type PaginationButtonProps = {
   disabled: boolean;
   onClick: () => void;
   icon: Extract<IconName, "ChevronLeftDouble" | "ChevronLeft" | "ChevronRight" | "ChevronRightDouble">;
+  shortcut: string;
 };
 
-const PaginationButton = ({ ariaLabel, disabled, onClick, icon }: PaginationButtonProps): JSX.Element => (
+const PaginationButton = ({ ariaLabel, disabled, onClick, icon, shortcut }: PaginationButtonProps): JSX.Element => (
   <IconButton
-    variant="default"
+    variant="secondary"
     aria-label={ariaLabel}
     disabled={disabled}
     onClick={onClick}
-    tooltip={{ title: ariaLabel, side: "top" }}
+    tooltip={{ title: ariaLabel, description: shortcut, side: "top" }}
     icon={icon}
   />
 );
 
 const PageCounter = ({ currentPage, totalPages }: { currentPage: number; totalPages: number }): JSX.Element => (
-  <span className="text-zinc-500 dark:text-zinc-400">
-    Page <b>{currentPage}</b> of <b>{totalPages}</b>
+  <span className="mx-1 flex w-full items-center justify-center gap-x-1 text-secondary dark:text-secondary-dark">
+    <b>{currentPage}</b>
+    of
+    <b>{totalPages}</b>
   </span>
 );
 

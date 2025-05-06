@@ -232,14 +232,14 @@ const PlaceholderMenu = (): JSX.Element => {
     <Popover open={openPopover} onOpenChange={setOpenPopover}>
       <div className="relative w-80">
         <PopoverTrigger className="w-full rounded-sm focus-visible:outline">
-          <div className="flex h-10 w-full items-center justify-between rounded-sm border border-zinc-200 dark:border-zinc-700">
+          <div className="flex h-10 w-full items-center justify-between rounded-sm border border-primary dark:border-primary-dark">
             <div className="flex min-w-0 items-center gap-x-1 pl-2">
               {selectedOption && <OptionIcon type={selectedOption.type} />}
               <p
                 className={clsx(
                   selectedOption
-                    ? "truncate pr-10 font-medium text-zinc-700 dark:text-zinc-200"
-                    : "text-zinc-500 dark:text-zinc-400",
+                    ? "truncate pr-10 font-medium text-primary dark:text-primary-dark"
+                    : "text-secondary dark:text-secondary-dark",
                 )}
               >
                 {selectedOption?.label ?? "Select a placeholder"}
@@ -247,14 +247,14 @@ const PlaceholderMenu = (): JSX.Element => {
             </div>
             {!selectedOption && (
               <div className="p-2.5">
-                <Icon name="ChevronDown" className="size-4 text-zinc-500 dark:text-zinc-400" />
+                <Icon name="ChevronDown" className="size-4 text-secondary dark:text-secondary-dark" />
               </div>
             )}
           </div>
         </PopoverTrigger>
         {selectedOption && (
           <IconButton
-            variant="default"
+            variant="secondary"
             aria-label="Clear selected option"
             tooltip={{ title: "Clear selected option" }}
             icon="X"
@@ -269,9 +269,9 @@ const PlaceholderMenu = (): JSX.Element => {
       <PopoverContent
         aria-label="Select a placeholder"
         align="start"
-        className="z-10 mt-1 flex flex-col bg-white shadow-lg dark:bg-zinc-900"
+        className="z-10 mt-1 flex flex-col bg-default shadow-lg dark:bg-default-dark"
       >
-        <div className="relative w-[480px] overflow-hidden rounded-sm border border-zinc-200 pb-1 dark:border-zinc-700">
+        <div className="relative w-[480px] overflow-hidden rounded-sm border border-primary pb-1 dark:border-primary-dark">
           <div className="grid grid-cols-3 gap-x-2 px-3 pt-3 pb-2">
             <SearchInput
               aria-controls="listbox"

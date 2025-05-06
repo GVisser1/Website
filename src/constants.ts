@@ -14,3 +14,5 @@ export const PROJECT_PAGES: Page[] = [{ name: "Pokémon", href: "/projects/pokem
 export const PAGES: Page[] = [...MAIN_PAGES, ...PROJECT_PAGES];
 
 export const MAIL_TO = "mailto:gvisser.business@gmail.com";
+
+export const POKEMON_API_URL = "https://pokeapi.co/api/v2/pokemon";

@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useRef, useState, useCallback, type JSX } from "react";
 import type { ChangeEvent, KeyboardEvent } from "react";
-import Icon from "../icon";
 import { Popover, PopoverAnchor, PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
 import Option from "./option";
 import OptionGroup from "./optionGroup";
@@ -10,10 +9,9 @@ import { EmptyState } from "./emptyState";
 import { isEmpty, noop, uniqueId, upperFirst } from "lodash-es";
 import ds from "./dataSource.json";
 import PillButton from "./optionPill";
-import Pill from "../pill";
 import SearchInput from "../search";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select/select";
-import { IconButton } from "../button";
+import { IconAndTextButton, IconButton } from "../button";
 import type { IconType } from "../../utils/iconUtil";
 import { normalizeString } from "../../utils/textUtil";
 
@@ -197,7 +195,7 @@ const MultiPlaceholderMenu = (): JSX.Element => {
     >
       <div className="w-80">
         <PopoverAnchor className="relative w-full rounded-sm">
-          <div className="flex w-full grow items-center justify-between rounded-sm border border-zinc-200 dark:border-zinc-700 dark:bg-zinc-900">
+          <div className="flex w-full grow items-center justify-between rounded-sm border border-primary dark:border-primary-dark dark:bg-default-dark">
             <div className="flex max-h-80 w-full flex-wrap items-center gap-1 overflow-y-auto p-2 pr-10">
               {selectedOptions.map((option) => (
                 <PillButton
@@ -212,14 +210,14 @@ const MultiPlaceholderMenu = (): JSX.Element => {
               <PopoverTrigger className="group my-auto flex h-6 min-w-0 grow items-center rounded-sm outline-hidden">
                 <span
                   aria-hidden
-                  className="w-full truncate py-2 text-left text-zinc-500 select-none dark:text-zinc-400"
+                  className="w-full truncate py-2 text-left text-secondary select-none dark:text-secondary-dark"
                 >
                   Add placeholders
                 </span>
                 <div className="absolute top-0 right-0 inline-flex justify-end">
                   <IconButton
                     aria-label="Select placeholders"
-                    variant="default"
+                    variant="secondary"
                     tooltip={{ title: "Select placeholders" }}
                     icon="Plus"
                     className="translate-x-[-3px] translate-y-[3px] group-focus-visible:outline"
@@ -235,9 +233,9 @@ const MultiPlaceholderMenu = (): JSX.Element => {
       <PopoverContent
         aria-label="Select a placeholder"
         align="start"
-        className="mt-1 flex flex-col bg-white shadow-lg dark:bg-zinc-900"
+        className="mt-1 flex flex-col bg-default shadow-lg dark:bg-default-dark"
       >
-        <div className="relative w-[480px] overflow-hidden rounded-sm border border-zinc-200 pb-1 dark:border-zinc-700">
+        <div className="relative w-120 overflow-hidden rounded-sm border border-primary pb-1 dark:border-primary-dark">
           <div className="grid grid-cols-3 gap-x-2 px-3 pt-3 pb-2">
             <SearchInput
               ref={inputRef}
@@ -264,8 +262,8 @@ const MultiPlaceholderMenu = (): JSX.Element => {
             </Select>
           </div>
 
-          <div className="flex h-[360px] flex-col justify-between">
-            <div id="listbox" role="listbox" className="mx-1 overflow-y-auto">
+          <div className="mx-auto flex h-90 flex-col">
+            <div id="listbox" role="listbox" className="overflow-y-auto">
               {showEmptyState && (
                 <EmptyState
                   title={`No ${filter} found`}
@@ -312,12 +310,11 @@ const getSelectedOption = (
 };
 
 const CreateOptionButton = ({ onClick, value }: { onClick: () => void; value: string }): JSX.Element => (
-  <button
-    type="button"
+  <IconAndTextButton
     onClick={onClick}
-    className="mx-1 mt-1 flex items-center justify-center gap-x-1 rounded-sm bg-zinc-50 px-3 py-1.5 text-sm font-semibold text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700 dark:active:bg-zinc-600"
-  >
-    <Icon name="Plus" className="size-5" />
-    Create <Pill label={value} icon="Star" colour="gray" />
-  </button>
+    label={`Create: ${value}`}
+    icon="Plus"
+    variant="secondary"
+    className="mx-auto w-fit"
+  />
 );

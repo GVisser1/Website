@@ -13,39 +13,39 @@ const Components = (): JSX.Element => (
       <li>
         <Link
           href="components/button"
-          className="block h-72 w-full rounded-sm border border-zinc-200 p-2 dark:border-zinc-700"
+          className="block h-72 w-full rounded-sm border border-primary p-2 dark:border-primary-dark"
         >
           <img alt="" src="https://placehold.co/600x400" className="h-52 w-full rounded-sm object-cover" />
-          <h3 className="mt-2 font-medium text-zinc-700 dark:text-zinc-200">Button</h3>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Description</p>
+          <h3 className="mt-2 font-medium text-primary dark:text-primary">Button</h3>
+          <p className="mt-1 text-sm text-secondary dark:text-secondary-dark">Description</p>
         </Link>
       </li>
       <li>
-        <a href="#" className="block h-72 w-full rounded-sm border border-zinc-200 p-2 dark:border-zinc-700">
+        <a href="#" className="block h-72 w-full rounded-sm border border-primary p-2 dark:border-primary-dark">
           <img alt="" src="https://placehold.co/600x400" className="h-52 w-full rounded-sm object-cover" />
-          <h3 className="mt-2 font-medium text-zinc-700 dark:text-zinc-200">Icon</h3>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Description</p>{" "}
+          <h3 className="mt-2 font-medium text-primary dark:text-primary">Icon</h3>
+          <p className="mt-1 text-sm text-secondary dark:text-secondary-dark">Description</p>{" "}
         </a>
       </li>
       <li>
-        <a href="#" className="block h-72 w-full rounded-sm border border-zinc-200 p-2 dark:border-zinc-700">
+        <a href="#" className="block h-72 w-full rounded-sm border border-primary p-2 dark:border-primary-dark">
           <img alt="" src="https://placehold.co/600x400" className="h-52 w-full rounded-sm object-cover" />
-          <h3 className="mt-2 font-medium text-zinc-700 dark:text-zinc-200">Link</h3>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Description</p>{" "}
+          <h3 className="mt-2 font-medium text-primary dark:text-primary">Link</h3>
+          <p className="mt-1 text-sm text-secondary dark:text-secondary-dark">Description</p>{" "}
         </a>
       </li>
       <li>
-        <a href="#" className="block h-72 w-full rounded-sm border border-zinc-200 p-2 dark:border-zinc-700">
+        <a href="#" className="block h-72 w-full rounded-sm border border-primary p-2 dark:border-primary-dark">
           <img alt="" src="https://placehold.co/600x400" className="h-52 w-full rounded-sm object-cover" />
-          <h3 className="mt-2 font-medium text-zinc-700 dark:text-zinc-200">Pill</h3>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Description</p>{" "}
+          <h3 className="mt-2 font-medium text-primary dark:text-primary">Pill</h3>
+          <p className="mt-1 text-sm text-secondary dark:text-secondary-dark">Description</p>{" "}
         </a>
       </li>
       <li>
-        <a href="#" className="block h-72 w-full rounded-sm border border-zinc-200 p-2 dark:border-zinc-700">
+        <a href="#" className="block h-72 w-full rounded-sm border border-primary p-2 dark:border-primary-dark">
           <img alt="" src="https://placehold.co/600x400" className="h-52 w-full rounded-sm object-cover" />
-          <h3 className="mt-2 font-medium text-zinc-700 dark:text-zinc-200">Search</h3>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Description</p>
+          <h3 className="mt-2 font-medium text-primary dark:text-primary">Search</h3>
+          <p className="mt-1 text-sm text-secondary dark:text-secondary-dark">Description</p>
         </a>
       </li>
     </ul>
