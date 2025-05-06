@@ -16,7 +16,7 @@ const TimelinePage = (): JSX.Element => (
     <Header title="Timeline" description="A chronological overview of my education and work experience" />
 
     <div className="relative">
-      <div className="absolute left-2 h-full w-0.5 bg-zinc-200 shadow-md sm:inset-x-0 sm:mx-auto dark:bg-zinc-700" />
+      <div className="absolute left-2 h-full w-0.5 bg-sunken-tertiary shadow-md sm:inset-x-0 sm:mx-auto dark:bg-sunken-tertiary-dark" />
       <ol>
         {timeLineData.map((item, i) => (
           <TimeLineItem key={item.timeFrame} item={item} align={isEven(i) ? "right" : "left"} />
@@ -40,14 +40,14 @@ const TimeLineItem = ({ item, align }: TimeLineItemProps): JSX.Element => (
   >
     <Pill colour="green" label={item.timeFrame} />
     <div className="mt-1">
-      <h2 className="text-lg font-semibold text-zinc-700 dark:text-zinc-200">{item.title}</h2>
-      <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">{item.subTitle}</p>
+      <h2 className="text-lg font-semibold text-primary dark:text-primary-dark">{item.title}</h2>
+      <p className="text-sm font-semibold text-secondary dark:text-secondary-dark">{item.subTitle}</p>
     </div>
-    <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{item.description}</p>
+    <p className="mt-2 text-sm text-secondary dark:text-secondary-dark">{item.description}</p>
 
     <div
       className={clsx(
-        "absolute top-0 mt-7 size-2.5 -translate-x-7 rounded-full bg-white ring-4 ring-blue-600 sm:translate-x-0 dark:bg-white dark:ring-blue-600",
+        "absolute top-0 mt-7 size-2.5 -translate-x-7 rounded-full bg-default ring-4 ring-primary sm:translate-x-0",
         align === "right" ? "sm:right-[-5px]" : "sm:left-[-5px]",
       )}
     />

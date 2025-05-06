@@ -24,7 +24,7 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
 
   const [query, setQuery] = useState("");
   const [availablePages, setAvailablePages] = useState<Page[]>(PAGES);
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
 
   useEffect(() => {
     setTimeout(() => {
@@ -67,7 +67,7 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
     onClose();
     setTimeout(() => {
       setQuery("");
-      setSelectedIndex(0);
+      setSelectedIndex(-1);
     }, EXIT_ANIMATION_DURATION);
   };
 
@@ -127,8 +127,9 @@ const ResultsList = (props: ResultsListProps): JSX.Element => (
           href={page.href}
           onClick={props.onClose}
           className={clsx(
-            "flex h-10 w-full items-center gap-x-2 rounded-sm px-2 text-zinc-700 hover:bg-zinc-50 focus-visible:outline dark:text-zinc-200 dark:hover:bg-zinc-800",
-            props.selectedIndex === index && "bg-zinc-50 dark:bg-zinc-800",
+            "flex h-10 w-full items-center gap-x-2 rounded-sm px-2 text-primary hover:bg-btn-ghost-hover focus-visible:outline dark:text-primary-dark dark:hover:bg-btn-ghost-hover-dark",
+            "active:bg-btn-ghost-pressed dark:active:bg-btn-ghost-pressed-dark",
+            "aria-selected:bg-btn-ghost-hover dark:aria-selected:bg-btn-ghost-hover-dark",
           )}
         >
           <Icon name={page.icon} className="size-5" />

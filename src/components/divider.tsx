@@ -11,9 +11,9 @@ const Divider = ({ className, soft }: DividerProps): JSX.Element => (
   <hr
     role="presentation"
     className={clsx(
-      className,
       "w-full border-t",
-      soft ? "border-zinc-100 dark:border-zinc-800" : "border-zinc-200 dark:border-zinc-700",
+      soft ? "border-secondary dark:border-secondary-dark" : "border-primary dark:border-primary-dark",
+      className,
     )}
   />
 );

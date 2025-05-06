@@ -17,15 +17,14 @@ const Header = ({ title, description, topLink }: HeaderProps): JSX.Element => (
       <IconAndTextLink
         variant="ghost"
         href={topLink.href}
-        aria-label="Back to overview"
-        label="Back to overview"
+        label={topLink.label}
         icon="ChevronLeft"
-        className="mb-8 -ml-3"
+        className="mb-4 -ml-3"
       />
     )}
 
-    <h1 className="mb-1 text-xl font-semibold text-zinc-700 dark:text-zinc-200">{title}</h1>
-    <p className="text-zinc-500 dark:text-zinc-400">{description}</p>
+    <h1 className="mb-1 text-2xl font-semibold text-primary dark:text-primary-dark">{title}</h1>
+    <p className="text-secondary dark:text-secondary-dark">{description}</p>
 
     <Divider className="mt-6 mb-8" />
   </header>

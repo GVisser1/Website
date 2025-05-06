@@ -7,7 +7,7 @@ import Header from "../../../../components/header";
 import { IconAndTextButton, IconButton, TextButton } from "../../../../components/button";
 import Divider from "../../../../components/divider";
 
-const variants = ["default", "ghost", "primary", "light"] as const;
+const variants = ["secondary", "ghost", "primary", "light"] as const;
 const sizes = ["lg", "md"] as const;
 
 const ButtonComponentPage = (): JSX.Element => (
@@ -18,7 +18,7 @@ const ButtonComponentPage = (): JSX.Element => (
       topLink={{ label: "Back to overview", href: "./" }}
     />
 
-    <h2 className="mb-4 font-semibold text-zinc-700 dark:text-zinc-200">Icon and text</h2>
+    <h2 className="mb-4 font-semibold text-primary dark:text-primary-dark">Icon and text</h2>
     <CombinationGrid
       Component={IconAndTextButton}
       columns="4"
@@ -32,7 +32,7 @@ const ButtonComponentPage = (): JSX.Element => (
 
     <Divider className="my-12" soft />
 
-    <h2 className="mb-4 font-semibold text-zinc-700 dark:text-zinc-200">Text</h2>
+    <h2 className="mb-4 font-semibold text-primary dark:text-primary-dark">Text</h2>
     <CombinationGrid
       Component={TextButton}
       columns="4"
@@ -46,7 +46,7 @@ const ButtonComponentPage = (): JSX.Element => (
 
     <Divider className="my-12" soft />
 
-    <h2 className="mb-4 font-semibold text-zinc-700 dark:text-zinc-200">Icon</h2>
+    <h2 className="mb-4 font-semibold text-primary dark:text-primary-dark">Icon</h2>
     <CombinationGrid
       Component={IconButton}
       columns="4"

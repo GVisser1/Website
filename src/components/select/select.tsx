@@ -16,13 +16,13 @@ const SelectTrigger = forwardRef<ComponentRef<typeof Radix.Trigger>, Radix.Selec
     <Radix.Trigger
       ref={ref}
       className={clsx(
-        "flex h-10 w-full items-center justify-between rounded-sm border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-700 focus-visible:outline dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200",
+        "flex h-10 w-full items-center justify-between rounded-sm border border-primary bg-default px-3 py-2 text-sm text-primary focus-visible:outline dark:border-primary-dark dark:bg-default-dark dark:text-primary-dark",
         className,
       )}
       {...props}
     >
       {children}
-      <Icon name="ChevronDown" className="size-5 text-zinc-500 dark:text-zinc-400" />
+      <Icon name="ChevronDown" className="size-5 text-secondary dark:text-secondary-dark" />
     </Radix.Trigger>
   ),
 );
@@ -36,8 +36,8 @@ const SelectContent = forwardRef<ComponentRef<typeof Radix.Content>, SelectConte
         <Radix.Content
           ref={ref}
           className={clsx(
-            "relative z-50 max-h-96 w-(--radix-select-trigger-width) min-w-32 overflow-hidden rounded-md border border-zinc-200 shadow-xs",
-            "bg-white text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200",
+            "relative z-50 max-h-96 w-(--radix-select-trigger-width) min-w-32 overflow-hidden rounded-md border border-primary shadow-xs",
+            "bg-default text-primary dark:border-primary-dark dark:bg-default-dark dark:text-primary-dark",
             "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
             "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
             className,
@@ -61,7 +61,9 @@ const SelectItem = forwardRef<ComponentRef<typeof Radix.Item>, SelectItemProps>(
     <Radix.Item
       ref={ref}
       className={clsx(
-        "relative flex h-10 w-full items-center truncate rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none focus:bg-zinc-50 dark:focus:bg-zinc-800",
+        "relative flex h-10 w-full items-center truncate rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none",
+        "focus:bg-btn-ghost-hover dark:focus:bg-btn-ghost-hover-dark",
+        "active:bg-btn-ghost-pressed dark:active:bg-btn-ghost-pressed-dark",
         className,
       )}
       {...props}

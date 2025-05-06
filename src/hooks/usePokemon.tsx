@@ -1,42 +1,55 @@
-import type { PokemonDetails } from "../utils/pokemonUtil";
-import { getPaginatedPokemon, getPokemonDetails } from "../utils/pokemonUtil";
+import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { POKEMON_API_URL } from "../constants";
+import { PAGE_SIZE, TOTAL_POKEMON } from "../utils/pokemonUtil";
+import { hours } from "../utils/timeUtil";
 
-const PAGE_SIZE = 16;
+type Pokemon = {
+  name: string;
+  url: string;
+};
+
+export type PaginatedPokemon = { results: Pokemon[]; count: number };
 
 type UsePokemonResult = {
-  pokemon: PokemonDetails[];
+  pokemon?: Pokemon[];
   isLoading: boolean;
-  error: string | null;
-  totalPages: number;
+  error: Error | null;
+  totalPages?: number;
 };
 
 const usePokemon = (currentPage: number): UsePokemonResult => {
-  const [totalPages, setTotalPages] = useState(0);
-  const offset = (currentPage - 1) * PAGE_SIZE;
+  const config = {
+    params: {
+      limit: currentPage === -1 ? 100000 : PAGE_SIZE,
+      offset: currentPage === -1 ? 0 : (currentPage - 1) * PAGE_SIZE,
+    },
+  };
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["paginatedPokemon", currentPage],
     queryFn: async () => {
-      const paginatedPokemon = await getPaginatedPokemon(offset, PAGE_SIZE);
-      const pokemonData = await Promise.all(paginatedPokemon.results.map((pokemon) => getPokemonDetails(pokemon.name)));
+      const { data } = await axios.get<PaginatedPokemon>(POKEMON_API_URL, config);
 
-      return { pokemonData, totalPages: Math.ceil(paginatedPokemon.count / PAGE_SIZE) };
+      const filteredResults = data.results.filter((pokemon) => {
+        const id = parseInt(pokemon.url.split("/").slice(-2, -1)[0], 10); // Extract ID from URL
+        return id <= 10000;
+      });
+
+      return {
+        results: filteredResults,
+        count: data.count, // Update count to reflect filtered results
+      };
     },
+    staleTime: hours(1),
+    retry: 3,
   });
 
-  useEffect(() => {
-    if (data?.totalPages) {
-      setTotalPages(data.totalPages);
-    }
-  }, [data]);
-
   return {
-    pokemon: data?.pokemonData ?? [],
+    pokemon: data?.results,
     isLoading,
-    error: error?.message ?? null,
-    totalPages,
+    error: error,
+    totalPages: data?.count ? Math.ceil(TOTAL_POKEMON / PAGE_SIZE) : undefined,
   };
 };
 

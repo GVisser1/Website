@@ -24,7 +24,7 @@ type DefaultProps = {
 };
 
 type ButtonProps = {
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 } & DefaultProps;
 
 type LinkProps = {
@@ -91,11 +91,11 @@ const ButtonIcon = (props: ButtonIconProps): JSX.Element => (
 const BaseButton = (props: PropsWithChildren<ButtonProps | LinkProps>): JSX.Element => {
   const classes = clsx(
     "inline-flex shrink-0 items-center rounded-sm select-none focus-visible:outline",
-    "data-[active=true]:bg-zinc-100 data-[active=true]:font-semibold dark:data-[active=true]:bg-zinc-800",
-    "disabled:cursor-not-allowed disabled:text-zinc-500 dark:disabled:bg-zinc-900",
+    "data-[active=true]:bg-btn-active data-[active=true]:font-semibold dark:data-[active=true]:bg-btn-active-dark",
+    "disabled:cursor-not-allowed disabled:bg-btn-disabled disabled:text-disabled dark:disabled:bg-btn-disabled-dark dark:disabled:text-btn-disabled-dark",
     props.size === "lg" ? "h-12 px-3" : "h-9 px-2",
     props.fullWidth && "w-full",
-    !props.disabled && !props.active && variantClasses[props.variant],
+    !props.disabled && variantClasses[props.variant],
     props.className,
   );
 
@@ -119,7 +119,7 @@ const BaseButton = (props: PropsWithChildren<ButtonProps | LinkProps>): JSX.Elem
     return <Tooltip trigger={link} {...props.tooltip} />;
   }
 
-  if ("onClick" in props) {
+  if ("onClick" in props && props.onClick) {
     const button = (
       <button
         type="button"
@@ -143,12 +143,12 @@ const BaseButton = (props: PropsWithChildren<ButtonProps | LinkProps>): JSX.Elem
 };
 
 const variantClasses = {
-  default:
-    "bg-zinc-100 text-zinc-700 hover:bg-zinc-200 active:bg-zinc-300 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700 dark:active:bg-zinc-600",
   primary:
-    "bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 dark:active:bg-blue-800",
+    "bg-btn-primary text-inverse hover:bg-btn-primary-hover active:bg-btn-primary-pressed dark:bg-btn-primary-dark dark:hover:bg-btn-primary-hover-dark dark:active:bg-btn-primary-pressed-dark",
+  secondary:
+    "bg-btn-secondary text-primary hover:bg-btn-secondary-hover active:bg-btn-secondary-pressed dark:bg-btn-secondary-dark dark:text-primary-dark dark:hover:bg-btn-secondary-hover-dark dark:active:bg-btn-secondary-pressed-dark",
   light:
-    "border box-border border-blue-600 text-blue-600 dark:text-blue-500 dark:border-blue-500 hover:bg-blue-50 active:bg-blue-100 dark:hover:bg-zinc-800 dark:active:bg-zinc-700",
+    "border box-border border-light text-light dark:text-light-dark hover:bg-btn-light-hover active:bg-btn-light-pressed dark:hover:bg-btn-light-hover-dark dark:active:bg-btn-light-pressed-dark",
   ghost:
-    "text-zinc-700 hover:bg-zinc-100 active:bg-zinc-200 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:active:bg-zinc-700",
+    "text-primary dark:text-primary-dark hover:bg-btn-ghost-hover active:bg-btn-ghost-pressed  dark:hover:bg-btn-ghost-hover-dark dark:active:bg-btn-ghost-pressed-dark",
 };

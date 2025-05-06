@@ -1,17 +1,26 @@
+import clsx from "clsx";
 import type { JSX } from "react";
 
-const SkeletonLoader = (): JSX.Element => (
-  <div
-    aria-hidden
-    className="relative flex h-[170px] animate-pulse flex-col justify-between rounded-lg border border-zinc-200 bg-zinc-100 px-2 pt-2 pb-4 text-center dark:border-zinc-700 dark:bg-zinc-800"
-  >
-    <div className="flex justify-between">
-      <div className="h-4 w-8 bg-gray-200 dark:bg-zinc-700" />
-      <div className="size-6 bg-gray-200 dark:bg-zinc-700" />
+type SkeletonLoaderProps = {
+  size: "sm" | "md";
+};
+
+const SkeletonLoader = (props: SkeletonLoaderProps): JSX.Element => {
+  const classes = clsx(
+    "group relative flex w-full animate-pulse items-center gap-3 rounded-lg bg-sunken-secondary text-center dark:bg-sunken-secondary-dark",
+    "data-[size=md]:h-43 data-[size=md]:flex-col data-[size=md]:px-2 data-[size=md]:py-3",
+    "data-[size=sm]:h-20 data-[size=sm]:flex-row data-[size=sm]:px-4 data-[size=sm]:py-2",
+  );
+
+  return (
+    <div aria-hidden data-size={props.size} className={classes}>
+      <div className="rounded bg-sunken-tertiary group-data-[size=md]:size-22 group-data-[size=sm]:size-16 dark:bg-sunken-tertiary-dark" />
+      <div>
+        <div className="h-6 w-32 rounded bg-sunken-tertiary dark:bg-sunken-tertiary-dark" />
+        <div className="mt-1 h-5 w-20 rounded bg-sunken-tertiary group-data-[size=md]:mx-auto dark:bg-sunken-tertiary-dark" />
+      </div>
     </div>
-    <div className="mx-auto mb-2 size-24 bg-gray-200 dark:bg-zinc-700" />
-    <div className="mx-auto h-4 w-3/4 bg-gray-200 dark:bg-zinc-700" />
-  </div>
-);
+  );
+};
 
 export default SkeletonLoader;

@@ -20,7 +20,7 @@ export const Sidebar = (): JSX.Element => {
 
   useEffect(() => {
     const down = (e: KeyboardEvent): void => {
-      if (e.key === "/" && (e.metaKey || e.ctrlKey)) {
+      if (e.key === "[" && !(e.metaKey || e.ctrlKey)) {
         e.preventDefault();
         setIsCollapsed((prev) => !prev);
       }
@@ -41,7 +41,7 @@ export const Sidebar = (): JSX.Element => {
             icon={isCollapsed ? "ChevronRightDouble" : "ChevronLeftDouble"}
             tooltip={{
               title: isCollapsed ? "Expand sidebar" : "Collapse sidebar",
-              description: `${metaKey}/`,
+              description: `[`,
               side: "right",
             }}
           />
@@ -52,7 +52,7 @@ export const Sidebar = (): JSX.Element => {
           onClick={() => setOpen(true)}
           tooltip={{
             title: "Search and quickly jump to a Page",
-            description: `${metaKey}K`,
+            description: `${metaKey} + K`,
           }}
           isCollapsed={isCollapsed}
         />
@@ -80,7 +80,7 @@ export const Sidebar = (): JSX.Element => {
           <SidebarLink
             key={item.name}
             href={item.href}
-            current={pathname === item.href}
+            current={pathname === item.href || pathname.startsWith(item.href)}
             icon={item.icon}
             label={item.name}
             isCollapsed={isCollapsed}
