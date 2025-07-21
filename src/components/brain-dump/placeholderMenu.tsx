@@ -231,7 +231,7 @@ const PlaceholderMenu = (): JSX.Element => {
   return (
     <Popover open={openPopover} onOpenChange={setOpenPopover}>
       <div className="relative w-80">
-        <PopoverTrigger className="w-full rounded-sm focus-visible:outline">
+        <PopoverTrigger className="w-full rounded-sm focus-visible:focus-ring">
           <div className="flex h-10 w-full items-center justify-between rounded-sm border border-primary dark:border-primary-dark">
             <div className="flex min-w-0 items-center gap-x-1 pl-2">
               {selectedOption && <OptionIcon type={selectedOption.type} />}

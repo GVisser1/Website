@@ -14,7 +14,7 @@ type PillButtonProps = {
 
 const PillButton = ({ label, ariaLabel, iconType, onClick, className }: PillButtonProps): JSX.Element => {
   const classes = clsx(
-    "flex h-6 max-w-44 min-w-0 items-center gap-x-1 rounded-sm px-0.5 focus-visible:outline",
+    "flex h-6 max-w-44 min-w-0 items-center gap-x-1 rounded-sm px-0.5 focus-visible:focus-ring",
     "bg-btn-secondary text-primary hover:bg-btn-secondary-hover active:bg-btn-secondary-pressed dark:bg-btn-secondary-dark dark:text-primary-dark dark:hover:bg-btn-secondary-hover-dark dark:active:bg-btn-secondary-pressed-dark",
     className,
   );

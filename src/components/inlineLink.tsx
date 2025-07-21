@@ -8,7 +8,7 @@ type InlineLinkProps = {
 };
 
 const InlineLink = (props: InlineLinkProps): JSX.Element => (
-  <NextLink href={props.href} rel="noopener noreferrer" target="_blank" className="focus-visible:outline">
+  <NextLink href={props.href} rel="noopener noreferrer" target="_blank" className="focus-visible:focus-ring-text">
     {props.children}
   </NextLink>
 );

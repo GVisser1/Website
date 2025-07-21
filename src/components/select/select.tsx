@@ -16,7 +16,7 @@ const SelectTrigger = forwardRef<ComponentRef<typeof Radix.Trigger>, Radix.Selec
     <Radix.Trigger
       ref={ref}
       className={clsx(
-        "flex h-10 w-full items-center justify-between rounded-sm border border-primary bg-default px-3 py-2 text-sm text-primary focus-visible:outline dark:border-primary-dark dark:bg-default-dark dark:text-primary-dark",
+        "flex h-10 w-full items-center justify-between rounded-sm border border-primary bg-default px-3 py-2 text-sm text-primary focus-visible:focus-ring dark:border-primary-dark dark:bg-default-dark dark:text-primary-dark",
         className,
       )}
       {...props}

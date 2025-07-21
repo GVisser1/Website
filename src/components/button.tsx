@@ -90,7 +90,7 @@ const ButtonIcon = (props: ButtonIconProps): JSX.Element => (
 
 const BaseButton = (props: PropsWithChildren<ButtonProps | LinkProps>): JSX.Element => {
   const classes = clsx(
-    "inline-flex shrink-0 items-center rounded-sm select-none focus-visible:outline",
+    "inline-flex shrink-0 items-center rounded-sm select-none focus-visible:focus-ring",
     "data-[active=true]:bg-btn-active data-[active=true]:font-semibold dark:data-[active=true]:bg-btn-active-dark",
     "disabled:cursor-not-allowed disabled:bg-btn-disabled disabled:text-disabled dark:disabled:bg-btn-disabled-dark dark:disabled:text-btn-disabled-dark",
     props.size === "lg" ? "h-12 px-3" : "h-9 px-2",

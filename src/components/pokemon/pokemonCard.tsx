@@ -34,7 +34,7 @@ const PokemonCard = ({ identifier, size, className }: PokemonCardProps): JSX.Ele
   const showErrorState = isImageError || isNil(data.sprite);
 
   const classes = clsx(
-    "group flex w-full gap-3 rounded-lg bg-btn-secondary select-none hover:bg-btn-secondary-hover focus-visible:outline active:bg-btn-secondary-pressed dark:bg-btn-secondary-dark dark:hover:bg-btn-secondary-hover-dark dark:active:bg-btn-secondary-pressed-dark",
+    "group flex w-full gap-3 rounded-lg bg-btn-secondary select-none hover:bg-btn-secondary-hover focus-visible:focus-ring active:bg-btn-secondary-pressed dark:bg-btn-secondary-dark dark:hover:bg-btn-secondary-hover-dark dark:active:bg-btn-secondary-pressed-dark",
     "data-[size=md]:flex-col data-[size=md]:text-center",
     "data-[size=sm]:flex-row data-[size=sm]:items-center",
     "data-[size=md]:px-2 data-[size=md]:py-3 data-[size=sm]:px-4 data-[size=sm]:py-2",

@@ -25,7 +25,7 @@ export const Layout = ({ children }: PropsWithChildren): JSX.Element | null => {
             tabIndex={0}
             className="group flex h-dvh w-full grow flex-col overflow-y-auto overscroll-y-none outline-hidden"
           >
-            <div className="flex grow flex-col bg-default -outline-offset-1 group-focus-visible:outline lg:mt-3 lg:rounded-tl-lg dark:bg-default-dark">
+            <div className="flex grow flex-col bg-default group-focus-visible:focus-ring-inset lg:mt-3 lg:rounded-lg dark:bg-default-dark">
               <div className="mx-auto flex w-full max-w-5xl grow flex-col px-6 pt-6 pb-20 lg:px-12 lg:pt-12">
                 {children}
               </div>

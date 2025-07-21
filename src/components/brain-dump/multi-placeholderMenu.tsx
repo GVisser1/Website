@@ -220,7 +220,7 @@ const MultiPlaceholderMenu = (): JSX.Element => {
                     variant="secondary"
                     tooltip={{ title: "Select placeholders" }}
                     icon="Plus"
-                    className="translate-x-[-3px] translate-y-[3px] group-focus-visible:outline"
+                    className="translate-x-[-3px] translate-y-[3px] group-focus-visible:focus-ring"
                     onClick={noop}
                   />
                 </div>

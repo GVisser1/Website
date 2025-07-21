@@ -165,7 +165,7 @@ const ResultsList = (props: ResultsListProps): JSX.Element => (
           href={page.href}
           onClick={props.onClose}
           className={clsx(
-            "flex h-10 w-full shrink-0 items-center gap-x-2 rounded-sm px-2 text-primary hover:bg-btn-ghost-hover focus-visible:outline dark:text-primary-dark dark:hover:bg-btn-ghost-hover-dark",
+            "flex h-10 w-full shrink-0 items-center gap-x-2 rounded-sm px-2 text-primary hover:bg-btn-ghost-hover focus-visible:focus-ring-inset dark:text-primary-dark dark:hover:bg-btn-ghost-hover-dark",
             "active:bg-btn-ghost-pressed dark:active:bg-btn-ghost-pressed-dark",
             "aria-selected:bg-btn-ghost-hover dark:aria-selected:bg-btn-ghost-hover-dark",
           )}
