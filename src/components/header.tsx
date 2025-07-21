@@ -11,16 +11,11 @@ type HeaderProps = {
     label: string;
   };
 };
+
 const Header = ({ title, description, topLink }: HeaderProps): JSX.Element => (
   <header>
     {topLink && (
-      <IconAndTextLink
-        variant="ghost"
-        href={topLink.href}
-        label={topLink.label}
-        icon="ChevronLeft"
-        className="mb-4 -ml-3"
-      />
+      <IconAndTextLink variant="light" href={topLink.href} label={topLink.label} icon="ChevronLeft" className="mb-6" />
     )}
 
     <h1 className="mb-1 text-2xl font-semibold text-primary dark:text-primary-dark">{title}</h1>

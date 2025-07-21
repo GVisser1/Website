@@ -1,7 +1,7 @@
 "use client";
+
 import { useTheme } from "next-themes";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select";
-
 import type { JSX } from "react";
 import Icon from "../icon";
 
@@ -11,7 +11,7 @@ const ThemeSwitcher = (): JSX.Element | null => {
   const handleOnChange = (value: string): void => setTheme(value);
 
   return (
-    <Select aria-label="Theme" name="theme" value={theme} onValueChange={handleOnChange}>
+    <Select aria-label="Theme" defaultValue="system" name="theme" value={theme} onValueChange={handleOnChange}>
       <SelectTrigger aria-label="Select theme">
         <SelectValue />
       </SelectTrigger>

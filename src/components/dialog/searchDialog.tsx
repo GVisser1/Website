@@ -1,17 +1,20 @@
 import Link from "next/link";
-import type { ChangeEvent, KeyboardEvent, JSX } from "react";
-import { useEffect, useState } from "react";
+import type { KeyboardEvent, JSX, RefObject } from "react";
+import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import { usePathname, useRouter } from "next/navigation";
 import SearchInput from "../search";
 import Icon from "../icon";
 import type { Page } from "../../constants";
-import { PAGES } from "../../constants";
-import { isEmpty, isNil } from "lodash-es";
+import { MAIN_PAGES, PAGES } from "../../constants";
+import { isEmpty } from "lodash-es";
 import { normalizeString } from "../../utils/textUtil";
 import Dialog from "./dialog";
+import Pill from "../pill";
+import { useDebounceValue } from "usehooks-ts";
 
-const EXIT_ANIMATION_DURATION = 200;
+const ANIMATION_DURATION = 200;
+const SEARCH_DEBOUNCE = 300;
 
 type SearchDialogProps = {
   open: boolean;
@@ -23,52 +26,81 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
   const pathname = usePathname();
 
   const [query, setQuery] = useState("");
+  const [debouncedQuery] = useDebounceValue<string>(query, SEARCH_DEBOUNCE);
   const [availablePages, setAvailablePages] = useState<Page[]>(PAGES);
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
 
+  const resultsRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+
   useEffect(() => {
     setTimeout(() => {
-      setAvailablePages(PAGES.filter((page) => page.href !== pathname));
-    }, EXIT_ANIMATION_DURATION);
+      setAvailablePages(MAIN_PAGES.filter((page) => page.href !== pathname));
+    }, ANIMATION_DURATION);
   }, [pathname]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const value = e.target.value;
-    setQuery(value);
-
-    if (isNil(value)) {
-      setAvailablePages(PAGES.filter((page) => page.href !== pathname));
+  useEffect(() => {
+    if (!debouncedQuery) {
+      setAvailablePages(MAIN_PAGES.filter((page) => page.href !== pathname));
       setSelectedIndex(0);
       return;
     }
 
-    const filteredResults = PAGES.filter(
-      (page) => page.href !== pathname && normalizeString(page.name).includes(normalizeString(value)),
-    );
+    const normalizedValue = normalizeString(debouncedQuery);
+    const filteredResults = PAGES.filter((page) => {
+      if (page.href === pathname) {
+        return false;
+      }
+      return (
+        normalizeString(page.name).includes(normalizedValue) ||
+        normalizeString(page.type ?? "").includes(normalizedValue)
+      );
+    });
 
     setAvailablePages(filteredResults);
     setSelectedIndex(isEmpty(filteredResults) ? -1 : 0);
-  };
-
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
-    const { key } = e;
-
-    if (key === "ArrowDown" || key === "ArrowRight") {
-      setSelectedIndex((prevIndex) => (prevIndex + 1) % availablePages.length);
-    } else if (key === "ArrowUp" || key === "ArrowLeft") {
-      setSelectedIndex((prevIndex) => (prevIndex - 1 + availablePages.length) % availablePages.length);
-    } else if (key === "Enter" && selectedIndex >= 0) {
-      router.push(availablePages[selectedIndex].href);
-      handleOnClose();
-    }
-  };
+  }, [debouncedQuery, pathname]);
 
   const handleOnClose = (): void => {
     onClose();
     setTimeout(() => {
       setQuery("");
       setSelectedIndex(-1);
-    }, EXIT_ANIMATION_DURATION);
+    }, ANIMATION_DURATION);
+  };
+
+  const scrollToIndex = (index: number): void =>
+    resultsRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "center" });
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
+    if (isEmpty(availablePages)) {
+      return;
+    }
+
+    const { key } = e;
+    if (key === "ArrowDown") {
+      e.preventDefault();
+      setSelectedIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % availablePages.length;
+        scrollToIndex(nextIndex);
+        return nextIndex;
+      });
+      return;
+    }
+
+    if (key === "ArrowUp") {
+      e.preventDefault();
+      setSelectedIndex((prevIndex) => {
+        const nextIndex = prevIndex <= 0 ? availablePages.length - 1 : prevIndex - 1;
+        scrollToIndex(nextIndex);
+        return nextIndex;
+      });
+      return;
+    }
+
+    if (key === "Enter" && selectedIndex >= 0) {
+      router.push(availablePages[selectedIndex].href);
+      handleOnClose();
+    }
   };
 
   return (
@@ -88,14 +120,19 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
           value={query}
           placeholder="Search"
           onKeyDown={handleKeyDown}
-          onChange={handleChange}
+          onChange={(e) => setQuery(e.target.value)}
           onBlur={() => setSelectedIndex(-1)}
         />
         <section className="relative mt-4">
           {isEmpty(availablePages) ? (
             <EmptyState />
           ) : (
-            <ResultsList results={availablePages} selectedIndex={selectedIndex} onClose={handleOnClose} />
+            <ResultsList
+              results={availablePages}
+              selectedIndex={selectedIndex}
+              onClose={handleOnClose}
+              resultsRefs={resultsRefs}
+            />
           )}
         </section>
       </search>
@@ -113,11 +150,12 @@ type ResultsListProps = {
   results: Page[];
   selectedIndex: number;
   onClose: () => void;
+  resultsRefs: RefObject<(HTMLAnchorElement | null)[]>;
 };
 const ResultsList = (props: ResultsListProps): JSX.Element => (
   <>
     <h2 className="sr-only">Results</h2>
-    <div role="listbox" aria-label="Pages" className="flex flex-col gap-y-1">
+    <div role="listbox" aria-label="Pages" className="flex max-h-56 flex-col gap-y-1 overflow-y-auto">
       {props.results.map((page, index) => (
         <Link
           key={page.name}
@@ -127,13 +165,17 @@ const ResultsList = (props: ResultsListProps): JSX.Element => (
           href={page.href}
           onClick={props.onClose}
           className={clsx(
-            "flex h-10 w-full items-center gap-x-2 rounded-sm px-2 text-primary hover:bg-btn-ghost-hover focus-visible:outline dark:text-primary-dark dark:hover:bg-btn-ghost-hover-dark",
+            "flex h-10 w-full shrink-0 items-center gap-x-2 rounded-sm px-2 text-primary hover:bg-btn-ghost-hover focus-visible:outline dark:text-primary-dark dark:hover:bg-btn-ghost-hover-dark",
             "active:bg-btn-ghost-pressed dark:active:bg-btn-ghost-pressed-dark",
             "aria-selected:bg-btn-ghost-hover dark:aria-selected:bg-btn-ghost-hover-dark",
           )}
+          ref={(el) => {
+            props.resultsRefs.current[index] = el;
+          }}
         >
           <Icon name={page.icon} className="size-5" />
-          {page.name}
+          <span className="truncate">{page.name}</span>
+          {page.type === "blog" && <Pill colour="blue" label="Blog" className="ml-auto" />}
         </Link>
       ))}
     </div>

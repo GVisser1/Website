@@ -65,7 +65,7 @@ export const Sidebar = (): JSX.Element => {
           <SidebarLink
             key={item.name}
             href={item.href}
-            current={pathname === item.href}
+            current={pathname === item.href || (pathname.startsWith(item.href) && item.href !== "/")}
             icon={item.icon}
             label={item.name}
             isCollapsed={isCollapsed}

@@ -36,8 +36,12 @@
   --text-color-error: #dc2626;
   --text-color-disabled: #e4e4e7;
   --text-color-btn-disabled-dark: #3f3f46;
-  --text-color-info: #047857;
-  --text-color-info-dark: #d1fae5;
+  --text-color-status-success: #047857;
+  --text-color-status-success-dark: #d1fae5;
+  --text-color-status-info: #1d4ed8;
+  --text-color-status-info-dark: #2563eb;
+  --text-color-status-neutral: #3f3f46;
+  --text-color-status-neutral-dark: #e4e4e7;
 
   --text-color-pokemon-mythical: #ec4899;
   --text-color-pokemon-legendary: #facc15;
@@ -74,7 +78,7 @@
   --background-color-sunken-secondary-dark: #27272a;
   --background-color-sunken-tertiary: #e4e4e7;
   --background-color-sunken-tertiary-dark: #3f3f46;
-  --background-color-btn-active: #f4f4f5;
+  --background-color-btn-active: #e4e4e7;
   --background-color-btn-active-dark: #27272a;
   --background-color-btn-disabled: #fafafa;
   --background-color-btn-disabled-dark: #27272a50;
@@ -102,8 +106,12 @@
   --background-color-btn-ghost-checked-dark: #1e3a8a20;
   --background-color-elevation-surface-blanket-top: #09090b30;
   --background-color-elevation-surface-blanket-top-dark: #09090b75;
-  --background-color-info: #d1fae5;
-  --background-color-info-dark: #047857;
+  --background-color-status-success: #d1fae5;
+  --background-color-status-success-dark: #047857;
+  --background-color-status-info: #eff6ff;
+  --background-color-status-info-dark: #2563eb;
+  --background-color-status-neutral: #f4f4f5;
+  --background-color-status-neutral-dark: #3f3f46;
 
   --background-color-pokemon-stat-hp: #dc2626;
   --background-color-pokemon-stat-attack: #f97316;
@@ -142,6 +150,8 @@
   --text-decoration-color-*: initial;
   --text-decoration-color-primary: #2563eb;
   --text-decoration-color-primary-hover: #3b82f6;
+  --text-decoration-color-visited: #6d28d9;
+  --text-decoration-color-visited-hover: #7c3aed;
 
   --border-color-*: initial;
   --border-color-primary: #e4e4e7;
@@ -149,6 +159,12 @@
   --border-color-primary-dark: #3f3f46;
   --border-color-secondary-dark: #27272a;
   --border-color-light: #3b82f6;
+
+  --divide-color-*: initial;
+  --divide-color-primary: #e4e4e7;
+  --divide-color-secondary: #f4f4f5;
+  --divide-color-primary-dark: #3f3f46;
+  --divide-color-secondary-dark: #27272a;
 }
 
 button {
@@ -169,9 +185,9 @@ button {
   }
 
   .prose a {
-    @apply font-semibold underline decoration-primary underline-offset-4 hover:decoration-primary-hover hover:decoration-2;
+    @apply font-semibold underline decoration-primary underline-offset-4 hover:decoration-primary-hover hover:decoration-2 visited:decoration-visited visited:hover:decoration-visited-hover;
   }
   .prose h2 {
-    @apply mb-1 text-lg font-semibold text-primary dark:text-primary-dark;
+    @apply mb-3 text-xl font-bold text-primary dark:text-primary-dark;
   }
 }
