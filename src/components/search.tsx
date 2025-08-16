@@ -10,7 +10,7 @@ export type SearchInputProps = ComponentProps<"input"> & {
 
 const SearchInput = ({ className, hasShortcut, ...props }: SearchInputProps): JSX.Element => {
   const classes = clsx(
-    "peer h-10 w-full truncate rounded-sm border border-primary bg-default py-2 pl-8 placeholder:text-placeholder focus-visible:focus-ring dark:border-primary-dark dark:bg-default-dark dark:placeholder:text-placeholder-dark",
+    "peer h-10 w-full truncate rounded-sm border border-primary bg-default py-2 pl-8 text-base-medium placeholder:text-placeholder focus-visible:focus-ring dark:border-primary-dark dark:bg-default-dark dark:placeholder:text-placeholder-dark",
     hasShortcut ? "pr-8 focus:pr-3" : "pr-3",
   );
 
@@ -22,7 +22,7 @@ const SearchInput = ({ className, hasShortcut, ...props }: SearchInputProps): JS
       />
       <input {...props} className={classes} />
       {hasShortcut && !isTouchDevice && (
-        <kbd className="pointer-events-none absolute top-2.5 right-2 flex size-5 items-center justify-center rounded border border-primary text-xs font-medium text-secondary peer-focus:hidden dark:border-primary-dark dark:text-secondary-dark">
+        <kbd className="pointer-events-none absolute top-2.5 right-2 flex size-5 items-center justify-center rounded-sm border border-primary text-xs-semibold text-secondary peer-focus:hidden dark:border-primary-dark dark:text-secondary-dark">
           /
         </kbd>
       )}

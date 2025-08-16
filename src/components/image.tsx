@@ -1,7 +1,8 @@
 import NextImage from "next/image";
-import type { JSX } from "react";
+import type { JSX, Ref } from "react";
 
 type ImageProps = {
+  ref?: Ref<HTMLImageElement>;
   src: string;
   alt: string;
   className?: string;
@@ -13,6 +14,7 @@ type ImageProps = {
 
 const Image = (props: ImageProps): JSX.Element => (
   <NextImage
+    ref={props.ref}
     src={props.src}
     alt={props.alt}
     className={props.className}

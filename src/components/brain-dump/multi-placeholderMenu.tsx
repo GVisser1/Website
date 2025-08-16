@@ -11,9 +11,10 @@ import ds from "./dataSource.json";
 import PillButton from "./optionPill";
 import SearchInput from "../search";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select/select";
-import { IconAndTextButton, IconButton } from "../button";
 import type { IconType } from "../../utils/iconUtil";
 import { normalizeString } from "../../utils/textUtil";
+import IconButton from "../button/iconButton";
+import IconAndTextButton from "../button/iconAndTextButton";
 
 const dataSource = ds as DataSource;
 const FILTERS = ["fields", "groups", "users", "variables"] as const;
@@ -216,7 +217,8 @@ const MultiPlaceholderMenu = (): JSX.Element => {
                 </span>
                 <div className="absolute top-0 right-0 inline-flex justify-end">
                   <IconButton
-                    aria-label="Select placeholders"
+                    type="button"
+                    ariaLabel="Select placeholders"
                     variant="secondary"
                     tooltip={{ title: "Select placeholders" }}
                     icon="Plus"
@@ -233,7 +235,7 @@ const MultiPlaceholderMenu = (): JSX.Element => {
       <PopoverContent
         aria-label="Select a placeholder"
         align="start"
-        className="mt-1 flex flex-col bg-default shadow-lg dark:bg-default-dark"
+        className="mt-1 flex flex-col bg-default shadow-md dark:bg-default-dark"
       >
         <div className="relative w-120 overflow-hidden rounded-sm border border-primary pb-1 dark:border-primary-dark">
           <div className="grid grid-cols-3 gap-x-2 px-3 pt-3 pb-2">
@@ -311,10 +313,11 @@ const getSelectedOption = (
 
 const CreateOptionButton = ({ onClick, value }: { onClick: () => void; value: string }): JSX.Element => (
   <IconAndTextButton
+    type="button"
     onClick={onClick}
     label={`Create: ${value}`}
     icon="Plus"
-    variant="secondary"
+    variant="light"
     className="mx-auto w-fit"
   />
 );

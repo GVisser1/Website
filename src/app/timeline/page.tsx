@@ -5,7 +5,8 @@ import Header from "../../components/header";
 import { isEven } from "../../utils/numberUtil";
 import { getTimeFrame } from "../../utils/dateUtil";
 import Image from "../../components/image";
-import { TextLink } from "../../components/button";
+import Page from "../../components/page";
+import TextButton from "../../components/button/textButton";
 
 export const metadata: Metadata = {
   title: "Timeline",
@@ -13,25 +14,25 @@ export const metadata: Metadata = {
 };
 
 const TimelinePage = (): JSX.Element => (
-  <>
+  <Page>
     <Header title="Timeline" description="A chronological overview of my education and work experience" />
 
     <div className="relative">
-      <div className="absolute left-2 hidden h-full w-0.5 bg-sunken-tertiary shadow-md md:inset-x-0 md:mx-auto md:inline dark:bg-sunken-tertiary-dark" />
+      <div className="absolute left-2 hidden h-full w-0.5 bg-sunken-tertiary md:inset-x-0 md:mx-auto md:inline dark:bg-sunken-tertiary-dark" />
       <ol className="flex flex-col divide-y divide-secondary md:gap-y-12 md:divide-y-0 md:px-5 md:py-4 dark:!divide-secondary-dark">
         {timeLineData.map((item, i) => (
           <TimeLineItem key={item.timeFrame} item={item} align={isEven(i) ? "right" : "left"} />
         ))}
       </ol>
     </div>
-  </>
+  </Page>
 );
 
 type TimeLineItemProps = {
   item: TimelineItem;
   align: "left" | "right";
 };
-export const TimeLineItem = ({ item, align }: TimeLineItemProps): JSX.Element => (
+const TimeLineItem = ({ item, align }: TimeLineItemProps): JSX.Element => (
   <li
     key={item.title}
     className={clsx(
@@ -42,13 +43,20 @@ export const TimeLineItem = ({ item, align }: TimeLineItemProps): JSX.Element =>
     <div className="flex gap-x-2">
       {item.src && <Image src={item.src} alt="" className="my-auto size-10 rounded-full" />}
       <div>
-        <p className="text-sm text-secondary dark:text-secondary-dark">{item.timeFrame}</p>
-        <h2 className="font-semibold text-primary dark:text-primary-dark">{item.title}</h2>
-        <p className="text-sm text-secondary dark:text-secondary-dark">{item.subTitle}</p>
+        <p className="text-sm-regular text-secondary dark:text-secondary-dark">{item.timeFrame}</p>
+        <h2 className="text-header-lg text-primary dark:text-primary-dark">{item.title}</h2>
+        <p className="text-sm-regular text-secondary dark:text-secondary-dark">{item.subTitle}</p>
       </div>
     </div>
     {item.href && (
-      <TextLink variant="light" label="Read blog" href={item.href} className="absolute top-2.5 right-2.5" />
+      <TextButton
+        type="link"
+        variant="light"
+        size="medium"
+        label="Read blog"
+        href={item.href}
+        className="absolute top-2.5 right-2.5"
+      />
     )}
     <div
       className={clsx(
@@ -71,7 +79,7 @@ type TimelineItem = {
   href?: string;
 };
 
-export const timeLineData: TimelineItem[] = [
+const timeLineData: TimelineItem[] = [
   {
     timeFrame: getTimeFrame(new Date(2023, 7, 1)),
     title: "QA Engineer",

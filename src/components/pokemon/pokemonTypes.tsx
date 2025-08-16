@@ -34,9 +34,9 @@ const TypePill = (props: TypePillProps): JSX.Element => {
   return (
     <li
       className={clsx(
-        "flex min-w-0 grow items-center justify-center gap-x-1 rounded px-1 font-semibold",
-        props.size === "sm" && "h-5 max-w-20 text-xs",
-        props.size === "md" && "h-6 max-w-24 text-sm",
+        "flex min-w-0 grow items-center justify-center gap-x-1 rounded-sm px-1",
+        props.size === "sm" && "h-5 max-w-20 text-xs-semibold",
+        props.size === "md" && "h-6 max-w-24 text-sm-semibold",
         typeInfo.bgColor,
         typeInfo.textColor,
       )}

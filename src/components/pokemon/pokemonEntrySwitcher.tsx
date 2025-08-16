@@ -49,12 +49,12 @@ const PokemonEntrySwitch = (props: PokemonEntrySwitchProps): JSX.Element | null 
     <Link
       href={`/projects/pokemon/${data.name}`}
       scroll={false}
-      className="flex items-center gap-x-2 rounded p-2 select-none hover:bg-btn-ghost-hover focus-visible:focus-ring active:bg-btn-ghost-pressed dark:hover:bg-btn-ghost-hover-dark dark:active:bg-btn-ghost-pressed-dark"
+      className="btn-ghost flex items-center gap-x-2 rounded-sm p-2 select-none focus-visible:focus-ring"
     >
       <Icon name="ChevronLeft" className={iconClasses} />
       <Image src={data.sprite} alt={data.name} className="size-6 object-contain" />
-      <p className="text-sm text-primary dark:text-primary-dark">
-        <span className="mr-1 font-bold capitalize">{data.name}</span>#{data.id}
+      <p className="text-button-lg text-primary capitalize dark:text-primary-dark">
+        {data.name} #{data.id}
       </p>
     </Link>
   );

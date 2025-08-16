@@ -110,12 +110,14 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
       title={{ value: "Search for a page" }}
       aria-label="Search dialog"
       className="relative"
+      onCloseFocusId="global-search-trigger"
+      onOpenFocusId="global-search-input"
     >
       <search>
         <SearchInput
           data-autofocus
           aria-label="Search for a page"
-          id="search-input"
+          id="global-search-input"
           type="search"
           value={query}
           placeholder="Search"
@@ -141,7 +143,7 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
 };
 
 const EmptyState = (): JSX.Element => (
-  <output className="flex h-10 w-full flex-col items-center justify-center gap-y-8">
+  <output className="flex h-10 w-full flex-col items-center justify-center gap-y-8 text-base-regular">
     <h2>No results found</h2>
   </output>
 );
@@ -165,8 +167,7 @@ const ResultsList = (props: ResultsListProps): JSX.Element => (
           href={page.href}
           onClick={props.onClose}
           className={clsx(
-            "flex h-10 w-full shrink-0 items-center gap-x-2 rounded-sm px-2 text-primary hover:bg-btn-ghost-hover focus-visible:focus-ring-inset dark:text-primary-dark dark:hover:bg-btn-ghost-hover-dark",
-            "active:bg-btn-ghost-pressed dark:active:bg-btn-ghost-pressed-dark",
+            "btn-ghost flex h-10 w-full shrink-0 items-center gap-x-2 rounded-sm px-2 text-button focus-visible:focus-ring-inset",
             "aria-selected:bg-btn-ghost-hover dark:aria-selected:bg-btn-ghost-hover-dark",
           )}
           ref={(el) => {
@@ -175,7 +176,7 @@ const ResultsList = (props: ResultsListProps): JSX.Element => (
         >
           <Icon name={page.icon} className="size-5" />
           <span className="truncate">{page.name}</span>
-          {page.type === "blog" && <Pill colour="blue" label="Blog" className="ml-auto" />}
+          {page.type === "blog" && <Pill type="info" label="Blog" className="ml-auto" />}
         </Link>
       ))}
     </div>

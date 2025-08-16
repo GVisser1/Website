@@ -1,9 +1,8 @@
 import clsx from "clsx";
-import { IconButton } from "./button";
 import type { IconName } from "./icon";
-
 import { useEffect, type JSX } from "react";
 import useMetaKey from "../hooks/useMetaKey";
+import IconButton from "./button/iconButton";
 
 type PaginationProps = {
   currentPage: number;
@@ -102,8 +101,9 @@ type PaginationButtonProps = {
 
 const PaginationButton = ({ ariaLabel, disabled, onClick, icon, shortcut }: PaginationButtonProps): JSX.Element => (
   <IconButton
+    type="button"
     variant="secondary"
-    aria-label={ariaLabel}
+    ariaLabel={ariaLabel}
     disabled={disabled}
     onClick={onClick}
     tooltip={{ title: ariaLabel, description: shortcut, side: "top" }}
@@ -112,10 +112,10 @@ const PaginationButton = ({ ariaLabel, disabled, onClick, icon, shortcut }: Pagi
 );
 
 const PageCounter = ({ currentPage, totalPages }: { currentPage: number; totalPages: number }): JSX.Element => (
-  <span className="mx-1 flex w-full items-center justify-center gap-x-1 text-secondary dark:text-secondary-dark">
-    <b>{currentPage}</b>
+  <span className="mx-1 flex w-full items-center justify-center gap-x-1 text-base-regular text-secondary dark:text-secondary-dark">
+    <span className="text-base-bold">{currentPage}</span>
     of
-    <b>{totalPages}</b>
+    <span className="text-base-bold">{totalPages}</span>
   </span>
 );
 

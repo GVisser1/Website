@@ -15,6 +15,7 @@ import PokemonTypes from "../../../../components/pokemon/pokemonTypes";
 import PokemonStats from "../../../../components/pokemon/pokemonStats";
 import PokemonMeta from "../../../../components/pokemon/pokemonMeta";
 import PokemonEvolutionTree from "../../../../components/pokemon/pokemonEvolutionTree";
+import Page from "../../../../components/page";
 
 type PokemonInfoPageProps = {
   params: Promise<{ identifier: PokemonIdentifier }>;
@@ -44,7 +45,7 @@ const PokemonInfoPage = (props: PokemonInfoPageProps): JSX.Element => {
   }
 
   return (
-    <>
+    <Page>
       <Header
         title={`${startCase(pokemon.data.name)} #${pokemon.data.id}`}
         description={pokemonSpecies.data?.description}
@@ -61,7 +62,7 @@ const PokemonInfoPage = (props: PokemonInfoPageProps): JSX.Element => {
         />
 
         <div className="mt-2 flex grow flex-col justify-center sm:mt-0">
-          <h2 className="mb-2 truncate text-2xl font-bold text-primary dark:text-primary-dark">
+          <h2 className="mb-2 truncate text-header-2xl text-primary dark:text-primary-dark">
             {pokemonSpecies.data.genus}
           </h2>
 
@@ -77,7 +78,7 @@ const PokemonInfoPage = (props: PokemonInfoPageProps): JSX.Element => {
       )}
 
       <PokemonEntrySwitcher id={pokemon.data.id} className="mt-12" />
-    </>
+    </Page>
   );
 };
 
@@ -88,11 +89,11 @@ type LoadingStateProps = {
   className?: string;
 };
 const LoadingState = (props: LoadingStateProps): JSX.Element => (
-  <>
+  <Page>
     <Header
       title="Loading Pokémon..."
       description="Please wait while we fetch the Pokémon details."
       topLink={props.backLink}
     />
-  </>
+  </Page>
 );

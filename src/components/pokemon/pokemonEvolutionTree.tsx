@@ -15,7 +15,7 @@ const PokemonEvolutionTree = (props: PokemonEvolutionTreeProps): JSX.Element => 
 
   return (
     <div className="mt-12">
-      <h3 className="mb-2 text-xl font-semibold text-primary dark:text-primary-dark">Evolutionary Chain</h3>
+      <h3 className="mb-2 text-header-xl text-primary dark:text-primary-dark">Evolutionary Chain</h3>
       <div className="flex flex-col items-center gap-6 lg:grid lg:auto-cols-fr lg:grid-flow-col">
         {evolutions.map((stage, index) => (
           <div key={index} className="flex w-full flex-col items-center gap-4">

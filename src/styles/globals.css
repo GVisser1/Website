@@ -3,19 +3,69 @@
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:where(.dark, .dark *));
+@custom-variant press (&:active);
+@custom-variant active (&[data-active="true"]);
 
 @theme inline {
   --font-inter: var(--inter, var(--font-sans));
-  --font-comic-sans: "Comic Sans MS", var(--font-sans);
+  --font-comic-sans: "Comic Sans MS", 'Chalkboard SE', 'Comic Neue', var(--font-sans);
   --breakpoint-xs: 30rem;
 
-  --text-button: 0.875rem;
-  --text-button--line-height: 1.25rem;
-  --text-button--font-weight: 500;
-
+  --text-*: initial;
+  --text-header-4xl: 2.25rem;
+  --text-header-4xl--line-height: 2.5rem;
+  --text-header-4xl--font-weight: 700;
+  --text-header-3xl: 1.875rem;
+  --text-header-3xl--line-height: 2.25rem;
+  --text-header-3xl--font-weight: 700;
+  --text-header-2xl: 1.5rem;
+  --text-header-2xl--line-height: 2rem;
+  --text-header-2xl--font-weight: 600;
+  --text-header-xl: 1.25rem;
+  --text-header-xl--line-height: 1.75rem;
+  --text-header-xl--font-weight: 600;
+  --text-header-lg: 1.125rem;
+  --text-header-lg--line-height: 1.5rem;
+  --text-header-lg--font-weight: 600;
+  --text-header-base: 1rem;
+  --text-header-base--line-height: 1.5rem;
+  --text-header-base--font-weight: 600;
+  --text-lg-medium: 1.125rem;
+  --text-lg-medium--line-height: 1.75rem;
+  --text-lg-medium--font-weight: 400;
+  --text-base-bold: 1rem;
+  --text-base-bold--line-height: 1.5rem;
+  --text-base-bold--font-weight: 700;
+  --text-base-semibold: 1rem;
+  --text-base-semibold--line-height: 1.5rem;
+  --text-base-semibold--font-weight: 600;
+  --text-base-medium: 1rem;
+  --text-base-medium--line-height: 1.5rem;
+  --text-base-medium--font-weight: 500;
+  --text-base-regular: 1rem;
+  --text-base-regular--line-height: 1.5rem;
+  --text-base-regular--font-weight: 400;
+  --text-sm-semibold: 0.875rem;
+  --text-sm-semibold--line-height: 1.25rem;
+  --text-sm-semibold--font-weight: 600;
+  --text-sm-regular: 0.875rem;
+  --text-sm-regular--line-height: 1.25rem;
+  --text-sm-regular--font-weight: 400;
+  --text-xs-semibold: 0.75rem;
+  --text-xs-semibold--line-height: 1rem;
+  --text-xs-semibold--font-weight: 600;
+  --text-xs-regular: 0.75rem;
+  --text-xs-regular--line-height: 1rem;
+  --text-xs-regular--font-weight: 400;
   --text-button-lg: 1rem;
   --text-button-lg--line-height: 1.25rem;
   --text-button-lg--font-weight: 500;
+  --text-button: 0.875rem;
+  --text-button--line-height: 1.25rem;
+  --text-button--font-weight: 500;
+  --text-link: 1rem;
+  --text-link--line-height: 1.5rem;
+  --text-link--font-weight: 600;
 
   --color-*: initial;
 
@@ -35,13 +85,15 @@
   --text-color-light-dark: #3b82f6;
   --text-color-error: #dc2626;
   --text-color-disabled: #e4e4e7;
-  --text-color-btn-disabled-dark: #3f3f46;
+  --text-color-disabled-dark: #3f3f46;
   --text-color-status-success: #047857;
-  --text-color-status-success-dark: #d1fae5;
+  --text-color-status-success-dark: #ffffff;
   --text-color-status-info: #1d4ed8;
-  --text-color-status-info-dark: #2563eb;
+  --text-color-status-info-dark: #ffffff;
   --text-color-status-neutral: #3f3f46;
-  --text-color-status-neutral-dark: #e4e4e7;
+  --text-color-status-neutral-dark: #ffffff;
+  --text-color-elevation-float: #ffffff;
+  --text-color-elevation-float-secondary: #a1a1aa;
 
   --text-color-pokemon-mythical: #ec4899;
   --text-color-pokemon-legendary: #facc15;
@@ -67,6 +119,8 @@
   --background-color-*: initial;
   --background-color-default: #ffffff;
   --background-color-default-dark: #18181b;
+  --background-color-default-transparent: #ffffff60;
+  --background-color-default-transparent-dark: #18181b50;
   --background-color-accent-code: #bfdbfe;
   --background-color-accent-text-fields: #dbeafe;
   --background-color-accent-subform: #e0e7ff;
@@ -78,34 +132,38 @@
   --background-color-sunken-secondary-dark: #27272a;
   --background-color-sunken-tertiary: #e4e4e7;
   --background-color-sunken-tertiary-dark: #3f3f46;
-  --background-color-btn-active: #e4e4e7;
-  --background-color-btn-active-dark: #27272a;
   --background-color-btn-disabled: #fafafa;
   --background-color-btn-disabled-dark: #27272a50;
   --background-color-btn-primary: #2563eb;
   --background-color-btn-primary-hover: #1d4ed8;
-  --background-color-btn-primary-pressed: #1e40af;
+  --background-color-btn-primary-press: #1e40af;
   --background-color-btn-primary-dark: #2563eb;
   --background-color-btn-primary-hover-dark: #1d4ed8;
-  --background-color-btn-primary-pressed-dark: #1e40af;
+  --background-color-btn-primary-press-dark: #1e40af;
   --background-color-btn-secondary: #f4f4f5;
   --background-color-btn-secondary-hover: #e4e4e7;
-  --background-color-btn-secondary-pressed: #d4d4d8;
+  --background-color-btn-secondary-press: #d4d4d8;
   --background-color-btn-secondary-dark: #27272a;
   --background-color-btn-secondary-hover-dark: #3f3f46;
-  --background-color-btn-secondary-pressed-dark: #52525b;
+  --background-color-btn-secondary-press-dark: #52525b;
+  --background-color-btn-light: #FFFFFF;
   --background-color-btn-light-hover: #eff6ff;
-  --background-color-btn-light-pressed: #dbeafe;
+  --background-color-btn-light-press: #dbeafe;
+  --background-color-btn-light-dark: #18181b;
   --background-color-btn-light-hover-dark: #27272a;
-  --background-color-btn-light-pressed-dark: #3f3f46;
+  --background-color-btn-light-press-dark: #3f3f46;
   --background-color-btn-ghost-hover: #f4f4f5;
-  --background-color-btn-ghost-pressed: #e4e4e7;
+  --background-color-btn-ghost-press: #e4e4e7;
   --background-color-btn-ghost-hover-dark: #27272a;
-  --background-color-btn-ghost-pressed-dark: #3f3f46;
+  --background-color-btn-ghost-press-dark: #3f3f46;
+  --background-color-btn-ghost-active: #e4e4e7;
+  --background-color-btn-ghost-active-dark: #27272a;
   --background-color-btn-ghost-checked: #eff6ff;
   --background-color-btn-ghost-checked-dark: #1e3a8a20;
   --background-color-elevation-surface-blanket-top: #09090b30;
   --background-color-elevation-surface-blanket-top-dark: #09090b75;
+  --background-color-elevation-float: #27272a;
+  --background-color-elevation-float-dark: #27272a;
   --background-color-status-success: #d1fae5;
   --background-color-status-success-dark: #047857;
   --background-color-status-info: #eff6ff;
@@ -165,6 +223,19 @@
   --divide-color-secondary: #f4f4f5;
   --divide-color-primary-dark: #3f3f46;
   --divide-color-secondary-dark: #27272a;
+
+  --radius-*: initial;
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 999px;
+
+  --shadow-*: initial;
+  --shadow-md: 0px 4px 6px -1px #00000020;
+  --shadow-lg: 0px 10px 15px -3px #00000025;
 }
 
 @layer base {
@@ -183,8 +254,9 @@
 }
 @utility focus-ring-text {
   outline: none;
-  box-shadow: 0 1px var(--ring-color-primary), 0 4px var(--ring-color-primary);
-  text-decoration: none
+  box-shadow: 0 3px var(--ring-color-primary);
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--ring-color-primary);
 }
 
 @layer utilities {
@@ -193,13 +265,30 @@
   }
 
   .prose img {
-    @apply my-1;
+    @apply my-0;
   }
-
-  .prose a {
-    @apply font-semibold underline decoration-primary underline-offset-4 hover:decoration-primary-hover hover:decoration-2 visited:decoration-visited visited:hover:decoration-visited-hover;
+  .prose p {
+    @apply text-primary dark:text-primary-dark text-base-regular mb-3 mt-0;
   }
   .prose h2 {
-    @apply mb-3 text-xl font-bold text-primary dark:text-primary-dark;
+    @apply mb-3 text-header-xl font-bold text-primary dark:text-primary-dark;
+  }
+}
+
+@layer components {
+  .btn-disabled {
+    @apply bg-btn-disabled text-disabled dark:text-disabled-dark dark:bg-btn-disabled-dark;
+  }
+  .btn-primary{
+    @apply bg-btn-primary text-inverse hover:bg-btn-primary-hover press:bg-btn-primary-press dark:bg-btn-primary-dark dark:hover:bg-btn-primary-hover-dark dark:press:bg-btn-primary-press-dark
+  }
+  .btn-secondary {
+    @apply bg-btn-secondary text-primary dark:bg-btn-secondary-dark dark:text-primary-dark hover:bg-btn-secondary-hover dark:hover:bg-btn-secondary-hover-dark press:bg-btn-secondary-press dark:press:bg-btn-secondary-press-dark
+  }
+  .btn-light {
+    @apply border box-border border-light bg-btn-light text-light dark:bg-btn-light-dark dark:text-light-dark hover:bg-btn-light-hover press:bg-btn-light-press dark:hover:bg-btn-light-hover-dark dark:press:bg-btn-light-press-dark
+  }
+  .btn-ghost {
+    @apply text-primary hover:bg-btn-ghost-hover active:bg-btn-ghost-active dark:text-primary-dark dark:hover:bg-btn-ghost-hover-dark dark:active:bg-btn-ghost-active-dark press:bg-btn-ghost-press dark:press:bg-btn-ghost-press-dark;
   }
 }

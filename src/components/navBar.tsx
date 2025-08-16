@@ -1,9 +1,8 @@
 import { useGlobalSearch } from "../providers/globalSearchProvider";
-import { IconButton, IconLink } from "./button";
 import { usePathname } from "next/navigation";
 import Logo from "./logo";
-
 import type { JSX } from "react";
+import IconButton from "./button/iconButton";
 
 export const Navbar = (): JSX.Element => {
   const { setOpen } = useGlobalSearch();
@@ -15,10 +14,11 @@ export const Navbar = (): JSX.Element => {
         <Logo withTitle={false} size="lg" />
         <div className="flex gap-x-3">
           {pathname !== "/" && (
-            <IconLink
-              icon="Home"
+            <IconButton
+              type="link"
               variant="ghost"
-              aria-label="Home"
+              icon="Home"
+              ariaLabel="Home"
               href="/"
               tooltip={{
                 title: "Home",
@@ -26,10 +26,11 @@ export const Navbar = (): JSX.Element => {
               }}
             />
           )}
-          <IconLink
-            icon="At"
+          <IconButton
+            type="link"
             variant="ghost"
-            aria-label="Contact"
+            icon="At"
+            ariaLabel="Contact"
             href="mailto:gvisser.business@gmail.com"
             tooltip={{
               title: "Contact",
@@ -37,10 +38,11 @@ export const Navbar = (): JSX.Element => {
             }}
           />
           <IconButton
-            icon="OpenMenu"
+            type="button"
             variant="ghost"
+            icon="OpenMenu"
             onClick={() => setOpen(true)}
-            aria-label="Search"
+            ariaLabel="Search"
             tooltip={{
               title: "Search and quickly jump to a Page",
               description: "⌘K",

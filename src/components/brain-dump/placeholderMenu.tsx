@@ -11,10 +11,10 @@ import ds from "./dataSource.json";
 import SearchInput from "../search";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../select/select";
 import { upperFirst } from "lodash-es";
-import { IconButton } from "../button";
 import { normalizeString } from "../../utils/textUtil";
 import type { IconType } from "../../utils/iconUtil";
 import { OptionIcon } from "../../utils/iconUtil";
+import IconButton from "../button/iconButton";
 
 const dataSource = ds as DataSource;
 const FILTERS = ["fields", "groups", "users", "variables"] as const;
@@ -254,8 +254,9 @@ const PlaceholderMenu = (): JSX.Element => {
         </PopoverTrigger>
         {selectedOption && (
           <IconButton
+            type="button"
             variant="secondary"
-            aria-label="Clear selected option"
+            ariaLabel="Clear selected option"
             tooltip={{ title: "Clear selected option" }}
             icon="X"
             className="absolute top-[2px] right-[3px]"
@@ -269,7 +270,7 @@ const PlaceholderMenu = (): JSX.Element => {
       <PopoverContent
         aria-label="Select a placeholder"
         align="start"
-        className="z-10 mt-1 flex flex-col bg-default shadow-lg dark:bg-default-dark"
+        className="z-10 mt-1 flex flex-col bg-default shadow-md dark:bg-default-dark"
       >
         <div className="relative w-[480px] overflow-hidden rounded-sm border border-primary pb-1 dark:border-primary-dark">
           <div className="grid grid-cols-3 gap-x-2 px-3 pt-3 pb-2">

@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 import clsx from "clsx";
-import { TextLink } from "./button";
 import Pill from "./pill";
+import TextButton from "./button/textButton";
 
 type CardProps = {
   className?: string;
@@ -12,22 +12,28 @@ type CardProps = {
 };
 
 const Card = (props: CardProps): JSX.Element => {
-  const classes = clsx(
-    "relative overflow-hidden rounded-lg border border-primary dark:border-primary-dark",
-    props.className,
-  );
+  const classes = clsx("relative", props.className);
 
   return (
     <div className={classes}>
-      <img src={props.src} alt="" className="h-32 w-full object-cover" />
-      <div className="mt-1 flex flex-col items-start p-4">
-        <div className="flex flex-wrap gap-2">
-          <Pill colour="neutral" label="5 min read" />
-          <Pill colour="neutral" label="2 July 2025" />
+      <img src={props.src} alt="" className="h-50 w-full rounded-lg object-cover" />
+      <div className="mt-3 flex flex-col items-start gap-y-1">
+        <h2 className="text-header-xl text-primary dark:text-primary-dark">{props.title}</h2>
+        <p className="text-base-regular text-secondary dark:text-secondary-dark">{props.description}</p>
+        <div className="flex w-full items-center justify-between gap-x-1">
+          <div className="grid grid-cols-2 gap-x-1">
+            <Pill className="justify-self-start" type="neutral" label="2 min read" />
+            <Pill className="justify-self-start" type="neutral" label="2 July 2025" />
+          </div>
+          <TextButton
+            type="link"
+            href={props.link}
+            variant="light"
+            size="medium"
+            label="Read blog"
+            className="ml-auto"
+          />
         </div>
-        <h2 className="mt-1 text-lg font-semibold text-primary dark:text-primary-dark">{props.title}</h2>
-        <p className="mt-1 text-secondary dark:text-secondary-dark">{props.description}</p>
-        <TextLink href={props.link} variant="light" label="Read blog" className="mt-2 ml-auto" />
       </div>
     </div>
   );

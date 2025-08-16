@@ -15,7 +15,7 @@ export const Layout = ({ children }: PropsWithChildren): JSX.Element | null => {
   const classes = clsx("relative flex max-h-dvh bg-sunken dark:bg-sunken-dark", getFontClass());
 
   return (
-    <div id="headlessui-portal-root" className={classes}>
+    <div id="portal-root" className={classes}>
       <div className="flex grow">
         <Sidebar />
 
@@ -26,9 +26,7 @@ export const Layout = ({ children }: PropsWithChildren): JSX.Element | null => {
             className="group flex h-dvh w-full grow flex-col overflow-y-auto overscroll-y-none outline-hidden"
           >
             <div className="flex grow flex-col bg-default group-focus-visible:focus-ring-inset lg:mt-3 lg:rounded-lg dark:bg-default-dark">
-              <div className="mx-auto flex w-full max-w-5xl grow flex-col px-6 pt-6 pb-20 lg:px-12 lg:pt-12">
-                {children}
-              </div>
+              {children}
             </div>
           </main>
         </div>

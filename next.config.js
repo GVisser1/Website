@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     remotePatterns: [new URL("https://raw.githubusercontent.com/**")],
   },
+  outputFileTracingRoot: __dirname,
 };
 
 module.exports = nextConfig;

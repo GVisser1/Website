@@ -16,7 +16,7 @@ const Option = forwardRef<HTMLDivElement, OptionProps>(
     const classes = clsx(
       "flex h-10 min-w-0 items-center justify-between gap-x-2 px-3 py-2.5 text-primary select-none dark:text-primary-dark",
       "hover:bg-btn-ghost-hover dark:hover:bg-btn-ghost-hover-dark",
-      "active:bg-btn-ghost-pressed dark:active:bg-btn-ghost-pressed-dark",
+      "press:bg-btn-ghost-press dark:press:bg-btn-ghost-press-dark",
       "aria-selected:bg-btn-ghost-hover dark:aria-selected:bg-btn-ghost-hover-dark",
       "aria-checked:bg-btn-ghost-checked dark:aria-checked:bg-btn-ghost-checked-dark",
       "aria-checked:hover:bg-btn-ghost-hover dark:aria-checked:hover:bg-btn-ghost-hover-dark",
@@ -33,7 +33,7 @@ const Option = forwardRef<HTMLDivElement, OptionProps>(
       >
         <div className="flex min-w-0 gap-x-1.5">
           <OptionIcon type={type} />
-          <p title={label} className={clsx("truncate text-sm", pill && "max-w-80")}>
+          <p title={label} className={clsx("truncate text-sm-regular", pill && "max-w-80")}>
             {label}
           </p>
         </div>
@@ -52,7 +52,7 @@ type OptionPillProps = {
 
 const OptionPill = ({ label }: OptionPillProps): JSX.Element => {
   const classes = clsx(
-    "h-4 max-w-32 truncate rounded-sm px-1 text-xs font-medium",
+    "h-4 max-w-32 truncate rounded-sm px-1 text-xs-semibold",
     "bg-sunken-secondary text-primary",
     "dark:bg-sunken-secondary-dark dark:text-primary-dark",
   );

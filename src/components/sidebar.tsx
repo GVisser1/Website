@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState, type JSX } from "react";
 import { usePathname } from "next/navigation";
-import { IconAndTextButton, IconAndTextLink, IconButton, IconLink } from "./button";
 import { MAIL_TO, MAIN_PAGES, PROJECT_PAGES } from "../constants";
 import clsx from "clsx";
 import useMetaKey from "../hooks/useMetaKey";
@@ -10,6 +9,8 @@ import Divider from "./divider";
 import { useGlobalSearch } from "../providers/globalSearchProvider";
 import Logo from "./logo";
 import type { IconName } from "./icon";
+import IconButton from "./button/iconButton";
+import IconAndTextButton from "./button/iconAndTextButton";
 
 export const Sidebar = (): JSX.Element => {
   const pathname = usePathname();
@@ -35,9 +36,10 @@ export const Sidebar = (): JSX.Element => {
         <div className="mb-2 flex items-center justify-between">
           {!isCollapsed && <Logo withTitle size="sm" />}
           <IconButton
+            type="button"
             variant="ghost"
             onClick={() => setIsCollapsed(!isCollapsed)}
-            aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+            ariaLabel={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
             icon={isCollapsed ? "ChevronRightDouble" : "ChevronLeftDouble"}
             tooltip={{
               title: isCollapsed ? "Expand sidebar" : "Collapse sidebar",
@@ -47,6 +49,7 @@ export const Sidebar = (): JSX.Element => {
           />
         </div>
         <SidebarButton
+          id="global-search-trigger"
           label="Search"
           icon="MagnifyingGlass"
           onClick={() => setOpen(true)}
@@ -110,14 +113,32 @@ type SidebarLinkProps = {
 const SidebarLink = ({ current, label, isCollapsed, ...props }: SidebarLinkProps): JSX.Element => (
   <li className="relative">
     {isCollapsed ? (
-      <IconLink aria-label={label} variant="ghost" active={current} tooltip={{ title: label }} {...props} />
+      <IconButton
+        type="link"
+        ariaLabel={label}
+        variant="ghost"
+        active={current ?? false}
+        tooltip={{ title: label }}
+        href={props.href}
+        icon={props.icon}
+      />
     ) : (
-      <IconAndTextLink aria-label={label} variant="ghost" label={label} fullWidth active={current} {...props} />
+      <IconAndTextButton
+        type="link"
+        aria-label={label}
+        variant="ghost"
+        label={label}
+        active={current ?? false}
+        icon={props.icon}
+        href={props.href}
+        fullWidth
+      />
     )}
   </li>
 );
 
 type SidebarButtonProps = {
+  id?: string;
   icon: IconName;
   label: string;
   onClick: () => void;
@@ -130,7 +151,18 @@ type SidebarButtonProps = {
 
 const SidebarButton = ({ isCollapsed, label, ...props }: SidebarButtonProps): JSX.Element => {
   if (isCollapsed) {
-    return <IconButton variant="ghost" aria-label={label} {...props} />;
+    return <IconButton type="button" variant="ghost" ariaLabel={label} {...props} />;
   }
-  return <IconAndTextButton variant="ghost" aria-label={label} label={label} fullWidth {...props} />;
+  return (
+    <IconAndTextButton
+      id={props.id}
+      type="button"
+      variant="ghost"
+      icon={props.icon}
+      onClick={props.onClick}
+      label={label}
+      fullWidth
+      tooltip={props.tooltip}
+    />
+  );
 };

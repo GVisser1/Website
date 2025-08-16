@@ -59,10 +59,11 @@ const PokemonContent = (): JSX.Element => {
     }
   }, [currentPage, totalPages, router, debouncedQuery, filteredPokemon, totalFilteredPages]);
 
-  const showLoadingState = (isLoading && !error) || isNil(pokemon) || isEmpty(pokemon);
+  const showLoadingState = isLoading && !error && isNil(pokemon);
   const showErrorState = error && !isLoading;
   const showContent = !isLoading && !isNil(filteredPokemon);
   const showPagination = !error && !isNil(totalFilteredPages) && !isEmpty(filteredPokemon);
+  const showEmptyResults = showContent && isEmpty(filteredPokemon);
 
   return (
     <>
@@ -86,19 +87,17 @@ const PokemonContent = (): JSX.Element => {
           filteredPokemon
             .slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE)
             .map((i) => <PokemonCard key={i.name} identifier={i.name} size="md" />)}
-        {!showPagination && (
-          <div className="col-span-full mt-12 flex h-full grow flex-col items-center justify-center">
-            <Icon name="PokéBall" className="size-24 text-primary" />
-            <h2 className="mt-2 text-center text-lg font-medium text-primary dark:text-primary-dark">
-              No results found
-            </h2>
+        {showEmptyResults && (
+          <div className="col-span-full mt-12 flex h-full grow flex-col items-center justify-center text-primary dark:text-primary-dark">
+            <Icon name="PokéBall" className="size-24" />
+            <h2 className="mt-2 text-center text-base-medium">No results found</h2>
           </div>
         )}
       </div>
 
       {showPagination && (
         <Pagination
-          className="mt-4 ml-auto"
+          className="mt-2 ml-auto"
           currentPage={currentPage}
           totalPages={totalFilteredPages}
           onFirst={() => router.push("?page=1", { scroll: false })}
