@@ -12,6 +12,9 @@
   --breakpoint-xs: 30rem;
 
   --text-*: initial;
+  --text-header-5xl: 3.75rem;
+  --text-header-5xl--line-height: 3.75rem;
+  --text-header-5xl--font-weight: 700;
   --text-header-4xl: 2.25rem;
   --text-header-4xl--line-height: 2.5rem;
   --text-header-4xl--font-weight: 700;
@@ -32,7 +35,7 @@
   --text-header-base--font-weight: 600;
   --text-lg-medium: 1.125rem;
   --text-lg-medium--line-height: 1.75rem;
-  --text-lg-medium--font-weight: 400;
+  --text-lg-medium--font-weight: 500;
   --text-base-bold: 1rem;
   --text-base-bold--line-height: 1.5rem;
   --text-base-bold--font-weight: 700;
@@ -259,20 +262,8 @@
   text-decoration-color: var(--ring-color-primary);
 }
 
-@layer utilities {
-  .prose {
-    @apply max-w-none;
-  }
-
-  .prose img {
-    @apply my-0;
-  }
-  .prose p {
-    @apply text-primary dark:text-primary-dark text-base-regular mb-3 mt-0;
-  }
-  .prose h2 {
-    @apply mb-3 text-header-xl font-bold text-primary dark:text-primary-dark;
-  }
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
 }
 
 @layer components {

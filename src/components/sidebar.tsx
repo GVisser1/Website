@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, type JSX } from "react";
+import React, { useEffect, type JSX } from "react";
 import { usePathname } from "next/navigation";
 import { MAIL_TO, MAIN_PAGES, PROJECT_PAGES } from "../constants";
 import clsx from "clsx";
@@ -11,12 +11,13 @@ import Logo from "./logo";
 import type { IconName } from "./icon";
 import IconButton from "./button/iconButton";
 import IconAndTextButton from "./button/iconAndTextButton";
+import { useLocalStorage } from "usehooks-ts";
 
 export const Sidebar = (): JSX.Element => {
   const pathname = usePathname();
   const { setOpen } = useGlobalSearch();
   const metaKey = useMetaKey();
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useLocalStorage("isSidebarCollapsed", false);
   const listClasses = clsx("flex flex-col gap-y-1 p-4");
 
   useEffect(() => {
@@ -28,7 +29,7 @@ export const Sidebar = (): JSX.Element => {
     };
     document.addEventListener("keydown", down);
     return (): void => document.removeEventListener("keydown", down);
-  }, []);
+  }, [setIsCollapsed]);
 
   return (
     <nav className={clsx("relative hidden shrink-0 flex-col transition-all lg:flex", isCollapsed ? "w-17" : "w-64")}>
@@ -54,7 +55,7 @@ export const Sidebar = (): JSX.Element => {
           icon="MagnifyingGlass"
           onClick={() => setOpen(true)}
           tooltip={{
-            title: "Search and quickly jump to a Page",
+            title: "Search and quickly jump to a page",
             description: `${metaKey} + K`,
           }}
           isCollapsed={isCollapsed}

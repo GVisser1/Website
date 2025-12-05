@@ -85,39 +85,34 @@ const QAEngineerBlogPage = (): JSX.Element => (
       <BlogSection id="tools-of-the-trade">
         <BlogHeader>Tools of the Trade</BlogHeader>
         <BlogParagraph>Here are some of the key tools I use in my role as a QA Engineer:</BlogParagraph>
-        <BlogList
-          items={[
-            <>
-              <InlineLink href="https://playwright.dev/">Playwright</InlineLink> for end-to-end testing
-            </>,
-            <>
-              <InlineLink href="https://www.typescriptlang.org/">TypeScript</InlineLink>,{" "}
-              <InlineLink href="https://react.dev/">React</InlineLink>, and{" "}
-              <InlineLink href="https://solidjs.com/">SolidJS</InlineLink> for front-end development
-            </>,
-            <>
-              <InlineLink href="https://storybook.js.org/">Storybook</InlineLink> and{" "}
-              <InlineLink href="https://vitest.dev/">Vitest</InlineLink> for component and unit testing
-            </>,
-            <>
-              <InlineLink href="https://www.atlassian.com/software/jira">Jira</InlineLink> and{" "}
-              <InlineLink href="https://www.atlassian.com/software/confluence">Confluence</InlineLink> for project
-              planning and team collaboration
-            </>,
-            <>
-              <InlineLink href="https://www.figma.com/">Figma</InlineLink> for design reviews and feedback
-            </>,
-            <>
-              <InlineLink href="https://git-scm.com/">Git</InlineLink> for version control
-            </>,
-            <>
-              <InlineLink href="https://www.postman.com/">Postman</InlineLink> for API testing
-            </>,
-            <>
-              <InlineLink href="https://www.deque.com/axe/">AxeCore</InlineLink> for accessibility testing
-            </>,
-          ]}
-        />
+        <BlogList>
+          <li>
+            <InlineLink href="https://playwright.dev/">Playwright</InlineLink> for end-to-end testing
+          </li>
+          <li>
+            <InlineLink href="https://www.typescriptlang.org/">TypeScript</InlineLink>,{" "}
+            <InlineLink href="https://react.dev/">React</InlineLink>, and{" "}
+            <InlineLink href="https://solidjs.com/">SolidJS</InlineLink> for front-end development
+          </li>
+          <li>
+            <InlineLink href="https://storybook.js.org/">Storybook</InlineLink> and{" "}
+            <InlineLink href="https://vitest.dev/">Vitest</InlineLink> for component and unit testing
+          </li>
+          <li>
+            <InlineLink href="https://www.atlassian.com/software/jira">Jira</InlineLink> and{" "}
+            <InlineLink href="https://www.atlassian.com/software/confluence">Confluence</InlineLink> for project
+            planning and team collaboration
+          </li>
+          <li>
+            <InlineLink href="https://www.figma.com/">Figma</InlineLink> for design reviews and feedback
+          </li>
+          <li>
+            <InlineLink href="https://git-scm.com/">Git</InlineLink> for version control
+          </li>
+          <li>
+            <InlineLink href="https://www.deque.com/axe/">AxeCore</InlineLink> for accessibility testing
+          </li>
+        </BlogList>
       </BlogSection>
 
       <BlogSection id="looking-back-and-ahead">

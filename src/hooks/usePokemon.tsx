@@ -26,7 +26,7 @@ const usePokemon = (currentPage: number): UsePokemonResult => {
     },
   };
 
-  const { data, isLoading, error } = useQuery({
+  const { data, isPending, error } = useQuery({
     queryKey: ["paginatedPokemon", currentPage],
     queryFn: async () => {
       const { data } = await axios.get<PaginatedPokemon>(POKEMON_API_URL, config);
@@ -47,7 +47,7 @@ const usePokemon = (currentPage: number): UsePokemonResult => {
 
   return {
     pokemon: data?.results,
-    isLoading,
+    isLoading: isPending,
     error: error,
     totalPages: data?.count ? Math.ceil(TOTAL_POKEMON / PAGE_SIZE) : undefined,
   };

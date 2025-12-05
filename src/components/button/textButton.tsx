@@ -13,7 +13,7 @@ type TextButtonProps = BaseTextButtonProps & ButtonTypeProps & VariantProps;
 
 const TextButton = (props: TextButtonProps): JSX.Element => {
   const classes = clsx(
-    "inline-flex shrink-0 items-center justify-center rounded-sm focus-visible:focus-ring",
+    "inline-flex shrink-0 items-center justify-center rounded-sm select-none focus-visible:focus-ring",
     props.size === "large" && "h-12 px-4 py-3",
     props.size === "medium" && "h-9 px-2.5 py-3",
     props.variant === "primary" && "btn-primary",

@@ -18,7 +18,6 @@ export type PokemonCardProps = {
 
 const PokemonCard = ({ identifier, size }: PokemonCardProps): JSX.Element => {
   const { data, error, isLoading } = usePokemonDetails(identifier);
-  const [isImageLoading, setIsImageLoading] = useState(true);
   const [isImageError, setIsImageError] = useState(false);
 
   if (error) {
@@ -46,14 +45,7 @@ const PokemonCard = ({ identifier, size }: PokemonCardProps): JSX.Element => {
       data-size={size}
     >
       <div className="relative">
-        <Sprite
-          name={data.name}
-          sprite={data.sprite}
-          hidden={isImageLoading}
-          size={size}
-          onLoad={() => setIsImageLoading(false)}
-          onError={() => setIsImageError(true)}
-        />
+        <Sprite name={data.name} sprite={data.sprite} size={size} onError={() => setIsImageError(true)} />
         {showErrorState && <SpriteErrorState />}
       </div>
       <div className="grow">
@@ -72,16 +64,14 @@ type SpriteProps = {
   ref?: Ref<HTMLImageElement>;
   name: string;
   sprite: string;
-  hidden: boolean;
   size?: "sm" | "md";
-  onLoad: () => void;
   onError: () => void;
 };
 
-const Sprite = ({ name, sprite, hidden, size, onError }: SpriteProps): JSX.Element => {
+const Sprite = ({ name, sprite, size, onError }: SpriteProps): JSX.Element => {
   const classes = clsx("mx-auto object-contain", size === "md" && "size-22", size === "sm" && "size-16");
 
-  return <Image aria-hidden={hidden} src={sprite} alt={`${name} sprite`} className={classes} onError={onError} />;
+  return <Image src={sprite} alt={`${name} sprite`} className={classes} onError={onError} />;
 };
 
 const SpriteErrorState = (): JSX.Element => {

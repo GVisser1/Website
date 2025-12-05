@@ -59,7 +59,7 @@ const PokemonContent = (): JSX.Element => {
     }
   }, [currentPage, totalPages, router, debouncedQuery, filteredPokemon, totalFilteredPages]);
 
-  const showLoadingState = isLoading && !error && isNil(pokemon);
+  const showLoadingState = false;
   const showErrorState = error && !isLoading;
   const showContent = !isLoading && !isNil(filteredPokemon);
   const showPagination = !error && !isNil(totalFilteredPages) && !isEmpty(filteredPokemon);

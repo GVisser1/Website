@@ -45,8 +45,8 @@ type UsePokemonDetailsResult = {
   isLoading: boolean;
 };
 
-const usePokemonDetails = (identifier: PokemonIdentifier): UsePokemonDetailsResult =>
-  useQuery<PokemonDetails, Error>({
+const usePokemonDetails = (identifier: PokemonIdentifier): UsePokemonDetailsResult => {
+  const { data, isPending, error } = useQuery<PokemonDetails, Error>({
     queryKey: ["pokemonDetails", identifier],
     queryFn: async () => {
       const { data } = await axios.get<PokemonDetailsResponse>(`${POKEMON_API_URL}/${identifier}`);
@@ -77,5 +77,8 @@ const usePokemonDetails = (identifier: PokemonIdentifier): UsePokemonDetailsResu
     staleTime: hours(1),
     retry: 3,
   });
+
+  return { data, isLoading: isPending, error: error };
+};
 
 export default usePokemonDetails;

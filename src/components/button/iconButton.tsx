@@ -20,7 +20,7 @@ type IconButtonProps = BaseIconButtonProps & ButtonTypeProps & VariantProps;
 
 const IconButton = (props: IconButtonProps): JSX.Element => {
   const classes = clsx(
-    "inline-flex size-9 shrink-0 items-center justify-center rounded-sm p-2 focus-visible:focus-ring",
+    "inline-flex size-9 shrink-0 items-center justify-center rounded-sm p-2 select-none focus-visible:focus-ring",
     "disabled" in props && props.disabled
       ? "btn-disabled"
       : {

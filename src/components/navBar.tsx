@@ -44,7 +44,7 @@ export const Navbar = (): JSX.Element => {
             onClick={() => setOpen(true)}
             ariaLabel="Search"
             tooltip={{
-              title: "Search and quickly jump to a Page",
+              title: "Search and quickly jump to a page",
               description: "⌘K",
               side: "bottom",
             }}
