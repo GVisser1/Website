@@ -1,5 +1,3 @@
-"use client";
-
 import type { SelectContentProps, SelectItemProps } from "@radix-ui/react-select";
 import * as Radix from "@radix-ui/react-select";
 import clsx from "clsx";

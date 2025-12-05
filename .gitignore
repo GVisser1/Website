@@ -3,10 +3,12 @@ node_modules
 build
 dist
 
-.next
-next-env.d.ts
+.tanstack
 
 .DS_Store
 .env.local
 /blob-report/
 /playwright-report/
+
+.vscode
+.netlify

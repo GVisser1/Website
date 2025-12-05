@@ -1,17 +1,11 @@
-import type { Metadata } from "next";
+import { createFileRoute } from "@tanstack/react-router";
 import type { JSX } from "react";
-import profileImg from "../../../public/images/profile.webp";
-import TextButton from "../../components/button/textButton";
-import Icon from "../../components/icon";
-import Image from "../../components/image";
-import Page from "../../components/page";
-import { MAIL_TO } from "../../constants";
-import { getAge } from "../../utils/dateUtil";
-
-export const metadata: Metadata = {
-  title: "Glenn Visser",
-  description: "QA Engineer, consistency advocate, and a nerd",
-};
+import TextButton from "@/components/button/textButton";
+import Icon from "@/components/icon";
+import Image from "@/components/image";
+import Page from "@/components/page";
+import { MAIL_TO } from "@/constants";
+import { getAge } from "@/utils/dateUtil";
 
 const HomePage = (): JSX.Element => (
   <Page>
@@ -42,8 +36,6 @@ const HomePage = (): JSX.Element => (
   </Page>
 );
 
-export default HomePage;
-
 const ProfileImage = (): JSX.Element => (
   <div className="relative isolate shrink-0">
     <Icon
@@ -60,9 +52,13 @@ const ProfileImage = (): JSX.Element => (
 
     <Image
       priority
-      src={profileImg}
+      src="/images/profile.webp"
       alt="Photo of Glenn"
       className="size-48 rounded-full object-cover"
     />
   </div>
 );
+
+export const Route = createFileRoute("/")({
+  component: HomePage,
+});

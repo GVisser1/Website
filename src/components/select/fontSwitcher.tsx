@@ -1,5 +1,3 @@
-"use client";
-
 import type { JSX } from "react";
 import { FONTS, useFont } from "../../hooks/useFont";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select";

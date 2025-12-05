@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import type { StaticImageData } from "next/image";
 import type { JSX, ReactNode } from "react";
 import Divider from "./divider";
 import Image from "./image";
@@ -15,7 +14,7 @@ type BlogSectionProps = {
   id: string;
   children: ReactNode;
   image?: {
-    src: string | StaticImageData;
+    src: string;
     alt: string;
     align: "left" | "right";
     priority?: boolean;

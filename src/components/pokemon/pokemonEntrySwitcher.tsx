@@ -1,5 +1,5 @@
+import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
-import Link from "next/link";
 import type { JSX } from "react";
 import usePokemonDetails from "../../hooks/usePokemonDetails";
 import { TOTAL_POKEMON } from "../../utils/pokemonUtil";
@@ -47,8 +47,8 @@ const PokemonEntrySwitch = (props: PokemonEntrySwitchProps): JSX.Element | null 
 
   return (
     <Link
-      href={`/projects/pokemon/${data.name}`}
-      scroll={false}
+      to="/projects/pokemon/$identifier"
+      params={{ identifier: data.name }}
       className="btn-ghost flex items-center gap-x-2 rounded-sm p-2 select-none focus-visible:focus-ring"
     >
       <Icon name="ChevronLeft" className={iconClasses} />

@@ -1,9 +1,7 @@
-"use client";
-
 import clsx from "clsx";
 import type { JSX, PropsWithChildren } from "react";
+import { useGlobalSearch } from "@/providers/globalSearchProvider";
 import { useFont } from "../hooks/useFont";
-import { useGlobalSearch } from "../providers/globalSearchProvider";
 import SearchDialog from "./dialog/searchDialog";
 import { Navbar } from "./navBar";
 import { Sidebar } from "./sidebar";

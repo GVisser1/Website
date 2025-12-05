@@ -1,8 +1,6 @@
-"use client";
-
+import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import { isNil } from "lodash-es";
-import Link from "next/link";
 import type { JSX, Ref } from "react";
 import { useState } from "react";
 import usePokemonDetails from "../../hooks/usePokemonDetails";
@@ -40,7 +38,8 @@ const PokemonCard = ({ identifier, size }: PokemonCardProps): JSX.Element => {
   return (
     <Link
       aria-label={`View details of ${data.name}`}
-      href={`/projects/pokemon/${data.name}`}
+      to={`/projects/pokemon/$identifier`}
+      params={{ identifier: data.name }}
       className={classes}
       data-size={size}
     >

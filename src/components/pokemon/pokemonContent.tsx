@@ -1,7 +1,5 @@
-"use client";
-
+import { useNavigate } from "@tanstack/react-router";
 import { isEmpty, isNil, uniqueId } from "lodash-es";
-import { useRouter, useSearchParams } from "next/navigation";
 import { type JSX, useEffect, useState } from "react";
 import { useDebounceValue } from "usehooks-ts";
 import usePokemon from "../../hooks/usePokemon";
@@ -15,10 +13,12 @@ import PokemonCard from "./pokemonCard";
 
 const SEARCH_DEBOUNCE = 300;
 
-const PokemonContent = (): JSX.Element => {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const currentPage = parseInt(searchParams.get("page") || "1", 10);
+type PokemonContentProps = {
+  page: number;
+};
+
+const PokemonContent = ({ page }: PokemonContentProps): JSX.Element => {
+  const navigate = useNavigate({ from: "/projects/pokemon" });
   const { pokemon, error, isLoading, totalPages } = usePokemon(-1);
   const [query, setQuery] = useState<string>("");
   const [debouncedQuery] = useDebounceValue<string>(query, SEARCH_DEBOUNCE);
@@ -47,19 +47,19 @@ const PokemonContent = (): JSX.Element => {
       return;
     }
 
-    if (!isNil(totalPages) && (currentPage < 1 || currentPage > totalPages)) {
-      router.replace(`?page=1`, { scroll: false });
+    if (!isNil(totalPages) && (page < 1 || page > totalPages)) {
+      navigate({ search: { page: 1 } });
     }
 
     if (
       debouncedQuery !== "" &&
       !isEmpty(filteredPokemon) &&
       !isNil(filteredPokemon) &&
-      currentPage > totalFilteredPages
+      page > totalFilteredPages
     ) {
-      router.replace(`?page=1`, { scroll: false });
+      navigate({ search: { page: 1 } });
     }
-  }, [currentPage, totalPages, router, debouncedQuery, filteredPokemon, totalFilteredPages]);
+  }, [page, totalPages, debouncedQuery, filteredPokemon, totalFilteredPages, navigate]);
 
   const showLoadingState = false;
   const showErrorState = error && !isLoading;
@@ -90,7 +90,7 @@ const PokemonContent = (): JSX.Element => {
         {showErrorState && <p className="col-span-full text-center text-error">{error.message}</p>}
         {showContent &&
           filteredPokemon
-            .slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE)
+            .slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
             .map((i) => <PokemonCard key={i.name} identifier={i.name} size="md" />)}
         {showEmptyResults && (
           <div className="col-span-full mt-12 flex h-full grow flex-col items-center justify-center text-primary dark:text-primary-dark">
@@ -103,12 +103,12 @@ const PokemonContent = (): JSX.Element => {
       {showPagination && (
         <Pagination
           className="mt-2 ml-auto"
-          currentPage={currentPage}
+          currentPage={page}
           totalPages={totalFilteredPages}
-          onFirst={() => router.push("?page=1", { scroll: false })}
-          onPrevious={() => router.push(`?page=${currentPage - 1}`, { scroll: false })}
-          onNext={() => router.push(`?page=${currentPage + 1}`, { scroll: false })}
-          onLast={() => router.push(`?page=${totalFilteredPages}`, { scroll: false })}
+          onFirst={() => navigate({ search: { page: 1 } })}
+          onPrevious={() => navigate({ search: { page: page - 1 } })}
+          onNext={() => navigate({ search: { page: page + 1 } })}
+          onLast={() => navigate({ search: { page: totalFilteredPages } })}
         />
       )}
     </>

@@ -1,17 +1,11 @@
-import type { Metadata } from "next/types";
-import type { JSX } from "react";
-import Divider from "../../components/divider";
-import Header from "../../components/header";
-import Page from "../../components/page";
-import FontSwitcher from "../../components/select/fontSwitcher";
-import ThemeSwitcher from "../../components/select/themeSwitcher";
+import { createFileRoute } from "@tanstack/react-router";
+import Divider from "@/components/divider";
+import Header from "@/components/header";
+import Page from "@/components/page";
+import FontSwitcher from "@/components/select/fontSwitcher";
+import ThemeSwitcher from "@/components/select/themeSwitcher";
 
-export const metadata: Metadata = {
-  title: "Settings",
-  description: "Personalize your experience by adjusting the settings to your liking",
-};
-
-const SettingsPage = (): JSX.Element => (
+const SettingsPage = () => (
   <Page>
     <Header
       title="Settings"
@@ -42,4 +36,6 @@ const SettingsPage = (): JSX.Element => (
   </Page>
 );
 
-export default SettingsPage;
+export const Route = createFileRoute("/settings")({
+  component: SettingsPage,
+});

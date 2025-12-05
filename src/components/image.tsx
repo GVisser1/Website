@@ -1,10 +1,8 @@
-import type { StaticImageData } from "next/image";
-import NextImage from "next/image";
 import type { JSX, Ref } from "react";
 
 type ImageProps = {
   ref?: Ref<HTMLImageElement>;
-  src: string | StaticImageData;
+  src: string;
   alt: string;
   className?: string;
   onLoad?: () => void;
@@ -14,7 +12,7 @@ type ImageProps = {
 };
 
 const Image = (props: ImageProps): JSX.Element => (
-  <NextImage
+  <img
     ref={props.ref}
     src={props.src}
     alt={props.alt}
@@ -26,7 +24,6 @@ const Image = (props: ImageProps): JSX.Element => (
     onError={props.onError}
     aria-hidden={props["aria-hidden"]}
     fetchPriority={props.priority ? "high" : "auto"}
-    preload={props.priority}
     loading={props.priority ? "eager" : "lazy"}
   />
 );

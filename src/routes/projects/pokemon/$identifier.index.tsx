@@ -1,29 +1,23 @@
-"use client";
-
+import { createFileRoute } from "@tanstack/react-router";
 import { isNil, startCase } from "lodash-es";
-import { type JSX, use } from "react";
-import Header from "../../../../components/header";
-import Page from "../../../../components/page";
-import PokemonCover from "../../../../components/pokemon/pokemonCover";
-import PokemonEntrySwitcher from "../../../../components/pokemon/pokemonEntrySwitcher";
-import PokemonEvolutionTree from "../../../../components/pokemon/pokemonEvolutionTree";
-import PokemonMeta from "../../../../components/pokemon/pokemonMeta";
-import PokemonStatsTable from "../../../../components/pokemon/pokemonStats";
-import PokemonTypes from "../../../../components/pokemon/pokemonTypes";
-import { PROJECT_PAGES } from "../../../../constants";
-import usePokemonDetails from "../../../../hooks/usePokemonDetails";
-import usePokemonEvolution from "../../../../hooks/usePokemonEvolution";
-import { usePokemonSpecies } from "../../../../hooks/usePokemonSpecies";
-import type { PokemonIdentifier } from "../../../../utils/pokemonUtil";
-import { PAGE_SIZE } from "../../../../utils/pokemonUtil";
+import type { JSX } from "react";
+import Header from "@/components/header";
+import Page from "@/components/page";
+import PokemonCover from "@/components/pokemon/pokemonCover";
+import PokemonEntrySwitcher from "@/components/pokemon/pokemonEntrySwitcher";
+import PokemonEvolutionTree from "@/components/pokemon/pokemonEvolutionTree";
+import PokemonMeta from "@/components/pokemon/pokemonMeta";
+import PokemonStatsTable from "@/components/pokemon/pokemonStats";
+import PokemonTypes from "@/components/pokemon/pokemonTypes";
+import { PROJECT_PAGES } from "@/constants";
+import usePokemonDetails from "@/hooks/usePokemonDetails";
+import usePokemonEvolution from "@/hooks/usePokemonEvolution";
+import { usePokemonSpecies } from "@/hooks/usePokemonSpecies";
+import { PAGE_SIZE } from "@/utils/pokemonUtil";
 
-type PokemonInfoPageProps = {
-  params: Promise<{ identifier: PokemonIdentifier }>;
-};
-
-const PokemonInfoPage = (props: PokemonInfoPageProps): JSX.Element => {
-  const param = use(props.params);
-  const pokemon = usePokemonDetails(param.identifier);
+const PokemonInfoPage = (): JSX.Element => {
+  const identifier = Route.useParams().identifier;
+  const pokemon = usePokemonDetails(identifier);
   const pokemonSpecies = usePokemonSpecies(pokemon.data?.id);
   const pokemonEvolution = usePokemonEvolution(
     pokemon.data?.name,
@@ -47,7 +41,7 @@ const PokemonInfoPage = (props: PokemonInfoPageProps): JSX.Element => {
   }
 
   if (isNil(pokemon.data) || isNil(pokemonSpecies.data) || isNil(pokemonEvolution.data)) {
-    return <h1>Pokemon {param.identifier} not found</h1>;
+    return <h1>Pokemon {identifier} not found</h1>;
   }
 
   return (
@@ -103,3 +97,7 @@ const LoadingState = (props: LoadingStateProps): JSX.Element => (
     />
   </Page>
 );
+
+export const Route = createFileRoute("/projects/pokemon/$identifier/")({
+  component: PokemonInfoPage,
+});

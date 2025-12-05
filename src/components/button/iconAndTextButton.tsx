@@ -1,5 +1,5 @@
+import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
-import Link from "next/link";
 import type { JSX } from "react";
 import type { IconName } from "../icon";
 import Icon from "../icon";
@@ -43,7 +43,7 @@ const IconAndTextButton = (props: IconAndTextButtonProps): JSX.Element => {
       <Link
         id={props.id}
         className={classes}
-        href={props.href}
+        to={props.href}
         {...(props.variant === "ghost" && { "data-active": props.active })}
       >
         {content}

@@ -1,17 +1,12 @@
+import { createFileRoute } from "@tanstack/react-router";
 import clsx from "clsx";
-import type { Metadata } from "next/types";
 import type { JSX } from "react";
-import TextButton from "../../components/button/textButton";
-import Header from "../../components/header";
-import Image from "../../components/image";
-import Page from "../../components/page";
-import { getTimeFrame } from "../../utils/dateUtil";
-import { isEven } from "../../utils/numberUtil";
-
-export const metadata: Metadata = {
-  title: "Timeline",
-  description: "A chronological overview of my education and work experience",
-};
+import TextButton from "@/components/button/textButton";
+import Header from "@/components/header";
+import Image from "@/components/image";
+import Page from "@/components/page";
+import { getTimeFrame } from "@/utils/dateUtil";
+import { isEven } from "@/utils/numberUtil";
 
 const TimelinePage = (): JSX.Element => (
   <Page>
@@ -70,8 +65,6 @@ const TimeLineItem = ({ item, align }: TimeLineItemProps): JSX.Element => (
   </li>
 );
 
-export default TimelinePage;
-
 type TimelineItem = {
   title: string;
   timeFrame: string;
@@ -121,3 +114,7 @@ const timeLineData: TimelineItem[] = [
     src: "/images/timeline/lentiz.png",
   },
 ];
+
+export const Route = createFileRoute("/timeline")({
+  component: TimelinePage,
+});

@@ -1,4 +1,4 @@
-import { usePathname } from "next/navigation";
+import { useRouterState } from "@tanstack/react-router";
 import type { JSX } from "react";
 import { useGlobalSearch } from "../providers/globalSearchProvider";
 import IconButton from "./button/iconButton";
@@ -6,14 +6,14 @@ import Logo from "./logo";
 
 export const Navbar = (): JSX.Element => {
   const { setOpen } = useGlobalSearch();
-  const pathname = usePathname();
+  const { location } = useRouterState();
 
   return (
     <header className="sticky top-0 bg-default p-3 lg:hidden dark:bg-default-dark">
       <nav className="flex items-center justify-between">
         <Logo withTitle={false} size="lg" />
         <div className="flex gap-x-3">
-          {pathname !== "/" && (
+          {location.pathname !== "/" && (
             <IconButton
               type="link"
               variant="ghost"
@@ -40,7 +40,7 @@ export const Navbar = (): JSX.Element => {
           <IconButton
             type="button"
             variant="ghost"
-            icon="OpenMenu"
+            icon="MagnifyingGlass"
             onClick={() => setOpen(true)}
             ariaLabel="Search"
             tooltip={{

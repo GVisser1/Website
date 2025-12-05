@@ -20,11 +20,8 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Run linter
-        run: pnpm lint:check
-
-      - name: Run formatter
-        run: pnpm format:check
+      - name: Run linter and formatter
+        run: pnpm check
 
       - name: Run unit tests
         run: pnpm test

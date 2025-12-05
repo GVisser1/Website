@@ -1,24 +1,20 @@
-import type { Metadata } from "next/types";
+import { createFileRoute } from "@tanstack/react-router";
 import type { JSX } from "react";
-import beach from "../../../public/images/beach.webp";
-import fleetFoxes from "../../../public/images/fleetFoxes.webp";
-import persona5 from "../../../public/images/persona5.webp";
-import holdovers from "../../../public/images/the-holdovers.webp";
 import {
   BlogContent,
   BlogFooter,
   BlogHeader,
   BlogParagraph,
   BlogSection,
-} from "../../components/blog";
-import Header from "../../components/header";
-import InlineLink from "../../components/inlineLink";
-import Page from "../../components/page";
+} from "../components/blog";
+import Header from "../components/header";
+import InlineLink from "../components/inlineLink";
+import Page from "../components/page";
 
-export const metadata: Metadata = {
-  title: "About me",
-  description: "Learn more about me and my interests, hobbies, and professional life",
-};
+// export const metadata: Metadata = {
+//   title: "About me",
+//   description: "Learn more about me and my interests, hobbies, and professional life",
+// };
 
 const AboutPage = (): JSX.Element => (
   <Page>
@@ -30,7 +26,7 @@ const AboutPage = (): JSX.Element => (
     <BlogContent>
       <BlogSection
         id="introduction"
-        image={{ src: beach, alt: "", align: "right", priority: true }}
+        image={{ src: "/images/beach.webp", alt: "", align: "right", priority: true }}
       >
         <BlogHeader>Hi there!</BlogHeader>
         <BlogParagraph>
@@ -42,7 +38,7 @@ const AboutPage = (): JSX.Element => (
 
       <BlogSection
         id="music"
-        image={{ src: fleetFoxes, alt: "Fleet Foxes concert", align: "left" }}
+        image={{ src: "/images/fleetFoxes.webp", alt: "Fleet Foxes concert", align: "left" }}
       >
         <BlogHeader>Music</BlogHeader>
         <BlogParagraph>
@@ -62,7 +58,10 @@ const AboutPage = (): JSX.Element => (
         </BlogParagraph>
       </BlogSection>
 
-      <BlogSection id="movies" image={{ src: holdovers, alt: "The Holdovers", align: "right" }}>
+      <BlogSection
+        id="movies"
+        image={{ src: "/images/the-holdovers.webp", alt: "The Holdovers", align: "right" }}
+      >
         <BlogHeader>Movies</BlogHeader>
         <BlogParagraph>
           Another expensive hobby of mine is watching movies. I have a growing Blu-ray collection
@@ -79,7 +78,10 @@ const AboutPage = (): JSX.Element => (
         </BlogParagraph>
       </BlogSection>
 
-      <BlogSection id="gaming" image={{ src: persona5, alt: "Persona 5 Royal", align: "left" }}>
+      <BlogSection
+        id="gaming"
+        image={{ src: "/images/persona5.webp", alt: "Persona 5 Royal", align: "left" }}
+      >
         <BlogHeader>Gaming</BlogHeader>
         <BlogParagraph>
           I have been gaming ever since I got my Gameboy at age 7. The first game I remember loving
@@ -123,4 +125,6 @@ const AboutPage = (): JSX.Element => (
   </Page>
 );
 
-export default AboutPage;
+export const Route = createFileRoute("/about")({
+  component: AboutPage,
+});

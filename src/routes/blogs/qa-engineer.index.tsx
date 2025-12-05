@@ -1,23 +1,11 @@
-import type { Metadata } from "next";
-import type { JSX } from "react";
-import {
-  BlogContent,
-  BlogHeader,
-  BlogList,
-  BlogParagraph,
-  BlogSection,
-} from "../../../components/blog";
-import Header from "../../../components/header";
-import Image from "../../../components/image";
-import InlineLink from "../../../components/inlineLink";
-import Page from "../../../components/page";
+import { createFileRoute } from "@tanstack/react-router";
+import { BlogContent, BlogHeader, BlogList, BlogParagraph, BlogSection } from "@/components/blog";
+import Header from "@/components/header";
+import Image from "@/components/image";
+import InlineLink from "@/components/inlineLink";
+import Page from "@/components/page";
 
-export const metadata: Metadata = {
-  title: "My first 2 years as a Quality Assurance Engineer",
-  description: "How I shaped the QA role from the ground up at a growing tech company",
-};
-
-const QAEngineerBlogPage = (): JSX.Element => (
+const QAEngineerBlogPage = () => (
   <Page>
     <Header
       title="My first 2 years as a Quality Assurance Engineer"
@@ -154,4 +142,6 @@ const QAEngineerBlogPage = (): JSX.Element => (
   </Page>
 );
 
-export default QAEngineerBlogPage;
+export const Route = createFileRoute("/blogs/qa-engineer/")({
+  component: QAEngineerBlogPage,
+});

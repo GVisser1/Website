@@ -1,7 +1,6 @@
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import clsx from "clsx";
 import { isEmpty } from "lodash-es";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
 import type { JSX, KeyboardEvent, RefObject } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useDebounceValue } from "usehooks-ts";
@@ -22,8 +21,8 @@ type SearchDialogProps = {
 };
 
 const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
-  const router = useRouter();
-  const pathname = usePathname();
+  const navigate = useNavigate();
+  const { location } = useRouterState();
 
   const [query, setQuery] = useState("");
   const [debouncedQuery] = useDebounceValue<string>(query, SEARCH_DEBOUNCE);
@@ -34,20 +33,20 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
 
   useEffect(() => {
     setTimeout(() => {
-      setAvailablePages(MAIN_PAGES.filter((page) => page.href !== pathname));
+      setAvailablePages(MAIN_PAGES.filter((page) => page.href !== location.pathname));
     }, ANIMATION_DURATION);
-  }, [pathname]);
+  }, [location.pathname]);
 
   useEffect(() => {
     if (!debouncedQuery) {
-      setAvailablePages(MAIN_PAGES.filter((page) => page.href !== pathname));
+      setAvailablePages(MAIN_PAGES.filter((page) => page.href !== location.pathname));
       setSelectedIndex(0);
       return;
     }
 
     const normalizedValue = normalizeString(debouncedQuery);
     const filteredResults = PAGES.filter((page) => {
-      if (page.href === pathname) {
+      if (page.href === location.pathname) {
         return false;
       }
       return (
@@ -58,7 +57,7 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
 
     setAvailablePages(filteredResults);
     setSelectedIndex(isEmpty(filteredResults) ? -1 : 0);
-  }, [debouncedQuery, pathname]);
+  }, [debouncedQuery, location.pathname]);
 
   const handleOnClose = (): void => {
     onClose();
@@ -98,7 +97,7 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
     }
 
     if (key === "Enter" && selectedIndex >= 0) {
-      router.push(availablePages[selectedIndex].href);
+      navigate({ to: availablePages[selectedIndex].href });
       handleOnClose();
     }
   };
@@ -168,7 +167,7 @@ const ResultsList = (props: ResultsListProps): JSX.Element => (
           id={page.name}
           role="option"
           aria-selected={props.selectedIndex === index}
-          href={page.href}
+          to={page.href}
           onClick={props.onClose}
           className={clsx(
             "btn-ghost flex h-10 w-full shrink-0 items-center gap-x-2 rounded-sm px-2 text-button focus-visible:focus-ring-inset",

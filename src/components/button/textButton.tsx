@@ -1,5 +1,5 @@
+import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
-import Link from "next/link";
 import type { JSX } from "react";
 
 type BaseTextButtonProps = {
@@ -40,7 +40,7 @@ const TextButton = (props: TextButtonProps): JSX.Element => {
   return props.type === "link" ? (
     <Link
       className={classes}
-      href={props.href}
+      to={props.href}
       {...(props.variant === "ghost" && { "data-active": props.active })}
     >
       {label}

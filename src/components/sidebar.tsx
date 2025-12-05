@@ -1,10 +1,8 @@
-"use client";
-
+import { useRouterState } from "@tanstack/react-router";
 import clsx from "clsx";
-import { usePathname } from "next/navigation";
 import { type JSX, useEffect } from "react";
 import { useLocalStorage } from "usehooks-ts";
-import { MAIL_TO, MAIN_PAGES, PROJECT_PAGES } from "../constants";
+import { MAIL_TO, MAIN_PAGES, PROJECT_PAGES } from "@/constants";
 import useMetaKey from "../hooks/useMetaKey";
 import { useGlobalSearch } from "../providers/globalSearchProvider";
 import IconAndTextButton from "./button/iconAndTextButton";
@@ -14,7 +12,7 @@ import type { IconName } from "./icon";
 import Logo from "./logo";
 
 export const Sidebar = (): JSX.Element => {
-  const pathname = usePathname();
+  const { location } = useRouterState();
   const { setOpen } = useGlobalSearch();
   const metaKey = useMetaKey();
   const [isCollapsed, setIsCollapsed] = useLocalStorage("isSidebarCollapsed", false);
@@ -75,7 +73,8 @@ export const Sidebar = (): JSX.Element => {
             key={item.name}
             href={item.href}
             current={
-              pathname === item.href || (pathname.startsWith(item.href) && item.href !== "/")
+              location.pathname === item.href ||
+              (location.pathname.startsWith(item.href) && item.href !== "/")
             }
             icon={item.icon}
             label={item.name}
@@ -91,7 +90,7 @@ export const Sidebar = (): JSX.Element => {
           <SidebarLink
             key={item.name}
             href={item.href}
-            current={pathname === item.href || pathname.startsWith(item.href)}
+            current={location.pathname === item.href || location.pathname.startsWith(item.href)}
             icon={item.icon}
             label={item.name}
             isCollapsed={isCollapsed}
