@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import clsx from "clsx";
 import type { JSX } from "react";
-import TextButton from "@/components/button/textButton";
 import Header from "@/components/header";
 import Image from "@/components/image";
 import Page from "@/components/page";
@@ -46,16 +45,6 @@ const TimeLineItem = ({ item, align }: TimeLineItemProps): JSX.Element => (
         <p className="text-sm-regular text-secondary dark:text-secondary-dark">{item.subTitle}</p>
       </div>
     </div>
-    {item.href && (
-      <TextButton
-        type="link"
-        variant="light"
-        size="medium"
-        label="Read blog"
-        href={item.href}
-        className="absolute top-2.5 right-2.5"
-      />
-    )}
     <div
       className={clsx(
         "absolute top-0 mt-10 hidden size-2.5 translate-x-0 rounded-full bg-default ring-4 ring-primary md:-mx-5 md:flex",
@@ -72,7 +61,6 @@ type TimelineItem = {
   description?: string;
   status?: string;
   src?: string;
-  href?: string;
 };
 
 const timeLineData: TimelineItem[] = [
@@ -81,7 +69,6 @@ const timeLineData: TimelineItem[] = [
     title: "QA Engineer",
     subTitle: "MoreApp",
     src: "/images/timeline/moreapp.webp",
-    href: "/blogs/qa-engineer",
   },
   {
     timeFrame: getTimeFrame(new Date(2023, 1, 6), new Date(2023, 6, 7)),

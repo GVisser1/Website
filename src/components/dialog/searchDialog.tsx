@@ -5,10 +5,9 @@ import type { JSX, KeyboardEvent, RefObject } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useDebounceValue } from "usehooks-ts";
 import type { Page } from "../../constants";
-import { MAIN_PAGES, PAGES } from "../../constants";
+import { PAGES } from "../../constants";
 import { normalizeString } from "../../utils/textUtil";
 import Icon from "../icon";
-import Pill from "../pill";
 import SearchInput from "../search";
 import Dialog from "./dialog";
 
@@ -33,13 +32,13 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
 
   useEffect(() => {
     setTimeout(() => {
-      setAvailablePages(MAIN_PAGES.filter((page) => page.href !== location.pathname));
+      setAvailablePages(PAGES.filter((page) => page.href !== location.pathname));
     }, ANIMATION_DURATION);
   }, [location.pathname]);
 
   useEffect(() => {
     if (!debouncedQuery) {
-      setAvailablePages(MAIN_PAGES.filter((page) => page.href !== location.pathname));
+      setAvailablePages(PAGES.filter((page) => page.href !== location.pathname));
       setSelectedIndex(0);
       return;
     }
@@ -179,7 +178,6 @@ const ResultsList = (props: ResultsListProps): JSX.Element => (
         >
           <Icon name={page.icon} className="size-5" />
           <span className="truncate">{page.name}</span>
-          {page.type === "blog" && <Pill type="info" label="Blog" className="ml-auto" />}
         </Link>
       ))}
     </div>

@@ -13,9 +13,7 @@ import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as BlogsIndexRouteImport } from './routes/blogs/index'
 import { Route as ProjectsPokemonIndexRouteImport } from './routes/projects/pokemon/index'
-import { Route as BlogsQaEngineerIndexRouteImport } from './routes/blogs/qa-engineer.index'
 import { Route as ProjectsPokemonIdentifierIndexRouteImport } from './routes/projects/pokemon/$identifier.index'
 
 const TimelineRoute = TimelineRouteImport.update({
@@ -38,19 +36,9 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogsIndexRoute = BlogsIndexRouteImport.update({
-  id: '/blogs/',
-  path: '/blogs/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ProjectsPokemonIndexRoute = ProjectsPokemonIndexRouteImport.update({
   id: '/projects/pokemon/',
   path: '/projects/pokemon/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogsQaEngineerIndexRoute = BlogsQaEngineerIndexRouteImport.update({
-  id: '/blogs/qa-engineer/',
-  path: '/blogs/qa-engineer/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsPokemonIdentifierIndexRoute =
@@ -65,8 +53,6 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/settings': typeof SettingsRoute
   '/timeline': typeof TimelineRoute
-  '/blogs': typeof BlogsIndexRoute
-  '/blogs/qa-engineer': typeof BlogsQaEngineerIndexRoute
   '/projects/pokemon': typeof ProjectsPokemonIndexRoute
   '/projects/pokemon/$identifier': typeof ProjectsPokemonIdentifierIndexRoute
 }
@@ -75,8 +61,6 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/settings': typeof SettingsRoute
   '/timeline': typeof TimelineRoute
-  '/blogs': typeof BlogsIndexRoute
-  '/blogs/qa-engineer': typeof BlogsQaEngineerIndexRoute
   '/projects/pokemon': typeof ProjectsPokemonIndexRoute
   '/projects/pokemon/$identifier': typeof ProjectsPokemonIdentifierIndexRoute
 }
@@ -86,8 +70,6 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/settings': typeof SettingsRoute
   '/timeline': typeof TimelineRoute
-  '/blogs/': typeof BlogsIndexRoute
-  '/blogs/qa-engineer/': typeof BlogsQaEngineerIndexRoute
   '/projects/pokemon/': typeof ProjectsPokemonIndexRoute
   '/projects/pokemon/$identifier/': typeof ProjectsPokemonIdentifierIndexRoute
 }
@@ -98,8 +80,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/settings'
     | '/timeline'
-    | '/blogs'
-    | '/blogs/qa-engineer'
     | '/projects/pokemon'
     | '/projects/pokemon/$identifier'
   fileRoutesByTo: FileRoutesByTo
@@ -108,8 +88,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/settings'
     | '/timeline'
-    | '/blogs'
-    | '/blogs/qa-engineer'
     | '/projects/pokemon'
     | '/projects/pokemon/$identifier'
   id:
@@ -118,8 +96,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/settings'
     | '/timeline'
-    | '/blogs/'
-    | '/blogs/qa-engineer/'
     | '/projects/pokemon/'
     | '/projects/pokemon/$identifier/'
   fileRoutesById: FileRoutesById
@@ -129,8 +105,6 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   SettingsRoute: typeof SettingsRoute
   TimelineRoute: typeof TimelineRoute
-  BlogsIndexRoute: typeof BlogsIndexRoute
-  BlogsQaEngineerIndexRoute: typeof BlogsQaEngineerIndexRoute
   ProjectsPokemonIndexRoute: typeof ProjectsPokemonIndexRoute
   ProjectsPokemonIdentifierIndexRoute: typeof ProjectsPokemonIdentifierIndexRoute
 }
@@ -165,25 +139,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blogs/': {
-      id: '/blogs/'
-      path: '/blogs'
-      fullPath: '/blogs'
-      preLoaderRoute: typeof BlogsIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/projects/pokemon/': {
       id: '/projects/pokemon/'
       path: '/projects/pokemon'
       fullPath: '/projects/pokemon'
       preLoaderRoute: typeof ProjectsPokemonIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blogs/qa-engineer/': {
-      id: '/blogs/qa-engineer/'
-      path: '/blogs/qa-engineer'
-      fullPath: '/blogs/qa-engineer'
-      preLoaderRoute: typeof BlogsQaEngineerIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/pokemon/$identifier/': {
@@ -201,8 +161,6 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   SettingsRoute: SettingsRoute,
   TimelineRoute: TimelineRoute,
-  BlogsIndexRoute: BlogsIndexRoute,
-  BlogsQaEngineerIndexRoute: BlogsQaEngineerIndexRoute,
   ProjectsPokemonIndexRoute: ProjectsPokemonIndexRoute,
   ProjectsPokemonIdentifierIndexRoute: ProjectsPokemonIdentifierIndexRoute,
 }
