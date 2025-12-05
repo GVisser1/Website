@@ -1,7 +1,7 @@
 import clsx from "clsx";
+import type { JSX } from "react";
 import type { PokemonType } from "../../utils/pokemonUtil";
 import { pokemonTypeInfo } from "../../utils/pokemonUtil";
-import type { JSX } from "react";
 
 type PokemonTypePill = {
   types: PokemonType[];

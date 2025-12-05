@@ -1,7 +1,6 @@
+import type { JSX } from "react";
 import IconAndTextButton from "./button/iconAndTextButton";
 import Divider from "./divider";
-
-import type { JSX } from "react";
 
 type HeaderProps = {
   title: string;

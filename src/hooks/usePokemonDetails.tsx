@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { POKEMON_API_URL } from "../constants";
-import { hours } from "../utils/timeUtil";
 import type { PokemonIdentifier, PokemonType } from "../utils/pokemonUtil";
+import { hours } from "../utils/timeUtil";
 
 type PokemonDetailsResponse = {
   id: number;
@@ -27,7 +27,7 @@ type PokemonDetailsResponse = {
   weight: number;
 };
 
-type PokemonDetails = {
+export type PokemonDetails = {
   id: number;
   name: string;
   abilities: { name: string; is_hidden: boolean }[];

@@ -1,12 +1,14 @@
 import clsx from "clsx";
+import type { JSX } from "react";
 import type { IconName } from "./icon";
 import Icon from "./icon";
-import type { JSX } from "react";
 
 const colours: Record<PillType, string> = {
-  success: "bg-status-success text-status-success dark:bg-status-success-dark dark:text-status-success-dark",
+  success:
+    "bg-status-success text-status-success dark:bg-status-success-dark dark:text-status-success-dark",
   info: "bg-status-info text-status-info dark:bg-status-info-dark dark:text-status-info-dark",
-  neutral: "bg-status-neutral text-status-neutral dark:bg-status-neutral-dark dark:text-status-neutral-dark",
+  neutral:
+    "bg-status-neutral text-status-neutral dark:bg-status-neutral-dark dark:text-status-neutral-dark",
 };
 
 type PillType = "success" | "info" | "neutral";

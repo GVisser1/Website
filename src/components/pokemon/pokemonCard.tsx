@@ -1,15 +1,15 @@
 "use client";
 
-import Icon from "../icon";
+import clsx from "clsx";
+import { isNil } from "lodash-es";
+import Link from "next/link";
 import type { JSX, Ref } from "react";
 import { useState } from "react";
-import { isNil } from "lodash-es";
-import clsx from "clsx";
 import usePokemonDetails from "../../hooks/usePokemonDetails";
-import SkeletonLoader from "../skeleton";
-import Link from "next/link";
-import PokemonTypes from "./pokemonTypes";
+import Icon from "../icon";
 import Image from "../image";
+import SkeletonLoader from "../skeleton";
+import PokemonTypes from "./pokemonTypes";
 
 export type PokemonCardProps = {
   identifier: string | number;
@@ -45,14 +45,23 @@ const PokemonCard = ({ identifier, size }: PokemonCardProps): JSX.Element => {
       data-size={size}
     >
       <div className="relative">
-        <Sprite name={data.name} sprite={data.sprite} size={size} onError={() => setIsImageError(true)} />
+        <Sprite
+          name={data.name}
+          sprite={data.sprite}
+          size={size}
+          onError={() => setIsImageError(true)}
+        />
         {showErrorState && <SpriteErrorState />}
       </div>
       <div className="grow">
         <p className="w-full truncate text-base-semibold text-primary capitalize dark:text-primary-dark">
           {data.name} #{data.id}
         </p>
-        <PokemonTypes types={data.types} size="sm" className={clsx("mt-1", size === "md" && "justify-center")} />
+        <PokemonTypes
+          types={data.types}
+          size="sm"
+          className={clsx("mt-1", size === "md" && "justify-center")}
+        />
       </div>
     </Link>
   );
@@ -69,7 +78,11 @@ type SpriteProps = {
 };
 
 const Sprite = ({ name, sprite, size, onError }: SpriteProps): JSX.Element => {
-  const classes = clsx("mx-auto object-contain", size === "md" && "size-22", size === "sm" && "size-16");
+  const classes = clsx(
+    "mx-auto object-contain",
+    size === "md" && "size-22",
+    size === "sm" && "size-16",
+  );
 
   return <Image src={sprite} alt={`${name} sprite`} className={classes} onError={onError} />;
 };

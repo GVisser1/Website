@@ -1,8 +1,7 @@
-import Image from "next/image";
-import logo from "../../public/images/logo.webp";
 import clsx from "clsx";
-
+import Image from "next/image";
 import type { JSX } from "react";
+import logo from "../../public/images/logo.webp";
 
 type LogoProps = {
   withTitle: boolean;
@@ -18,7 +17,9 @@ const Logo = ({ withTitle, size, className }: LogoProps): JSX.Element => {
   return (
     <div className={classes}>
       <Image className={imageClasses} src={logo} alt="" />
-      {withTitle && <p className="truncate text-header-lg text-primary dark:text-primary-dark">Glenn Visser</p>}
+      {withTitle && (
+        <p className="truncate text-header-lg text-primary dark:text-primary-dark">Glenn Visser</p>
+      )}
     </div>
   );
 };

@@ -1,7 +1,13 @@
+import {
+  DialogContent,
+  DialogOverlay,
+  DialogPortal,
+  Dialog as DialogRoot,
+  DialogTitle,
+} from "@radix-ui/react-dialog";
 import clsx from "clsx";
-import type { ReactNode, JSX } from "react";
+import type { JSX, ReactNode } from "react";
 import IconButton from "../button/iconButton";
-import { Dialog as DialogRoot, DialogContent, DialogTitle, DialogOverlay, DialogPortal } from "@radix-ui/react-dialog";
 
 type DialogProps = {
   title: { value: string; capitalize?: boolean };
@@ -13,7 +19,14 @@ type DialogProps = {
   onOpenFocusId: string;
 };
 
-const Dialog = ({ title, open, onClose, children, className, ...props }: DialogProps): JSX.Element => (
+const Dialog = ({
+  title,
+  open,
+  onClose,
+  children,
+  className,
+  ...props
+}: DialogProps): JSX.Element => (
   <DialogRoot modal open={open} onOpenChange={() => open && onClose()}>
     <DialogOverlay className="fixed inset-0 flex w-screen justify-center overflow-y-auto bg-elevation-surface-blanket-top p-2 focus:outline-hidden sm:px-6 sm:py-8 lg:px-8 lg:py-16 dark:bg-elevation-surface-blanket-top-dark" />
     <DialogPortal container={document.getElementById("portal-root")}>

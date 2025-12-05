@@ -1,10 +1,10 @@
 import clsx from "clsx";
+import type { JSX } from "react";
 import type { PokemonType } from "../../utils/pokemonUtil";
 import { pokemonTypeInfo } from "../../utils/pokemonUtil";
 import Icon from "../icon";
-import Tooltip from "../tooltip";
-import type { JSX } from "react";
 import Image from "../image";
+import Tooltip from "../tooltip";
 
 type PokemonCoverProps = {
   name: string;
@@ -21,7 +21,10 @@ const PokemonCover = (props: PokemonCoverProps): JSX.Element => {
   return (
     <div className={classes}>
       <Image src={props.sprite} alt={props.name} className="h-56 w-full object-contain" priority />
-      <Icon name="PokéBall" className="absolute right-0 bottom-0 -z-1 size-28 -rotate-45 text-inverse/30" />
+      <Icon
+        name="PokéBall"
+        className="absolute right-0 bottom-0 -z-1 size-28 -rotate-45 text-inverse/30"
+      />
       {props.isLegendary && <LegendaryIndicator />}
       {props.isMythical && <MythicalIndicator />}
     </div>

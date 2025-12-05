@@ -6,7 +6,6 @@ dist
 .next
 next-env.d.ts
 
-.eslintcache
 .DS_Store
 .env.local
 /blob-report/

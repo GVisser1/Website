@@ -1,16 +1,32 @@
-import type { JSX } from "react";
 import clsx from "clsx";
+import type { JSX } from "react";
 import Icon from "../components/icon";
 
 export type IconType = keyof typeof iconMap;
 const iconMap = {
   // fields
   text: { name: "Text", bg: "bg-accent-text-fields", text: "text-icons-accent-text-fields" },
-  textArea: { name: "Bars3BottomLeft", bg: "bg-accent-text-fields", text: "text-icons-accent-text-fields" },
-  subform: { name: "DocumentDuplicate", bg: "bg-accent-subform", text: "text-icons-accent-subform" },
-  catalogue: { name: "ShoppingCart", bg: "bg-accent-search-items", text: "text-icons-accent-search-items" },
+  textArea: {
+    name: "Bars3BottomLeft",
+    bg: "bg-accent-text-fields",
+    text: "text-icons-accent-text-fields",
+  },
+  subform: {
+    name: "DocumentDuplicate",
+    bg: "bg-accent-subform",
+    text: "text-icons-accent-subform",
+  },
+  catalogue: {
+    name: "ShoppingCart",
+    bg: "bg-accent-search-items",
+    text: "text-icons-accent-search-items",
+  },
   number: { name: "NumberedList", bg: "bg-accent-number", text: "text-icons-accent-number" },
-  search: { name: "MagnifyingGlassCircle", bg: "bg-accent-search-items", text: "text-icons-accent-search-items" },
+  search: {
+    name: "MagnifyingGlassCircle",
+    bg: "bg-accent-search-items",
+    text: "text-icons-accent-search-items",
+  },
 
   // variables
   group: {
@@ -50,7 +66,11 @@ type OptionIconProps = {
   applyBgColour?: boolean;
   className?: string;
 };
-export const OptionIcon = ({ type, applyBgColour = true, className }: OptionIconProps): JSX.Element => {
+export const OptionIcon = ({
+  type,
+  applyBgColour = true,
+  className,
+}: OptionIconProps): JSX.Element => {
   const icon = iconMap[type];
   const classes = clsx(
     "flex size-5 items-center justify-center rounded-xs p-[3px]",

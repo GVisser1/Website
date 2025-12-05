@@ -1,17 +1,17 @@
-import Link from "next/link";
-import type { KeyboardEvent, JSX, RefObject } from "react";
-import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
+import { isEmpty } from "lodash-es";
+import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import SearchInput from "../search";
-import Icon from "../icon";
+import type { JSX, KeyboardEvent, RefObject } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useDebounceValue } from "usehooks-ts";
 import type { Page } from "../../constants";
 import { MAIN_PAGES, PAGES } from "../../constants";
-import { isEmpty } from "lodash-es";
 import { normalizeString } from "../../utils/textUtil";
-import Dialog from "./dialog";
+import Icon from "../icon";
 import Pill from "../pill";
-import { useDebounceValue } from "usehooks-ts";
+import SearchInput from "../search";
+import Dialog from "./dialog";
 
 const ANIMATION_DURATION = 200;
 const SEARCH_DEBOUNCE = 300;
@@ -157,7 +157,11 @@ type ResultsListProps = {
 const ResultsList = (props: ResultsListProps): JSX.Element => (
   <>
     <h2 className="sr-only">Results</h2>
-    <div role="listbox" aria-label="Pages" className="flex max-h-56 flex-col gap-y-1 overflow-y-auto">
+    <div
+      role="listbox"
+      aria-label="Pages"
+      className="flex max-h-56 flex-col gap-y-1 overflow-y-auto"
+    >
       {props.results.map((page, index) => (
         <Link
           key={page.name}

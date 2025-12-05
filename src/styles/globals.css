@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -8,7 +7,7 @@
 
 @theme inline {
   --font-inter: var(--inter, var(--font-sans));
-  --font-comic-sans: "Comic Sans MS", 'Chalkboard SE', 'Comic Neue', var(--font-sans);
+  --font-comic-sans: "Comic Sans MS", "Chalkboard SE", "Comic Neue", var(--font-sans);
   --breakpoint-xs: 30rem;
 
   --text-*: initial;
@@ -149,7 +148,7 @@
   --background-color-btn-secondary-dark: #27272a;
   --background-color-btn-secondary-hover-dark: #3f3f46;
   --background-color-btn-secondary-press-dark: #52525b;
-  --background-color-btn-light: #FFFFFF;
+  --background-color-btn-light: #ffffff;
   --background-color-btn-light-hover: #eff6ff;
   --background-color-btn-light-press: #dbeafe;
   --background-color-btn-light-dark: #18181b;
@@ -203,7 +202,7 @@
 
   --ring-color-*: initial;
   --ring-color-primary: #3b82f6;
-  --ring-color-secondary: #FFFFFF;
+  --ring-color-secondary: #ffffff;
 
   --stroke-*: initial;
   --stroke-primary: #18181b;
@@ -249,11 +248,15 @@
 
 @utility focus-ring {
   outline: none;
-  box-shadow: 0 0 0 1px var(--ring-color-secondary), 0 0 0 4px var(--ring-color-primary);
+  box-shadow:
+    0 0 0 1px var(--ring-color-secondary),
+    0 0 0 4px var(--ring-color-primary);
 }
 @utility focus-ring-inset {
   outline: none;
-  box-shadow: inset 0 0 0 3px var(--ring-color-primary), inset 0 0 0 4px var(--ring-color-secondary);
+  box-shadow:
+    inset 0 0 0 3px var(--ring-color-primary),
+    inset 0 0 0 4px var(--ring-color-secondary);
 }
 @utility focus-ring-text {
   outline: none;
@@ -270,14 +273,14 @@ input[type="search"]::-webkit-search-cancel-button {
   .btn-disabled {
     @apply bg-btn-disabled text-disabled dark:text-disabled-dark dark:bg-btn-disabled-dark;
   }
-  .btn-primary{
-    @apply bg-btn-primary text-inverse hover:bg-btn-primary-hover press:bg-btn-primary-press dark:bg-btn-primary-dark dark:hover:bg-btn-primary-hover-dark dark:press:bg-btn-primary-press-dark
+  .btn-primary {
+    @apply bg-btn-primary text-inverse hover:bg-btn-primary-hover press:bg-btn-primary-press dark:bg-btn-primary-dark dark:hover:bg-btn-primary-hover-dark dark:press:bg-btn-primary-press-dark;
   }
   .btn-secondary {
-    @apply bg-btn-secondary text-primary dark:bg-btn-secondary-dark dark:text-primary-dark hover:bg-btn-secondary-hover dark:hover:bg-btn-secondary-hover-dark press:bg-btn-secondary-press dark:press:bg-btn-secondary-press-dark
+    @apply bg-btn-secondary text-primary dark:bg-btn-secondary-dark dark:text-primary-dark hover:bg-btn-secondary-hover dark:hover:bg-btn-secondary-hover-dark press:bg-btn-secondary-press dark:press:bg-btn-secondary-press-dark;
   }
   .btn-light {
-    @apply border box-border border-light bg-btn-light text-light dark:bg-btn-light-dark dark:text-light-dark hover:bg-btn-light-hover press:bg-btn-light-press dark:hover:bg-btn-light-hover-dark dark:press:bg-btn-light-press-dark
+    @apply border box-border border-light bg-btn-light text-light dark:bg-btn-light-dark dark:text-light-dark hover:bg-btn-light-hover press:bg-btn-light-press dark:hover:bg-btn-light-hover-dark dark:press:bg-btn-light-press-dark;
   }
   .btn-ghost {
     @apply text-primary hover:bg-btn-ghost-hover active:bg-btn-ghost-active dark:text-primary-dark dark:hover:bg-btn-ghost-hover-dark dark:active:bg-btn-ghost-active-dark press:bg-btn-ghost-press dark:press:bg-btn-ghost-press-dark;

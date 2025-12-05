@@ -1,4 +1,4 @@
-import { renderHook, act } from "@testing-library/react";
+import { act, renderHook } from "@testing-library/react";
 import { useLocalStorage } from "usehooks-ts";
 import type { Mock } from "vitest";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -15,7 +15,10 @@ describe("useFont hook", () => {
   const useLocalStorageMock = useLocalStorage as Mock;
 
   beforeEach(() => {
-    useLocalStorageMock.mockImplementation((_key: string, initialValue: Font) => [initialValue, setFontMock]);
+    useLocalStorageMock.mockImplementation((_key: string, initialValue: Font) => [
+      initialValue,
+      setFontMock,
+    ]);
   });
 
   afterEach(() => {

@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react";
-import useMetaKey from "../useMetaKey";
 import { describe, expect, it } from "vitest";
+import useMetaKey from "../useMetaKey";
 
 describe("useMetaKey", () => {
   it("returns '⌘' on Mac systems", () => {

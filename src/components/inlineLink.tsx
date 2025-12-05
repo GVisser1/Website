@@ -1,6 +1,5 @@
-import type { ReactNode, JSX } from "react";
-import React from "react";
 import NextLink from "next/link";
+import type { JSX, ReactNode } from "react";
 
 type InlineLinkProps = {
   href: string;

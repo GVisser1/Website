@@ -1,5 +1,5 @@
-import type { JSX } from "react";
 import clsx from "clsx";
+import type { JSX } from "react";
 import Pill from "../pill";
 
 type PokemonMetaProps = {
@@ -14,8 +14,8 @@ const PokemonMeta = (props: PokemonMetaProps): JSX.Element => {
   const classes = clsx("mt-4 flex w-full flex-col gap-y-1", props.className);
 
   const items = [
-    { label: "Height", value: props.height / 10 + " m" },
-    { label: "Weight", value: props.weight / 10 + " kg" },
+    { label: "Height", value: `${props.height / 10} m` },
+    { label: "Weight", value: `${props.weight / 10} kg` },
     { label: "Base EXP", value: props.baseExp },
     {
       label: "Abilities",

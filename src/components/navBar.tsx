@@ -1,8 +1,8 @@
-import { useGlobalSearch } from "../providers/globalSearchProvider";
 import { usePathname } from "next/navigation";
-import Logo from "./logo";
 import type { JSX } from "react";
+import { useGlobalSearch } from "../providers/globalSearchProvider";
 import IconButton from "./button/iconButton";
+import Logo from "./logo";
 
 export const Navbar = (): JSX.Element => {
   const { setOpen } = useGlobalSearch();

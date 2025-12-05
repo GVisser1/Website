@@ -1,21 +1,21 @@
 "use client";
 
 import { isNil, startCase } from "lodash-es";
-import { use, type JSX } from "react";
-import usePokemonDetails from "../../../../hooks/usePokemonDetails";
+import { type JSX, use } from "react";
 import Header from "../../../../components/header";
+import Page from "../../../../components/page";
+import PokemonCover from "../../../../components/pokemon/pokemonCover";
+import PokemonEntrySwitcher from "../../../../components/pokemon/pokemonEntrySwitcher";
+import PokemonEvolutionTree from "../../../../components/pokemon/pokemonEvolutionTree";
+import PokemonMeta from "../../../../components/pokemon/pokemonMeta";
+import PokemonStatsTable from "../../../../components/pokemon/pokemonStats";
+import PokemonTypes from "../../../../components/pokemon/pokemonTypes";
 import { PROJECT_PAGES } from "../../../../constants";
+import usePokemonDetails from "../../../../hooks/usePokemonDetails";
+import usePokemonEvolution from "../../../../hooks/usePokemonEvolution";
+import { usePokemonSpecies } from "../../../../hooks/usePokemonSpecies";
 import type { PokemonIdentifier } from "../../../../utils/pokemonUtil";
 import { PAGE_SIZE } from "../../../../utils/pokemonUtil";
-import { usePokemonSpecies } from "../../../../hooks/usePokemonSpecies";
-import usePokemonEvolution from "../../../../hooks/usePokemonEvolution";
-import PokemonEntrySwitcher from "../../../../components/pokemon/pokemonEntrySwitcher";
-import PokemonCover from "../../../../components/pokemon/pokemonCover";
-import PokemonTypes from "../../../../components/pokemon/pokemonTypes";
-import PokemonStats from "../../../../components/pokemon/pokemonStats";
-import PokemonMeta from "../../../../components/pokemon/pokemonMeta";
-import PokemonEvolutionTree from "../../../../components/pokemon/pokemonEvolutionTree";
-import Page from "../../../../components/page";
 
 type PokemonInfoPageProps = {
   params: Promise<{ identifier: PokemonIdentifier }>;
@@ -25,12 +25,18 @@ const PokemonInfoPage = (props: PokemonInfoPageProps): JSX.Element => {
   const param = use(props.params);
   const pokemon = usePokemonDetails(param.identifier);
   const pokemonSpecies = usePokemonSpecies(pokemon.data?.id);
-  const pokemonEvolution = usePokemonEvolution(pokemon.data?.name, pokemonSpecies.data?.evolutionChain);
+  const pokemonEvolution = usePokemonEvolution(
+    pokemon.data?.name,
+    pokemonSpecies.data?.evolutionChain,
+  );
 
   const isLoading = pokemon.isLoading || pokemonSpecies.isLoading || pokemonEvolution.isLoading;
 
   const pageNumber = pokemon.data?.id ? Math.ceil(pokemon.data.id / PAGE_SIZE) : 1;
-  const backLink = { href: `${PROJECT_PAGES[0].href}?page=${pageNumber}`, label: "Back to Pokémon" };
+  const backLink = {
+    href: `${PROJECT_PAGES[0].href}?page=${pageNumber}`,
+    label: "Back to Pokémon",
+  };
 
   if (isLoading) {
     return <LoadingState backLink={backLink} />;
@@ -71,7 +77,7 @@ const PokemonInfoPage = (props: PokemonInfoPageProps): JSX.Element => {
         </div>
       </div>
 
-      <PokemonStats stats={pokemon.data.stats} className="mt-8 sm:mt-4" />
+      <PokemonStatsTable stats={pokemon.data.stats} className="mt-8 sm:mt-4" />
 
       {!isNil(pokemonEvolution.data) && pokemonEvolution.data.evolves_to.length > 0 && (
         <PokemonEvolutionTree chain={pokemonEvolution.data} />

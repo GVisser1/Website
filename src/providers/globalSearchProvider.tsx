@@ -1,5 +1,5 @@
 import { noop } from "lodash-es";
-import type { ReactNode, JSX } from "react";
+import type { JSX, ReactNode } from "react";
 import { createContext, useContext, useEffect, useState } from "react";
 
 type GlobalSearchContextProps = {
@@ -28,10 +28,12 @@ export const GlobalSearchProvider = (props: GlobalSearchProviderProps): JSX.Elem
     };
     document.addEventListener("keydown", down);
     return (): void => document.removeEventListener("keydown", down);
-  }, [open]);
+  }, []);
 
   return (
-    <GlobalSearchContext.Provider value={{ open, setOpen: setOpen }}>{props.children}</GlobalSearchContext.Provider>
+    <GlobalSearchContext.Provider value={{ open, setOpen: setOpen }}>
+      {props.children}
+    </GlobalSearchContext.Provider>
   );
 };
 

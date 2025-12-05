@@ -1,17 +1,17 @@
 "use client";
 
+import { isEmpty, isNil, uniqueId } from "lodash-es";
 import { useRouter, useSearchParams } from "next/navigation";
-import usePokemon from "../../hooks/usePokemon";
 import { type JSX, useEffect, useState } from "react";
 import { useDebounceValue } from "usehooks-ts";
-import { normalizeString } from "../../utils/textUtil";
+import usePokemon from "../../hooks/usePokemon";
 import { PAGE_SIZE } from "../../utils/pokemonUtil";
-import { isEmpty, isNil } from "lodash-es";
+import { normalizeString } from "../../utils/textUtil";
+import Icon from "../icon";
+import Pagination from "../pagination";
 import SearchInput from "../search";
 import SkeletonLoader from "../skeleton";
 import PokemonCard from "./pokemonCard";
-import Icon from "../icon";
-import Pagination from "../pagination";
 
 const SEARCH_DEBOUNCE = 300;
 
@@ -23,7 +23,9 @@ const PokemonContent = (): JSX.Element => {
   const [query, setQuery] = useState<string>("");
   const [debouncedQuery] = useDebounceValue<string>(query, SEARCH_DEBOUNCE);
 
-  const filteredPokemon = pokemon?.filter((p) => normalizeString(p.name).includes(normalizeString(debouncedQuery)));
+  const filteredPokemon = pokemon?.filter((p) =>
+    normalizeString(p.name).includes(normalizeString(debouncedQuery)),
+  );
   const totalFilteredPages = Math.ceil((filteredPokemon?.length || 0) / PAGE_SIZE);
 
   useEffect(() => {
@@ -81,7 +83,10 @@ const PokemonContent = (): JSX.Element => {
       </div>
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-        {showLoadingState && Array.from({ length: PAGE_SIZE }).map((_, i) => <SkeletonLoader size="md" key={i} />)}
+        {showLoadingState &&
+          Array.from({ length: PAGE_SIZE }).map(() => (
+            <SkeletonLoader size="md" key={uniqueId()} />
+          ))}
         {showErrorState && <p className="col-span-full text-center text-error">{error.message}</p>}
         {showContent &&
           filteredPokemon

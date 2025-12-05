@@ -1,9 +1,14 @@
 "use client";
 
-import type { ReactNode, JSX } from "react";
-import { ThemeProvider } from "./themeProvider";
-import { dehydrate, HydrationBoundary, QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import type { JSX, ReactNode } from "react";
 import { GlobalSearchProvider } from "./globalSearchProvider";
+import { ThemeProvider } from "./themeProvider";
 
 type ProvidersProps = {
   children: ReactNode;

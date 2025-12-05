@@ -1,18 +1,18 @@
 "use client";
 
-import type { ReactNode, JSX } from "react";
-import { useEffect, useState } from "react";
-import clsx from "clsx";
 import {
-  Tooltip as TooltipRoot,
-  TooltipProvider,
-  TooltipTrigger,
-  TooltipPortal,
   TooltipContent,
+  TooltipPortal,
+  TooltipProvider,
+  Tooltip as TooltipRoot,
+  TooltipTrigger,
 } from "@radix-ui/react-tooltip";
+import clsx from "clsx";
 import { uniqueId } from "lodash-es";
-import { seconds } from "../utils/timeUtil";
+import type { JSX, ReactNode } from "react";
+import { useEffect, useState } from "react";
 import { isTouchDevice } from "../utils/deviceUtil";
+import { seconds } from "../utils/timeUtil";
 
 const DELAY = seconds(0.3);
 const ID = uniqueId("tooltip-");
@@ -40,8 +40,8 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
     checkElement();
   }, []);
 
-  // Just return the trigger if on non-pointer devices
   if (isTouchDevice) {
+    // Just return the trigger if on non-pointer devices
     return <>{props.trigger}</>;
   }
 
@@ -64,7 +64,9 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
             <p id={ID} className="text-elevation-float">
               {props.title}
             </p>
-            {props.description && <p className="text-elevation-float-secondary">{props.description}</p>}
+            {props.description && (
+              <p className="text-elevation-float-secondary">{props.description}</p>
+            )}
           </TooltipContent>
         </TooltipPortal>
       </TooltipRoot>

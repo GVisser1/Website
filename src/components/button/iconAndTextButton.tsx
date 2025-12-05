@@ -1,10 +1,10 @@
 import clsx from "clsx";
+import Link from "next/link";
+import type { JSX } from "react";
 import type { IconName } from "../icon";
 import Icon from "../icon";
 import type { TooltipProps } from "../tooltip";
-import Link from "next/link";
 import Tooltip from "../tooltip";
-import type { JSX } from "react";
 
 type BaseIconAndTextButtonProps = {
   id?: string;
@@ -15,7 +15,10 @@ type BaseIconAndTextButtonProps = {
   className?: string;
 };
 type ButtonTypeProps = { type?: "button"; onClick: () => void } | { type: "link"; href: string };
-type VariantProps = { variant: "primary" } | { variant: "light" } | { variant: "ghost"; active?: boolean };
+type VariantProps =
+  | { variant: "primary" }
+  | { variant: "light" }
+  | { variant: "ghost"; active?: boolean };
 type IconAndTextButtonProps = BaseIconAndTextButtonProps & ButtonTypeProps & VariantProps;
 
 const IconAndTextButton = (props: IconAndTextButtonProps): JSX.Element => {

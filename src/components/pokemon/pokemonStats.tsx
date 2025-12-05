@@ -1,13 +1,13 @@
 import clsx from "clsx";
 import type { JSX } from "react";
-import { type PokemonStats } from "../../utils/pokemonUtil";
+import type { PokemonStats } from "../../utils/pokemonUtil";
 
 type PokemonStatsProps = {
   stats: PokemonStats;
   className?: string;
 };
 
-const PokemonStats = (props: PokemonStatsProps): JSX.Element => (
+const PokemonStatsTable = (props: PokemonStatsProps): JSX.Element => (
   <div className={props.className}>
     <div className="mb-1 flex items-center justify-between">
       <h3 className="text-header-xl text-primary dark:text-primary-dark">Stats</h3>
@@ -17,7 +17,10 @@ const PokemonStats = (props: PokemonStatsProps): JSX.Element => (
     </div>
     <dl className="grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2">
       {props.stats.map((stat) => (
-        <div key={stat.name} className="relative isolate grid grid-cols-2 gap-1 rounded-sm sm:rounded-none">
+        <div
+          key={stat.name}
+          className="relative isolate grid grid-cols-2 gap-1 rounded-sm sm:rounded-none"
+        >
           <dt className="flex h-8 min-w-0 items-center rounded-sm bg-sunken-secondary px-2 py-1 text-base-semibold text-primary capitalize dark:bg-sunken-secondary-dark dark:text-primary-dark">
             <span className="truncate">{stat.name}</span>
           </dt>
@@ -45,4 +48,4 @@ const PokemonStats = (props: PokemonStatsProps): JSX.Element => (
   </div>
 );
 
-export default PokemonStats;
+export default PokemonStatsTable;

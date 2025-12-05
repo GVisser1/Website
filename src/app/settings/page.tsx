@@ -1,10 +1,10 @@
 import type { Metadata } from "next/types";
 import type { JSX } from "react";
-import Header from "../../components/header";
-import ThemeSwitcher from "../../components/select/themeSwitcher";
 import Divider from "../../components/divider";
-import FontSwitcher from "../../components/select/fontSwitcher";
+import Header from "../../components/header";
 import Page from "../../components/page";
+import FontSwitcher from "../../components/select/fontSwitcher";
+import ThemeSwitcher from "../../components/select/themeSwitcher";
 
 export const metadata: Metadata = {
   title: "Settings",
@@ -13,7 +13,10 @@ export const metadata: Metadata = {
 
 const SettingsPage = (): JSX.Element => (
   <Page>
-    <Header title="Settings" description="Personalize your experience by adjusting the settings to your liking" />
+    <Header
+      title="Settings"
+      description="Personalize your experience by adjusting the settings to your liking"
+    />
 
     <section className="grid items-start gap-x-8 gap-y-6 sm:grid-cols-2">
       <div>

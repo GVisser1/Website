@@ -1,9 +1,9 @@
+import clsx from "clsx";
+import Link from "next/link";
 import type { JSX } from "react";
 import usePokemonDetails from "../../hooks/usePokemonDetails";
-import Link from "next/link";
-import Icon from "../icon";
-import clsx from "clsx";
 import { TOTAL_POKEMON } from "../../utils/pokemonUtil";
+import Icon from "../icon";
 import Image from "../image";
 
 type PokemonEntrySwitcherProps = {

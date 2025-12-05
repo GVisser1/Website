@@ -1,8 +1,8 @@
 import clsx from "clsx";
-import type { IconName } from "./icon";
-import { useEffect, type JSX } from "react";
+import { type JSX, useEffect } from "react";
 import useMetaKey from "../hooks/useMetaKey";
 import IconButton from "./button/iconButton";
+import type { IconName } from "./icon";
 
 type PaginationProps = {
   currentPage: number;
@@ -95,11 +95,20 @@ type PaginationButtonProps = {
   ariaLabel: string;
   disabled: boolean;
   onClick: () => void;
-  icon: Extract<IconName, "ChevronLeftDouble" | "ChevronLeft" | "ChevronRight" | "ChevronRightDouble">;
+  icon: Extract<
+    IconName,
+    "ChevronLeftDouble" | "ChevronLeft" | "ChevronRight" | "ChevronRightDouble"
+  >;
   shortcut: string;
 };
 
-const PaginationButton = ({ ariaLabel, disabled, onClick, icon, shortcut }: PaginationButtonProps): JSX.Element => (
+const PaginationButton = ({
+  ariaLabel,
+  disabled,
+  onClick,
+  icon,
+  shortcut,
+}: PaginationButtonProps): JSX.Element => (
   <IconButton
     type="button"
     variant="secondary"
@@ -111,7 +120,13 @@ const PaginationButton = ({ ariaLabel, disabled, onClick, icon, shortcut }: Pagi
   />
 );
 
-const PageCounter = ({ currentPage, totalPages }: { currentPage: number; totalPages: number }): JSX.Element => (
+const PageCounter = ({
+  currentPage,
+  totalPages,
+}: {
+  currentPage: number;
+  totalPages: number;
+}): JSX.Element => (
   <span className="mx-1 flex w-full items-center justify-center gap-x-1 text-base-regular text-secondary dark:text-secondary-dark">
     <span className="text-base-bold">{currentPage}</span>
     of

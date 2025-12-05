@@ -1,17 +1,17 @@
 "use client";
 
-import React, { useEffect, type JSX } from "react";
-import { usePathname } from "next/navigation";
-import { MAIL_TO, MAIN_PAGES, PROJECT_PAGES } from "../constants";
 import clsx from "clsx";
-import useMetaKey from "../hooks/useMetaKey";
-import Divider from "./divider";
-import { useGlobalSearch } from "../providers/globalSearchProvider";
-import Logo from "./logo";
-import type { IconName } from "./icon";
-import IconButton from "./button/iconButton";
-import IconAndTextButton from "./button/iconAndTextButton";
+import { usePathname } from "next/navigation";
+import { type JSX, useEffect } from "react";
 import { useLocalStorage } from "usehooks-ts";
+import { MAIL_TO, MAIN_PAGES, PROJECT_PAGES } from "../constants";
+import useMetaKey from "../hooks/useMetaKey";
+import { useGlobalSearch } from "../providers/globalSearchProvider";
+import IconAndTextButton from "./button/iconAndTextButton";
+import IconButton from "./button/iconButton";
+import Divider from "./divider";
+import type { IconName } from "./icon";
+import Logo from "./logo";
 
 export const Sidebar = (): JSX.Element => {
   const pathname = usePathname();
@@ -32,7 +32,12 @@ export const Sidebar = (): JSX.Element => {
   }, [setIsCollapsed]);
 
   return (
-    <nav className={clsx("relative hidden shrink-0 flex-col transition-all lg:flex", isCollapsed ? "w-17" : "w-64")}>
+    <nav
+      className={clsx(
+        "relative hidden shrink-0 flex-col transition-all lg:flex",
+        isCollapsed ? "w-17" : "w-64",
+      )}
+    >
       <div className={listClasses}>
         <div className="mb-2 flex items-center justify-between">
           {!isCollapsed && <Logo withTitle size="sm" />}
@@ -69,7 +74,9 @@ export const Sidebar = (): JSX.Element => {
           <SidebarLink
             key={item.name}
             href={item.href}
-            current={pathname === item.href || (pathname.startsWith(item.href) && item.href !== "/")}
+            current={
+              pathname === item.href || (pathname.startsWith(item.href) && item.href !== "/")
+            }
             icon={item.icon}
             label={item.name}
             isCollapsed={isCollapsed}

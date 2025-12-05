@@ -1,12 +1,12 @@
 "use client";
 
-import type { PropsWithChildren, JSX } from "react";
-import { useFont } from "../hooks/useFont";
 import clsx from "clsx";
-import SearchDialog from "./dialog/searchDialog";
-import { Sidebar } from "./sidebar";
+import type { JSX, PropsWithChildren } from "react";
+import { useFont } from "../hooks/useFont";
 import { useGlobalSearch } from "../providers/globalSearchProvider";
+import SearchDialog from "./dialog/searchDialog";
 import { Navbar } from "./navBar";
+import { Sidebar } from "./sidebar";
 
 export const Layout = ({ children }: PropsWithChildren): JSX.Element | null => {
   const { getFontClass } = useFont();
@@ -22,6 +22,7 @@ export const Layout = ({ children }: PropsWithChildren): JSX.Element | null => {
         <div className="flex w-full flex-col overflow-hidden">
           <Navbar />
           <main
+            // biome-ignore lint/a11y/noNoninteractiveTabindex: Scroll container should be scrollable
             tabIndex={0}
             className="group flex h-dvh w-full grow flex-col overflow-y-auto overscroll-y-none outline-hidden"
           >

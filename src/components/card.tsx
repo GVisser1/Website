@@ -1,7 +1,8 @@
-import type { JSX } from "react";
 import clsx from "clsx";
-import Pill from "./pill";
+import type { JSX } from "react";
 import TextButton from "./button/textButton";
+import Image from "./image";
+import Pill from "./pill";
 
 type CardProps = {
   className?: string;
@@ -16,10 +17,12 @@ const Card = (props: CardProps): JSX.Element => {
 
   return (
     <div className={classes}>
-      <img src={props.src} alt="" className="h-50 w-full rounded-lg object-cover" />
+      <Image src={props.src} alt="" className="h-50 w-full rounded-lg object-cover" />
       <div className="mt-3 flex flex-col items-start gap-y-1">
         <h2 className="text-header-xl text-primary dark:text-primary-dark">{props.title}</h2>
-        <p className="text-base-regular text-secondary dark:text-secondary-dark">{props.description}</p>
+        <p className="text-base-regular text-secondary dark:text-secondary-dark">
+          {props.description}
+        </p>
         <div className="flex w-full items-center justify-between gap-x-1">
           <div className="grid grid-cols-2 gap-x-1">
             <Pill className="justify-self-start" type="neutral" label="2 min read" />

@@ -20,7 +20,9 @@ export const MAIN_PAGES: Page[] = [
   { name: "Settings", href: "/settings", icon: "Cog" },
 ];
 
-export const PROJECT_PAGES: Page[] = [{ name: "Pokémon", href: "/projects/pokemon", icon: "PokéBall" }];
+export const PROJECT_PAGES: Page[] = [
+  { name: "Pokémon", href: "/projects/pokemon", icon: "PokéBall" },
+];
 
 export const BLOG_PAGES: BlogPage[] = [
   {

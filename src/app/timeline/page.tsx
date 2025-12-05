@@ -1,12 +1,12 @@
+import clsx from "clsx";
 import type { Metadata } from "next/types";
 import type { JSX } from "react";
-import clsx from "clsx";
+import TextButton from "../../components/button/textButton";
 import Header from "../../components/header";
-import { isEven } from "../../utils/numberUtil";
-import { getTimeFrame } from "../../utils/dateUtil";
 import Image from "../../components/image";
 import Page from "../../components/page";
-import TextButton from "../../components/button/textButton";
+import { getTimeFrame } from "../../utils/dateUtil";
+import { isEven } from "../../utils/numberUtil";
 
 export const metadata: Metadata = {
   title: "Timeline",
@@ -15,7 +15,10 @@ export const metadata: Metadata = {
 
 const TimelinePage = (): JSX.Element => (
   <Page>
-    <Header title="Timeline" description="A chronological overview of my education and work experience" />
+    <Header
+      title="Timeline"
+      description="A chronological overview of my education and work experience"
+    />
 
     <div className="relative">
       <div className="absolute left-2 hidden h-full w-0.5 bg-sunken-tertiary md:inset-x-0 md:mx-auto md:inline dark:bg-sunken-tertiary-dark" />

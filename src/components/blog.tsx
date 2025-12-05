@@ -1,8 +1,8 @@
-import type { JSX, ReactNode } from "react";
-import Image from "./image";
 import clsx from "clsx";
 import type { StaticImageData } from "next/image";
+import type { JSX, ReactNode } from "react";
 import Divider from "./divider";
+import Image from "./image";
 
 type BlogContentProps = {
   children: ReactNode;
@@ -51,13 +51,17 @@ export const BlogSection = (props: BlogSectionProps): JSX.Element => {
 type BlogHeaderProps = {
   children: ReactNode;
 };
-export const BlogHeader = (props: BlogHeaderProps): JSX.Element => <h2 className="text-header-xl">{props.children}</h2>;
+export const BlogHeader = (props: BlogHeaderProps): JSX.Element => (
+  <h2 className="text-header-xl">{props.children}</h2>
+);
 
 type BlogParagraphProps = {
   children: ReactNode;
 };
 export const BlogParagraph = (props: BlogParagraphProps): JSX.Element => (
-  <p className="w-full text-base-regular text-secondary not-last:mb-1 dark:text-secondary-dark">{props.children}</p>
+  <p className="w-full text-base-regular text-secondary not-last:mb-1 dark:text-secondary-dark">
+    {props.children}
+  </p>
 );
 
 type BlogListProps = {

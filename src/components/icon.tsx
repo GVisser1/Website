@@ -1,6 +1,6 @@
-import * as Icons from "../components/icons";
 import clsx from "clsx";
-import type { ComponentType, SVGProps, JSX } from "react";
+import type { ComponentType, JSX, SVGProps } from "react";
+import * as Icons from "../components/icons";
 
 export type IconName = keyof typeof Icons;
 type IconProps = {
@@ -14,7 +14,9 @@ const Icon = ({ name, className, stroke = "md" }: IconProps): JSX.Element => {
 
   const IconComponent = Icons[name] as ComponentType<SVGProps<SVGElement>>;
 
-  return <IconComponent className={classes} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" />;
+  return (
+    <IconComponent className={classes} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" />
+  );
 };
 
 export default Icon;

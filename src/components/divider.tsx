@@ -9,10 +9,12 @@ type DividerProps = {
 
 const Divider = ({ className, soft }: DividerProps): JSX.Element => (
   <hr
-    role="presentation"
+    aria-hidden
     className={clsx(
       "w-full border-t",
-      soft ? "border-secondary dark:border-secondary-dark" : "border-primary dark:border-primary-dark",
+      soft
+        ? "border-secondary dark:border-secondary-dark"
+        : "border-primary dark:border-primary-dark",
       className,
     )}
   />

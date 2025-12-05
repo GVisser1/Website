@@ -1,10 +1,10 @@
 import clsx from "clsx";
+import Link from "next/link";
+import type { JSX, MouseEvent } from "react";
 import type { IconName } from "../icon";
 import Icon from "../icon";
 import type { TooltipProps } from "../tooltip";
-import Link from "next/link";
 import Tooltip from "../tooltip";
-import type { JSX, MouseEvent } from "react";
 
 type BaseIconButtonProps = {
   icon: IconName;
@@ -15,7 +15,9 @@ type BaseIconButtonProps = {
 type ButtonTypeProps =
   | { type: "button"; onClick: (e: MouseEvent<HTMLButtonElement>) => void }
   | { type: "link"; href: string };
-type VariantProps = { variant: "secondary"; disabled?: boolean } | { variant: "ghost"; active?: boolean };
+type VariantProps =
+  | { variant: "secondary"; disabled?: boolean }
+  | { variant: "ghost"; active?: boolean };
 type IconButtonProps = BaseIconButtonProps & ButtonTypeProps & VariantProps;
 
 const IconButton = (props: IconButtonProps): JSX.Element => {

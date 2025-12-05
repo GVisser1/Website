@@ -1,6 +1,6 @@
+import type { Metadata } from "next";
 import type { JSX } from "react";
 import IconAndTextButton from "../components/button/iconAndTextButton";
-import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "This page is not available",
@@ -13,7 +13,8 @@ const NotFoundPage = (): JSX.Element => (
       <h1 className="text-header-4xl">404</h1>
       <p className="text-header-xl">This page is not available</p>
       <p className="text-base-regular">
-        The page you’re looking for may have been moved or deleted. Please check the URL or return to the homepage.
+        The page you’re looking for may have been moved or deleted. Please check the URL or return
+        to the homepage.
       </p>
     </div>
     <IconAndTextButton type="link" variant="primary" href="/" icon="Home" label="Back to Home" />

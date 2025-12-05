@@ -1,12 +1,12 @@
 "use client";
 
-import * as Radix from "@radix-ui/react-select";
 import type { SelectContentProps, SelectItemProps } from "@radix-ui/react-select";
+import * as Radix from "@radix-ui/react-select";
 import clsx from "clsx";
-import Icon from "../icon";
 import type { ComponentRef } from "react";
 import { forwardRef } from "react";
 import { useFont } from "../../hooks/useFont";
+import Icon from "../icon";
 
 const Select = Radix.Root;
 const SelectValue = Radix.Value;

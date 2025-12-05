@@ -1,8 +1,8 @@
-import Header from "../../../components/header";
 import type { Metadata } from "next";
-import PokemonContent from "../../../components/pokemon/pokemonContent";
 import type { JSX } from "react";
+import Header from "../../../components/header";
 import Page from "../../../components/page";
+import PokemonContent from "../../../components/pokemon/pokemonContent";
 
 export const metadata: Metadata = {
   title: "Pokémon",

@@ -1,8 +1,8 @@
 import type { JSX } from "react";
-import Header from "../../components/header";
 import Card from "../../components/card";
-import { BLOG_PAGES } from "../../constants";
+import Header from "../../components/header";
 import Page from "../../components/page";
+import { BLOG_PAGES } from "../../constants";
 
 export const metadata = {
   title: "Blogs",
@@ -16,7 +16,12 @@ const BlogsPage = (): JSX.Element => (
     <ul className="grid gap-4 sm:grid-cols-2">
       {BLOG_PAGES.map((page) => (
         <li key={page.href}>
-          <Card title={page.name} description={page.description} link={page.href} src={page.coverImage} />
+          <Card
+            title={page.name}
+            description={page.description}
+            link={page.href}
+            src={page.coverImage}
+          />
         </li>
       ))}
     </ul>

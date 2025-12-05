@@ -1,8 +1,7 @@
 import clsx from "clsx";
-import type { JSX } from "react";
-import type { ComponentProps } from "react";
-import Icon from "./icon";
+import type { ComponentProps, JSX } from "react";
 import { isTouchDevice } from "../utils/deviceUtil";
+import Icon from "./icon";
 
 export type SearchInputProps = ComponentProps<"input"> & {
   hasShortcut?: boolean;

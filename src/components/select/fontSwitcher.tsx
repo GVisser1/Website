@@ -1,8 +1,8 @@
 "use client";
-import { FONTS, useFont } from "../../hooks/useFont";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select";
 
 import type { JSX } from "react";
+import { FONTS, useFont } from "../../hooks/useFont";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select";
 
 const FontSwitcher = (): JSX.Element | null => {
   const { font, handleFontChange } = useFont();
