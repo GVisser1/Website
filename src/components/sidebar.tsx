@@ -32,7 +32,7 @@ export const Sidebar = (): JSX.Element => {
   return (
     <nav
       className={clsx(
-        "relative hidden shrink-0 flex-col transition-all lg:flex",
+        "relative tablet-ls:flex hidden shrink-0 flex-col transition-all",
         isCollapsed ? "w-17" : "w-64",
       )}
     >

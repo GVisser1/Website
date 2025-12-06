@@ -27,7 +27,7 @@ const Pagination = ({
   const isLastPage = currentPage === totalPages;
   const metaKey = useMetaKey();
 
-  const classes = clsx("flex w-full items-center justify-between gap-x-1 sm:w-auto", className);
+  const classes = clsx("flex w-full items-center justify-between gap-x-1 tablet:w-auto", className);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent): void => {

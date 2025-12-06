@@ -49,7 +49,7 @@ const PokemonEntrySwitch = (props: PokemonEntrySwitchProps): JSX.Element | null 
     <Link
       to="/projects/pokemon/$identifier"
       params={{ identifier: data.name }}
-      className="btn-ghost flex items-center gap-x-2 rounded-sm p-2 select-none focus-visible:focus-ring"
+      className="btn-ghost focus-visible:focus-ring flex select-none items-center gap-x-2 rounded-sm p-2"
     >
       <Icon name="ChevronLeft" className={iconClasses} />
       <Image src={data.sprite} alt={data.name} className="size-6 object-contain" />

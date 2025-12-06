@@ -53,6 +53,9 @@
             "style": "type"
           }
         }
+      },
+      "nursery": {
+        "useSortedClasses": "error"
       }
     }
   },

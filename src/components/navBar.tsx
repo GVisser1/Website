@@ -9,7 +9,7 @@ export const Navbar = (): JSX.Element => {
   const { location } = useRouterState();
 
   return (
-    <header className="sticky top-0 bg-default p-3 lg:hidden dark:bg-default-dark">
+    <header className="sticky top-0 tablet-ls:hidden bg-default p-3 dark:bg-default-dark">
       <nav className="flex items-center justify-between">
         <Logo withTitle={false} size="lg" />
         <div className="flex gap-x-3">

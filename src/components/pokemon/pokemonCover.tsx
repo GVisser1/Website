@@ -23,7 +23,7 @@ const PokemonCover = (props: PokemonCoverProps): JSX.Element => {
       <Image src={props.sprite} alt={props.name} className="h-56 w-full object-contain" priority />
       <Icon
         name="PokéBall"
-        className="absolute right-0 bottom-0 -z-1 size-28 -rotate-45 text-inverse/30"
+        className="-z-1 -rotate-45 absolute right-0 bottom-0 size-28 text-inverse/30"
       />
       {props.isLegendary && <LegendaryIndicator />}
       {props.isMythical && <MythicalIndicator />}

@@ -9,9 +9,18 @@
 @theme inline {
   --font-inter: "Inter Variable", var(--font-sans);
   --font-comic-sans: "Comic Sans MS", "Chalkboard SE", "Comic Neue", var(--font-sans);
-  --breakpoint-xs: 30rem;
+  
+  --breakpoint-*: initial;
+  --breakpoint-phone-ls: 520px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-tablet-ls: 1024px;
+  --breakpoint-laptop: 1280px;
+  --breakpoint-desktop: 1640px;
 
   --text-*: initial;
+  --text-header-6xl: 4.5rem;
+  --text-header-6xl--line-height: 4.5rem;
+  --text-header-6xl--font-weight: 700;
   --text-header-5xl: 3.75rem;
   --text-header-5xl--line-height: 3.75rem;
   --text-header-5xl--font-weight: 700;

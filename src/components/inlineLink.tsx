@@ -12,7 +12,7 @@ const InlineLink = (props: InlineLinkProps): JSX.Element => {
   return (
     <Link
       to={props.href}
-      className="text-link text-primary underline decoration-primary underline-offset-4 visited:decoration-visited hover:decoration-primary-hover hover:decoration-2 visited:hover:decoration-visited-hover focus-visible:focus-ring-text visited:focus-visible:focus-ring-text dark:text-primary-dark"
+      className="focus-visible:focus-ring-text visited:focus-visible:focus-ring-text text-link text-primary underline decoration-primary underline-offset-4 visited:decoration-visited hover:decoration-2 hover:decoration-primary-hover visited:hover:decoration-visited-hover dark:text-primary-dark"
       {...(isExternal && {
         rel: "noopener noreferrer",
         target: "_blank",

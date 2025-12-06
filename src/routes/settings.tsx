@@ -12,10 +12,10 @@ const SettingsPage = () => (
       description="Personalize your experience by adjusting the settings to your liking"
     />
 
-    <section className="grid items-start gap-x-8 gap-y-6 sm:grid-cols-2">
+    <section className="grid phone-ls:grid-cols-2 items-start gap-x-8 gap-y-6">
       <div>
-        <h2 className="text-header-base mb-1 text-primary dark:text-primary-dark">Theme</h2>
-        <p className="text-sm-regular text-secondary dark:text-secondary-dark">
+        <h2 className="mb-1 text-header-base text-primary dark:text-primary-dark">Theme</h2>
+        <p className="text-secondary text-sm-regular dark:text-secondary-dark">
           This will change the appearance of the site
         </p>
       </div>
@@ -24,10 +24,10 @@ const SettingsPage = () => (
 
     <Divider className="my-10" soft />
 
-    <section className="grid items-start gap-x-8 gap-y-6 sm:grid-cols-2">
+    <section className="grid phone-ls:grid-cols-2 items-start gap-x-8 gap-y-6">
       <div>
-        <h2 className="text-header-base mb-1 text-primary dark:text-primary-dark">Font Family</h2>
-        <p className="text-sm-regular text-secondary dark:text-secondary-dark">
+        <h2 className="mb-1 text-header-base text-primary dark:text-primary-dark">Font Family</h2>
+        <p className="text-secondary text-sm-regular dark:text-secondary-dark">
           This will change the font across the site
         </p>
       </div>

@@ -17,9 +17,6 @@ const Image = (props: ImageProps): JSX.Element => (
     src={props.src}
     alt={props.alt}
     className={props.className}
-    sizes="100vw"
-    width={0}
-    height={0}
     onLoad={props.onLoad}
     onError={props.onError}
     aria-hidden={props["aria-hidden"]}

@@ -28,10 +28,10 @@ const Dialog = ({
   ...props
 }: DialogProps): JSX.Element => (
   <DialogRoot modal open={open} onOpenChange={() => open && onClose()}>
-    <DialogOverlay className="fixed inset-0 flex w-screen justify-center overflow-y-auto bg-elevation-surface-blanket-top p-2 focus:outline-hidden sm:px-6 sm:py-8 lg:px-8 lg:py-16 dark:bg-elevation-surface-blanket-top-dark" />
+    <DialogOverlay className="fixed inset-0 flex w-screen justify-center overflow-y-auto bg-elevation-surface-blanket-top p-2 phone-ls:px-6 tablet-ls:px-8 phone-ls:py-8 tablet-ls:py-16 focus:outline-hidden dark:bg-elevation-surface-blanket-top-dark" />
     <DialogPortal container={document.getElementById("portal-root")}>
-      <div className="fixed inset-0 w-screen pt-6 sm:pt-0">
-        <div className="grid h-dvh grid-rows-[1fr_auto] justify-items-center pb-4 sm:grid-rows-[1fr_auto_3fr] sm:p-4">
+      <div className="fixed inset-0 w-screen phone-ls:pt-0 pt-6">
+        <div className="grid h-dvh grid-rows-[1fr_auto] phone-ls:grid-rows-[1fr_auto_3fr] justify-items-center phone-ls:p-4 pb-4">
           <DialogContent
             aria-describedby={undefined}
             onOpenAutoFocus={(e) => {
@@ -44,8 +44,8 @@ const Dialog = ({
             }}
             className={clsx(
               className,
-              "rounded-t-3xl row-start-2 w-full min-w-0 bg-default shadow-lg sm:mb-auto sm:max-w-lg sm:rounded-2xl dark:bg-default-dark",
-              "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+              "row-start-2 phone-ls:mb-auto w-full min-w-0 phone-ls:max-w-lg phone-ls:rounded-2xl rounded-t-3xl bg-default shadow-lg dark:bg-default-dark",
+              "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=open]:animate-in",
             )}
           >
             <div className="flex items-center justify-between px-5 pt-5">

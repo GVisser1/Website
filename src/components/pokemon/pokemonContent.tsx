@@ -78,11 +78,11 @@ const PokemonContent = ({ page }: PokemonContentProps): JSX.Element => {
           value={query}
           placeholder="Search"
           onChange={(e) => setQuery(e.target.value)}
-          className="col-span-2 w-full sm:col-span-1 sm:col-start-2"
+          className="col-span-2 tablet:col-span-1 tablet:col-start-2 w-full"
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <div className="grid grid-cols-2 tablet:grid-cols-4 gap-4">
         {showLoadingState &&
           Array.from({ length: PAGE_SIZE }).map(() => (
             <SkeletonLoader size="md" key={uniqueId()} />

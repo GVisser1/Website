@@ -15,8 +15,8 @@ const TimelinePage = (): JSX.Element => (
     />
 
     <div className="relative">
-      <div className="absolute left-2 hidden h-full w-0.5 bg-sunken-tertiary md:inset-x-0 md:mx-auto md:inline dark:bg-sunken-tertiary-dark" />
-      <ol className="flex flex-col divide-y divide-secondary md:gap-y-12 md:divide-y-0 md:px-5 md:py-4 dark:!divide-secondary-dark">
+      <div className="absolute tablet-ls:inset-x-0 left-2 tablet-ls:mx-auto tablet-ls:inline hidden h-full w-0.5 bg-sunken-tertiary dark:bg-sunken-tertiary-dark" />
+      <ol className="dark:!divide-secondary-dark flex flex-col tablet-ls:gap-y-12 divide-y tablet-ls:divide-y-0 divide-secondary tablet-ls:px-5 tablet-ls:py-4">
         {timeLineData.map((item, i) => (
           <TimeLineItem key={item.timeFrame} item={item} align={isEven(i) ? "right" : "left"} />
         ))}
@@ -33,21 +33,21 @@ const TimeLineItem = ({ item, align }: TimeLineItemProps): JSX.Element => (
   <li
     key={item.title}
     className={clsx(
-      "relative border-primary bg-default p-3 md:-mx-5 md:w-1/2 md:rounded-md md:border dark:border-primary-dark dark:bg-default-dark",
-      align === "left" && "md:ml-auto",
+      "tablet-ls:-mx-5 relative tablet-ls:w-1/2 tablet-ls:rounded-md tablet-ls:border border-primary bg-default p-3 dark:border-primary-dark dark:bg-default-dark",
+      align === "left" && "tablet-ls:ml-auto",
     )}
   >
     <div className="flex gap-x-2">
       {item.src && <Image src={item.src} alt="" className="my-auto size-10 rounded-full" />}
       <div>
-        <p className="text-sm-regular text-secondary dark:text-secondary-dark">{item.timeFrame}</p>
+        <p className="text-secondary text-sm-regular dark:text-secondary-dark">{item.timeFrame}</p>
         <h2 className="text-header-lg text-primary dark:text-primary-dark">{item.title}</h2>
-        <p className="text-sm-regular text-secondary dark:text-secondary-dark">{item.subTitle}</p>
+        <p className="text-secondary text-sm-regular dark:text-secondary-dark">{item.subTitle}</p>
       </div>
     </div>
     <div
       className={clsx(
-        "absolute top-0 mt-10 hidden size-2.5 translate-x-0 rounded-full bg-default ring-4 ring-primary md:-mx-5 md:flex",
+        "tablet-ls:-mx-5 absolute top-0 mt-10 tablet-ls:flex hidden size-2.5 translate-x-0 rounded-full bg-default ring-4 ring-primary",
         align === "right" ? "right-[-5px]" : "left-[-5px]",
       )}
     />

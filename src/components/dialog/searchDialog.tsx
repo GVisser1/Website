@@ -48,10 +48,7 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
       if (page.href === location.pathname) {
         return false;
       }
-      return (
-        normalizeString(page.name).includes(normalizedValue) ||
-        normalizeString(page.type ?? "").includes(normalizedValue)
-      );
+      return normalizeString(page.name).includes(normalizedValue);
     });
 
     setAvailablePages(filteredResults);
@@ -169,7 +166,7 @@ const ResultsList = (props: ResultsListProps): JSX.Element => (
           to={page.href}
           onClick={props.onClose}
           className={clsx(
-            "btn-ghost flex h-10 w-full shrink-0 items-center gap-x-2 rounded-sm px-2 text-button focus-visible:focus-ring-inset",
+            "btn-ghost focus-visible:focus-ring-inset flex h-10 w-full shrink-0 items-center gap-x-2 rounded-sm px-2 text-button",
             "aria-selected:bg-btn-ghost-hover dark:aria-selected:bg-btn-ghost-hover-dark",
           )}
           ref={(el) => {
