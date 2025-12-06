@@ -75,7 +75,6 @@ const usePokemonDetails = (identifier: PokemonIdentifier): UsePokemonDetailsResu
       };
     },
     staleTime: hours(1),
-    retry: 3,
   });
 
   return { data, isLoading: isPending, error: error };

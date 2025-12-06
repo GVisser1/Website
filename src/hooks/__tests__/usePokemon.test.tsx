@@ -20,7 +20,9 @@ describe("usePokemon hook", () => {
       }),
     );
 
-    const { result } = renderHook(() => usePokemon(1), { wrapper: withQueryClient() });
+    const { result } = renderHook(() => usePokemon(1), {
+      wrapper: withQueryClient(),
+    });
 
     await waitFor(() => expect(result.current.isLoading).toBe(false));
     expect(result.current.totalPages).toBe(65);

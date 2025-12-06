@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { POKEMON_API_URL } from "../constants";
 import { PAGE_SIZE, TOTAL_POKEMON } from "../utils/pokemonUtil";
+import { hours } from "../utils/timeUtil";
 
 type Pokemon = {
   name: string;
@@ -40,8 +41,7 @@ const usePokemon = (currentPage: number): UsePokemonResult => {
         count: data.count, // Update count to reflect filtered results
       };
     },
-    // staleTime: hours(1),
-    retry: 0,
+    staleTime: hours(1),
   });
 
   return {

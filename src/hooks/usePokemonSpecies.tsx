@@ -53,7 +53,6 @@ export const usePokemonSpecies = (identifier?: PokemonIdentifier): UsePokemonSpe
     },
     enabled: !isNil(identifier),
     staleTime: hours(1),
-    retry: 3,
   });
 
 const getEnglishText = <T extends { language: { name: string } }>(

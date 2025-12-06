@@ -56,7 +56,6 @@ const usePokemonEvolution = (
     },
     enabled: !isNil(identifier) && !isNil(evolutionStage),
     staleTime: hours(1),
-    retry: 3,
   });
 
   return result;
