@@ -1,7 +1,6 @@
-import Divider from "./divider";
-import { IconAndTextLink } from "./button";
-
 import type { JSX } from "react";
+import IconAndTextButton from "./button/iconAndTextButton";
+import Divider from "./divider";
 
 type HeaderProps = {
   title: string;
@@ -11,22 +10,24 @@ type HeaderProps = {
     label: string;
   };
 };
+
 const Header = ({ title, description, topLink }: HeaderProps): JSX.Element => (
-  <header>
+  <header className="mb-8">
     {topLink && (
-      <IconAndTextLink
-        variant="ghost"
+      <IconAndTextButton
+        type="link"
+        variant="light"
         href={topLink.href}
         label={topLink.label}
         icon="ChevronLeft"
-        className="mb-4 -ml-3"
+        className="mb-6"
       />
     )}
 
-    <h1 className="mb-1 text-2xl font-semibold text-primary dark:text-primary-dark">{title}</h1>
-    <p className="text-secondary dark:text-secondary-dark">{description}</p>
+    <h1 className="mb-1 text-header-2xl text-primary dark:text-primary-dark">{title}</h1>
+    <p className="mb-6 text-base-regular text-secondary dark:text-secondary-dark">{description}</p>
 
-    <Divider className="mt-6 mb-8" />
+    <Divider />
   </header>
 );
 

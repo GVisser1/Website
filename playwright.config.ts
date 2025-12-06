@@ -16,7 +16,7 @@ export default defineConfig({
   testDir: "e2e-tests",
   timeout: seconds(10),
   use: {
-    baseURL: process.env.CI ? "https://glennvisser.com" : "http://localhost:3000",
+    baseURL: process.env.CI ? "https://glennvisser.com" : "http://localhost:5173",
     trace: "on-first-retry",
   },
   workers: process.env.CI ? 1 : undefined,

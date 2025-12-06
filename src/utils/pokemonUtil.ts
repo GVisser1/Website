@@ -45,13 +45,13 @@ export const mapEvolutionsByStage = (stage: EvolutionChain): EvolutionStage[][] 
     const details = s.evolution_details?.[0]; // Just the first detail for now
     const { trigger, ...conditions } = details || {};
     stages[depth].push({
-      id: parseInt(s.species.url.split("/").slice(-2)[0]),
+      id: parseInt(s.species.url.split("/").slice(-2)[0], 10),
       name: s.species.name,
       trigger: trigger?.name,
       conditions,
     });
 
-    s.evolves_to.forEach((evo) => traverse(evo, depth + 1));
+    s.evolves_to.map((evo) => traverse(evo, depth + 1));
   };
 
   traverse(stage);
@@ -64,6 +64,7 @@ export type PokemonTypeInfo = {
   bgColor: string;
   icon: IconName;
 };
+
 export const pokemonTypeInfo: Record<string, PokemonTypeInfo> = {
   bug: {
     name: "Bug",

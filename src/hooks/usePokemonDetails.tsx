@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { POKEMON_API_URL } from "../constants";
-import { hours } from "../utils/timeUtil";
 import type { PokemonIdentifier, PokemonType } from "../utils/pokemonUtil";
+import { hours } from "../utils/timeUtil";
 
 type PokemonDetailsResponse = {
   id: number;
@@ -27,7 +27,7 @@ type PokemonDetailsResponse = {
   weight: number;
 };
 
-type PokemonDetails = {
+export type PokemonDetails = {
   id: number;
   name: string;
   abilities: { name: string; is_hidden: boolean }[];
@@ -45,8 +45,8 @@ type UsePokemonDetailsResult = {
   isLoading: boolean;
 };
 
-const usePokemonDetails = (identifier: PokemonIdentifier): UsePokemonDetailsResult =>
-  useQuery<PokemonDetails, Error>({
+const usePokemonDetails = (identifier: PokemonIdentifier): UsePokemonDetailsResult => {
+  const { data, isPending, error } = useQuery<PokemonDetails, Error>({
     queryKey: ["pokemonDetails", identifier],
     queryFn: async () => {
       const { data } = await axios.get<PokemonDetailsResponse>(`${POKEMON_API_URL}/${identifier}`);
@@ -75,7 +75,9 @@ const usePokemonDetails = (identifier: PokemonIdentifier): UsePokemonDetailsResu
       };
     },
     staleTime: hours(1),
-    retry: 3,
   });
+
+  return { data, isLoading: isPending, error: error };
+};
 
 export default usePokemonDetails;

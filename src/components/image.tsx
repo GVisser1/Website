@@ -1,7 +1,7 @@
-import NextImage from "next/image";
-import type { JSX } from "react";
+import type { JSX, Ref } from "react";
 
 type ImageProps = {
+  ref?: Ref<HTMLImageElement>;
   src: string;
   alt: string;
   className?: string;
@@ -12,7 +12,8 @@ type ImageProps = {
 };
 
 const Image = (props: ImageProps): JSX.Element => (
-  <NextImage
+  <img
+    ref={props.ref}
     src={props.src}
     alt={props.alt}
     className={props.className}
@@ -22,7 +23,8 @@ const Image = (props: ImageProps): JSX.Element => (
     onLoad={props.onLoad}
     onError={props.onError}
     aria-hidden={props["aria-hidden"]}
-    priority={props.priority}
+    fetchPriority={props.priority ? "high" : "auto"}
+    loading={props.priority ? "eager" : "lazy"}
   />
 );
 

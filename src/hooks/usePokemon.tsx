@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import { POKEMON_API_URL } from "../constants";
 import { PAGE_SIZE, TOTAL_POKEMON } from "../utils/pokemonUtil";
 import { hours } from "../utils/timeUtil";
@@ -26,7 +26,7 @@ const usePokemon = (currentPage: number): UsePokemonResult => {
     },
   };
 
-  const { data, isLoading, error } = useQuery({
+  const { data, isPending, error } = useQuery({
     queryKey: ["paginatedPokemon", currentPage],
     queryFn: async () => {
       const { data } = await axios.get<PaginatedPokemon>(POKEMON_API_URL, config);
@@ -42,13 +42,12 @@ const usePokemon = (currentPage: number): UsePokemonResult => {
       };
     },
     staleTime: hours(1),
-    retry: 3,
   });
 
   return {
     pokemon: data?.results,
-    isLoading,
-    error: error,
+    isLoading: isPending,
+    error,
     totalPages: data?.count ? Math.ceil(TOTAL_POKEMON / PAGE_SIZE) : undefined,
   };
 };

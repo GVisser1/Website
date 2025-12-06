@@ -1,21 +1,21 @@
-"use client";
-
-import React, { useEffect, useState, type JSX } from "react";
-import { usePathname } from "next/navigation";
-import { IconAndTextButton, IconAndTextLink, IconButton, IconLink } from "./button";
-import { MAIL_TO, MAIN_PAGES, PROJECT_PAGES } from "../constants";
+import { useRouterState } from "@tanstack/react-router";
 import clsx from "clsx";
+import { type JSX, useEffect } from "react";
+import { useLocalStorage } from "usehooks-ts";
+import { MAIL_TO, MAIN_PAGES, PROJECT_PAGES } from "@/constants";
 import useMetaKey from "../hooks/useMetaKey";
-import Divider from "./divider";
 import { useGlobalSearch } from "../providers/globalSearchProvider";
-import Logo from "./logo";
+import IconAndTextButton from "./button/iconAndTextButton";
+import IconButton from "./button/iconButton";
+import Divider from "./divider";
 import type { IconName } from "./icon";
+import Logo from "./logo";
 
 export const Sidebar = (): JSX.Element => {
-  const pathname = usePathname();
+  const { location } = useRouterState();
   const { setOpen } = useGlobalSearch();
   const metaKey = useMetaKey();
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useLocalStorage("isSidebarCollapsed", false);
   const listClasses = clsx("flex flex-col gap-y-1 p-4");
 
   useEffect(() => {
@@ -27,17 +27,23 @@ export const Sidebar = (): JSX.Element => {
     };
     document.addEventListener("keydown", down);
     return (): void => document.removeEventListener("keydown", down);
-  }, []);
+  }, [setIsCollapsed]);
 
   return (
-    <nav className={clsx("relative hidden shrink-0 flex-col transition-all lg:flex", isCollapsed ? "w-17" : "w-64")}>
+    <nav
+      className={clsx(
+        "relative hidden shrink-0 flex-col transition-all lg:flex",
+        isCollapsed ? "w-17" : "w-64",
+      )}
+    >
       <div className={listClasses}>
         <div className="mb-2 flex items-center justify-between">
           {!isCollapsed && <Logo withTitle size="sm" />}
           <IconButton
+            type="button"
             variant="ghost"
             onClick={() => setIsCollapsed(!isCollapsed)}
-            aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+            ariaLabel={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
             icon={isCollapsed ? "ChevronRightDouble" : "ChevronLeftDouble"}
             tooltip={{
               title: isCollapsed ? "Expand sidebar" : "Collapse sidebar",
@@ -47,11 +53,12 @@ export const Sidebar = (): JSX.Element => {
           />
         </div>
         <SidebarButton
+          id="global-search-trigger"
           label="Search"
           icon="MagnifyingGlass"
           onClick={() => setOpen(true)}
           tooltip={{
-            title: "Search and quickly jump to a Page",
+            title: "Search and quickly jump to a page",
             description: `${metaKey} + K`,
           }}
           isCollapsed={isCollapsed}
@@ -65,7 +72,10 @@ export const Sidebar = (): JSX.Element => {
           <SidebarLink
             key={item.name}
             href={item.href}
-            current={pathname === item.href}
+            current={
+              location.pathname === item.href ||
+              (location.pathname.startsWith(item.href) && item.href !== "/")
+            }
             icon={item.icon}
             label={item.name}
             isCollapsed={isCollapsed}
@@ -80,7 +90,7 @@ export const Sidebar = (): JSX.Element => {
           <SidebarLink
             key={item.name}
             href={item.href}
-            current={pathname === item.href || pathname.startsWith(item.href)}
+            current={location.pathname === item.href || location.pathname.startsWith(item.href)}
             icon={item.icon}
             label={item.name}
             isCollapsed={isCollapsed}
@@ -110,14 +120,32 @@ type SidebarLinkProps = {
 const SidebarLink = ({ current, label, isCollapsed, ...props }: SidebarLinkProps): JSX.Element => (
   <li className="relative">
     {isCollapsed ? (
-      <IconLink aria-label={label} variant="ghost" active={current} tooltip={{ title: label }} {...props} />
+      <IconButton
+        type="link"
+        ariaLabel={label}
+        variant="ghost"
+        active={current ?? false}
+        tooltip={{ title: label }}
+        href={props.href}
+        icon={props.icon}
+      />
     ) : (
-      <IconAndTextLink aria-label={label} variant="ghost" label={label} fullWidth active={current} {...props} />
+      <IconAndTextButton
+        type="link"
+        aria-label={label}
+        variant="ghost"
+        label={label}
+        active={current ?? false}
+        icon={props.icon}
+        href={props.href}
+        fullWidth
+      />
     )}
   </li>
 );
 
 type SidebarButtonProps = {
+  id?: string;
   icon: IconName;
   label: string;
   onClick: () => void;
@@ -130,7 +158,18 @@ type SidebarButtonProps = {
 
 const SidebarButton = ({ isCollapsed, label, ...props }: SidebarButtonProps): JSX.Element => {
   if (isCollapsed) {
-    return <IconButton variant="ghost" aria-label={label} {...props} />;
+    return <IconButton type="button" variant="ghost" ariaLabel={label} {...props} />;
   }
-  return <IconAndTextButton variant="ghost" aria-label={label} label={label} fullWidth {...props} />;
+  return (
+    <IconAndTextButton
+      id={props.id}
+      type="button"
+      variant="ghost"
+      icon={props.icon}
+      onClick={props.onClick}
+      label={label}
+      fullWidth
+      tooltip={props.tooltip}
+    />
+  );
 };

@@ -1,0 +1,7 @@
+ignoredBuiltDependencies:
+  - '@parcel/watcher'
+  - msw
+  - sharp
+
+onlyBuiltDependencies:
+  - esbuild

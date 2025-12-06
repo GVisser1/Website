@@ -1,6 +1,10 @@
 import type { IconName } from "./components/icon";
 
-export type Page = { href: string; name: string; icon: IconName };
+export type Page = {
+  name: string;
+  icon: IconName;
+  href: string;
+};
 
 export const MAIN_PAGES: Page[] = [
   { name: "Home", href: "/", icon: "Home" },
@@ -9,7 +13,9 @@ export const MAIN_PAGES: Page[] = [
   { name: "Settings", href: "/settings", icon: "Cog" },
 ];
 
-export const PROJECT_PAGES: Page[] = [{ name: "Pokémon", href: "/projects/pokemon", icon: "PokéBall" }];
+export const PROJECT_PAGES: Page[] = [
+  { name: "Pokémon", href: "/projects/pokemon", icon: "PokéBall" },
+];
 
 export const PAGES: Page[] = [...MAIN_PAGES, ...PROJECT_PAGES];
 

@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { seconds, minutes, hours } from "../timeUtil";
+import { hours, minutes, seconds } from "../timeUtil";
 
 describe("timeUtil", () => {
   describe("seconds", () => {

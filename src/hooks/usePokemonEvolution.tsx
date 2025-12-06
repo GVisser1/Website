@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { hours } from "../utils/timeUtil";
-import { isNil } from "lodash-es";
 import axios from "axios";
+import { isNil } from "lodash-es";
 import type { PokemonIdentifier } from "../utils/pokemonUtil";
+import { hours } from "../utils/timeUtil";
 
 export type EvolutionDetails = {
   gender: string | null;
@@ -43,7 +43,10 @@ type EvolutionStageResponse = {
   chain: EvolutionChain;
 };
 
-const usePokemonEvolution = (identifier?: PokemonIdentifier, evolutionStage?: string): UsePokemonEvolutionResult => {
+const usePokemonEvolution = (
+  identifier?: PokemonIdentifier,
+  evolutionStage?: string,
+): UsePokemonEvolutionResult => {
   const result = useQuery({
     queryKey: ["pokemonEvolution", identifier],
     queryFn: async (): Promise<EvolutionChain> => {
@@ -53,37 +56,7 @@ const usePokemonEvolution = (identifier?: PokemonIdentifier, evolutionStage?: st
     },
     enabled: !isNil(identifier) && !isNil(evolutionStage),
     staleTime: hours(1),
-    retry: 3,
   });
-
-  // const evolutions = result.data?.evolves_to.map((evolution) => {
-  //   const evolutionDetails = evolution.evolution_details.reduce(
-  //     (acc, detail) => {
-  //       Object.entries(detail).forEach(([key, value]) => {
-  //         if (!isNil(value) && value !== false && value !== "") {
-  //           acc[key] = value;
-  //         }
-  //       });
-  //       return acc;
-  //     },
-  //     {} as Record<string, EvolutionDetails>,
-  //   );
-
-  //   // const trigger = Object.entries(evolutionDetails)
-  //   //   .filter(([, value]) => !isNil(value) && value !== false && value !== "") // Keep only non-nil values
-  //   //   .reduce(
-  //   //     (acc, [key, value]) => {
-  //   //       acc[key] = value;
-  //   //       return acc;
-  //   //     },
-  //   //     {} as Record<string, EvolutionDetails>,
-  //   //   );
-
-  //   return {
-  //     name: evolution.species.name,
-  //     ...evolutionDetails,
-  //   };
-  // });
 
   return result;
 };

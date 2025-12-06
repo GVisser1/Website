@@ -1,91 +1,47 @@
-import { renderHook } from "@testing-library/react";
-import { useQuery } from "@tanstack/react-query";
-import { vi, describe, it, expect, beforeEach } from "vitest";
+import { renderHook, waitFor } from "@testing-library/react";
+import { AxiosError } from "axios";
+import { HttpResponse, http } from "msw";
+import { describe, expect, it } from "vitest";
+import { server, withQueryClient } from "../../__tests__/testUtil";
+import { POKEMON_API_URL } from "../../constants";
 import usePokemon from "../usePokemon";
-import type { PaginatedPokemon, PokemonDetails } from "../../utils/pokemonUtil";
-import { getPaginatedPokemon, getPokemonDetails } from "../../utils/pokemonUtil";
-
-vi.mock("@tanstack/react-query", () => ({
-  useQuery: vi.fn(),
-}));
-
-vi.mock("../../utils/pokemonUtil", () => ({
-  getPaginatedPokemon: vi.fn(),
-  getPokemonDetails: vi.fn(),
-}));
-
-const useQueryMock = vi.mocked(useQuery);
-const getPaginatedPokemonMock = vi.mocked(getPaginatedPokemon);
-const getPokemonDetailsMock = vi.mocked(getPokemonDetails);
 
 describe("usePokemon hook", () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
-
-  it("returns loading state initially", () => {
-    useQueryMock.mockReturnValue({
-      data: undefined,
-      isLoading: true,
-      error: null,
-    } as never);
-
-    const { result } = renderHook(() => usePokemon(1));
-
-    expect(result.current.isLoading).toBe(true);
-    expect(result.current.pokemon).toEqual([]);
-    expect(result.current.error).toBeNull();
-    expect(result.current.totalPages).toBe(0);
-  });
-
   it("returns pokemon data and total pages when query succeeds", async () => {
-    const mockPokemonData: PokemonDetails[] = [
-      { name: "bulbasaur", id: 1, height: 0, sprite: null, stats: [], types: [], weight: 0 },
-      { name: "charmander", id: 4, height: 0, sprite: null, stats: [], types: [], weight: 0 },
+    const pokemon = [
+      { name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/" },
+      { name: "ivysaur", url: "https://pokeapi.co/api/v2/pokemon/2/" },
+      { name: "venusaur", url: "https://pokeapi.co/api/v2/pokemon/3/" },
     ];
-    const mockPaginatedPokemon: PaginatedPokemon = {
-      results: [
-        { name: "bulbasaur", url: "#" },
-        { name: "charmander", url: "#" },
-      ],
-      count: 32,
-    };
 
-    getPaginatedPokemonMock.mockResolvedValue(mockPaginatedPokemon);
-    getPokemonDetailsMock.mockResolvedValueOnce(mockPokemonData[0]);
-    getPokemonDetailsMock.mockResolvedValueOnce(mockPokemonData[1]);
+    server.use(
+      http.get(POKEMON_API_URL, () => {
+        return HttpResponse.json({ count: 3, results: pokemon });
+      }),
+    );
 
-    useQueryMock.mockReturnValue({
-      data: {
-        pokemonData: mockPokemonData,
-        totalPages: 2,
-      },
-      isLoading: false,
-      error: null,
-    } as never);
+    const { result } = renderHook(() => usePokemon(1), {
+      wrapper: withQueryClient(),
+    });
 
-    const { result } = renderHook(() => usePokemon(1));
-
-    expect(result.current.isLoading).toBe(false);
-    expect(result.current.pokemon).toEqual(mockPokemonData);
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(result.current.totalPages).toBe(65);
     expect(result.current.error).toBeNull();
-    expect(result.current.totalPages).toBe(2);
+    expect(result.current.pokemon).toMatchObject(pokemon);
   });
 
-  it("handles errors correctly", () => {
-    const mockError = new Error("Failed to fetch data");
+  it("handles errors correctly", async () => {
+    server.use(
+      http.get(POKEMON_API_URL, () => {
+        return HttpResponse.error();
+      }),
+    );
 
-    useQueryMock.mockReturnValue({
-      data: undefined,
-      isLoading: false,
-      error: mockError,
-    } as never);
+    const { result } = renderHook(() => usePokemon(1), { wrapper: withQueryClient() });
 
-    const { result } = renderHook(() => usePokemon(1));
-
-    expect(result.current.isLoading).toBe(false);
-    expect(result.current.pokemon).toEqual([]);
-    expect(result.current.error).toBe("Failed to fetch data");
-    expect(result.current.totalPages).toBe(0);
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(result.current.pokemon).toEqual(undefined);
+    expect(result.current.error).toBeInstanceOf(AxiosError);
+    expect(result.current.totalPages).toBe(undefined);
   });
 });

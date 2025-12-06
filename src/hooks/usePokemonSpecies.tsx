@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { isNil } from "lodash-es";
-import { hours } from "../utils/timeUtil";
 import { POKEMON_API_URL } from "../constants";
 import type { PokemonIdentifier } from "../utils/pokemonUtil";
+import { hours } from "../utils/timeUtil";
 
 type PokemonSpeciesResponse = {
   evolution_chain: { url: string };
@@ -33,10 +33,14 @@ export const usePokemonSpecies = (identifier?: PokemonIdentifier): UsePokemonSpe
   useQuery({
     queryKey: ["pokemonSpecies", identifier],
     queryFn: async (): Promise<PokemonSpeciesDetails> => {
-      const { data } = await axios.get<PokemonSpeciesResponse>(`${POKEMON_API_URL}-species/${identifier}`);
+      const { data } = await axios.get<PokemonSpeciesResponse>(
+        `${POKEMON_API_URL}-species/${identifier}`,
+      );
 
       const genus = getEnglishText(data.genera, "genus");
-      const description = formatDescription(getEnglishText(data.flavor_text_entries, "flavor_text"));
+      const description = formatDescription(
+        getEnglishText(data.flavor_text_entries, "flavor_text"),
+      );
 
       return {
         evolutionChain: data.evolution_chain.url,
@@ -49,11 +53,14 @@ export const usePokemonSpecies = (identifier?: PokemonIdentifier): UsePokemonSpe
     },
     enabled: !isNil(identifier),
     staleTime: hours(1),
-    retry: 3,
   });
 
-const getEnglishText = <T extends { language: { name: string } }>(entries: T[], key: keyof T): string =>
-  (entries.find((entry) => entry.language.name === "en")?.[key] as string) ?? "No description available.";
+const getEnglishText = <T extends { language: { name: string } }>(
+  entries: T[],
+  key: keyof T,
+): string =>
+  (entries.find((entry) => entry.language.name === "en")?.[key] as string) ??
+  "No description available.";
 
 const formatDescription = (description: string): string => {
   let formattedDescription = description.replace("POKéMON", "Pokémon");

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.3.8/schema.json",
+  "vcs": {
+    "enabled": false,
+    "clientKind": "git",
+    "useIgnoreFile": false
+  },
+  "files": {
+    "ignoreUnknown": false,
+    "includes": [
+      "**/src/**/*",
+      "**/scripts/**/*",
+      "**/.vscode/**/*",
+      "**/index.html",
+      "**/vite.config.ts",
+      "!**/src/routeTree.gen.ts",
+      "!e2e-tests/test-reports/*",
+      "!e2e-tests/test-results/*"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentWidth": 2,
+    "indentStyle": "space",
+    "lineWidth": 100,
+    "lineEnding": "lf",
+    "bracketSpacing": true,
+    "bracketSameLine": false,
+    "expand": "auto",
+    "formatWithErrors": true,
+    "useEditorconfig": true
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "noUnusedImports": "error"
+      },
+      "style": {
+        "useImportType": "error",
+        "useConsistentTypeDefinitions": {
+          "level": "error",
+          "fix": "safe",
+          "options": {
+            "style": "type"
+          }
+        }
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double"
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  }
+}
