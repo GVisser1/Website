@@ -55,7 +55,7 @@ type BlogHeaderProps = {
   children: ReactNode;
 };
 export const BlogHeader = (props: BlogHeaderProps): JSX.Element => (
-  <h2 className="text-header-xl text-primary">{props.children}</h2>
+  <h2 className="text-header-xl text-primary dark:text-primary-dark">{props.children}</h2>
 );
 
 type BlogParagraphProps = {
