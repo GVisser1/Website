@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { queryOptions, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { POKEMON_API_URL } from "../constants";
 import type { PokemonIdentifier, PokemonType } from "../utils/pokemonUtil";
@@ -39,45 +39,41 @@ export type PokemonDetails = {
   weight: number;
 };
 
-type UsePokemonDetailsResult = {
-  data?: PokemonDetails;
-  error: Error | null;
-  isLoading: boolean;
+const fetchPokemonDetails = async (identifier: PokemonIdentifier) => {
+  const { data } = await axios.get<PokemonDetailsResponse>(`${POKEMON_API_URL}/${identifier}`);
+
+  const abilities = data.abilities.map(({ is_hidden, ability }) => ({
+    name: ability.name,
+    is_hidden,
+  }));
+  const sprite =
+    data.sprites.other.dream_world.front_default ??
+    data.sprites.other["official-artwork"].front_default ??
+    data.sprites.front_default;
+  const stats = data.stats.map(({ base_stat, stat }) => ({ name: stat.name, base_stat }));
+  const types = data.types.map((type) => type.type.name as PokemonType);
+
+  return {
+    id: data.id,
+    abilities,
+    baseExp: data.base_experience,
+    height: data.height,
+    name: data.name,
+    sprite,
+    stats,
+    types,
+    weight: data.weight,
+  };
 };
 
-const usePokemonDetails = (identifier: PokemonIdentifier): UsePokemonDetailsResult => {
-  const { data, isPending, error } = useQuery<PokemonDetails, Error>({
+export const pokemonDetailsQueryOptions = (identifier: PokemonIdentifier) =>
+  queryOptions<PokemonDetails>({
     queryKey: ["pokemonDetails", identifier],
-    queryFn: async () => {
-      const { data } = await axios.get<PokemonDetailsResponse>(`${POKEMON_API_URL}/${identifier}`);
-
-      const abilities = data.abilities.map(({ is_hidden, ability }) => ({
-        name: ability.name,
-        is_hidden,
-      }));
-      const sprite =
-        data.sprites.other.dream_world.front_default ??
-        data.sprites.other["official-artwork"].front_default ??
-        data.sprites.front_default;
-      const stats = data.stats.map(({ base_stat, stat }) => ({ name: stat.name, base_stat }));
-      const types = data.types.map((type) => type.type.name as PokemonType);
-
-      return {
-        id: data.id,
-        abilities,
-        baseExp: data.base_experience,
-        height: data.height,
-        name: data.name,
-        sprite,
-        stats,
-        types,
-        weight: data.weight,
-      };
-    },
+    queryFn: () => fetchPokemonDetails(identifier),
     staleTime: hours(1),
   });
 
-  return { data, isLoading: isPending, error: error };
-};
+export const usePokemonDetails = (identifier: PokemonIdentifier) =>
+  useQuery(pokemonDetailsQueryOptions(identifier));
 
 export default usePokemonDetails;

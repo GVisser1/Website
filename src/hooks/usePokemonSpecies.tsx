@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { queryOptions, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { isNil } from "lodash-es";
 import { POKEMON_API_URL } from "../constants";
@@ -29,31 +29,38 @@ export type PokemonSpeciesDetails = {
   description: string;
 };
 
-export const usePokemonSpecies = (identifier?: PokemonIdentifier): UsePokemonSpeciesResult =>
-  useQuery({
+const fetchPokemonSpecies = async (
+  identifier: PokemonIdentifier,
+): Promise<PokemonSpeciesDetails> => {
+  const { data } = await axios.get<PokemonSpeciesResponse>(
+    `${POKEMON_API_URL}-species/${identifier}`,
+  );
+
+  const genus = getEnglishText(data.genera, "genus");
+  const description = formatDescription(getEnglishText(data.flavor_text_entries, "flavor_text"));
+
+  return {
+    evolutionChain: data.evolution_chain.url,
+    generation: data.generation.name,
+    isLegendary: data.is_legendary,
+    isMythical: data.is_mythical,
+    genus,
+    description,
+  };
+};
+
+export const pokemonSpeciesQueryOptions = (identifier: PokemonIdentifier) =>
+  queryOptions<PokemonSpeciesDetails>({
     queryKey: ["pokemonSpecies", identifier],
-    queryFn: async (): Promise<PokemonSpeciesDetails> => {
-      const { data } = await axios.get<PokemonSpeciesResponse>(
-        `${POKEMON_API_URL}-species/${identifier}`,
-      );
-
-      const genus = getEnglishText(data.genera, "genus");
-      const description = formatDescription(
-        getEnglishText(data.flavor_text_entries, "flavor_text"),
-      );
-
-      return {
-        evolutionChain: data.evolution_chain.url,
-        generation: data.generation.name,
-        isLegendary: data.is_legendary,
-        isMythical: data.is_mythical,
-        genus,
-        description,
-      };
-    },
+    queryFn: () => fetchPokemonSpecies(identifier),
     enabled: !isNil(identifier),
     staleTime: hours(1),
   });
+
+const usePokemonSpecies = (identifier: PokemonIdentifier) =>
+  useQuery(pokemonSpeciesQueryOptions(identifier));
+
+export default usePokemonSpecies;
 
 const getEnglishText = <T extends { language: { name: string } }>(
   entries: T[],

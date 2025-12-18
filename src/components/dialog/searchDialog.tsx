@@ -12,7 +12,7 @@ import SearchInput from "../search";
 import Dialog from "./dialog";
 
 const ANIMATION_DURATION = 200;
-const SEARCH_DEBOUNCE = 300;
+const SEARCH_DEBOUNCE = 200;
 
 type SearchDialogProps = {
   open: boolean;

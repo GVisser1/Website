@@ -45,6 +45,9 @@
   --text-lg-medium: 1.125rem;
   --text-lg-medium--line-height: 1.75rem;
   --text-lg-medium--font-weight: 500;
+  --text-lg-regular: 1.125rem;
+  --text-lg-regular--line-height: 1.75rem;
+  --text-lg-regular--font-weight: 400;
   --text-base-bold: 1rem;
   --text-base-bold--line-height: 1.5rem;
   --text-base-bold--font-weight: 700;
@@ -85,8 +88,8 @@
   --text-color-inverse: #ffffff;
   --text-color-primary: #3f3f46;
   --text-color-primary-dark: #e4e4e7;
-  --text-color-secondary: #71717a;
-  --text-color-secondary-dark: #a1a1aa;
+  --text-color-secondary: #52525b;
+  --text-color-secondary-dark: #d4d4d8;
   --text-color-placeholder: #71717a;
   --text-color-placeholder-dark: #a1a1aa;
   --text-color-icons-accent-number: #d97706;

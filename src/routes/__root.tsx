@@ -1,5 +1,5 @@
 import type { QueryClient } from "@tanstack/react-query";
-import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
+import { createRootRouteWithContext, HeadContent, Outlet } from "@tanstack/react-router";
 import type { JSX } from "react";
 import IconAndTextButton from "@/components/button/iconAndTextButton";
 import { Layout } from "@/components/layout";
@@ -26,8 +26,12 @@ const NotFoundPage = (): JSX.Element => (
 export const Route = createRootRouteWithContext<MyRouterContext>()({
   component: () => (
     <Layout>
+      <HeadContent />
       <Outlet />
     </Layout>
   ),
   notFoundComponent: NotFoundPage,
+  head: () => ({
+    meta: [{ title: "Portfolio Glenn" }],
+  }),
 });

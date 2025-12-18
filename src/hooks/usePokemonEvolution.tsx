@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { queryOptions, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { isNil } from "lodash-es";
 import type { PokemonIdentifier } from "../utils/pokemonUtil";
@@ -32,33 +32,30 @@ export type EvolutionChain = {
   species: { id: number; name: string; url: string };
 };
 
-type UsePokemonEvolutionResult = {
-  data?: EvolutionChain;
-  isLoading: boolean;
-  error: Error | null;
-};
-
 type EvolutionStageResponse = {
   baby_trigger_item: { name: string; url: string } | null;
   chain: EvolutionChain;
 };
 
-const usePokemonEvolution = (
-  identifier?: PokemonIdentifier,
-  evolutionStage?: string,
-): UsePokemonEvolutionResult => {
-  const result = useQuery({
-    queryKey: ["pokemonEvolution", identifier],
-    queryFn: async (): Promise<EvolutionChain> => {
-      const { data } = await axios.get<EvolutionStageResponse>(evolutionStage ?? "");
+const fetchPokemonEvolutions = async (evolutionStage: string): Promise<EvolutionChain> => {
+  const { data } = await axios.get<EvolutionStageResponse>(evolutionStage);
+  return data.chain;
+};
 
-      return data.chain;
-    },
+export const pokemonEvolutionQueryOptions = (
+  identifier: PokemonIdentifier,
+  evolutionStage: string,
+) =>
+  queryOptions<EvolutionChain>({
+    queryKey: ["pokemonEvolution", identifier],
+    queryFn: () => fetchPokemonEvolutions(evolutionStage),
     enabled: !isNil(identifier) && !isNil(evolutionStage),
     staleTime: hours(1),
   });
 
-  return result;
-};
+const usePokemonEvolution = (
+  identifier?: PokemonIdentifier,
+  evolutionStage?: string,
+): UsePokemonEvolutionResult => useQuery(pokemonEvolutionQueryOptions(identifier, evolutionStage));
 
 export default usePokemonEvolution;

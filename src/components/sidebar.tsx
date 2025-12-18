@@ -68,7 +68,7 @@ export const Sidebar = (): JSX.Element => {
       <Divider soft />
 
       <ul className={listClasses}>
-        {MAIN_PAGES.map((item) => (
+        {Object.values(MAIN_PAGES).map((item) => (
           <SidebarLink
             key={item.name}
             href={item.href}
@@ -86,7 +86,7 @@ export const Sidebar = (): JSX.Element => {
       <Divider soft />
 
       <ul className={listClasses}>
-        {PROJECT_PAGES.map((item) => (
+        {Object.values(PROJECT_PAGES).map((item) => (
           <SidebarLink
             key={item.name}
             href={item.href}

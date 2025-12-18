@@ -1,6 +1,7 @@
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { isNil, startCase } from "lodash-es";
-import type { JSX } from "react";
+import { isEmpty, isNil, startCase } from "lodash-es";
+import { type JSX, Suspense } from "react";
 import Header from "@/components/header";
 import Page from "@/components/page";
 import PokemonCover from "@/components/pokemon/pokemonCover";
@@ -10,46 +11,30 @@ import PokemonMeta from "@/components/pokemon/pokemonMeta";
 import PokemonStatsTable from "@/components/pokemon/pokemonStats";
 import PokemonTypes from "@/components/pokemon/pokemonTypes";
 import { PROJECT_PAGES } from "@/constants";
-import usePokemonDetails from "@/hooks/usePokemonDetails";
-import usePokemonEvolution from "@/hooks/usePokemonEvolution";
-import { usePokemonSpecies } from "@/hooks/usePokemonSpecies";
-import { PAGE_SIZE } from "@/utils/pokemonUtil";
+import { pokemonDetailsQueryOptions } from "@/hooks/usePokemonDetails";
+import { pokemonEvolutionQueryOptions } from "@/hooks/usePokemonEvolution";
+import { pokemonSpeciesQueryOptions } from "@/hooks/usePokemonSpecies";
+import { PAGE_SIZE, TOTAL_POKEMON } from "@/utils/pokemonUtil";
 
 const PokemonInfoPage = (): JSX.Element => {
   const identifier = Route.useParams().identifier;
-  const pokemon = usePokemonDetails(identifier);
-  const pokemonSpecies = usePokemonSpecies(pokemon.data?.id);
-  const pokemonEvolution = usePokemonEvolution(
-    pokemon.data?.name,
-    pokemonSpecies.data?.evolutionChain,
+  const pokemon = useSuspenseQuery(pokemonDetailsQueryOptions(identifier));
+  const species = useSuspenseQuery(pokemonSpeciesQueryOptions(identifier));
+  const evolutions = useSuspenseQuery(
+    pokemonEvolutionQueryOptions(pokemon.data.name, species.data.evolutionChain),
   );
 
-  const isLoading = pokemon.isLoading || pokemonSpecies.isLoading || pokemonEvolution.isLoading;
-
   const pageNumber = pokemon.data?.id ? Math.ceil(pokemon.data.id / PAGE_SIZE) : 1;
-  const backLink = {
-    href: `${PROJECT_PAGES[0].href}?page=${pageNumber}`,
-    label: "Back to Pokémon",
-  };
-
-  if (isLoading) {
-    return <LoadingState backLink={backLink} />;
-  }
-
-  if (pokemon.error) {
-    return <h1>Failed to retrieve Pokemon details: {pokemon.error.message}</h1>;
-  }
-
-  if (isNil(pokemon.data) || isNil(pokemonSpecies.data) || isNil(pokemonEvolution.data)) {
-    return <h1>Pokemon {identifier} not found</h1>;
-  }
 
   return (
     <Page>
       <Header
         title={`${startCase(pokemon.data.name)} #${pokemon.data.id}`}
-        description={pokemonSpecies.data?.description}
-        topLink={backLink}
+        description={species.data?.description}
+        topLink={{
+          href: `${PROJECT_PAGES.pokemon.href}?page=${pageNumber}`,
+          label: "Back to Pokémon",
+        }}
       />
 
       <div className="grid grid-cols-1 tablet:grid-cols-2 gap-x-4">
@@ -57,13 +42,13 @@ const PokemonInfoPage = (): JSX.Element => {
           name={pokemon.data.name}
           primaryType={pokemon.data.types[0]}
           sprite={pokemon.data.sprite}
-          isLegendary={pokemonSpecies.data.isLegendary}
-          isMythical={pokemonSpecies.data.isMythical}
+          isLegendary={species.data.isLegendary}
+          isMythical={species.data.isMythical}
         />
 
         <div className="mt-2 tablet:mt-0 flex grow flex-col justify-center">
           <h2 className="mb-2 truncate text-header-2xl text-primary dark:text-primary-dark">
-            {pokemonSpecies.data.genus}
+            {species.data.genus}
           </h2>
 
           <PokemonTypes types={pokemon.data.types} size="md" />
@@ -73,8 +58,8 @@ const PokemonInfoPage = (): JSX.Element => {
 
       <PokemonStatsTable stats={pokemon.data.stats} className="mt-8 tablet:mt-4" />
 
-      {!isNil(pokemonEvolution.data) && pokemonEvolution.data.evolves_to.length > 0 && (
-        <PokemonEvolutionTree chain={pokemonEvolution.data} />
+      {!isNil(evolutions.data) && !isEmpty(evolutions.data.evolves_to) && (
+        <PokemonEvolutionTree chain={evolutions.data} />
       )}
 
       <PokemonEntrySwitcher id={pokemon.data.id} className="mt-12" />
@@ -99,5 +84,44 @@ const LoadingState = (props: LoadingStateProps): JSX.Element => (
 );
 
 export const Route = createFileRoute("/projects/pokemon/$identifier/")({
-  component: PokemonInfoPage,
+  loader: async ({ context: { queryClient }, params: { identifier } }) => {
+    if (Number(identifier) < 0 || Number(identifier) > TOTAL_POKEMON) {
+      throw new Error("Invalid pokemon id");
+    }
+
+    const pokemon = await queryClient.ensureQueryData(pokemonDetailsQueryOptions(identifier));
+    const species = await queryClient.ensureQueryData(pokemonSpeciesQueryOptions(identifier));
+    const evolutions = await queryClient.ensureQueryData(
+      pokemonEvolutionQueryOptions(identifier, species.evolutionChain),
+    );
+
+    return { pokemon, species, evolutions };
+  },
+  head: async ({ loaderData }) => ({
+    meta: [
+      {
+        title: loaderData?.pokemon?.name
+          ? `${startCase(loaderData?.pokemon?.name)} - Glenn Visser`
+          : "Error - Glenn Visser",
+      },
+    ],
+  }),
+  component: () => (
+    <Suspense
+      fallback={
+        <LoadingState backLink={{ href: PROJECT_PAGES.pokemon.href, label: "Back to Pokémon" }} />
+      }
+    >
+      <PokemonInfoPage />
+    </Suspense>
+  ),
+  errorComponent: (e) => (
+    <Page>
+      <Header
+        title="Error"
+        description={e.error.message}
+        topLink={{ href: PROJECT_PAGES.pokemon.href, label: "Back to Pokémon" }}
+      />
+    </Page>
+  ),
 });

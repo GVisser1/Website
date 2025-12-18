@@ -25,9 +25,8 @@ describe("usePokemon hook", () => {
     });
 
     await waitFor(() => expect(result.current.isLoading).toBe(false));
-    expect(result.current.totalPages).toBe(65);
     expect(result.current.error).toBeNull();
-    expect(result.current.pokemon).toMatchObject(pokemon);
+    expect(result.current.data?.results).toMatchObject(pokemon);
   });
 
   it("handles errors correctly", async () => {
@@ -40,8 +39,7 @@ describe("usePokemon hook", () => {
     const { result } = renderHook(() => usePokemon(1), { wrapper: withQueryClient() });
 
     await waitFor(() => expect(result.current.isLoading).toBe(false));
-    expect(result.current.pokemon).toEqual(undefined);
+    expect(result.current.data?.results).toEqual(undefined);
     expect(result.current.error).toBeInstanceOf(AxiosError);
-    expect(result.current.totalPages).toBe(undefined);
   });
 });

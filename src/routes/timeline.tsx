@@ -4,15 +4,15 @@ import type { JSX } from "react";
 import Header from "@/components/header";
 import Image from "@/components/image";
 import Page from "@/components/page";
+import { MAIN_PAGES } from "@/constants";
 import { getTimeFrame } from "@/utils/dateUtil";
 import { isEven } from "@/utils/numberUtil";
 
+const PAGE = MAIN_PAGES.timeline;
+
 const TimelinePage = (): JSX.Element => (
   <Page>
-    <Header
-      title="Timeline"
-      description="A chronological overview of my education and work experience"
-    />
+    <Header title={PAGE.name} description={PAGE.description} />
 
     <div className="relative">
       <div className="absolute tablet-ls:inset-x-0 left-2 tablet-ls:mx-auto tablet-ls:inline hidden h-full w-0.5 bg-sunken-tertiary dark:bg-sunken-tertiary-dark" />
@@ -104,4 +104,7 @@ const timeLineData: TimelineItem[] = [
 
 export const Route = createFileRoute("/timeline")({
   component: TimelinePage,
+  head: () => ({
+    meta: [{ title: PAGE.meta.title }, { name: "description", content: PAGE.meta.description }],
+  }),
 });

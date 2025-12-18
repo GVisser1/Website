@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type { JSX } from "react";
+import { MAIN_PAGES } from "@/constants";
 import {
   BlogContent,
   BlogFooter,
@@ -11,17 +12,11 @@ import Header from "../components/header";
 import InlineLink from "../components/inlineLink";
 import Page from "../components/page";
 
-// export const metadata: Metadata = {
-//   title: "About me",
-//   description: "Learn more about me and my interests, hobbies, and professional life",
-// };
+const PAGE = MAIN_PAGES.about;
 
 const AboutPage = (): JSX.Element => (
   <Page>
-    <Header
-      title="About me"
-      description="Learn more about me and my love for games, music, and movies"
-    />
+    <Header title={PAGE.name} description={PAGE.description} />
 
     <BlogContent>
       <BlogSection
@@ -99,7 +94,7 @@ const AboutPage = (): JSX.Element => (
         <BlogHeader>Professional Life</BlogHeader>
         <BlogParagraph>
           In my professional life, I am a Quality Assurance Engineer. At{" "}
-          <InlineLink href="https://moreapp.com">MoreApp</InlineLink>. I am responsible for ensuring
+          <InlineLink href="https://moreapp.com">MoreApp</InlineLink>, I am responsible for ensuring
           quality of the software, maintaining testing processes, and writing automated tests using{" "}
           <InlineLink href="https://playwright.dev">Playwright</InlineLink>. I love working closely
           with developers, UX designers, and the Product Owner to ensure our projects meets the
@@ -127,4 +122,7 @@ const AboutPage = (): JSX.Element => (
 
 export const Route = createFileRoute("/about")({
   component: AboutPage,
+  head: () => ({
+    meta: [{ title: PAGE.meta.title }, { name: "description", content: PAGE.meta.description }],
+  }),
 });
