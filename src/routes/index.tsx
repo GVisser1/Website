@@ -20,7 +20,7 @@ const HomePage = (): JSX.Element => {
 
   return (
     <Page className="my-auto">
-      <header className="mx-auto mt-32 mb-56 grid laptop:max-w-7xl max-w-xl tablet-ls:max-w-4xl laptop:grid-cols-2 items-center justify-center gap-x-18 gap-y-8">
+      <header className="mx-auto mt-8 tablet-ls:mt-32 tablet-ls:mb-56 grid laptop:max-w-7xl max-w-xl tablet-ls:max-w-4xl laptop:grid-cols-2 items-center justify-center gap-x-18 gap-y-8">
         <div className="laptop:order-1 order-2 flex flex-col gap-y-6 laptop:gap-y-6 laptop:text-left text-center">
           <h1 className={headerClasses}>
             Hi, my name is <span className="text-light dark:text-light-dark">Glenn Visser</span>
