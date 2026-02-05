@@ -5,10 +5,8 @@ import { useReadLocalStorage } from "usehooks-ts";
 import TextButton from "@/components/button/textButton";
 import Image from "@/components/image";
 import Page from "@/components/page";
-import { MAIL_TO, MAIN_PAGES } from "@/constants";
+import { MAIL_TO } from "@/constants";
 import { getAge } from "@/utils/dateUtil";
-
-const PAGE = MAIN_PAGES.home;
 
 const HomePage = (): JSX.Element => {
   const isSidebarCollapsed = useReadLocalStorage<boolean>("isSidebarCollapsed");
@@ -53,7 +51,4 @@ const HomePage = (): JSX.Element => {
 
 export const Route = createFileRoute("/")({
   component: HomePage,
-  head: () => ({
-    meta: [{ title: PAGE.meta.title }, { name: "description", content: PAGE.meta.description }],
-  }),
 });

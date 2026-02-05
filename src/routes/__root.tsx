@@ -31,7 +31,4 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
     </Layout>
   ),
   notFoundComponent: NotFoundPage,
-  head: () => ({
-    meta: [{ title: "Portfolio Glenn" }],
-  }),
 });
