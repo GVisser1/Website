@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { setupServer } from "msw/node";
-import type { ReactNode } from "react";
+import type { JSX, ReactNode } from "react";
 
 export const withQueryClient = () => {
   const queryClient = new QueryClient({
@@ -11,7 +11,7 @@ export const withQueryClient = () => {
     },
   });
 
-  return ({ children }: { children: ReactNode }) => (
+  return ({ children }: { children: ReactNode }): JSX.Element => (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
 };

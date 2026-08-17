@@ -15,9 +15,7 @@ type BaseIconButtonProps = {
 type ButtonTypeProps =
   | { type: "button"; onClick: (e: MouseEvent<HTMLButtonElement>) => void }
   | { type: "link"; href: string };
-type VariantProps =
-  | { variant: "secondary"; disabled?: boolean }
-  | { variant: "ghost"; active?: boolean };
+type VariantProps = { variant: "secondary"; disabled?: boolean } | { variant: "ghost"; active?: boolean };
 type IconButtonProps = BaseIconButtonProps & ButtonTypeProps & VariantProps;
 
 const IconButton = (props: IconButtonProps): JSX.Element => {

@@ -24,9 +24,7 @@ type BlogSectionProps = {
 export const BlogSection = (props: BlogSectionProps): JSX.Element => {
   const classes = clsx(
     "flex flex-col items-center gap-x-10 gap-y-3",
-    props.image?.align === "left"
-      ? "tablet:flex-row-reverse tablet:space-x-reverse"
-      : "tablet:flex-row",
+    props.image?.align === "left" ? "tablet:flex-row-reverse tablet:space-x-reverse" : "tablet:flex-row",
   );
 
   return (
@@ -62,9 +60,7 @@ type BlogParagraphProps = {
   children: ReactNode;
 };
 export const BlogParagraph = (props: BlogParagraphProps): JSX.Element => (
-  <p className="not-last:mb-1 w-full text-base-regular text-secondary dark:text-secondary-dark">
-    {props.children}
-  </p>
+  <p className="not-last:mb-1 w-full text-base-regular text-secondary dark:text-secondary-dark">{props.children}</p>
 );
 
 type BlogListProps = {

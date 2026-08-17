@@ -62,9 +62,7 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
             <p id={ID} className="text-elevation-float">
               {props.title}
             </p>
-            {props.description && (
-              <p className="text-elevation-float-secondary">{props.description}</p>
-            )}
+            {props.description && <p className="text-elevation-float-secondary">{props.description}</p>}
           </TooltipContent>
         </TooltipPortal>
       </TooltipRoot>

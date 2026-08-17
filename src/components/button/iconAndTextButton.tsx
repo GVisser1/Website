@@ -15,10 +15,7 @@ type BaseIconAndTextButtonProps = {
   className?: string;
 };
 type ButtonTypeProps = { type?: "button"; onClick: () => void } | { type: "link"; href: string };
-type VariantProps =
-  | { variant: "primary" }
-  | { variant: "light" }
-  | { variant: "ghost"; active?: boolean };
+type VariantProps = { variant: "primary" } | { variant: "light" } | { variant: "ghost"; active?: boolean };
 type IconAndTextButtonProps = BaseIconAndTextButtonProps & ButtonTypeProps & VariantProps;
 
 const IconAndTextButton = (props: IconAndTextButtonProps): JSX.Element => {

@@ -18,7 +18,7 @@ import { normalizeString } from "@/utils/textUtil";
 const PAGE = PROJECT_PAGES.pokemon;
 const SEARCH_DEBOUNCE = 300;
 
-const PokemonPage = () => {
+const PokemonPage = (): JSX.Element => {
   const page = Route.useSearch().page;
   const navigate = useNavigate({ from: "/projects/pokemon" });
   const {
@@ -52,16 +52,11 @@ const PokemonPage = () => {
     }
 
     if (page < 1 || page > totalFilteredPages) {
-      navigate({ search: { page: 1 } });
+      void navigate({ search: { page: 1 } });
     }
 
-    if (
-      debouncedQuery !== "" &&
-      !isEmpty(filteredPokemon) &&
-      !isNil(filteredPokemon) &&
-      page > totalFilteredPages
-    ) {
-      navigate({ search: { page: 1 } });
+    if (debouncedQuery !== "" && !isEmpty(filteredPokemon) && !isNil(filteredPokemon) && page > totalFilteredPages) {
+      void navigate({ search: { page: 1 } });
     }
   }, [debouncedQuery, filteredPokemon, totalFilteredPages, navigate, page, results]);
 

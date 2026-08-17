@@ -1,5 +1,4 @@
 import clsx from "clsx";
-
 import type { JSX } from "react";
 
 type DividerProps = {
@@ -12,9 +11,7 @@ const Divider = ({ className, soft }: DividerProps): JSX.Element => (
     aria-hidden
     className={clsx(
       "w-full border-t",
-      soft
-        ? "border-secondary dark:border-secondary-dark"
-        : "border-primary dark:border-primary-dark",
+      soft ? "border-secondary dark:border-secondary-dark" : "border-primary dark:border-primary-dark",
       className,
     )}
   />

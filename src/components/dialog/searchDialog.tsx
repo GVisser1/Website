@@ -66,7 +66,7 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
   const scrollToIndex = (index: number): void =>
     resultsRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "center" });
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
+  const handleKeyDown = async (e: KeyboardEvent<HTMLInputElement>): Promise<void> => {
     if (isEmpty(availablePages)) {
       return;
     }
@@ -93,7 +93,7 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
     }
 
     if (key === "Enter" && selectedIndex >= 0) {
-      navigate({ to: availablePages[selectedIndex].href });
+      await navigate({ to: availablePages[selectedIndex].href });
       handleOnClose();
     }
   };
@@ -152,11 +152,7 @@ type ResultsListProps = {
 const ResultsList = (props: ResultsListProps): JSX.Element => (
   <>
     <h2 className="sr-only">Results</h2>
-    <div
-      role="listbox"
-      aria-label="Pages"
-      className="flex max-h-56 flex-col gap-y-1 overflow-y-auto"
-    >
+    <div role="listbox" aria-label="Pages" className="flex max-h-56 flex-col gap-y-1 overflow-y-auto">
       {props.results.map((page, index) => (
         <Link
           key={page.name}

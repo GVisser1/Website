@@ -31,9 +31,7 @@ export const GlobalSearchProvider = (props: GlobalSearchProviderProps): JSX.Elem
   }, []);
 
   return (
-    <GlobalSearchContext.Provider value={{ open, setOpen: setOpen }}>
-      {props.children}
-    </GlobalSearchContext.Provider>
+    <GlobalSearchContext.Provider value={{ open, setOpen: setOpen }}>{props.children}</GlobalSearchContext.Provider>
   );
 };
 

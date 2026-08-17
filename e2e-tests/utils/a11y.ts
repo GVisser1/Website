@@ -1,6 +1,6 @@
+import AxeBuilder from "@axe-core/playwright";
 import type { Page } from "@playwright/test";
 import { expect } from "@playwright/test";
-import AxeBuilder from "@axe-core/playwright";
 
 export const analyzeA11yOfPage = async (page: Page): Promise<void> => {
   const analyzePage = new AxeBuilder({ page }).analyze();

@@ -1,4 +1,11 @@
-import { queryOptions, useQuery } from "@tanstack/react-query";
+import {
+  type DataTag,
+  type QueryKey,
+  queryOptions,
+  type UnusedSkipTokenOptions,
+  type UseQueryResult,
+  useQuery,
+} from "@tanstack/react-query";
 import axios from "axios";
 import { isNil } from "lodash-es";
 import { POKEMON_API_URL } from "../constants";
@@ -14,12 +21,6 @@ type PokemonSpeciesResponse = {
   flavor_text_entries: { flavor_text: string; language: { name: string } }[];
 };
 
-type UsePokemonSpeciesResult = {
-  data?: PokemonSpeciesDetails;
-  error: Error | null;
-  isLoading: boolean;
-};
-
 export type PokemonSpeciesDetails = {
   evolutionChain: string;
   generation: string;
@@ -29,12 +30,8 @@ export type PokemonSpeciesDetails = {
   description: string;
 };
 
-const fetchPokemonSpecies = async (
-  identifier: PokemonIdentifier,
-): Promise<PokemonSpeciesDetails> => {
-  const { data } = await axios.get<PokemonSpeciesResponse>(
-    `${POKEMON_API_URL}-species/${identifier}`,
-  );
+const fetchPokemonSpecies = async (identifier: PokemonIdentifier): Promise<PokemonSpeciesDetails> => {
+  const { data } = await axios.get<PokemonSpeciesResponse>(`${POKEMON_API_URL}-species/${identifier}`);
 
   const genus = getEnglishText(data.genera, "genus");
   const description = formatDescription(getEnglishText(data.flavor_text_entries, "flavor_text"));
@@ -49,7 +46,9 @@ const fetchPokemonSpecies = async (
   };
 };
 
-export const pokemonSpeciesQueryOptions = (identifier: PokemonIdentifier) =>
+export const pokemonSpeciesQueryOptions = (
+  identifier: PokemonIdentifier,
+): UnusedSkipTokenOptions<PokemonSpeciesDetails> & { queryKey: DataTag<QueryKey, PokemonSpeciesDetails, Error> } =>
   queryOptions<PokemonSpeciesDetails>({
     queryKey: ["pokemonSpecies", identifier],
     queryFn: () => fetchPokemonSpecies(identifier),
@@ -57,17 +56,13 @@ export const pokemonSpeciesQueryOptions = (identifier: PokemonIdentifier) =>
     staleTime: hours(1),
   });
 
-const usePokemonSpecies = (identifier: PokemonIdentifier) =>
+const usePokemonSpecies = (identifier: PokemonIdentifier): UseQueryResult<PokemonSpeciesDetails, Error> =>
   useQuery(pokemonSpeciesQueryOptions(identifier));
 
 export default usePokemonSpecies;
 
-const getEnglishText = <T extends { language: { name: string } }>(
-  entries: T[],
-  key: keyof T,
-): string =>
-  (entries.find((entry) => entry.language.name === "en")?.[key] as string) ??
-  "No description available.";
+const getEnglishText = <T extends { language: { name: string } }>(entries: T[], key: keyof T): string =>
+  (entries.find((entry) => entry.language.name === "en")?.[key] as string) ?? "No description available.";
 
 const formatDescription = (description: string): string => {
   let formattedDescription = description.replace("POKéMON", "Pokémon");

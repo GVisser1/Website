@@ -1,5 +1,4 @@
-export const getMonthName = (date: Date): string =>
-  date.toLocaleString("default", { month: "short" });
+export const getMonthName = (date: Date): string => date.toLocaleString("default", { month: "short" });
 
 export const getTimeFrame = (startDate: Date, endDate?: Date): string => {
   const start = `${getMonthName(startDate)} ${startDate.getFullYear()}`;

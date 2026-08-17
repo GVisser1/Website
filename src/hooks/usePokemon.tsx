@@ -1,4 +1,11 @@
-import { queryOptions, useQuery } from "@tanstack/react-query";
+import {
+  type DataTag,
+  type QueryKey,
+  queryOptions,
+  type UnusedSkipTokenOptions,
+  type UseQueryResult,
+  useQuery,
+} from "@tanstack/react-query";
 import axios from "axios";
 import { POKEMON_API_URL } from "../constants";
 import { hours } from "../utils/timeUtil";
@@ -10,7 +17,7 @@ type Pokemon = {
 
 export type PaginatedPokemon = { results: Pokemon[]; count: number };
 
-const fetchPokemon = async () => {
+const fetchPokemon = async (): Promise<PaginatedPokemon> => {
   const config = {
     params: { limit: 10000 },
   };
@@ -27,13 +34,16 @@ const fetchPokemon = async () => {
   };
 };
 
-export const pokemonQueryOptions = (currentPage: number) =>
+export const pokemonQueryOptions = (
+  currentPage: number,
+): UnusedSkipTokenOptions<PaginatedPokemon> & { queryKey: DataTag<QueryKey, PaginatedPokemon, Error> } =>
   queryOptions<PaginatedPokemon>({
     queryKey: ["paginatedPokemon", currentPage],
     queryFn: fetchPokemon,
     staleTime: hours(1),
   });
 
-const usePokemon = (currentPage: number) => useQuery(pokemonQueryOptions(currentPage));
+const usePokemon = (currentPage: number): UseQueryResult<PaginatedPokemon, Error> =>
+  useQuery(pokemonQueryOptions(currentPage));
 
 export default usePokemon;

@@ -9,7 +9,7 @@
 @theme inline {
   --font-inter: "Inter Variable", var(--font-sans);
   --font-comic-sans: "Comic Sans MS", "Chalkboard SE", "Comic Neue", var(--font-sans);
-  
+
   --breakpoint-*: initial;
   --breakpoint-phone-ls: 520px;
   --breakpoint-tablet: 768px;

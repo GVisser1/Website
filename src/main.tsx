@@ -1,12 +1,12 @@
-import { createRouter, RouterProvider } from "@tanstack/react-router";
-import { StrictMode } from "react";
-import ReactDOM from "react-dom/client";
-import { routeTree } from "./routeTree.gen";
-import "./styles.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { ThemeProvider } from "next-themes";
+import { StrictMode } from "react";
+import "./styles.css";
+import ReactDOM from "react-dom/client";
 import * as TanStackQueryProvider from "./integrations/tanstack-query/root-provider";
 import { GlobalSearchProvider } from "./providers/globalSearchProvider";
+import { routeTree } from "./routeTree.gen";
 
 const TanStackQueryProviderContext = TanStackQueryProvider.getContext();
 const router = createRouter({
@@ -19,13 +19,6 @@ const router = createRouter({
   defaultStructuralSharing: true,
   defaultPreloadStaleTime: 0,
 });
-
-declare module "@tanstack/react-router" {
-  // biome-ignore lint/style/useConsistentTypeDefinitions: Registering router instance for type safety
-  interface Register {
-    router: typeof router;
-  }
-}
 
 const rootElement = document.getElementById("app");
 if (rootElement && !rootElement.innerHTML) {

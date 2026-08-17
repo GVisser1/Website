@@ -24,18 +24,12 @@ const HomePage = (): JSX.Element => {
             Hi, my name is <span className="text-light dark:text-light-dark">Glenn Visser</span>
           </h1>
           <p className="text-lg-regular text-secondary dark:text-secondary-dark">
-            I am a {getAge()}-year-old QA Engineer living in Maassluis, the Netherlands. I am into
-            music, movies, games, and programming.
+            I am a {getAge()}-year-old QA Engineer living in Maassluis, the Netherlands. I am into music, movies, games,
+            and programming.
           </p>
           <div className="flex laptop:justify-start justify-center gap-x-2">
             <TextButton type="link" label="About me" variant="primary" href="/about" size="large" />
-            <TextButton
-              type="link"
-              label="Get in touch"
-              variant="light"
-              href={MAIL_TO}
-              size="large"
-            />
+            <TextButton type="link" label="Get in touch" variant="light" href={MAIL_TO} size="large" />
           </div>
         </div>
         <Image

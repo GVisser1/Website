@@ -16,9 +16,7 @@ const Logo = ({ withTitle, size, className }: LogoProps): JSX.Element => {
   return (
     <div className={classes}>
       <Image className={imageClasses} src="/images/logo.webp" alt="" />
-      {withTitle && (
-        <p className="truncate text-header-lg text-primary dark:text-primary-dark">Glenn Visser</p>
-      )}
+      {withTitle && <p className="truncate text-header-lg text-primary dark:text-primary-dark">Glenn Visser</p>}
     </div>
   );
 };

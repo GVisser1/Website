@@ -95,20 +95,11 @@ type PaginationButtonProps = {
   ariaLabel: string;
   disabled: boolean;
   onClick: () => void;
-  icon: Extract<
-    IconName,
-    "ChevronLeftDouble" | "ChevronLeft" | "ChevronRight" | "ChevronRightDouble"
-  >;
+  icon: Extract<IconName, "ChevronLeftDouble" | "ChevronLeft" | "ChevronRight" | "ChevronRightDouble">;
   shortcut: string;
 };
 
-const PaginationButton = ({
-  ariaLabel,
-  disabled,
-  onClick,
-  icon,
-  shortcut,
-}: PaginationButtonProps): JSX.Element => (
+const PaginationButton = ({ ariaLabel, disabled, onClick, icon, shortcut }: PaginationButtonProps): JSX.Element => (
   <IconButton
     type="button"
     variant="secondary"
@@ -120,13 +111,7 @@ const PaginationButton = ({
   />
 );
 
-const PageCounter = ({
-  currentPage,
-  totalPages,
-}: {
-  currentPage: number;
-  totalPages: number;
-}): JSX.Element => (
+const PageCounter = ({ currentPage, totalPages }: { currentPage: number; totalPages: number }): JSX.Element => (
   <span className="mx-1 flex w-full items-center justify-center gap-x-1 text-base-regular text-secondary dark:text-secondary-dark">
     <span className="text-base-bold">{currentPage}</span>
     of

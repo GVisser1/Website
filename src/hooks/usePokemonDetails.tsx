@@ -1,4 +1,11 @@
-import { queryOptions, useQuery } from "@tanstack/react-query";
+import {
+  type DataTag,
+  type QueryKey,
+  queryOptions,
+  type UnusedSkipTokenOptions,
+  type UseQueryResult,
+  useQuery,
+} from "@tanstack/react-query";
 import axios from "axios";
 import { POKEMON_API_URL } from "../constants";
 import type { PokemonIdentifier, PokemonType } from "../utils/pokemonUtil";
@@ -39,7 +46,7 @@ export type PokemonDetails = {
   weight: number;
 };
 
-const fetchPokemonDetails = async (identifier: PokemonIdentifier) => {
+const fetchPokemonDetails = async (identifier: PokemonIdentifier): Promise<PokemonDetails> => {
   const { data } = await axios.get<PokemonDetailsResponse>(`${POKEMON_API_URL}/${identifier}`);
 
   const abilities = data.abilities.map(({ is_hidden, ability }) => ({
@@ -66,14 +73,16 @@ const fetchPokemonDetails = async (identifier: PokemonIdentifier) => {
   };
 };
 
-export const pokemonDetailsQueryOptions = (identifier: PokemonIdentifier) =>
+export const pokemonDetailsQueryOptions = (
+  identifier: PokemonIdentifier,
+): UnusedSkipTokenOptions<PokemonDetails> & { queryKey: DataTag<QueryKey, PokemonDetails, Error> } =>
   queryOptions<PokemonDetails>({
     queryKey: ["pokemonDetails", identifier],
     queryFn: () => fetchPokemonDetails(identifier),
     staleTime: hours(1),
   });
 
-export const usePokemonDetails = (identifier: PokemonIdentifier) =>
+export const usePokemonDetails = (identifier: PokemonIdentifier): UseQueryResult<PokemonDetails, Error> =>
   useQuery(pokemonDetailsQueryOptions(identifier));
 
 export default usePokemonDetails;

@@ -1,4 +1,11 @@
-import { queryOptions, useQuery } from "@tanstack/react-query";
+import {
+  type DataTag,
+  type QueryKey,
+  queryOptions,
+  type UnusedSkipTokenOptions,
+  type UseQueryResult,
+  useQuery,
+} from "@tanstack/react-query";
 import axios from "axios";
 import { isNil } from "lodash-es";
 import type { PokemonIdentifier } from "../utils/pokemonUtil";
@@ -45,7 +52,7 @@ const fetchPokemonEvolutions = async (evolutionStage: string): Promise<Evolution
 export const pokemonEvolutionQueryOptions = (
   identifier: PokemonIdentifier,
   evolutionStage: string,
-) =>
+): UnusedSkipTokenOptions<EvolutionChain> & { queryKey: DataTag<QueryKey, EvolutionChain, Error> } =>
   queryOptions<EvolutionChain>({
     queryKey: ["pokemonEvolution", identifier],
     queryFn: () => fetchPokemonEvolutions(evolutionStage),
@@ -54,8 +61,8 @@ export const pokemonEvolutionQueryOptions = (
   });
 
 const usePokemonEvolution = (
-  identifier?: PokemonIdentifier,
-  evolutionStage?: string,
-): UsePokemonEvolutionResult => useQuery(pokemonEvolutionQueryOptions(identifier, evolutionStage));
+  identifier: PokemonIdentifier,
+  evolutionStage: string,
+): UseQueryResult<EvolutionChain, Error> => useQuery(pokemonEvolutionQueryOptions(identifier, evolutionStage));
 
 export default usePokemonEvolution;

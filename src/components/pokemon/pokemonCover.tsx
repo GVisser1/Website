@@ -21,10 +21,7 @@ const PokemonCover = (props: PokemonCoverProps): JSX.Element => {
   return (
     <div className={classes}>
       <Image src={props.sprite} alt={props.name} className="h-56 w-full object-contain" priority />
-      <Icon
-        name="PokéBall"
-        className="-z-1 -rotate-45 absolute right-0 bottom-0 size-28 text-inverse/30"
-      />
+      <Icon name="PokéBall" className="-z-1 -rotate-45 absolute right-0 bottom-0 size-28 text-inverse/30" />
       {props.isLegendary && <LegendaryIndicator />}
       {props.isMythical && <MythicalIndicator />}
     </div>

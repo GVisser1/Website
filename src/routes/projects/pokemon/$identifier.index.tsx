@@ -20,9 +20,7 @@ const PokemonInfoPage = (): JSX.Element => {
   const identifier = Route.useParams().identifier;
   const pokemon = useSuspenseQuery(pokemonDetailsQueryOptions(identifier));
   const species = useSuspenseQuery(pokemonSpeciesQueryOptions(identifier));
-  const evolutions = useSuspenseQuery(
-    pokemonEvolutionQueryOptions(pokemon.data.name, species.data.evolutionChain),
-  );
+  const evolutions = useSuspenseQuery(pokemonEvolutionQueryOptions(pokemon.data.name, species.data.evolutionChain));
 
   const pageNumber = pokemon.data?.id ? Math.ceil(pokemon.data.id / PAGE_SIZE) : 1;
 
@@ -47,9 +45,7 @@ const PokemonInfoPage = (): JSX.Element => {
         />
 
         <div className="mt-2 tablet:mt-0 flex grow flex-col justify-center">
-          <h2 className="mb-2 truncate text-header-2xl text-primary dark:text-primary-dark">
-            {species.data.genus}
-          </h2>
+          <h2 className="mb-2 truncate text-header-2xl text-primary dark:text-primary-dark">{species.data.genus}</h2>
 
           <PokemonTypes types={pokemon.data.types} size="md" />
           <PokemonMeta {...pokemon.data} />
@@ -107,11 +103,7 @@ export const Route = createFileRoute("/projects/pokemon/$identifier/")({
     ],
   }),
   component: () => (
-    <Suspense
-      fallback={
-        <LoadingState backLink={{ href: PROJECT_PAGES.pokemon.href, label: "Back to Pokémon" }} />
-      }
-    >
+    <Suspense fallback={<LoadingState backLink={{ href: PROJECT_PAGES.pokemon.href, label: "Back to Pokémon" }} />}>
       <PokemonInfoPage />
     </Suspense>
   ),

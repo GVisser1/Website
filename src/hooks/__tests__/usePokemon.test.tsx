@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { AxiosError } from "axios";
 import { HttpResponse, http } from "msw";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vite-plus/test";
 import { server, withQueryClient } from "../../__tests__/testUtil";
 import { POKEMON_API_URL } from "../../constants";
 import usePokemon from "../usePokemon";

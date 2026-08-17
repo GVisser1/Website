@@ -17,10 +17,7 @@ const PokemonStatsTable = (props: PokemonStatsProps): JSX.Element => (
     </div>
     <dl className="grid grid-cols-1 tablet:grid-cols-2 gap-x-4 gap-y-2">
       {props.stats.map((stat) => (
-        <div
-          key={stat.name}
-          className="relative isolate grid grid-cols-2 gap-1 rounded-sm tablet:rounded-none"
-        >
+        <div key={stat.name} className="relative isolate grid grid-cols-2 gap-1 rounded-sm tablet:rounded-none">
           <dt className="flex h-8 min-w-0 items-center rounded-sm bg-sunken-secondary px-2 py-1 text-base-semibold text-primary capitalize dark:bg-sunken-secondary-dark dark:text-primary-dark">
             <span className="truncate">{stat.name}</span>
           </dt>

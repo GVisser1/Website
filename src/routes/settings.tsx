@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import type { JSX } from "react";
 import Divider from "@/components/divider";
 import Header from "@/components/header";
 import Page from "@/components/page";
@@ -8,7 +9,7 @@ import { MAIN_PAGES } from "@/constants";
 
 const PAGE = MAIN_PAGES.settings;
 
-const SettingsPage = () => (
+const SettingsPage = (): JSX.Element => (
   <Page>
     <Header title={PAGE.name} description={PAGE.description} />
 

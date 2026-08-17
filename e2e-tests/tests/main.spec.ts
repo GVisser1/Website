@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { analyzeA11yOfPage } from "../utils/a11y";
 
-test.describe("Home page", () => {
+test.describe("home page", () => {
   test("has title", async ({ page }) => {
     await page.goto("/");
 
@@ -23,7 +23,7 @@ test.describe("Home page", () => {
   });
 });
 
-test.describe("About me page", () => {
+test.describe("about me page", () => {
   test("has title", async ({ page }) => {
     await page.goto("/");
     await page.getByRole("link", { name: "About me" }).click();
@@ -48,7 +48,7 @@ test.describe("About me page", () => {
   });
 });
 
-test.describe("Timeline page", () => {
+test.describe("timeline page", () => {
   test("has title", async ({ page }) => {
     await page.goto("/");
     await page.getByRole("link", { name: "Timeline" }).click();
@@ -72,7 +72,7 @@ test.describe("Timeline page", () => {
   });
 });
 
-test.describe("Settings page", () => {
+test.describe("settings page", () => {
   test("has title", async ({ page }) => {
     await page.goto("/");
     await page.getByRole("link", { name: "Settings" }).click();

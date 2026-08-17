@@ -20,7 +20,6 @@ export const Layout = ({ children }: PropsWithChildren): JSX.Element | null => {
         <div className="flex w-full flex-col overflow-hidden">
           <Navbar />
           <main
-            // biome-ignore lint/a11y/noNoninteractiveTabindex: Scroll container should be scrollable
             tabIndex={0}
             className="group flex h-dvh w-full grow flex-col overflow-y-auto overscroll-y-none outline-hidden"
           >
