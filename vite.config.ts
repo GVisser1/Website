@@ -14,7 +14,7 @@ export default defineConfig({
     printWidth: 120,
     singleQuote: false,
     sortPackageJson: false,
-    ignorePatterns: ["node_modules", "routeTree.gen"],
+    ignorePatterns: ["node_modules", "routeTree.gen.ts"],
     trailingComma: "all",
     sortImports: {
       ignoreCase: true,
@@ -23,7 +23,7 @@ export default defineConfig({
     },
   },
   lint: {
-    ignorePatterns: ["routeTree.gen"],
+    ignorePatterns: ["routeTree.gen.ts"],
     jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
     env: {
       builtin: true,
