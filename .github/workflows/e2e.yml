@@ -17,11 +17,11 @@ jobs:
         shardIndex: [1, 2, 3]
         shardTotal: [3]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
       - name: Run E2E tests
@@ -29,7 +29,7 @@ jobs:
         env:
           HOME: /root
       - name: Upload results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: blob-report-${{ matrix.shardIndex }}
@@ -39,15 +39,15 @@ jobs:
     needs: playwright
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
       - name: Download blob reports from GitHub Actions Artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           path: all-blob-reports
           pattern: blob-report-*
@@ -55,7 +55,7 @@ jobs:
       - name: Merge into HTML Report
         run: pnpm playwright merge-reports --reporter html ./all-blob-reports
       - name: Upload HTML report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: html-report--attempt-${{ github.run_attempt }}
           path: playwright-report
