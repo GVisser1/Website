@@ -24,8 +24,8 @@ const Header = ({ title, description, topLink }: HeaderProps): JSX.Element => (
       />
     )}
 
-    <h1 className="mb-1 text-header-2xl text-primary dark:text-primary-dark">{title}</h1>
-    <p className="mb-6 text-base-regular text-secondary dark:text-secondary-dark">{description}</p>
+    <h1 className="text-header-2xl text-primary dark:text-primary-dark mb-1">{title}</h1>
+    <p className="text-base-regular text-secondary dark:text-secondary-dark mb-6">{description}</p>
 
     <Divider />
   </header>

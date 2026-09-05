@@ -39,7 +39,7 @@ export const BlogSection = (props: BlogSectionProps): JSX.Element => {
             className="h-85 w-full rounded-lg object-cover"
           />
           {props.image.alt && (
-            <figcaption className="-bottom-7 absolute w-full text-center text-base-regular text-secondary dark:text-secondary-dark">
+            <figcaption className="text-base-regular text-secondary dark:text-secondary-dark absolute -bottom-7 w-full text-center">
               {props.image.alt}
             </figcaption>
           )}
@@ -60,14 +60,14 @@ type BlogParagraphProps = {
   children: ReactNode;
 };
 export const BlogParagraph = (props: BlogParagraphProps): JSX.Element => (
-  <p className="not-last:mb-1 w-full text-base-regular text-secondary dark:text-secondary-dark">{props.children}</p>
+  <p className="text-base-regular text-secondary dark:text-secondary-dark w-full not-last:mb-1">{props.children}</p>
 );
 
 type BlogListProps = {
   children: ReactNode;
 };
 export const BlogList = (props: BlogListProps): JSX.Element => (
-  <ul className="flex list-inside list-disc flex-col gap-y-2 text-base-regular text-primary dark:text-primary-dark">
+  <ul className="text-base-regular text-primary dark:text-primary-dark flex list-inside list-disc flex-col gap-y-2">
     {props.children}
   </ul>
 );

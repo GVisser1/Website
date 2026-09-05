@@ -27,7 +27,7 @@ const Pagination = ({
   const isLastPage = currentPage === totalPages;
   const metaKey = useMetaKey();
 
-  const classes = clsx("flex w-full items-center justify-between gap-x-1 tablet:w-auto", className);
+  const classes = clsx("tablet:w-auto flex w-full items-center justify-between gap-x-1", className);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent): void => {
@@ -112,7 +112,7 @@ const PaginationButton = ({ ariaLabel, disabled, onClick, icon, shortcut }: Pagi
 );
 
 const PageCounter = ({ currentPage, totalPages }: { currentPage: number; totalPages: number }): JSX.Element => (
-  <span className="mx-1 flex w-full items-center justify-center gap-x-1 text-base-regular text-secondary dark:text-secondary-dark">
+  <span className="text-base-regular text-secondary dark:text-secondary-dark mx-1 flex w-full items-center justify-center gap-x-1">
     <span className="text-base-bold">{currentPage}</span>
     of
     <span className="text-base-bold">{totalPages}</span>

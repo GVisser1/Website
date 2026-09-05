@@ -10,7 +10,7 @@ export const Layout = ({ children }: PropsWithChildren): JSX.Element | null => {
   const { getFontClass } = useFont();
   const { open, setOpen } = useGlobalSearch();
 
-  const classes = clsx("relative flex max-h-dvh bg-sunken dark:bg-sunken-dark", getFontClass());
+  const classes = clsx("bg-sunken dark:bg-sunken-dark relative flex max-h-dvh", getFontClass());
 
   return (
     <div id="portal-root" className={classes}>
@@ -23,7 +23,7 @@ export const Layout = ({ children }: PropsWithChildren): JSX.Element | null => {
             tabIndex={0}
             className="group flex h-dvh w-full grow flex-col overflow-y-auto overscroll-y-none outline-hidden"
           >
-            <div className="group-focus-visible:focus-ring-inset tablet-ls:mt-3 flex grow flex-col tablet-ls:rounded-lg bg-default dark:bg-default-dark">
+            <div className="group-focus-visible:focus-ring-inset tablet-ls:mt-3 tablet-ls:rounded-lg bg-default dark:bg-default-dark flex grow flex-col">
               {children}
             </div>
           </main>

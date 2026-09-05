@@ -35,7 +35,7 @@ const PokemonInfoPage = (): JSX.Element => {
         }}
       />
 
-      <div className="grid grid-cols-1 tablet:grid-cols-2 gap-x-4">
+      <div className="tablet:grid-cols-2 grid grid-cols-1 gap-x-4">
         <PokemonCover
           name={pokemon.data.name}
           primaryType={pokemon.data.types[0]}
@@ -44,15 +44,15 @@ const PokemonInfoPage = (): JSX.Element => {
           isMythical={species.data.isMythical}
         />
 
-        <div className="mt-2 tablet:mt-0 flex grow flex-col justify-center">
-          <h2 className="mb-2 truncate text-header-2xl text-primary dark:text-primary-dark">{species.data.genus}</h2>
+        <div className="tablet:mt-0 mt-2 flex grow flex-col justify-center">
+          <h2 className="text-header-2xl text-primary dark:text-primary-dark mb-2 truncate">{species.data.genus}</h2>
 
           <PokemonTypes types={pokemon.data.types} size="md" />
           <PokemonMeta {...pokemon.data} />
         </div>
       </div>
 
-      <PokemonStatsTable stats={pokemon.data.stats} className="mt-8 tablet:mt-4" />
+      <PokemonStatsTable stats={pokemon.data.stats} className="tablet:mt-4 mt-8" />
 
       {!isNil(evolutions.data) && !isEmpty(evolutions.data.evolves_to) && (
         <PokemonEvolutionTree chain={evolutions.data} />

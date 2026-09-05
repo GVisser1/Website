@@ -73,18 +73,18 @@ const PokemonPage = (): JSX.Element => {
           value={query}
           placeholder="Search"
           onChange={(e) => setQuery(e.target.value)}
-          className="col-span-2 tablet:col-span-1 tablet:col-start-2 w-full"
+          className="tablet:col-span-1 tablet:col-start-2 col-span-2 w-full"
         />
       </div>
 
-      <div className="grid grid-cols-2 tablet:grid-cols-4 gap-4">
+      <div className="tablet:grid-cols-4 grid grid-cols-2 gap-4">
         {filteredPokemon.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE).map((i) => (
           <PokemonCard key={i.name} identifier={i.name} size="md" />
         ))}
         {isEmpty(filteredPokemon) && (
-          <div className="col-span-full mt-12 flex grow flex-col items-center justify-center text-primary dark:text-primary-dark">
+          <div className="text-primary dark:text-primary-dark col-span-full mt-12 flex grow flex-col items-center justify-center">
             <Icon name="PokéBall" className="size-24" />
-            <h2 className="mt-2 text-center text-base-medium">No results found</h2>
+            <h2 className="text-base-medium mt-2 text-center">No results found</h2>
           </div>
         )}
       </div>
@@ -114,11 +114,11 @@ const LoadingState = (): JSX.Element => (
         id="search-input"
         type="search"
         placeholder="Search"
-        className="col-span-2 tablet:col-span-1 tablet:col-start-2 w-full"
+        className="tablet:col-span-1 tablet:col-start-2 col-span-2 w-full"
       />
     </div>
 
-    <div className="grid grid-cols-2 tablet:grid-cols-4 gap-4">
+    <div className="tablet:grid-cols-4 grid grid-cols-2 gap-4">
       {Array.from({ length: PAGE_SIZE }).map(() => (
         <SkeletonLoader size="md" key={uniqueId()} />
       ))}

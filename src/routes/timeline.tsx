@@ -15,8 +15,8 @@ const TimelinePage = (): JSX.Element => (
     <Header title={PAGE.name} description={PAGE.description} />
 
     <div className="relative">
-      <div className="absolute tablet-ls:inset-x-0 left-2 tablet-ls:mx-auto tablet-ls:inline hidden h-full w-0.5 bg-sunken-tertiary dark:bg-sunken-tertiary-dark" />
-      <ol className="dark:!divide-secondary-dark flex flex-col tablet-ls:gap-y-12 divide-y tablet-ls:divide-y-0 divide-secondary tablet-ls:px-5 tablet-ls:py-4">
+      <div className="tablet-ls:inset-x-0 tablet-ls:mx-auto tablet-ls:inline bg-sunken-tertiary dark:bg-sunken-tertiary-dark absolute left-2 hidden h-full w-0.5" />
+      <ol className="dark:!divide-secondary-dark tablet-ls:gap-y-12 tablet-ls:divide-y-0 divide-secondary tablet-ls:px-5 tablet-ls:py-4 flex flex-col divide-y">
         {timeLineData.map((item, i) => (
           <TimeLineItem key={item.timeFrame} item={item} align={isEven(i) ? "right" : "left"} />
         ))}
@@ -33,7 +33,7 @@ const TimeLineItem = ({ item, align }: TimeLineItemProps): JSX.Element => (
   <li
     key={item.title}
     className={clsx(
-      "tablet-ls:-mx-5 relative tablet-ls:w-1/2 tablet-ls:rounded-md tablet-ls:border border-primary bg-default p-3 dark:border-primary-dark dark:bg-default-dark",
+      "tablet-ls:-mx-5 tablet-ls:w-1/2 tablet-ls:rounded-md tablet-ls:border border-primary bg-default dark:border-primary-dark dark:bg-default-dark relative p-3",
       align === "left" && "tablet-ls:ml-auto",
     )}
   >
@@ -47,7 +47,7 @@ const TimeLineItem = ({ item, align }: TimeLineItemProps): JSX.Element => (
     </div>
     <div
       className={clsx(
-        "tablet-ls:-mx-5 absolute top-0 mt-10 tablet-ls:flex hidden size-2.5 translate-x-0 rounded-full bg-default ring-4 ring-primary",
+        "tablet-ls:-mx-5 tablet-ls:flex bg-default ring-primary absolute top-0 mt-10 hidden size-2.5 translate-x-0 rounded-full ring-4",
         align === "right" ? "right-[-5px]" : "left-[-5px]",
       )}
     />

@@ -16,6 +16,9 @@ export default defineConfig({
     sortPackageJson: false,
     ignorePatterns: ["node_modules", "routeTree.gen.ts"],
     trailingComma: "all",
+    sortTailwindcss: {
+      functions: ["clsx"],
+    },
     sortImports: {
       ignoreCase: true,
       order: "asc",

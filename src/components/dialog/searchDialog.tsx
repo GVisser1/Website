@@ -138,7 +138,7 @@ const SearchDialog = ({ open, onClose }: SearchDialogProps): JSX.Element => {
 };
 
 const EmptyState = (): JSX.Element => (
-  <output className="flex h-10 w-full flex-col items-center justify-center gap-y-8 text-base-regular">
+  <output className="text-base-regular flex h-10 w-full flex-col items-center justify-center gap-y-8">
     <h2>No results found</h2>
   </output>
 );
@@ -162,7 +162,7 @@ const ResultsList = (props: ResultsListProps): JSX.Element => (
           to={page.href}
           onClick={props.onClose}
           className={clsx(
-            "btn-ghost focus-visible:focus-ring-inset flex h-10 w-full shrink-0 items-center gap-x-2 rounded-sm px-2 text-button",
+            "btn-ghost focus-visible:focus-ring-inset text-button flex h-10 w-full shrink-0 items-center gap-x-2 rounded-sm px-2",
             "aria-selected:bg-btn-ghost-hover dark:aria-selected:bg-btn-ghost-hover-dark",
           )}
           ref={(el) => {

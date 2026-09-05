@@ -15,13 +15,13 @@ const PokemonStatsTable = (props: PokemonStatsProps): JSX.Element => (
         Total: {props.stats.reduce((total, stat) => total + stat.base_stat, 0)}
       </p>
     </div>
-    <dl className="grid grid-cols-1 tablet:grid-cols-2 gap-x-4 gap-y-2">
+    <dl className="tablet:grid-cols-2 grid grid-cols-1 gap-x-4 gap-y-2">
       {props.stats.map((stat) => (
-        <div key={stat.name} className="relative isolate grid grid-cols-2 gap-1 rounded-sm tablet:rounded-none">
-          <dt className="flex h-8 min-w-0 items-center rounded-sm bg-sunken-secondary px-2 py-1 text-base-semibold text-primary capitalize dark:bg-sunken-secondary-dark dark:text-primary-dark">
+        <div key={stat.name} className="tablet:rounded-none relative isolate grid grid-cols-2 gap-1 rounded-sm">
+          <dt className="bg-sunken-secondary text-base-semibold text-primary dark:bg-sunken-secondary-dark dark:text-primary-dark flex h-8 min-w-0 items-center rounded-sm px-2 py-1 capitalize">
             <span className="truncate">{stat.name}</span>
           </dt>
-          <dd className="relative flex h-8 w-full justify-self-end overflow-hidden rounded-sm bg-sunken dark:bg-sunken-dark">
+          <dd className="bg-sunken dark:bg-sunken-dark relative flex h-8 w-full justify-self-end overflow-hidden rounded-sm">
             <div
               className={clsx("h-full rounded-sm", {
                 "bg-pokemon-stat-hp": stat.name === "hp",
@@ -35,7 +35,7 @@ const PokemonStatsTable = (props: PokemonStatsProps): JSX.Element => (
                 width: `${(Math.min(stat.base_stat, 255) / 255) * 100}%`,
               }}
             />
-            <div className="absolute inset-y-0 right-0 flex items-center bg-default-transparent px-1 text-primary text-sm-semibold dark:bg-default-transparent-dark dark:text-primary-dark">
+            <div className="bg-default-transparent text-primary text-sm-semibold dark:bg-default-transparent-dark dark:text-primary-dark absolute inset-y-0 right-0 flex items-center px-1">
               {stat.base_stat}
             </div>
           </dd>

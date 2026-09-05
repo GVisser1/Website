@@ -31,7 +31,7 @@ export const Sidebar = (): JSX.Element => {
 
   return (
     <nav
-      className={clsx("relative tablet-ls:flex hidden shrink-0 flex-col transition-all", isCollapsed ? "w-17" : "w-64")}
+      className={clsx("tablet-ls:flex relative hidden shrink-0 flex-col transition-all", isCollapsed ? "w-17" : "w-64")}
     >
       <div className={listClasses}>
         <div className="mb-2 flex items-center justify-between">

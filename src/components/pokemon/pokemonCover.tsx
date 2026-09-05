@@ -21,7 +21,7 @@ const PokemonCover = (props: PokemonCoverProps): JSX.Element => {
   return (
     <div className={classes}>
       <Image src={props.sprite} alt={props.name} className="h-56 w-full object-contain" priority />
-      <Icon name="PokéBall" className="-z-1 -rotate-45 absolute right-0 bottom-0 size-28 text-inverse/30" />
+      <Icon name="PokéBall" className="text-inverse/30 absolute right-0 bottom-0 -z-1 size-28 -rotate-45" />
       {props.isLegendary && <LegendaryIndicator />}
       {props.isMythical && <MythicalIndicator />}
     </div>
@@ -35,7 +35,7 @@ const LegendaryIndicator = (): JSX.Element => (
     trigger={
       <div className="absolute top-1 left-1">
         <span className="sr-only">This Pokémon is legendary</span>
-        <Icon name="Star" stroke="xs" className="size-12 stroke-primary text-pokemon-legendary" />
+        <Icon name="Star" stroke="xs" className="stroke-primary text-pokemon-legendary size-12" />
       </div>
     }
     title="This Pokémon is legendary"
@@ -47,7 +47,7 @@ const MythicalIndicator = (): JSX.Element => (
     trigger={
       <div className="absolute top-1 left-1">
         <span className="sr-only">This Pokémon is mythical</span>
-        <Icon name="Star" stroke="xs" className="size-12 stroke-primary text-pokemon-mythical" />
+        <Icon name="Star" stroke="xs" className="stroke-primary text-pokemon-mythical size-12" />
       </div>
     }
     title="This Pokémon is mythical"
