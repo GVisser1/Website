@@ -18,6 +18,9 @@ export const Sidebar = (): JSX.Element => {
   const [isCollapsed, setIsCollapsed] = useLocalStorage("isSidebarCollapsed", false);
   const listClasses = clsx("flex flex-col gap-y-1 p-4");
 
+  const isCurrent = (href: string): boolean =>
+    href === "/" ? location.pathname === href : location.pathname.startsWith(href);
+
   useEffect(() => {
     const down = (e: KeyboardEvent): void => {
       if (e.key === "[" && !(e.metaKey || e.ctrlKey)) {
@@ -69,7 +72,7 @@ export const Sidebar = (): JSX.Element => {
           <SidebarLink
             key={item.name}
             href={item.href}
-            current={location.pathname === item.href || location.pathname.startsWith(item.href)}
+            current={isCurrent(item.href)}
             icon={item.icon}
             label={item.name}
             isCollapsed={isCollapsed}
@@ -84,7 +87,7 @@ export const Sidebar = (): JSX.Element => {
           <SidebarLink
             key={item.name}
             href={item.href}
-            current={location.pathname === item.href || location.pathname.startsWith(item.href)}
+            current={isCurrent(item.href)}
             icon={item.icon}
             label={item.name}
             isCollapsed={isCollapsed}
