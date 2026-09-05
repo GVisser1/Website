@@ -12,6 +12,16 @@ export type Page = {
 };
 
 export const MAIN_PAGES = {
+  home: {
+    name: "Home",
+    href: "/",
+    icon: "Home",
+    meta: {
+      title: "Glenn Visser",
+      description:
+        "Personal website of Glenn Visser, a QA Engineer from Maassluis, the Netherlands, with a love for music, movies, and games.",
+    },
+  },
   about: {
     name: "About me",
     description: "Learn more about me and my love for games, music, and movies",
