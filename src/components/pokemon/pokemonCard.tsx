@@ -19,7 +19,7 @@ const PokemonCard = ({ identifier, size }: PokemonCardProps): JSX.Element => {
   const [isImageError, setIsImageError] = useState(false);
 
   if (error) {
-    return <p className="col-span-full text-center text-error">{error.message}</p>;
+    return <p className="text-error col-span-full text-center">{error.message}</p>;
   }
 
   if (isLoading || isNil(data)) {
@@ -29,7 +29,7 @@ const PokemonCard = ({ identifier, size }: PokemonCardProps): JSX.Element => {
   const showErrorState = isImageError || isNil(data.sprite);
 
   const classes = clsx(
-    "group btn-secondary flex w-full gap-3 rounded-lg focus-visible:focus-ring",
+    "group btn-secondary focus-visible:focus-ring flex w-full gap-3 rounded-lg",
     "data-[size=md]:flex-col data-[size=md]:text-center",
     "data-[size=sm]:flex-row data-[size=sm]:items-center",
     "data-[size=md]:px-2 data-[size=md]:py-3 data-[size=sm]:px-4 data-[size=sm]:py-2",
@@ -48,7 +48,7 @@ const PokemonCard = ({ identifier, size }: PokemonCardProps): JSX.Element => {
         {showErrorState && <SpriteErrorState />}
       </div>
       <div className="grow">
-        <p className="w-full truncate text-base-semibold text-primary capitalize dark:text-primary-dark">
+        <p className="text-base-semibold text-primary dark:text-primary-dark w-full truncate capitalize">
           {data.name} #{data.id}
         </p>
         <PokemonTypes types={data.types} size="sm" className={clsx("mt-1", size === "md" && "justify-center")} />
@@ -75,14 +75,14 @@ const Sprite = ({ name, sprite, size, onError }: SpriteProps): JSX.Element => {
 
 const SpriteErrorState = (): JSX.Element => {
   const classes = clsx(
-    "absolute top-0 flex w-full items-center justify-center text-primary dark:text-primary-dark",
+    "text-primary dark:text-primary-dark absolute top-0 flex w-full items-center justify-center",
     "group-data-[size=md]:h-22 group-data-[size=sm]:h-16",
   );
 
   return (
     <div className={classes}>
       <p className="sr-only">Failed to load sprite</p>
-      <Icon name="ExclamationCircle" className="size-6 text-error" />
+      <Icon name="ExclamationCircle" className="text-error size-6" />
     </div>
   );
 };

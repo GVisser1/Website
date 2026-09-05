@@ -20,7 +20,7 @@ type IconAndTextButtonProps = BaseIconAndTextButtonProps & ButtonTypeProps & Var
 
 const IconAndTextButton = (props: IconAndTextButtonProps): JSX.Element => {
   const classes = clsx(
-    "inline-flex h-9 shrink-0 items-center gap-x-1.5 rounded-sm py-3 pr-2.5 pl-2 select-none focus-visible:focus-ring",
+    "focus-visible:focus-ring inline-flex h-9 shrink-0 items-center gap-x-1.5 rounded-sm py-3 pr-2.5 pl-2 select-none",
     props.variant === "primary" && "btn-primary",
     props.variant === "light" && "btn-light",
     props.variant === "ghost" && "btn-ghost",
@@ -31,7 +31,7 @@ const IconAndTextButton = (props: IconAndTextButtonProps): JSX.Element => {
   const content = (
     <>
       <Icon name={props.icon} className="size-5" />
-      <span className="truncate text-button">{props.label}</span>
+      <span className="text-button truncate">{props.label}</span>
     </>
   );
 

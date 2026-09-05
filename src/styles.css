@@ -293,7 +293,7 @@ input[type="search"]::-webkit-search-cancel-button {
     @apply bg-btn-secondary text-primary dark:bg-btn-secondary-dark dark:text-primary-dark hover:bg-btn-secondary-hover dark:hover:bg-btn-secondary-hover-dark press:bg-btn-secondary-press dark:press:bg-btn-secondary-press-dark;
   }
   .btn-light {
-    @apply border box-border border-light bg-btn-light text-light dark:bg-btn-light-dark dark:text-light-dark hover:bg-btn-light-hover press:bg-btn-light-press dark:hover:bg-btn-light-hover-dark dark:press:bg-btn-light-press-dark;
+    @apply border-light bg-btn-light text-light dark:bg-btn-light-dark dark:text-light-dark hover:bg-btn-light-hover press:bg-btn-light-press dark:hover:bg-btn-light-hover-dark dark:press:bg-btn-light-press-dark box-border border;
   }
   .btn-ghost {
     @apply text-primary hover:bg-btn-ghost-hover active:bg-btn-ghost-active dark:text-primary-dark dark:hover:bg-btn-ghost-hover-dark dark:active:bg-btn-ghost-active-dark press:bg-btn-ghost-press dark:press:bg-btn-ghost-press-dark;

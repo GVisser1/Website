@@ -40,10 +40,10 @@ const PokemonMeta = (props: PokemonMetaProps): JSX.Element => {
     <dl className={classes}>
       {items.map((item) => (
         <div key={item.label} className="flex items-center gap-x-1">
-          <dt className="h-full w-24 shrink-0 rounded-sm bg-sunken-secondary px-2 py-1 text-base-semibold text-primary dark:bg-sunken-secondary-dark dark:text-primary-dark">
+          <dt className="bg-sunken-secondary text-base-semibold text-primary dark:bg-sunken-secondary-dark dark:text-primary-dark h-full w-24 shrink-0 rounded-sm px-2 py-1">
             {item.label}
           </dt>
-          <dd className="p-1 text-secondary dark:text-secondary-dark">{item.value}</dd>
+          <dd className="text-secondary dark:text-secondary-dark p-1">{item.value}</dd>
         </div>
       ))}
     </dl>

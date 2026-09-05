@@ -9,7 +9,7 @@ type PageProps = {
 
 const Page = (props: PageProps): JSX.Element => {
   const classes = clsx(
-    "mx-auto w-full px-6 pt-6 pb-20 tablet-ls:px-12 tablet-ls:pt-12",
+    "tablet-ls:px-12 tablet-ls:pt-12 mx-auto w-full px-6 pt-6 pb-20",
     !props.fullWidth ? "laptop:max-w-7xl" : "",
     props.className,
   );

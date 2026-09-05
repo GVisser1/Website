@@ -11,7 +11,7 @@ type MyRouterContext = {
 
 const NotFoundPage = (): JSX.Element => (
   <Page className="flex h-full flex-col items-center justify-center gap-y-5 text-center">
-    <div className="flex max-w-128 flex-col gap-y-2 text-primary dark:text-primary-dark">
+    <div className="text-primary dark:text-primary-dark flex max-w-128 flex-col gap-y-2">
       <h1 className="text-header-4xl">404</h1>
       <p className="text-header-xl">This page is not available</p>
       <p className="text-base-regular">

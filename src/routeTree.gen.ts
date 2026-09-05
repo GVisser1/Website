@@ -9,21 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TimelineRouteImport } from './routes/timeline'
-import { Route as SettingsRouteImport } from './routes/settings'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as ProjectsPokemonIndexRouteImport } from './routes/projects/pokemon/index'
 import { Route as ProjectsPokemonIdentifierIndexRouteImport } from './routes/projects/pokemon/$identifier.index'
 
-const TimelineRoute = TimelineRouteImport.update({
-  id: '/timeline',
-  path: '/timeline',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SettingsRoute = SettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -31,9 +26,14 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimelineRoute = TimelineRouteImport.update({
+  id: '/timeline',
+  path: '/timeline',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsPokemonIndexRoute = ProjectsPokemonIndexRouteImport.update({
@@ -53,8 +53,8 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/settings': typeof SettingsRoute
   '/timeline': typeof TimelineRoute
-  '/projects/pokemon': typeof ProjectsPokemonIndexRoute
-  '/projects/pokemon/$identifier': typeof ProjectsPokemonIdentifierIndexRoute
+  '/projects/pokemon/': typeof ProjectsPokemonIndexRoute
+  '/projects/pokemon/$identifier/': typeof ProjectsPokemonIdentifierIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -80,8 +80,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/settings'
     | '/timeline'
-    | '/projects/pokemon'
-    | '/projects/pokemon/$identifier'
+    | '/projects/pokemon/'
+    | '/projects/pokemon/$identifier/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,18 +111,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/timeline': {
-      id: '/timeline'
-      path: '/timeline'
-      fullPath: '/timeline'
-      preLoaderRoute: typeof TimelineRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/settings': {
-      id: '/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof SettingsRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -132,24 +125,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timeline': {
+      id: '/timeline'
+      path: '/timeline'
+      fullPath: '/timeline'
+      preLoaderRoute: typeof TimelineRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/pokemon/': {
       id: '/projects/pokemon/'
       path: '/projects/pokemon'
-      fullPath: '/projects/pokemon'
+      fullPath: '/projects/pokemon/'
       preLoaderRoute: typeof ProjectsPokemonIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/pokemon/$identifier/': {
       id: '/projects/pokemon/$identifier/'
       path: '/projects/pokemon/$identifier'
-      fullPath: '/projects/pokemon/$identifier'
+      fullPath: '/projects/pokemon/$identifier/'
       preLoaderRoute: typeof ProjectsPokemonIdentifierIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
