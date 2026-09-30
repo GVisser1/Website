@@ -14,7 +14,7 @@ export default defineConfig({
     { name: "firefox", use: { ...devices["Desktop Firefox"] } },
     { name: "webkit", use: { ...devices["Desktop Safari"] } },
   ],
-  reporter: process.env.CI ? "blob" : [["html", { outputFolder: "src/e2e-tests/test-reports" }]],
+  reporter: process.env.CI ? [["blob"], ["list"]] : [["html", { outputFolder: "src/e2e-tests/test-reports" }]],
   retries: process.env.CI ? 1 : 0,
   snapshotPathTemplate: "src/e2e-tests/snapshots/{testFilePath}/{projectName}/{arg}{ext}",
   testDir: "src/e2e-tests",
@@ -26,6 +26,7 @@ export default defineConfig({
         url: baseURL,
         reuseExistingServer: !process.env.CI,
         timeout: minutes(2),
+        gracefulShutdown: { signal: "SIGTERM", timeout: seconds(10) },
       }
     : undefined,
   workers: process.env.CI ? 1 : undefined,
