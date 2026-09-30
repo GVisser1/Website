@@ -63,7 +63,7 @@ type TimelineItem = {
   src?: string;
 };
 
-const timeLineData: TimelineItem[] = [
+export const timeLineData: TimelineItem[] = [
   {
     timeFrame: getTimeFrame(new Date(2023, 7, 1)),
     title: "QA Engineer",
