@@ -1,13 +1,12 @@
 import { MAIN_PAGES } from "@/constants";
 import { expect, test } from "../fixtures";
 
-test("renders home page on desktop", async ({ page, homePage }) => {
+test("renders home page on desktop", async ({ homePage }) => {
   await homePage.goto();
 
   await expect(homePage.heading).toBeVisible();
   await expect(homePage.profileImage).toBeVisible();
-  await expect(page).toHaveTitle(MAIN_PAGES.home.meta.title);
-  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", MAIN_PAGES.home.meta.description);
+  await homePage.assertMeta(MAIN_PAGES.home.meta);
 
   await homePage.assertPageMatchesSnapshot("home-page");
   await homePage.assertPageIsAccessible();

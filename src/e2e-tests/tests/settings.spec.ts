@@ -1,17 +1,13 @@
 import { MAIN_PAGES } from "@/constants";
 import { expect, test } from "../fixtures";
 
-test("renders settings page on desktop", async ({ page, settingsPage }) => {
+test("renders settings page on desktop", async ({ settingsPage }) => {
   await settingsPage.goto();
 
   await expect(settingsPage.heading).toBeVisible();
   await expect(settingsPage.themeSelect).toBeVisible();
   await expect(settingsPage.fontSelect).toBeVisible();
-  await expect(page).toHaveTitle(MAIN_PAGES.settings.meta.title);
-  await expect(page.locator('meta[name="description"]')).toHaveAttribute(
-    "content",
-    MAIN_PAGES.settings.meta.description,
-  );
+  await settingsPage.assertMeta(MAIN_PAGES.settings.meta);
 
   await settingsPage.assertPageMatchesSnapshot("settings-page");
   await settingsPage.assertPageIsAccessible();

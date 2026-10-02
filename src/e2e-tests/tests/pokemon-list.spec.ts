@@ -1,17 +1,13 @@
 import { PROJECT_PAGES } from "@/constants";
 import { expect, test } from "../fixtures";
 
-test("renders main pokémon page on desktop", async ({ page, pokemonListPage }) => {
+test("renders main pokémon page on desktop", async ({ pokemonListPage }) => {
   await pokemonListPage.goto();
 
   await expect(pokemonListPage.heading).toBeVisible();
   await expect(pokemonListPage.searchInput).toBeVisible();
   await expect(pokemonListPage.pokemonCard("bulbasaur")).toBeVisible();
-  await expect(page).toHaveTitle(PROJECT_PAGES.pokemon.meta.title);
-  await expect(page.locator('meta[name="description"]')).toHaveAttribute(
-    "content",
-    PROJECT_PAGES.pokemon.meta.description,
-  );
+  await pokemonListPage.assertMeta(PROJECT_PAGES.pokemon.meta);
 
   await pokemonListPage.assertPageMatchesSnapshot("pokemon-list-page");
   await pokemonListPage.assertPageIsAccessible();

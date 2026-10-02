@@ -2,16 +2,12 @@ import { MAIN_PAGES } from "@/constants";
 import { timeLineData } from "@/routes/timeline";
 import { expect, test } from "../fixtures";
 
-test("renders timeline page on desktop", async ({ page, timelinePage }) => {
+test("renders timeline page on desktop", async ({ timelinePage }) => {
   await timelinePage.goto();
 
   await expect(timelinePage.heading).toBeVisible();
   await expect(timelinePage.item(timeLineData[0].title)).toBeVisible();
-  await expect(page).toHaveTitle(MAIN_PAGES.timeline.meta.title);
-  await expect(page.locator('meta[name="description"]')).toHaveAttribute(
-    "content",
-    MAIN_PAGES.timeline.meta.description,
-  );
+  await timelinePage.assertMeta(MAIN_PAGES.timeline.meta);
 
   await timelinePage.assertPageMatchesSnapshot("timeline-page");
   await timelinePage.assertPageIsAccessible();
