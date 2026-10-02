@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from "node:url";
-import netlify from "@netlify/vite-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import viteReact from "@vitejs/plugin-react";
@@ -9,6 +8,12 @@ import { defineConfig, lazyPlugins } from "vite-plus";
 export default defineConfig({
   staged: {
     "*": "vp check --fix",
+  },
+  // Explicit IPv4 loopback: on macOS, Vite binding to "localhost" resolves IPv6-only, which
+  // Playwright's browsers (connecting over IPv4) can't reach - causes every page.goto() in CI
+  // (macos-latest runner) to hang until its test timeout instead of ever connecting.
+  server: {
+    host: "127.0.0.1",
   },
   fmt: {
     printWidth: 120,
@@ -158,7 +163,6 @@ export default defineConfig({
       },
     }),
     tailwindcss(),
-    netlify(),
   ]),
   resolve: {
     alias: {

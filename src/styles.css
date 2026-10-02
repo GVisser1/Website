@@ -254,6 +254,10 @@
 }
 
 @layer base {
+  * {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+  }
   button {
     @apply cursor-default disabled:cursor-not-allowed;
   }

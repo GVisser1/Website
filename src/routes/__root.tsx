@@ -4,6 +4,9 @@ import type { JSX } from "react";
 import IconAndTextButton from "@/components/button/iconAndTextButton";
 import { Layout } from "@/components/layout";
 import Page from "@/components/page";
+import { MAIN_PAGES } from "@/constants";
+
+const PAGE = MAIN_PAGES.home;
 
 type MyRouterContext = {
   queryClient: QueryClient;
@@ -23,6 +26,9 @@ const NotFoundPage = (): JSX.Element => (
 );
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
+  head: () => ({
+    meta: [{ title: PAGE.meta.title }, { name: "description", content: PAGE.meta.description }],
+  }),
   component: () => (
     <Layout>
       <HeadContent />

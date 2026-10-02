@@ -1,16 +1,15 @@
 name: E2E Tests
 
 on:
+  workflow_call:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *" # Every day at midnight
+    - cron: "0 0 * * 0" # Every day at midnight
 
 jobs:
   playwright:
     timeout-minutes: 10
-    runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.48.2-jammy
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
@@ -24,10 +23,12 @@ jobs:
       - uses: pnpm/action-setup@v6
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps
       - name: Run E2E tests
         run: pnpm test:e2e --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
         env:
-          HOME: /root
+          E2E_BASE_URL: ${{ (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && 'https://glennvisser.com' || '' }}
       - name: Upload results
         uses: actions/upload-artifact@v7
         if: always()
@@ -36,6 +37,7 @@ jobs:
           path: blob-report
           retention-days: 7
   merge-reports:
+    if: ${{ !cancelled() }}
     needs: playwright
     runs-on: ubuntu-latest
     steps:
