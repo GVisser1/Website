@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from "node:url";
-import netlify from "@netlify/vite-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import viteReact from "@vitejs/plugin-react";
@@ -158,7 +157,6 @@ export default defineConfig({
       },
     }),
     tailwindcss(),
-    netlify(),
   ]),
   resolve: {
     alias: {
