@@ -15,6 +15,10 @@
   },
   "packageRules": [
     {
+      "matchUpdateTypes": ["pin", "pinDigest"],
+      "enabled": false
+    },
+    {
       "matchManagers": ["npm"],
       "matchDepTypes": ["dependencies"],
       "groupName": "production dependencies",
