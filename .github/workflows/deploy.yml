@@ -18,7 +18,7 @@ jobs:
         run: pnpm i --frozen-lockfile
 
       - name: Deploy to Netlify
-        run: pnpm dlx netlify-cli deploy --prod --build
+        run: pnpm --package=netlify-cli dlx netlify deploy --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
