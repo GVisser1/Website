@@ -16,6 +16,8 @@ export default defineConfig({
     ignorePatterns: ["node_modules", "routeTree.gen.ts"],
     trailingComma: "all",
     sortTailwindcss: {
+      stylesheet: "./src/styles.css",
+      attributes: ["className"],
       functions: ["clsx"],
     },
     sortImports: {
