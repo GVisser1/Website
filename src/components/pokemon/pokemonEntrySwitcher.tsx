@@ -15,7 +15,7 @@ const PokemonEntrySwitcher = ({ id, className }: PokemonEntrySwitcherProps): JSX
   const nextId = id + 1;
 
   const classes = clsx(
-    "flex flex-wrap items-center",
+    "flex flex-wrap items-center gap-2",
     {
       "justify-end": previousId < 1,
       "justify-start": nextId > TOTAL_POKEMON,
@@ -61,3 +61,14 @@ const PokemonEntrySwitch = (props: PokemonEntrySwitchProps): JSX.Element | null 
 };
 
 export default PokemonEntrySwitcher;
+
+type PokemonEntrySwitcherSkeletonProps = {
+  className?: string;
+};
+
+export const PokemonEntrySwitcherSkeleton = (props: PokemonEntrySwitcherSkeletonProps): JSX.Element => (
+  <div aria-hidden className={clsx("flex w-full flex-wrap justify-between gap-2", props.className)}>
+    <div className="bg-sunken-secondary dark:bg-sunken-secondary-dark h-10 w-40 animate-pulse" />
+    <div className="bg-sunken-secondary dark:bg-sunken-secondary-dark h-10 w-40 animate-pulse" />
+  </div>
+);

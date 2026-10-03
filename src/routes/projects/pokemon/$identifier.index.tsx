@@ -4,16 +4,17 @@ import { isEmpty, isNil, startCase } from "lodash-es";
 import { type JSX, Suspense } from "react";
 import Header from "@/components/header";
 import Page from "@/components/page";
-import PokemonCover from "@/components/pokemon/pokemonCover";
-import PokemonEntrySwitcher from "@/components/pokemon/pokemonEntrySwitcher";
-import PokemonEvolutionTree from "@/components/pokemon/pokemonEvolutionTree";
-import PokemonMeta from "@/components/pokemon/pokemonMeta";
-import PokemonStatsTable from "@/components/pokemon/pokemonStats";
-import PokemonTypes from "@/components/pokemon/pokemonTypes";
+import PokemonCover, { PokemonCoverSkeleton } from "@/components/pokemon/pokemonCover";
+import PokemonEntrySwitcher, { PokemonEntrySwitcherSkeleton } from "@/components/pokemon/pokemonEntrySwitcher";
+import PokemonEvolutionTree, { PokemonEvolutionTreeSkeleton } from "@/components/pokemon/pokemonEvolutionTree";
+import PokemonMeta, { PokemonMetaSkeleton } from "@/components/pokemon/pokemonMeta";
+import PokemonStatsTable, { PokemonStatsSkeleton } from "@/components/pokemon/pokemonStats";
+import PokemonTypes, { PokemonTypesSkeleton } from "@/components/pokemon/pokemonTypes";
 import { PROJECT_PAGES } from "@/constants";
 import { pokemonDetailsQueryOptions } from "@/hooks/usePokemonDetails";
 import { pokemonEvolutionQueryOptions } from "@/hooks/usePokemonEvolution";
 import { pokemonSpeciesQueryOptions } from "@/hooks/usePokemonSpecies";
+import { preloadImage } from "@/utils/imageUtil";
 import { PAGE_SIZE, TOTAL_POKEMON } from "@/utils/pokemonUtil";
 
 const PokemonInfoPage = (): JSX.Element => {
@@ -67,7 +68,6 @@ export default PokemonInfoPage;
 
 type LoadingStateProps = {
   backLink: { href: string; label: string };
-  className?: string;
 };
 const LoadingState = (props: LoadingStateProps): JSX.Element => (
   <Page>
@@ -76,6 +76,20 @@ const LoadingState = (props: LoadingStateProps): JSX.Element => (
       description="Please wait while we fetch the Pokémon details."
       topLink={props.backLink}
     />
+
+    <div className="tablet:grid-cols-2 grid grid-cols-1 gap-x-4">
+      <PokemonCoverSkeleton />
+
+      <div className="tablet:mt-0 mt-2 flex grow flex-col justify-center">
+        <div className="bg-sunken-secondary dark:bg-sunken-secondary-dark mb-2 h-9 w-48 animate-pulse" />
+        <PokemonTypesSkeleton />
+        <PokemonMetaSkeleton />
+      </div>
+    </div>
+
+    <PokemonStatsSkeleton className="tablet:mt-4 mt-8" />
+    <PokemonEvolutionTreeSkeleton />
+    <PokemonEntrySwitcherSkeleton className="mt-12" />
   </Page>
 );
 
@@ -87,9 +101,10 @@ export const Route = createFileRoute("/projects/pokemon/$identifier/")({
 
     const pokemon = await queryClient.ensureQueryData(pokemonDetailsQueryOptions(identifier));
     const species = await queryClient.ensureQueryData(pokemonSpeciesQueryOptions(identifier));
-    const evolutions = await queryClient.ensureQueryData(
-      pokemonEvolutionQueryOptions(identifier, species.evolutionChain),
-    );
+    const [evolutions] = await Promise.all([
+      queryClient.ensureQueryData(pokemonEvolutionQueryOptions(identifier, species.evolutionChain)),
+      preloadImage(pokemon.sprite),
+    ]);
 
     return { pokemon, species, evolutions };
   },
