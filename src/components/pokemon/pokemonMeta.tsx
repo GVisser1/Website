@@ -51,3 +51,18 @@ const PokemonMeta = (props: PokemonMetaProps): JSX.Element => {
 };
 
 export default PokemonMeta;
+
+type PokemonMetaSkeletonProps = {
+  className?: string;
+};
+
+export const PokemonMetaSkeleton = (props: PokemonMetaSkeletonProps): JSX.Element => (
+  <div aria-hidden className={clsx("mt-4 flex w-full flex-col gap-y-1", props.className)}>
+    {[0, 1, 2, 3].map((row) => (
+      <div
+        key={row}
+        className="bg-sunken-secondary dark:bg-sunken-secondary-dark h-8 w-full animate-pulse rounded-sm"
+      />
+    ))}
+  </div>
+);

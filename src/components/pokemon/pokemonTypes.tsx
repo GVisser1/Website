@@ -45,3 +45,14 @@ const TypePill = (props: TypePillProps): JSX.Element => {
     </li>
   );
 };
+
+type PokemonTypesSkeletonProps = {
+  className?: string;
+};
+
+export const PokemonTypesSkeleton = (props: PokemonTypesSkeletonProps): JSX.Element => (
+  <div aria-hidden className={clsx("flex gap-x-2", props.className)}>
+    <div className="bg-sunken-secondary dark:bg-sunken-secondary-dark h-6 w-24 animate-pulse rounded-sm" />
+    <div className="bg-sunken-secondary dark:bg-sunken-secondary-dark h-6 w-24 animate-pulse rounded-sm" />
+  </div>
+);

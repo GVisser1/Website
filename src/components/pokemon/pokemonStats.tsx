@@ -46,3 +46,21 @@ const PokemonStatsTable = (props: PokemonStatsProps): JSX.Element => (
 );
 
 export default PokemonStatsTable;
+
+type PokemonStatsSkeletonProps = {
+  className?: string;
+};
+
+export const PokemonStatsSkeleton = (props: PokemonStatsSkeletonProps): JSX.Element => (
+  <div aria-hidden className={props.className}>
+    <div className="mb-1 flex h-7 items-center justify-between">
+      <div className="bg-sunken-secondary dark:bg-sunken-secondary-dark h-6 w-16 animate-pulse" />
+      <div className="bg-sunken-secondary dark:bg-sunken-secondary-dark h-5 w-20 animate-pulse" />
+    </div>
+    <div className="tablet:grid-cols-2 grid grid-cols-1 gap-x-4 gap-y-2">
+      {Array.from({ length: 6 }, (_, index) => (
+        <div key={index} className="bg-sunken-secondary dark:bg-sunken-secondary-dark h-8 animate-pulse rounded-sm" />
+      ))}
+    </div>
+  </div>
+);

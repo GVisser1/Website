@@ -53,3 +53,7 @@ const MythicalIndicator = (): JSX.Element => (
     title="This Pokémon is mythical"
   />
 );
+
+export const PokemonCoverSkeleton = (): JSX.Element => (
+  <div aria-hidden className="bg-sunken-secondary dark:bg-sunken-secondary-dark h-64 animate-pulse rounded-lg" />
+);
