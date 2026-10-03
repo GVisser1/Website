@@ -49,11 +49,11 @@ const PokemonEntrySwitch = (props: PokemonEntrySwitchProps): JSX.Element | null 
     <Link
       to="/projects/pokemon/$identifier"
       params={{ identifier: data.name }}
-      className="btn-ghost focus-visible:focus-ring flex items-center gap-x-2 rounded-sm p-2 select-none"
+      className="btn-ghost flex items-center gap-x-2 rounded-sm p-2 select-none focus-visible:focus-ring"
     >
       <Icon name="ChevronLeft" className={iconClasses} />
       <Image src={data.sprite} alt={data.name} className="size-6 object-contain" />
-      <p className="text-button-lg text-primary dark:text-primary-dark capitalize">
+      <p className="text-button-lg text-primary capitalize dark:text-primary-dark">
         {data.name} #{data.id}
       </p>
     </Link>
@@ -68,7 +68,7 @@ type PokemonEntrySwitcherSkeletonProps = {
 
 export const PokemonEntrySwitcherSkeleton = (props: PokemonEntrySwitcherSkeletonProps): JSX.Element => (
   <div aria-hidden className={clsx("flex w-full flex-wrap justify-between gap-2", props.className)}>
-    <div className="bg-sunken-secondary dark:bg-sunken-secondary-dark h-10 w-40 animate-pulse" />
-    <div className="bg-sunken-secondary dark:bg-sunken-secondary-dark h-10 w-40 animate-pulse" />
+    <div className="h-10 w-40 animate-pulse bg-sunken-secondary dark:bg-sunken-secondary-dark" />
+    <div className="h-10 w-40 animate-pulse bg-sunken-secondary dark:bg-sunken-secondary-dark" />
   </div>
 );

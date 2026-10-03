@@ -56,7 +56,7 @@ const Tooltip = (props: TooltipProps): JSX.Element => {
             avoidCollisions
             collisionPadding={8}
             className={clsx(
-              "fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 animate-in bg-elevation-float text-xs-regular data-[state=closed]:animate-out dark:bg-elevation-float-dark z-50 max-w-56 overflow-hidden rounded-lg px-3 py-1.5 shadow-md select-none",
+              "z-50 max-w-56 overflow-hidden rounded-lg bg-elevation-float px-3 py-1.5 text-xs-regular shadow-md animate-in select-none fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 dark:bg-elevation-float-dark",
             )}
           >
             <p id={ID} className="text-elevation-float">

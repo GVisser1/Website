@@ -36,7 +36,7 @@ const PokemonInfoPage = (): JSX.Element => {
         }}
       />
 
-      <div className="tablet:grid-cols-2 grid grid-cols-1 gap-x-4">
+      <div className="grid grid-cols-1 gap-x-4 tablet:grid-cols-2">
         <PokemonCover
           name={pokemon.data.name}
           primaryType={pokemon.data.types[0]}
@@ -45,15 +45,15 @@ const PokemonInfoPage = (): JSX.Element => {
           isMythical={species.data.isMythical}
         />
 
-        <div className="tablet:mt-0 mt-2 flex grow flex-col justify-center">
-          <h2 className="text-header-2xl text-primary dark:text-primary-dark mb-2 truncate">{species.data.genus}</h2>
+        <div className="mt-2 flex grow flex-col justify-center tablet:mt-0">
+          <h2 className="mb-2 truncate text-header-2xl text-primary dark:text-primary-dark">{species.data.genus}</h2>
 
           <PokemonTypes types={pokemon.data.types} size="md" />
           <PokemonMeta {...pokemon.data} />
         </div>
       </div>
 
-      <PokemonStatsTable stats={pokemon.data.stats} className="tablet:mt-4 mt-8" />
+      <PokemonStatsTable stats={pokemon.data.stats} className="mt-8 tablet:mt-4" />
 
       {!isNil(evolutions.data) && !isEmpty(evolutions.data.evolves_to) && (
         <PokemonEvolutionTree chain={evolutions.data} />
@@ -77,17 +77,17 @@ const LoadingState = (props: LoadingStateProps): JSX.Element => (
       topLink={props.backLink}
     />
 
-    <div className="tablet:grid-cols-2 grid grid-cols-1 gap-x-4">
+    <div className="grid grid-cols-1 gap-x-4 tablet:grid-cols-2">
       <PokemonCoverSkeleton />
 
-      <div className="tablet:mt-0 mt-2 flex grow flex-col justify-center">
-        <div className="bg-sunken-secondary dark:bg-sunken-secondary-dark mb-2 h-9 w-48 animate-pulse" />
+      <div className="mt-2 flex grow flex-col justify-center tablet:mt-0">
+        <div className="mb-2 h-9 w-48 animate-pulse bg-sunken-secondary dark:bg-sunken-secondary-dark" />
         <PokemonTypesSkeleton />
         <PokemonMetaSkeleton />
       </div>
     </div>
 
-    <PokemonStatsSkeleton className="tablet:mt-4 mt-8" />
+    <PokemonStatsSkeleton className="mt-8 tablet:mt-4" />
     <PokemonEvolutionTreeSkeleton />
     <PokemonEntrySwitcherSkeleton className="mt-12" />
   </Page>

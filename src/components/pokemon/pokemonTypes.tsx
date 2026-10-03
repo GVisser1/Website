@@ -35,8 +35,8 @@ const TypePill = (props: TypePillProps): JSX.Element => {
     <li
       className={clsx(
         "flex min-w-0 grow items-center justify-center gap-x-1 rounded-sm px-1",
-        props.size === "sm" && "text-xs-semibold h-5 max-w-20",
-        props.size === "md" && "text-sm-semibold h-6 max-w-24",
+        props.size === "sm" && "h-5 max-w-20 text-xs-semibold",
+        props.size === "md" && "h-6 max-w-24 text-sm-semibold",
         typeInfo.bgColor,
         typeInfo.textColor,
       )}
@@ -52,7 +52,7 @@ type PokemonTypesSkeletonProps = {
 
 export const PokemonTypesSkeleton = (props: PokemonTypesSkeletonProps): JSX.Element => (
   <div aria-hidden className={clsx("flex gap-x-2", props.className)}>
-    <div className="bg-sunken-secondary dark:bg-sunken-secondary-dark h-6 w-24 animate-pulse rounded-sm" />
-    <div className="bg-sunken-secondary dark:bg-sunken-secondary-dark h-6 w-24 animate-pulse rounded-sm" />
+    <div className="h-6 w-24 animate-pulse rounded-sm bg-sunken-secondary dark:bg-sunken-secondary-dark" />
+    <div className="h-6 w-24 animate-pulse rounded-sm bg-sunken-secondary dark:bg-sunken-secondary-dark" />
   </div>
 );

@@ -13,10 +13,10 @@ const SettingsPage = (): JSX.Element => (
   <Page>
     <Header title={PAGE.name} description={PAGE.description} />
 
-    <section className="phone-ls:grid-cols-2 grid items-start gap-x-8 gap-y-6">
+    <section className="grid items-start gap-x-8 gap-y-6 phone-ls:grid-cols-2">
       <div>
-        <h2 className="text-header-base text-primary dark:text-primary-dark mb-1">Theme</h2>
-        <p className="text-secondary text-sm-regular dark:text-secondary-dark">
+        <h2 className="mb-1 text-header-base text-primary dark:text-primary-dark">Theme</h2>
+        <p className="text-sm-regular text-secondary dark:text-secondary-dark">
           This will change the appearance of the site
         </p>
       </div>
@@ -25,10 +25,10 @@ const SettingsPage = (): JSX.Element => (
 
     <Divider className="my-10" soft />
 
-    <section className="phone-ls:grid-cols-2 grid items-start gap-x-8 gap-y-6">
+    <section className="grid items-start gap-x-8 gap-y-6 phone-ls:grid-cols-2">
       <div>
-        <h2 className="text-header-base text-primary dark:text-primary-dark mb-1">Font Family</h2>
-        <p className="text-secondary text-sm-regular dark:text-secondary-dark">
+        <h2 className="mb-1 text-header-base text-primary dark:text-primary-dark">Font Family</h2>
+        <p className="text-sm-regular text-secondary dark:text-secondary-dark">
           This will change the font across the site
         </p>
       </div>

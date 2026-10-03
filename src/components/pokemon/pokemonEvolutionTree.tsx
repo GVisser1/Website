@@ -14,12 +14,12 @@ const PokemonEvolutionTree = (props: PokemonEvolutionTreeProps): JSX.Element => 
 
   return (
     <div className="mt-12">
-      <h3 className="text-header-xl text-primary dark:text-primary-dark mb-2">Evolutionary Chain</h3>
-      <div className="tablet-ls:grid tablet-ls:auto-cols-fr tablet-ls:grid-flow-col flex flex-col items-center gap-6">
+      <h3 className="mb-2 text-header-xl text-primary dark:text-primary-dark">Evolutionary Chain</h3>
+      <div className="flex flex-col items-center gap-6 tablet-ls:grid tablet-ls:auto-cols-fr tablet-ls:grid-flow-col">
         {evolutions.map((stage) => (
           <div key={uniqueId()} className="flex w-full flex-col items-center gap-4">
             {stage.map((evolution) => (
-              <div key={evolution.name} className="phone-ls:flex-row relative flex w-full flex-col">
+              <div key={evolution.name} className="relative flex w-full flex-col phone-ls:flex-row">
                 <PokemonCard identifier={evolution.id} size="sm" />
               </div>
             ))}
@@ -34,8 +34,8 @@ export default PokemonEvolutionTree;
 
 export const PokemonEvolutionTreeSkeleton = (): JSX.Element => (
   <div aria-hidden className="mt-12">
-    <div className="bg-sunken-secondary dark:bg-sunken-secondary-dark mb-2 h-8 w-56 animate-pulse" />
-    <div className="tablet-ls:grid tablet-ls:auto-cols-fr tablet-ls:grid-flow-col flex flex-col items-center gap-6">
+    <div className="mb-2 h-8 w-56 animate-pulse bg-sunken-secondary dark:bg-sunken-secondary-dark" />
+    <div className="flex flex-col items-center gap-6 tablet-ls:grid tablet-ls:auto-cols-fr tablet-ls:grid-flow-col">
       {[0, 1, 2].map((stage) => (
         <div key={stage} className="flex w-full flex-col items-center gap-4">
           <SkeletonLoader size="sm" />
