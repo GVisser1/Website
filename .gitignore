@@ -7,8 +7,6 @@ dist
 
 .DS_Store
 .env.local
-/blob-report/
-/playwright-report/
 
 .vscode
 .netlify

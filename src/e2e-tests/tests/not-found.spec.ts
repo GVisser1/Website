@@ -1,3 +1,4 @@
+import { MAIN_PAGES } from "@/constants";
 import { expect, test } from "../fixtures";
 
 test("renders 404 page on desktop", async ({ notFoundPage }) => {
@@ -5,6 +6,7 @@ test("renders 404 page on desktop", async ({ notFoundPage }) => {
 
   await expect(notFoundPage.heading).toBeVisible();
   await expect(notFoundPage.backToHomeLink).toBeVisible();
+  await notFoundPage.assertMeta(MAIN_PAGES.home.meta);
 
   await notFoundPage.assertPageMatchesSnapshot("not-found-page");
   await notFoundPage.assertPageIsAccessible();

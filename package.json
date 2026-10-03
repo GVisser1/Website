@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vp dev",
+    "preview": "pnpm build && pnpm exec vp preview --port 5173 --strictPort",
     "build": "tsc && tsx ./scripts/generateSitemap.ts && vp build",
     "test": "vp test",
     "test:ui": "vp test --ui --coverage",

@@ -1,11 +1,11 @@
 import { expect, test } from "../fixtures";
 
-test("renders pokémon detail page on desktop", async ({ page, pokemonDetailPage }) => {
+test("renders pokémon detail page on desktop", async ({ pokemonDetailPage }) => {
   await pokemonDetailPage.goto("bulbasaur");
 
   await expect(pokemonDetailPage.heading).toHaveText("Bulbasaur #1");
   await expect(pokemonDetailPage.genusHeading).toHaveText("Seed Pokémon");
-  await expect(page).toHaveTitle("Bulbasaur - Glenn Visser");
+  await pokemonDetailPage.assertMeta({ title: "Bulbasaur - Glenn Visser" });
 
   await pokemonDetailPage.assertPageMatchesSnapshot("pokemon-detail-page");
   await pokemonDetailPage.assertPageIsAccessible();
