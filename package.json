@@ -51,7 +51,7 @@
     "tsx": "4.23.15",
     "typescript": "7.0.2",
     "usehooks-ts": "3.1.1",
-    "vite-plus": "0.3.3"
+    "vite-plus": "1.1.0"
   },
   "packageManager": "pnpm@11.28.4+sha512.f905a61563f89b49a292634d3d87d024cfdea9dccf5c66b2ccc261675fa7b2774320a959db472e6caa7f9ff7314709cd50d06c8fd64addb60647377a78d250ff"
 }
