@@ -1,56 +1,92 @@
+import { useHotkey } from "@tanstack/react-hotkeys";
 import { useRouterState } from "@tanstack/react-router";
 import type { JSX } from "react";
-import { useGlobalSearch } from "../providers/globalSearchProvider";
+import { HOTKEYS, MAIL_TO, PAGES } from "@/constants";
 import IconButton from "./button/iconButton";
+import TextButton from "./button/textButton";
 import Logo from "./logo";
+import SearchDialog, { SearchDialogTrigger, searchDialogHandle } from "./searchDialog";
+import SettingsDialog, { SettingsDialogTrigger, settingsDialogHandle } from "./settingsDialog";
 
 export const Navbar = (): JSX.Element => {
-  const { setOpen } = useGlobalSearch();
   const { location } = useRouterState();
+  const isActive = (href: string): boolean =>
+    href === "/" ? location.pathname === href : location.pathname.startsWith(href);
+  useHotkey(HOTKEYS.settings, () => {
+    settingsDialogHandle.open(null);
+  });
+  useHotkey(HOTKEYS.search, () => {
+    if (searchDialogHandle.isOpen) {
+      searchDialogHandle.close();
+    } else {
+      searchDialogHandle.open(null);
+    }
+  });
 
   return (
-    <header className="sticky top-0 bg-default p-3 tablet-ls:hidden dark:bg-default-dark">
-      <nav className="flex items-center justify-between">
-        <Logo withTitle={false} size="lg" />
-        <div className="flex gap-x-3">
-          {location.pathname !== "/" && (
-            <IconButton
+    <header className="sticky top-0 z-10 flex h-14 items-center border-b border-secondary bg-default">
+      <nav className="mx-auto flex grow items-center justify-between px-6 py-1.5 tablet-ls:px-12 laptop:max-w-7xl">
+        <Logo />
+        <div className="hidden gap-x-3 tablet:flex">
+          {PAGES.map((page) => (
+            <TextButton
+              key={page.name}
               type="link"
-              variant="ghost"
-              icon="Home"
-              ariaLabel="Home"
-              href="/"
-              tooltip={{
-                title: "Home",
-                side: "bottom",
-              }}
+              variant="tertiary"
+              label={page.name}
+              href={page.href}
+              active={isActive(page.href)}
+              size="medium"
             />
-          )}
-          <IconButton
-            type="link"
-            variant="ghost"
-            icon="At"
-            ariaLabel="Contact"
-            href="mailto:gvisser.business@gmail.com"
-            tooltip={{
-              title: "Contact",
-              side: "bottom",
-            }}
+          ))}
+          <TextButton type="link" variant="tertiary" label="Contact" href={MAIL_TO} active={false} size="medium" />
+          <SettingsDialogTrigger
+            render={(triggerProps) => (
+              <IconButton
+                type="button"
+                variant="tertiary"
+                ariaLabel="Settings"
+                icon="Cog"
+                tooltip={{ title: "Settings", shortcut: HOTKEYS.settings, position: "bottom" }}
+                htmlProps={triggerProps}
+              />
+            )}
           />
-          <IconButton
-            type="button"
-            variant="ghost"
-            icon="MagnifyingGlass"
-            onClick={() => setOpen(true)}
-            ariaLabel="Search"
-            tooltip={{
-              title: "Search and quickly jump to a page",
-              description: "⌘K",
-              side: "bottom",
-            }}
+        </div>
+
+        <div className="flex gap-x-3 tablet:hidden">
+          <SearchDialogTrigger
+            render={(triggerProps) => (
+              <IconButton
+                type="button"
+                variant="tertiary"
+                ariaLabel="Search"
+                icon="MagnifyingGlass"
+                tooltip={{
+                  title: "Search and quickly jump to a page",
+                  shortcut: HOTKEYS.search,
+                  position: "bottom",
+                }}
+                htmlProps={triggerProps}
+              />
+            )}
+          />
+          <SettingsDialogTrigger
+            render={(triggerProps) => (
+              <IconButton
+                type="button"
+                variant="tertiary"
+                ariaLabel="Settings"
+                icon="Cog"
+                tooltip={{ title: "Settings", shortcut: HOTKEYS.settings, position: "bottom" }}
+                htmlProps={triggerProps}
+              />
+            )}
           />
         </div>
       </nav>
+      <SearchDialog />
+      <SettingsDialog />
     </header>
   );
 };

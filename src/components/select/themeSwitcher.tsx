@@ -1,33 +1,40 @@
+import { isNil } from "lodash-es";
 import { useTheme } from "next-themes";
 import type { JSX } from "react";
+import type { IconName } from "../icon";
 import Icon from "../icon";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select";
+import Select from "./select";
 
-const ThemeSwitcher = (): JSX.Element | null => {
-  const { theme, setTheme } = useTheme();
+const themeItem = (value: string, label: string, icon: IconName): { value: string; label: JSX.Element } => ({
+  value,
+  label: (
+    <>
+      <Icon name={icon} className="size-4" />
+      {label}
+    </>
+  ),
+});
 
-  const handleOnChange = (value: string): void => setTheme(value);
+const ITEMS = [
+  themeItem("light", "Light", "Sun"),
+  themeItem("dark", "Dark", "Moon"),
+  themeItem("system", "System", "Computer"),
+];
+
+const ThemeSwitcher = (): JSX.Element => {
+  const { theme = "system", setTheme } = useTheme();
 
   return (
-    <Select aria-label="Theme" defaultValue="system" name="theme" value={theme} onValueChange={handleOnChange}>
-      <SelectTrigger aria-label="Select theme">
-        <SelectValue />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="light">
-          <Icon name="Sun" className="size-4" />
-          Light
-        </SelectItem>
-        <SelectItem value="dark">
-          <Icon name="Moon" className="size-4" />
-          Dark
-        </SelectItem>
-        <SelectItem value="system">
-          <Icon name="Computer" className="size-4" />
-          System
-        </SelectItem>
-      </SelectContent>
-    </Select>
+    <Select
+      ariaLabel="Select theme"
+      value={theme}
+      onValueChange={(value) => {
+        if (!isNil(value)) {
+          setTheme(value);
+        }
+      }}
+      items={ITEMS}
+    />
   );
 };
 

@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import { isNil } from "lodash-es";
-import type { JSX, Ref } from "react";
+import type { JSX } from "react";
 import { useState } from "react";
 import usePokemonDetails from "../../hooks/usePokemonDetails";
 import Icon from "../icon";
@@ -9,7 +9,7 @@ import Image from "../image";
 import SkeletonLoader from "../skeleton";
 import PokemonTypes from "./pokemonTypes";
 
-export type PokemonCardProps = {
+type PokemonCardProps = {
   identifier: string | number;
   size: "sm" | "md";
 };
@@ -29,7 +29,7 @@ const PokemonCard = ({ identifier, size }: PokemonCardProps): JSX.Element => {
   const showErrorState = isImageError || isNil(data.sprite);
 
   const classes = clsx(
-    "group btn-secondary flex w-full gap-3 rounded-lg focus-visible:focus-ring",
+    "group flex w-full gap-3 rounded-lg btn-secondary select-none focus-visible:focus-ring",
     "data-[size=md]:flex-col data-[size=md]:text-center",
     "data-[size=sm]:flex-row data-[size=sm]:items-center",
     "data-[size=md]:px-2 data-[size=md]:py-3 data-[size=sm]:px-4 data-[size=sm]:py-2",
@@ -38,7 +38,7 @@ const PokemonCard = ({ identifier, size }: PokemonCardProps): JSX.Element => {
   return (
     <Link
       aria-label={`View details of ${data.name}`}
-      to={`/projects/pokemon/$identifier`}
+      to="/projects/pokemon/$identifier"
       params={{ identifier: data.name }}
       className={classes}
       data-size={size}
@@ -48,7 +48,7 @@ const PokemonCard = ({ identifier, size }: PokemonCardProps): JSX.Element => {
         {showErrorState && <SpriteErrorState />}
       </div>
       <div className="grow">
-        <p className="w-full truncate text-base-semibold text-primary capitalize dark:text-primary-dark">
+        <p className="w-full truncate text-base-semibold text-primary capitalize">
           {data.name} #{data.id}
         </p>
         <PokemonTypes types={data.types} size="sm" className={clsx("mt-1", size === "md" && "justify-center")} />
@@ -60,7 +60,6 @@ const PokemonCard = ({ identifier, size }: PokemonCardProps): JSX.Element => {
 export default PokemonCard;
 
 type SpriteProps = {
-  ref?: Ref<HTMLImageElement>;
   name: string;
   sprite: string;
   size?: "sm" | "md";
@@ -69,13 +68,12 @@ type SpriteProps = {
 
 const Sprite = ({ name, sprite, size, onError }: SpriteProps): JSX.Element => {
   const classes = clsx("mx-auto object-contain", size === "md" && "size-22", size === "sm" && "size-16");
-
   return <Image src={sprite} alt={`${name} sprite`} className={classes} onError={onError} />;
 };
 
 const SpriteErrorState = (): JSX.Element => {
   const classes = clsx(
-    "absolute top-0 flex w-full items-center justify-center text-primary dark:text-primary-dark",
+    "absolute top-0 flex w-full items-center justify-center text-primary",
     "group-data-[size=md]:h-22 group-data-[size=sm]:h-16",
   );
 

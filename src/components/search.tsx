@@ -3,25 +3,22 @@ import type { ComponentProps, JSX } from "react";
 import { isTouchDevice } from "../utils/deviceUtil";
 import Icon from "./icon";
 
-export type SearchInputProps = ComponentProps<"input"> & {
+type SearchInputProps = ComponentProps<"input"> & {
   hasShortcut?: boolean;
 };
 
 const SearchInput = ({ className, hasShortcut, ...props }: SearchInputProps): JSX.Element => {
   const classes = clsx(
-    "peer h-10 w-full truncate rounded-sm border border-primary bg-default py-2 pl-8 text-base-medium placeholder:text-placeholder focus-visible:focus-ring dark:border-primary-dark dark:bg-default-dark dark:placeholder:text-placeholder-dark",
+    "peer h-10 w-full truncate rounded-sm border border-primary bg-default py-2 pl-8 text-base-medium placeholder:text-placeholder focus-visible:focus-ring",
     hasShortcut ? "pr-8 focus:pr-3" : "pr-3",
   );
 
   return (
     <div className={clsx("relative", className)}>
-      <Icon
-        name="MagnifyingGlass"
-        className="pointer-events-none absolute top-2.5 left-2 size-5 text-secondary dark:text-secondary-dark"
-      />
+      <Icon name="MagnifyingGlass" className="pointer-events-none absolute top-2.5 left-2 size-5 text-secondary" />
       <input {...props} className={classes} />
       {hasShortcut && !isTouchDevice && (
-        <kbd className="pointer-events-none absolute top-2.5 right-2 flex size-5 items-center justify-center rounded-sm border border-primary text-xs-semibold text-secondary peer-focus:hidden dark:border-primary-dark dark:text-secondary-dark">
+        <kbd className="pointer-events-none absolute top-2.5 right-2 flex size-5 items-center justify-center rounded-sm border border-primary text-xs-semibold text-secondary peer-focus:hidden">
           /
         </kbd>
       )}

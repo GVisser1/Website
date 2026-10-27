@@ -1,28 +1,78 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type { JSX } from "react";
-import { MAIN_PAGES } from "@/constants";
+import { useMediaQuery } from "usehooks-ts";
+import Image from "@/components/image";
+import { MAIN_PAGES, PROJECT_PAGES } from "@/constants";
 import { BlogContent, BlogFooter, BlogHeader, BlogParagraph, BlogSection } from "../components/blog";
-import Header from "../components/header";
 import InlineLink from "../components/inlineLink";
 import Page from "../components/page";
 
 const PAGE = MAIN_PAGES.about;
 
+// Below the tablet breakpoint the photos scroll horizontally, so the strip needs to be reachable by keyboard
+const MOBILE_QUERY = "(max-width: 767.98px)";
+
+const IntroductionPhotos = (): JSX.Element => {
+  const isMobile = useMediaQuery(MOBILE_QUERY);
+  const scrollableRegionProps = isMobile ? { tabIndex: 0, role: "region", "aria-label": "Photos" } : {};
+
+  return (
+    <div
+      {...scrollableRegionProps}
+      className="col-span-full -mx-6 mt-5 no-scrollbar flex snap-x snap-mandatory scroll-px-6 gap-x-4 overflow-x-auto px-6 focus-visible:focus-ring tablet:mx-0 tablet:grid tablet:grid-cols-3 tablet:overflow-visible tablet:px-0"
+    >
+      <Image
+        src="/images/FJM.webp"
+        alt=""
+        priority={true}
+        className="h-80 w-1/2 shrink-0 snap-start rounded-lg object-cover tablet:aspect-square tablet:size-full"
+      />
+      <Image
+        src="/images/paddington.webp"
+        alt=""
+        priority={true}
+        className="h-80 w-1/2 shrink-0 snap-start rounded-lg object-cover tablet:aspect-square tablet:size-full"
+      />
+      <Image
+        src="/images/beach.webp"
+        alt=""
+        priority={true}
+        className="h-80 w-1/2 shrink-0 snap-start rounded-lg object-cover tablet:aspect-square tablet:size-full"
+      />
+    </div>
+  );
+};
+
 const AboutPage = (): JSX.Element => (
   <Page>
-    <Header title={PAGE.name} description={PAGE.description} />
+    <section id="introduction" className="my-10 grid grid-cols-4 items-center gap-x-10 gap-y-2">
+      <h1 className="col-span-full text-header-4xl text-primary">{PAGE.name}</h1>
+      <p className="col-span-full text-base-regular text-secondary tablet:col-span-3">
+        You seem to want to know more about me. Well, I am a QA Engineer and a huge nerd. I spend my work days ensuring
+        the quality of software, and in my free time, I love listening to music, watching movies, playing games, and
+        coding.
+      </p>
+      <IntroductionPhotos />
+    </section>
 
     <BlogContent>
-      <BlogSection id="introduction" image={{ src: "/images/beach.webp", alt: "", align: "right", priority: true }}>
-        <BlogHeader>Hi there!</BlogHeader>
+      <BlogSection id="professional-life">
+        <BlogHeader>Professional Life</BlogHeader>
         <BlogParagraph>
-          You seem to want to know more about me. Well, I am a QA Engineer and a huge nerd. I spend my work days
-          ensuring the quality of software, and in my free time, I love listening to music, watching movies, playing
-          games, and coding.
+          In my professional life, I am a Quality Assurance Engineer. At{" "}
+          <InlineLink href="https://moreapp.com">MoreApp</InlineLink>, I am responsible for ensuring quality of the
+          software, maintaining testing processes, and writing automated tests using{" "}
+          <InlineLink href="https://playwright.dev">Playwright</InlineLink>. I love working closely with developers, UX
+          designers, and the Product Owner to ensure our projects meets the requirements and expectations of our users.
+        </BlogParagraph>
+        <BlogParagraph>
+          Programming is not only a key part of my job, but a hobby as well. I enjoy solving problems and front-ending
+          designs. This mostly comes down to building random side-projects, such as the{" "}
+          <InlineLink href={PROJECT_PAGES.pokemon.href}>Pokémon page</InlineLink> on this site.
         </BlogParagraph>
       </BlogSection>
 
-      <BlogSection id="music" image={{ src: "/images/fleetFoxes.webp", alt: "Fleet Foxes concert", align: "left" }}>
+      <BlogSection id="music" image={{ src: "/images/fleetFoxes.webp", alt: "Fleet Foxes concert", align: "right" }}>
         <BlogHeader>Music</BlogHeader>
         <BlogParagraph>
           Music is probably my biggest hobby. It is never quiet in my house; there is always music playing. I am
@@ -39,7 +89,7 @@ const AboutPage = (): JSX.Element => (
         </BlogParagraph>
       </BlogSection>
 
-      <BlogSection id="movies" image={{ src: "/images/the-holdovers.webp", alt: "The Holdovers", align: "right" }}>
+      <BlogSection id="movies" image={{ src: "/images/the-holdovers.webp", alt: "The Holdovers", align: "left" }}>
         <BlogHeader>Movies</BlogHeader>
         <BlogParagraph>
           Another expensive hobby of mine is watching movies. I have a growing Blu-ray collection and go to the cinema
@@ -55,7 +105,7 @@ const AboutPage = (): JSX.Element => (
         </BlogParagraph>
       </BlogSection>
 
-      <BlogSection id="gaming" image={{ src: "/images/persona5.webp", alt: "Persona 5 Royal", align: "left" }}>
+      <BlogSection id="gaming" image={{ src: "/images/persona5.webp", alt: "Persona 5 Royal", align: "right" }}>
         <BlogHeader>Gaming</BlogHeader>
         <BlogParagraph>
           I have been gaming ever since I got my Gameboy at age 7. The first game I remember loving was Pokémon
@@ -67,24 +117,8 @@ const AboutPage = (): JSX.Element => (
           The Witcher 3, and Resident Evil 4.
         </BlogParagraph>
       </BlogSection>
-
-      <BlogSection id="professional-life">
-        <BlogHeader>Professional Life</BlogHeader>
-        <BlogParagraph>
-          In my professional life, I am a Quality Assurance Engineer. At{" "}
-          <InlineLink href="https://moreapp.com">MoreApp</InlineLink>, I am responsible for ensuring quality of the
-          software, maintaining testing processes, and writing automated tests using{" "}
-          <InlineLink href="https://playwright.dev">Playwright</InlineLink>. I love working closely with developers, UX
-          designers, and the Product Owner to ensure our projects meets the requirements and expectations of our users.
-        </BlogParagraph>
-        <BlogParagraph>
-          Programming is not only a key part of my job, but a hobby as well. I enjoy solving problems and front-ending
-          designs with <InlineLink href="https://tailwindcss.com">TailwindCSS</InlineLink>. This mostly comes down to
-          building random side-projects, such as the <InlineLink href="/projects/pokemon">Pokémon page</InlineLink> on
-          this site.
-        </BlogParagraph>
-      </BlogSection>
     </BlogContent>
+
     <BlogFooter id="contact">
       <BlogParagraph>
         Feel free to reach out if you want to chat about music, movies, gaming, programming, or anything else that

@@ -1,13 +1,20 @@
-@import "@fontsource-variable/inter";
+@import "@fontsource/inter";
+@import "@fontsource/frijole";
+@import "@fontsource/roboto";
+@import "@fontsource/m-plus-rounded-1c";
+@import "@fontsource/m-plus-rounded-1c/500.css";
+@import "@fontsource/m-plus-rounded-1c/700.css";
 @import "tailwindcss";
-@plugin "tailwindcss-animate";
 
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant press (&:active);
-@custom-variant active (&[data-active="true"]);
+@custom-variant active (&:is([data-active="true"], [aria-expanded="true"]));
 
 @theme inline {
-  --font-inter: "Inter Variable", var(--font-sans);
+  --font-inter: "Inter", var(--font-sans);
+  --font-roboto: "Roboto", var(--font-sans);
+  --font-frijole: "Frijole", var(--font-sans);
+  --font-m-plus: "M PLUS Rounded 1c", var(--font-sans);
   --font-comic-sans: "Comic Sans MS", "Chalkboard SE", "Comic Neue", var(--font-sans);
 
   --breakpoint-*: initial;
@@ -42,6 +49,9 @@
   --text-header-base: 1rem;
   --text-header-base--line-height: 1.5rem;
   --text-header-base--font-weight: 600;
+  --text-lg-semibold: 1.125rem;
+  --text-lg-semibold--line-height: 1.75rem;
+  --text-lg-semibold--font-weight: 600;
   --text-lg-medium: 1.125rem;
   --text-lg-medium--line-height: 1.75rem;
   --text-lg-medium--font-weight: 500;
@@ -69,6 +79,9 @@
   --text-xs-semibold: 0.75rem;
   --text-xs-semibold--line-height: 1rem;
   --text-xs-semibold--font-weight: 600;
+  --text-xs-medium: 0.75rem;
+  --text-xs-medium--line-height: 1rem;
+  --text-xs-medium--font-weight: 500;
   --text-xs-regular: 0.75rem;
   --text-xs-regular--line-height: 1rem;
   --text-xs-regular--font-weight: 400;
@@ -86,27 +99,11 @@
 
   --text-color-*: initial;
   --text-color-inverse: #ffffff;
-  --text-color-primary: #3f3f46;
-  --text-color-primary-dark: #e4e4e7;
-  --text-color-secondary: #52525b;
-  --text-color-secondary-dark: #d4d4d8;
-  --text-color-placeholder: #71717a;
-  --text-color-placeholder-dark: #a1a1aa;
   --text-color-icons-accent-number: #d97706;
   --text-color-icons-accent-search-items: #1ab0af;
   --text-color-icons-accent-subform: #4f46e5;
   --text-color-icons-accent-text-fields: #2563eb;
-  --text-color-light: #2563eb;
-  --text-color-light-dark: #3b82f6;
   --text-color-error: #dc2626;
-  --text-color-disabled: #e4e4e7;
-  --text-color-disabled-dark: #3f3f46;
-  --text-color-status-success: #047857;
-  --text-color-status-success-dark: #ffffff;
-  --text-color-status-info: #1d4ed8;
-  --text-color-status-info-dark: #ffffff;
-  --text-color-status-neutral: #3f3f46;
-  --text-color-status-neutral-dark: #ffffff;
   --text-color-elevation-float: #ffffff;
   --text-color-elevation-float-secondary: #a1a1aa;
 
@@ -132,59 +129,15 @@
   --text-color-pokemon-water: #172554;
 
   --background-color-*: initial;
-  --background-color-default: #ffffff;
-  --background-color-default-dark: #18181b;
-  --background-color-default-transparent: #ffffff60;
-  --background-color-default-transparent-dark: #18181b50;
   --background-color-accent-code: #bfdbfe;
   --background-color-accent-text-fields: #dbeafe;
   --background-color-accent-subform: #e0e7ff;
   --background-color-accent-search-items: #e8f9f9;
   --background-color-accent-number: #fef3c7;
-  --background-color-sunken: #fafafa;
-  --background-color-sunken-dark: #09090b;
-  --background-color-sunken-secondary: #f4f4f5;
-  --background-color-sunken-secondary-dark: #27272a;
-  --background-color-sunken-tertiary: #e4e4e7;
-  --background-color-sunken-tertiary-dark: #3f3f46;
-  --background-color-btn-disabled: #fafafa;
-  --background-color-btn-disabled-dark: #27272a50;
   --background-color-btn-primary: #2563eb;
   --background-color-btn-primary-hover: #1d4ed8;
   --background-color-btn-primary-press: #1e40af;
-  --background-color-btn-primary-dark: #2563eb;
-  --background-color-btn-primary-hover-dark: #1d4ed8;
-  --background-color-btn-primary-press-dark: #1e40af;
-  --background-color-btn-secondary: #f4f4f5;
-  --background-color-btn-secondary-hover: #e4e4e7;
-  --background-color-btn-secondary-press: #d4d4d8;
-  --background-color-btn-secondary-dark: #27272a;
-  --background-color-btn-secondary-hover-dark: #3f3f46;
-  --background-color-btn-secondary-press-dark: #52525b;
-  --background-color-btn-light: #ffffff;
-  --background-color-btn-light-hover: #eff6ff;
-  --background-color-btn-light-press: #dbeafe;
-  --background-color-btn-light-dark: #18181b;
-  --background-color-btn-light-hover-dark: #27272a;
-  --background-color-btn-light-press-dark: #3f3f46;
-  --background-color-btn-ghost-hover: #f4f4f5;
-  --background-color-btn-ghost-press: #e4e4e7;
-  --background-color-btn-ghost-hover-dark: #27272a;
-  --background-color-btn-ghost-press-dark: #3f3f46;
-  --background-color-btn-ghost-active: #e4e4e7;
-  --background-color-btn-ghost-active-dark: #27272a;
-  --background-color-btn-ghost-checked: #eff6ff;
-  --background-color-btn-ghost-checked-dark: #1e3a8a20;
-  --background-color-elevation-surface-blanket-top: #09090b30;
-  --background-color-elevation-surface-blanket-top-dark: #09090b75;
   --background-color-elevation-float: #27272a;
-  --background-color-elevation-float-dark: #27272a;
-  --background-color-status-success: #d1fae5;
-  --background-color-status-success-dark: #047857;
-  --background-color-status-info: #eff6ff;
-  --background-color-status-info-dark: #2563eb;
-  --background-color-status-neutral: #f4f4f5;
-  --background-color-status-neutral-dark: #3f3f46;
 
   --background-color-pokemon-stat-hp: #dc2626;
   --background-color-pokemon-stat-attack: #f97316;
@@ -227,17 +180,9 @@
   --text-decoration-color-visited-hover: #7c3aed;
 
   --border-color-*: initial;
-  --border-color-primary: #e4e4e7;
-  --border-color-secondary: #f4f4f5;
-  --border-color-primary-dark: #3f3f46;
-  --border-color-secondary-dark: #27272a;
   --border-color-light: #3b82f6;
 
   --divide-color-*: initial;
-  --divide-color-primary: #e4e4e7;
-  --divide-color-secondary: #f4f4f5;
-  --divide-color-primary-dark: #3f3f46;
-  --divide-color-secondary-dark: #27272a;
 
   --radius-*: initial;
   --radius-xs: 0.125rem;
@@ -251,6 +196,82 @@
   --shadow-*: initial;
   --shadow-md: 0px 4px 6px -1px #00000020;
   --shadow-lg: 0px 10px 15px -3px #00000025;
+}
+
+@theme {
+  --text-color-primary: #3f3f46;
+  --text-color-secondary: #52525b;
+  --text-color-placeholder: #71717a;
+  --text-color-light: #2563eb;
+  --text-color-disabled: #e4e4e7;
+  --text-color-status-success: #047857;
+  --text-color-status-info: #1d4ed8;
+  --text-color-status-neutral: #3f3f46;
+  --text-color-btn-tertiary-active: #1447e6;
+  --background-color-default: #ffffff;
+  --background-color-default-transparent: #ffffff60;
+  --background-color-overlay-default: #18181b33;
+  --background-color-overlay-harsh: #000000e6;
+  --background-color-sunken: #fafafa;
+  --background-color-sunken-secondary: #f4f4f5;
+  --background-color-sunken-tertiary: #e4e4e7;
+  --background-color-btn-disabled: #fafafa;
+  --background-color-btn-secondary: #f4f4f5;
+  --background-color-btn-secondary-hover: #e4e4e7;
+  --background-color-btn-secondary-press: #d4d4d8;
+  --background-color-btn-light-hover: #eff6ff;
+  --background-color-btn-light-press: #dbeafe;
+  --background-color-btn-tertiary-hover: #1118270d;
+  --background-color-btn-tertiary-press: #1118271a;
+  --background-color-btn-tertiary-active: #eff6ff;
+  --background-color-btn-tertiary-checked: #eff6ff;
+  --background-color-elevation-surface-blanket-top: #09090b30;
+  --background-color-status-success: #d1fae5;
+  --background-color-status-info: #eff6ff;
+  --background-color-status-neutral: #f4f4f5;
+  --border-color-primary: #e4e4e7;
+  --border-color-secondary: #f4f4f5;
+  --border-color-btn-tertiary-active: #1447e6;
+  --divide-color-primary: #e4e4e7;
+  --divide-color-secondary: #f4f4f5;
+}
+
+.dark {
+  --text-color-primary: #e4e4e7;
+  --text-color-secondary: #d4d4d8;
+  --text-color-placeholder: #a1a1aa;
+  --text-color-light: #3b82f6;
+  --text-color-disabled: #3f3f46;
+  --text-color-status-success: #ffffff;
+  --text-color-status-info: #ffffff;
+  --text-color-status-neutral: #ffffff;
+  --text-color-btn-tertiary-active: #ffffff;
+  --background-color-default: #0a0a0a;
+  --background-color-default-transparent: #18181b50;
+  --background-color-overlay-default: #18181b99;
+  --background-color-overlay-harsh: #000000e6;
+  --background-color-sunken: #18181b;
+  --background-color-sunken-secondary: #27272a;
+  --background-color-sunken-tertiary: #3f3f46;
+  --background-color-btn-disabled: #27272a50;
+  --background-color-btn-secondary: #27272a;
+  --background-color-btn-secondary-hover: #3f3f46;
+  --background-color-btn-secondary-press: #52525b;
+  --background-color-btn-light-hover: #27272a;
+  --background-color-btn-light-press: #3f3f46;
+  --background-color-btn-tertiary-hover: #27272a;
+  --background-color-btn-tertiary-press: #3f3f46;
+  --background-color-btn-tertiary-active: #162456;
+  --background-color-btn-tertiary-checked: #1e3a8a20;
+  --background-color-elevation-surface-blanket-top: #09090b75;
+  --background-color-status-success: #047857;
+  --background-color-status-info: #2563eb;
+  --background-color-status-neutral: #3f3f46;
+  --border-color-primary: #3f3f46;
+  --border-color-secondary: #27272a;
+  --border-color-btn-tertiary-active: #1447e6;
+  --divide-color-primary: #3f3f46;
+  --divide-color-secondary: #27272a;
 }
 
 @layer base {
@@ -267,13 +288,13 @@
   outline: none;
   box-shadow:
     0 0 0 1px var(--ring-color-secondary),
-    0 0 0 4px var(--ring-color-primary);
+    0 0 0 3px var(--ring-color-primary);
 }
 @utility focus-ring-inset {
   outline: none;
   box-shadow:
-    inset 0 0 0 3px var(--ring-color-primary),
-    inset 0 0 0 4px var(--ring-color-secondary);
+    inset 0 0 0 1px var(--ring-color-primary),
+    inset 0 0 0 3px var(--ring-color-secondary);
 }
 @utility focus-ring-text {
   outline: none;
@@ -282,24 +303,30 @@
   text-decoration-color: var(--ring-color-primary);
 }
 
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
 
-@layer components {
-  .btn-disabled {
-    @apply bg-btn-disabled text-disabled dark:bg-btn-disabled-dark dark:text-disabled-dark;
-  }
-  .btn-primary {
-    @apply bg-btn-primary text-inverse hover:bg-btn-primary-hover dark:bg-btn-primary-dark dark:hover:bg-btn-primary-hover-dark press:bg-btn-primary-press dark:press:bg-btn-primary-press-dark;
-  }
-  .btn-secondary {
-    @apply bg-btn-secondary text-primary hover:bg-btn-secondary-hover dark:bg-btn-secondary-dark dark:text-primary-dark dark:hover:bg-btn-secondary-hover-dark press:bg-btn-secondary-press dark:press:bg-btn-secondary-press-dark;
-  }
-  .btn-light {
-    @apply box-border border border-light bg-btn-light text-light hover:bg-btn-light-hover dark:bg-btn-light-dark dark:text-light-dark dark:hover:bg-btn-light-hover-dark press:bg-btn-light-press dark:press:bg-btn-light-press-dark;
-  }
-  .btn-ghost {
-    @apply text-primary hover:bg-btn-ghost-hover active:bg-btn-ghost-active dark:text-primary-dark dark:hover:bg-btn-ghost-hover-dark dark:active:bg-btn-ghost-active-dark press:bg-btn-ghost-press dark:press:bg-btn-ghost-press-dark;
-  }
+@utility btn-disabled {
+  @apply bg-btn-disabled text-disabled;
+}
+
+@utility btn-primary {
+  @apply bg-btn-primary text-inverse hover:bg-btn-primary-hover press:bg-btn-primary-press;
+}
+@utility btn-secondary {
+  @apply bg-btn-secondary text-primary hover:bg-btn-secondary-hover press:bg-btn-secondary-press;
+}
+@utility btn-light {
+  @apply box-border border border-light text-light hover:bg-btn-light-hover press:bg-btn-light-press;
+}
+@utility btn-tertiary {
+  @apply border-primary text-primary hover:bg-btn-tertiary-hover active:border-btn-tertiary-active active:bg-btn-tertiary-active active:text-btn-tertiary-active press:border-primary press:bg-btn-tertiary-press active:[&>svg]:text-btn-tertiary-active;
 }

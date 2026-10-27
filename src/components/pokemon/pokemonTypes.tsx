@@ -52,7 +52,7 @@ type PokemonTypesSkeletonProps = {
 
 export const PokemonTypesSkeleton = (props: PokemonTypesSkeletonProps): JSX.Element => (
   <div aria-hidden className={clsx("flex gap-x-2", props.className)}>
-    <div className="h-6 w-24 animate-pulse rounded-sm bg-sunken-secondary dark:bg-sunken-secondary-dark" />
-    <div className="h-6 w-24 animate-pulse rounded-sm bg-sunken-secondary dark:bg-sunken-secondary-dark" />
+    <div className="h-6 w-24 animate-pulse rounded-sm bg-sunken-secondary" />
+    <div className="h-6 w-24 animate-pulse rounded-sm bg-sunken-secondary" />
   </div>
 );

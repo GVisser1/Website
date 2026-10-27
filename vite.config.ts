@@ -6,6 +6,7 @@ import { defineConfig, lazyPlugins } from "vite-plus";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: { allowedHosts: ["sun-recently-cage-ted.trycloudflare.com"] },
   staged: {
     "*": "vp check --fix",
   },

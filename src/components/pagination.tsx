@@ -1,6 +1,6 @@
+import type { Hotkey } from "@tanstack/react-hotkeys";
 import clsx from "clsx";
 import { type JSX, useEffect } from "react";
-import useMetaKey from "../hooks/useMetaKey";
 import IconButton from "./button/iconButton";
 import type { IconName } from "./icon";
 
@@ -25,7 +25,6 @@ const Pagination = ({
 }: PaginationProps): JSX.Element => {
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === totalPages;
-  const metaKey = useMetaKey();
 
   const classes = clsx("flex w-full items-center justify-between gap-x-1 tablet:w-auto", className);
 
@@ -63,14 +62,14 @@ const Pagination = ({
         onClick={onFirst}
         disabled={isFirstPage}
         icon="ChevronLeftDouble"
-        shortcut={`${metaKey} + Left Arrow`}
+        shortcut="Mod+ArrowLeft"
       />
       <PaginationButton
         ariaLabel="Go to the previous page"
         onClick={onPrevious}
         disabled={isFirstPage}
         icon="ChevronLeft"
-        shortcut="Left Arrow"
+        shortcut="ArrowLeft"
       />
       <PageCounter currentPage={currentPage} totalPages={totalPages} />
       <PaginationButton
@@ -78,14 +77,14 @@ const Pagination = ({
         onClick={onNext}
         disabled={isLastPage}
         icon="ChevronRight"
-        shortcut="Right Arrow"
+        shortcut="ArrowRight"
       />
       <PaginationButton
         ariaLabel="Go to the last page"
         onClick={onLast}
         disabled={isLastPage}
         icon="ChevronRightDouble"
-        shortcut={`${metaKey} + Right Arrow`}
+        shortcut="Mod+ArrowRight"
       />
     </div>
   );
@@ -96,7 +95,7 @@ type PaginationButtonProps = {
   disabled: boolean;
   onClick: () => void;
   icon: Extract<IconName, "ChevronLeftDouble" | "ChevronLeft" | "ChevronRight" | "ChevronRightDouble">;
-  shortcut: string;
+  shortcut: Hotkey;
 };
 
 const PaginationButton = ({ ariaLabel, disabled, onClick, icon, shortcut }: PaginationButtonProps): JSX.Element => (
@@ -106,13 +105,13 @@ const PaginationButton = ({ ariaLabel, disabled, onClick, icon, shortcut }: Pagi
     ariaLabel={ariaLabel}
     disabled={disabled}
     onClick={onClick}
-    tooltip={{ title: ariaLabel, description: shortcut, side: "top" }}
+    tooltip={{ title: ariaLabel, shortcut, position: "top" }}
     icon={icon}
   />
 );
 
 const PageCounter = ({ currentPage, totalPages }: { currentPage: number; totalPages: number }): JSX.Element => (
-  <span className="mx-1 flex w-full items-center justify-center gap-x-1 text-base-regular text-secondary dark:text-secondary-dark">
+  <span className="mx-1 flex w-full items-center justify-center gap-x-1 text-base-regular text-secondary">
     <span className="text-base-bold">{currentPage}</span>
     of
     <span className="text-base-bold">{totalPages}</span>

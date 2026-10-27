@@ -1,23 +1,27 @@
+import { isNil } from "lodash-es";
 import type { JSX } from "react";
 import { FONTS, useFont } from "../../hooks/useFont";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./select";
+import Select from "./select";
 
-const FontSwitcher = (): JSX.Element | null => {
+const ITEMS = Object.values(FONTS).map(({ label, class: fontClass }) => ({
+  value: label,
+  label: <span className={fontClass}>{label}</span>,
+}));
+
+const FontSwitcher = (): JSX.Element => {
   const { font, handleFontChange } = useFont();
 
   return (
-    <Select aria-label="Font" name="font" value={font} onValueChange={handleFontChange}>
-      <SelectTrigger aria-label="Select font">
-        <SelectValue />
-      </SelectTrigger>
-      <SelectContent>
-        {Object.values(FONTS).map((font) => (
-          <SelectItem key={font.label} value={font.label}>
-            <div className={font.class}>{font.label}</div>
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <Select
+      ariaLabel="Select a font"
+      value={font}
+      onValueChange={(value) => {
+        if (!isNil(value)) {
+          handleFontChange(value);
+        }
+      }}
+      items={ITEMS}
+    />
   );
 };
 

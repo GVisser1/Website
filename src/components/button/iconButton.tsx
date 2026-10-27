@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
-import type { JSX, MouseEvent } from "react";
+import type { ComponentProps, JSX, MouseEventHandler } from "react";
 import type { IconName } from "../icon";
 import Icon from "../icon";
 import type { TooltipProps } from "../tooltip";
@@ -13,9 +13,9 @@ type BaseIconButtonProps = {
   className?: string;
 };
 type ButtonTypeProps =
-  | { type: "button"; onClick: (e: MouseEvent<HTMLButtonElement>) => void }
+  | { type: "button"; onClick?: MouseEventHandler<HTMLButtonElement>; htmlProps?: ComponentProps<"button"> }
   | { type: "link"; href: string };
-type VariantProps = { variant: "secondary"; disabled?: boolean } | { variant: "ghost"; active?: boolean };
+type VariantProps = { variant: "secondary"; disabled?: boolean } | { variant: "tertiary"; active?: boolean };
 type IconButtonProps = BaseIconButtonProps & ButtonTypeProps & VariantProps;
 
 const IconButton = (props: IconButtonProps): JSX.Element => {
@@ -25,7 +25,7 @@ const IconButton = (props: IconButtonProps): JSX.Element => {
       ? "btn-disabled"
       : {
           "btn-secondary": props.variant === "secondary",
-          "btn-ghost": props.variant === "ghost",
+          "btn-tertiary": props.variant === "tertiary",
         },
 
     props.className,
@@ -35,25 +35,29 @@ const IconButton = (props: IconButtonProps): JSX.Element => {
   return (
     <Tooltip
       title={props.tooltip.title}
-      description={props.tooltip.description}
-      side={props.tooltip.side}
+      shortcut={props.tooltip.shortcut}
+      position={props.tooltip.position}
       trigger={
         props.type === "link" ? (
           <Link
             className={classes}
             to={props.href}
             aria-label={props.ariaLabel}
-            {...(props.variant === "ghost" && { "data-active": props.active })}
+            {...(props.variant === "tertiary" && { "data-active": props.active })}
           >
             {icon}
           </Link>
         ) : (
           <button
+            {...props.htmlProps}
             className={classes}
-            onClick={props.onClick}
+            onClick={(event) => {
+              props.htmlProps?.onClick?.(event);
+              props.onClick?.(event);
+            }}
             aria-label={props.ariaLabel}
             {...(props.variant === "secondary" && { disabled: props.disabled })}
-            {...(props.variant === "ghost" && { "data-active": props.active })}
+            {...(props.variant === "tertiary" && { "data-active": props.active })}
           >
             {icon}
           </button>

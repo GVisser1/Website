@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
-import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as ProjectsPokemonIndexRouteImport } from './routes/projects/pokemon/index'
 import { Route as ProjectsPokemonIdentifierIndexRouteImport } from './routes/projects/pokemon/$identifier.index'
@@ -24,11 +23,6 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SettingsRoute = SettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TimelineRoute = TimelineRouteImport.update({
@@ -51,7 +45,6 @@ const ProjectsPokemonIdentifierIndexRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/settings': typeof SettingsRoute
   '/timeline': typeof TimelineRoute
   '/projects/pokemon/': typeof ProjectsPokemonIndexRoute
   '/projects/pokemon/$identifier/': typeof ProjectsPokemonIdentifierIndexRoute
@@ -59,7 +52,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/settings': typeof SettingsRoute
   '/timeline': typeof TimelineRoute
   '/projects/pokemon': typeof ProjectsPokemonIndexRoute
   '/projects/pokemon/$identifier': typeof ProjectsPokemonIdentifierIndexRoute
@@ -68,7 +60,6 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/settings': typeof SettingsRoute
   '/timeline': typeof TimelineRoute
   '/projects/pokemon/': typeof ProjectsPokemonIndexRoute
   '/projects/pokemon/$identifier/': typeof ProjectsPokemonIdentifierIndexRoute
@@ -78,7 +69,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
-    | '/settings'
     | '/timeline'
     | '/projects/pokemon/'
     | '/projects/pokemon/$identifier/'
@@ -86,7 +76,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
-    | '/settings'
     | '/timeline'
     | '/projects/pokemon'
     | '/projects/pokemon/$identifier'
@@ -94,7 +83,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
-    | '/settings'
     | '/timeline'
     | '/projects/pokemon/'
     | '/projects/pokemon/$identifier/'
@@ -103,7 +91,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  SettingsRoute: typeof SettingsRoute
   TimelineRoute: typeof TimelineRoute
   ProjectsPokemonIndexRoute: typeof ProjectsPokemonIndexRoute
   ProjectsPokemonIdentifierIndexRoute: typeof ProjectsPokemonIdentifierIndexRoute
@@ -123,13 +110,6 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/settings': {
-      id: '/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/timeline': {
@@ -159,7 +139,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  SettingsRoute: SettingsRoute,
   TimelineRoute: TimelineRoute,
   ProjectsPokemonIndexRoute: ProjectsPokemonIndexRoute,
   ProjectsPokemonIdentifierIndexRoute: ProjectsPokemonIdentifierIndexRoute,
