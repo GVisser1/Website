@@ -1,11 +1,4 @@
-import {
-  type DataTag,
-  type QueryKey,
-  queryOptions,
-  type UnusedSkipTokenOptions,
-  type UseQueryResult,
-  useQuery,
-} from "@tanstack/react-query";
+import { type DataTag, type QueryKey, queryOptions, type UnusedSkipTokenOptions } from "@tanstack/react-query";
 import axios from "axios";
 import { isNil } from "lodash-es";
 import type { PokemonIdentifier } from "../utils/pokemonUtil";
@@ -59,10 +52,3 @@ export const pokemonEvolutionQueryOptions = (
     enabled: !isNil(identifier) && !isNil(evolutionStage),
     staleTime: hours(1),
   });
-
-const usePokemonEvolution = (
-  identifier: PokemonIdentifier,
-  evolutionStage: string,
-): UseQueryResult<EvolutionChain, Error> => useQuery(pokemonEvolutionQueryOptions(identifier, evolutionStage));
-
-export default usePokemonEvolution;

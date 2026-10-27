@@ -23,27 +23,28 @@ type BlogSectionProps = {
 
 export const BlogSection = (props: BlogSectionProps): JSX.Element => {
   const classes = clsx(
-    "flex flex-col items-center gap-x-10 gap-y-3",
+    "grid grid-cols-4 items-center gap-x-10 gap-y-5",
+    "my-10",
     props.image?.align === "left" ? "tablet:flex-row-reverse tablet:space-x-reverse" : "tablet:flex-row",
   );
 
   return (
     <section id={props.id} className={classes}>
-      <div className="flex w-full flex-col gap-y-1">{props.children}</div>
+      <div
+        className={clsx(
+          "flex w-full flex-col gap-y-1",
+          props.image ? "col-span-full tablet:col-span-2" : "col-span-full",
+        )}
+      >
+        {props.children}
+      </div>
       {props.image && (
-        <figure className="relative flex w-full flex-col gap-y-1">
-          <Image
-            src={props.image.src}
-            alt={props.image.alt}
-            priority={props.image.priority}
-            className="h-85 w-full rounded-lg object-cover"
-          />
-          {props.image.alt && (
-            <figcaption className="text-base-regular text-secondary dark:text-secondary-dark absolute -bottom-7 w-full text-center">
-              {props.image.alt}
-            </figcaption>
-          )}
-        </figure>
+        <Image
+          src={props.image.src}
+          alt={props.image.alt}
+          priority={props.image.priority}
+          className="col-span-full h-85 w-full rounded-lg object-cover tablet:col-span-2"
+        />
       )}
     </section>
   );
@@ -53,23 +54,14 @@ type BlogHeaderProps = {
   children: ReactNode;
 };
 export const BlogHeader = (props: BlogHeaderProps): JSX.Element => (
-  <h2 className="text-header-xl text-primary dark:text-primary-dark">{props.children}</h2>
+  <h2 className="text-header-xl text-primary">{props.children}</h2>
 );
 
 type BlogParagraphProps = {
   children: ReactNode;
 };
 export const BlogParagraph = (props: BlogParagraphProps): JSX.Element => (
-  <p className="text-base-regular text-secondary dark:text-secondary-dark w-full not-last:mb-1">{props.children}</p>
-);
-
-type BlogListProps = {
-  children: ReactNode;
-};
-export const BlogList = (props: BlogListProps): JSX.Element => (
-  <ul className="text-base-regular text-primary dark:text-primary-dark flex list-inside list-disc flex-col gap-y-2">
-    {props.children}
-  </ul>
+  <p className="w-full text-base-regular text-secondary not-last:mb-1">{props.children}</p>
 );
 
 type BlogFooterProps = {

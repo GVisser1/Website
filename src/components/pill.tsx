@@ -4,13 +4,13 @@ import type { IconName } from "./icon";
 import Icon from "./icon";
 
 const colours: Record<PillType, string> = {
-  success: "bg-status-success text-status-success dark:bg-status-success-dark dark:text-status-success-dark",
-  info: "bg-status-info text-status-info dark:bg-status-info-dark dark:text-status-info-dark",
-  neutral: "bg-status-neutral text-status-neutral dark:bg-status-neutral-dark dark:text-status-neutral-dark",
+  success: "bg-status-success text-status-success",
+  info: "bg-status-info text-status-info",
+  neutral: "bg-status-neutral text-status-neutral",
 };
 
 type PillType = "success" | "info" | "neutral";
-export type PillProps = {
+type PillProps = {
   label: string;
   type: PillType;
   icon?: IconName;
@@ -26,7 +26,7 @@ const Pill = ({ label, type, icon, className }: PillProps): JSX.Element => {
 
   return (
     <span className={classes}>
-      <span className="text-xs-semibold truncate">{label}</span>
+      <span className="truncate text-xs-semibold">{label}</span>
       {icon && <Icon className="size-3.5" name={icon} />}
     </span>
   );

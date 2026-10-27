@@ -15,7 +15,7 @@ const PokemonEntrySwitcher = ({ id, className }: PokemonEntrySwitcherProps): JSX
   const nextId = id + 1;
 
   const classes = clsx(
-    "flex flex-wrap items-center",
+    "flex flex-wrap items-center gap-2",
     {
       "justify-end": previousId < 1,
       "justify-start": nextId > TOTAL_POKEMON,
@@ -49,11 +49,11 @@ const PokemonEntrySwitch = (props: PokemonEntrySwitchProps): JSX.Element | null 
     <Link
       to="/projects/pokemon/$identifier"
       params={{ identifier: data.name }}
-      className="btn-ghost focus-visible:focus-ring flex items-center gap-x-2 rounded-sm p-2 select-none"
+      className="flex items-center gap-x-2 rounded-sm btn-tertiary p-2 select-none focus-visible:focus-ring"
     >
       <Icon name="ChevronLeft" className={iconClasses} />
       <Image src={data.sprite} alt={data.name} className="size-6 object-contain" />
-      <p className="text-button-lg text-primary dark:text-primary-dark capitalize">
+      <p className="text-button-lg text-primary capitalize">
         {data.name} #{data.id}
       </p>
     </Link>
@@ -61,3 +61,14 @@ const PokemonEntrySwitch = (props: PokemonEntrySwitchProps): JSX.Element | null 
 };
 
 export default PokemonEntrySwitcher;
+
+type PokemonEntrySwitcherSkeletonProps = {
+  className?: string;
+};
+
+export const PokemonEntrySwitcherSkeleton = (props: PokemonEntrySwitcherSkeletonProps): JSX.Element => (
+  <div aria-hidden className={clsx("flex w-full flex-wrap justify-between gap-2", props.className)}>
+    <div className="h-10 w-40 animate-pulse bg-sunken-secondary" />
+    <div className="h-10 w-40 animate-pulse bg-sunken-secondary" />
+  </div>
+);

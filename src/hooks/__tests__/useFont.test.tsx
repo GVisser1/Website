@@ -25,7 +25,7 @@ describe("useFont hook", () => {
   it("returns the default font", () => {
     const { result } = renderHook(() => useFont());
 
-    expect(result.current.font).toBe("Inter");
+    expect(result.current.font).toBe("Roboto");
   });
 
   it("changes the font", () => {
@@ -34,7 +34,7 @@ describe("useFont hook", () => {
     act(() => result.current.handleFontChange("Sans"));
 
     expect(setFontMock).toHaveBeenCalledWith("Sans");
-    expect(result.current.font).toBe("Inter");
+    expect(result.current.font).toBe("Roboto");
 
     useLocalStorageMock.mockImplementationOnce(() => ["Sans", setFontMock]);
 
