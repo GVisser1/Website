@@ -10,18 +10,18 @@ type PokemonStatsProps = {
 const PokemonStatsTable = (props: PokemonStatsProps): JSX.Element => (
   <div className={props.className}>
     <div className="mb-1 flex items-center justify-between">
-      <h3 className="text-header-xl text-primary dark:text-primary-dark">Stats</h3>
-      <p className="text-base-regular text-secondary dark:text-secondary-dark">
+      <h3 className="text-header-xl text-primary">Stats</h3>
+      <p className="text-base-regular text-secondary">
         Total: {props.stats.reduce((total, stat) => total + stat.base_stat, 0)}
       </p>
     </div>
     <dl className="grid grid-cols-1 gap-x-4 gap-y-2 tablet:grid-cols-2">
       {props.stats.map((stat) => (
         <div key={stat.name} className="relative isolate grid grid-cols-2 gap-1 rounded-sm tablet:rounded-none">
-          <dt className="flex h-8 min-w-0 items-center rounded-sm bg-sunken-secondary px-2 py-1 text-base-semibold text-primary capitalize dark:bg-sunken-secondary-dark dark:text-primary-dark">
+          <dt className="flex h-8 min-w-0 items-center rounded-sm bg-sunken-secondary px-2 py-1 text-base-semibold text-primary capitalize">
             <span className="truncate">{stat.name}</span>
           </dt>
-          <dd className="relative flex h-8 w-full justify-self-end overflow-hidden rounded-sm bg-sunken dark:bg-sunken-dark">
+          <dd className="relative flex h-8 w-full justify-self-end overflow-hidden rounded-sm bg-sunken">
             <div
               className={clsx("h-full rounded-sm", {
                 "bg-pokemon-stat-hp": stat.name === "hp",
@@ -35,7 +35,7 @@ const PokemonStatsTable = (props: PokemonStatsProps): JSX.Element => (
                 width: `${(Math.min(stat.base_stat, 255) / 255) * 100}%`,
               }}
             />
-            <div className="absolute inset-y-0 right-0 flex items-center bg-default-transparent px-1 text-sm-semibold text-primary dark:bg-default-transparent-dark dark:text-primary-dark">
+            <div className="absolute inset-y-0 right-0 flex items-center bg-default-transparent px-1 text-sm-semibold text-primary">
               {stat.base_stat}
             </div>
           </dd>
@@ -54,12 +54,12 @@ type PokemonStatsSkeletonProps = {
 export const PokemonStatsSkeleton = (props: PokemonStatsSkeletonProps): JSX.Element => (
   <div aria-hidden className={props.className}>
     <div className="mb-1 flex h-7 items-center justify-between">
-      <div className="h-6 w-16 animate-pulse bg-sunken-secondary dark:bg-sunken-secondary-dark" />
-      <div className="h-5 w-20 animate-pulse bg-sunken-secondary dark:bg-sunken-secondary-dark" />
+      <div className="h-6 w-16 animate-pulse bg-sunken-secondary" />
+      <div className="h-5 w-20 animate-pulse bg-sunken-secondary" />
     </div>
     <div className="grid grid-cols-1 gap-x-4 gap-y-2 tablet:grid-cols-2">
       {Array.from({ length: 6 }, (_, index) => (
-        <div key={index} className="h-8 animate-pulse rounded-sm bg-sunken-secondary dark:bg-sunken-secondary-dark" />
+        <div key={index} className="h-8 animate-pulse rounded-sm bg-sunken-secondary" />
       ))}
     </div>
   </div>

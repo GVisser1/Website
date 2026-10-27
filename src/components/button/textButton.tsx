@@ -8,7 +8,7 @@ type BaseTextButtonProps = {
   className?: string;
 };
 type ButtonTypeProps = { type?: "button"; onClick: () => void } | { type: "link"; href: string };
-type VariantProps = { variant: "primary" } | { variant: "light" } | { variant: "ghost"; active: boolean };
+type VariantProps = { variant: "primary" } | { variant: "light" } | { variant: "tertiary"; active: boolean };
 type TextButtonProps = BaseTextButtonProps & ButtonTypeProps & VariantProps;
 
 const TextButton = (props: TextButtonProps): JSX.Element => {
@@ -18,7 +18,7 @@ const TextButton = (props: TextButtonProps): JSX.Element => {
     props.size === "medium" && "h-9 px-2.5 py-3",
     props.variant === "primary" && "btn-primary",
     props.variant === "light" && "btn-light",
-    props.variant === "ghost" && "btn-ghost",
+    props.variant === "tertiary" && "btn-tertiary",
     props.className,
   );
 
@@ -31,14 +31,14 @@ const TextButton = (props: TextButtonProps): JSX.Element => {
   );
 
   return props.type === "link" ? (
-    <Link className={classes} to={props.href} {...(props.variant === "ghost" && { "data-active": props.active })}>
+    <Link className={classes} to={props.href} {...(props.variant === "tertiary" && { "data-active": props.active })}>
       {label}
     </Link>
   ) : (
     <button
       className={classes}
       onClick={props.onClick}
-      {...(props.variant === "ghost" && { "data-active": props.active })}
+      {...(props.variant === "tertiary" && { "data-active": props.active })}
     >
       {label}
     </button>

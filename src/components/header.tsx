@@ -1,6 +1,6 @@
-import type { JSX } from "react";
+import clsx from "clsx";
+import type { JSX, ReactNode } from "react";
 import IconAndTextButton from "./button/iconAndTextButton";
-import Divider from "./divider";
 
 type HeaderProps = {
   title: string;
@@ -9,25 +9,28 @@ type HeaderProps = {
     href: string;
     label: string;
   };
+  children?: ReactNode;
 };
 
-const Header = ({ title, description, topLink }: HeaderProps): JSX.Element => (
-  <header className="mb-8">
-    {topLink && (
+const Header = (props: HeaderProps): JSX.Element => (
+  <header className={clsx("mb-6 flex flex-col gap-y-2", props.topLink ? "" : "mt-10")}>
+    {props.topLink && (
       <IconAndTextButton
         type="link"
         variant="light"
-        href={topLink.href}
-        label={topLink.label}
+        href={props.topLink.href}
+        label={props.topLink.label}
         icon="ChevronLeft"
-        className="mb-6"
+        className="mb-6 self-start"
       />
     )}
 
-    <h1 className="mb-1 text-header-2xl text-primary dark:text-primary-dark">{title}</h1>
-    <p className="mb-6 text-base-regular text-secondary dark:text-secondary-dark">{description}</p>
+    <h1 className="text-header-4xl text-primary">{props.title}</h1>
+    {props.description && (
+      <p className="dark:text-secondary-dark mb-6 text-base-regular text-secondary">{props.description}</p>
+    )}
 
-    <Divider />
+    {props.children}
   </header>
 );
 

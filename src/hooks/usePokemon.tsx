@@ -24,7 +24,7 @@ const fetchPokemon = async (): Promise<PaginatedPokemon> => {
   const { data } = await axios.get<{ results: Pokemon[]; count: number }>(POKEMON_API_URL, config);
 
   const filteredResults = data.results.filter((pokemon) => {
-    const id = parseInt(pokemon.url.split("/").slice(-2, -1)[0], 10); // Extract ID from URL
+    const id = Number.parseInt(pokemon.url.split("/").slice(-2, -1)[0], 10); // Extract ID from URL
     return id <= 10000;
   });
 

@@ -40,10 +40,10 @@ const PokemonMeta = (props: PokemonMetaProps): JSX.Element => {
     <dl className={classes}>
       {items.map((item) => (
         <div key={item.label} className="flex items-center gap-x-1">
-          <dt className="h-full w-24 shrink-0 rounded-sm bg-sunken-secondary px-2 py-1 text-base-semibold text-primary dark:bg-sunken-secondary-dark dark:text-primary-dark">
+          <dt className="h-full w-24 shrink-0 truncate rounded-sm bg-sunken-secondary px-2 py-1 text-base-semibold text-primary">
             {item.label}
           </dt>
-          <dd className="p-1 text-secondary dark:text-secondary-dark">{item.value}</dd>
+          <dd className="p-1 text-secondary">{item.value}</dd>
         </div>
       ))}
     </dl>
@@ -59,10 +59,7 @@ type PokemonMetaSkeletonProps = {
 export const PokemonMetaSkeleton = (props: PokemonMetaSkeletonProps): JSX.Element => (
   <div aria-hidden className={clsx("mt-4 flex w-full flex-col gap-y-1", props.className)}>
     {[0, 1, 2, 3].map((row) => (
-      <div
-        key={row}
-        className="h-8 w-full animate-pulse rounded-sm bg-sunken-secondary dark:bg-sunken-secondary-dark"
-      />
+      <div key={row} className="h-8 w-full animate-pulse rounded-sm bg-sunken-secondary" />
     ))}
   </div>
 );

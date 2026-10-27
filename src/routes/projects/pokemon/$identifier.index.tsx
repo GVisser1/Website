@@ -46,7 +46,7 @@ const PokemonInfoPage = (): JSX.Element => {
         />
 
         <div className="mt-2 flex grow flex-col justify-center tablet:mt-0">
-          <h2 className="mb-2 truncate text-header-2xl text-primary dark:text-primary-dark">{species.data.genus}</h2>
+          <h2 className="mb-2 truncate text-header-2xl text-primary">{species.data.genus}</h2>
 
           <PokemonTypes types={pokemon.data.types} size="md" />
           <PokemonMeta {...pokemon.data} />
@@ -64,8 +64,6 @@ const PokemonInfoPage = (): JSX.Element => {
   );
 };
 
-export default PokemonInfoPage;
-
 type LoadingStateProps = {
   backLink: { href: string; label: string };
 };
@@ -81,7 +79,7 @@ const LoadingState = (props: LoadingStateProps): JSX.Element => (
       <PokemonCoverSkeleton />
 
       <div className="mt-2 flex grow flex-col justify-center tablet:mt-0">
-        <div className="mb-2 h-9 w-48 animate-pulse bg-sunken-secondary dark:bg-sunken-secondary-dark" />
+        <div className="mb-2 h-9 w-48 animate-pulse bg-sunken-secondary" />
         <PokemonTypesSkeleton />
         <PokemonMetaSkeleton />
       </div>

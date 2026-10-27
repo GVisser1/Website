@@ -1,8 +1,12 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, type Locator, type Page, test } from "@playwright/test";
+import { expect, type Page, test } from "@playwright/test";
 import { isEmpty } from "lodash-es";
 
 const WCAG_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
+
+// Base UI renders invisible focus guards around open dialogs. In Safari they get role="button" (so VoiceOver can move
+// focus past the dialog) but no accessible name, which axe flags as aria-command-name in WebKit only
+const FOCUS_GUARD_SELECTOR = "[data-base-ui-focus-guard]";
 
 type Meta = {
   title: string;
@@ -16,7 +20,10 @@ export abstract class BasePage {
     await expect.soft(this.page).toHaveScreenshot(`${name}.webp`, { fullPage: true, maxDiffPixels: 20 });
 
   public assertPageIsAccessible = async (): Promise<void> => {
-    const results = await new AxeBuilder({ page: this.page }).withTags(WCAG_TAGS).analyze();
+    const results = await new AxeBuilder({ page: this.page })
+      .withTags(WCAG_TAGS)
+      .exclude(FOCUS_GUARD_SELECTOR)
+      .analyze();
 
     if (!isEmpty(results.violations)) {
       await test
@@ -35,8 +42,4 @@ export abstract class BasePage {
       await expect(this.page.locator('meta[name="description"]')).toHaveAttribute("content", description);
     }
   };
-}
-
-export abstract class BaseComponent {
-  protected constructor(public readonly host: Locator) {}
 }

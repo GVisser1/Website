@@ -82,7 +82,7 @@ export const pokemonDetailsQueryOptions = (
     staleTime: hours(1),
   });
 
-export const usePokemonDetails = (identifier: PokemonIdentifier): UseQueryResult<PokemonDetails, Error> =>
+const usePokemonDetails = (identifier: PokemonIdentifier): UseQueryResult<PokemonDetails, Error> =>
   useQuery(pokemonDetailsQueryOptions(identifier));
 
 export default usePokemonDetails;

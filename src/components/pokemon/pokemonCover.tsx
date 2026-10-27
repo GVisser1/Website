@@ -55,5 +55,5 @@ const MythicalIndicator = (): JSX.Element => (
 );
 
 export const PokemonCoverSkeleton = (): JSX.Element => (
-  <div aria-hidden className="h-64 animate-pulse rounded-lg bg-sunken-secondary dark:bg-sunken-secondary-dark" />
+  <div aria-hidden className="h-64 animate-pulse rounded-lg bg-sunken-secondary" />
 );
