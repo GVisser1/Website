@@ -6,6 +6,7 @@ import { defineConfig, lazyPlugins } from "vite-plus";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: { allowedHosts: ["sun-recently-cage-ted.trycloudflare.com"] },
   staged: {
     "*": "vp check --fix",
   },
@@ -16,6 +17,8 @@ export default defineConfig({
     ignorePatterns: ["node_modules", "routeTree.gen.ts"],
     trailingComma: "all",
     sortTailwindcss: {
+      stylesheet: "./src/styles.css",
+      attributes: ["className"],
       functions: ["clsx"],
     },
     sortImports: {

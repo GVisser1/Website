@@ -1,81 +1,57 @@
-import type { SelectContentProps, SelectItemProps } from "@radix-ui/react-select";
-import * as Radix from "@radix-ui/react-select";
+import { Select as BaseSelect } from "@base-ui/react/select";
 import clsx from "clsx";
-import type { ComponentRef } from "react";
-import { forwardRef } from "react";
+import type { JSX, ReactNode } from "react";
 import { useFont } from "../../hooks/useFont";
 import Icon from "../icon";
 
-const Select = Radix.Root;
-const SelectValue = Radix.Value;
+export type SelectOption<T> = { value: T; label: ReactNode };
 
-const SelectTrigger = forwardRef<ComponentRef<typeof Radix.Trigger>, Radix.SelectTriggerProps>(
-  ({ className, children, ...props }, ref) => (
-    <Radix.Trigger
-      ref={ref}
-      className={clsx(
-        "btn-ghost focus-visible:focus-ring border-primary text-button dark:border-primary-dark flex h-10 w-full items-center justify-between gap-x-2 rounded-sm border px-3 py-2",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-      <Icon name="ChevronDown" className="text-secondary dark:text-secondary-dark size-5" />
-    </Radix.Trigger>
-  ),
-);
-SelectTrigger.displayName = Radix.Trigger.displayName;
+type SelectProps<T extends string> = {
+  ariaLabel: string;
+  value: T;
+  onValueChange: (value: T | null) => void;
+  items: SelectOption<T>[];
+};
 
-const SelectContent = forwardRef<ComponentRef<typeof Radix.Content>, SelectContentProps>(
-  ({ className, children, ...props }, ref) => {
-    const { getFontClass } = useFont();
-    return (
-      <Radix.Portal>
-        <Radix.Content
-          ref={ref}
-          className={clsx(
-            "border-primary relative z-50 max-h-60 w-(--radix-select-trigger-width) min-w-32 overflow-hidden rounded-md border shadow-md",
-            "bg-default text-primary dark:border-primary-dark dark:bg-default-dark dark:text-primary-dark",
-            "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=open]:animate-in",
-            "data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-            className,
-            getFontClass(),
-          )}
-          position="popper"
-          align="end"
-          sideOffset={4}
-          {...props}
-        >
-          <Radix.Viewport className="p-1">{children}</Radix.Viewport>
-        </Radix.Content>
-      </Radix.Portal>
-    );
-  },
-);
-SelectContent.displayName = Radix.Content.displayName;
+const Select = <T extends string>({ ariaLabel, value, onValueChange, items }: SelectProps<T>): JSX.Element => {
+  const { getFontClass } = useFont();
 
-const SelectItem = forwardRef<ComponentRef<typeof Radix.Item>, SelectItemProps>(
-  ({ className, children, ...props }, ref) => (
-    <Radix.Item
-      ref={ref}
-      className={clsx(
-        "btn-ghost text-button relative flex h-10 w-full items-center truncate rounded-sm py-1.5 pr-8 pl-2 outline-hidden select-none",
-        "focus:bg-btn-ghost-hover dark:focus:bg-btn-ghost-hover-dark",
-        className,
-      )}
-      {...props}
-    >
-      <span className="absolute right-2 flex items-center justify-center">
-        <Radix.ItemIndicator>
-          <Icon name="Check" className="size-4" />
-        </Radix.ItemIndicator>
-      </span>
-      <Radix.ItemText>
-        <div className="flex items-center gap-x-1">{children}</div>
-      </Radix.ItemText>
-    </Radix.Item>
-  ),
-);
-SelectItem.displayName = Radix.Item.displayName;
+  return (
+    <BaseSelect.Root modal={false} value={value} items={items} onValueChange={onValueChange}>
+      <BaseSelect.Trigger
+        aria-label={ariaLabel}
+        className="flex h-10 w-full items-center justify-between gap-x-2 rounded-sm border btn-tertiary px-3 py-2 text-button select-none focus-visible:focus-ring"
+      >
+        <BaseSelect.Value className="flex items-center gap-x-1" />
+        <Icon name="ChevronDown" className="size-5 text-secondary" />
+      </BaseSelect.Trigger>
 
-export { Select, SelectValue, SelectTrigger, SelectContent, SelectItem };
+      <BaseSelect.Portal>
+        <BaseSelect.Positioner className="z-50 outline-hidden" align="end" sideOffset={4} alignItemWithTrigger={false}>
+          <BaseSelect.Popup
+            className={clsx(
+              "max-h-60 w-(--anchor-width) min-w-32 origin-(--transform-origin) overflow-y-auto rounded-md border border-primary bg-default p-1 text-primary shadow-md transition-opacity duration-150",
+              "data-ending-style:opacity-0 data-starting-style:opacity-0",
+              getFontClass(),
+            )}
+          >
+            {items.map((item) => (
+              <BaseSelect.Item
+                key={item.value}
+                value={item.value}
+                className="relative flex h-10 w-full items-center gap-x-1 rounded-sm btn-tertiary py-1.5 pr-8 pl-2 text-button outline-hidden select-none data-highlighted:bg-btn-tertiary-hover"
+              >
+                <BaseSelect.ItemText className="flex items-center gap-x-2">{item.label}</BaseSelect.ItemText>
+                <BaseSelect.ItemIndicator className="absolute right-2">
+                  <Icon name="Check" className="size-4" />
+                </BaseSelect.ItemIndicator>
+              </BaseSelect.Item>
+            ))}
+          </BaseSelect.Popup>
+        </BaseSelect.Positioner>
+      </BaseSelect.Portal>
+    </BaseSelect.Root>
+  );
+};
+
+export default Select;

@@ -1,4 +1,7 @@
+import type { Hotkey } from "@tanstack/react-hotkeys";
 import type { IconName } from "./components/icon";
+
+export const SEARCH_DEBOUNCE = 300;
 
 export type Page = {
   name: string;
@@ -44,17 +47,6 @@ export const MAIN_PAGES = {
         "Explore a chronological overview of Glenn’s education and work experience, including studies at Rotterdam University of Applied Sciences and key roles at MoreApp",
     },
   },
-  settings: {
-    name: "Settings",
-    description: "Personalize your experience by adjusting the settings to your liking",
-    href: "/settings",
-    icon: "Cog",
-    meta: {
-      title: "Settings - Glenn Visser",
-      description:
-        "Customize your experience by changing the website’s theme and font. Personalize the look and feel to suit your preferences.",
-    },
-  },
 } as const satisfies Record<string, Page>;
 
 export const PROJECT_PAGES = {
@@ -76,3 +68,8 @@ export const PAGES: Page[] = [...Object.values(MAIN_PAGES), ...Object.values(PRO
 export const MAIL_TO = "mailto:gvisser.business@gmail.com";
 
 export const POKEMON_API_URL = "https://pokeapi.co/api/v2/pokemon";
+
+export const HOTKEYS = {
+  settings: "Mod+Shift+,",
+  search: "Mod+K",
+} satisfies Record<string, Hotkey>;

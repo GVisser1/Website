@@ -15,15 +15,15 @@ type BaseIconAndTextButtonProps = {
   className?: string;
 };
 type ButtonTypeProps = { type?: "button"; onClick: () => void } | { type: "link"; href: string };
-type VariantProps = { variant: "primary" } | { variant: "light" } | { variant: "ghost"; active?: boolean };
+type VariantProps = { variant: "primary" } | { variant: "light" } | { variant: "tertiary"; active?: boolean };
 type IconAndTextButtonProps = BaseIconAndTextButtonProps & ButtonTypeProps & VariantProps;
 
 const IconAndTextButton = (props: IconAndTextButtonProps): JSX.Element => {
   const classes = clsx(
-    "focus-visible:focus-ring inline-flex h-9 shrink-0 items-center gap-x-1.5 rounded-sm py-3 pr-2.5 pl-2 select-none",
+    "inline-flex h-9 shrink-0 items-center gap-x-1.5 rounded-sm py-3 pr-2.5 pl-2 select-none focus-visible:focus-ring",
     props.variant === "primary" && "btn-primary",
     props.variant === "light" && "btn-light",
-    props.variant === "ghost" && "btn-ghost",
+    props.variant === "tertiary" && "btn-tertiary",
     props.fullWidth ? "w-full" : "justify-center",
     props.className,
   );
@@ -31,7 +31,7 @@ const IconAndTextButton = (props: IconAndTextButtonProps): JSX.Element => {
   const content = (
     <>
       <Icon name={props.icon} className="size-5" />
-      <span className="text-button truncate">{props.label}</span>
+      <span className="truncate text-button">{props.label}</span>
     </>
   );
 
@@ -41,7 +41,7 @@ const IconAndTextButton = (props: IconAndTextButtonProps): JSX.Element => {
         id={props.id}
         className={classes}
         to={props.href}
-        {...(props.variant === "ghost" && { "data-active": props.active })}
+        {...(props.variant === "tertiary" && { "data-active": props.active })}
       >
         {content}
       </Link>
@@ -50,7 +50,7 @@ const IconAndTextButton = (props: IconAndTextButtonProps): JSX.Element => {
         id={props.id}
         className={classes}
         onClick={props.onClick}
-        {...(props.variant === "ghost" && { "data-active": props.active })}
+        {...(props.variant === "tertiary" && { "data-active": props.active })}
       >
         {content}
       </button>
@@ -60,8 +60,8 @@ const IconAndTextButton = (props: IconAndTextButtonProps): JSX.Element => {
     return (
       <Tooltip
         title={props.tooltip.title}
-        description={props.tooltip.description}
-        side={props.tooltip.side}
+        shortcut={props.tooltip.shortcut}
+        position={props.tooltip.position}
         trigger={trigger}
       />
     );

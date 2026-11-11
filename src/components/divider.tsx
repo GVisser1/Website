@@ -7,14 +7,7 @@ type DividerProps = {
 };
 
 const Divider = ({ className, soft }: DividerProps): JSX.Element => (
-  <hr
-    aria-hidden
-    className={clsx(
-      "w-full border-t",
-      soft ? "border-secondary dark:border-secondary-dark" : "border-primary dark:border-primary-dark",
-      className,
-    )}
-  />
+  <hr aria-hidden className={clsx("w-full border-t", soft ? "border-secondary" : "border-primary", className)} />
 );
 
 export default Divider;

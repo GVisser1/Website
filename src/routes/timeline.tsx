@@ -15,8 +15,8 @@ const TimelinePage = (): JSX.Element => (
     <Header title={PAGE.name} description={PAGE.description} />
 
     <div className="relative">
-      <div className="tablet-ls:inset-x-0 tablet-ls:mx-auto tablet-ls:inline bg-sunken-tertiary dark:bg-sunken-tertiary-dark absolute left-2 hidden h-full w-0.5" />
-      <ol className="dark:!divide-secondary-dark tablet-ls:gap-y-12 tablet-ls:divide-y-0 divide-secondary tablet-ls:px-5 tablet-ls:py-4 flex flex-col divide-y">
+      <div className="absolute left-2 hidden h-full w-0.5 bg-sunken-tertiary tablet-ls:inset-x-0 tablet-ls:mx-auto tablet-ls:inline" />
+      <ol className="flex flex-col divide-y divide-secondary tablet-ls:gap-y-12 tablet-ls:divide-y-0 tablet-ls:px-5 tablet-ls:py-4">
         {timeLineData.map((item, i) => (
           <TimeLineItem key={item.timeFrame} item={item} align={isEven(i) ? "right" : "left"} />
         ))}
@@ -33,22 +33,22 @@ const TimeLineItem = ({ item, align }: TimeLineItemProps): JSX.Element => (
   <li
     key={item.title}
     className={clsx(
-      "tablet-ls:-mx-5 tablet-ls:w-1/2 tablet-ls:rounded-md tablet-ls:border border-primary bg-default dark:border-primary-dark dark:bg-default-dark relative p-3",
+      "relative border-primary bg-default p-3 tablet-ls:-mx-5 tablet-ls:w-1/2 tablet-ls:rounded-md tablet-ls:border",
       align === "left" && "tablet-ls:ml-auto",
     )}
   >
     <div className="flex gap-x-2">
       {item.src && <Image src={item.src} alt="" className="my-auto size-10 rounded-full" />}
       <div>
-        <p className="text-secondary text-sm-regular dark:text-secondary-dark">{item.timeFrame}</p>
-        <h2 className="text-header-lg text-primary dark:text-primary-dark">{item.title}</h2>
-        <p className="text-secondary text-sm-regular dark:text-secondary-dark">{item.subTitle}</p>
+        <p className="text-sm-regular text-secondary">{item.timeFrame}</p>
+        <h2 className="text-header-lg text-primary">{item.title}</h2>
+        <p className="text-sm-regular text-secondary">{item.subTitle}</p>
       </div>
     </div>
     <div
       className={clsx(
-        "tablet-ls:-mx-5 tablet-ls:flex bg-default ring-primary absolute top-0 mt-10 hidden size-2.5 translate-x-0 rounded-full ring-4",
-        align === "right" ? "right-[-5px]" : "left-[-5px]",
+        "absolute top-0 mt-10 hidden size-2.5 translate-x-0 rounded-full bg-default ring-4 ring-primary tablet-ls:-mx-5 tablet-ls:flex",
+        align === "right" ? "-right-1.25" : "-left-1.25",
       )}
     />
   </li>

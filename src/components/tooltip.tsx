@@ -1,72 +1,72 @@
-import {
-  TooltipContent,
-  TooltipPortal,
-  TooltipProvider,
-  Tooltip as TooltipRoot,
-  TooltipTrigger,
-} from "@radix-ui/react-tooltip";
+import { Tooltip as BaseTooltip } from "@base-ui/react/tooltip";
+import type { Hotkey } from "@tanstack/react-hotkeys";
+import { formatForDisplay } from "@tanstack/react-hotkeys";
 import clsx from "clsx";
-import { uniqueId } from "lodash-es";
-import type { JSX, ReactNode } from "react";
-import { useEffect, useState } from "react";
+import type { JSX, ReactElement } from "react";
+import { cloneElement, useId } from "react";
 import { isTouchDevice } from "../utils/deviceUtil";
 import { seconds } from "../utils/timeUtil";
 
 const DELAY = seconds(0.3);
-const ID = uniqueId("tooltip-");
+
+const toSpoken = (shortcut: Hotkey): string => formatForDisplay(shortcut, { useSymbols: false, separatorToken: " + " });
 
 export type TooltipProps = {
   title: string;
-  description?: string;
-  trigger: ReactNode;
-  side?: "top" | "right" | "bottom" | "left";
+  shortcut?: Hotkey;
+  trigger: ReactElement;
+  position?: "top" | "right" | "bottom" | "left";
 };
 
 const Tooltip = (props: TooltipProps): JSX.Element => {
-  const [container, setContainer] = useState<HTMLElement | null>(null);
+  const id = useId();
+  const descriptionId = useId();
 
-  useEffect(() => {
-    const checkElement = (): void => {
-      const element = document.getElementById("portal-root");
-      if (element) {
-        setContainer(element);
-      } else {
-        requestAnimationFrame(checkElement);
-      }
-    };
+  // The popup only exists while open and isn't linked to the trigger, so screen readers get the description from a persistent hidden element instead
+  const trigger = props.shortcut
+    ? cloneElement(props.trigger, { "aria-describedby": descriptionId } as Record<string, string>)
+    : props.trigger;
 
-    checkElement();
-  }, []);
+  const screenReaderDescription = props.shortcut && (
+    <span id={descriptionId} className="sr-only">
+      Shortcuts available: {toSpoken(props.shortcut)}
+    </span>
+  );
 
   if (isTouchDevice) {
     // Just return the trigger if on non-pointer devices
-    return <>{props.trigger}</>;
+    return (
+      <>
+        {trigger}
+        {screenReaderDescription}
+      </>
+    );
   }
 
   return (
-    <TooltipProvider>
-      <TooltipRoot delayDuration={DELAY}>
-        <TooltipTrigger asChild>{props.trigger}</TooltipTrigger>
-        <TooltipPortal container={container}>
-          <TooltipContent
-            role="dialog"
-            aria-labelledby={ID}
-            sideOffset={4}
-            side={props.side ?? "right"}
-            avoidCollisions
-            collisionPadding={8}
-            className={clsx(
-              "fade-in-0 zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 animate-in bg-elevation-float text-xs-regular data-[state=closed]:animate-out dark:bg-elevation-float-dark z-50 max-w-56 overflow-hidden rounded-lg px-3 py-1.5 shadow-md select-none",
-            )}
-          >
-            <p id={ID} className="text-elevation-float">
-              {props.title}
-            </p>
-            {props.description && <p className="text-elevation-float-secondary">{props.description}</p>}
-          </TooltipContent>
-        </TooltipPortal>
-      </TooltipRoot>
-    </TooltipProvider>
+    <BaseTooltip.Provider delay={DELAY}>
+      {screenReaderDescription}
+      <BaseTooltip.Root>
+        <BaseTooltip.Trigger render={trigger} />
+        <BaseTooltip.Portal container={document.body}>
+          <BaseTooltip.Positioner side={props.position ?? "right"} sideOffset={4} collisionPadding={8} className="z-30">
+            <BaseTooltip.Popup
+              aria-labelledby={id}
+              className={clsx(
+                "flex max-w-56 origin-(--transform-origin) items-center gap-x-2.5 overflow-hidden rounded-lg bg-elevation-float px-2.5 py-1.5 shadow-md transition-[opacity,scale] duration-150 select-none data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0",
+              )}
+            >
+              <p id={id} className="text-xs-medium text-elevation-float">
+                {props.title}
+              </p>
+              {props.shortcut && (
+                <p className="text-xs-regular text-elevation-float-secondary">{formatForDisplay(props.shortcut)}</p>
+              )}
+            </BaseTooltip.Popup>
+          </BaseTooltip.Positioner>
+        </BaseTooltip.Portal>
+      </BaseTooltip.Root>
+    </BaseTooltip.Provider>
   );
 };
 

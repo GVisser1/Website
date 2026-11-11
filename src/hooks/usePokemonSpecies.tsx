@@ -1,11 +1,4 @@
-import {
-  type DataTag,
-  type QueryKey,
-  queryOptions,
-  type UnusedSkipTokenOptions,
-  type UseQueryResult,
-  useQuery,
-} from "@tanstack/react-query";
+import { type DataTag, type QueryKey, queryOptions, type UnusedSkipTokenOptions } from "@tanstack/react-query";
 import axios from "axios";
 import { isNil } from "lodash-es";
 import { POKEMON_API_URL } from "../constants";
@@ -55,11 +48,6 @@ export const pokemonSpeciesQueryOptions = (
     enabled: !isNil(identifier),
     staleTime: hours(1),
   });
-
-const usePokemonSpecies = (identifier: PokemonIdentifier): UseQueryResult<PokemonSpeciesDetails, Error> =>
-  useQuery(pokemonSpeciesQueryOptions(identifier));
-
-export default usePokemonSpecies;
 
 const getEnglishText = <T extends { language: { name: string } }>(entries: T[], key: keyof T): string =>
   (entries.find((entry) => entry.language.name === "en")?.[key] as string) ?? "No description available.";

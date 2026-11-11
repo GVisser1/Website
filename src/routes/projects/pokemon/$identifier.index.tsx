@@ -4,16 +4,17 @@ import { isEmpty, isNil, startCase } from "lodash-es";
 import { type JSX, Suspense } from "react";
 import Header from "@/components/header";
 import Page from "@/components/page";
-import PokemonCover from "@/components/pokemon/pokemonCover";
-import PokemonEntrySwitcher from "@/components/pokemon/pokemonEntrySwitcher";
-import PokemonEvolutionTree from "@/components/pokemon/pokemonEvolutionTree";
-import PokemonMeta from "@/components/pokemon/pokemonMeta";
-import PokemonStatsTable from "@/components/pokemon/pokemonStats";
-import PokemonTypes from "@/components/pokemon/pokemonTypes";
+import PokemonCover, { PokemonCoverSkeleton } from "@/components/pokemon/pokemonCover";
+import PokemonEntrySwitcher, { PokemonEntrySwitcherSkeleton } from "@/components/pokemon/pokemonEntrySwitcher";
+import PokemonEvolutionTree, { PokemonEvolutionTreeSkeleton } from "@/components/pokemon/pokemonEvolutionTree";
+import PokemonMeta, { PokemonMetaSkeleton } from "@/components/pokemon/pokemonMeta";
+import PokemonStatsTable, { PokemonStatsSkeleton } from "@/components/pokemon/pokemonStats";
+import PokemonTypes, { PokemonTypesSkeleton } from "@/components/pokemon/pokemonTypes";
 import { PROJECT_PAGES } from "@/constants";
 import { pokemonDetailsQueryOptions } from "@/hooks/usePokemonDetails";
 import { pokemonEvolutionQueryOptions } from "@/hooks/usePokemonEvolution";
 import { pokemonSpeciesQueryOptions } from "@/hooks/usePokemonSpecies";
+import { preloadImage } from "@/utils/imageUtil";
 import { PAGE_SIZE, TOTAL_POKEMON } from "@/utils/pokemonUtil";
 
 const PokemonInfoPage = (): JSX.Element => {
@@ -35,7 +36,7 @@ const PokemonInfoPage = (): JSX.Element => {
         }}
       />
 
-      <div className="tablet:grid-cols-2 grid grid-cols-1 gap-x-4">
+      <div className="grid grid-cols-1 gap-x-4 tablet:grid-cols-2">
         <PokemonCover
           name={pokemon.data.name}
           primaryType={pokemon.data.types[0]}
@@ -44,15 +45,15 @@ const PokemonInfoPage = (): JSX.Element => {
           isMythical={species.data.isMythical}
         />
 
-        <div className="tablet:mt-0 mt-2 flex grow flex-col justify-center">
-          <h2 className="text-header-2xl text-primary dark:text-primary-dark mb-2 truncate">{species.data.genus}</h2>
+        <div className="mt-2 flex grow flex-col justify-center tablet:mt-0">
+          <h2 className="mb-2 truncate text-header-2xl text-primary">{species.data.genus}</h2>
 
           <PokemonTypes types={pokemon.data.types} size="md" />
           <PokemonMeta {...pokemon.data} />
         </div>
       </div>
 
-      <PokemonStatsTable stats={pokemon.data.stats} className="tablet:mt-4 mt-8" />
+      <PokemonStatsTable stats={pokemon.data.stats} className="mt-8 tablet:mt-4" />
 
       {!isNil(evolutions.data) && !isEmpty(evolutions.data.evolves_to) && (
         <PokemonEvolutionTree chain={evolutions.data} />
@@ -63,11 +64,8 @@ const PokemonInfoPage = (): JSX.Element => {
   );
 };
 
-export default PokemonInfoPage;
-
 type LoadingStateProps = {
   backLink: { href: string; label: string };
-  className?: string;
 };
 const LoadingState = (props: LoadingStateProps): JSX.Element => (
   <Page>
@@ -76,6 +74,20 @@ const LoadingState = (props: LoadingStateProps): JSX.Element => (
       description="Please wait while we fetch the Pokémon details."
       topLink={props.backLink}
     />
+
+    <div className="grid grid-cols-1 gap-x-4 tablet:grid-cols-2">
+      <PokemonCoverSkeleton />
+
+      <div className="mt-2 flex grow flex-col justify-center tablet:mt-0">
+        <div className="mb-2 h-9 w-48 animate-pulse bg-sunken-secondary" />
+        <PokemonTypesSkeleton />
+        <PokemonMetaSkeleton />
+      </div>
+    </div>
+
+    <PokemonStatsSkeleton className="mt-8 tablet:mt-4" />
+    <PokemonEvolutionTreeSkeleton />
+    <PokemonEntrySwitcherSkeleton className="mt-12" />
   </Page>
 );
 
@@ -87,9 +99,10 @@ export const Route = createFileRoute("/projects/pokemon/$identifier/")({
 
     const pokemon = await queryClient.ensureQueryData(pokemonDetailsQueryOptions(identifier));
     const species = await queryClient.ensureQueryData(pokemonSpeciesQueryOptions(identifier));
-    const evolutions = await queryClient.ensureQueryData(
-      pokemonEvolutionQueryOptions(identifier, species.evolutionChain),
-    );
+    const [evolutions] = await Promise.all([
+      queryClient.ensureQueryData(pokemonEvolutionQueryOptions(identifier, species.evolutionChain)),
+      preloadImage(pokemon.sprite),
+    ]);
 
     return { pokemon, species, evolutions };
   },
