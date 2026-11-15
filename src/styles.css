@@ -1,9 +1,5 @@
-@import "@fontsource/inter";
 @import "@fontsource/frijole";
 @import "@fontsource/roboto";
-@import "@fontsource/m-plus-rounded-1c";
-@import "@fontsource/m-plus-rounded-1c/500.css";
-@import "@fontsource/m-plus-rounded-1c/700.css";
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -11,11 +7,8 @@
 @custom-variant active (&:is([data-active="true"], [aria-expanded="true"]));
 
 @theme inline {
-  --font-inter: "Inter", var(--font-sans);
   --font-roboto: "Roboto", var(--font-sans);
   --font-frijole: "Frijole", var(--font-sans);
-  --font-m-plus: "M PLUS Rounded 1c", var(--font-sans);
-  --font-comic-sans: "Comic Sans MS", "Chalkboard SE", "Comic Neue", var(--font-sans);
 
   --breakpoint-*: initial;
   --breakpoint-phone-ls: 520px;
@@ -105,7 +98,6 @@
   --text-color-icons-accent-text-fields: #2563eb;
   --text-color-error: #dc2626;
   --text-color-elevation-float: #ffffff;
-  --text-color-elevation-float-secondary: #a1a1aa;
 
   --background-color-*: initial;
   --background-color-accent-code: #bfdbfe;
@@ -232,6 +224,9 @@
   * {
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
+  }
+  body {
+    @apply font-roboto;
   }
   button {
     @apply cursor-default disabled:cursor-not-allowed;
