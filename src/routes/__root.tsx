@@ -1,5 +1,4 @@
-import type { QueryClient } from "@tanstack/react-query";
-import { createRootRouteWithContext, HeadContent, Outlet } from "@tanstack/react-router";
+import { createRootRoute, HeadContent, Outlet } from "@tanstack/react-router";
 import type { JSX } from "react";
 import IconAndTextButton from "@/components/button/iconAndTextButton";
 import { Layout } from "@/components/layout";
@@ -7,10 +6,6 @@ import Page from "@/components/page";
 import { MAIN_PAGES } from "@/constants";
 
 const PAGE = MAIN_PAGES.home;
-
-type MyRouterContext = {
-  queryClient: QueryClient;
-};
 
 const NotFoundPage = (): JSX.Element => (
   <Page className="flex h-full flex-col items-center justify-center gap-y-5 text-center">
@@ -25,7 +20,7 @@ const NotFoundPage = (): JSX.Element => (
   </Page>
 );
 
-export const Route = createRootRouteWithContext<MyRouterContext>()({
+export const Route = createRootRoute({
   head: () => ({
     meta: [{ title: PAGE.meta.title }, { name: "description", content: PAGE.meta.description }],
   }),
