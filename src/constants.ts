@@ -1,7 +1,4 @@
-import type { Hotkey } from "@tanstack/react-hotkeys";
 import type { IconName } from "./components/icon";
-
-export const SEARCH_DEBOUNCE = 300;
 
 export type Page = {
   name: string;
@@ -52,8 +49,3 @@ export const MAIN_PAGES = {
 export const PAGES: Page[] = Object.values(MAIN_PAGES);
 
 export const MAIL_TO = "mailto:gvisser.business@gmail.com";
-
-export const HOTKEYS = {
-  settings: "Mod+Shift+,",
-  search: "Mod+K",
-} satisfies Record<string, Hotkey>;

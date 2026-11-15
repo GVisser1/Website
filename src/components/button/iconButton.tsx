@@ -35,7 +35,6 @@ const IconButton = (props: IconButtonProps): JSX.Element => {
   return (
     <Tooltip
       title={props.tooltip.title}
-      shortcut={props.tooltip.shortcut}
       position={props.tooltip.position}
       trigger={
         props.type === "link" ? (

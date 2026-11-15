@@ -1,8 +1,6 @@
 import { Drawer } from "@base-ui/react/drawer";
-import { formatForDisplay } from "@tanstack/react-hotkeys";
 import clsx from "clsx";
 import { type ComponentProps, type JSX, type ReactNode, useRef } from "react";
-import { useFont } from "@/hooks/useFont";
 
 type SidePanelProps = {
   title: string;
@@ -14,7 +12,6 @@ type SidePanelProps = {
 };
 
 const SidePanel = (props: SidePanelProps): JSX.Element => {
-  const { getFontClass } = useFont();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   return (
@@ -47,7 +44,6 @@ const SidePanel = (props: SidePanelProps): JSX.Element => {
               "data-ending-style:transform-[translateX(calc(100%+2px))] data-ending-style:duration-250 data-ending-style:ease-in data-starting-style:transform-[translateX(calc(100%+2px))]",
               // Swiped-to-dismiss instead: match the release's own physics-based duration
               "data-ending-style:data-swipe-dismiss:duration-[calc(var(--drawer-swipe-strength)*400ms)]",
-              getFontClass(),
             )}
           >
             <Drawer.Content className={clsx("flex grow flex-col", props.className)}>
@@ -61,13 +57,10 @@ const SidePanel = (props: SidePanelProps): JSX.Element => {
                     ref={closeButtonRef}
                     render={(triggerProps) => (
                       <button
-                        className="flex h-11 w-full items-center justify-between rounded-sm btn-tertiary px-3 focus-visible:focus-ring"
+                        className="flex h-11 w-full items-center justify-center rounded-sm btn-secondary px-3 focus-visible:focus-ring"
                         {...triggerProps}
                       >
                         <span className="text-base-semibold">Close</span>
-                        <span className="rounded-sm bg-sunken-secondary px-1.5 py-0.5 text-sm-regular">
-                          {formatForDisplay("Escape")}
-                        </span>
                       </button>
                     )}
                   />

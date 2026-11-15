@@ -1,27 +1,15 @@
-import { useHotkey } from "@tanstack/react-hotkeys";
 import { useRouterState } from "@tanstack/react-router";
 import type { JSX } from "react";
-import { HOTKEYS, MAIL_TO, PAGES } from "@/constants";
-import IconButton from "./button/iconButton";
+import { MAIL_TO, PAGES } from "@/constants";
 import TextButton from "./button/textButton";
 import Logo from "./logo";
-import SearchDialog, { SearchDialogTrigger, searchDialogHandle } from "./searchDialog";
-import SettingsDialog, { SettingsDialogTrigger, settingsDialogHandle } from "./settingsDialog";
+import MobileMenu from "./mobileMenu";
+import ThemeToggle from "./themeToggle";
 
 export const Navbar = (): JSX.Element => {
   const { location } = useRouterState();
   const isActive = (href: string): boolean =>
     href === "/" ? location.pathname === href : location.pathname.startsWith(href);
-  useHotkey(HOTKEYS.settings, () => {
-    settingsDialogHandle.open(null);
-  });
-  useHotkey(HOTKEYS.search, () => {
-    if (searchDialogHandle.isOpen) {
-      searchDialogHandle.close();
-    } else {
-      searchDialogHandle.open(null);
-    }
-  });
 
   return (
     <header className="sticky top-0 z-10 flex h-14 items-center border-b border-secondary bg-default">
@@ -40,53 +28,13 @@ export const Navbar = (): JSX.Element => {
             />
           ))}
           <TextButton type="link" variant="tertiary" label="Contact" href={MAIL_TO} active={false} size="medium" />
-          <SettingsDialogTrigger
-            render={(triggerProps) => (
-              <IconButton
-                type="button"
-                variant="tertiary"
-                ariaLabel="Settings"
-                icon="Cog"
-                tooltip={{ title: "Settings", shortcut: HOTKEYS.settings, position: "bottom" }}
-                htmlProps={triggerProps}
-              />
-            )}
-          />
+          <ThemeToggle />
         </div>
 
-        <div className="flex gap-x-3 tablet:hidden">
-          <SearchDialogTrigger
-            render={(triggerProps) => (
-              <IconButton
-                type="button"
-                variant="tertiary"
-                ariaLabel="Search"
-                icon="MagnifyingGlass"
-                tooltip={{
-                  title: "Search and quickly jump to a page",
-                  shortcut: HOTKEYS.search,
-                  position: "bottom",
-                }}
-                htmlProps={triggerProps}
-              />
-            )}
-          />
-          <SettingsDialogTrigger
-            render={(triggerProps) => (
-              <IconButton
-                type="button"
-                variant="tertiary"
-                ariaLabel="Settings"
-                icon="Cog"
-                tooltip={{ title: "Settings", shortcut: HOTKEYS.settings, position: "bottom" }}
-                htmlProps={triggerProps}
-              />
-            )}
-          />
+        <div className="flex tablet:hidden">
+          <MobileMenu isActive={isActive} />
         </div>
       </nav>
-      <SearchDialog />
-      <SettingsDialog />
     </header>
   );
 };

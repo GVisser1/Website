@@ -57,14 +57,7 @@ const IconAndTextButton = (props: IconAndTextButtonProps): JSX.Element => {
     );
 
   if (props.tooltip) {
-    return (
-      <Tooltip
-        title={props.tooltip.title}
-        shortcut={props.tooltip.shortcut}
-        position={props.tooltip.position}
-        trigger={trigger}
-      />
-    );
+    return <Tooltip title={props.tooltip.title} position={props.tooltip.position} trigger={trigger} />;
   }
 
   return trigger;
