@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vite-plus/test";
-import { hours, minutes, seconds } from "../timeUtil";
+import { minutes, seconds } from "../timeUtil";
 
 describe("timeUtil", () => {
   describe("seconds", () => {
@@ -21,17 +21,6 @@ describe("timeUtil", () => {
       [0, 0],
     ])("minutes(%i) returns %i milliseconds", (input, expected) => {
       expect(minutes(input)).toBe(expected);
-    });
-  });
-
-  describe("hours", () => {
-    test.each([
-      [1, 3600000],
-      [2, 7200000],
-      [0.5, 1800000],
-      [0, 0],
-    ])("hours(%i) returns %i milliseconds", (input, expected) => {
-      expect(hours(input)).toBe(expected);
     });
   });
 });

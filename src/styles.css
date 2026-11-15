@@ -92,19 +92,9 @@
 
   --text-color-*: initial;
   --text-color-inverse: #ffffff;
-  --text-color-icons-accent-number: #d97706;
-  --text-color-icons-accent-search-items: #1ab0af;
-  --text-color-icons-accent-subform: #4f46e5;
-  --text-color-icons-accent-text-fields: #2563eb;
-  --text-color-error: #dc2626;
   --text-color-elevation-float: #ffffff;
 
   --background-color-*: initial;
-  --background-color-accent-code: #bfdbfe;
-  --background-color-accent-text-fields: #dbeafe;
-  --background-color-accent-subform: #e0e7ff;
-  --background-color-accent-search-items: #e8f9f9;
-  --background-color-accent-number: #fef3c7;
   --background-color-btn-primary: #2563eb;
   --background-color-btn-primary-hover: #1d4ed8;
   --background-color-btn-primary-press: #1e40af;
@@ -147,19 +137,11 @@
 @theme {
   --text-color-primary: #3f3f46;
   --text-color-secondary: #52525b;
-  --text-color-placeholder: #71717a;
   --text-color-light: #2563eb;
   --text-color-disabled: #e4e4e7;
-  --text-color-status-success: #047857;
-  --text-color-status-info: #1d4ed8;
-  --text-color-status-neutral: #3f3f46;
   --text-color-btn-tertiary-active: #1447e6;
   --background-color-default: #ffffff;
-  --background-color-default-transparent: #ffffff60;
   --background-color-overlay-default: #18181b33;
-  --background-color-overlay-harsh: #000000e6;
-  --background-color-sunken: #fafafa;
-  --background-color-sunken-secondary: #f4f4f5;
   --background-color-sunken-tertiary: #e4e4e7;
   --background-color-btn-disabled: #fafafa;
   --background-color-btn-secondary: #f4f4f5;
@@ -170,34 +152,20 @@
   --background-color-btn-tertiary-hover: #1118270d;
   --background-color-btn-tertiary-press: #1118271a;
   --background-color-btn-tertiary-active: #eff6ff;
-  --background-color-btn-tertiary-checked: #eff6ff;
-  --background-color-elevation-surface-blanket-top: #09090b30;
-  --background-color-status-success: #d1fae5;
-  --background-color-status-info: #eff6ff;
-  --background-color-status-neutral: #f4f4f5;
   --border-color-primary: #e4e4e7;
   --border-color-secondary: #f4f4f5;
   --border-color-btn-tertiary-active: #1447e6;
-  --divide-color-primary: #e4e4e7;
   --divide-color-secondary: #f4f4f5;
 }
 
 .dark {
   --text-color-primary: #e4e4e7;
   --text-color-secondary: #d4d4d8;
-  --text-color-placeholder: #a1a1aa;
   --text-color-light: #3b82f6;
   --text-color-disabled: #3f3f46;
-  --text-color-status-success: #ffffff;
-  --text-color-status-info: #ffffff;
-  --text-color-status-neutral: #ffffff;
   --text-color-btn-tertiary-active: #ffffff;
   --background-color-default: #0a0a0a;
-  --background-color-default-transparent: #18181b50;
   --background-color-overlay-default: #18181b99;
-  --background-color-overlay-harsh: #000000e6;
-  --background-color-sunken: #18181b;
-  --background-color-sunken-secondary: #27272a;
   --background-color-sunken-tertiary: #3f3f46;
   --background-color-btn-disabled: #27272a50;
   --background-color-btn-secondary: #27272a;
@@ -208,15 +176,9 @@
   --background-color-btn-tertiary-hover: #27272a;
   --background-color-btn-tertiary-press: #3f3f46;
   --background-color-btn-tertiary-active: #162456;
-  --background-color-btn-tertiary-checked: #1e3a8a20;
-  --background-color-elevation-surface-blanket-top: #09090b75;
-  --background-color-status-success: #047857;
-  --background-color-status-info: #2563eb;
-  --background-color-status-neutral: #3f3f46;
   --border-color-primary: #3f3f46;
   --border-color-secondary: #27272a;
   --border-color-btn-tertiary-active: #1447e6;
-  --divide-color-primary: #3f3f46;
   --divide-color-secondary: #27272a;
 }
 
