@@ -12,7 +12,7 @@ export class HomePage extends BasePage {
 
     this.heading = page.getByRole("heading", { name: "Hi, my name is Glenn Visser", level: 1 });
     this.profileImage = page.getByAltText("Photo of Glenn");
-    this.aboutMeLink = page.getByRole("main").getByRole("link", { name: "About me" });
+    this.aboutMeLink = page.getByRole("main").getByRole("link", { name: "About me", exact: true });
     this.getInTouchLink = page.getByRole("main").getByRole("link", { name: "Get in touch" });
   }
 
