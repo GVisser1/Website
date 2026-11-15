@@ -1,61 +1,47 @@
-import { Link } from "@tanstack/react-router";
-import { type JSX, useState } from "react";
-import { MAIL_TO, PAGES } from "@/constants";
+import { type JSX, lazy, Suspense, useRef, useState } from "react";
 import IconButton from "./button/iconButton";
-import Icon from "./icon";
-import SidePanel from "./sidePanel";
-import ThemeSwitcher from "./themeSwitcher";
+import type PanelComponent from "./mobileMenuPanel";
 
 type MobileMenuProps = {
   isActive: (href: string) => boolean;
 };
 
-const linkClasses =
-  "flex h-11 items-center gap-x-3 rounded-sm border btn-tertiary border-transparent px-3 text-base-semibold focus-visible:focus-ring";
+// The panel pulls in the drawer, so it's only downloaded once someone actually reaches for the menu
+const loadPanel = (): Promise<{ default: typeof PanelComponent }> => import("./mobileMenuPanel");
+const MobileMenuPanel = lazy(loadPanel);
 
 const MobileMenu = (props: MobileMenuProps): JSX.Element => {
   const [open, setOpen] = useState(false);
+  const [requested, setRequested] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <SidePanel
-      title="Menu"
-      open={open}
-      onOpenChange={setOpen}
-      trigger={(triggerProps) => (
-        <IconButton
-          type="button"
-          variant="tertiary"
-          ariaLabel="Open menu"
-          icon="OpenMenu"
-          tooltip={{ title: "Menu", position: "bottom" }}
-          htmlProps={triggerProps}
-        />
+    <>
+      <IconButton
+        type="button"
+        variant="tertiary"
+        ariaLabel="Open menu"
+        icon="OpenMenu"
+        tooltip={{ title: "Menu", position: "bottom" }}
+        htmlProps={{
+          ref: triggerRef,
+          "aria-haspopup": "dialog",
+          "aria-expanded": open,
+          onPointerEnter: () => void loadPanel(),
+          onPointerDown: () => void loadPanel(),
+          onFocus: () => void loadPanel(),
+        }}
+        onClick={() => {
+          setRequested(true);
+          setOpen(true);
+        }}
+      />
+      {requested && (
+        <Suspense fallback={null}>
+          <MobileMenuPanel open={open} onOpenChange={setOpen} finalFocus={triggerRef} isActive={props.isActive} />
+        </Suspense>
       )}
-    >
-      <nav aria-label="Pages" className="flex flex-col gap-y-1">
-        {PAGES.map((page) => (
-          <Link
-            key={page.href}
-            to={page.href}
-            className={linkClasses}
-            data-active={props.isActive(page.href)}
-            onClick={() => setOpen(false)}
-          >
-            <Icon name={page.icon} className="size-5" />
-            {page.name}
-          </Link>
-        ))}
-        <a href={MAIL_TO} className={linkClasses}>
-          <Icon name="At" className="size-5" />
-          Contact
-        </a>
-      </nav>
-
-      <section className="mt-6 flex flex-col gap-y-2 border-t border-secondary px-1 pt-4">
-        <h2 className="px-2 text-header-base text-primary">Theme</h2>
-        <ThemeSwitcher />
-      </section>
-    </SidePanel>
+    </>
   );
 };
 

@@ -16,8 +16,29 @@ type Meta = {
 export abstract class BasePage {
   protected constructor(protected readonly page: Page) {}
 
-  public assertPageMatchesSnapshot = async (name: string): Promise<void> =>
+  public assertPageMatchesSnapshot = async (name: string): Promise<void> => {
+    await this.waitForImages();
     await expect.soft(this.page).toHaveScreenshot(`${name}.webp`, { fullPage: true, maxDiffPixels: 20 });
+  };
+
+  // Full-page screenshots include lazy images below the fold, and WebKit may still be decoding them (or swapping in web
+  // fonts) between the two captures Playwright compares, so load and decode everything first
+  private waitForImages = async (): Promise<void> =>
+    await this.page.evaluate(async () => {
+      await document.fonts.ready;
+      await Promise.all(
+        Array.from(document.images, async (image) => {
+          image.loading = "eager";
+          if (!image.complete) {
+            await new Promise((resolve) => {
+              image.addEventListener("load", resolve, { once: true });
+              image.addEventListener("error", resolve, { once: true });
+            });
+          }
+          await image.decode().catch(() => undefined);
+        }),
+      );
+    });
 
   public assertPageIsAccessible = async (): Promise<void> => {
     const results = await new AxeBuilder({ page: this.page })

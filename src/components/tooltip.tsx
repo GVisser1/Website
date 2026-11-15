@@ -1,10 +1,6 @@
-import { Tooltip as BaseTooltip } from "@base-ui/react/tooltip";
+import clsx from "clsx";
 import type { JSX, ReactElement } from "react";
-import { useId } from "react";
 import { isTouchDevice } from "../utils/deviceUtil";
-import { seconds } from "../utils/timeUtil";
-
-const DELAY = seconds(0.3);
 
 export type TooltipProps = {
   title: string;
@@ -12,32 +8,34 @@ export type TooltipProps = {
   position?: "top" | "right" | "bottom" | "left";
 };
 
-const Tooltip = (props: TooltipProps): JSX.Element => {
-  const id = useId();
+const positionClasses = {
+  top: "right-0 bottom-full mb-1",
+  right: "top-1/2 left-full ml-1 -translate-y-1/2",
+  bottom: "top-full right-0 mt-1",
+  left: "top-1/2 right-full mr-1 -translate-y-1/2",
+} as const;
 
+// CSS-only so the tooltip doesn't pull a positioning library into the bundle. The trigger must carry its own
+// accessible name, so the visual tooltip is hidden from assistive technology
+const Tooltip = (props: TooltipProps): JSX.Element => {
   if (isTouchDevice) {
-    // Just return the trigger if on non-pointer devices
     return props.trigger;
   }
 
   return (
-    <BaseTooltip.Provider delay={DELAY}>
-      <BaseTooltip.Root>
-        <BaseTooltip.Trigger render={props.trigger} />
-        <BaseTooltip.Portal container={document.body}>
-          <BaseTooltip.Positioner side={props.position ?? "right"} sideOffset={4} collisionPadding={8} className="z-30">
-            <BaseTooltip.Popup
-              aria-labelledby={id}
-              className="flex max-w-56 origin-(--transform-origin) items-center overflow-hidden rounded-lg bg-elevation-float px-2.5 py-1.5 shadow-md transition-[opacity,scale] duration-150 select-none data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0"
-            >
-              <p id={id} className="text-xs-medium text-elevation-float">
-                {props.title}
-              </p>
-            </BaseTooltip.Popup>
-          </BaseTooltip.Positioner>
-        </BaseTooltip.Portal>
-      </BaseTooltip.Root>
-    </BaseTooltip.Provider>
+    <span className="group relative inline-flex">
+      {props.trigger}
+      <span
+        aria-hidden="true"
+        className={clsx(
+          "pointer-events-none absolute z-30 w-max max-w-56 rounded-lg bg-elevation-float px-2.5 py-1.5 text-xs-medium text-elevation-float opacity-0 shadow-md transition-opacity duration-150 select-none",
+          "group-hover:opacity-100 group-hover:delay-300 group-has-focus-visible:opacity-100 group-has-focus-visible:delay-300",
+          positionClasses[props.position ?? "right"],
+        )}
+      >
+        {props.title}
+      </span>
+    </span>
   );
 };
 
