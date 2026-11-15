@@ -1,14 +1,22 @@
-@import "@fontsource/frijole";
-@import "@fontsource/roboto";
+@import "@fontsource-variable/roboto/wght.css";
 @import "tailwindcss";
+
+/* Subset of Frijole containing only the logo's glyphs, see public/fonts/logo-font-LICENSE.txt */
+@font-face {
+  font-family: "Logo Font";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/logo-font.woff2") format("woff2");
+}
 
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant press (&:active);
 @custom-variant active (&:is([data-active="true"], [aria-expanded="true"]));
 
 @theme inline {
-  --font-roboto: "Roboto", var(--font-sans);
-  --font-frijole: "Frijole", var(--font-sans);
+  --font-roboto: "Roboto Variable", var(--font-sans);
+  --font-logo: "Logo Font", var(--font-sans);
 
   --breakpoint-*: initial;
   --breakpoint-phone-ls: 520px;
