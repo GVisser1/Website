@@ -31,7 +31,7 @@ const IconAndTextButton = (props: IconAndTextButtonProps): JSX.Element => {
   const content = (
     <>
       <Icon name={props.icon} className="size-5" />
-      <span className="truncate text-button">{props.label}</span>
+      <span className="truncate text-small font-medium">{props.label}</span>
     </>
   );
 

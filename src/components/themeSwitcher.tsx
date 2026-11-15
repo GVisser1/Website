@@ -27,7 +27,7 @@ const ThemeSwitcher = (): JSX.Element => {
         <Radio.Root
           key={option.value}
           value={option.value}
-          className="flex h-16 flex-col items-center justify-center gap-y-1.5 rounded-sm border border-primary text-sm-semibold text-secondary select-none hover:bg-btn-tertiary-hover hover:text-primary focus-visible:focus-ring data-checked:border-btn-tertiary-active data-checked:bg-btn-tertiary-active data-checked:text-btn-tertiary-active"
+          className="flex h-16 flex-col items-center justify-center gap-y-1.5 rounded-sm border border-primary text-small font-semibold text-secondary select-none hover:bg-btn-tertiary-hover hover:text-primary focus-visible:focus-ring data-checked:border-btn-tertiary-active data-checked:bg-btn-tertiary-active data-checked:text-btn-tertiary-active"
         >
           <Icon name={option.icon} className="size-5" />
           {option.label}

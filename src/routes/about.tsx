@@ -46,8 +46,8 @@ const IntroductionPhotos = (): JSX.Element => {
 const AboutPage = (): JSX.Element => (
   <Page>
     <section id="introduction" className="my-10 grid grid-cols-4 items-center gap-x-10 gap-y-2">
-      <h1 className="col-span-full text-header-4xl text-primary">{PAGE.name}</h1>
-      <p className="col-span-full text-base-regular text-secondary tablet:col-span-3">
+      <h1 className="col-span-full font-heading text-title text-primary">{PAGE.name}</h1>
+      <p className="col-span-full text-body text-secondary tablet:col-span-3">
         You seem to want to know more about me. Well, I am a QA Engineer and a huge nerd. I spend my work days ensuring
         the quality of software, and in my free time, I love listening to music, watching movies, playing games, and
         coding.

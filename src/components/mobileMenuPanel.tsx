@@ -13,7 +13,7 @@ type MobileMenuPanelProps = {
 };
 
 const linkClasses =
-  "flex h-11 items-center gap-x-3 rounded-sm border btn-tertiary border-transparent px-3 text-base-semibold focus-visible:focus-ring";
+  "flex h-11 items-center gap-x-3 rounded-sm border btn-tertiary border-transparent px-3 text-body font-semibold focus-visible:focus-ring";
 
 const MobileMenuPanel = (props: MobileMenuPanelProps): JSX.Element => {
   // Mount closed and open on the next frame, so the drawer plays its enter transition (and can close normally)
@@ -51,7 +51,7 @@ const MobileMenuPanel = (props: MobileMenuPanelProps): JSX.Element => {
       </nav>
 
       <section className="mt-6 flex flex-col gap-y-2 border-t border-secondary px-1 pt-4">
-        <h2 className="px-2 text-header-base text-primary">Theme</h2>
+        <h2 className="px-2 text-body font-semibold text-primary">Theme</h2>
         <ThemeSwitcher />
       </section>
     </SidePanel>
