@@ -11,10 +11,13 @@ test.describe("desktop", () => {
     await navigationPage.themeToggle.click();
     await expect(navigationPage.themeToggle).toHaveAccessibleName("Theme: Light. Switch to dark");
     await expect(navigationPage.htmlElement).toHaveClass(/light/);
+    await expect(page.locator('meta[name="theme-color"]').last()).toHaveAttribute("content", "#ffffff");
 
     await navigationPage.themeToggle.click();
     await expect(navigationPage.themeToggle).toHaveAccessibleName("Theme: Dark. Switch to system");
     await expect(navigationPage.htmlElement).toHaveClass(/dark/);
+    // The mobile browser bar follows the chosen theme, not just the system one
+    await expect(page.locator('meta[name="theme-color"]').first()).toHaveAttribute("content", "#0a0a0a");
 
     await navigationPage.themeToggle.click();
     await expect(navigationPage.themeToggle).toHaveAccessibleName("Theme: System. Switch to light");
