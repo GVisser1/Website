@@ -11,6 +11,5 @@ export default defineConfig({
       include: ["src/**/**.{ts,tsx}"],
       reporter: ["lcov", "text", "html", "clover", "json"],
     },
-    setupFiles: ["vitest.setup.ts"],
   },
 });

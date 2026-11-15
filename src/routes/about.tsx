@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type { JSX } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import Image from "@/components/image";
-import { MAIN_PAGES, PROJECT_PAGES } from "@/constants";
+import { MAIN_PAGES } from "@/constants";
 import { BlogContent, BlogFooter, BlogHeader, BlogParagraph, BlogSection } from "../components/blog";
 import InlineLink from "../components/inlineLink";
 import Page from "../components/page";
@@ -67,8 +67,7 @@ const AboutPage = (): JSX.Element => (
         </BlogParagraph>
         <BlogParagraph>
           Programming is not only a key part of my job, but a hobby as well. I enjoy solving problems and front-ending
-          designs. This mostly comes down to building random side-projects, such as the{" "}
-          <InlineLink href={PROJECT_PAGES.pokemon.href}>Pokémon page</InlineLink> on this site.
+          designs. This mostly comes down to building random side-projects, such as this website.
         </BlogParagraph>
       </BlogSection>
 
@@ -108,9 +107,8 @@ const AboutPage = (): JSX.Element => (
       <BlogSection id="gaming" image={{ src: "/images/persona5.webp", alt: "Persona 5 Royal", align: "right" }}>
         <BlogHeader>Gaming</BlogHeader>
         <BlogParagraph>
-          I have been gaming ever since I got my Gameboy at age 7. The first game I remember loving was Pokémon
-          LeafGreen, which might explain why I now know the names of around 800 Pokémon by hard. This naturally
-          transitioned into playing GTA: San Andreas at a way too early of an age.
+          I have been gaming ever since I got my Gameboy at age 7. This naturally transitioned into playing GTA: San
+          Andreas at a way too early of an age.
         </BlogParagraph>
         <BlogParagraph>
           These days I game more than ever. A few of my favourite games include: Persona 5 Royal, Bloodborne, Yakuza 0,
