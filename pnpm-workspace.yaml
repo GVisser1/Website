@@ -1,13 +1,14 @@
 allowBuilds:
   "@parcel/watcher": false
   esbuild: false
-  msw: false
   sharp: false
 
 ignoredBuiltDependencies:
   - "@parcel/watcher"
-  - msw
   - sharp
 
 onlyBuiltDependencies:
   - esbuild
+
+overrides:
+  msw: "-"
