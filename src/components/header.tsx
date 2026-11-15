@@ -25,10 +25,8 @@ const Header = (props: HeaderProps): JSX.Element => (
       />
     )}
 
-    <h1 className="text-header-4xl text-primary">{props.title}</h1>
-    {props.description && (
-      <p className="dark:text-secondary-dark mb-6 text-base-regular text-secondary">{props.description}</p>
-    )}
+    <h1 className="font-heading text-title text-primary">{props.title}</h1>
+    {props.description && <p className="mb-6 text-body text-secondary">{props.description}</p>}
 
     {props.children}
   </header>

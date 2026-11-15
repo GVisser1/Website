@@ -40,9 +40,9 @@ const TimeLineItem = ({ item, align }: TimeLineItemProps): JSX.Element => (
     <div className="flex gap-x-2">
       {item.src && <Image src={item.src} alt="" className="my-auto size-10 rounded-full" />}
       <div>
-        <p className="text-sm-regular text-secondary">{item.timeFrame}</p>
-        <h2 className="text-header-lg text-primary">{item.title}</h2>
-        <p className="text-sm-regular text-secondary">{item.subTitle}</p>
+        <p className="text-small text-secondary">{item.timeFrame}</p>
+        <h2 className="font-heading text-heading text-primary">{item.title}</h2>
+        <p className="text-small text-secondary">{item.subTitle}</p>
       </div>
     </div>
     <div

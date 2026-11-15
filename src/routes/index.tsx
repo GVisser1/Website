@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import clsx from "clsx";
 import type { JSX } from "react";
-import { useReadLocalStorage } from "usehooks-ts";
 import TextButton from "@/components/button/textButton";
 import Image from "@/components/image";
 import Page from "@/components/page";
@@ -10,40 +8,31 @@ import { getAge } from "@/utils/dateUtil";
 
 const PAGE = MAIN_PAGES.home;
 
-const HomePage = (): JSX.Element => {
-  const isSidebarCollapsed = useReadLocalStorage<boolean>("isSidebarCollapsed");
-
-  const headerClasses = clsx(
-    "text-header-4xl text-primary transition-all",
-    isSidebarCollapsed ? "laptop:text-header-6xl" : "laptop:text-header-5xl",
-  );
-
-  return (
-    <Page className="my-auto">
-      <header className="mx-auto mt-8 grid max-w-xl items-center justify-center gap-x-18 gap-y-8 tablet-ls:mt-32 tablet-ls:mb-56 tablet-ls:max-w-4xl laptop:max-w-7xl laptop:grid-cols-2">
-        <div className="order-2 flex flex-col gap-y-6 text-center laptop:order-1 laptop:gap-y-6 laptop:text-left">
-          <h1 className={headerClasses}>
-            Hi, my name is <span className="text-light">Glenn Visser</span>
-          </h1>
-          <p className="text-lg-regular text-secondary">
-            I am a {getAge()}-year-old QA Engineer living in Maassluis, the Netherlands. I am into music, movies, games,
-            and programming.
-          </p>
-          <div className="flex justify-center gap-x-2 laptop:justify-start">
-            <TextButton type="link" label="About me" variant="primary" href="/about" size="large" />
-            <TextButton type="link" label="Get in touch" variant="light" href={MAIL_TO} size="large" />
-          </div>
+const HomePage = (): JSX.Element => (
+  <Page className="my-auto">
+    <header className="mx-auto mt-8 grid max-w-xl items-center justify-center gap-x-18 gap-y-8 tablet-ls:mt-32 tablet-ls:mb-56 tablet-ls:max-w-4xl laptop:max-w-7xl laptop:grid-cols-2">
+      <div className="order-2 flex flex-col gap-y-6 text-center laptop:order-1 laptop:gap-y-6 laptop:text-left">
+        <h1 className="font-heading text-title text-primary tablet:text-display">
+          Hi, my name is <span className="text-light">Glenn Visser</span>
+        </h1>
+        <p className="text-lead text-secondary">
+          I am a {getAge()}-year-old QA Engineer living in Maassluis, the Netherlands. I am into music, movies, games,
+          and programming.
+        </p>
+        <div className="flex justify-center gap-x-2 laptop:justify-start">
+          <TextButton type="link" label="About me" variant="primary" href="/about" size="large" />
+          <TextButton type="link" label="Get in touch" variant="light" href={MAIL_TO} size="large" />
         </div>
-        <Image
-          priority
-          src="/images/profile.webp"
-          alt="Photo of Glenn"
-          className="order-1 mx-auto aspect-square size-72 rounded-full object-cover laptop:order-2 laptop:size-120"
-        />
-      </header>
-    </Page>
-  );
-};
+      </div>
+      <Image
+        priority
+        src="/images/profile.webp"
+        alt="Photo of Glenn"
+        className="order-1 mx-auto aspect-square size-72 rounded-full object-cover laptop:order-2 laptop:size-120"
+      />
+    </header>
+  </Page>
+);
 
 export const Route = createFileRoute("/")({
   component: HomePage,

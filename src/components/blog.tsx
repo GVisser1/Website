@@ -54,14 +54,14 @@ type BlogHeaderProps = {
   children: ReactNode;
 };
 export const BlogHeader = (props: BlogHeaderProps): JSX.Element => (
-  <h2 className="text-header-xl text-primary">{props.children}</h2>
+  <h2 className="font-heading text-heading text-primary">{props.children}</h2>
 );
 
 type BlogParagraphProps = {
   children: ReactNode;
 };
 export const BlogParagraph = (props: BlogParagraphProps): JSX.Element => (
-  <p className="w-full text-base-regular text-secondary not-last:mb-1">{props.children}</p>
+  <p className="w-full text-body text-secondary not-last:mb-1">{props.children}</p>
 );
 
 type BlogFooterProps = {

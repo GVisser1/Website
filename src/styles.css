@@ -1,22 +1,17 @@
-@import "@fontsource-variable/roboto/wght.css";
 @import "tailwindcss";
-
-/* Subset of Frijole containing only the logo's glyphs, see public/fonts/logo-font-LICENSE.txt */
-@font-face {
-  font-family: "Logo Font";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/logo-font.woff2") format("woff2");
-}
+@import "@fontsource-variable/sora";
+@import "@fontsource-variable/roboto";
 
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant press (&:active);
 @custom-variant active (&:is([data-active="true"], [aria-expanded="true"]));
 
 @theme inline {
-  --font-roboto: "Roboto Variable", var(--font-sans);
-  --font-logo: "Logo Font", var(--font-sans);
+  --font-*: initial;
+  --font-body: "Roboto Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Sora Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --default-font-family: var(--font-body);
 
   --breakpoint-*: initial;
   --breakpoint-phone-ls: 520px;
@@ -26,75 +21,32 @@
   --breakpoint-desktop: 1640px;
 
   --text-*: initial;
-  --text-header-6xl: 4.5rem;
-  --text-header-6xl--line-height: 4.5rem;
-  --text-header-6xl--font-weight: 700;
-  --text-header-5xl: 3.75rem;
-  --text-header-5xl--line-height: 3.75rem;
-  --text-header-5xl--font-weight: 700;
-  --text-header-4xl: 2.25rem;
-  --text-header-4xl--line-height: 2.5rem;
-  --text-header-4xl--font-weight: 700;
-  --text-header-3xl: 1.875rem;
-  --text-header-3xl--line-height: 2.25rem;
-  --text-header-3xl--font-weight: 700;
-  --text-header-2xl: 1.5rem;
-  --text-header-2xl--line-height: 2rem;
-  --text-header-2xl--font-weight: 600;
-  --text-header-xl: 1.25rem;
-  --text-header-xl--line-height: 1.75rem;
-  --text-header-xl--font-weight: 600;
-  --text-header-lg: 1.125rem;
-  --text-header-lg--line-height: 1.5rem;
-  --text-header-lg--font-weight: 600;
-  --text-header-base: 1rem;
-  --text-header-base--line-height: 1.5rem;
-  --text-header-base--font-weight: 600;
-  --text-lg-semibold: 1.125rem;
-  --text-lg-semibold--line-height: 1.75rem;
-  --text-lg-semibold--font-weight: 600;
-  --text-lg-medium: 1.125rem;
-  --text-lg-medium--line-height: 1.75rem;
-  --text-lg-medium--font-weight: 500;
-  --text-lg-regular: 1.125rem;
-  --text-lg-regular--line-height: 1.75rem;
-  --text-lg-regular--font-weight: 400;
-  --text-base-bold: 1rem;
-  --text-base-bold--line-height: 1.5rem;
-  --text-base-bold--font-weight: 700;
-  --text-base-semibold: 1rem;
-  --text-base-semibold--line-height: 1.5rem;
-  --text-base-semibold--font-weight: 600;
-  --text-base-medium: 1rem;
-  --text-base-medium--line-height: 1.5rem;
-  --text-base-medium--font-weight: 500;
-  --text-base-regular: 1rem;
-  --text-base-regular--line-height: 1.5rem;
-  --text-base-regular--font-weight: 400;
-  --text-sm-semibold: 0.875rem;
-  --text-sm-semibold--line-height: 1.25rem;
-  --text-sm-semibold--font-weight: 600;
-  --text-sm-regular: 0.875rem;
-  --text-sm-regular--line-height: 1.25rem;
-  --text-sm-regular--font-weight: 400;
-  --text-xs-semibold: 0.75rem;
-  --text-xs-semibold--line-height: 1rem;
-  --text-xs-semibold--font-weight: 600;
-  --text-xs-medium: 0.75rem;
-  --text-xs-medium--line-height: 1rem;
-  --text-xs-medium--font-weight: 500;
-  --text-xs-regular: 0.75rem;
-  --text-xs-regular--line-height: 1rem;
-  --text-xs-regular--font-weight: 400;
-  --text-button-lg: 1rem;
-  --text-button-lg--line-height: 1.25rem;
-  --text-button-lg--font-weight: 500;
-  --text-button: 0.875rem;
-  --text-button--line-height: 1.25rem;
-  --text-button--font-weight: 500;
-  --text-link: 1rem;
-  --text-link--line-height: 1.5rem;
-  --text-link--font-weight: 600;
+
+  --text-display: 3rem;
+  --text-display--line-height: 3.25rem;
+  --text-display--font-weight: 700;
+  --text-display--letter-spacing: -0.02em;
+
+  --text-title: 1.875rem;
+  --text-title--line-height: 2.25rem;
+  --text-title--font-weight: 700;
+  --text-title--letter-spacing: -0.01em;
+
+  --text-heading: 1.25rem;
+  --text-heading--line-height: 1.75rem;
+  --text-heading--font-weight: 600;
+
+  --text-lead: 1.125rem;
+  --text-lead--line-height: 1.75rem;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.5rem;
+
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.25rem;
+
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1rem;
 
   --color-*: initial;
 
@@ -194,9 +146,6 @@
   * {
     -webkit-font-smoothing: antialiased !important;
     -moz-osx-font-smoothing: grayscale !important;
-  }
-  body {
-    @apply font-roboto;
   }
   button {
     @apply cursor-default disabled:cursor-not-allowed;

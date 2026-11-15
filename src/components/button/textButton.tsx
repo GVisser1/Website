@@ -24,7 +24,11 @@ const TextButton = (props: TextButtonProps): JSX.Element => {
 
   const label = (
     <span
-      className={clsx("truncate", props.size === "large" && "text-button-lg", props.size === "medium" && "text-button")}
+      className={clsx(
+        "truncate",
+        props.size === "large" && "text-body font-medium",
+        props.size === "medium" && "text-small font-medium",
+      )}
     >
       {props.label}
     </span>

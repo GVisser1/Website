@@ -48,7 +48,7 @@ const SidePanel = (props: SidePanelProps): JSX.Element => {
             )}
           >
             <Drawer.Content className={clsx("flex grow flex-col", props.className)}>
-              <Drawer.Title className="flex h-14 items-center border-b border-secondary p-3 text-header-xl text-primary">
+              <Drawer.Title className="flex h-14 items-center border-b border-secondary p-3 font-heading text-heading text-primary">
                 {props.title}
               </Drawer.Title>
               <div className="flex grow flex-col justify-between">
@@ -61,7 +61,7 @@ const SidePanel = (props: SidePanelProps): JSX.Element => {
                         className="flex h-11 w-full items-center justify-center rounded-sm btn-secondary px-3 focus-visible:focus-ring"
                         {...triggerProps}
                       >
-                        <span className="text-base-semibold">Close</span>
+                        <span className="text-body font-semibold">Close</span>
                       </button>
                     )}
                   />
