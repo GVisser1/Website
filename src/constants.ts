@@ -49,25 +49,9 @@ export const MAIN_PAGES = {
   },
 } as const satisfies Record<string, Page>;
 
-export const PROJECT_PAGES = {
-  pokemon: {
-    name: "Pokémon",
-    description: "Explore the world of Pokémon.",
-    href: "/projects/pokemon",
-    icon: "PokéBall",
-    meta: {
-      title: "Pokémon - Glenn Visser",
-      description:
-        "Browse and search through a collection of Pokémon. Discover details, filter by name, and explore the world of Pokémon ",
-    },
-  },
-} as const satisfies Record<string, Page>;
-
-export const PAGES: Page[] = [...Object.values(MAIN_PAGES), ...Object.values(PROJECT_PAGES)];
+export const PAGES: Page[] = Object.values(MAIN_PAGES);
 
 export const MAIL_TO = "mailto:gvisser.business@gmail.com";
-
-export const POKEMON_API_URL = "https://pokeapi.co/api/v2/pokemon";
 
 export const HOTKEYS = {
   settings: "Mod+Shift+,",
