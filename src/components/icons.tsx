@@ -1,53 +1,12 @@
-import clsx from "clsx";
 import type { ComponentProps, JSX } from "react";
 
 type IconProps = ComponentProps<"svg">;
-
-export const ArrowDown = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M10 3a.75.75 0 0 1 .75.75v10.638l3.96-4.158a.75.75 0 1 1 1.08 1.04l-5.25 5.5a.75.75 0 0 1-1.08 0l-5.25-5.5a.75.75 0 1 1 1.08-1.04l3.96 4.158V3.75A.75.75 0 0 1 10 3Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-export const ArrowRight = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
 
 export const At = (props: IconProps): JSX.Element => (
   <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
       d="M5.404 14.596A6.5 6.5 0 1 1 16.5 10a1.25 1.25 0 0 1-2.5 0 4 4 0 1 0-.571 2.06A2.75 2.75 0 0 0 18 10a8 8 0 1 0-2.343 5.657.75.75 0 0 0-1.06-1.06 6.5 6.5 0 0 1-9.193 0ZM10 7.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-export const Bars3BottomLeft = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75Zm0 10.5a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1-.75-.75ZM2 10a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 10Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-export const Beaker = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M8.5 3.528v4.644c0 .729-.29 1.428-.805 1.944l-1.217 1.216a8.75 8.75 0 0 1 3.55.621l.502.201a7.25 7.25 0 0 0 4.178.365l-2.403-2.403a2.75 2.75 0 0 1-.805-1.944V3.528a40.205 40.205 0 0 0-3 0Zm4.5.084.19.015a.75.75 0 1 0 .12-1.495 41.364 41.364 0 0 0-6.62 0 .75.75 0 0 0 .12 1.495L7 3.612v4.56c0 .331-.132.649-.366.883L2.6 13.09c-1.496 1.496-.817 4.15 1.403 4.475C5.961 17.852 7.963 18 10 18s4.039-.148 5.997-.436c2.22-.325 2.9-2.979 1.403-4.475l-4.034-4.034A1.25 1.25 0 0 1 13 8.172v-4.56Z"
       clipRule="evenodd"
     />
   </svg>
@@ -64,36 +23,6 @@ export const Calendar = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const ChatBubbleBottomCenter = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M10 2c-2.236 0-4.43.18-6.57.524C1.993 2.755 1 4.014 1 5.426v5.148c0 1.413.993 2.67 2.43 2.902 1.168.188 2.352.327 3.55.414.28.02.521.18.642.413l1.713 3.293a.75.75 0 0 0 1.33 0l1.713-3.293a.783.783 0 0 1 .642-.413 41.102 41.102 0 0 0 3.55-.414c1.437-.231 2.43-1.49 2.43-2.902V5.426c0-1.413-.993-2.67-2.43-2.902A41.289 41.289 0 0 0 10 2ZM6.75 6a.75.75 0 0 0 0 1.5h6.5a.75.75 0 0 0 0-1.5h-6.5Zm0 2.5a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-export const Check = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-export const ChevronDown = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
 export const ChevronLeft = (props: IconProps): JSX.Element => (
   <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
@@ -104,106 +33,12 @@ export const ChevronLeft = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const ChevronLeftDouble = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M4.72 9.47a.75.75 0 0 0 0 1.06l4.25 4.25a.75.75 0 1 0 1.06-1.06L6.31 10l3.72-3.72a.75.75 0 1 0-1.06-1.06L4.72 9.47Zm9.25-4.25L9.72 9.47a.75.75 0 0 0 0 1.06l4.25 4.25a.75.75 0 1 0 1.06-1.06L11.31 10l3.72-3.72a.75.75 0 0 0-1.06-1.06Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-export const ChevronRight = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-export const ChevronRightDouble = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M15.28 9.47a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 1 1-1.06-1.06L13.69 10 9.97 6.28a.75.75 0 0 1 1.06-1.06l4.25 4.25ZM6.03 5.22l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L8.69 10 4.97 6.28a.75.75 0 0 1 1.06-1.06Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-export const ChevronUpDown = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M10.53 3.47a.75.75 0 0 0-1.06 0L6.22 6.72a.75.75 0 0 0 1.06 1.06L10 5.06l2.72 2.72a.75.75 0 1 0 1.06-1.06l-3.25-3.25Zm-4.31 9.81 3.25 3.25a.75.75 0 0 0 1.06 0l3.25-3.25a.75.75 0 1 0-1.06-1.06L10 14.94l-2.72-2.72a.75.75 0 0 0-1.06 1.06Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-export const CodeBracket = (props: IconProps): JSX.Element => (
-  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" {...props}>
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
-    />
-  </svg>
-);
-
-export const Cog = (props: IconProps): JSX.Element => (
-  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" {...props}>
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z"
-    />
-    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-  </svg>
-);
-
 export const Computer = (props: IconProps): JSX.Element => (
   <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
       fillRule="evenodd"
       d="M2 4.25A2.25 2.25 0 0 1 4.25 2h11.5A2.25 2.25 0 0 1 18 4.25v8.5A2.25 2.25 0 0 1 15.75 15h-3.105a3.501 3.501 0 0 0 1.1 1.677A.75.75 0 0 1 13.26 18H6.74a.75.75 0 0 1-.484-1.323A3.501 3.501 0 0 0 7.355 15H4.25A2.25 2.25 0 0 1 2 12.75v-8.5Zm1.5 0a.75.75 0 0 1 .75-.75h11.5a.75.75 0 0 1 .75.75v7.5a.75.75 0 0 1-.75.75H4.25a.75.75 0 0 1-.75-.75v-7.5Z"
       clipRule="evenodd"
-    />
-  </svg>
-);
-
-export const Document = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path d="M3 3.5A1.5 1.5 0 0 1 4.5 2h6.879a1.5 1.5 0 0 1 1.06.44l4.122 4.12A1.5 1.5 0 0 1 17 7.622V16.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 3 16.5v-13Z" />
-  </svg>
-);
-
-export const DocumentDuplicate = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path d="M7 3.5A1.5 1.5 0 0 1 8.5 2h3.879a1.5 1.5 0 0 1 1.06.44l3.122 3.12A1.5 1.5 0 0 1 17 6.622V12.5a1.5 1.5 0 0 1-1.5 1.5h-1v-3.379a3 3 0 0 0-.879-2.121L10.5 5.379A3 3 0 0 0 8.379 4.5H7v-1Z" />
-    <path d="M4.5 6A1.5 1.5 0 0 0 3 7.5v9A1.5 1.5 0 0 0 4.5 18h7a1.5 1.5 0 0 0 1.5-1.5v-5.879a1.5 1.5 0 0 0-.44-1.06L9.44 6.439A1.5 1.5 0 0 0 8.378 6H4.5Z" />
-  </svg>
-);
-
-export const ExclamationCircle = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-8-5a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0v-4.5A.75.75 0 0 1 10 5Zm0 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-export const EyeOff = (props: IconProps): JSX.Element => (
-  <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" {...props}>
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
     />
   </svg>
 );
@@ -228,47 +63,6 @@ export const Id = (props: { className: string }): JSX.Element => (
   </svg>
 );
 
-export const Info = (props: { className: string }): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM9 9a.75.75 0 0 0 0 1.5h.253a.25.25 0 0 1 .244.304l-.459 2.066A1.75 1.75 0 0 0 10.747 15H11a.75.75 0 0 0 0-1.5h-.253a.25.25 0 0 1-.244-.304l.459-2.066A1.75 1.75 0 0 0 9.253 9H9Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-export const MagnifyingGlass = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-export const MagnifyingGlassCircle = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path d="M6.5 9a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0Z" />
-    <path
-      fillRule="evenodd"
-      d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM9 5a4 4 0 1 0 2.248 7.309l1.472 1.471a.75.75 0 1 0 1.06-1.06l-1.471-1.472A4 4 0 0 0 9 5Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-export const MapPin = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="m9.69 18.933.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 0 0 .281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 1 0 3 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 0 0 2.273 1.765 11.842 11.842 0 0 0 .976.544l.062.029.018.008.006.003ZM10 11.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
 export const Moon = (props: IconProps): JSX.Element => (
   <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path
@@ -279,94 +73,14 @@ export const Moon = (props: IconProps): JSX.Element => (
   </svg>
 );
 
-export const MusicalNote = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M17.721 1.599a.75.75 0 0 1 .279.583v11.29a2.25 2.25 0 0 1-1.774 2.2l-2.041.44a2.216 2.216 0 0 1-.938-4.332l2.662-.577a.75.75 0 0 0 .591-.733V6.112l-8 1.73v7.684a2.25 2.25 0 0 1-1.774 2.2l-2.042.44a2.216 2.216 0 1 1-.935-4.331l2.659-.573A.75.75 0 0 0 7 12.529V4.236a.75.75 0 0 1 .591-.733l9.5-2.054a.75.75 0 0 1 .63.15Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-export const NumberedList = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path d="M3 1.25a.75.75 0 0 0 0 1.5h.25v2.5a.75.75 0 0 0 1.5 0V2A.75.75 0 0 0 4 1.25H3ZM2.97 8.654a3.5 3.5 0 0 1 1.524-.12.034.034 0 0 1-.012.012L2.415 9.579A.75.75 0 0 0 2 10.25v1c0 .414.336.75.75.75h2.5a.75.75 0 0 0 0-1.5H3.927l1.225-.613c.52-.26.848-.79.848-1.371 0-.647-.429-1.327-1.193-1.451a5.03 5.03 0 0 0-2.277.155.75.75 0 0 0 .44 1.434ZM7.75 3a.75.75 0 0 0 0 1.5h9.5a.75.75 0 0 0 0-1.5h-9.5ZM7.75 9.25a.75.75 0 0 0 0 1.5h9.5a.75.75 0 0 0 0-1.5h-9.5ZM7.75 15.5a.75.75 0 0 0 0 1.5h9.5a.75.75 0 0 0 0-1.5h-9.5ZM2.625 13.875a.75.75 0 0 0 0 1.5h1.5a.125.125 0 0 1 0 .25H3.5a.75.75 0 0 0 0 1.5h.625a.125.125 0 0 1 0 .25h-1.5a.75.75 0 0 0 0 1.5h1.5a1.625 1.625 0 0 0 1.37-2.5 1.625 1.625 0 0 0-1.37-2.5h-1.5Z" />
-  </svg>
-);
-
 export const OpenMenu = (props: IconProps): JSX.Element => (
   <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path d="M2 6.75C2 6.33579 2.33579 6 2.75 6H17.25C17.6642 6 18 6.33579 18 6.75C18 7.16421 17.6642 7.5 17.25 7.5H2.75C2.33579 7.5 2 7.16421 2 6.75ZM2 13.25C2 12.8358 2.33579 12.5 2.75 12.5H17.25C17.6642 12.5 18 12.8358 18 13.25C18 13.6642 17.6642 14 17.25 14H2.75C2.33579 14 2 13.6642 2 13.25Z" />
   </svg>
 );
 
-export const Plus = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
-  </svg>
-);
-
-export const ShoppingCart = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path d="M1 1.75A.75.75 0 0 1 1.75 1h1.628a1.75 1.75 0 0 1 1.734 1.51L5.18 3a65.25 65.25 0 0 1 13.36 1.412.75.75 0 0 1 .58.875 48.645 48.645 0 0 1-1.618 6.2.75.75 0 0 1-.712.513H6a2.503 2.503 0 0 0-2.292 1.5H17.25a.75.75 0 0 1 0 1.5H2.76a.75.75 0 0 1-.748-.807 4.002 4.002 0 0 1 2.716-3.486L3.626 2.716a.25.25 0 0 0-.248-.216H1.75A.75.75 0 0 1 1 1.75ZM6 17.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM15.5 19a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" />
-  </svg>
-);
-
-export const Spinner = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props} className={clsx("animate-spin", props.className)}>
-    <path d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z" opacity=".25" />
-    <path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" />
-  </svg>
-);
-
-export const Star = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
 export const Sun = (props: IconProps): JSX.Element => (
   <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
     <path d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.06 1.06l1.06 1.06ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z" />
-  </svg>
-);
-
-export const Text = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="none" {...props}>
-    <path
-      d="M3.60342 14.8509H1.66666L5.19293 5H7.43292L10.9641 14.8509H9.02733L6.35206 7.0202H6.2738L3.60342 14.8509ZM3.667 10.9885H8.94908V12.4218H3.667V10.9885Z"
-      fill="currentColor"
-    />
-    <path
-      d="M14.3669 15C13.8908 15 13.4621 14.9166 13.0806 14.7499C12.7024 14.5799 12.4024 14.3298 12.1807 13.9995C11.9622 13.6692 11.853 13.262 11.853 12.7778C11.853 12.3609 11.9312 12.0162 12.0878 11.7436C12.2443 11.4711 12.4578 11.253 12.7285 11.0895C12.9991 10.9259 13.3039 10.8025 13.643 10.7191C13.9854 10.6325 14.3392 10.57 14.7043 10.5315C15.1445 10.4866 15.5015 10.4465 15.7754 10.4113C16.0493 10.3728 16.2482 10.3151 16.3721 10.2381C16.4993 10.1579 16.5628 10.0345 16.5628 9.86772V9.83887C16.5628 9.47651 16.4536 9.19593 16.2352 8.99711C16.0167 8.7983 15.7021 8.69889 15.2912 8.69889C14.8576 8.69889 14.5136 8.79189 14.2593 8.97787C14.0082 9.16386 13.8387 9.38352 13.7506 9.63684L12.0975 9.40596C12.228 8.95703 12.4432 8.58185 12.7431 8.28042C13.0431 7.97579 13.4099 7.74812 13.8436 7.5974C14.2772 7.44348 14.7565 7.36652 15.2815 7.36652C15.6434 7.36652 16.0037 7.40821 16.3623 7.49158C16.721 7.57496 17.0487 7.71284 17.3454 7.90524C17.6421 8.09444 17.8801 8.35257 18.0594 8.67965C18.242 9.00673 18.3333 9.41558 18.3333 9.9062V14.8509H16.6313V13.836H16.5726C16.465 14.0412 16.3134 14.2336 16.1178 14.4132C15.9254 14.5895 15.6825 14.7322 15.3891 14.8413C15.0989 14.9471 14.7581 15 14.3669 15ZM14.8266 13.7205C15.182 13.7205 15.4901 13.6516 15.751 13.5137C16.0118 13.3726 16.2123 13.1866 16.3525 12.9557C16.496 12.7249 16.5677 12.4731 16.5677 12.2006V11.33C16.5123 11.3749 16.4178 11.4165 16.2841 11.455C16.1537 11.4935 16.0069 11.5272 15.8439 11.556C15.6809 11.5849 15.5195 11.6105 15.3597 11.633C15.1999 11.6554 15.0614 11.6747 14.944 11.6907C14.6799 11.726 14.4435 11.7837 14.2348 11.8639C14.0261 11.944 13.8615 12.0563 13.7409 12.2006C13.6202 12.3417 13.5599 12.5245 13.5599 12.7489C13.5599 13.0696 13.6789 13.3117 13.9169 13.4752C14.1549 13.6388 14.4582 13.7205 14.8266 13.7205Z"
-      fill="currentColor"
-    />
-  </svg>
-);
-
-export const User = (props: { className: string }): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path d="M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3.465 14.493a1.23 1.23 0 0 0 .41 1.412A9.957 9.957 0 0 0 10 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 0 0-13.074.003Z" />
-  </svg>
-);
-
-export const UserGroup = (props: { className: string }): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path d="M10 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM6 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM1.49 15.326a.78.78 0 0 1-.358-.442 3 3 0 0 1 4.308-3.516 6.484 6.484 0 0 0-1.905 3.959c-.023.222-.014.442.025.654a4.97 4.97 0 0 1-2.07-.655ZM16.44 15.98a4.97 4.97 0 0 0 2.07-.654.78.78 0 0 0 .357-.442 3 3 0 0 0-4.308-3.517 6.484 6.484 0 0 1 1.907 3.96 2.32 2.32 0 0 1-.026.654ZM18 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM5.304 16.19a.844.844 0 0 1-.277-.71 5 5 0 0 1 9.947 0 .843.843 0 0 1-.277.71A6.975 6.975 0 0 1 10 18a6.974 6.974 0 0 1-4.696-1.81Z" />
-  </svg>
-);
-
-export const X = (props: IconProps): JSX.Element => (
-  <svg viewBox="0 0 20 20" fill="currentColor" {...props}>
-    <path
-      fillRule="evenodd"
-      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-      clipRule="evenodd"
-    />
   </svg>
 );
