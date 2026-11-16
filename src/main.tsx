@@ -20,7 +20,8 @@ for (const element of document.head.querySelectorAll("[data-static-head]")) {
 }
 
 const rootElement = document.getElementById("app");
-if (rootElement && !rootElement.innerHTML) {
+// Built pages already contain prerendered markup for crawlers and first paint; the app renders over it
+if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
 
   root.render(

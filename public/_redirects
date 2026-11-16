@@ -1,1 +1,6 @@
-/*   /index.html   200
+# Every page is prerendered to its own index.html, so there's no catch-all rewrite: unknown URLs get 404.html with a
+# real 404 status. See https://docs.netlify.com/routing/redirects/
+
+# The Pokémon project was removed
+/projects/pokemon    /    301
+/projects/pokemon/*  /    301
