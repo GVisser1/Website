@@ -1,6 +1,6 @@
 import { useRouterState } from "@tanstack/react-router";
 import type { JSX } from "react";
-import { MAIL_TO, PAGES } from "@/constants";
+import { PAGES } from "@/constants";
 import TextButton from "./button/textButton";
 import Logo from "./logo";
 import MobileMenu from "./mobileMenu";
@@ -27,7 +27,7 @@ export const Navbar = (): JSX.Element => {
               size="medium"
             />
           ))}
-          <TextButton type="link" variant="tertiary" label="Contact" href={MAIL_TO} active={false} size="medium" />
+          <TextButton type="email" variant="tertiary" label="Contact" active={false} size="medium" />
           <ThemeToggle />
         </div>
 

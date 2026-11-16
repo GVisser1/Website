@@ -20,6 +20,14 @@ test("can navigate to about me", async ({ page, homePage }) => {
   await expect(page).toHaveURL("/about");
 });
 
+test("only fills in the email address when someone reaches for the link", async ({ homePage }) => {
+  await homePage.goto();
+  await expect(homePage.getInTouchLink).toHaveAttribute("href", "mailto:");
+
+  await homePage.getInTouchLink.hover();
+  await expect(homePage.getInTouchLink).toHaveAttribute("href", /^mailto:[^@\s]+@[^@\s]+\.[a-z]+$/);
+});
+
 test.describe("dark mode", () => {
   test.use({ colorScheme: "dark" });
 

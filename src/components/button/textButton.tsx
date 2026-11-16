@@ -1,13 +1,14 @@
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import type { JSX } from "react";
+import EmailLink from "../emailLink";
 
 type BaseTextButtonProps = {
   label: string;
   size: "large" | "medium";
   className?: string;
 };
-type ButtonTypeProps = { type?: "button"; onClick: () => void } | { type: "link"; href: string };
+type ButtonTypeProps = { type?: "button"; onClick: () => void } | { type: "link"; href: string } | { type: "email" };
 type VariantProps = { variant: "primary" } | { variant: "light" } | { variant: "tertiary"; active: boolean };
 type TextButtonProps = BaseTextButtonProps & ButtonTypeProps & VariantProps;
 
@@ -33,6 +34,10 @@ const TextButton = (props: TextButtonProps): JSX.Element => {
       {props.label}
     </span>
   );
+
+  if (props.type === "email") {
+    return <EmailLink className={classes}>{label}</EmailLink>;
+  }
 
   return props.type === "link" ? (
     <Link className={classes} to={props.href} {...(props.variant === "tertiary" && { "data-active": props.active })}>
