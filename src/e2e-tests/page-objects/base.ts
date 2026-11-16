@@ -2,6 +2,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, type Page, test } from "@playwright/test";
 import { isEmpty } from "lodash-es";
 
+const SNAPSHOT_PLATFORM = "linux";
 const WCAG_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
 
 // Base UI renders invisible focus guards around open dialogs. In Safari they get role="button" (so VoiceOver can move
@@ -17,6 +18,14 @@ export abstract class BasePage {
   protected constructor(protected readonly page: Page) {}
 
   public assertPageMatchesSnapshot = async (name: string): Promise<void> => {
+    // Baselines are rendered on Linux (CI, or `pnpm test:e2e-docker`); fonts render differently elsewhere
+    if (process.platform !== SNAPSHOT_PLATFORM) {
+      test.info().annotations.push({
+        type: "screenshot skipped",
+        description: `Screenshots are only compared on ${SNAPSHOT_PLATFORM}; run pnpm test:e2e-docker`,
+      });
+      return;
+    }
     await this.waitForImages();
     await expect.soft(this.page).toHaveScreenshot(`${name}.webp`, { fullPage: true, maxDiffPixels: 20 });
   };
