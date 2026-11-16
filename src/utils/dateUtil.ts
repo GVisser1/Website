@@ -1,4 +1,7 @@
-export const getMonthName = (date: Date): string => date.toLocaleString("default", { month: "short" });
+// A fixed locale, so the prerendered page and every visitor's browser show the same month names
+const DATE_LOCALE = "en-US";
+
+export const getMonthName = (date: Date): string => date.toLocaleString(DATE_LOCALE, { month: "short" });
 
 export const getTimeFrame = (startDate: Date, endDate?: Date): string => {
   const start = `${getMonthName(startDate)} ${startDate.getFullYear()}`;

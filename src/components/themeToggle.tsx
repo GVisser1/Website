@@ -1,5 +1,6 @@
 import { useTheme } from "next-themes";
 import type { JSX } from "react";
+import { useIsClient } from "usehooks-ts";
 import IconButton from "./button/iconButton";
 import type { IconName } from "./icon";
 
@@ -15,7 +16,9 @@ const isTheme = (value: string | undefined): value is Theme => value !== undefin
 
 const ThemeToggle = (): JSX.Element => {
   const { theme, setTheme } = useTheme();
-  const current = isTheme(theme) ? THEMES[theme] : THEMES.system;
+  // The saved theme is only known in the browser; match the prerendered "System" until then so hydration lines up
+  const isClient = useIsClient();
+  const current = isClient && isTheme(theme) ? THEMES[theme] : THEMES.system;
   const next = THEMES[current.next];
   const label = `Theme: ${current.label}. Switch to ${next.label.toLowerCase()}`;
 

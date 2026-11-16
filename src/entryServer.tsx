@@ -1,8 +1,8 @@
-import { createMemoryHistory, createRouter, rootRouteId, RouterProvider } from "@tanstack/react-router";
+import { createMemoryHistory, rootRouteId, RouterProvider } from "@tanstack/react-router";
 import { ThemeProvider } from "next-themes";
 import { StrictMode } from "react";
 import { prerender } from "react-dom/static";
-import { routeTree } from "./routeTree.gen";
+import { createAppRouter } from "./router";
 
 export type HeadTag = { title: string } | { name: string; content: string };
 
@@ -23,7 +23,7 @@ const streamToString = async (stream: ReadableStream<Uint8Array>): Promise<strin
 
 // Renders one URL to static HTML at build time, used by scripts/prerender.ts
 export const render = async (url: string): Promise<RenderResult> => {
-  const router = createRouter({ routeTree, history: createMemoryHistory({ initialEntries: [url] }) });
+  const router = createAppRouter(createMemoryHistory({ initialEntries: [url] }));
   await router.load();
 
   const { prelude } = await prerender(

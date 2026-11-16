@@ -9,11 +9,22 @@ import Page from "../components/page";
 
 const PAGE = MAIN_PAGES.about;
 
+const INTRODUCTION_PHOTOS = [
+  { name: "FJM", width: 975, height: 1359 },
+  { name: "paddington", width: 975, height: 1307 },
+  { name: "beach", width: 1128, height: 1485 },
+];
+const SMALL_PHOTO_WIDTH = 480;
+// How wide each photo is shown: a third of the page from tablet up (at most 384px), and about 240px on phones, where
+// the 320px-tall tiles crop the portrait photos to their height
+const INTRODUCTION_PHOTO_SIZES = "(min-width: 1280px) 384px, (min-width: 768px) 30vw, 240px";
+
 // Below the tablet breakpoint the photos scroll horizontally, so the strip needs to be reachable by keyboard
 const MOBILE_QUERY = "(max-width: 767.98px)";
 
 const IntroductionPhotos = (): JSX.Element => {
-  const isMobile = useMediaQuery(MOBILE_QUERY);
+  // Start as the prerendered (non-mobile) markup so hydration lines up, then follow the real viewport
+  const isMobile = useMediaQuery(MOBILE_QUERY, { initializeWithValue: false });
   const scrollableRegionProps = isMobile ? { tabIndex: 0, role: "region", "aria-label": "Photos" } : {};
 
   return (
@@ -21,30 +32,19 @@ const IntroductionPhotos = (): JSX.Element => {
       {...scrollableRegionProps}
       className="col-span-full -mx-6 mt-5 no-scrollbar flex snap-x snap-mandatory scroll-px-6 gap-x-4 overflow-x-auto px-6 focus-visible:focus-ring tablet:mx-0 tablet:grid tablet:grid-cols-3 tablet:overflow-visible tablet:px-0"
     >
-      <Image
-        src="/images/FJM.webp"
-        width={975}
-        height={1359}
-        alt=""
-        priority={true}
-        className="h-80 w-1/2 shrink-0 snap-start rounded-lg object-cover tablet:aspect-square tablet:size-full"
-      />
-      <Image
-        src="/images/paddington.webp"
-        width={975}
-        height={1307}
-        alt=""
-        priority={true}
-        className="h-80 w-1/2 shrink-0 snap-start rounded-lg object-cover tablet:aspect-square tablet:size-full"
-      />
-      <Image
-        src="/images/beach.webp"
-        width={1128}
-        height={1485}
-        alt=""
-        priority={true}
-        className="h-80 w-1/2 shrink-0 snap-start rounded-lg object-cover tablet:aspect-square tablet:size-full"
-      />
+      {INTRODUCTION_PHOTOS.map((photo) => (
+        <Image
+          key={photo.name}
+          src={`/images/${photo.name}.webp`}
+          srcSet={`/images/${photo.name}-${SMALL_PHOTO_WIDTH}.webp ${SMALL_PHOTO_WIDTH}w, /images/${photo.name}.webp ${photo.width}w`}
+          sizes={INTRODUCTION_PHOTO_SIZES}
+          width={photo.width}
+          height={photo.height}
+          alt=""
+          priority={true}
+          className="h-80 w-1/2 shrink-0 snap-start rounded-lg object-cover tablet:aspect-square tablet:size-full"
+        />
+      ))}
     </div>
   );
 };
