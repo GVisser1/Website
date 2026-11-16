@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type { JSX } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import Image from "@/components/image";
-import { MAIN_PAGES } from "@/constants";
+import { MAIN_PAGES, MOBILE_MEDIA_QUERY } from "@/constants";
 import { BlogContent, BlogFooter, BlogHeader, BlogParagraph, BlogSection } from "../components/blog";
 import InlineLink from "../components/inlineLink";
 import Page from "../components/page";
@@ -19,12 +19,10 @@ const SMALL_PHOTO_WIDTH = 480;
 // the 320px-tall tiles crop the portrait photos to their height
 const INTRODUCTION_PHOTO_SIZES = "(min-width: 1280px) 384px, (min-width: 768px) 30vw, 240px";
 
-// Below the tablet breakpoint the photos scroll horizontally, so the strip needs to be reachable by keyboard
-const MOBILE_QUERY = "(max-width: 767.98px)";
-
 const IntroductionPhotos = (): JSX.Element => {
-  // Start as the prerendered (non-mobile) markup so hydration lines up, then follow the real viewport
-  const isMobile = useMediaQuery(MOBILE_QUERY, { initializeWithValue: false });
+  // On phones the photos scroll sideways, so the strip needs to be reachable by keyboard. Start as the prerendered
+  // (non-mobile) markup so hydration lines up, then follow the real viewport
+  const isMobile = useMediaQuery(MOBILE_MEDIA_QUERY, { initializeWithValue: false });
   const scrollableRegionProps = isMobile ? { tabIndex: 0, role: "region", "aria-label": "Photos" } : {};
 
   return (

@@ -1,13 +1,12 @@
 import { Drawer } from "@base-ui/react/drawer";
 import clsx from "clsx";
-import { type JSX, type ReactNode, type RefObject, useRef } from "react";
+import { type ComponentProps, type JSX, type ReactNode, useRef } from "react";
 
 type SidePanelProps = {
   title: string;
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  // Where focus returns after closing, since the panel has no Drawer.Trigger of its own
-  finalFocus: RefObject<HTMLElement | null>;
+  trigger: ComponentProps<typeof Drawer.Trigger>["render"];
   children: ReactNode;
 };
 
@@ -16,6 +15,7 @@ const SidePanel = (props: SidePanelProps): JSX.Element => {
 
   return (
     <Drawer.Root modal open={props.open} onOpenChange={props.onOpenChange} swipeDirection="right">
+      <Drawer.Trigger render={props.trigger} />
       <Drawer.Portal>
         <Drawer.Backdrop
           className={clsx(
@@ -33,7 +33,6 @@ const SidePanel = (props: SidePanelProps): JSX.Element => {
         <Drawer.Viewport className="fixed inset-0 z-40 flex items-stretch justify-end supports-[-webkit-touch-callout:none]:absolute">
           <Drawer.Popup
             initialFocus={closeButtonRef}
-            finalFocus={props.finalFocus}
             className={clsx(
               "flex h-full w-72 max-w-[85vw] touch-auto flex-col overflow-hidden border-l border-secondary bg-default shadow-lg outline-none",
               // Rubber-band behaviour when dragging
