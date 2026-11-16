@@ -18,20 +18,13 @@ type BlogSectionProps = {
     alt: string;
     width: number;
     height: number;
-    align: "left" | "right";
     priority?: boolean;
   };
 };
 
 export const BlogSection = (props: BlogSectionProps): JSX.Element => {
-  const classes = clsx(
-    "grid grid-cols-4 items-center gap-x-10 gap-y-5",
-    "my-10",
-    props.image?.align === "left" ? "tablet:flex-row-reverse tablet:space-x-reverse" : "tablet:flex-row",
-  );
-
   return (
-    <section id={props.id} className={classes}>
+    <section id={props.id} className="my-10 grid grid-cols-4 items-center gap-x-10 gap-y-5">
       <div
         className={clsx(
           "flex w-full flex-col gap-y-1",

@@ -79,7 +79,7 @@ const AboutPage = (): JSX.Element => (
 
       <BlogSection
         id="music"
-        image={{ src: "/images/fleetFoxes.webp", alt: "Fleet Foxes concert", width: 931, height: 1241, align: "right" }}
+        image={{ src: "/images/fleetFoxes.webp", alt: "Fleet Foxes concert", width: 931, height: 1241 }}
       >
         <BlogHeader>Music</BlogHeader>
         <BlogParagraph>
@@ -99,7 +99,7 @@ const AboutPage = (): JSX.Element => (
 
       <BlogSection
         id="movies"
-        image={{ src: "/images/the-holdovers.webp", alt: "The Holdovers", width: 1200, height: 650, align: "left" }}
+        image={{ src: "/images/the-holdovers.webp", alt: "The Holdovers", width: 1200, height: 650 }}
       >
         <BlogHeader>Movies</BlogHeader>
         <BlogParagraph>
@@ -118,7 +118,7 @@ const AboutPage = (): JSX.Element => (
 
       <BlogSection
         id="gaming"
-        image={{ src: "/images/persona5.webp", alt: "Persona 5 Royal", width: 1014, height: 640, align: "right" }}
+        image={{ src: "/images/persona5.webp", alt: "Persona 5 Royal", width: 1014, height: 640 }}
       >
         <BlogHeader>Gaming</BlogHeader>
         <BlogParagraph>
