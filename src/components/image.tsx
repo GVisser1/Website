@@ -1,25 +1,22 @@
-import type { JSX, Ref } from "react";
+import type { JSX } from "react";
 
 type ImageProps = {
-  ref?: Ref<HTMLImageElement>;
   src: string;
   alt: string;
+  // The file's own pixel size, so the browser can reserve the right shape before the image loads
+  width: number;
+  height: number;
   className?: string;
-  onLoad?: () => void;
-  onError?: () => void;
-  "aria-hidden"?: boolean;
   priority?: boolean;
 };
 
 const Image = (props: ImageProps): JSX.Element => (
   <img
-    ref={props.ref}
     src={props.src}
     alt={props.alt}
+    width={props.width}
+    height={props.height}
     className={props.className}
-    onLoad={props.onLoad}
-    onError={props.onError}
-    aria-hidden={props["aria-hidden"]}
     fetchPriority={props.priority ? "high" : "auto"}
     loading={props.priority ? "eager" : "lazy"}
   />

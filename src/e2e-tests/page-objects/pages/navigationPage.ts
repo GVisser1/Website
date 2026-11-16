@@ -7,6 +7,8 @@ export class NavigationPage extends BasePage {
   public readonly menuButton: Locator;
   public readonly menu: Locator;
   public readonly themeOptions: Locator;
+  public readonly skipLink: Locator;
+  public readonly main: Locator;
 
   public constructor(page: Page) {
     super(page);
@@ -16,6 +18,8 @@ export class NavigationPage extends BasePage {
     this.menuButton = page.getByRole("button", { name: "Open menu" });
     this.menu = page.getByRole("dialog", { name: "Menu" });
     this.themeOptions = this.menu.getByRole("radiogroup", { name: "Theme" });
+    this.skipLink = page.getByRole("link", { name: "Skip to content" });
+    this.main = page.getByRole("main");
   }
 
   public goto = async (): Promise<Response | null> => this.page.goto("/");

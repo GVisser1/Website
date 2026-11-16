@@ -152,6 +152,19 @@
   }
 }
 
+/* Respect the system's "reduce motion" setting: slides, fades and hover movement become instant. A near-zero duration
+   rather than none, so components that wait for transitionend (like the menu drawer) still finish opening and closing */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @utility focus-ring {
   outline: none;
   box-shadow:

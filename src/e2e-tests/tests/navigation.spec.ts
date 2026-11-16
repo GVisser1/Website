@@ -26,6 +26,20 @@ test.describe("desktop", () => {
     expect(await page.evaluate(() => localStorage.getItem("theme"))).toBe("system");
   });
 
+  test("skips to the main content with the keyboard", async ({ page, browserName, navigationPage }) => {
+    await navigationPage.goto();
+    // Visually hidden (a 1px box) until it has focus
+    expect((await navigationPage.skipLink.boundingBox())?.width).toBeLessThanOrEqual(1);
+
+    // Like Safari, WebKit only tabs to links while Option is held
+    await page.keyboard.press(browserName === "webkit" ? "Alt+Tab" : "Tab");
+    await expect(navigationPage.skipLink).toBeFocused();
+    expect((await navigationPage.skipLink.boundingBox())?.width).toBeGreaterThan(1);
+
+    await page.keyboard.press("Enter");
+    await expect(navigationPage.main).toBeFocused();
+  });
+
   test("hides the mobile menu button", async ({ navigationPage }) => {
     await navigationPage.goto();
 
@@ -62,6 +76,17 @@ test.describe("mobile", () => {
     await page.keyboard.press("Escape");
 
     await expect(navigationPage.menu).toBeHidden();
+  });
+
+  test.describe("with reduced motion", () => {
+    test.use({ reducedMotion: "reduce" });
+
+    test("still opens and closes the menu", async ({ page, navigationPage }) => {
+      await expect(navigationPage.menu).toBeVisible();
+
+      await page.keyboard.press("Escape");
+      await expect(navigationPage.menu).toBeHidden();
+    });
   });
 
   test("changes the theme", async ({ navigationPage }) => {
