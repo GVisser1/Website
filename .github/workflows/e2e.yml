@@ -9,9 +9,11 @@ on:
 jobs:
   playwright:
     timeout-minutes: 15
-    runs-on: xcode-27
-    # One job per browser, in parallel: CI time is the slowest browser instead of all three added up, and each job only
-    # starts and installs its own browser
+    runs-on: ubuntu-24.04-arm
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+      # Firefox refuses to start as root with GitHub's home folder
+      options: --user 1001
     strategy:
       fail-fast: false
       matrix:
@@ -25,8 +27,6 @@ jobs:
       - uses: pnpm/action-setup@v6
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
-      - name: Install Playwright browsers
-        run: pnpm exec playwright install --with-deps ${{ matrix.browser }}
       - name: Run E2E tests
         run: pnpm test:e2e --project=${{ matrix.browser }}
         env:

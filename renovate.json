@@ -61,6 +61,11 @@
       "matchUpdateTypes": ["major"],
       "minimumReleaseAge": "14 days",
       "automerge": false
+    },
+    {
+      "description": "The e2e workflow's Playwright image must match @playwright/test, so update them in one PR",
+      "matchPackageNames": ["@playwright/test", "mcr.microsoft.com/playwright"],
+      "groupName": "Playwright"
     }
   ]
 }
