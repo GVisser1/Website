@@ -3,7 +3,7 @@ import type { JSX } from "react";
 import TextButton from "@/components/button/textButton";
 import Image from "@/components/image";
 import Page from "@/components/page";
-import { MAIL_TO, MAIN_PAGES } from "@/constants";
+import { MAIN_PAGES } from "@/constants";
 import { getAge } from "@/utils/dateUtil";
 
 const PAGE = MAIN_PAGES.home;
@@ -21,7 +21,7 @@ const HomePage = (): JSX.Element => (
         </p>
         <div className="flex flex-wrap justify-center gap-2 laptop:justify-start">
           <TextButton type="link" label="About me" variant="primary" href="/about" size="large" />
-          <TextButton type="link" label="Get in touch" variant="light" href={MAIL_TO} size="large" />
+          <TextButton type="email" label="Get in touch" variant="light" size="large" />
         </div>
       </div>
       <div className="order-1 mx-auto rounded-full border-2 border-light p-2 laptop:order-2">

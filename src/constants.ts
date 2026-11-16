@@ -48,7 +48,5 @@ export const MAIN_PAGES = {
 
 export const PAGES: Page[] = Object.values(MAIN_PAGES);
 
-export const MAIL_TO = "mailto:gvisser.business@gmail.com";
-
 // Page background per theme (--background-color-default), used for the mobile browser bar
 export const THEME_COLORS = { light: "#ffffff", dark: "#0a0a0a" } as const;

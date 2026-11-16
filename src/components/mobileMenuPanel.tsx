@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { type JSX, type RefObject, useEffect, useState } from "react";
-import { MAIL_TO, PAGES } from "@/constants";
+import { PAGES } from "@/constants";
+import EmailLink from "./emailLink";
 import Icon from "./icon";
 import SidePanel from "./sidePanel";
 import ThemeSwitcher from "./themeSwitcher";
@@ -44,10 +45,10 @@ const MobileMenuPanel = (props: MobileMenuPanelProps): JSX.Element => {
             {page.name}
           </Link>
         ))}
-        <a href={MAIL_TO} className={linkClasses}>
+        <EmailLink className={linkClasses}>
           <Icon name="At" className="size-5" />
           Contact
-        </a>
+        </EmailLink>
       </nav>
 
       <section className="mt-6 flex flex-col gap-y-2 border-t border-secondary px-1 pt-4">
