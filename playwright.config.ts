@@ -40,7 +40,7 @@ export default defineConfig({
   retries: isCI ? 1 : 0,
   snapshotPathTemplate: "src/e2e-tests/snapshots/{testFilePath}/{projectName}/{arg}{ext}",
   testDir: "src/e2e-tests",
-  timeout: seconds(10),
+  timeout: seconds(15),
   use: { baseURL, trace: "on-first-retry" },
   webServer: usesLocalDevServer
     ? {

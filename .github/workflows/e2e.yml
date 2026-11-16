@@ -10,6 +10,13 @@ jobs:
   playwright:
     timeout-minutes: 15
     runs-on: xcode-27
+    # One job per browser, in parallel: CI time is the slowest browser instead of all three added up, and each job only
+    # starts and installs its own browser
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+    name: playwright (${{ matrix.browser }})
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -19,15 +26,15 @@ jobs:
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
       - name: Install Playwright browsers
-        run: pnpm exec playwright install --with-deps
+        run: pnpm exec playwright install --with-deps ${{ matrix.browser }}
       - name: Run E2E tests
-        run: pnpm test:e2e
+        run: pnpm test:e2e --project=${{ matrix.browser }}
         env:
           E2E_BASE_URL: ${{ (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && 'https://glennvisser.com' || '' }}
       - name: Upload HTML report
         uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
         with:
-          name: html-report--attempt-${{ github.run_attempt }}
+          name: html-report-${{ matrix.browser }}--attempt-${{ github.run_attempt }}
           path: src/e2e-tests/test-reports
           retention-days: 7
