@@ -13,6 +13,12 @@ const router = createRouter({
   defaultPreloadStaleTime: 0,
 });
 
+// index.html carries a title and description for crawlers that don't run JavaScript. Each route renders its own, so
+// drop the static ones to avoid duplicates
+for (const element of document.head.querySelectorAll("[data-static-head]")) {
+  element.remove();
+}
+
 const rootElement = document.getElementById("app");
 if (rootElement && !rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);

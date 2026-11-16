@@ -1,0 +1,9 @@
+# Netlify response headers, see https://docs.netlify.com/routing/headers/
+
+# Vite puts a content hash in every file name under /assets, so a changed file always gets a new URL
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
