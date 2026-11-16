@@ -9,6 +9,28 @@
     <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
+
+    <!-- For crawlers and link previews that don't run JavaScript; routes replace the marked title and description at runtime -->
+    <title data-static-head>Glenn Visser</title>
+    <meta
+      name="description"
+      data-static-head
+      content="Personal website of Glenn Visser, a QA Engineer from Maassluis, the Netherlands, with a love for music, movies, and games."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Glenn Visser" />
+    <meta property="og:url" content="https://glennvisser.com/" />
+    <meta property="og:title" content="Glenn Visser" />
+    <meta
+      property="og:description"
+      content="Personal website of Glenn Visser, a QA Engineer from Maassluis, the Netherlands, with a love for music, movies, and games."
+    />
+    <meta property="og:image" content="https://glennvisser.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Glenn Visser, QA Engineer from Maassluis, the Netherlands" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body class="bg-default">
     <div id="app" class="flex min-h-dvh flex-col"></div>
