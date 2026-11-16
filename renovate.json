@@ -66,6 +66,16 @@
       "description": "The e2e workflow's Playwright image must match @playwright/test, so update them in one PR",
       "matchPackageNames": ["@playwright/test", "mcr.microsoft.com/playwright"],
       "groupName": "Playwright"
+    },
+    {
+      "description": "@vitejs/plugin-react only accepts certain oxc-transform-react versions, so update them in one PR",
+      "matchPackageNames": ["@vitejs/plugin-react", "oxc-transform-react"],
+      "groupName": "React plugin"
+    },
+    {
+      "description": "Keep within @vitejs/plugin-react's peer range for oxc-transform-react; raise this when the plugin's range moves",
+      "matchPackageNames": ["oxc-transform-react"],
+      "allowedVersions": "<0.157.0"
     }
   ]
 }
