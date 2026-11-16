@@ -1,4 +1,4 @@
-import { test as base } from "@playwright/test";
+import { test as base, expect } from "@playwright/test";
 import { AboutPage } from "./page-objects/pages/aboutPage";
 import { HomePage } from "./page-objects/pages/homePage";
 import { NavigationPage } from "./page-objects/pages/navigationPage";
@@ -6,6 +6,7 @@ import { NotFoundPage } from "./page-objects/pages/notFoundPage";
 import { TimelinePage } from "./page-objects/pages/timelinePage";
 
 type Pages = {
+  failOnPageErrors: undefined;
   homePage: HomePage;
   aboutPage: AboutPage;
   timelinePage: TimelinePage;
@@ -14,6 +15,18 @@ type Pages = {
 };
 
 export const test = base.extend<Pages>({
+  // Uncaught errors, such as React failing to hydrate a prerendered page, fail the test instead of passing unnoticed
+  failOnPageErrors: [
+    async ({ page }, use): Promise<void> => {
+      const errors: Error[] = [];
+      page.on("pageerror", (error): void => {
+        errors.push(error);
+      });
+      await use(undefined);
+      expect(errors.map((error) => error.message)).toEqual([]);
+    },
+    { auto: true },
+  ],
   homePage: async ({ page }, use) => use(new HomePage(page)),
   aboutPage: async ({ page }, use) => use(new AboutPage(page)),
   timelinePage: async ({ page }, use) => use(new TimelinePage(page)),
@@ -21,4 +34,4 @@ export const test = base.extend<Pages>({
   notFoundPage: async ({ page }, use) => use(new NotFoundPage(page)),
 });
 
-export { expect } from "@playwright/test";
+export { expect };
