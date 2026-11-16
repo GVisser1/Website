@@ -16,6 +16,8 @@ type BlogSectionProps = {
   image?: {
     src: string;
     alt: string;
+    width: number;
+    height: number;
     align: "left" | "right";
     priority?: boolean;
   };
@@ -42,6 +44,8 @@ export const BlogSection = (props: BlogSectionProps): JSX.Element => {
         <Image
           src={props.image.src}
           alt={props.image.alt}
+          width={props.image.width}
+          height={props.image.height}
           priority={props.image.priority}
           className="col-span-full h-85 w-full rounded-lg object-cover tablet:col-span-2"
         />

@@ -23,18 +23,24 @@ const IntroductionPhotos = (): JSX.Element => {
     >
       <Image
         src="/images/FJM.webp"
+        width={975}
+        height={1359}
         alt=""
         priority={true}
         className="h-80 w-1/2 shrink-0 snap-start rounded-lg object-cover tablet:aspect-square tablet:size-full"
       />
       <Image
         src="/images/paddington.webp"
+        width={975}
+        height={1307}
         alt=""
         priority={true}
         className="h-80 w-1/2 shrink-0 snap-start rounded-lg object-cover tablet:aspect-square tablet:size-full"
       />
       <Image
         src="/images/beach.webp"
+        width={1128}
+        height={1485}
         alt=""
         priority={true}
         className="h-80 w-1/2 shrink-0 snap-start rounded-lg object-cover tablet:aspect-square tablet:size-full"
@@ -71,7 +77,10 @@ const AboutPage = (): JSX.Element => (
         </BlogParagraph>
       </BlogSection>
 
-      <BlogSection id="music" image={{ src: "/images/fleetFoxes.webp", alt: "Fleet Foxes concert", align: "right" }}>
+      <BlogSection
+        id="music"
+        image={{ src: "/images/fleetFoxes.webp", alt: "Fleet Foxes concert", width: 931, height: 1241, align: "right" }}
+      >
         <BlogHeader>Music</BlogHeader>
         <BlogParagraph>
           Music is probably my biggest hobby. It is never quiet in my house; there is always music playing. I am
@@ -88,7 +97,10 @@ const AboutPage = (): JSX.Element => (
         </BlogParagraph>
       </BlogSection>
 
-      <BlogSection id="movies" image={{ src: "/images/the-holdovers.webp", alt: "The Holdovers", align: "left" }}>
+      <BlogSection
+        id="movies"
+        image={{ src: "/images/the-holdovers.webp", alt: "The Holdovers", width: 1200, height: 650, align: "left" }}
+      >
         <BlogHeader>Movies</BlogHeader>
         <BlogParagraph>
           Another expensive hobby of mine is watching movies. I have a growing Blu-ray collection and go to the cinema
@@ -104,7 +116,10 @@ const AboutPage = (): JSX.Element => (
         </BlogParagraph>
       </BlogSection>
 
-      <BlogSection id="gaming" image={{ src: "/images/persona5.webp", alt: "Persona 5 Royal", align: "right" }}>
+      <BlogSection
+        id="gaming"
+        image={{ src: "/images/persona5.webp", alt: "Persona 5 Royal", width: 1014, height: 640, align: "right" }}
+      >
         <BlogHeader>Gaming</BlogHeader>
         <BlogParagraph>
           I have been gaming ever since I got my Gameboy at age 7. This naturally transitioned into playing GTA: San

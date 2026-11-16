@@ -3,15 +3,10 @@ import clsx from "clsx";
 import type { JSX } from "react";
 import type { IconName } from "../icon";
 import Icon from "../icon";
-import type { TooltipProps } from "../tooltip";
-import Tooltip from "../tooltip";
 
 type BaseIconAndTextButtonProps = {
-  id?: string;
   icon: IconName;
   label: string;
-  tooltip?: Omit<TooltipProps, "trigger">;
-  fullWidth?: boolean;
   className?: string;
 };
 type ButtonTypeProps = { type?: "button"; onClick: () => void } | { type: "link"; href: string };
@@ -20,11 +15,10 @@ type IconAndTextButtonProps = BaseIconAndTextButtonProps & ButtonTypeProps & Var
 
 const IconAndTextButton = (props: IconAndTextButtonProps): JSX.Element => {
   const classes = clsx(
-    "inline-flex h-9 shrink-0 items-center gap-x-1.5 rounded-sm py-3 pr-2.5 pl-2 select-none focus-visible:focus-ring",
+    "inline-flex h-9 shrink-0 items-center justify-center gap-x-1.5 rounded-sm py-3 pr-2.5 pl-2 select-none focus-visible:focus-ring",
     props.variant === "primary" && "btn-primary",
     props.variant === "light" && "btn-light",
     props.variant === "tertiary" && "btn-tertiary",
-    props.fullWidth ? "w-full" : "justify-center",
     props.className,
   );
 
@@ -35,32 +29,19 @@ const IconAndTextButton = (props: IconAndTextButtonProps): JSX.Element => {
     </>
   );
 
-  const trigger =
-    props.type === "link" ? (
-      <Link
-        id={props.id}
-        className={classes}
-        to={props.href}
-        {...(props.variant === "tertiary" && { "data-active": props.active })}
-      >
-        {content}
-      </Link>
-    ) : (
-      <button
-        id={props.id}
-        className={classes}
-        onClick={props.onClick}
-        {...(props.variant === "tertiary" && { "data-active": props.active })}
-      >
-        {content}
-      </button>
-    );
-
-  if (props.tooltip) {
-    return <Tooltip title={props.tooltip.title} position={props.tooltip.position} trigger={trigger} />;
-  }
-
-  return trigger;
+  return props.type === "link" ? (
+    <Link className={classes} to={props.href} {...(props.variant === "tertiary" && { "data-active": props.active })}>
+      {content}
+    </Link>
+  ) : (
+    <button
+      className={classes}
+      onClick={props.onClick}
+      {...(props.variant === "tertiary" && { "data-active": props.active })}
+    >
+      {content}
+    </button>
+  );
 };
 
 export default IconAndTextButton;

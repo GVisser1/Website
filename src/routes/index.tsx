@@ -28,6 +28,8 @@ const HomePage = (): JSX.Element => (
         <Image
           priority
           src="/images/profile.webp"
+          width={640}
+          height={640}
           alt="Photo of Glenn"
           className="aspect-square size-48 rounded-full object-cover tablet:size-60 laptop:size-80"
         />

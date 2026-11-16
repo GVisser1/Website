@@ -9,7 +9,6 @@ type SidePanelProps = {
   // Where focus returns after closing, since the panel has no Drawer.Trigger of its own
   finalFocus: RefObject<HTMLElement | null>;
   children: ReactNode;
-  className?: string;
 };
 
 const SidePanel = (props: SidePanelProps): JSX.Element => {
@@ -47,7 +46,7 @@ const SidePanel = (props: SidePanelProps): JSX.Element => {
               "data-ending-style:data-swipe-dismiss:duration-[calc(var(--drawer-swipe-strength)*400ms)]",
             )}
           >
-            <Drawer.Content className={clsx("flex grow flex-col", props.className)}>
+            <Drawer.Content className="flex grow flex-col">
               <Drawer.Title className="flex h-14 items-center border-b border-secondary p-3 font-heading text-heading text-primary">
                 {props.title}
               </Drawer.Title>
