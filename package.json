@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vp dev",
     "preview": "pnpm build && pnpm exec vp preview --port 5173 --strictPort",
-    "build": "tsc && tsx ./scripts/generateSitemap.ts && vp build",
+    "build": "tsc && tsx ./scripts/generateSitemap.ts && vp build && pnpm build:prerender",
+    "build:prerender": "vp build --ssr src/entryServer.tsx --outDir node_modules/.prerender --emptyOutDir && tsx ./scripts/prerender.ts",
     "test": "vp test",
     "test:ui": "vp test --ui --coverage",
     "test:e2e": "playwright test",
