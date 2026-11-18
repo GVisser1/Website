@@ -7,3 +7,9 @@
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+  # Nothing should embed the site in a frame (clickjacking)
+  X-Frame-Options: DENY
+  # Pages opened from here (or that open this site) can't reach back into this window
+  Cross-Origin-Opener-Policy: same-origin
+  # Netlify already sends HSTS for a year; also cover subdomains
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
