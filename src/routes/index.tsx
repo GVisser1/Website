@@ -7,6 +7,8 @@ import { MAIN_PAGES } from "@/constants";
 import { getAge } from "@/utils/dateUtil";
 
 const PAGE = MAIN_PAGES.home;
+// Matches the photo's size-48, tablet:size-60 and laptop:size-80, so phones download the 384px version
+const PROFILE_PHOTO_SIZES = "(min-width: 1280px) 320px, (min-width: 768px) 240px, 192px";
 
 const HomePage = (): JSX.Element => (
   <Page className="my-auto">
@@ -28,6 +30,8 @@ const HomePage = (): JSX.Element => (
         <Image
           priority
           src="/images/profile.webp"
+          srcSet="/images/profile-384.webp 384w, /images/profile.webp 640w"
+          sizes={PROFILE_PHOTO_SIZES}
           width={640}
           height={640}
           alt="Photo of Glenn"

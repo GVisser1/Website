@@ -14,7 +14,6 @@ const NOT_FOUND_PATH = "/404";
 const { render } = (await import(pathToFileURL(SERVER_ENTRY).href)) as {
   render: (url: string) => Promise<RenderResult>;
 };
-const template = fs.readFileSync(path.join(DIST, "index.html"), "utf8");
 
 const escapeAttribute = (value: string): string =>
   value.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;");
@@ -53,6 +52,27 @@ const setMetaContent = (html: string, attribute: string, content: string): strin
   }
   return updated;
 };
+
+// The stylesheet blocks the first paint, and on a slow connection it downloads alongside the JavaScript. Inline it so a
+// page can paint as soon as its HTML arrives. Its font URLs are absolute (/assets/...), so they still resolve on nested
+// pages
+const inlineStylesheet = (html: string): string => {
+  const links = html.match(/<link rel="stylesheet"[^>]*>/g) ?? [];
+  if (links.length !== 1) {
+    throw new Error(`index.html should link exactly one stylesheet, found ${links.length}`);
+  }
+  const href = /href="\/([^"]+)"/.exec(links[0])?.[1];
+  if (isNil(href)) {
+    throw new Error(`Can't find the stylesheet's path in ${links[0]}`);
+  }
+  const css = fs.readFileSync(path.join(DIST, href), "utf8");
+  if (css.includes("</style")) {
+    throw new Error("The stylesheet contains </style and can't be inlined");
+  }
+  return html.replace(links[0], () => `<style>${css}</style>`);
+};
+
+const template = inlineStylesheet(fs.readFileSync(path.join(DIST, "index.html"), "utf8"));
 
 // React emits <title>, <meta> and image preload <link>s at the start of the markup; they belong in <head>
 const splitHoistedTags = (html: string): { preloads: string[]; body: string } => {
