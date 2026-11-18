@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type { JSX } from "react";
-import { useMediaQuery } from "usehooks-ts";
 import Image from "@/components/image";
 import { MAIN_PAGES, MOBILE_MEDIA_QUERY } from "@/constants";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { BlogContent, BlogFooter, BlogHeader, BlogParagraph, BlogSection } from "../components/blog";
 import InlineLink from "../components/inlineLink";
 import Page from "../components/page";
@@ -22,7 +22,7 @@ const INTRODUCTION_PHOTO_SIZES = "(min-width: 1280px) 384px, (min-width: 768px) 
 const IntroductionPhotos = (): JSX.Element => {
   // On phones the photos scroll sideways, so the strip needs to be reachable by keyboard. Start as the prerendered
   // (non-mobile) markup so hydration lines up, then follow the real viewport
-  const isMobile = useMediaQuery(MOBILE_MEDIA_QUERY, { initializeWithValue: false });
+  const isMobile = useMediaQuery(MOBILE_MEDIA_QUERY);
   const scrollableRegionProps = isMobile ? { tabIndex: 0, role: "region", "aria-label": "Photos" } : {};
 
   return (

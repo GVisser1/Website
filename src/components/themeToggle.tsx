@@ -1,6 +1,6 @@
 import { useTheme } from "next-themes";
 import type { JSX } from "react";
-import { useIsClient } from "usehooks-ts";
+import { useIsClient } from "@/hooks/useIsClient";
 import IconButton from "./button/iconButton";
 import type { IconName } from "./icon";
 
