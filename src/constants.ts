@@ -48,8 +48,5 @@ export const MAIN_PAGES = {
 
 export const PAGES: Page[] = Object.values(MAIN_PAGES);
 
-// Below the tablet breakpoint: the nav collapses into the menu and the About photos scroll sideways
-export const MOBILE_MEDIA_QUERY = "(max-width: 767.98px)";
-
 // Page background per theme (--background-color-default), used for the mobile browser bar
 export const THEME_COLORS = { light: "#ffffff", dark: "#0a0a0a" } as const;

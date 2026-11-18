@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import clsx from "clsx";
 import type { JSX } from "react";
 import Image from "@/components/image";
-import { MAIN_PAGES, MOBILE_MEDIA_QUERY } from "@/constants";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { MAIN_PAGES } from "@/constants";
 import { BlogContent, BlogFooter, BlogHeader, BlogParagraph, BlogSection } from "../components/blog";
 import InlineLink from "../components/inlineLink";
 import Page from "../components/page";
@@ -15,37 +15,31 @@ const INTRODUCTION_PHOTOS = [
   { name: "beach", width: 1128, height: 1485 },
 ];
 const SMALL_PHOTO_WIDTH = 480;
-// How wide each photo is shown: a third of the page from tablet up (at most 384px), and about 240px on phones, where
-// the 320px-tall tiles crop the portrait photos to their height
-const INTRODUCTION_PHOTO_SIZES = "(min-width: 1280px) 384px, (min-width: 768px) 30vw, 240px";
+// How wide each photo is shown: a third of the page from tablet up (at most 384px), and half the page on phones
+const INTRODUCTION_PHOTO_SIZES = "(min-width: 1280px) 384px, (min-width: 768px) 30vw, calc(50vw - 32px)";
 
-const IntroductionPhotos = (): JSX.Element => {
-  // On phones the photos scroll sideways, so the strip needs to be reachable by keyboard. Start as the prerendered
-  // (non-mobile) markup so hydration lines up, then follow the real viewport
-  const isMobile = useMediaQuery(MOBILE_MEDIA_QUERY);
-  const scrollableRegionProps = isMobile ? { tabIndex: 0, role: "region", "aria-label": "Photos" } : {};
-
-  return (
-    <div
-      {...scrollableRegionProps}
-      className="col-span-full -mx-6 mt-5 no-scrollbar flex snap-x snap-mandatory scroll-px-6 gap-x-4 overflow-x-auto px-6 focus-visible:focus-ring tablet:mx-0 tablet:grid tablet:grid-cols-3 tablet:overflow-visible tablet:px-0"
-    >
-      {INTRODUCTION_PHOTOS.map((photo) => (
-        <Image
-          key={photo.name}
-          src={`/images/${photo.name}.webp`}
-          srcSet={`/images/${photo.name}-${SMALL_PHOTO_WIDTH}.webp ${SMALL_PHOTO_WIDTH}w, /images/${photo.name}.webp ${photo.width}w`}
-          sizes={INTRODUCTION_PHOTO_SIZES}
-          width={photo.width}
-          height={photo.height}
-          alt=""
-          priority={true}
-          className="h-80 w-1/2 shrink-0 snap-start rounded-lg object-cover tablet:aspect-square tablet:size-full"
-        />
-      ))}
-    </div>
-  );
-};
+// Three in a row from tablet up. On phones a collage instead: the first photo fills the left column and the other two
+// stack on the right, so the photos stay a decent size without scrolling sideways
+const IntroductionPhotos = (): JSX.Element => (
+  <div className="col-span-full mt-5 grid h-80 grid-cols-2 grid-rows-2 gap-4 tablet:h-auto tablet:grid-cols-3 tablet:grid-rows-none">
+    {INTRODUCTION_PHOTOS.map((photo, index) => (
+      <Image
+        key={photo.name}
+        src={`/images/${photo.name}.webp`}
+        srcSet={`/images/${photo.name}-${SMALL_PHOTO_WIDTH}.webp ${SMALL_PHOTO_WIDTH}w, /images/${photo.name}.webp ${photo.width}w`}
+        sizes={INTRODUCTION_PHOTO_SIZES}
+        width={photo.width}
+        height={photo.height}
+        alt=""
+        priority={true}
+        className={clsx(
+          "size-full rounded-lg object-cover tablet:aspect-square",
+          index === 0 && "row-span-2 tablet:row-span-1",
+        )}
+      />
+    ))}
+  </div>
+);
 
 const AboutPage = (): JSX.Element => (
   <Page>

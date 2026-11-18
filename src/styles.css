@@ -184,13 +184,6 @@
   text-decoration-color: var(--ring-color-primary);
 }
 
-@utility no-scrollbar {
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
