@@ -7,7 +7,7 @@ type BlogContentProps = {
   children: ReactNode;
 };
 export const BlogContent = (props: BlogContentProps): JSX.Element => (
-  <div className="flex flex-col gap-y-16">{props.children}</div>
+  <div className="flex flex-col gap-y-16 py-10 tablet:gap-y-36">{props.children}</div>
 );
 
 type BlogSectionProps = {
@@ -24,7 +24,7 @@ type BlogSectionProps = {
 
 export const BlogSection = (props: BlogSectionProps): JSX.Element => {
   return (
-    <section id={props.id} className="my-10 grid grid-cols-4 items-center gap-x-10 gap-y-5">
+    <section id={props.id} className="grid grid-cols-4 items-center gap-x-10 gap-y-5">
       <div
         className={clsx(
           "flex w-full flex-col gap-y-1",
