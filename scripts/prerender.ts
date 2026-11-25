@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
@@ -141,3 +142,31 @@ console.log("✔ Prerendered pages");
 for (const { file, html } of output) {
   writePage(file, html);
 }
+
+// Allows only the pages' own inline scripts and styles, by hash; regenerated each build as they change
+const hashSources = (pattern: RegExp): string[] => {
+  const contents = new Set(output.flatMap(({ html }) => [...html.matchAll(pattern)].map((match) => match[1])));
+  return [...contents].map((content) => `'sha256-${createHash("sha256").update(content).digest("base64")}'`).sort();
+};
+
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  `script-src 'self' ${hashSources(/<script>([\s\S]*?)<\/script>/g).join(" ")}`,
+  `style-src 'self' 'report-sample' ${hashSources(/<style>([\s\S]*?)<\/style>/g).join(" ")}`,
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+].join("; ");
+
+const headersFile = path.join(DIST, "_headers");
+fs.writeFileSync(
+  headersFile,
+  replaceOnce(
+    fs.readFileSync(headersFile, "utf8"),
+    /^\/\*\n/m,
+    `/*\n  Content-Security-Policy: ${contentSecurityPolicy}\n`,
+  ),
+);
+console.log("✔ Content-Security-Policy");
+console.log("  →", path.relative(process.cwd(), headersFile));

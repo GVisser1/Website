@@ -7,6 +7,7 @@ import { TimelinePage } from "./page-objects/pages/timelinePage";
 
 type Pages = {
   failOnPageErrors: undefined;
+  failOnCspViolations: undefined;
   homePage: HomePage;
   aboutPage: AboutPage;
   timelinePage: TimelinePage;
@@ -24,6 +25,29 @@ export const test = base.extend<Pages>({
       });
       await use(undefined);
       expect(errors.map((error) => error.message)).toEqual([]);
+    },
+    { auto: true },
+  ],
+  // Only the production preview sends a CSP
+  failOnCspViolations: [
+    async ({ page }, use): Promise<void> => {
+      const violations: string[] = [];
+      await page.exposeFunction("reportCspViolation", (violation: string): void => {
+        violations.push(violation);
+      });
+      await page.addInitScript(() => {
+        document.addEventListener("securitypolicyviolation", (event) => {
+          // Added by Playwright's screenshots; only WebKit applies the CSP to it
+          if (event.sample === "body {}") {
+            return;
+          }
+          void (window as unknown as { reportCspViolation: (violation: string) => Promise<void> }).reportCspViolation(
+            `${event.effectiveDirective} blocked ${event.blockedURI || "inline"} on ${location.pathname}: ${event.sample}`,
+          );
+        });
+      });
+      await use(undefined);
+      expect(violations).toEqual([]);
     },
     { auto: true },
   ],

@@ -17,8 +17,15 @@ export const prerenderedPagesPreview = (): VitePlugin => ({
   name: "prerendered-pages-preview",
   configurePreviewServer: (server: PreviewServer): void => {
     const outDir = path.resolve(server.config.root, server.config.build.outDir);
+    // The CSP the build wrote for Netlify, so e2e tests run under it
+    const contentSecurityPolicy = /^\s*Content-Security-Policy: (.+)$/m.exec(
+      fs.readFileSync(path.join(outDir, "_headers"), "utf8"),
+    )?.[1];
 
     server.middlewares.use((request: IncomingMessage, response: ServerResponse, next: () => void): void => {
+      if (contentSecurityPolicy) {
+        response.setHeader("Content-Security-Policy", contentSecurityPolicy);
+      }
       const pathname = new URL(request.url ?? "/", "http://localhost").pathname;
       // Files (with an extension) and the home page are already served correctly
       if (path.extname(pathname) !== "" || pathname === "/") {
