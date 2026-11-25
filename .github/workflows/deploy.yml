@@ -2,6 +2,9 @@ name: Deploy to Netlify
 
 on:
   workflow_dispatch:
+  # The home page prerenders the age, so rebuild on the birthday (21 April, 03:00 Dutch time)
+  schedule:
+    - cron: "0 1 21 4 *"
 
 jobs:
   deploy:
