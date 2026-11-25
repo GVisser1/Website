@@ -10,9 +10,11 @@ export const getTimeFrame = (startDate: Date, endDate?: Date): string => {
   return `${start} - ${end}`;
 };
 
-export const getAge = (): number => {
-  const dob = new Date(2000, 3, 21);
-  const diff = Date.now() - dob.getTime();
-  const ageDate = new Date(diff);
-  return Math.abs(ageDate.getUTCFullYear() - 1970);
+const DATE_OF_BIRTH = new Date(2000, 3, 21);
+
+export const getAge = (today = new Date()): number => {
+  const hadBirthdayThisYear =
+    today.getMonth() > DATE_OF_BIRTH.getMonth() ||
+    (today.getMonth() === DATE_OF_BIRTH.getMonth() && today.getDate() >= DATE_OF_BIRTH.getDate());
+  return today.getFullYear() - DATE_OF_BIRTH.getFullYear() - (hadBirthdayThisYear ? 0 : 1);
 };

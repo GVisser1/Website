@@ -43,7 +43,17 @@ describe("getTimeFrame", () => {
 });
 
 describe("getAge", () => {
-  test("should return the correct age based on the hardcoded date of birth", () => {
+  test.each([
+    [new Date(2024, 3, 20), 23],
+    [new Date(2024, 3, 21), 24],
+    [new Date(2024, 3, 22), 24],
+    [new Date(2024, 0, 1), 23],
+    [new Date(2024, 11, 31), 24],
+  ])("getAge(%s) should return %i", (today, expected) => {
+    expect(getAge(today)).toBe(expected);
+  });
+
+  test("should default to today", () => {
     vi.setSystemTime(new Date(2024, 3, 22));
     const age = getAge();
 

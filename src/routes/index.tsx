@@ -18,8 +18,9 @@ const HomePage = (): JSX.Element => (
           Hi, my name is <span className="whitespace-nowrap text-light">Glenn Visser</span>
         </h1>
         <p className="max-w-prose text-lead text-secondary">
-          I am a {getAge()}-year-old QA Engineer living in Maassluis, the Netherlands. I am into music, movies, games,
-          and programming.
+          {/* Prerendered at build time; keeps that age if the visitor's date differs */}
+          I am a <span suppressHydrationWarning>{getAge()}</span>-year-old QA Engineer living in Maassluis, the
+          Netherlands. I am into music, movies, games, and programming.
         </p>
         <div className="flex flex-wrap justify-center gap-2 laptop:justify-start">
           <TextButton type="link" label="About me" variant="primary" href="/about" size="large" />
